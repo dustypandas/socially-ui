@@ -12,6 +12,8 @@
   --home-link-blue: #3b6fd4;
   --home-orange: #e67e22;
   --home-purple: #9b6dff;
+  --home-header-height: 3.75rem;
+  --home-hero-height: 22rem;
 
   min-height: 100vh;
   background: white url('../assets/temp/bg-transparent-cream-paper.png');
@@ -35,4 +37,8 @@
 .home-page__main {
   position: relative;
   z-index: 1;
+  background: white url('../assets/temp/bg-transparent-cream-paper.png');
+  background-size: 200px 200px;
+  padding-top: 1rem;
+  border-top: 1.5px solid white;
 }

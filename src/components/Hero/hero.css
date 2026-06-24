@@ -1,12 +1,29 @@
 @import 'tailwindcss';
 
 .home-hero {
-  position: relative;
-  min-height: 22rem;
-  background:
-    url('/assets/hero-malasana.png') center bottom / cover no-repeat;
+  position: fixed;
+  top: var(--home-header-height);
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: var(--home-hero-height);
+  overflow: hidden;
   display: flex;
   align-items: stretch;
+}
+
+.home-hero__media {
+  position: absolute;
+  inset: 0;
+  background:
+    url('/assets/hero-malasana.png') center bottom / cover no-repeat;
+  transform: translateY(calc(var(--hero-scroll, 0px) * -0.333333));
+  will-change: transform;
+}
+
+.home-hero__spacer {
+  height: var(--home-hero-height);
+  pointer-events: none;
 }
 
 .home-hero__overlay {
@@ -24,7 +41,9 @@
   justify-content: space-between;
   flex: 1;
   padding: 2rem 1rem 2.5rem;
-  min-height: 22rem;
+  height: 100%;
+  transform: translateY(calc(var(--hero-scroll, 0px) * -0.666667));
+  will-change: transform;
 }
 
 .home-hero__copy {
@@ -97,6 +116,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-hero__media,
+  .home-hero__content {
+    transform: none;
+  }
+
   .home-hero__word-carousel-item--entering,
   .home-hero__word-carousel-item--exiting {
     animation: none;

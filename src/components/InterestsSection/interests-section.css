@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+.interests-section {
+  position: relative;
+  z-index: 1;
+}

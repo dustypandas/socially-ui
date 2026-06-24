@@ -1,12 +1,9 @@
 import { useEffect, type RefObject } from 'react';
 
-function prefersReducedMotion() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
 function getHeroHeight(heroEl: HTMLElement) {
   const spacer = heroEl.nextElementSibling;
-  if (spacer instanceof HTMLElement && spacer.classList.contains('home-hero__spacer')) {
+  // if (spacer instanceof HTMLElement && spacer.classList.contains('home-hero__spacer')) {
+  if (spacer instanceof HTMLElement && spacer.classList.contains('home-hero')) {
     return spacer.offsetHeight;
   }
   return heroEl.offsetHeight;
@@ -14,6 +11,7 @@ function getHeroHeight(heroEl: HTMLElement) {
 
 function updateHeroScroll(heroEl: HTMLElement) {
   const heroHeight = getHeroHeight(heroEl);
+  console.log('hello 0: ', window.scrollY, heroHeight);
   const scroll = Math.min(window.scrollY, heroHeight);
   heroEl.style.setProperty('--hero-scroll', `${scroll}px`);
 }
@@ -21,7 +19,7 @@ function updateHeroScroll(heroEl: HTMLElement) {
 export function useHeroParallax(heroRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const heroEl = heroRef.current;
-    if (!heroEl || prefersReducedMotion()) {
+    if (!heroEl) {
       return;
     }
 
@@ -33,20 +31,9 @@ export function useHeroParallax(heroRef: RefObject<HTMLElement | null>) {
     window.addEventListener('scroll', handleUpdate, { passive: true });
     window.addEventListener('resize', handleUpdate);
 
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleMotionChange = () => {
-      if (mediaQuery.matches) {
-        heroEl.style.removeProperty('--hero-scroll');
-        window.removeEventListener('scroll', handleUpdate);
-        window.removeEventListener('resize', handleUpdate);
-      }
-    };
-    mediaQuery.addEventListener('change', handleMotionChange);
-
     return () => {
       window.removeEventListener('scroll', handleUpdate);
       window.removeEventListener('resize', handleUpdate);
-      mediaQuery.removeEventListener('change', handleMotionChange);
       heroEl.style.removeProperty('--hero-scroll');
     };
   }, [heroRef]);

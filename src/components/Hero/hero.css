@@ -2,7 +2,7 @@
 
 .home-hero {
   position: fixed;
-  top: var(--home-header-height);
+  top: 0;
   left: 0;
   right: 0;
   z-index: 0;
@@ -16,13 +16,13 @@
   position: absolute;
   inset: 0;
   background:
-    url('/assets/hero-malasana.png') center bottom / cover no-repeat;
+    url('/assets/hero-malasana-extended.jpg') center bottom / cover no-repeat;
   transform: translateY(calc(var(--hero-scroll, 0px) * -0.333333));
   will-change: transform;
 }
 
 .home-hero__spacer {
-  height: var(--home-hero-height);
+  height: calc(var(--home-hero-height) - var(--home-header-height) - var(--home-header-extra-height));
   pointer-events: none;
 }
 
@@ -40,7 +40,7 @@
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-  padding: 2rem 1rem 2.5rem;
+  padding: 2rem 1rem 3rem;
   height: 100%;
   transform: translateY(calc(var(--hero-scroll, 0px) * -0.666667));
   will-change: transform;
@@ -115,18 +115,6 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .home-hero__media,
-  .home-hero__content {
-    transform: none;
-  }
-
-  .home-hero__word-carousel-item--entering,
-  .home-hero__word-carousel-item--exiting {
-    animation: none;
-  }
-}
-
 .home-hero__subtitle {
   margin: 0;
   color: rgba(255, 255, 255, 0.92);
@@ -140,18 +128,15 @@
   justify-content: flex-end;
   gap: 2rem;
   flex-wrap: wrap;
-  margin: 0 2rem 2rem;
+  margin: 0 2rem;
 }
 
 .home-hero__cta {
   font-family: 'Courier Prime', monospace;
   font-size: 1.5rem;
-  /* font-weight: 700; */
   text-decoration: none;
-  /* transition: opacity 0.2s ease; */
 
   &:hover {
-    /* opacity: 0.85; */
     animation: hover-wiggle 1.2s infinite;
   }
 }

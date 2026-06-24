@@ -3,38 +3,25 @@ import { useEffect, useRef, useState } from 'react';
 type WordCarouselOptions = {
   intervalMs?: number;
   exitMs?: number;
+  isEnabled?: boolean;
 };
-
-function prefersReducedMotion() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
 
 export function useWordCarousel(
   words: string[],
-  { intervalMs = 5000, exitMs = 1200 }: WordCarouselOptions = {},
+  { intervalMs = 3600, exitMs = 1200, isEnabled = true }: WordCarouselOptions = {},
 ) {
   const [index, setIndex] = useState(0);
   const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(prefersReducedMotion);
   const exitTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const handleChange = () => {
-      setIsPaused(mediaQuery.matches);
-      if (mediaQuery.matches) {
-        setIndex(0);
-        setOutgoingIndex(null);
+    if (!isEnabled || words.length === 0) {
+      setIndex(0);
+      setOutgoingIndex(null);
+      if (exitTimeoutRef.current) {
+        clearTimeout(exitTimeoutRef.current);
+        exitTimeoutRef.current = undefined;
       }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  useEffect(() => {
-    if (words.length === 0 || isPaused) {
       return;
     }
 
@@ -59,7 +46,7 @@ export function useWordCarousel(
         clearTimeout(exitTimeoutRef.current);
       }
     };
-  }, [words.length, intervalMs, exitMs, isPaused]);
+  }, [words.length, intervalMs, exitMs, isEnabled]);
 
   return {
     word: words[index] ?? '',

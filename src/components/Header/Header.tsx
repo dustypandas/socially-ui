@@ -4,11 +4,14 @@ import './header.css';
 export function Header() {
   return (
     <header className="home-header">
+      <div className='home-header__entry-logo-container'>
+        <div className='home-header__entry-logo-image' />
+      </div>
       <div className="home-header__container width-container">
         <a href="#/home-ui" className="home-header__logo-link">
           <img
             className="home-header__logo"
-            src="./assets/logo-socially.png"
+            src="./assets/logo-socially-v2.png"
             alt="socially madrid"
           />
         </a>

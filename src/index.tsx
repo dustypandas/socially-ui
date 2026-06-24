@@ -6,7 +6,7 @@ import './pages/index.css';
 import {
   CommunityPage,
   EventPage,
-  HomePageNew,
+  HomePage,
   IndexPage,
 } from './pages';
 import { store } from './store';
@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
     <HashRouter>
       <Routes>
         <Route path='/' element={<IndexPage />} />
-        <Route path='/home-ui' element={<HomePageNew />} />
+        <Route path='/home-ui' element={<HomePage />} />
         <Route path='/community-ui' element={<CommunityPage />} />
         <Route path='/event-ui' element={<EventPage />} />
         {/* default invalid? */}

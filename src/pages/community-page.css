@@ -107,7 +107,7 @@
     position: sticky;
     /* top: 3.375rem; */
     top: 54px; /* ?? guarantee header height?? */
-    background: var(--bg-color);
+    /* background: var(--bg-color); */
     border-top: 1px solid #ddd;
     padding: 0.875rem 0;
     z-index: 120;

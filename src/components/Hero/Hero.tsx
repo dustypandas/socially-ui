@@ -3,15 +3,20 @@ import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { useWordCarousel } from '../../hooks/useWordCarousel';
 import './hero.css';
 
-const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'psychedelic 🍄', 'wild-camping ⛰️', 'culinary 🌮', 'wizarding 🧙‍♂️']; // reflective 🧘‍♀️, 
+const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'wild-camping ⛰️', 'psychedelic 🍄', 'culinary 🌮', 'wizarding 🧙‍♂️']; // reflective 🧘‍♀️, 
 
-export function Hero() {
+type HeroProps = {
+  carouselEnabled?: boolean;
+};
+
+export function Hero({ carouselEnabled = false }: HeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   useHeroParallax(heroRef);
 
   const { word, index, outgoingIndex, outgoingWord } = useWordCarousel(HERO_WORDS, {
     intervalMs: 4000,
     exitMs: 1200,
+    isEnabled: carouselEnabled,
   });
 
   return (

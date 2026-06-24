@@ -1,0 +1,15 @@
+---
+description: Do not use prefers-reduced-motion in this project
+alwaysApply: true
+---
+
+# No prefers-reduced-motion
+
+This codebase intentionally does not implement `prefers-reduced-motion` handling.
+
+Do not add:
+- `@media (prefers-reduced-motion: reduce)` CSS blocks
+- `window.matchMedia('(prefers-reduced-motion: reduce)')` checks
+- `prefersReducedMotion()` helpers or similar guards
+
+Animations, transitions, parallax, and carousels should always run as designed.

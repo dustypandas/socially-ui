@@ -304,6 +304,14 @@ h3 {
   }
 }
 
+@keyframes hover-wiggle {
+  0% { transform: translate(1px, 0) rotate(1deg); }
+  15% { transform: translate(-1px, 0) rotate(-1deg); }
+  30% { transform: translate(1px, 0) rotate(1deg); }
+  45% { transform: translate(-1px, 0) rotate(-1deg); }
+  60% { transform: translate(1px, 0) rotate(1deg); }
+  100% { transform: translate(1px, 0) rotate(1deg); }
+}
 
 /* @tailwind base;
 @tailwind components;

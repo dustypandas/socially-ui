@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './pages/index.css';
 import {
@@ -8,9 +9,11 @@ import {
   HomePageNew,
   IndexPage,
 } from './pages';
+import { store } from './store';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <Provider store={store}>
     <HashRouter>
       <Routes>
         <Route path='/' element={<IndexPage />} />
@@ -20,5 +23,6 @@ createRoot(document.getElementById('root')!).render(
         {/* default invalid? */}
       </Routes>
     </HashRouter>
+    </Provider>
   </StrictMode>,
 )

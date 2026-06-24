@@ -1,0 +1,67 @@
+export const navLinks = [
+  { label: 'Events', href: '#/home-ui' },
+  { label: 'Communities', href: '#/community-ui' },
+  { label: 'Sign-In', href: '#' },
+];
+
+export const interests = [
+  { id: 'cycling', name: 'Cycling', followersCount: 15 },
+  { id: 'dinosaurs', name: 'Dinosaurs', followersCount: 5 },
+  { id: 'boardgames', name: 'Boardgames', followersCount: 30 },
+  { id: 'chess', name: 'Chess', followersCount: 15 },
+  { id: 'ai', name: 'AI', followersCount: 25 },
+  { id: 'hiking', name: 'Hiking', followersCount: 10 },
+  { id: 'painting', name: 'Painting', followersCount: 15 },
+  { id: 'cooking', name: 'Cooking', followersCount: 3 },
+  { id: 'psychedelics', name: 'Psychedelics', followersCount: 8 },
+  { id: 'unicycling', name: 'Unicycling', followersCount: 15 },
+  { id: 'self-development', name: 'Self-development', followersCount: 3 },
+  { id: 'tango', name: 'Tango', followersCount: 8 },
+];
+
+export const events = [
+  {
+    id: 'lightning-talks',
+    title: 'Lighting Talks @ Maria Pandora',
+    image: './assets/event-lightning.avif',
+    host: { name: 'Polylogue', href: '#/community-ui' },
+    dateLabel: 'Thu 10th Oct',
+    timeLabel: '13:30h – 14:30h',
+    location: { name: 'Madrid Palacio', href: '#' },
+    rating: 4.7,
+    ratingCount: 95,
+  },
+  {
+    id: 'open-mic-storytelling',
+    title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
+    image: './assets/event-story.avif',
+    host: { name: 'Freshers of Madrid', href: '#/community-ui' },
+    dateLabel: 'Tue, Feb 18',
+    timeLabel: '7:00pm',
+    location: { name: 'Tropicana', href: '#' },
+    rating: 4.8,
+    ratingCount: 106,
+  },
+  {
+    id: 'psychedelic-sharing-circle',
+    title: 'Psychedelic sharing circle',
+    image: './assets/event-circle.avif',
+    host: { name: 'The Conscious Collective', href: '#/community-ui' },
+    dateLabel: 'Sat, Feb 15',
+    timeLabel: '5:00pm',
+    location: { name: 'Centro', href: '#' },
+    rating: 4.9,
+    ratingCount: 34,
+  },
+  {
+    id: 'urban-sketching',
+    title: 'Urban sketching: CentroCentro',
+    image: './assets/event-sketch.avif',
+    host: { name: 'The Madrid Sketch Squad', href: '#/community-ui' },
+    dateLabel: 'Wed, Feb 5',
+    timeLabel: '7:30pm',
+    location: { name: 'CentroCentro', href: '#' },
+    rating: 4.8,
+    ratingCount: 367,
+  },
+];

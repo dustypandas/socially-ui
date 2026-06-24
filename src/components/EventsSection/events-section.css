@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+.events-section {
+  position: relative;
+  z-index: 1;
+}
+
+.events-section__scroll {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 0 0 2.5rem;
+  scrollbar-width: thin;
+}
+
+.events-section .section-header {
+  border-top: 1px solid var(--home-border);
+  margin-top: 2rem;
+}

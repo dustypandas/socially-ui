@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+.home-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background-color: var(--home-bg);
+  border-bottom: 1px solid var(--home-border);
+  padding: 0.75rem 0 0.5rem;
+}
+
+.home-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.home-header__logo-link {
+  display: block;
+  flex-shrink: 0;
+  text-decoration: none;
+
+  &:hover {
+    animation: hover-wiggle 1.2s infinite;
+  }
+}
+
+.home-header__logo {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+}
+
+.home-header__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.home-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.home-header__nav-link {
+  color: var(--home-text-muted);
+  font-size: var(--font-size-md);
+  font-family: 'Courier Prime', monospace;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--home-text);
+    /* animation: hover-wiggle 1.2s infinite; */
+  }
+}
+
+.home-header__profile {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.home-header__profile-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--home-orange);
+  padding-bottom: 0.125rem;
+}
+
+@media (max-width: 640px) {
+  .home-header__right {
+    gap: 1rem;
+  }
+
+  .home-header__nav {
+    gap: 1rem;
+  }
+
+  .home-header__nav-link {
+    font-size: var(--font-size-tn);
+  }
+}

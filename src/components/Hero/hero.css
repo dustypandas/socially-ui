@@ -91,7 +91,7 @@
 
   to {
     transform: translateY(-50%);
-    filter: blur(4px);
+    filter: blur(6px);
     opacity: 0;
   }
 }

@@ -16,7 +16,6 @@ export function SectionHeader({
       <h2 className="section-header__title">{title}</h2>
       <a href={moreHref} className="section-header__more">
         {moreLabel}
-        {/* <span className="section-header__more-icon"></span> */}
       </a>
     </div>
   );

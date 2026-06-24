@@ -1,7 +1,7 @@
 import { useWordCarousel } from '../../hooks/useWordCarousel';
 import './hero.css';
 
-const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'psychedelic 🍄', 'wild-camping ⛰️', 'philanthropic 💛', 'reflective 🧘‍♀️'];
+const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'psychedelic 🍄', 'wild-camping ⛰️', 'culinary 🌮', 'reflective 🧘‍♀️'];
 
 export function Hero() {
   const { word, index, outgoingIndex, outgoingWord } = useWordCarousel(HERO_WORDS, {

@@ -1,20 +1,29 @@
 @import 'tailwindcss';
 
 .home-page {
-  --home-bg: #f5f0e8;
-  --home-text: rgba(0, 15, 58, 0.88);
-  --home-text-muted: rgba(0, 15, 58, 0.55);
-  --home-section-title: rgba(0, 15, 58, 0.45);
-  --home-border: rgba(0, 15, 58, 0.12);
+  --home-bg: #fffbf1;
+  --home-text: rgba(28, 24, 18, 0.88);
+  --home-text-muted: rgba(28, 24, 18, 0.55);
+  /* --home-text: rgba(0, 15, 58, 0.88);
+  --home-text-muted: rgba(0, 15, 58, 0.55); */  
+  --home-section-title: rgba(28, 24, 18, 0.45);
+  /* --home-section-title: rgba(0, 15, 58, 0.45); */
+  --home-section-border: rgba(28, 24, 18, 0.12);
   --home-link-blue: #3b6fd4;
   --home-orange: #e67e22;
   --home-purple: #9b6dff;
 
   min-height: 100vh;
-  background-color: var(--home-bg);
-  background-image:
-    radial-gradient(rgba(0, 15, 58, 0.03) 1px, transparent 1px);
-  background-size: 12px 12px;
+  background: white url('../assets/temp/bg-transparent-cream-paper.png');
+  /* background-image: */
+    /* radial-gradient(rgba(0, 15, 58, 0.03) 1px, transparent 1px); */
+  /* background-size: 12px 12px; */
+  /* background-image: url('../assets/bg-textile-texture.jpg'), url('../assets/bg-telegram-pattern-interests2.png'); */
+  /* background-image: */
+    /* url('../assets/temp/memphis-colorful.webp'); */
+    /* url('../assets/temp/bg-telegram-pattern-interests2.png'); */
+    /* url('../assets/temp/bg-transparent-cream-paper.png'); */
+  background-size: 200px 200px;
   color: var(--home-text);
 }
 
@@ -26,8 +35,4 @@
 .home-page__main {
   position: relative;
   z-index: 1;
-}
-
-.home-page__section {
-  /* border-bottom: 1px solid var(--home-border); */
 }

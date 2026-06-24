@@ -26,6 +26,7 @@ html, body {
   background: var(--bg-color);
   font-family: Roboto, Segoe UI, Helvetica Neue, Arial, sans-serif;
   color: var(--primary-color-rgb);
+  overscroll-behavior-y: none;
 }
 
 .gm-flex-center-center {

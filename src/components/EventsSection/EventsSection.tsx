@@ -9,6 +9,7 @@ export function EventsSection() {
   return (
     <section className="events-section">
       <div className="width-container">
+        <div className="events-section__section-divider"></div>
         <SectionHeader title="Upcoming Events" />
         <div className="events-section__scroll">
           {events.map(event => (

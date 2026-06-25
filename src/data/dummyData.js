@@ -23,7 +23,7 @@ export const events = [
   {
     id: 'lightning-talks',
     title: 'Lighting Talks @ Maria Pandora',
-    image: './assets/event-lightning.avif',
+    image: '../../assets/event-lightning.avif',
     host: { name: 'Polylogue', href: '#/community-ui' },
     attendees: { count: 47 },
     dateLabel: 'Thu 10th Oct',
@@ -35,7 +35,7 @@ export const events = [
   {
     id: 'open-mic-storytelling',
     title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
-    image: './assets/event-story.avif',
+    image: '../../assets/event-story.avif',
     host: { name: 'Freshers of Madrid', href: '#/community-ui' },
     attendees: { count: 17 },
     dateLabel: 'Tue, Feb 18',
@@ -47,7 +47,7 @@ export const events = [
   {
     id: 'psychedelic-sharing-circle',
     title: 'Psychedelic sharing circle',
-    image: './assets/event-circle.avif',
+    image: '../../assets/event-circle.avif',
     host: { name: 'The Conscious Collective', href: '#/community-ui' },
     attendees: { count: 9 },
     dateLabel: 'Sat, Feb 15',
@@ -59,7 +59,7 @@ export const events = [
   {
     id: 'urban-sketching',
     title: 'Urban sketching: CentroCentro',
-    image: './assets/event-sketch.avif',
+    image: '../../assets/event-sketch.avif',
     host: { name: 'The Madrid Sketch Squad', href: '#/community-ui' },
     attendees: { count: 14 },
     dateLabel: 'Wed, Feb 5',
@@ -71,7 +71,7 @@ export const events = [
   {
     id: 'open-air-lindy-hop-class',
     title: 'Open Air Lindy Hop Class',
-    image: './assets/event-swing.avif',
+    image: '../../assets/event-swing.avif',
     host: { name: 'Happy Feet', href: '#/community-ui' },
     attendees: { count: 39 },
     dateLabel: 'Sun, Feb 16',
@@ -83,7 +83,7 @@ export const events = [
   {
     id: 'wine-tasting-event',
     title: 'Wine Tasting @ Monkeys Bar',
-    image: './assets/event-wine.jpg',
+    image: '../../assets/event-wine.jpg',
     host: { name: 'Wine Society', href: '#/community-ui' },
     attendees: { count: 15 },
     dateLabel: 'Fri, Feb 20',

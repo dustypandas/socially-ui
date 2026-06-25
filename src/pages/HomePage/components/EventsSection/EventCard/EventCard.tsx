@@ -1,8 +1,8 @@
-import IconCalendar from '../../assets/icon-calendar-outline.svg?react';
-import IconMapMarker from '../../assets/icon-map-marker-outline.svg?react';
-import IconGroup from '../../assets/icon-group-outline.svg?react';
-import IconStar from '../../assets/icon-star.svg?react';
-import type { HomeEvent } from '../../store/slices/eventsSlice';
+import IconCalendar from '../../../../../assets/icon-calendar-outline.svg?react';
+import IconMapMarker from '../../../../../assets/icon-map-marker-outline.svg?react';
+import IconGroup from '../../../../../assets/icon-group-outline.svg?react';
+import IconStar from '../../../../../assets/icon-star.svg?react';
+import type { HomeEvent } from '../../../../../store/slices/eventsSlice';
 import './event-card.css';
 
 type EventCardProps = {

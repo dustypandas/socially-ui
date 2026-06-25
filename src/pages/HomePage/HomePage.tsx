@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Layout, LayoutFooter } from '../../components';
 import {
-  EventsSection,
   Hero,
-  LayoutFooter,
   InterestsSection,
+  EventsSection,
   AboutSection,
-  Layout,
-} from '../components';
-import { useHeaderScrollCompact } from '../hooks/useHeaderScrollCompact';
+} from './components';
+import { useHeaderScrollCompact } from '../../hooks/useHeaderScrollCompact';
 
 export function HomePage() {
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(false);

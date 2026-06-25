@@ -1,5 +1,5 @@
-import { InterestsGrid } from '../InterestsGrid/InterestsGrid';
-import { SectionHeader } from '../SectionHeader/SectionHeader';
+import { InterestsGrid } from './InterestsGrid/InterestsGrid';
+import { SectionHeader } from '../../../../components/SectionHeader/SectionHeader';
 import './interests-section.css';
 
 export function InterestsSection() {

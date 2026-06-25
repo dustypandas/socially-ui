@@ -1,4 +1,4 @@
-import { navLinks } from '../../data/dummyData.js';
+import { navLinks } from '../../../data/dummyData.js';
 import './layout-header.css';
 
 export function LayoutHeader() {

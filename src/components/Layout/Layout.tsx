@@ -1,5 +1,5 @@
-import { LayoutHeader } from '../LayoutHeader/LayoutHeader';
-import { LayoutFooter } from '../LayoutFooter/LayoutFooter';
+import { LayoutHeader } from './LayoutHeader/LayoutHeader';
+import { LayoutFooter } from './LayoutFooter/LayoutFooter';
 import './layout.css';
 
 type LayoutProps = {

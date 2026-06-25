@@ -1,4 +1,4 @@
-import { SectionHeader } from '../SectionHeader/SectionHeader';
+import { SectionHeader } from '../../../../components/SectionHeader/SectionHeader';
 import './about-section.css';
 
 export function AboutSection() {
@@ -35,7 +35,7 @@ export function AboutSection() {
             </p>
           </div>
           <img
-            src="./assets/about-us.jpg"
+            src="../../../../assets/about-us.jpg"
             alt="Socially Madrid community"
             className="about-section__image"
           />

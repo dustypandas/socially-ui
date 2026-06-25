@@ -1,6 +1,6 @@
-import { useAppSelector } from '../../store/hooks';
-import { EventCard } from '../EventCard/EventCard';
-import { SectionHeader } from '../SectionHeader/SectionHeader';
+import { useAppSelector } from '../../../../store/hooks';
+import { EventCard } from './EventCard/EventCard';
+import { SectionHeader } from '../../../../components/SectionHeader/SectionHeader';
 import './events-section.css';
 
 export function EventsSection() {

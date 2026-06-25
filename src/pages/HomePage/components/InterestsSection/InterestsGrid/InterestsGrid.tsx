@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../../../../store/hooks';
 import './interests-grid.css';
 
 export function InterestsGrid() {

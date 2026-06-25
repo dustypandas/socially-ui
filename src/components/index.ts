@@ -1,10 +1,4 @@
 export { Layout } from './Layout/Layout';
-export { LayoutHeader as Header } from './LayoutHeader/LayoutHeader';
-export { Hero } from './Hero/Hero';
+export { LayoutHeader as Header } from './Layout/LayoutHeader/LayoutHeader';
+export { LayoutFooter } from './Layout/LayoutFooter/LayoutFooter';
 export { SectionHeader } from './SectionHeader/SectionHeader';
-export { InterestsGrid } from './InterestsGrid/InterestsGrid';
-export { InterestsSection } from './InterestsSection/InterestsSection';
-export { EventCard } from './EventCard/EventCard';
-export { EventsSection } from './EventsSection/EventsSection';
-export { AboutSection } from './AboutSection/AboutSection';
-export { LayoutFooter } from './LayoutFooter/LayoutFooter';

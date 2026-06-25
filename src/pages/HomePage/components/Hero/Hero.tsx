@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { useHeroParallax } from '../../hooks/useHeroParallax';
-import { useWordCarousel } from '../../hooks/useWordCarousel';
+import { useHeroParallax } from '../../../../hooks/useHeroParallax';
+import { useWordCarousel } from '../../../../hooks/useWordCarousel';
 import './hero.css';
 
 const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'wild-camping ⛰️', 'psychedelic 🍄', 'culinary 🌮', 'wizarding 🧙‍♂️']; // reflective 🧘‍♀️, 

@@ -22,7 +22,7 @@
 }
 
 .home-hero__spacer {
-  height: calc(var(--home-hero-height) - var(--home-header-height) - var(--home-header-extra-height));
+  height: calc(var(--home-hero-height) - var(--layout-header-height) - var(--layout-header-extra-height));
   pointer-events: none;
 }
 

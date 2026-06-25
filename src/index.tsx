@@ -8,6 +8,7 @@ import {
   EventPage,
   HomePage,
   IndexPage,
+  InterestsPage,
 } from './pages';
 import { store } from './store';
 
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />
+        <Route path='/interests-ui' element={<InterestsPage />} />
         <Route path='/community-ui' element={<CommunityPage />} />
         <Route path='/event-ui' element={<EventPage />} />
         {/* default invalid? */}

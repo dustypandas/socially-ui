@@ -111,9 +111,9 @@ export function CommunityPage() {
     <section className='section-container community-details'>
       <div className='width-container columns-layout'>
         <div className='column-main'>
-          <div className='about-section'>
+          <div className='about-section-prev'>
             <h2>Who we are</h2>
-            <div className='about-section__content' dangerouslySetInnerHTML={{
+            <div className='about-section-prev__content' dangerouslySetInnerHTML={{
               __html: communityData.details,
             }} />
           </div>

@@ -6,7 +6,7 @@ function getHeroHeightPx() {
 }
 
 export function useHeaderScrollCompact() {
-  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+  const [shouldShowHeader, setShouldShowHeader] = useState(false);
 
   useEffect(() => {
     const handleUpdate = () => {
@@ -16,7 +16,7 @@ export function useHeaderScrollCompact() {
       }
 
       const scrolled = window.scrollY > heroHeight;
-      setIsHeaderScrolled(prev => (prev !== scrolled ? scrolled : prev));
+      setShouldShowHeader(prev => (prev !== scrolled ? scrolled : prev));
     };
 
     handleUpdate();
@@ -29,5 +29,5 @@ export function useHeaderScrollCompact() {
     };
   }, []);
 
-  return isHeaderScrolled;
+  return shouldShowHeader;
 }

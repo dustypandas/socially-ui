@@ -1,4 +1,5 @@
-export { Header } from './Header/Header';
+export { Layout } from './Layout/Layout';
+export { LayoutHeader as Header } from './LayoutHeader/LayoutHeader';
 export { Hero } from './Hero/Hero';
 export { SectionHeader } from './SectionHeader/SectionHeader';
 export { InterestsGrid } from './InterestsGrid/InterestsGrid';
@@ -6,4 +7,4 @@ export { InterestsSection } from './InterestsSection/InterestsSection';
 export { EventCard } from './EventCard/EventCard';
 export { EventsSection } from './EventsSection/EventsSection';
 export { AboutSection } from './AboutSection/AboutSection';
-export { HomeFooter } from './HomeFooter/HomeFooter';
+export { LayoutFooter } from './LayoutFooter/LayoutFooter';

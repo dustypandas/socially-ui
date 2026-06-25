@@ -163,9 +163,9 @@
   .community-details {
     padding: 2rem 0 6rem;
   }
-  .about-section { /* free html section */
+  .about-section-prev { /* free html section */
   }
-  .about-section__content {
+  .about-section-prev__content {
     color: var(--secondary-color-alpha);
 
     h1, h2, h3, p {

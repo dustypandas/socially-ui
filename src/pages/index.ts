@@ -1,5 +1,5 @@
 export * from './HomePage/HomePage';
 export * from './InterestsPage/InterestsPage';
-export * from './CommunityPage';
-export * from './EventPage';
+export * from './PrevCommunityPage/CommunityPage';
+export * from './PrevEventPage/EventPage';
 export * from './IndexPage';

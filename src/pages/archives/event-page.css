@@ -151,7 +151,7 @@
   gap: 0;
 }
 .event-community__header-title-label {
-  font-size: var(--font-size-tn);
+  font-size: var(--font-size-tn-prev);
   line-height: 1em;
   color: var(--secondary-color-alpha);
 }

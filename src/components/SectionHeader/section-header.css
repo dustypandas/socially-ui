@@ -21,27 +21,14 @@
 .section-header__more {
   display: flex;
   flex-shrink: 0;
-  color: var(--home-text-muted);
+  color: var(--layout-text-muted);
   font-family: 'Courier Prime', monospace;
   font-size: var(--font-size-md);
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: var(--home-text);
+    color: var(--layout-text);
     /* animation: hover-wiggle 1.2s infinite; */
   }
 }
-
-/* .section-header__more-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  margin-left: 0.25em;
-  background-color: var(--home-link-blue);
-  -webkit-mask-image: url('../../assets/_icon-diagonal-arrow.svg');
-  mask-image: url('../../assets/_icon-diagonal-arrow.svg');
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: right center;
-} */

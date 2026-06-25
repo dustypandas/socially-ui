@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import IconMembers from '../assets/icon-group-outline.svg?react';
-import IconMember from '../assets/icon-user-outline.svg?react';
-import IconRatings from '../assets/icon-star.svg?react';
-import IconLocation from '../assets/icon-map-marker-outline.svg?react';
-import IconContact from '../assets/icon-email-outline.svg?react';
+import IconMembers from '../../assets/icon-group-outline.svg?react';
+import IconMember from '../../assets/icon-user-outline.svg?react';
+import IconRatings from '../../assets/icon-star.svg?react';
+import IconLocation from '../../assets/icon-map-marker-outline.svg?react';
+import IconContact from '../../assets/icon-email-outline.svg?react';
 import './community-page.css';
 import {
   PageFooter,
   PageHeader,
-} from './_components';
-import { communities, sampleFullEvent } from './_data';
+} from '../_components';
+import { communities, sampleFullEvent } from '../_data';
 
 export function CommunityPage() {
   const [hasScrolledLittle, setHasScrolledLittle] = useState(false);

@@ -1,22 +1,25 @@
 @import 'tailwindcss';
 
 .layout {
-  --home-bg: #fffbf1;
-  --home-text: rgba(28, 24, 18, 0.88);
-  --home-text-muted: rgba(28, 24, 18, 0.55);
+  /* --home-bg: #fffbf1; */
+  --layout-text: rgba(28, 24, 18, 0.88);
+  --layout-text-muted: rgba(28, 24, 18, 0.55);
+  --layout-link-blue: #3b6fd4;
+  --layout-header-height: 3.75rem;
+
   --home-section-title: rgba(28, 24, 18, 0.45);
   --home-section-border: rgba(28, 24, 18, 0.12);
-  --home-link-blue: #3b6fd4;
   --home-orange: #e67e22;
   --home-purple: #9b6dff;
-  --layout-header-height: 3.75rem;
   --home-hero-height: 25rem;
-  --layout-header-extra-height: calc(var(--home-hero-height) - var(--layout-header-height));
+  --home-header-extra-height: calc(var(--home-hero-height) - var(--layout-header-height)); /* todo refactor home header to be override only on home page*/
+  --home-box-shadow: rgba(28, 24, 18, 0.25);
+
 
   min-height: 100vh;
   background: white url('../../assets/temp/bg-transparent-cream-paper.png');
   background-size: 200px 200px;
-  color: var(--home-text);
+  color: var(--layout-text);
 }
 
 .layout__main {
@@ -57,7 +60,7 @@
 
 .layout--entry-revealed1 {
   .layout-header {
-    transform: translateY(calc(var(--layout-header-extra-height) * -1 - var(--layout-header-height) + 4px));
+    transform: translateY(calc(var(--home-header-extra-height) * -1 - var(--layout-header-height) + 4px));
   }
   .layout-header__entry-logo-container {
     opacity: 0;
@@ -100,12 +103,12 @@
 
 .layout--show-header {
   .layout-header {
-    transform: translateY(calc(var(--layout-header-extra-height) * -1));
+    transform: translateY(calc(var(--home-header-extra-height) * -1));
   }
 }
 
 .layout--no-hero {
-  --layout-header-extra-height: 0;
+  --home-header-extra-height: 0;
 }
 
 .layout--no-hero .layout-header {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Layout, LayoutFooter } from '../../components';
 import {
-  Hero,
+  HomeHero,
   InterestsSection,
   EventsSection,
   AboutSection,
@@ -30,7 +30,7 @@ export function HomePage() {
       isEntryRevealed2={isEntryRevealed2}
       shouldShowHeader={shouldShowHeader}
     >
-      <Hero carouselEnabled={isEntryRevealed2} />
+      <HomeHero carouselEnabled={isEntryRevealed2} />
       <main className="layout__main">
         <InterestsSection />
         <EventsSection />

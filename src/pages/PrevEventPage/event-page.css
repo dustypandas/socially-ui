@@ -159,7 +159,7 @@
     overflow: hidden;
   }
   .event-community__title-label {
-    font-size: var(--font-size-tn);
+    font-size: var(--font-size-tn-prev);
     line-height: 1.25em;
     color: var(--secondary-color-alpha);
   }

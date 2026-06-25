@@ -1,15 +1,15 @@
 import { useRef } from 'react';
 import { useHeroParallax } from '../../../../hooks/useHeroParallax';
 import { useWordCarousel } from '../../../../hooks/useWordCarousel';
-import './hero.css';
+import './home-hero.css';
 
 const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'wild-camping ⛰️', 'psychedelic 🍄', 'culinary 🌮', 'wizarding 🧙‍♂️']; // reflective 🧘‍♀️, 
 
-type HeroProps = {
+type HomeHeroProps = {
   carouselEnabled?: boolean;
 };
 
-export function Hero({ carouselEnabled = false }: HeroProps) {
+export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   useHeroParallax(heroRef);
 

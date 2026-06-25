@@ -11,13 +11,13 @@ export function AboutSection() {
         <div className="about-section__content">
           <div className="about-section__text">
             <p>
-              Socially Madrid was created by a small group of friends, all international residents, dancers, board gamers, wine-drinkers, living in Madrid.
+              This project was made by a small group of friends, all international residents, dancers, board gamers, wine-drinkers, living in Madrid.
             </p>
             <p>
               We wanted to play, and to experiment
             </p>
             <p>
-              ...through fun events, and mindful sentiments
+              ...through engaging events, mindful sentiments
             </p>
             <p>
               ...to connect and to build

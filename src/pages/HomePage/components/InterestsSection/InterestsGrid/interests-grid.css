@@ -16,12 +16,13 @@
 
 .interests-grid__link {
   display: inline-block;
-  color: var(--home-link-blue);
+  color: var(--layout-link-blue);
   font-size: 1.125rem;
   text-decoration: none;
 
   &:hover {
     animation: hover-wiggle 1.2s infinite;
+    /* animation: hover-swing 0.6s ease forwards; */
   }
 }
 

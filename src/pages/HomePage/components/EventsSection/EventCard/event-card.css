@@ -9,12 +9,16 @@
   /* border: 1px solid var(--home-border); */
   border-radius: 0.25rem;
   background: white;
-  color: var(--home-text);
+  color: var(--layout-text);
   overflow: hidden;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 1px 2px var(--home-box-shadow);
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 15, 58, 0.08);
+    box-shadow: 0 1px 7px var(--home-box-shadow);
+    /* transform: translateY(-2px) scale(1.02); */
+    animation: hover-swing 0.8s ease forwards;
+    /* animation: hover-pop 0.4s ease forwards; */
   }
 }
 
@@ -34,13 +38,13 @@
 
 .event-card__title {
   margin: 0 0 0.25rem;
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.5;
 }
 
 .event-card__title-link {
-  color: var(--home-text);
+  color: var(--layout-text);
   text-decoration: none;
 }
 
@@ -49,7 +53,7 @@
   align-items: center;
   gap: 0.375rem;
   font-size: var(--font-size-sm);
-  color: var(--home-text-muted);
+  color: var(--layout-text-muted);
   line-height: 1.5;
 }
 
@@ -67,6 +71,6 @@
   color: inherit;
 
   &:hover {
-    color: var(--home-text);
+    color: var(--layout-text);
   }
 }

@@ -6,7 +6,7 @@ export function InterestsSection() {
   return (
     <section className="interests-section">
       <div className="width-container">
-        <SectionHeader title="Popular Interests" />
+        <SectionHeader title="Popular Interests" moreHref="#/interests-ui" />
         <InterestsGrid />
       </div>
     </section>

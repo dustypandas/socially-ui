@@ -1,9 +1,21 @@
 import { useRef } from 'react';
-import { useHeroParallax } from '../../../../hooks/useHeroParallax';
-import { useWordCarousel } from '../../../../hooks/useWordCarousel';
+import { useHeroParallax } from '../../hooks/useHeroParallax';
+import { useWordCarousel } from '../../hooks/useWordCarousel';
 import './home-hero.css';
 
-const HERO_WORDS = ['meaningful ✨', 'artistic 🎨', 'philosophical 🎓', 'wine-loving 🍷', 'literary 📚', 'musical 🎷', 'enigmatic 🌀', 'wild-camping ⛰️', 'psychedelic 🍄', 'culinary 🌮', 'wizarding 🧙‍♂️']; // reflective 🧘‍♀️, 
+const HERO_WORDS = [
+  'meaningful ✨',
+  'artistic 🎨',
+  'philosophical 🎓',
+  'wine-loving 🍷',
+  'literary 📚',
+  'musical 🎷',
+  'enigmatic 🌀',
+  'wild-camping ⛰️',
+  'psychedelic 🍄',
+  'culinary 🌮',
+  'wizarding 🧙‍♂️',
+]; // reflective 🧘‍♀️, 
 
 type HomeHeroProps = {
   carouselEnabled?: boolean;
@@ -52,7 +64,7 @@ export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
             <a href="#" className="home-hero__cta home-hero__cta--orange">
               Join an event
             </a>
-            <a href="#" className="home-hero__cta home-hero__cta--purple">
+            <a href="#interests-ui" className="home-hero__cta home-hero__cta--purple">
               Find my people
             </a>
           </div>

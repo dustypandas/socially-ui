@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+.interests-search-bar {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--home-section-border);
+  border-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--layout-text);
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  text-align: center;
+
+  &::placeholder {
+    color: var(--layout-text-muted);
+  }
+
+  &:focus {
+    outline: 2px solid var(--layout-link-blue);
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 780px) {
+  .interests-search-bar {
+    max-width: none;
+  }
+}

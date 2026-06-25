@@ -9,6 +9,13 @@ export type Interest = {
   followersCount: number;
 };
 
+export type InterestFollower = {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+};
+
 export type EventHost = {
   name: string;
   href: string;
@@ -33,4 +40,5 @@ export type HomeEvent = {
 
 export const navLinks: NavLink[];
 export const interests: Interest[];
+export const interestFollowers: InterestFollower[];
 export const events: HomeEvent[];

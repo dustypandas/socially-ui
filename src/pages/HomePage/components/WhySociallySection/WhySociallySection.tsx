@@ -3,27 +3,27 @@ import './why-socially-section.css';
 
 const COLUMNS = [
   {
-    title: 'Find your people <span class="why-socially-section__full-color">👫</span>',
+    title: 'Find your people <span class="text--full-color">👫</span>',
     text: [
-      'From dress-up running to drone-racing, poetry recitals to punk-rock jams...',
-      'Somewhere out there is an interest we\'re yet to discover, and someone else looking to share the same activity, just like us.',
-      'Socially is a place for finding and connecting through unexpected interests, with other international residents living in Madrid. <span class="why-socially-section__full-color">🎸</span>',
+      'From improv-theatre to drone-racing, poetry recitals to punk-rock jams...',
+      'Somewhere out there is a tribe that shares our passions, or maybe a limerence we\'re yet to discover.',
+      'Socially is a place for finding and connecting through shared interests, with other international residents living in Madrid. <span class="text--full-color">🎸</span>',
     ],
   },
   {
-    title: 'By Expats, For Expats <span class="why-socially-section__full-color">🌍</span>',
+    title: 'By Expats, For Expats <span class="text--full-color">🌍</span>',
     text: [
-      'What does it mean to be a resident in a foreign city?',
-      'How do we find the people who can walk and explore and dance alongside us, as we navigate the winding, fun, and sometimes unexpected turns of a new, unfamiliar world?',
-      'Come Join us in our little experiment, made by fellow expats living in Madrid - to help us build the kind of community we want to be a part of, in our new home. <span class="why-socially-section__full-color">🦖</span>',
+      'What does it mean to be a resident in a foreign city, to build a new life from a fresh, blank canvas?',
+      'How do we find the people who can walk and dance alongside us, as we navigate the wild, winding, sometimes unexpected turns of this new, unfamiliar journey?',
+      'Come join us in our little experiment, made by fellow expats living in Madrid - to help build the kind of community we\'d love to be a part of, in our new home. <span class="text--full-color">🦖</span>',
     ],
   },
   {
-    title: 'Free, Forever <span class="why-socially-section__full-color">🎉</span>',
+    title: 'Free, Forever <span class="text--full-color">🎉</span>',
     text: [
-      'Great communities take effort and energy, and the organizers are heroes, who help make this city a little more enjoyable to live in, for all of us!',
-      'So Socially will always be free for creators of events and communities.',
-      'Instead of being "customers", we\'re all in this together. Come be our comrade, become a friend! <span class="why-socially-section__full-color">🍔</span>',
+      'Great communities take effort and energy, and the organizers are heroes, who help make this city feel a little warmer, a little more enjoyable and fun, for all of us!',
+      'So Socially will always be FREE for the creators of events and communities.',
+      'Instead of being "customers" - we\'re all in this together. Come be a comrade, come be a friend! <span class="text--full-color">🍔</span>',
     ],
   },
 ] as const;

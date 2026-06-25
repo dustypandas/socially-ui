@@ -118,3 +118,7 @@
   height: var(--layout-header-height);
   transform: none;
 }
+
+.text--full-color {
+  color: black;
+}

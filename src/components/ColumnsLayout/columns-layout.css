@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+.columns-layout {
+  --columns-gap: 2rem;
+  --columns-aside-width: min(380px, 38%);
+
+  display: flex;
+  align-items: stretch;
+  gap: var(--columns-gap);
+}
+
+.columns-layout--main-right {
+  flex-direction: row-reverse;
+}
+
+.columns-layout__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.columns-layout__aside {
+  flex-shrink: 0;
+  width: var(--columns-aside-width);
+  min-width: 0;
+}
+
+.columns-layout__slot--sticky {
+  position: sticky;
+  top: calc(var(--layout-header-height, 3.75rem) + 1rem);
+  align-self: flex-start;
+}
+
+.columns-layout--stacked {
+  flex-direction: column;
+}
+
+.columns-layout--stacked .columns-layout__aside {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .columns-layout {
+    --columns-gap: 1.25rem;
+  }
+}

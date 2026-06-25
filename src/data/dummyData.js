@@ -19,6 +19,21 @@ export const interests = [
   { id: 'tango', name: 'Tango', followersCount: 8 },
 ];
 
+export const interestFollowers = [
+  { id: 'follower-1', name: 'Ana García', lat: 40.4168, lng: -3.7038 },
+  { id: 'follower-2', name: 'Carlos Ruiz', lat: 40.4236, lng: -3.6947 },
+  { id: 'follower-3', name: 'Lucía Fernández', lat: 40.4095, lng: -3.6924 },
+  { id: 'follower-4', name: 'Marco Silva', lat: 40.4289, lng: -3.7177 },
+  { id: 'follower-5', name: 'Elena Torres', lat: 40.4050, lng: -3.7126 },
+  { id: 'follower-6', name: 'David Kim', lat: 40.4378, lng: -3.6795 },
+  { id: 'follower-7', name: 'Sofia Mendez', lat: 40.3925, lng: -3.6974 },
+  { id: 'follower-8', name: 'James Wright', lat: 40.4193, lng: -3.6889 },
+  { id: 'follower-9', name: 'Isabel Moreno', lat: 40.4312, lng: -3.7031 },
+  { id: 'follower-10', name: 'Tomás Navarro', lat: 40.4147, lng: -3.7264 },
+  { id: 'follower-11', name: 'Priya Patel', lat: 40.4012, lng: -3.6758 },
+  { id: 'follower-12', name: 'Hugo Blanco', lat: 40.4255, lng: -3.6882 },
+];
+
 export const events = [
   {
     id: 'lightning-talks',

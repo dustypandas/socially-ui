@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+.interests-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.interests-list__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.125rem 0;
+}
+
+.interests-list__link {
+  flex: 1;
+  min-width: 0;
+  color: var(--layout-link-blue);
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.125rem;
+  text-decoration: none;
+
+  &:hover {
+    animation: hover-wiggle 1.2s infinite;
+  }
+}
+
+.interests-list__follow-btn {
+  flex-shrink: 0;
+  padding: 0.35rem 0.875rem;
+  border: 1.5px solid var(--layout-link-blue);
+  border-radius: 999px;
+  color: var(--layout-link-blue);
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: var(--layout-link-blue);
+    color: white;
+  }
+}

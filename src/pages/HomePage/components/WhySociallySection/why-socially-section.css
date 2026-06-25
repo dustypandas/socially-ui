@@ -30,9 +30,6 @@
   line-height: 1.6;
   color: var(--layout-text-muted);
 }
-.why-socially-section__full-color {
-  color: var(--layout-text);
-}
 
 .why-socially-section__column-text p {
   margin: 0;

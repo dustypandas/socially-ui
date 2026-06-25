@@ -5,9 +5,8 @@ import {
   InterestsSection,
   EventsSection,
   WhySociallySection,
-  AboutSection,
 } from './components';
-import { useHeaderScrollCompact } from '../../hooks/useHeaderScrollCompact';
+import { useHeaderScrollCompact } from './hooks/useHeaderScrollCompact';
 
 export function HomePage() {
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(false);
@@ -31,7 +30,7 @@ export function HomePage() {
       isEntryRevealed2={isEntryRevealed2}
       shouldShowHeader={shouldShowHeader}
     >
-      <HomeHero carouselEnabled={isEntryRevealed2} />
+      <HomeHero carouselEnabled={isEntryRevealed1} />
       <main className="layout__main">
         <InterestsSection />
         <EventsSection />

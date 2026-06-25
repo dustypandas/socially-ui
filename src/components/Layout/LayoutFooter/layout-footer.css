@@ -3,6 +3,7 @@
 .layout-footer {
   position: relative;
   z-index: 1;
+  padding-top: 4rem;
 }
 
 .layout-footer__divider {

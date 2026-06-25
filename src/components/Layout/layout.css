@@ -50,6 +50,7 @@
   }
   .interests-section,
   .events-section,
+  .why-socially-section,
   .about-section,
   .layout-footer {
     display: none;
@@ -71,6 +72,7 @@
   }
   .interests-section,
   .events-section,
+  .why-socially-section,
   .about-section,
   .layout-footer {
     display: block;
@@ -95,6 +97,7 @@
 
   .interests-section,
   .events-section,
+  .why-socially-section,
   .about-section,
   .layout-footer {
     opacity: 1;

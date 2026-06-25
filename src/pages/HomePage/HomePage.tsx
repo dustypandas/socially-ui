@@ -4,6 +4,7 @@ import {
   HomeHero,
   InterestsSection,
   EventsSection,
+  WhySociallySection,
   AboutSection,
 } from './components';
 import { useHeaderScrollCompact } from '../../hooks/useHeaderScrollCompact';
@@ -34,7 +35,8 @@ export function HomePage() {
       <main className="layout__main">
         <InterestsSection />
         <EventsSection />
-        <AboutSection />
+        <WhySociallySection />
+        {/* <AboutSection /> */}
         <LayoutFooter />
       </main>
     </Layout>

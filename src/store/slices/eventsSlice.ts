@@ -16,6 +16,9 @@ export type HomeEvent = {
   title: string;
   image: string;
   host: EventHost;
+  attendees: {
+    count: number;
+  };
   dateLabel: string;
   timeLabel: string;
   location: EventLocation;

@@ -111,6 +111,6 @@
   }
 
   .home-header__nav-link {
-    font-size: var(--font-size-tn);
+    font-size: var(--font-size-sm);
   }
 }

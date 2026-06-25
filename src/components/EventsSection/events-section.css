@@ -5,12 +5,24 @@
   z-index: 1;
 }
 
-.events-section__scroll {
-  display: flex;
-  gap: 1.25rem;
-  overflow-x: auto;
-  padding: 0 0 2.5rem;
-  scrollbar-width: thin;
+.events-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem 1.5rem;
+  margin: 0 1rem;
+  padding: 0.25rem 0 1rem;
+}
+
+@media (max-width: 900px) {
+  .events-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .events-section__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .events-section__section-divider {

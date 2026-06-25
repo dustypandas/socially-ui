@@ -11,7 +11,7 @@ export function EventsSection() {
       <div className="width-container">
         <div className="events-section__section-divider"></div>
         <SectionHeader title="Upcoming Events" />
-        <div className="events-section__scroll">
+        <div className="events-section__grid">
           {events.map(event => (
             <EventCard key={event.id} event={event} />
           ))}

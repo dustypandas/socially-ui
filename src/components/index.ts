@@ -5,3 +5,5 @@ export { InterestsGrid } from './InterestsGrid/InterestsGrid';
 export { InterestsSection } from './InterestsSection/InterestsSection';
 export { EventCard } from './EventCard/EventCard';
 export { EventsSection } from './EventsSection/EventsSection';
+export { AboutSection } from './AboutSection/AboutSection';
+export { HomeFooter } from './HomeFooter/HomeFooter';

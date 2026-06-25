@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
 .event-page {
+  background: var(--bg-color-prev);
+
   .event-content {
     padding: 1rem 0 6rem;
   }
@@ -342,7 +344,7 @@
     display: none;
     position: sticky;
     bottom: 0;
-    /* background: var(--bg-color); */
+    background: var(--bg-color-prev);
     border-top: 1px solid transparent;
     padding: 0.875rem 0;
     z-index: 120;

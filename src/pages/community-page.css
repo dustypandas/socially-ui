@@ -36,7 +36,7 @@
   }
 }
 
-.event-card {
+.event-card-prev {
   display: block;
   position: relative;
   padding: 0.75rem;
@@ -55,6 +55,8 @@
 }
 
 .community-page {
+  background: var(--bg-color-prev);
+
   .community-intro, .community-menu {
     z-index: 180;
   }
@@ -107,7 +109,7 @@
     position: sticky;
     /* top: 3.375rem; */
     top: 54px; /* ?? guarantee header height?? */
-    /* background: var(--bg-color); */
+    background: var(--bg-color-prev);
     border-top: 1px solid #ddd;
     padding: 0.875rem 0;
     z-index: 120;
@@ -177,7 +179,7 @@
   .events-section__events-container {
     padding-top: 1em;
 
-    .event-card {
+    .event-card-prev {
       padding-left: 1rem;
     }
   }

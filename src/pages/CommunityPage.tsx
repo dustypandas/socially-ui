@@ -142,7 +142,7 @@ export function CommunityPage() {
                       <div className='event-item__timeline-dot'></div>
                     </div>
                   </div>
-                  <a href='#/event-ui' className='event-card gm-animated'>
+                  <a href='#/event-ui' className='event-card-prev gm-animated'>
                     <div className='event-card__inner'>
                       <div className='event-card__cover-container'>
                         <div className='event-card__img-wrapper'>

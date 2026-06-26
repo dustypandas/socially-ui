@@ -1,3 +1,3 @@
-export { InterestFollowers } from './InterestFollowers/InterestFollowers';
+export { FollowedInterests } from './FollowedInterests/FollowedInterests';
 export { InterestsList } from './InterestsList/InterestsList';
 export { InterestsSearchBar } from './InterestsSearchBar/InterestsSearchBar';

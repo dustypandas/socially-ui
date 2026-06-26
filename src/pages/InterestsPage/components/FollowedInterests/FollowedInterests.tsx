@@ -1,41 +1,42 @@
 import type { Interest, InterestFollower } from '../../../../data/dummyData';
 import { FollowersMap } from './FollowersMap/FollowersMap';
-import './interest-followers.css';
+import './followed-interests.css';
 
-type InterestFollowersProps = {
+type FollowedInterestsProps = {
   followedInterests: Interest[];
   maxFollowed: number;
   mapFollowers: InterestFollower[];
+  onUnfollow: (interestId: string) => void;
 };
 
-export function InterestFollowers({
+export function FollowedInterests({
   followedInterests,
   maxFollowed,
   mapFollowers,
-}: InterestFollowersProps) {
+}: FollowedInterestsProps) {
   return (
-    <div className="interest-followers">
-      <div className="interest-followers__header">
-        <h3 className="interest-followers__title">Following:</h3>
-        <span className="interest-followers__count">
+    <div className="followed-interests">
+      <div className="followed-interests__header">
+        <h3 className="followed-interests__title">Following:</h3>
+        <span className="followed-interests__count">
           ({followedInterests.length}/{maxFollowed})
         </span>
       </div>
-      <div className="interest-followers__content">
+      <div className="followed-interests__content">
         {followedInterests.length > 0 ? (
-          <ul className="interest-followers__list">
+          <ul className="followed-interests__list">
             {followedInterests.map(interest => (
-              <li key={interest.id} className="interest-followers__list-item">
-                <a href="#" className="interest-followers__list-link">
+              <li key={interest.id} className="followed-interests__list-item">
+                <a href="#" className="followed-interests__list-link">
                   {interest.name}
                 </a>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="interest-followers__description">
+          <p className="followed-interests__description">
             Follow specific interests, to be notified when new related events are created
-          </p>  
+          </p>
         )}
       </div>
       <FollowersMap followers={mapFollowers} />

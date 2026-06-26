@@ -1,29 +1,29 @@
-import { useMemo, useState } from 'react';
-import { ColumnsLayout, Layout } from '../../components';
-import {
-  followedInterestIds,
-  interestFollowers,
-  MAX_FOLLOWED_INTERESTS,
-} from '../../data/dummyData.js';
+import { useState } from 'react';
+import { ColumnsLayout, PageLayout } from '../../components';
+import { interestFollowers } from '../../data/dummyData.js';
 import { useAppSelector } from '../../store/hooks';
 import {
-  InterestFollowers,
+  FollowedInterests,
   InterestsList,
   InterestsSearchBar,
 } from './components';
+import { useDummyFollowedInterests } from './hooks/useDummyFollowedInterests';
 import './interests-page.css';
 
 export function InterestsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const interests = useAppSelector(state => state.interests.items);
-
-  const followedInterests = useMemo(
-    () => interests.filter(interest => followedInterestIds.includes(interest.id)),
-    [interests],
-  );
+  const {
+    dummyFollowedIds,
+    dummyFollowedInterests,
+    dummyFollowInterest,
+    dummyUnfollowInterest,
+    dummyMaxFollowed,
+    canDummyFollowMore,
+  } = useDummyFollowedInterests(interests);
 
   return (
-    <Layout>
+    <PageLayout>
       <section className="interests-page">
         <div className="width-container">
           <ColumnsLayout mainPosition="left" stackAt={780}>
@@ -33,18 +33,26 @@ export function InterestsPage() {
                 value={searchQuery}
                 onChange={setSearchQuery}
               />
-              <InterestsList searchQuery={searchQuery} />
+              <InterestsList
+                searchQuery={searchQuery}
+                followedIds={dummyFollowedIds}
+                maxFollowed={dummyMaxFollowed}
+                canFollowMore={canDummyFollowMore}
+                onFollow={dummyFollowInterest}
+                onUnfollow={dummyUnfollowInterest}
+              />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(380px, 38%)">
-              <InterestFollowers
-                followedInterests={followedInterests}
-                maxFollowed={MAX_FOLLOWED_INTERESTS}
+              <FollowedInterests
+                followedInterests={dummyFollowedInterests}
+                maxFollowed={dummyMaxFollowed}
                 mapFollowers={interestFollowers}
+                onUnfollow={dummyUnfollowInterest}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>
       </section>
-    </Layout>
+    </PageLayout>
   );
 }

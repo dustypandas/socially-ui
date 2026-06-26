@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Layout, LayoutFooter } from '../../components';
+import { PageLayout, LayoutFooter } from '../../components';
 import {
   HomeHero,
   InterestsSection,
@@ -24,7 +24,7 @@ export function HomePage() {
   }, []);
 
   return (
-    <Layout
+    <PageLayout
       isHomePage
       isEntryRevealed1={isEntryRevealed1}
       isEntryRevealed2={isEntryRevealed2}
@@ -38,6 +38,6 @@ export function HomePage() {
         {/* <AboutSection /> */}
         <LayoutFooter />
       </main>
-    </Layout>
+    </PageLayout>
   );
 }

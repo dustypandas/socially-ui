@@ -38,7 +38,8 @@
       animation: hover-wiggle 1.2s infinite;
     }
 
-    .interests-list__follow-btn {
+    .interests-list__follow-btn,
+    .interests-list__unfollow-btn {
       display: block;
     }
   }
@@ -53,8 +54,15 @@
   line-height: 2;
 }
 
-.interests-list__follow-btn {
+.interests-list__item--followed .interests-list__link {
+  /* color: var(--home-purple); */
+  font-weight: bold;
+}
+
+.interests-list__follow-btn,
+.interests-list__unfollow-btn {
   display: none;
+  cursor: pointer;
   text-align: center;
   width: 3rem;
   height: 2rem;
@@ -63,13 +71,31 @@
   background: white;
   color: var(--layout-link-blue);
   font-family: 'Courier Prime', monospace;
-  font-size: 1.75rem;
-  line-height: 2.25rem;
   box-shadow: 0 1px 2px var(--home-section-border);
   transition: box-shadow 0.2s ease;
   /* pointer-events: none; */
+  position: relative;
+  top: -3px;
 
   &:hover {
     box-shadow: 0 1px 3px var(--home-box-shadow);
+  }
+}
+.interests-list__btn-icon {
+  display: block;
+  position: relative;
+  top: -3px;
+  font-size: 1.75rem;
+}
+
+.interests-list__unfollow-btn {
+  /* link-blue: #3b6fd4; */
+  /* background: rgba(59, 111, 212, 0.5); */
+  background: var(--home-section-border);
+  color: white;
+
+  .interests-list__btn-icon {
+    left: -1px;
+    transform: rotate(45deg);
   }
 }

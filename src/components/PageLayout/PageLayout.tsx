@@ -2,7 +2,7 @@ import { LayoutHeader } from './LayoutHeader/LayoutHeader';
 import { LayoutFooter } from './LayoutFooter/LayoutFooter';
 import './layout.css';
 
-type LayoutProps = {
+type PageLayoutProps = {
   children?: React.ReactNode;
   isHomePage?: boolean;
   isEntryRevealed1?: boolean;
@@ -10,21 +10,20 @@ type LayoutProps = {
   shouldShowHeader?: boolean;
 };
 
-export function Layout({
+export function PageLayout({
   children,
   isHomePage = false,
   isEntryRevealed1,
   isEntryRevealed2,
   shouldShowHeader,
-}: LayoutProps) {
-  const className = isHomePage
-    ? [
-        'layout',
-        isEntryRevealed1 && 'layout--entry-revealed1',
-        isEntryRevealed2 && 'layout--entry-revealed2',
-        shouldShowHeader && 'layout--show-header',
-      ].filter(Boolean).join(' ')
-    : 'layout layout--entry-revealed1 layout--entry-revealed2 layout--show-header layout--no-hero';
+}: PageLayoutProps) {
+  const className = [
+    'layout',
+    isHomePage && 'layout-is-home',
+    isHomePage && isEntryRevealed1 && 'layout--entry-revealed1',
+    isHomePage && isEntryRevealed2 && 'layout--entry-revealed2',
+    isHomePage && shouldShowHeader && 'layout--show-header',
+  ].filter(Boolean).join(' ');
 
   return (
     <div className={className}>

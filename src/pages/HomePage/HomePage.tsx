@@ -14,8 +14,8 @@ export function HomePage() {
   const shouldShowHeader = useHeaderScrollCompact();
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setIsEntryRevealed1(true), 2200);
-    const timer2 = setTimeout(() => setIsEntryRevealed2(true), 4000);
+    const timer1 = setTimeout(() => setIsEntryRevealed1(true), 2200); // 1.2s reveal
+    const timer2 = setTimeout(() => setIsEntryRevealed2(true), 3400);
 
     return () => {
       clearTimeout(timer1);

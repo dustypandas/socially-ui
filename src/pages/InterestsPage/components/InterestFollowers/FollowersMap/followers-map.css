@@ -4,14 +4,21 @@
   aspect-ratio: 1;
   width: 100%;
   overflow: hidden;
-  border: 1px solid var(--home-section-border);
-  border-radius: 0.375rem;
-  background: var(--color-gray-100);
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.25rem;
 }
 
 .followers-map__canvas {
   width: 100%;
   height: 100%;
+}
+
+.followers-map .marker-cluster div {
+  background-color: rgba(59, 111, 212, 0.85);
+}
+
+.followers-map .marker-cluster span {
+  color: white;
 }
 
 @media (max-width: 780px) {

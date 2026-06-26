@@ -2,7 +2,7 @@
 
 .columns-layout {
   --columns-gap: 2rem;
-  --columns-aside-width: min(380px, 38%);
+  --columns-aside-width: min(360px, 36%);
 
   display: flex;
   align-items: stretch;

@@ -4,6 +4,7 @@
   /* --home-bg: #fffbf1; */
   --layout-text: rgba(28, 24, 18, 0.88);
   --layout-text-muted: rgba(28, 24, 18, 0.55);
+  --layout-text-light: rgba(28, 24, 18, 0.3);
   --layout-link-blue: #3b6fd4;
   --layout-header-height: 3.75rem;
 
@@ -34,13 +35,13 @@
 /* entry animations */
 .layout {
   .layout-header {
-    transition: transform 1.8s cubic-bezier(.3,.8,.4,.9);
+    transition: transform 1.2s cubic-bezier(.3,.8,.4,.9);
     transform: translateY(0);
   }
   .layout-header__entry-logo-container {
     display: block;
     opacity: 1;
-    transition: all 1.2s ease-out;
+    transition: all 0.6s ease-out;
   }
   .layout-header__container {
     display: none;

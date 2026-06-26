@@ -5,6 +5,7 @@ export type Interest = {
   id: string;
   name: string;
   followersCount: number;
+  category?: string;
 };
 
 type InterestsState = {

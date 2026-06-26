@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ColumnsLayout, Layout } from '../../components';
-import { interestFollowers } from '../../data/dummyData.js';
 import {
-  FollowersMap,
+  followedInterestIds,
+  interestFollowers,
+  MAX_FOLLOWED_INTERESTS,
+} from '../../data/dummyData.js';
+import { useAppSelector } from '../../store/hooks';
+import {
+  InterestFollowers,
   InterestsList,
   InterestsSearchBar,
 } from './components';
@@ -10,6 +15,12 @@ import './interests-page.css';
 
 export function InterestsPage() {
   const [searchQuery, setSearchQuery] = useState('');
+  const interests = useAppSelector(state => state.interests.items);
+
+  const followedInterests = useMemo(
+    () => interests.filter(interest => followedInterestIds.includes(interest.id)),
+    [interests],
+  );
 
   return (
     <Layout>
@@ -17,7 +28,7 @@ export function InterestsPage() {
         <div className="width-container">
           <ColumnsLayout mainPosition="left" stackAt={780}>
             <ColumnsLayout.Main>
-              <h2 className="interests-page__heading">My interests:</h2>
+              <h2 className="interests-page__heading section-header__title">Popular Interests:</h2>
               <InterestsSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}
@@ -25,10 +36,11 @@ export function InterestsPage() {
               <InterestsList searchQuery={searchQuery} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(380px, 38%)">
-              <h3 className="interests-page__followers-heading">
-                {interestFollowers.length}+ followers
-              </h3>
-              <FollowersMap followers={interestFollowers} />
+              <InterestFollowers
+                followedInterests={followedInterests}
+                maxFollowed={MAX_FOLLOWED_INTERESTS}
+                mapFollowers={interestFollowers}
+              />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>

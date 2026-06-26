@@ -7,6 +7,7 @@ export type Interest = {
   id: string;
   name: string;
   followersCount: number;
+  category?: string;
 };
 
 export type InterestFollower = {
@@ -40,5 +41,7 @@ export type HomeEvent = {
 
 export const navLinks: NavLink[];
 export const interests: Interest[];
+export const MAX_FOLLOWED_INTERESTS: number;
+export const followedInterestIds: string[];
 export const interestFollowers: InterestFollower[];
 export const events: HomeEvent[];

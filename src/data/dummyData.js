@@ -5,19 +5,25 @@ export const navLinks = [
 ];
 
 export const interests = [
-  { id: 'cycling', name: 'Cycling', followersCount: 15 },
-  { id: 'dinosaurs', name: 'Dinosaurs', followersCount: 5 },
-  { id: 'boardgames', name: 'Boardgames', followersCount: 30 },
-  { id: 'chess', name: 'Chess', followersCount: 15 },
-  { id: 'ai', name: 'AI', followersCount: 25 },
-  { id: 'hiking', name: 'Hiking', followersCount: 10 },
-  { id: 'painting', name: 'Painting', followersCount: 15 },
-  { id: 'cooking', name: 'Cooking', followersCount: 3 },
-  { id: 'psychedelics', name: 'Psychedelics', followersCount: 8 },
-  { id: 'unicycling', name: 'Unicycling', followersCount: 15 },
-  { id: 'self-development', name: 'Self-development', followersCount: 3 },
-  { id: 'tango', name: 'Tango', followersCount: 8 },
+  { id: 'cycling', name: 'Cycling', followersCount: 15, category: 'sport' },
+  { id: 'hiking', name: 'Hiking', followersCount: 10, category: 'sport' },
+  { id: 'tennis', name: 'Tennis', followersCount: 31, category: 'sport' },
+  { id: 'unicycling', name: 'Unicycling', followersCount: 15, category: 'sport' },
+  { id: 'painting', name: 'Painting', followersCount: 15, category: 'creative' },
+  { id: 'tango', name: 'Tango', followersCount: 8, category: 'creative' },
+  { id: 'self-development', name: 'Self-development', followersCount: 3, category: 'self-care' },
+  { id: 'yoga', name: 'Yoga', followersCount: 21, category: 'self-care' },
+  { id: 'dinosaurs', name: 'Dinosaurs', followersCount: 5, category: 'other' },
+  { id: 'chess', name: 'Chess', followersCount: 15, category: 'other' },
+  { id: 'boardgames', name: 'Boardgames', followersCount: 30, category: 'other' },
+  { id: 'ai', name: 'AI', followersCount: 25, category: 'other' },
+  { id: 'cooking', name: 'Cooking', followersCount: 3, category: 'other' },
+  { id: 'psychedelics', name: 'Psychedelics', followersCount: 8, category: 'other' },
 ];
+
+export const MAX_FOLLOWED_INTERESTS = 10;
+
+export const followedInterestIds = [];
 
 export const interestFollowers = [
   { id: 'follower-1', name: 'Ana García', lat: 40.4168, lng: -3.7038 },

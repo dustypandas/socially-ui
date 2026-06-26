@@ -25,7 +25,8 @@ export function useWordCarousel(
       return;
     }
 
-    const intervalId = setInterval(() => {
+    let timerId: ReturnType<typeof setTimeout> | undefined = undefined;
+    setTimeout(function animate() {
       if (exitTimeoutRef.current) {
         clearTimeout(exitTimeoutRef.current);
       }
@@ -38,10 +39,12 @@ export function useWordCarousel(
       exitTimeoutRef.current = setTimeout(() => {
         setOutgoingIndex(null);
       }, exitMs);
-    }, intervalMs);
+
+      timerId = setTimeout(animate, intervalMs);
+    }, exitMs); // 1.2s time for header slide up
 
     return () => {
-      clearInterval(intervalId);
+      clearTimeout(timerId);
       if (exitTimeoutRef.current) {
         clearTimeout(exitTimeoutRef.current);
       }

@@ -8,18 +8,9 @@
 
 .interests-page__heading {
   margin: 0 0 0.75rem;
-  color: var(--home-section-title);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.interests-page__followers-heading {
-  margin: 0 0 0.75rem;
-  color: var(--layout-link-blue);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.4;
+  /* color: var(--home-section-title); */
+  /* font-family: 'Cabin Sketch', cursive; */
+  /* font-size: 1.5rem; */
+  /* font-weight: 400; */
+  /* line-height: 1.4; */
 }

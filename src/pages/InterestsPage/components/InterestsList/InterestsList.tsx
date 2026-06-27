@@ -91,7 +91,7 @@ export function InterestsList({
                 ].filter(Boolean).join(' ')}
               >
                 <a
-                  href="#"
+                  href="#one-interest-ui"
                   className="interests-list__link"
                 >
                   {interest.name} ({interest.followersCount})

@@ -28,7 +28,7 @@ export function FollowedInterests({
           <ul className="followed-interests__list">
             {followedInterests.map(interest => (
               <li key={interest.id} className="followed-interests__list-item">
-                <a href="#" className="followed-interests__list-link">
+                <a href="#one-interest-ui" className="followed-interests__list-link">
                   {interest.name}
                 </a>
               </li>

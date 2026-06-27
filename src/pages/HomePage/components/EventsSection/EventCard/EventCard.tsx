@@ -27,19 +27,19 @@ export function EventCard({ event }: EventCardProps) {
         </div>
         <div className="event-card__row">
           <IconMapMarker className="event-card__icon event-card__icon--location" />
-          <span className="event-card__link">
+          <span className="event-card__text">
             {event.location.name}
           </span>
         </div>
         <div className="event-card__row">
           <IconGroup className="event-card__icon event-card__icon--attendees" />
-          <span className="event-card__link">
+          <span className="event-card__text">
             {event.attendees.count} going
           </span>
         </div>
         <div className="event-card__row">
           <IconStar className="event-card__icon event-card__icon--rating" />
-          <span className="event-card__link">
+          <span className="event-card__text">
             {event.rating} ({event.ratingCount} ratings)
           </span>
         </div>

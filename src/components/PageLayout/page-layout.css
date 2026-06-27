@@ -1,12 +1,14 @@
 @import 'tailwindcss';
 
-.layout {
+.page-layout {
   /* --home-bg: #fffbf1; */
   --layout-text: rgba(28, 24, 18, 0.88);
   --layout-text-muted: rgba(28, 24, 18, 0.55);
   --layout-text-light: rgba(28, 24, 18, 0.3);
   --layout-link-blue: #3b6fd4;
   --layout-header-height: 3.75rem;
+
+  --layout-btn-purple: rgba(155, 109, 255, 0.55);
 
   --home-section-title: rgba(28, 24, 18, 0.45);
   --home-section-border: rgba(28, 24, 18, 0.12);
@@ -27,7 +29,6 @@
   background: white url('../../assets/temp/bg-transparent-cream-paper.png');
   background-size: 200px 200px;
   padding-top: 1rem;
-  border-top: 1.5px solid white;
 }
 
 /* home-only: hero header + entry animations */
@@ -46,6 +47,7 @@
     display: none;
   }
   .layout__main {
+    border-top: 1.5px solid white;
     z-index: 201;
   }
   .interests-section,

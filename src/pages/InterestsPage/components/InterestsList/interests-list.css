@@ -68,8 +68,8 @@
   height: 2rem;
   border: none;
   border-radius: 0.25rem;
-  background: white;
-  color: var(--layout-link-blue);
+  background: var(--layout-btn-purple);
+  color: white;
   font-family: 'Courier Prime', monospace;
   box-shadow: 0 1px 2px var(--home-section-border);
   transition: box-shadow 0.2s ease;
@@ -82,20 +82,33 @@
   }
 }
 .interests-list__btn-icon {
-  display: block;
+  display: inline-block;
   position: relative;
   top: -3px;
   font-size: 1.75rem;
 }
 
 .interests-list__unfollow-btn {
-  /* link-blue: #3b6fd4; */
-  /* background: rgba(59, 111, 212, 0.5); */
-  background: var(--home-section-border);
-  color: white;
+  background: white;
+  color: var(--home-purple);
 
   .interests-list__btn-icon {
     left: -1px;
     transform: rotate(45deg);
+  }
+}
+.interests-list__follow-btn--disabled {
+  background: var(--home-section-border);
+  cursor: not-allowed;
+}
+
+@media (max-width: 780px) {
+  .interests-list__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interests-list__follow-btn,
+  .interests-list__unfollow-btn {
+    display: block;
   }
 }

@@ -1,11 +1,19 @@
 @import 'tailwindcss';
 
+.interests-search-bar-wrap {
+  display: flex;
+  align-items: stretch;
+  overflow: visible;
+  margin-bottom: 1.25rem;
+  gap: 0.5rem;
+}
+
 .interests-search-bar {
   display: block;
-  width: 100%;
-  margin-bottom: 1.25rem;
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
   padding: 0.5rem 0.75rem;
-  /* border: 1px solid var(--home-section-border); */
   border-radius: 0.25rem;
   background: rgba(255, 255, 255, 0.5);
   color: var(--layout-text);
@@ -21,13 +29,54 @@
 
   &:focus {
     background: white;
-    /* outline: 2px solid var(--layout-link-blue);
-    outline-offset: 2px; */
+  }
+}
+
+.interests-search-bar__add-btn {
+  display: none;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  border: none;
+  border-radius: 0.25rem;
+  background: var(--layout-btn-purple);
+  color: white;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px var(--home-section-border);
+  line-height: 1.75rem;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 1px 3px var(--home-box-shadow);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .interests-list__btn-icon {
+    top: 3px;
+  }
+}
+
+.interests-search-bar__add-btn--visible {
+  display: block;
+
+  &:disabled {
+    background: var(--home-section-border);    
   }
 }
 
 @media (max-width: 780px) {
-  .interests-search-bar {
+  .interests-search-bar-wrap {
     max-width: none;
   }
 }

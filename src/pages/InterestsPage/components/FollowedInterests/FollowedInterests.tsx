@@ -1,11 +1,11 @@
-import type { Interest, InterestFollower } from '../../../../data/dummyData';
+import type { Interest, MemberFollower } from '../../../../data/dummyData';
 import { FollowersMap } from './FollowersMap/FollowersMap';
 import './followed-interests.css';
 
 type FollowedInterestsProps = {
   followedInterests: Interest[];
   maxFollowed: number;
-  mapFollowers: InterestFollower[];
+  mapFollowers: MemberFollower[];
   onUnfollow: (interestId: string) => void;
 };
 
@@ -17,7 +17,8 @@ export function FollowedInterests({
   return (
     <div className="followed-interests">
       <div className="followed-interests__header">
-        <h3 className="followed-interests__title">Following:</h3>
+        <h2 className="followed-interests__title section-header__title">Following:</h2>
+        {/* <h3 className="followed-interests__title">Following:</h3> */}
         <span className="followed-interests__count">
           ({followedInterests.length}/{maxFollowed})
         </span>

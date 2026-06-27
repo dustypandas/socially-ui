@@ -1,6 +1,6 @@
 import { LayoutHeader } from './LayoutHeader/LayoutHeader';
 import { LayoutFooter } from './LayoutFooter/LayoutFooter';
-import './layout.css';
+import './page-layout.css';
 
 type PageLayoutProps = {
   children?: React.ReactNode;
@@ -18,7 +18,7 @@ export function PageLayout({
   shouldShowHeader,
 }: PageLayoutProps) {
   const className = [
-    'layout',
+    'page-layout',
     isHomePage && 'layout-is-home',
     isHomePage && isEntryRevealed1 && 'layout--entry-revealed1',
     isHomePage && isEntryRevealed2 && 'layout--entry-revealed2',

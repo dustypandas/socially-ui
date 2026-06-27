@@ -8,9 +8,10 @@ export type Interest = {
   name: string;
   followersCount: number;
   category?: string;
+  followerIds?: string[];
 };
 
-export type InterestFollower = {
+export type MemberFollower = {
   id: string;
   name: string;
   lat: number;
@@ -43,5 +44,5 @@ export const navLinks: NavLink[];
 export const interests: Interest[];
 export const MAX_FOLLOWED_INTERESTS: number;
 export const followedInterestIds: string[];
-export const interestFollowers: InterestFollower[];
+export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];

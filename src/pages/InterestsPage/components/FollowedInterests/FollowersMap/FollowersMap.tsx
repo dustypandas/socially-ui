@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Leaflet from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import type { InterestFollower } from '../../../../../data/dummyData';
+import type { MemberFollower } from '../../../../../data/dummyData';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css';
@@ -13,7 +13,7 @@ const MADRID_CENTER: Leaflet.LatLngExpression = [40.4168, -3.7038];
 Leaflet.Icon.Default.mergeOptions({});
 
 type FollowersMapProps = {
-  followers: InterestFollower[];
+  followers: MemberFollower[];
 };
 
 function MapResizeHandler() {

@@ -1,11 +1,6 @@
 import { useMemo } from 'react';
 import { useAppSelector } from '../../../../store/hooks';
 import type { Interest } from '../../../../store/slices/interestsSlice';
-import {
-  INTEREST_CATEGORY_LABELS,
-  INTEREST_CATEGORY_ORDER,
-  MAX_ITEMS_PER_CATEGORY,
-} from '../../interestsCategories';
 import './interests-list.css';
 
 type InterestsListProps = {
@@ -19,9 +14,12 @@ type InterestsListProps = {
 
 type CategoryGroup = {
   category: string;
-  label: string;
   items: Interest[];
 };
+
+function isGeneralCategory(category: string): boolean {
+  return category.toLowerCase() === 'general';
+}
 
 function groupInterestsByCategory(
   interests: Interest[],
@@ -44,16 +42,21 @@ function groupInterestsByCategory(
     grouped.set(category, items);
   }
 
-  return INTEREST_CATEGORY_ORDER.flatMap(category => {
-    const items = grouped.get(category);
-    if (!items?.length) return [];
-
-    return [{
+  return [...grouped.entries()]
+    .map(([category, items]) => ({
       category,
-      label: INTEREST_CATEGORY_LABELS[category] ?? category,
-      items: items.slice(0, MAX_ITEMS_PER_CATEGORY),
-    }];
-  });
+      items,
+      totalFollowers: items.reduce((sum, interest) => sum + interest.followersCount, 0),
+    }))
+    .sort((a, b) => {
+      const aGeneral = isGeneralCategory(a.category);
+      const bGeneral = isGeneralCategory(b.category);
+      if (aGeneral !== bGeneral) return aGeneral ? 1 : -1;
+
+      return b.totalFollowers - a.totalFollowers
+        || a.category.localeCompare(b.category);
+    })
+    .map(({ category, items }) => ({ category, items }));
 }
 
 export function InterestsList({
@@ -74,7 +77,7 @@ export function InterestsList({
     <div className="interests-list">
       {categoryGroups.map(group => (
         <section key={group.category} className="interests-list__category">
-          <h3 className="interests-list__category-title">{group.label}</h3>
+          <h3 className="interests-list__category-title">{group.category}</h3>
           <ul className="interests-list__grid">
             {group.items.map(interest => {
               const isFollowed = followedSet.has(interest.id);
@@ -93,10 +96,13 @@ export function InterestsList({
                 >
                   {interest.name} ({interest.followersCount})
                 </a>
-                {canFollowMore && !isFollowed && (
+                {!isFollowed && (
                   <button
                     type="button"
-                    className="interests-list__follow-btn"
+                    className={[
+                      'interests-list__follow-btn',
+                      !canFollowMore && 'interests-list__follow-btn--disabled',
+                    ].filter(Boolean).join(' ')}
                     aria-label={`Follow ${interest.name}`}
                     onClick={() => onFollow(interest.id)}
                   >

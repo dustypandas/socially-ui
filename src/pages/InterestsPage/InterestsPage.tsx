@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '../../components';
-import { interestFollowers } from '../../data/dummyData.js';
-import { useAppSelector } from '../../store/hooks';
+import { memberFollowers } from '../../data/dummyData.js';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { addInterest } from '../../store/slices/interestsSlice';
 import {
   FollowedInterests,
   InterestsList,
   InterestsSearchBar,
 } from './components';
 import { useDummyFollowedInterests } from './hooks/useDummyFollowedInterests';
+import { createInterestId, hasExactInterestMatch, getUniqueMapFollowers } from './helpers';
 import './interests-page.css';
 
 export function InterestsPage() {
+  const dispatch = useAppDispatch();
   const [searchQuery, setSearchQuery] = useState('');
   const interests = useAppSelector(state => state.interests.items);
   const {
@@ -22,6 +25,32 @@ export function InterestsPage() {
     canDummyFollowMore,
   } = useDummyFollowedInterests(interests);
 
+  const mapFollowers = useMemo(
+    () => getUniqueMapFollowers(dummyFollowedInterests, memberFollowers),
+    [dummyFollowedInterests],
+  );
+
+  const trimmedQuery = searchQuery.trim();
+  const hasExactMatch = hasExactInterestMatch(interests, trimmedQuery);
+  const showAddButton = trimmedQuery.length >= 3 && !hasExactMatch;
+  const isAddButtonDisabled = !canDummyFollowMore;
+
+  const handleAddInterest = () => {
+    if (isAddButtonDisabled) return;
+
+    const name = trimmedQuery;
+    const id = createInterestId(name, new Set(interests.map(interest => interest.id)));
+    dispatch(addInterest({
+      id,
+      name,
+      category: 'general',
+      followersCount: 0,
+      followerIds: [],
+    }));
+    dummyFollowInterest(id);
+    setSearchQuery('');
+  };
+
   return (
     <PageLayout>
       <section className="interests-page">
@@ -32,6 +61,9 @@ export function InterestsPage() {
               <InterestsSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}
+                showAddButton={showAddButton}
+                isAddButtonDisabled={isAddButtonDisabled}
+                onAdd={handleAddInterest}
               />
               <InterestsList
                 searchQuery={searchQuery}
@@ -46,7 +78,7 @@ export function InterestsPage() {
               <FollowedInterests
                 followedInterests={dummyFollowedInterests}
                 maxFollowed={dummyMaxFollowed}
-                mapFollowers={interestFollowers}
+                mapFollowers={mapFollowers}
                 onUnfollow={dummyUnfollowInterest}
               />
             </ColumnsLayout.Aside>

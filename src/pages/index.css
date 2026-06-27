@@ -34,6 +34,7 @@ html, body {
   overscroll-behavior-y: none;
 }
 
+/* legacy styles begin */
 .gm-flex-center-center {
   display: flex;
   align-items: center;
@@ -294,7 +295,48 @@ h3 {
   /* max-height: 100dvh; */
   width: 320px;
 }
+/* legacy styles end */
 
+/* global styles begin */
+html {
+  --global-text: rgba(28, 24, 18, 0.88);
+  --global-text-muted: rgba(28, 24, 18, 0.55);
+  --global-text-light: rgba(28, 24, 18, 0.3);
+  --global-text-heading: rgba(28, 24, 18, 0.45);
+  --global-link-blue: #3b6fd4;
+  --global-header-height: 3.75rem;
+
+  --global-orange: #e67e22;
+  --global-purple: #9b6dff;
+  --global-btn-purple: rgba(155, 109, 255, 0.55);
+
+  --home-section-border: rgba(28, 24, 18, 0.12);
+  --home-hero-height: 25rem;
+  --home-box-shadow: rgba(28, 24, 18, 0.25);
+}
+
+.global-btn {
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 0.25rem;
+  font-family: 'Courier Prime', monospace;
+  box-shadow: 0 1px 2px var(--home-section-border);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 1px 3px var(--home-box-shadow);
+  }
+}
+
+.global-btn--white-purple {
+  background: white;
+  color: var(--global-purple);
+}
+.global-btn--purple-white {
+  background: var(--global-btn-purple);
+  color: white;
+}
 
 @media (max-width: 960px) {
   .columns-layout {

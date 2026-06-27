@@ -15,12 +15,12 @@
 
 .followed-interests__title {
   margin: 0;
-  /* color: var(--layout-text-light); */
+  /* color: var(--global-text-light); */
   /* font-family: 'Courier Prime', monospace; */
 }
 
 .followed-interests__count {
-  color: var(--layout-text-light);
+  color: var(--global-text-light);
   font-family: 'Courier Prime', monospace;
   font-size: 1.125rem;
   line-height: 1.4;
@@ -31,7 +31,7 @@
 }
 
 .followed-interests__description {
-  color: var(--layout-text-muted);
+  color: var(--global-text-muted);
   font-size: var(--font-size-sm);
   line-height: 1.5;
 }
@@ -60,7 +60,7 @@
 
 .followed-interests__list-link {
   display: block;
-  color: var(--layout-link-blue);
+  color: var(--global-link-blue);
   font-family: 'Courier Prime', monospace;
   font-size: 1.125rem;
   text-decoration: none;

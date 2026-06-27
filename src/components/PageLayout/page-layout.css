@@ -1,26 +1,10 @@
 @import 'tailwindcss';
 
 .page-layout {
-  /* --home-bg: #fffbf1; */
-  --layout-text: rgba(28, 24, 18, 0.88);
-  --layout-text-muted: rgba(28, 24, 18, 0.55);
-  --layout-text-light: rgba(28, 24, 18, 0.3);
-  --layout-link-blue: #3b6fd4;
-  --layout-header-height: 3.75rem;
-
-  --layout-btn-purple: rgba(155, 109, 255, 0.55);
-
-  --home-section-title: rgba(28, 24, 18, 0.45);
-  --home-section-border: rgba(28, 24, 18, 0.12);
-  --home-orange: #e67e22;
-  --home-purple: #9b6dff;
-  --home-hero-height: 25rem;
-  --home-box-shadow: rgba(28, 24, 18, 0.25);
-
   min-height: 100vh;
   background: white url('../../assets/temp/bg-transparent-cream-paper.png');
   background-size: 200px 200px;
-  color: var(--layout-text);
+  color: var(--global-text);
 }
 
 .layout__main {
@@ -33,7 +17,7 @@
 
 /* home-only: hero header + entry animations */
 .layout-is-home {
-  --home-header-extra-height: calc(var(--home-hero-height) - var(--layout-header-height));
+  --home-header-extra-height: calc(var(--home-hero-height) - var(--global-header-height));
 
   .layout-header {
     transition: transform 1.2s cubic-bezier(.3,.8,.4,.9);
@@ -62,7 +46,7 @@
 
   &.layout--entry-revealed1 {
     .layout-header {
-      transform: translateY(calc(var(--home-header-extra-height) * -1 - var(--layout-header-height) + 4px));
+      transform: translateY(calc(var(--home-header-extra-height) * -1 - var(--global-header-height) + 4px));
     }
     .layout-header__entry-logo-container {
       opacity: 0;

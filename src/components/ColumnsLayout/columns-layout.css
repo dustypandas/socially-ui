@@ -26,7 +26,7 @@
 
 .columns-layout__slot--sticky {
   position: sticky;
-  top: calc(var(--layout-header-height, 3.75rem) + 1rem);
+  top: calc(var(--global-header-height, 3.75rem) + 1rem);
   align-self: flex-start;
 }
 

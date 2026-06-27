@@ -28,7 +28,7 @@ export function InterestsSearchBar({
       <button
         type="button"
         className={[
-          'interests-search-bar__add-btn',
+          'global-btn global-btn--white-purple interests-search-bar__add-btn',
           showAddButton && 'interests-search-bar__add-btn--visible',
         ].filter(Boolean).join(' ')}
         disabled={isAddButtonDisabled}

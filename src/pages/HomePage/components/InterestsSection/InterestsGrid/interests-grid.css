@@ -16,7 +16,7 @@
 
 .interests-grid__link {
   display: inline-block;
-  color: var(--layout-link-blue);
+  color: var(--global-link-blue);
   font-size: 1.125rem;
   text-decoration: none;
 

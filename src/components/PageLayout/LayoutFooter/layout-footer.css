@@ -17,7 +17,7 @@
 .layout-footer__text {
   margin: 0;
   padding: 1rem 0 1rem;
-  color: var(--layout-text-muted);
+  color: var(--global-text-muted);
   font-size: var(--font-size-sm);
   text-align: center;
 }

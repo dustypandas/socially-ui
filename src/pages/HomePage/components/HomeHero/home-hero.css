@@ -22,7 +22,7 @@
 }
 
 .home-hero__spacer {
-  height: calc(var(--home-hero-height) - var(--layout-header-height) - var(--home-header-extra-height));
+  height: calc(var(--home-hero-height) - var(--global-header-height) - var(--home-header-extra-height));
   pointer-events: none;
 }
 
@@ -142,11 +142,11 @@
 }
 
 .home-hero__cta--orange {
-  color: var(--home-orange);
+  color: var(--global-orange);
 }
 
 .home-hero__cta--purple {
-  color: var(--home-purple);
+  color: var(--global-purple);
 }
 
 @media (max-width: 640px) {

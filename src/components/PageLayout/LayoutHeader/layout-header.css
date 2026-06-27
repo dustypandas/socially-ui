@@ -12,13 +12,13 @@
   background-size: 150px 150px;
   border-bottom: 1px solid var(--home-section-border);
   padding: 0.75rem 0 0.5rem;
-  height: var(--layout-header-height);
+  height: var(--global-header-height);
   transform: none;
   box-shadow: 0 1px 3px var(--home-section-border);
 }
 
 .layout-is-home .layout-header {
-  height: calc(var(--layout-header-height) + var(--home-header-extra-height));
+  height: calc(var(--global-header-height) + var(--home-header-extra-height));
   transform: translateY(calc(var(--home-header-extra-height) * -1));
 }
 
@@ -85,14 +85,14 @@
 }
 
 .layout-header__nav-link {
-  color: var(--layout-text-muted);
+  color: var(--global-text-muted);
   font-size: var(--font-size-md);
   font-family: 'Courier Prime', monospace;
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: var(--layout-text);
+    color: var(--global-text);
     /* animation: hover-wiggle 1.2s infinite; */
   }
 }
@@ -107,7 +107,7 @@
 .layout-header__profile-icon {
   width: 1.75rem;
   height: 1.75rem;
-  color: var(--home-orange);
+  color: var(--global-orange);
   padding-bottom: 0.125rem;
 }
 

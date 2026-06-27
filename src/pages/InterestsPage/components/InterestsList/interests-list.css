@@ -8,7 +8,7 @@
 
 .interests-list__category-title {
   margin: 0 0 0.5rem;
-  color: var(--layout-text-light);
+  color: var(--global-text-light);
   font-family: 'Courier Prime', monospace;
   font-size: 1rem;
   font-weight: 400;
@@ -47,7 +47,7 @@
 
 .interests-list__link {
   min-width: 0;
-  color: var(--layout-link-blue);
+  color: var(--global-link-blue);
   font-family: 'Courier Prime', monospace;
   font-size: 1rem;
   text-decoration: none;
@@ -55,31 +55,17 @@
 }
 
 .interests-list__item--followed .interests-list__link {
-  /* color: var(--home-purple); */
+  /* color: var(--global-purple); */
   font-weight: bold;
 }
 
 .interests-list__follow-btn,
 .interests-list__unfollow-btn {
   display: none;
-  cursor: pointer;
-  text-align: center;
   width: 3rem;
   height: 2rem;
-  border: none;
-  border-radius: 0.25rem;
-  background: var(--layout-btn-purple);
-  color: white;
-  font-family: 'Courier Prime', monospace;
-  box-shadow: 0 1px 2px var(--home-section-border);
-  transition: box-shadow 0.2s ease;
-  /* pointer-events: none; */
   position: relative;
   top: -3px;
-
-  &:hover {
-    box-shadow: 0 1px 3px var(--home-box-shadow);
-  }
 }
 .interests-list__btn-icon {
   display: inline-block;
@@ -89,9 +75,6 @@
 }
 
 .interests-list__unfollow-btn {
-  background: white;
-  color: var(--home-purple);
-
   .interests-list__btn-icon {
     left: -1px;
     transform: rotate(45deg);

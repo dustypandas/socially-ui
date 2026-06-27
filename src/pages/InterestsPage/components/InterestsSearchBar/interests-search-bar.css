@@ -16,7 +16,7 @@
   padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
   background: rgba(255, 255, 255, 0.5);
-  color: var(--layout-text);
+  color: var(--global-text);
   font-family: 'Courier Prime', monospace;
   font-size: 1rem;
   text-align: center;
@@ -24,7 +24,7 @@
   transition: background 0.3s ease;
 
   &::placeholder {
-    color: var(--layout-text-light);
+    color: var(--global-text-light);
   }
 
   &:focus {
@@ -35,30 +35,14 @@
 .interests-search-bar__add-btn {
   display: none;
   flex-shrink: 0;
-  margin: 0;
   padding: 0 0.75rem;
-  overflow: hidden;
   white-space: nowrap;
-  border: none;
-  border-radius: 0.25rem;
-  background: var(--layout-btn-purple);
-  color: white;
-  font-family: 'Courier Prime', monospace;
-  font-size: 1rem;
-  cursor: pointer;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.2s ease;
-  box-shadow: 0 1px 2px var(--home-section-border);
   line-height: 1.75rem;
-
-  &:hover:not(:disabled) {
-    box-shadow: 0 1px 3px var(--home-box-shadow);
-  }
 
   &:disabled {
     cursor: not-allowed;
+    background: var(--home-section-border);    
+    /* color: white; */
     opacity: 0.5;
   }
 
@@ -69,10 +53,6 @@
 
 .interests-search-bar__add-btn--visible {
   display: block;
-
-  &:disabled {
-    background: var(--home-section-border);    
-  }
 }
 
 @media (max-width: 780px) {

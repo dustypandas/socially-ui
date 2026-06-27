@@ -28,7 +28,7 @@
 .why-socially-section__column-text {
   font-size: var(--font-size-md);
   line-height: 1.6;
-  color: var(--layout-text-muted);
+  color: var(--global-text-muted);
 }
 
 .why-socially-section__column-text p {

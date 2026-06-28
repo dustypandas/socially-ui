@@ -24,6 +24,7 @@ export type HomeEvent = {
   location: EventLocation;
   rating: number;
   ratingCount: number;
+  interestIds?: string[];
 };
 
 type EventsState = {

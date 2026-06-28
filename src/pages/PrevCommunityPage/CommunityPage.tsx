@@ -33,10 +33,10 @@ export function CommunityPage() {
   const communityData = communities.polylogue;
   const eventsData = [
     sampleFullEvent,
-    { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Feb 018, 2025', 'Tuesday, 7:10pm'] } },
-    { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Mar 04, 2025', 'Tuesday, 7:10pm'] } },
+    { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Feb 18, 2025', 'Tuesday, 7:10pm'] } },
+    { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Mar 4, 2025', 'Tuesday, 7:10pm'] } },
     { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Mar 18, 2025', 'Tuesday, 7:10pm'] } },
-    { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Apr 01, 2025', 'Tuesday, 7:10pm'] } },
+    { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Apr 1, 2025', 'Tuesday, 7:10pm'] } },
   ];
 
   return (<div className='community-page'>

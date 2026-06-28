@@ -4,9 +4,9 @@ import { interests } from '../../data/dummyData.js';
 export type Interest = {
   id: string;
   name: string;
-  followersCount: number;
   category?: string;
   followerIds?: string[];
+  followersCount?: number;
 };
 
 type InterestsState = {
@@ -27,7 +27,9 @@ export const interestsSlice = createSlice({
       if (!exists) {
         state.items.push({
           ...action.payload,
-          followerIds: action.payload.followerIds ?? [],
+          category: action.payload.category ?? 'General',
+          followerIds: action.payload.followerIds ?? [], // TODO include self id
+          followersCount: action.payload.followersCount ?? 0,
         });
       }
     },

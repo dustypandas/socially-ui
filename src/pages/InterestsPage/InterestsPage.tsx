@@ -43,9 +43,6 @@ export function InterestsPage() {
     dispatch(addInterest({
       id,
       name,
-      category: 'general',
-      followersCount: 0,
-      followerIds: [],
     }));
     dummyFollowInterest(id);
     setSearchQuery('');

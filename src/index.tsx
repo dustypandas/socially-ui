@@ -22,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/home-ui' element={<HomePage />} />
         <Route path='/interests-ui' element={<InterestsPage />} />
         <Route path='/one-interest-ui' element={<OneInterestPage />} />
+        <Route path='/one-interest-ui-empty' element={<OneInterestPage />} />
         <Route path='/community-ui' element={<CommunityPage />} />
         <Route path='/event-ui' element={<EventPage />} />
         {/* default invalid? */}

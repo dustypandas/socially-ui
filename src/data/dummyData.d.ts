@@ -6,7 +6,7 @@ export type NavLink = {
 export type Interest = {
   id: string;
   name: string;
-  followersCount: number;
+  followersCount?: number;
   category?: string;
   followerIds?: string[];
 };
@@ -33,11 +33,15 @@ export type HomeEvent = {
   title: string;
   image: string;
   host: EventHost;
+  attendees: {
+    count: number;
+  };
   dateLabel: string;
   timeLabel: string;
   location: EventLocation;
   rating: number;
   ratingCount: number;
+  interestIds?: string[];
 };
 
 export const navLinks: NavLink[];
@@ -46,3 +50,5 @@ export const MAX_FOLLOWED_INTERESTS: number;
 export const followedInterestIds: string[];
 export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];
+export const spanishInterestEvents: HomeEvent[];
+export const memberAvatarUrls: string[];

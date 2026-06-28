@@ -324,3 +324,57 @@ export const events = [
     ratingCount: 56,
   }
 ];
+
+export const spanishInterestEvents = [
+  {
+    id: 'spanish-conversations-cafe-comercial',
+    title: 'Spanish Conversations @ Café Comercial',
+    image: '../../assets/event-lightning.avif',
+    host: { name: 'Madrid Language Exchange', href: '#/community-ui' },
+    attendees: { count: 22 },
+    dateLabel: 'Wed, Mar 12',
+    timeLabel: '7:00pm',
+    location: { name: 'Café Comercial', href: '#' },
+    rating: 4.8,
+    ratingCount: 41,
+    interestIds: ['spanish'],
+  },
+  {
+    id: 'museum-visit-prado',
+    title: 'Museum Visit @ Prado',
+    image: '../../assets/event-sketch.avif',
+    host: { name: 'Cultura Madrid', href: '#/community-ui' },
+    attendees: { count: 11 },
+    dateLabel: 'Sat, Mar 15',
+    timeLabel: '11:00am',
+    location: { name: 'Museo del Prado', href: '#' },
+    rating: 4.9,
+    ratingCount: 28,
+    interestIds: ['spanish'],
+  },
+  {
+    id: 'tapas-spanish-practice-malasana',
+    title: 'Tapas & Spanish Practice @ Malasaña',
+    image: '../../assets/event-wine.jpg',
+    host: { name: 'Tapas & Talk', href: '#/community-ui' },
+    attendees: { count: 16 },
+    dateLabel: 'Fri, Mar 21',
+    timeLabel: '8:00pm',
+    location: { name: 'Malasaña', href: '#' },
+    rating: 4.7,
+    ratingCount: 63,
+    interestIds: ['spanish'],
+  },
+];
+
+export const memberAvatarUrls = [
+  './assets/member-peter.webp',
+  './assets/member-maria.jpg',
+  './assets/member-achi.avif',
+  './assets/member-olivia.jpg',
+  './assets/member-caro.jpg',
+  './assets/member-dom.jpg',
+  './assets/member-chloe.jpg',
+  './assets/member-lucy.jpg',
+  './assets/member-sam.jpg',
+];

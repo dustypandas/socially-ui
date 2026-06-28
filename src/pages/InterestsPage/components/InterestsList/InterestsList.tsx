@@ -46,7 +46,7 @@ function groupInterestsByCategory(
     .map(([category, items]) => ({
       category,
       items,
-      totalFollowers: items.reduce((sum, interest) => sum + interest.followersCount, 0),
+      totalFollowers: items.reduce((sum, interest) => sum + (interest.followersCount ?? 0), 0),
     }))
     .sort((a, b) => {
       const aGeneral = isGeneralCategory(a.category);

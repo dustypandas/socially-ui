@@ -322,10 +322,19 @@ html {
   border-radius: 0.25rem;
   font-family: 'Courier Prime', monospace;
   box-shadow: 0 1px 2px var(--home-section-border);
-  transition: box-shadow 0.2s ease;
+  transform-origin: center bottom;
+  transform: scale(1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 
   &:hover {
     box-shadow: 0 1px 3px var(--home-box-shadow);
+    transform: scale(1.03);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--home-section-border);
+    opacity: 0.5;
+    box-shadow: none;
   }
 }
 
@@ -375,3 +384,14 @@ html {
   80% { transform: translateY(-2px) scale(1.02); }
   100% { transform: translateY(-2px) scale(1.01); }
 }
+
+/* @keyframes hover-zoom {
+  0% {
+    transform-origin: center bottom;
+    transform: scale(1);
+  }
+  100% {
+    transform-origin: center bottom;
+    transform: scale(1.01);
+  }
+} */

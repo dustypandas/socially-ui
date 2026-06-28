@@ -80,10 +80,6 @@
     transform: rotate(45deg);
   }
 }
-.interests-list__follow-btn--disabled {
-  background: var(--home-section-border);
-  cursor: not-allowed;
-}
 
 @media (max-width: 780px) {
   .interests-list__grid {

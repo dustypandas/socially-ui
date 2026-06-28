@@ -99,11 +99,9 @@ export function InterestsList({
                 {!isFollowed && (
                   <button
                     type="button"
-                    className={[
-                      'global-btn global-btn--white-purple interests-list__follow-btn',
-                      !canFollowMore && 'interests-list__follow-btn--disabled',
-                    ].filter(Boolean).join(' ')}
+                    className='global-btn global-btn--white-purple interests-list__follow-btn'
                     aria-label={`Follow ${interest.name}`}
+                    disabled={!canFollowMore}
                     onClick={() => onFollow(interest.id)}
                   >
                     <span className="interests-list__btn-icon">+</span>

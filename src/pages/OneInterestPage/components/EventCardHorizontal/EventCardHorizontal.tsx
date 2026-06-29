@@ -40,6 +40,8 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
     () => pickMemberAvatars(event.id, avatarCount),
     [event.id, avatarCount],
   );
+  const ratingLabel = `${event.rating} (${event.ratingCount} ratings)`;
+  const attendeesLabel = getAttendeesLabel(event.attendees.count, avatarUrls.length);
 
   return (
     <a href="#/event-ui" className="event-card-horizontal">
@@ -56,7 +58,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
         <div className="event-card-horizontal__row">
           <IconStar className="event-card-horizontal__icon event-card-horizontal__icon--rating" />
           <span className="event-card-horizontal__text">
-            {event.rating} ({event.ratingCount} ratings)
+            {ratingLabel}
           </span>
         </div>
         {avatarCount > 0 && (
@@ -73,7 +75,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
               ))}
             </div>
             <div className="event-card-horizontal__attendees-label">
-              {getAttendeesLabel(event.attendees.count, avatarUrls.length)}
+              {attendeesLabel}
             </div>
           </div>
         )}

@@ -44,6 +44,27 @@ export type HomeEvent = {
   interestIds?: string[];
 };
 
+export type MockCurrentUser = {
+  id: string;
+  name: string;
+};
+
+export type DiscussionReply = {
+  id: string;
+  authorId: string;
+  body: string;
+  createdAt: string;
+};
+
+export type DiscussionPost = {
+  id: string;
+  interestId: string;
+  authorId: string;
+  body: string;
+  createdAt: string;
+  replies: DiscussionReply[];
+};
+
 export const navLinks: NavLink[];
 export const interests: Interest[];
 export const MAX_FOLLOWED_INTERESTS: number;
@@ -52,3 +73,5 @@ export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];
 export const spanishInterestEvents: HomeEvent[];
 export const memberAvatarUrls: string[];
+export const mockCurrentUser: MockCurrentUser;
+export const spanishDiscussionPosts: DiscussionPost[];

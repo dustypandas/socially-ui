@@ -303,6 +303,7 @@ html {
   --global-text-muted: rgba(28, 24, 18, 0.55);
   --global-text-light: rgba(28, 24, 18, 0.3);
   --global-text-heading: rgba(28, 24, 18, 0.45);
+  --global-text-bg: rgba(28, 24, 18, 0.04);
   --global-link-blue: #3b6fd4;
   --global-header-height: 3.75rem;
 
@@ -332,7 +333,6 @@ html {
   }
   &:disabled {
     cursor: not-allowed;
-    background: var(--home-section-border);
     opacity: 0.5;
     box-shadow: none;
   }
@@ -341,7 +341,12 @@ html {
 .global-btn--white-purple {
   background: white;
   color: var(--global-purple);
+
+  &:disabled {
+    background: var(--home-section-border);
+  }
 }
+
 .global-btn--purple-white {
   background: var(--global-btn-purple);
   color: white;

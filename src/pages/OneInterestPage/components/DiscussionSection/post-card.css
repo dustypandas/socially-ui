@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+.discussion-post {
+  padding: 1rem 1rem 0;
+  border-radius: 0.25rem;
+  background: var(--discussion-post-bg);
+  box-shadow: 0 1px 2px var(--home-section-border);
+
+  --discussion-post-bg: #f7f7f7;
+  --discussion-post-border: #e7e7e7;
+}
+
+.discussion-post__header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.discussion-post__avatar {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.discussion-post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.375rem 0.5rem;
+}
+
+.discussion-post__author {
+  color: var(--global-text);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+}
+
+.discussion-post__time {
+  color: var(--global-text-muted);
+  font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-sm);
+}
+
+.discussion-post__body {
+  margin: 0 0 0.625rem;
+  color: var(--global-text);
+  font-size: var(--font-size-md);
+  line-height: 1.55;
+}
+
+.discussion-post__stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.discussion-post__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.875rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--global-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    color: var(--global-text);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.discussion-post__stat--active {
+  color: var(--global-text);
+}
+
+.discussion-post__stat-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.discussion-post__stat-count {
+  font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.discussion-post__replies {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.875rem;
+  padding-top: 0.875rem;
+}
+
+.discussion-post__reply-box {
+  margin: 0 -1rem;
+  /* border-top: 1.5px solid var(--discussion-post-border); */
+
+  .discussion-composer__input {
+    /* border-top: 1.5px solid white; */
+    border-radius: 0 0 0.375rem 0.375rem;
+    background: var(--discussion-post-bg);
+    transition: background 0.3s ease; /* disable height transition for performance */
+  }  
+
+  .discussion-composer__field:focus-within .discussion-composer__input {
+    background: white;
+  }
+}
+
+.discussion-post__divider {
+  margin: 0 -1rem;
+  height: 0;
+  border-top: 1.5px solid var(--discussion-post-border);
+  border-bottom: 1.5px solid white;
+}

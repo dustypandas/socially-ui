@@ -378,3 +378,74 @@ export const memberAvatarUrls = [
   './assets/member-lucy.jpg',
   './assets/member-sam.jpg',
 ];
+
+export const mockCurrentUser = {
+  id: 'member-8',
+  name: 'James Wright',
+};
+
+export const spanishDiscussionPosts = [
+  {
+    id: 'post-spanish-conversation-tips',
+    interestId: 'spanish',
+    authorId: 'member-3',
+    body: 'Anyone have tips for keeping conversations going past small talk? I can order coffee fine, but I freeze once the chat moves past the weather.',
+    createdAt: '2026-06-25T14:30:00.000Z',
+    replies: [
+      {
+        id: 'reply-post-spanish-conversation-tips-1',
+        authorId: 'member-1',
+        body: 'Prepare two follow-up questions before you arrive — something about Madrid, food, or weekend plans usually works.',
+        createdAt: '2026-06-25T16:10:00.000Z',
+      },
+      {
+        id: 'reply-post-spanish-conversation-tips-2',
+        authorId: 'member-12',
+        body: 'I keep a note on my phone with phrases like "¿Qué te gusta hacer los fines de semana?" It feels silly but it helps.',
+        createdAt: '2026-06-25T18:45:00.000Z',
+      },
+      {
+        id: 'reply-post-spanish-conversation-tips-3',
+        authorId: 'member-6',
+        body: 'Language exchange nights at Café Comercial are great for this — low pressure and everyone is learning.',
+        createdAt: '2026-06-26T09:20:00.000Z',
+      },
+    ],
+  },
+  {
+    id: 'post-spanish-subjunctive',
+    interestId: 'spanish',
+    authorId: 'member-5',
+    body: 'Still struggling with when to use subjunctive after "creo que" vs "no creo que". Any simple rules of thumb?',
+    createdAt: '2026-06-22T11:00:00.000Z',
+    replies: [
+      {
+        id: 'reply-post-spanish-subjunctive-1',
+        authorId: 'member-9',
+        body: 'Affirmative "creo que" → indicative. Negative "no creo que" → subjunctive. That alone cleared up half my mistakes.',
+        createdAt: '2026-06-22T13:15:00.000Z',
+      },
+      {
+        id: 'reply-post-spanish-subjunctive-2',
+        authorId: 'member-14',
+        body: 'Also watch for doubt/emotion triggers — "es posible que", "me alegra que" always push you into subjunctive.',
+        createdAt: '2026-06-22T19:40:00.000Z',
+      },
+    ],
+  },
+  {
+    id: 'post-spanish-tapas-malasaña',
+    interestId: 'spanish',
+    authorId: 'member-11',
+    body: 'Best tapas bars in Malasaña for practicing Spanish with locals? Prefer somewhere not too touristy.',
+    createdAt: '2026-06-18T20:00:00.000Z',
+    replies: [
+      {
+        id: 'reply-post-spanish-tapas-malasaña-1',
+        authorId: 'member-4',
+        body: 'La Ardosa on Calle Colón — busy but friendly staff who will chat if you go on a weekday evening.',
+        createdAt: '2026-06-19T10:30:00.000Z',
+      },
+    ],
+  },
+];

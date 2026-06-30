@@ -4,6 +4,7 @@ import { ColumnsLayout, PageLayout, SectionHeader } from '../../components';
 import { memberFollowers, spanishInterestEvents } from '../../data/dummyData.js';
 import { useAppSelector } from '../../store/hooks';
 import { EventCardHorizontal } from './components/EventCardHorizontal/EventCardHorizontal.js';
+import { DiscussionSection } from './components/DiscussionSection/DiscussionSection.js';
 import { FollowersMap } from '../InterestsPage/components/FollowedInterests/FollowersMap/FollowersMap';
 import { getUniqueMapFollowers } from '../InterestsPage/helpers';
 import './one-interest-page.css';
@@ -84,6 +85,10 @@ export function OneInterestPage() {
                 </div>
               </div>
               <div className="one-interest-page__events-divider" />
+              <DiscussionSection
+                interestId={INTEREST_ID}
+                isEmpty={isEmptyVariant}
+              />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(380px, 38%)">
               <div className="one-interest-page__aside">

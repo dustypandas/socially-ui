@@ -4,7 +4,7 @@
   --layout-sticky-top: calc(var(--global-header-height, 3.75rem) + 1rem);
 
   min-height: 100vh;
-  background: #ffffff url('../../assets/temp/bg-transparent-cream-paper.png');
+  background: #ffffff url('/assets/bg-transparent-cream-paper.png');
   background-size: 200px 200px;
   color: var(--global-text);
 }
@@ -12,7 +12,7 @@
 .layout__main {
   position: relative;
   z-index: 1;
-  background: white url('../../assets/temp/bg-transparent-cream-paper.png');
+  background: white url('/assets/bg-transparent-cream-paper.png');
   background-size: 200px 200px;
   padding-top: 1rem;
 }

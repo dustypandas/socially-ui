@@ -12,34 +12,49 @@ import './home-page.css';
 export function HomePage() {
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(false);
   const [isEntryRevealed2, setIsEntryRevealed2] = useState(false);
+  const [isEntryRevealed3, setIsEntryRevealed3] = useState(false);
   const shouldShowHeader = useHeaderScrollCompact();
 
   useEffect(() => {
     const timer1 = setTimeout(() => setIsEntryRevealed1(true), 2200); // 1.2s reveal
-    const timer2 = setTimeout(() => setIsEntryRevealed2(true), 3400);
+    const timer2 = setTimeout(() => setIsEntryRevealed2(true), 2800);
+    const timer3 = setTimeout(() => setIsEntryRevealed3(true), 3400);
 
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
+      clearTimeout(timer3);
     };
   }, []);
 
   return (
     <PageLayout
       isHomePage
-      isEntryRevealed1={isEntryRevealed1}
-      isEntryRevealed2={isEntryRevealed2}
       shouldShowHeader={shouldShowHeader}
     >
-      <div id="home-top"/>
-      <HomeHero carouselEnabled={isEntryRevealed1} />
+      <div className={[
+        'home__entry-cover',
+        isEntryRevealed1 && 'home-page--entry-revealed1',
+        isEntryRevealed3 && 'home-page--entry-revealed3',
+      ].filter(Boolean).join(' ')} aria-hidden="true">
+        <div className="home__entry-logo-image" />
+      </div>
+      <div id="home-top" />
+      <HomeHero carouselEnabled={isEntryRevealed2} />
       <main className="layout__main">
-        <InterestsSection />
-        <EventsSection />
-        <WhySociallySection />
-        {/* <AboutSection /> */}
-        <LayoutFooter />
+        <section className={[
+          'home-page',
+          isEntryRevealed1 && 'home-page--entry-revealed1',
+          isEntryRevealed2 && 'home-page--entry-revealed2',
+        ].filter(Boolean).join(' ')}>        
+          <InterestsSection />
+          <EventsSection />
+          <WhySociallySection />
+          {/* <AboutSection /> */}
+          <LayoutFooter />
+        </section>
       </main>
     </PageLayout>
   );
 }
+

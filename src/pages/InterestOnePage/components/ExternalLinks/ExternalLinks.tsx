@@ -44,7 +44,7 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
       </div>
       <div className="external-links__content">
         <p className="external-links__description">
-          A list of other groups and links (not related to Socially) that could be of interest.
+          A few other groups and links (not related to Socially) that could be of interest.
         </p>
 
         {links.length > 0 && (
@@ -68,7 +68,7 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
           <input
             type="url"
             className="external-links__input external-links__input--url"
-            placeholder="add new link?"
+            placeholder="suggest a new link?"
             value={href}
             onChange={event => setHref(event.target.value)}
             aria-label="Link URL"

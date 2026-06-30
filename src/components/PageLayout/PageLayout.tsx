@@ -15,21 +15,15 @@ export function PageLayout({
   children,
   isHomePage = false,
   isEventPage = false,
-  isEntryRevealed1,
-  isEntryRevealed2,
   shouldShowHeader,
 }: PageLayoutProps) {
-  const className = [
-    'page-layout',
-    isHomePage && 'layout-is-home',
-    isEventPage && 'layout-is-event',
-    isHomePage && isEntryRevealed1 && 'layout--entry-revealed1',
-    isHomePage && isEntryRevealed2 && 'layout--entry-revealed2',
-    isHomePage && shouldShowHeader && 'layout--show-header',
-  ].filter(Boolean).join(' ');
-
   return (
-    <div className={className}>
+    <div className={[
+      'page-layout',
+      isHomePage && 'layout--is-home',
+      isEventPage && 'layout--is-event',
+      isHomePage && shouldShowHeader && 'layout--show-header',
+    ].filter(Boolean).join(' ')}>
       <LayoutHeader isHomePage={isHomePage} />
       {isHomePage ? (
         children

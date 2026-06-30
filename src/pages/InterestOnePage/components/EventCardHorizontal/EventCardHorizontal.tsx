@@ -38,7 +38,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
   const attendeesLabel = getAttendeesLabel(event.attendees.count, avatarUrls.length);
 
   return (
-    <a href="#/event-ui" className="event-card-horizontal">
+    <a href="#/event-one-ui" className="event-card-horizontal">
       <div className="event-card-horizontal__body">
         <h3 className="event-card-horizontal__title">
           <span className="event-card-horizontal__title-text">{event.title}</span>

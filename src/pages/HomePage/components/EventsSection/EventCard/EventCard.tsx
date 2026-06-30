@@ -15,9 +15,7 @@ export function EventCard({ event }: EventCardProps) {
       <img className="event-card__image" src={event.image} alt="" />
       <div className="event-card__body">
         <h3 className="event-card__title">
-          <a href="#/event-ui" className="event-card__title-link">
-            {event.title}
-          </a>
+          {event.title}
         </h3>
         <div className="event-card__row">
           <IconCalendar className="event-card__icon" />

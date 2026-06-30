@@ -20,10 +20,7 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
   };
 
   return (
-    <header className="layout-header" id={isHomePage ? 'home-hero' : undefined}>
-      <div className='layout-header__entry-logo-container'>
-        <div className='layout-header__entry-logo-image' />
-      </div>
+    <header className="layout-header">
       <div className="layout-header__container width-container">
         <a
           href="#/home-ui"

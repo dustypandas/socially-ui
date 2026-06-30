@@ -298,7 +298,7 @@ export const sampleFullEvent = {
     pageLabels: {
       monthShort: 'Feb',
       dateShort: '04',
-      dateLong: 'Tuesday, February 4, 2026',
+      dateLong: 'Tuesday, February 4, 2025',
       timeLong: '12:00pm - 1:00pm',
     }
   },

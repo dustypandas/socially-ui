@@ -446,6 +446,68 @@ export const events = [
   }
 ];
 
+export const sampleFullEvent = {
+  title: 'Lightning Talks @ Maria Pandora',
+  img: './assets/event-lightning.avif',
+  location: 'Palacio',
+  details: `<p>
+              5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
+            </p>
+            <p>
+              Lightning Talks is a format where a number of speakers give <b>5 minute presentations</b> about <b>any topic of their choosing</b>, followed by 5 minutes of open questions.
+            </p>
+            <p>
+              There will be <b>5-6 talks starting at 19:30</b>, followed by drinks and social.
+            </p>
+            <p>
+              Come join us to hear and discuss some unexpected ideas across surprising topics, broaden our horizons and meet interesting people.
+            </p>
+            <p>
+              You can find photos from some of our recent events here:<br/>
+              <a href='#'><b>https://www.instagram.com/polylogue_madrid</b></a>
+            </p>
+            <p>
+              or sign up here if you'd like to give a talk at our next event:<br/>
+              <a href='#'><b>https://forms.gle/Nx2847ZENMxkBMut8</b></a>
+            </p>`,
+  community: {
+    name: 'Polylogue Madrid: share • learn • inspire',
+    img: './assets/community-polylogue.avif',
+    details: `<p>
+                Polylogue is a community for meeting people who share diverse interests, eclectic curiosities, wayward stories and uncommon perspectives. 🎓📚💫
+              </p>
+              <p>
+                Come join us for fortnightly "Lightning Talks" - where a number of speakers give 5 minute presentations about any topic of their choosing, followed by 5 minutes of open questions.
+              </p>`,
+  },
+  hosts: [
+    { name: 'Achi J', img: './assets/member-achi.avif' },
+    { name: 'Peter C', img: './assets/member-peter.webp' },
+  ],
+  attendees: {
+    profiles: [
+      { name: 'Lucy Petroski', img: './assets/member-lucy.jpg' },
+      { name: 'Dominik', img: './assets/member-dom.jpg' },
+      { name: 'Maria M', img: './assets/member-maria.jpg' },
+      { name: 'Sam Harris', img: './assets/member-sam.jpg' },
+      { name: 'Olivia M', img: './assets/member-olivia.jpg' },
+    ],
+    count: 27,
+  },
+  date: {
+    timelineLabels: [
+      'Feb 4, 2025',
+      'Tuesday, 7:10pm',
+    ],
+    pageLabels: {
+      monthShort: 'Feb',
+      dateShort: '04',
+      dateLong: 'Tuesday, February 4, 2025',
+      timeLong: '12:00pm - 1:00pm',
+    },
+  },
+};
+
 export const spanishInterestEvents = [
   {
     id: 'spanish-conversations-cafe-comercial',

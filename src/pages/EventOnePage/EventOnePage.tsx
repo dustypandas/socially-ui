@@ -1,5 +1,5 @@
 import { ColumnsLayout, PageLayout } from '../../components';
-import { sampleFullEvent } from '../_data';
+import { sampleFullEvent } from '../../data/dummyData.js';
 import {
   EventAttendBar,
   EventAttendCard,

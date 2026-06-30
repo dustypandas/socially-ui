@@ -8,8 +8,8 @@ import './community-page.css';
 import {
   PageFooter,
   PageHeader,
-} from '../_components';
-import { communities, sampleFullEvent } from '../_data';
+} from './prevComponents';
+import { communities, sampleFullEvent } from './prevData';
 
 export function CommunityPage() {
   const [hasScrolledLittle, setHasScrolledLittle] = useState(false);

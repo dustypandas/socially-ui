@@ -72,6 +72,41 @@ export type DiscussionPost = {
   replies: DiscussionReply[];
 };
 
+export type EventPageDateLabels = {
+  monthShort: string;
+  dateShort: string;
+  dateLong: string;
+  timeLong: string;
+};
+
+export type EventPageMember = {
+  name: string;
+  img: string;
+};
+
+export type EventPageCommunity = {
+  name: string;
+  img: string;
+  details: string;
+};
+
+export type FullEvent = {
+  title: string;
+  img: string;
+  location: string;
+  details: string;
+  community: EventPageCommunity;
+  hosts: EventPageMember[];
+  attendees: {
+    profiles: EventPageMember[];
+    count: number;
+  };
+  date: {
+    timelineLabels: string[];
+    pageLabels: EventPageDateLabels;
+  };
+};
+
 export const navLinks: NavLink[];
 export const interests: Interest[];
 export const MAX_FOLLOWED_INTERESTS: number;
@@ -79,6 +114,7 @@ export const followedInterestIds: string[];
 export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];
 export const spanishInterestEvents: HomeEvent[];
+export const sampleFullEvent: FullEvent;
 export const memberAvatarUrls: string[];
 export const mockCurrentUser: MockCurrentUser;
 export const spanishDiscussionPosts: DiscussionPost[];

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import IconLocation from '../../assets/icon-map-marker-outline.svg?react';
 // import IconRatings from '../assets/icon-star.svg?react';
-import { PageFooter, PageHeader } from '../_components';
+import { PageFooter, PageHeader } from '../PrevCommunityPage/prevComponents';
+import { sampleFullEvent } from '../PrevCommunityPage/prevData';
 import './event-page.css';
-import { sampleFullEvent } from '../_data';
 
 export function EventPage() {
   const [hasScrolledABit, setHasScrolledABit] = useState(false);

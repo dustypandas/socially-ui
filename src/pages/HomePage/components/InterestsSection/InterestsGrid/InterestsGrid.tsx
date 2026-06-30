@@ -15,7 +15,7 @@ export function InterestsGrid() {
     <ul className="interests-grid">
       {popularInterests.map(interest => (
         <li key={interest.id} className="interests-grid__item">
-          <a href="#one-interest-ui" className="interests-grid__link">
+          <a href="#/interest-one-ui" className="interests-grid__link">
             {interest.name} ({interest.followersCount ?? 0})
           </a>
         </li>

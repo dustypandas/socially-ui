@@ -3,8 +3,8 @@ export function IndexPage() {
     <a href='#/home-ui'>Home page ui</a><br/><br/>
     <a href='#/events-ui'>Events page ui</a><br/><br/>
     <a href='#/interests-ui'>Interests page ui</a><br/><br/>
-    <a href='#/one-interest-ui'>One interest page ui</a><br/><br/>
-    <a href='#/one-interest-ui-empty'>One interest page ui (empty)</a><br/><br/>
+    <a href='#/interest-one-ui'>One interest page ui</a><br/><br/>
+    <a href='#/interest-one-ui-empty'>One interest page ui (empty)</a><br/><br/>
     <a href='#/community-ui'>Community page ui</a><br/><br/>
     <a href='#/event-ui'>Event page ui</a><br/><br/>
   </p>);

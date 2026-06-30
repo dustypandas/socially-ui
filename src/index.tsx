@@ -11,7 +11,7 @@ import {
   HomePage,
   IndexPage,
   InterestsPage,
-  OneInterestPage,
+  InterestOnePage,
 } from './pages';
 import { store } from './store';
 
@@ -25,8 +25,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/home-ui' element={<HomePage />} />
         <Route path='/events-ui' element={<EventsPage />} />
         <Route path='/interests-ui' element={<InterestsPage />} />
-        <Route path='/one-interest-ui' element={<OneInterestPage />} />
-        <Route path='/one-interest-ui-empty' element={<OneInterestPage />} />
+        <Route path='/interest-one-ui' element={<InterestOnePage />} />
+        <Route path='/interest-one-ui-empty' element={<InterestOnePage />} />
         <Route path='/community-ui' element={<CommunityPage />} />
         <Route path='/event-ui' element={<EventPage />} />
         {/* default invalid? */}

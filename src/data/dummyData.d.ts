@@ -3,12 +3,18 @@ export type NavLink = {
   href: string;
 };
 
+export type RelatedLink = {
+  label: string;
+  href: string;
+};
+
 export type Interest = {
   id: string;
   name: string;
   followersCount?: number;
   category?: string;
   followerIds?: string[];
+  relatedLinks?: RelatedLink[];
 };
 
 export type MemberFollower = {

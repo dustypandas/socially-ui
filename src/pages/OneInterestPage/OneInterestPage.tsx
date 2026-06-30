@@ -5,6 +5,7 @@ import { memberFollowers, spanishInterestEvents } from '../../data/dummyData.js'
 import { useAppSelector } from '../../store/hooks';
 import { EventCardHorizontal } from './components/EventCardHorizontal/EventCardHorizontal.js';
 import { DiscussionSection } from './components/DiscussionSection/DiscussionSection.js';
+import { ExternalLinks } from './components/ExternalLinks/ExternalLinks.js';
 import { FollowersMap } from '../InterestsPage/components/FollowedInterests/FollowersMap/FollowersMap';
 import { getUniqueMapFollowers } from '../InterestsPage/helpers';
 import './one-interest-page.css';
@@ -93,11 +94,17 @@ export function OneInterestPage() {
             <ColumnsLayout.Aside sticky asideWidth="min(380px, 38%)">
               <div className="one-interest-page__aside">
                 {interest && (
-                  <p className="one-interest-page__followers">
-                    {interest.followersCount}+ followers
-                  </p>
+                  <>
+                    <FollowersMap
+                      followers={mapFollowers}
+                      followersCount={interest.followersCount}
+                    />
+                    <ExternalLinks
+                      interestId={INTEREST_ID}
+                      links={interest.relatedLinks ?? []}
+                    />
+                  </>
                 )}
-                <FollowersMap followers={mapFollowers} />
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>

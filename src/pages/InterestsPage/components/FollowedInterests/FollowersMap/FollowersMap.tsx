@@ -14,6 +14,7 @@ Leaflet.Icon.Default.mergeOptions({});
 
 type FollowersMapProps = {
   followers: MemberFollower[];
+  followersCount?: number;
 };
 
 function MapResizeHandler() {
@@ -30,9 +31,13 @@ function MapResizeHandler() {
   return null;
 }
 
-export function FollowersMap({ followers }: FollowersMapProps) {
+export function FollowersMap({ followers, followersCount }: FollowersMapProps) {
   return (
-    <div className="followers-map">
+    <div className="followers-map-wrap">
+      {followersCount != null && (
+        <p className="followers-map__title">{followersCount}+ followers</p>
+      )}
+      <div className="followers-map">
       <MapContainer
         center={MADRID_CENTER}
         zoom={13}
@@ -53,6 +58,7 @@ export function FollowersMap({ followers }: FollowersMapProps) {
           ))}
         </MarkerClusterGroup>
       </MapContainer>
+      </div>
     </div>
   );
 }

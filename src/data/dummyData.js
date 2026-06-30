@@ -15,6 +15,16 @@ export const interests = [
       'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
       'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
     ],
+    relatedLinks: [
+      {
+        label: 'Madrid Cycling Club',
+        href: 'https://www.meetup.com/example-madrid-cycling-club',
+      },
+      {
+        label: 'Strava Madrid Riders',
+        href: 'https://www.strava.com/clubs/example-madrid-riders',
+      },
+    ],
   },
   {
     id: 'hiking',
@@ -24,6 +34,12 @@ export const interests = [
     followerIds: [
       'member-2', 'member-5', 'member-8', 'member-11', 'member-14',
       'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+    ],
+    relatedLinks: [
+      {
+        label: 'Madrid Hikers Meetup',
+        href: 'https://www.meetup.com/example-madrid-hikers',
+      },
     ],
   },
   {
@@ -40,6 +56,12 @@ export const interests = [
       'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
       'member-31',
     ],
+    relatedLinks: [
+      {
+        label: 'Local Tennis Ladder group',
+        href: 'https://chat.whatsapp.com/example-tennis-ladder',
+      },
+    ],
   },
   {
     id: 'unicycling',
@@ -50,6 +72,12 @@ export const interests = [
       'member-10', 'member-11', 'member-12', 'member-13', 'member-14',
       'member-15', 'member-16', 'member-17', 'member-18', 'member-19',
       'member-20', 'member-21', 'member-22', 'member-23', 'member-24',
+    ],
+    relatedLinks: [
+      {
+        label: 'Unicycle Madrid community',
+        href: 'https://www.meetup.com/example-unicycle-madrid',
+      },
     ],
   },
   {
@@ -62,6 +90,12 @@ export const interests = [
       'member-18', 'member-21', 'member-24', 'member-25', 'member-27',
       'member-30', 'member-33',
     ],
+    relatedLinks: [
+      {
+        label: 'Madrid Art Studio group',
+        href: 'https://www.meetup.com/example-madrid-art-studio',
+      },
+    ],
   },
   {
     id: 'tango',
@@ -72,6 +106,12 @@ export const interests = [
       'member-4', 'member-8', 'member-12', 'member-16', 'member-20',
       'member-24', 'member-28', 'member-32',
     ],
+    relatedLinks: [
+      {
+        label: 'Tango Milonga Madrid',
+        href: 'https://www.meetup.com/example-tango-milonga-madrid',
+      },
+    ],
   },
   {
     id: 'self-development',
@@ -79,6 +119,12 @@ export const interests = [
     followersCount: 3,
     category: 'Self Care',
     followerIds: ['member-5', 'member-10', 'member-15'],
+    relatedLinks: [
+      {
+        label: 'Personal Growth Book Club',
+        href: 'https://chat.whatsapp.com/example-personal-growth-book-club',
+      },
+    ],
   },
   {
     id: 'yoga',
@@ -92,6 +138,12 @@ export const interests = [
       'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
       'member-21',
     ],
+    relatedLinks: [
+      {
+        label: 'Madrid Yoga Circle',
+        href: 'https://www.meetup.com/example-madrid-yoga-circle',
+      },
+    ],
   },
   {
     id: 'dinosaurs',
@@ -99,6 +151,12 @@ export const interests = [
     followersCount: 5,
     category: 'General',
     followerIds: ['member-22', 'member-23', 'member-24', 'member-25', 'member-26'],
+    relatedLinks: [
+      {
+        label: 'Paleontology Enthusiasts forum',
+        href: 'https://www.example.com/paleontology-enthusiasts',
+      },
+    ],
   },
   {
     id: 'chess',
@@ -109,6 +167,12 @@ export const interests = [
       'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
       'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
       'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+    ],
+    relatedLinks: [
+      {
+        label: 'Madrid Chess Club',
+        href: 'https://www.meetup.com/example-madrid-chess-club',
+      },
     ],
   },
   {
@@ -124,6 +188,12 @@ export const interests = [
       'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
       'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
     ],
+    relatedLinks: [
+      {
+        label: 'Board Game Night Madrid',
+        href: 'https://www.meetup.com/example-board-game-night-madrid',
+      },
+    ],
   },
   {
     id: 'ai',
@@ -137,6 +207,12 @@ export const interests = [
       'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
       'member-31', 'member-32', 'member-33', 'member-34', 'member-35',
     ],
+    relatedLinks: [
+      {
+        label: 'AI Builders Madrid',
+        href: 'https://www.meetup.com/example-ai-builders-madrid',
+      },
+    ],
   },
   {
     id: 'cooking',
@@ -144,6 +220,12 @@ export const interests = [
     followersCount: 3,
     category: 'General',
     followerIds: ['member-36', 'member-37', 'member-38'],
+    relatedLinks: [
+      {
+        label: 'Home Cooks Madrid',
+        href: 'https://chat.whatsapp.com/example-home-cooks-madrid',
+      },
+    ],
   },
   {
     id: 'psychedelics',
@@ -153,6 +235,12 @@ export const interests = [
     followerIds: [
       'member-33', 'member-34', 'member-35', 'member-36',
       'member-37', 'member-38', 'member-39', 'member-40',
+    ],
+    relatedLinks: [
+      {
+        label: 'Integration Circle',
+        href: 'https://www.example.com/integration-circle',
+      },
     ],
   },
   {
@@ -166,6 +254,16 @@ export const interests = [
       'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
       'member-16', 'member-17', 'member-18',
     ],
+    relatedLinks: [
+      {
+        label: 'Spanish Coffee whatsapp group',
+        href: 'https://chat.whatsapp.com/example-spanish-coffee',
+      },
+      {
+        label: 'Real Language Exchanges group',
+        href: 'https://www.meetup.com/example-language-exchanges',
+      },
+    ],
   },
   {
     id: 'german',
@@ -176,6 +274,12 @@ export const interests = [
       'member-19', 'member-20', 'member-21', 'member-22', 'member-23',
       'member-24', 'member-25', 'member-26', 'member-27', 'member-28',
       'member-29', 'member-30',
+    ],
+    relatedLinks: [
+      {
+        label: 'German Conversation Café',
+        href: 'https://www.meetup.com/example-german-conversation-cafe',
+      },
     ],
   },
   {
@@ -188,6 +292,12 @@ export const interests = [
       'member-30', 'member-31', 'member-32', 'member-33', 'member-34',
       'member-35', 'member-36', 'member-37', 'member-38',
     ],
+    relatedLinks: [
+      {
+        label: 'Mandarin Exchange Madrid',
+        href: 'https://www.meetup.com/example-mandarin-exchange-madrid',
+      },
+    ],
   },
   {
     id: 'french',
@@ -199,6 +309,12 @@ export const interests = [
       'member-12', 'member-16', 'member-17', 'member-21', 'member-22',
       'member-26', 'member-27', 'member-32', 'member-33', 'member-37',
       'member-40',
+    ],
+    relatedLinks: [
+      {
+        label: 'French Table Talk group',
+        href: 'https://chat.whatsapp.com/example-french-table-talk',
+      },
     ],
   },
 ];

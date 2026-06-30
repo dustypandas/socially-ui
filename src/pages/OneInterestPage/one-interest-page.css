@@ -140,11 +140,3 @@
   gap: 0.75rem;
   margin-top: 0.75rem;
 }
-
-.one-interest-page__followers {
-  margin: 0;
-  color: var(--global-text-light);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1.125rem;
-  line-height: 1.4;
-}

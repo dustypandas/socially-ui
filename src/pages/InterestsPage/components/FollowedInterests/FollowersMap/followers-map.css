@@ -1,5 +1,19 @@
 @import 'tailwindcss';
 
+.followers-map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.followers-map__title {
+  margin: 0;
+  color: var(--global-text-light);
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
 .followers-map {
   aspect-ratio: 1;
   width: 100%;

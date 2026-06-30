@@ -75,7 +75,7 @@ export function EventPage() {
               </h3>
             </div>
             <div className='event-community__container'>
-              <a href='#/community-ui' className='event-community__header-row gm-link-dark'>
+              <a href='#/prev-community-ui' className='event-community__header-row gm-link-dark'>
                 <img
                   className='event-community__title-img'
                   src={eventData.community.img}
@@ -249,7 +249,7 @@ export function EventPage() {
             </div>
           </div> */}
           {/* <div className='event-description__section-container'>
-            <div className='event-description__title'>
+            <div className='prev-event-description__title'>
               Hosted by
             </div>
             <div className='event-description__hosts-container'>
@@ -265,7 +265,7 @@ export function EventPage() {
             </div>
           </div> */}
           <div className='event-description__section-container'>
-            {/* <div className='event-description__title'>
+            {/* <div className='prev-event-description__title'>
               About event
             </div> */}
             <h3>About event</h3>

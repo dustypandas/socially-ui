@@ -32,7 +32,7 @@ export function WhySociallySection() {
   return (
     <section className="why-socially-section">
       <div className="width-container">
-        <div className="why-socially-section__section-divider" />
+        <div className="global__page-divider home__page-divider" />
         {/* <SectionHeader title="Why Socially" hideMore /> */}
         <div className="why-socially-section__grid">
           {COLUMNS.map(col => (

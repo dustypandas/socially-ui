@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+.event-image {
+  position: relative;
+  z-index: 1;
+}
+
+.event-image__wrapper,
+.event-image__glow {
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px var(--home-box-shadow);
+}
+
+.event-image__glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.event-image__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center center;
+  background-color: var(--global-text-bg);
+}

@@ -83,7 +83,6 @@ export function InterestOnePage() {
                   </button>
                 </div>
               </div>
-              <div className="interest-one-page__events-divider" />
               <DiscussionSection
                 interestId={INTEREST_ID}
                 isEmpty={isEmptyVariant}

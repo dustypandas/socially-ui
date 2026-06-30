@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+.event-intro {
+  padding: 0 0 1rem;
+}
+
+.event-intro__title {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.event-intro__attributes {
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.event-intro__attribute-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.event-intro__calendar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--home-section-border);
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.event-intro__calendar-month {
+  background: var(--global-text-bg);
+  color: var(--global-text-muted);
+  /* font-family: 'Courier Prime', monospace; */
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px;
+}
+
+.event-intro__calendar-date {
+  color: var(--global-text);
+  /* font-family: 'Courier Prime', monospace; */
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transform: translateY(-1px);
+}
+
+.event-intro__icon-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--home-section-border);
+  border-radius: 0.25rem;
+  color: var(--global-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.event-intro__icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.event-intro__attribute-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.event-intro__attribute-primary {
+  color: var(--global-text);
+  /* font-family: 'Courier Prime', monospace; */
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.event-intro__attribute-secondary {
+  color: var(--global-text-muted);
+  /* font-family: 'Courier Prime', monospace; */
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 960px) {
+  .event-intro__title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .event-intro__title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .event-intro__title {
+    font-size: 1.5rem;
+  }
+}

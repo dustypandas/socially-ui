@@ -1,0 +1,7 @@
+#home-top {
+  scroll-margin-top: calc(var(--global-header-height) + var(--home-hero-height));
+}
+
+.home__page-divider {
+  /* margin: 2rem 0 0; */
+}

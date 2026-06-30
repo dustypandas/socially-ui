@@ -1,11 +1,7 @@
 @import 'tailwindcss';
 
-.discussion-section {
-  padding: 1.5rem 0 0;
-}
-
 .discussion-section__composer {
-  margin: 1rem 1rem 1.25rem;
+  margin: 1.25rem 1rem 1.25rem;
 }
 
 .discussion-section__empty {

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { smoothScrollToSection } from '../../../../utils/smoothScroll';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { useWordCarousel } from '../../hooks/useWordCarousel';
 import './home-hero.css';
@@ -21,13 +22,6 @@ type HomeHeroProps = {
   carouselEnabled?: boolean;
 };
 
-function scrollToSection(sectionId: string) {
-  document.getElementById(sectionId)?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  });
-}
-
 export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   useHeroParallax(heroRef);
@@ -40,7 +34,7 @@ export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
 
   return (
     <>
-      <section className="home-hero" ref={heroRef}>
+      <section className="home-hero" id="home-hero" ref={heroRef}>
         <div className="home-hero__media" aria-hidden="true">
           <div className="home-hero__overlay" />
         </div>
@@ -69,21 +63,21 @@ export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
           </div>
           <div className="home-hero__actions">
             <a
-              href="#events-section"
+              href="#home-events"
               className="home-hero__cta home-hero__cta--orange"
               onClick={event => {
                 event.preventDefault();
-                scrollToSection('events-section');
+                smoothScrollToSection('home-events');
               }}
             >
               Join an event
             </a>
             <a
-              href="#interests-section"
+              href="#home-interests"
               className="home-hero__cta home-hero__cta--purple"
               onClick={event => {
                 event.preventDefault();
-                scrollToSection('interests-section');
+                smoothScrollToSection('home-interests');
               }}
             >
               Find my people

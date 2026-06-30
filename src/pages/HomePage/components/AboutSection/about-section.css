@@ -5,13 +5,6 @@
   z-index: 1;
 }
 
-.about-section__section-divider {
-  height: 0px;
-  border-top: 1.5px solid var(--home-section-border);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.55);
-  margin: 2rem 0 0;
-}
-
 .about-section__content {
   display: flex;
   flex-direction: row;

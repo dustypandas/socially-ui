@@ -7,6 +7,7 @@ import {
   WhySociallySection,
 } from './components';
 import { useHeaderScrollCompact } from './hooks/useHeaderScrollCompact';
+import './home-page.css';
 
 export function HomePage() {
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(false);
@@ -30,6 +31,7 @@ export function HomePage() {
       isEntryRevealed2={isEntryRevealed2}
       shouldShowHeader={shouldShowHeader}
     >
+      <div id="home-top"/>
       <HomeHero carouselEnabled={isEntryRevealed1} />
       <main className="layout__main">
         <InterestsSection />

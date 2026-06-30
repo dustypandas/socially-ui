@@ -10,6 +10,7 @@
   overflow: hidden;
   display: flex;
   align-items: stretch;
+  /* scroll-margin-top: var(--global-header-height); */
 }
 
 .home-hero__media {

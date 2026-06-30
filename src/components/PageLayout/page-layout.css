@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
 .page-layout {
+  --layout-sticky-top: calc(var(--global-header-height, 3.75rem) + 1rem);
+
   min-height: 100vh;
   background: white url('../../assets/temp/bg-transparent-cream-paper.png');
   background-size: 200px 200px;
@@ -93,6 +95,15 @@
     .layout-header {
       transform: translateY(calc(var(--home-header-extra-height) * -1));
     }
+  }
+}
+
+.layout-is-event {
+  --layout-sticky-top: 1rem;
+
+  .layout-header {
+    position: static;
+    border-bottom: none;
   }
 }
 

@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+.event-one-page {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2rem;
+}
+
+.event-one-page__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.event-one-page__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event-one-page__attend-card {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+@media (max-width: 780px) {
+  .event-one-page {
+    padding-bottom: 5rem;
+  }
+
+  .event-one-page__attend-card {
+    display: none;
+  }
+}

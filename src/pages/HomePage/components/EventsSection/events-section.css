@@ -24,10 +24,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-.events-section__section-divider {
-  height: 0px;
-  border-top: 1.5px solid var(--home-section-border);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.55);
-  margin: 2rem 0 0;
-}

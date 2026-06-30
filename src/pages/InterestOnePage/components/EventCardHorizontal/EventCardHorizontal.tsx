@@ -4,6 +4,7 @@ import IconStar from '../../../../assets/icon-star.svg?react';
 import { memberAvatarUrls } from '../../../../data/dummyData.js';
 import type { HomeEvent } from '../../../../store/slices/eventsSlice.js';
 import './event-card-horizontal.css';
+import { getAttendeesLabel } from '../../../../utils/getAttendeesLabel.js';
 
 type EventCardHorizontalProps = {
   event: HomeEvent;
@@ -25,13 +26,6 @@ function pickMemberAvatars(eventId: string, count: number): string[] {
   }
 
   return shuffled.slice(0, Math.min(count, shuffled.length));
-}
-
-function getAttendeesLabel(total: number, visibleCount: number): string {
-  const hiddenCount = total - visibleCount;
-  if (hiddenCount <= 0) return 'going';
-  if (hiddenCount === 1) return '+1 other going';
-  return `+${hiddenCount} others going`;
 }
 
 export function EventCardHorizontal({ event }: EventCardHorizontalProps) {

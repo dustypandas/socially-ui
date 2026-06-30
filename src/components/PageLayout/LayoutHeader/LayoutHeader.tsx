@@ -1,3 +1,4 @@
+import { smoothScrollToSection } from '../../../utils/smoothScroll';
 import './layout-header.css';
 
 const navLinks = [
@@ -6,14 +7,29 @@ const navLinks = [
   { label: 'Sign-In', href: '#' },
 ];
 
-export function LayoutHeader() {
+type LayoutHeaderProps = {
+  isHomePage?: boolean;
+};
+
+export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHomePage) {
+      event.preventDefault();
+      smoothScrollToSection('home-top');
+    }
+  };
+
   return (
-    <header className="layout-header">
+    <header className="layout-header" id={isHomePage ? 'home-hero' : undefined}>
       <div className='layout-header__entry-logo-container'>
         <div className='layout-header__entry-logo-image' />
       </div>
       <div className="layout-header__container width-container">
-        <a href="#/home-ui" className="layout-header__logo-link">
+        <a
+          href="#/home-ui"
+          className="layout-header__logo-link"
+          onClick={handleLogoClick}
+        >
           <img
             className="layout-header__logo"
             src="./assets/logo-socially-v2.png"

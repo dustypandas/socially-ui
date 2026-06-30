@@ -5,6 +5,7 @@ import './page-layout.css';
 type PageLayoutProps = {
   children?: React.ReactNode;
   isHomePage?: boolean;
+  isEventPage?: boolean;
   isEntryRevealed1?: boolean;
   isEntryRevealed2?: boolean;
   shouldShowHeader?: boolean;
@@ -13,6 +14,7 @@ type PageLayoutProps = {
 export function PageLayout({
   children,
   isHomePage = false,
+  isEventPage = false,
   isEntryRevealed1,
   isEntryRevealed2,
   shouldShowHeader,
@@ -20,6 +22,7 @@ export function PageLayout({
   const className = [
     'page-layout',
     isHomePage && 'layout-is-home',
+    isEventPage && 'layout-is-event',
     isHomePage && isEntryRevealed1 && 'layout--entry-revealed1',
     isHomePage && isEntryRevealed2 && 'layout--entry-revealed2',
     isHomePage && shouldShowHeader && 'layout--show-header',
@@ -27,7 +30,7 @@ export function PageLayout({
 
   return (
     <div className={className}>
-      <LayoutHeader />
+      <LayoutHeader isHomePage={isHomePage} />
       {isHomePage ? (
         children
       ) : (

@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+.event-description {
+  padding: 1rem 0;
+}
+
+.event-description__title {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+}
+
+.event-description__content {
+  /* color: var(--global-text-muted); */
+  font-size: var(--font-size-sm);
+  line-height: 1.75;
+  word-wrap: break-word;
+
+  h1, h2, h3, p {
+    margin-bottom: 1em;
+  }
+
+  a {
+    color: var(--global-link-blue);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

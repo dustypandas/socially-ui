@@ -12,6 +12,7 @@ import {
   IndexPage,
   InterestsPage,
   InterestOnePage,
+  EventOnePage,
 } from './pages';
 import { store } from './store';
 
@@ -24,11 +25,12 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />
         <Route path='/events-ui' element={<EventsPage />} />
+        <Route path='/event-one-ui' element={<EventOnePage />} />
         <Route path='/interests-ui' element={<InterestsPage />} />
         <Route path='/interest-one-ui' element={<InterestOnePage />} />
         <Route path='/interest-one-ui-empty' element={<InterestOnePage />} />
-        <Route path='/community-ui' element={<CommunityPage />} />
-        <Route path='/event-ui' element={<EventPage />} />
+        <Route path='/prev-community-ui' element={<CommunityPage />} />
+        <Route path='/prev-event-ui' element={<EventPage />} />
         {/* default invalid? */}
       </Routes>
     </HashRouter>

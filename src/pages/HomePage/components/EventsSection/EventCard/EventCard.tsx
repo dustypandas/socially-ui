@@ -11,7 +11,7 @@ type EventCardProps = {
 
 export function EventCard({ event }: EventCardProps) {
   return (
-    <a href="#/event-ui" className="event-card">
+    <a href="#/event-one-ui" className="event-card" target="_blank">
       <img className="event-card__image" src={event.image} alt="" />
       <div className="event-card__body">
         <h3 className="event-card__title">

@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './pages/index.css';
+import { ScrollToTop } from './components';
 import {
   CommunityPage,
   EventPage,
+  EventsPage,
   HomePage,
   IndexPage,
   InterestsPage,
@@ -17,9 +19,11 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
     <HashRouter>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />
+        <Route path='/events-ui' element={<EventsPage />} />
         <Route path='/interests-ui' element={<InterestsPage />} />
         <Route path='/one-interest-ui' element={<OneInterestPage />} />
         <Route path='/one-interest-ui-empty' element={<OneInterestPage />} />

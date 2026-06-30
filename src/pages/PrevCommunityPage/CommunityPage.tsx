@@ -46,14 +46,14 @@ export function CommunityPage() {
     </div>
     <PageHeader isSticky={true}/> {/* isSubtle={!hasScrolledLittle} */}
     <section className='section-container community-intro'>
-      <div className='width-container columns-layout'>
-        <div className='community-intro__img-container column-main'>
+      <div className='width-container prev-columns-layout'>
+        <div className='community-intro__img-container prev-column-main'>
           <img
             className='community-intro__img'
             src='./assets/community-philosophy.webp'
           />
         </div>
-        <div className='community-intro__info-container column-right'>
+        <div className='community-intro__info-container prev-column-right'>
           <h1 className='community-intro__title'>
             {communityData.name}
           </h1>
@@ -88,14 +88,14 @@ export function CommunityPage() {
       </div>
     </section>
     <section className={`section-container community-menu${!!hasScrolledMuch ? ' has-border' : ''}`}>
-      <div className='width-container columns-layout'>
-        <div className='community-menu__links-container column-main'>
+      <div className='width-container prev-columns-layout'>
+        <div className='community-menu__links-container prev-column-main'>
           <a href='#' className='gm-link gm-animated community-menu__link'>About</a>
           <a href='#' className='gm-link gm-animated community-menu__link'>Events</a>
           <a href='#' className='gm-link gm-animated community-menu__link'>Members</a>
           <a href='#' className='gm-link gm-animated community-menu__link'>Disussions</a>
         </div>
-        <div className='community-menu__actions-container column-right'>
+        <div className='community-menu__actions-container prev-column-right'>
           <a href='#' className='gm-link-btn gm-primary gm-animated community-menu__primary-btn'>
             <span className='gm-link-btn__label'>
               Follow for updates
@@ -109,8 +109,8 @@ export function CommunityPage() {
       </div>
     </section>
     <section className='section-container community-details'>
-      <div className='width-container columns-layout'>
-        <div className='column-main'>
+      <div className='width-container prev-columns-layout'>
+        <div className='prev-column-main'>
           <div className='about-section-prev'>
             <h2>Who we are</h2>
             <div className='about-section-prev__content' dangerouslySetInnerHTML={{
@@ -226,7 +226,7 @@ export function CommunityPage() {
             </div>
           </div>
         </div>
-        <div className='community-details__sidebar column-right'>
+        <div className='community-details__sidebar prev-column-right'>
           <div className='community-details__sidebar-sticky'>
             <h2>Organizers</h2>
             <div className='organizers-container'>

@@ -4,7 +4,7 @@ import './interests-section.css';
 
 export function InterestsSection() {
   return (
-    <section className="interests-section">
+    <section className="interests-section" id="interests-section">
       <div className="width-container">
         <SectionHeader title="Popular Interests" moreHref="#/interests-ui" />
         <InterestsGrid />

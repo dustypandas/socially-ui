@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { events } from '../../data/dummyData.js';
+import { events, spanishInterestEvents } from '../../data/dummyData.js';
 
 export type EventHost = {
   name: string;
@@ -24,6 +24,7 @@ export type HomeEvent = {
   location: EventLocation;
   rating: number;
   ratingCount: number;
+  startsAt: string;
   interestIds?: string[];
 };
 
@@ -31,8 +32,10 @@ type EventsState = {
   items: HomeEvent[];
 };
 
+const allEvents = [...events, ...spanishInterestEvents];
+
 const initialState: EventsState = {
-  items: events as HomeEvent[],
+  items: allEvents as HomeEvent[],
 };
 
 export const eventsSlice = createSlice({

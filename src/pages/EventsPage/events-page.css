@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+.events-page {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2rem;
+}
+
+.events-page__heading {
+  margin: 0.75rem 0 0.75rem;
+}

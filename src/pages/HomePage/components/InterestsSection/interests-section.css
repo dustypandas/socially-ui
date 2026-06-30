@@ -3,4 +3,5 @@
 .interests-section {
   position: relative;
   z-index: 1;
+  scroll-margin-top: 20px;
 }

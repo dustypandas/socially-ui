@@ -1,5 +1,10 @@
-import { navLinks } from '../../../data/dummyData.js';
 import './layout-header.css';
+
+const navLinks = [
+  { label: 'Events', href: '#/events-ui' },
+  { label: 'Communities', href: '#/communities-ui' },
+  { label: 'Sign-In', href: '#' },
+];
 
 export function LayoutHeader() {
   return (

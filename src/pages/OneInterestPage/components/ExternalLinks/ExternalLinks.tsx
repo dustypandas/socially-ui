@@ -41,54 +41,56 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
     <section className="external-links">
       <div className="external-links__header">
         <h2 className="external-links__title">External Links</h2>
+      </div>
+      <div className="external-links__content">
         <p className="external-links__description">
           A list of other groups and links (not related to Socially) that could be of interest.
         </p>
-      </div>
 
-      {links.length > 0 && (
-        <ul className="external-links__list">
-          {links.map(link => (
-            <li key={`${link.label}-${link.href}`} className="external-links__list-item">
-              <a
-                className="external-links__link"
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+        {links.length > 0 && (
+          <ul className="external-links__list">
+            {links.map(link => (
+              <li key={`${link.label}-${link.href}`} className="external-links__list-item">
+                <a
+                  className="external-links__link"
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
 
-      <div className="external-links__field">
-        <input
-          type="url"
-          className="external-links__input external-links__input--url"
-          placeholder="add new link?"
-          value={href}
-          onChange={event => setHref(event.target.value)}
-          aria-label="Link URL"
-        />
-        <div className="external-links__field-extra">
+        <div className="external-links__input-container">
           <input
-            type="text"
-            className="external-links__input"
-            placeholder="link name?"
-            value={label}
-            onChange={event => setLabel(event.target.value)}
-            aria-label="Link name"
+            type="url"
+            className="external-links__input external-links__input--url"
+            placeholder="add new link?"
+            value={href}
+            onChange={event => setHref(event.target.value)}
+            aria-label="Link URL"
           />
-          <button
-            type="button"
-            className="global-btn global-btn--purple-white external-links__submit"
-            disabled={isSubmitDisabled}
-            onClick={handleSubmit}
-          >
-            Add Link
-          </button>
+          <div className="external-links__input-extra">
+            <input
+              type="text"
+              className="external-links__input"
+              placeholder="link name?"
+              value={label}
+              onChange={event => setLabel(event.target.value)}
+              aria-label="Link name"
+            />
+            <button
+              type="button"
+              className="global-btn global-btn--purple-white external-links__submit"
+              disabled={isSubmitDisabled}
+              onClick={handleSubmit}
+            >
+              Add Link
+            </button>
+          </div>
         </div>
       </div>
     </section>

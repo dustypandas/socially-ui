@@ -21,6 +21,13 @@ type HomeHeroProps = {
   carouselEnabled?: boolean;
 };
 
+function scrollToSection(sectionId: string) {
+  document.getElementById(sectionId)?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
+}
+
 export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   useHeroParallax(heroRef);
@@ -61,10 +68,24 @@ export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
             </p>
           </div>
           <div className="home-hero__actions">
-            <a href="#" className="home-hero__cta home-hero__cta--orange">
+            <a
+              href="#events-section"
+              className="home-hero__cta home-hero__cta--orange"
+              onClick={event => {
+                event.preventDefault();
+                scrollToSection('events-section');
+              }}
+            >
               Join an event
             </a>
-            <a href="#interests-ui" className="home-hero__cta home-hero__cta--purple">
+            <a
+              href="#interests-section"
+              className="home-hero__cta home-hero__cta--purple"
+              onClick={event => {
+                event.preventDefault();
+                scrollToSection('interests-section');
+              }}
+            >
               Find my people
             </a>
           </div>

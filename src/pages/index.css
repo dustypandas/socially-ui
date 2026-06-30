@@ -272,7 +272,7 @@ h3 {
   max-width: 1080px;
   padding: 0 1rem;
 }
-.columns-layout {
+.prev-columns-layout {
   display: flex;
   /* align-items: flex-start; */
   align-items: stretch;
@@ -280,18 +280,18 @@ h3 {
   padding: 0 1rem;
   /* min-width: 360px; */
 }
-.column-main {
+.prev-column-main {
   flex: 1;
   position: relative;
 }
-.column-right {
+.prev-column-right {
   /* overflow: hidden; */
   /* max-height: 100dvh; eventually scrolls up when page moves*/
   /* min-width: 340px; */
   width: 400px;
   /* doesn't scale with zoom */
 }
-.column-left {
+.prev-column-left {
   /* max-height: 100dvh; */
   width: 320px;
 }

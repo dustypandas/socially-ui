@@ -47,6 +47,7 @@ export type HomeEvent = {
   location: EventLocation;
   rating: number;
   ratingCount: number;
+  startsAt: string;
   interestIds?: string[];
 };
 

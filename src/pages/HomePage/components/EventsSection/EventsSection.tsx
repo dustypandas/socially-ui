@@ -7,10 +7,10 @@ export function EventsSection() {
   const events = useAppSelector(state => state.events.items);
 
   return (
-    <section className="events-section">
+    <section className="events-section" id="events-section">
       <div className="width-container">
         <div className="events-section__section-divider"></div>
-        <SectionHeader title="Upcoming Events" />
+        <SectionHeader title="Upcoming Events" moreHref="#/events-ui" />
         <div className="events-section__grid">
           {events.map(event => (
             <EventCard key={event.id} event={event} />

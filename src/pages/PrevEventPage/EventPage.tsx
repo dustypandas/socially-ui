@@ -50,8 +50,8 @@ export function EventPage() {
     </div>
     <PageHeader isSubtle={true} />
     <section className='section-container event-content'>
-      <div className='width-container columns-layout'>
-        <div className='event-content-left column-left'>
+      <div className='width-container prev-columns-layout'>
+        <div className='event-content-left prev-column-left'>
           <div className='event-img__container'>
             <div className='event-img__wrapper-glow'>
               <img
@@ -146,7 +146,7 @@ export function EventPage() {
             </div> */}
           </div>
         </div>
-        <div className='event-content-main column-main'>
+        <div className='event-content-main prev-column-main'>
           <div className='event-intro'>
             <h1 className='event-intro__title'>
               {eventData.title}
@@ -278,7 +278,7 @@ export function EventPage() {
     </section>
 
     <section className={`section-container event-actions-bottom${!!hasScrolledNearEnd ? '' : ' has-border'}`}>
-      <div className='width-container columns-layout'>
+      <div className='width-container prev-columns-layout'>
         <div className='event-actions__left-container'>
           <div className='event-attendances__attendees'>
             <div className='event-attendances__attendees-img-container'>

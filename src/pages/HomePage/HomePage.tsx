@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PageLayout, LayoutFooter } from '../../components';
 import {
   HomeHero,
@@ -7,15 +7,19 @@ import {
   WhySociallySection,
 } from './components';
 import { useHeaderScrollCompact } from './hooks/useHeaderScrollCompact';
+import { getShouldPlayEntry } from '../../utils/shouldPlayEntry';
 import './home-page.css';
 
 export function HomePage() {
-  const [isEntryRevealed1, setIsEntryRevealed1] = useState(false);
-  const [isEntryRevealed2, setIsEntryRevealed2] = useState(false);
-  const [isEntryRevealed3, setIsEntryRevealed3] = useState(false);
+  const shouldPlayEntry = useRef(getShouldPlayEntry()).current;
+  const [isEntryRevealed1, setIsEntryRevealed1] = useState(!shouldPlayEntry);
+  const [isEntryRevealed2, setIsEntryRevealed2] = useState(!shouldPlayEntry);
+  const [isEntryRevealed3, setIsEntryRevealed3] = useState(!shouldPlayEntry);
   const shouldShowHeader = useHeaderScrollCompact();
 
   useEffect(() => {
+    if (!shouldPlayEntry) return;
+
     const timer1 = setTimeout(() => setIsEntryRevealed1(true), 2200); // 1.2s reveal
     const timer2 = setTimeout(() => setIsEntryRevealed2(true), 2800);
     const timer3 = setTimeout(() => setIsEntryRevealed3(true), 3400);
@@ -25,7 +29,7 @@ export function HomePage() {
       clearTimeout(timer2);
       clearTimeout(timer3);
     };
-  }, []);
+  }, [shouldPlayEntry]);
 
   return (
     <PageLayout

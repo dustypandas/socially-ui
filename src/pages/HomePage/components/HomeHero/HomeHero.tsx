@@ -66,7 +66,7 @@ export function HomeHero({ carouselEnabled = false, syncInitialDelayWithEntry = 
               for international residents in Madrid
             </p>
           </div>
-          <div className="home-hero__actions">
+          <div className="home-hero__cta-wrap">
             <a
               href="#home-events"
               className="home-hero__cta home-hero__cta--orange"

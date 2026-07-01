@@ -261,7 +261,6 @@ h3 {
 }
 
 .width-container {
-  /* --page-max-width: 1100px; */
   margin: 0 auto;
   max-width: 1080px;
   padding: 0 1rem;
@@ -300,6 +299,9 @@ html {
   --global-text-bg: rgba(28, 24, 18, 0.04);
   --global-link-blue: #3b6fd4;
   --global-header-height: 3.75rem;
+  /* Canonical max-width breakpoints; keep in sync with @media (max-width: …) rules. */
+  /* --global-breakpoint-sm: 480px;
+  --global-breakpoint-md: 780px; */
 
   --global-orange: #e67e22;
   --global-purple: #9b6dff;
@@ -307,7 +309,8 @@ html {
   --global-btn-purple: rgba(155, 109, 255, 0.55);
 
   --home-section-border: rgba(28, 24, 18, 0.12);
-  --home-hero-height: 25rem;
+  /* --home-hero-height: 25rem; */
+  --home-hero-height: 61vh; /* vs 25rem? */
   --home-box-shadow: rgba(28, 24, 18, 0.25);
 }
 
@@ -354,7 +357,7 @@ html {
   margin: 2rem 0 0;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 980px) {
   .columns-layout {
     gap: 1.25rem;
   }

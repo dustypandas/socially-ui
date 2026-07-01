@@ -20,15 +20,20 @@ const HERO_WORDS = [
 
 type HomeHeroProps = {
   carouselEnabled?: boolean;
+  syncInitialDelayWithEntry?: boolean;
 };
 
-export function HomeHero({ carouselEnabled = false }: HomeHeroProps) {
+export function HomeHero({ carouselEnabled = false, syncInitialDelayWithEntry = false }: HomeHeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   useHeroParallax(heroRef);
 
+  const intervalMs = 3600;
+  const exitMs = 1200;
+
   const { word, index, outgoingIndex, outgoingWord } = useWordCarousel(HERO_WORDS, {
-    intervalMs: 4000,
-    exitMs: 1200,
+    intervalMs,
+    exitMs,
+    initialDelayMs: syncInitialDelayWithEntry ? exitMs : intervalMs,
     isEnabled: carouselEnabled,
   });
 

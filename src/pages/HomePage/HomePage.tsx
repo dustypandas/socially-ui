@@ -44,7 +44,7 @@ export function HomePage() {
         <div className="home__entry-logo-image" />
       </div>
       <div id="home-top" />
-      <HomeHero carouselEnabled={isEntryRevealed2} />
+      <HomeHero carouselEnabled={isEntryRevealed2} syncInitialDelayWithEntry={shouldPlayEntry} />
       <main className="layout__main">
         <section className={[
           'home-page',

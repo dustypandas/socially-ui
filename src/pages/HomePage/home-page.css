@@ -47,10 +47,6 @@
   transition: all 0.6s ease-out;
 }
 
-.home__page-divider {
-  /* margin: 2rem 0 0; */
-}
-
 /* entry animations */
 .home-page {
   .interests-section,

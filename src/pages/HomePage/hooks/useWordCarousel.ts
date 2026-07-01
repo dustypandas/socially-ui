@@ -8,7 +8,7 @@ type WordCarouselOptions = {
 
 export function useWordCarousel(
   words: string[],
-  { intervalMs = 3600, exitMs = 1200, isEnabled = true }: WordCarouselOptions = {},
+  { intervalMs = 2800, exitMs = 1200, isEnabled = true }: WordCarouselOptions = {},
 ) {
   const [index, setIndex] = useState(0);
   const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);

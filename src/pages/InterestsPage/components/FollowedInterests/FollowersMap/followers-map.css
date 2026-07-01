@@ -27,8 +27,18 @@
   height: 100%;
 }
 
+.followers-map__marker-icon {
+  background: none;
+  border: none;
+  color: var(--global-link-blue);
+}
+
+.followers-map__marker-icon svg {
+  display: block;
+}
+
 .followers-map .marker-cluster div {
-  background-color: rgba(59, 111, 212, 0.85);
+  background-color: var(--global-link-blue);
 }
 
 .followers-map .marker-cluster span {

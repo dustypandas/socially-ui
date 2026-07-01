@@ -7,7 +7,7 @@ const COLUMNS = [
     text: [
       'From improv-theatre to drone-racing, poetry recitals to punk-rock jams...',
       'Somewhere out there is a tribe that shares our passions and curiosity, or maybe a limerence we\'re yet to discover.',
-      'Socially is a place for connecting through meaningful shared interests, with other international residents living in Madrid. <span class="text--full-color">🎸</span>',
+      'Socially is a place for connecting through meaningful common interests, with other international residents living in Madrid. <span class="text--full-color">🎸</span>',
     ],
   },
   {
@@ -22,7 +22,7 @@ const COLUMNS = [
     title: 'Free, Forever <span class="text--full-color">🎉</span>',
     text: [
       'Great communities take effort and energy, and the organizers are heroes, who help make this city feel just a little warmer, a little more enjoyable and fun, for all of us!',
-      'So Socially will always be FREE for the creators of events and communities.',
+      'So Socially will always be FREE for creators of our events and communities.',
       'Instead of being "customers" - we\'re all in this together. Come be a comrade, come be a friend! <span class="text--full-color">🍔</span>',
     ],
   },
@@ -32,7 +32,7 @@ export function WhySociallySection() {
   return (
     <section className="why-socially-section">
       <div className="width-container">
-        <div className="global__page-divider home__page-divider" />
+        <div className="global__page-divider" />
         {/* <SectionHeader title="Why Socially" hideMore /> */}
         <div className="why-socially-section__grid">
           {COLUMNS.map(col => (

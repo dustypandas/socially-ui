@@ -9,7 +9,7 @@ export function EventsSection() {
   return (
     <section className="events-section" id="home-events">
       <div className="width-container">
-        <div className="global__page-divider home__page-divider"></div>
+        <div className="global__page-divider"></div>
         <SectionHeader title="Upcoming Events" moreHref="#/events-ui" />
         <div className="events-section__grid">
           {events.map(event => (

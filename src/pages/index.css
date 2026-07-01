@@ -303,6 +303,7 @@ html {
 
   --global-orange: #e67e22;
   --global-purple: #9b6dff;
+  --global-purple-light: color-mix(in srgb, var(--global-purple) 80%, white 20%);
   --global-btn-purple: rgba(155, 109, 255, 0.55);
 
   --home-section-border: rgba(28, 24, 18, 0.12);

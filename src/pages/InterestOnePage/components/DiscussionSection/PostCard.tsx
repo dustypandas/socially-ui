@@ -100,7 +100,7 @@ export function PostCard({ post, onReplySubmit }: PostCardProps) {
 
       {showReplies && (
         <>
-          <div className="discussion-post__divider" aria-hidden="true" />
+          <div className="global__page-divider discussion-post__divider" aria-hidden="true" />
           <div className="discussion-post__replies">
             {post.replies.map(reply => (
               <ReplyItem key={reply.id} reply={reply} />
@@ -109,7 +109,7 @@ export function PostCard({ post, onReplySubmit }: PostCardProps) {
         </>
       )}
 
-      <div className="discussion-post__divider" aria-hidden="true" />
+      <div className="global__page-divider discussion-post__divider" aria-hidden="true" />
       <div className="discussion-post__reply-box">
         <DiscussionComposer
           placeholder="reply..."

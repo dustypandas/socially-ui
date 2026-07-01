@@ -3,6 +3,7 @@ import Leaflet from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import type { MemberFollower } from '../../../../../data/dummyData';
+import iconMapMarkerSvg from '../../../../../assets/icon-map-marker.svg?raw';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css';
@@ -10,7 +11,20 @@ import './followers-map.css';
 
 const MADRID_CENTER: Leaflet.LatLngExpression = [40.4168, -3.7038];
 
-Leaflet.Icon.Default.mergeOptions({});
+const MARKER_SIZE = 32;
+
+const markerSvgHtml = iconMapMarkerSvg
+  .replace('fill="black"', 'fill="currentColor"')
+  .replace('width="24"', `width="${MARKER_SIZE}"`)
+  .replace('height="24"', `height="${MARKER_SIZE}"`);
+
+const followerMarkerIcon = Leaflet.divIcon({
+  className: 'followers-map__marker-icon',
+  html: markerSvgHtml,
+  iconSize: [MARKER_SIZE, MARKER_SIZE],
+  iconAnchor: [MARKER_SIZE / 2, MARKER_SIZE],
+  popupAnchor: [0, -MARKER_SIZE],
+});
 
 type FollowersMapProps = {
   followers: MemberFollower[];
@@ -52,7 +66,7 @@ export function FollowersMap({ followers, followersCount }: FollowersMapProps) {
         />
         <MarkerClusterGroup chunkedLoading maxClusterRadius={50}>
           {followers.map(follower => (
-            <Marker key={follower.id} position={[follower.lat, follower.lng]}>
+            <Marker key={follower.id} position={[follower.lat, follower.lng]} icon={followerMarkerIcon}>
               <Popup>{follower.name}</Popup>
             </Marker>
           ))}

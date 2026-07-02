@@ -11,11 +11,6 @@
 
 .section-header__title {
   margin: 0;
-  color: var(--global-text-heading);
-  font-family: 'Cabin Sketch', cursive;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
 }
 
 .section-header__more {
@@ -30,5 +25,31 @@
   &:hover {
     color: var(--global-text);
     /* animation: hover-wiggle 1.2s infinite; */
+  }
+}
+
+.section-header__more--footer {
+  display: none;
+  padding: 0.5rem 0;
+  font-size: var(--font-size-lg);
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    justify-content: center;
+  }
+
+  .section-header__title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-header__more--inline {
+    display: none;
+  }
+
+  .section-header__more--footer {
+    display: flex;
   }
 }

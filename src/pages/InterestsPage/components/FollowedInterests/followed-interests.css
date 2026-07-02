@@ -22,7 +22,7 @@
 .followed-interests__count {
   color: var(--global-text-light);
   font-family: 'Courier Prime', monospace;
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
   line-height: 1.4;
 }
 
@@ -62,7 +62,7 @@
   display: block;
   color: var(--global-link-blue);
   font-family: 'Courier Prime', monospace;
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
   text-decoration: none;
   line-height: 2;
 }

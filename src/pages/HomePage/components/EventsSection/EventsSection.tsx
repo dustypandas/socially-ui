@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../../store/hooks';
+import { SectionHeader, SectionMoreLink } from '../SectionHeader/SectionHeader';
 import { EventCard } from './EventCard/EventCard';
-import { SectionHeader } from '../../../../components/SectionHeader/SectionHeader';
 import './events-section.css';
 
 export function EventsSection() {
@@ -16,6 +16,7 @@ export function EventsSection() {
             <EventCard key={event.id} event={event} />
           ))}
         </div>
+        <SectionMoreLink href="#/events-ui" variant="footer" />
       </div>
     </section>
   );

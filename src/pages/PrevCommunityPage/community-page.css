@@ -432,17 +432,17 @@
       font-size: 1.25rem;
     }
     h3, .event-cover__title {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
     }
     .community-intro__attributes-container {
-      font-size: 0.875rem;
+      font-size: var(--font-size-sm);
       gap: 0.25em;
     }
     /* .event-cover__content {
       padding-bottom: calc(4.25em);
     } */
     .event-cover__attributes-container {
-      font-size: 0.875rem;
+      font-size: var(--font-size-sm);
     }
     /* .event__details {
       position: absolute;

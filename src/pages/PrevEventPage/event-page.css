@@ -68,7 +68,7 @@
     overflow: hidden;
 
     .gm-icon {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
     }
   }
   .event-intro__icon-calendar-month {
@@ -429,7 +429,7 @@
       font-size: 1.25rem;
     }
     h3, .event-cover__title {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
     }
     .event-img__img {
       width: 100%;

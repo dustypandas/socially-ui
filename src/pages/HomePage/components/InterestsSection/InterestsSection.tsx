@@ -1,5 +1,5 @@
+import { SectionHeader, SectionMoreLink } from '../SectionHeader/SectionHeader';
 import { InterestsGrid } from './InterestsGrid/InterestsGrid';
-import { SectionHeader } from '../../../../components/SectionHeader/SectionHeader';
 import './interests-section.css';
 
 export function InterestsSection() {
@@ -8,6 +8,7 @@ export function InterestsSection() {
       <div className="width-container">
         <SectionHeader title="Popular Interests" moreHref="#/interests-ui" />
         <InterestsGrid />
+        <SectionMoreLink href="#/interests-ui" variant="footer" />
       </div>
     </section>
   );

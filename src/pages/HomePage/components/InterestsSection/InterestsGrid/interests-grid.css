@@ -20,7 +20,7 @@
 .interests-grid__link {
   display: inline-block;
   color: var(--global-link-blue);
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
   text-decoration: none;
 
   &:hover {

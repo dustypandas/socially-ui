@@ -308,10 +308,22 @@ html {
   --global-purple-light: color-mix(in srgb, var(--global-purple) 80%, white 20%);
   --global-btn-purple: rgba(155, 109, 255, 0.55);
 
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+
   --home-section-border: rgba(28, 24, 18, 0.12);
   /* --home-hero-height: 25rem; */
   --home-hero-height: 61vh; /* vs 25rem? */
   --home-box-shadow: rgba(28, 24, 18, 0.25);
+}
+
+.global-title-text {
+  color: var(--global-text-heading);
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .global-btn {

@@ -60,7 +60,7 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
         >
           <img
             className="layout-header__logo"
-            src="./assets/logo-socially-v2.png"
+            src="../../../assets/logo-socially.png"
             alt="socially madrid"
           />
         </a>

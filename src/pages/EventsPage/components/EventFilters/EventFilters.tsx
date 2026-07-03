@@ -17,7 +17,7 @@ export function EventFilters({
 }: EventFiltersProps) {
   return (
     <div className="event-filters">
-      <h2 className="event-filters__title section-header__title">Filters</h2>
+      <h2 className="global-title-text event-filters__title">Filters</h2>
       <label className="event-filters__field">
         <span className="event-filters__label">Interest:</span>
         <input

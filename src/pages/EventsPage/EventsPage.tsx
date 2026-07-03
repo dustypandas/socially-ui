@@ -22,7 +22,7 @@ export function EventsPage() {
         <div className="width-container">
           <ColumnsLayout mainPosition="left" stackAt={780}>
             <ColumnsLayout.Main>
-              <h2 className="events-page__heading section-header__title">
+              <h2 className="global-title-text events-page__heading">
                 Upcoming Events - {getTimeFilterLabel(timeFilter)}
               </h2>
               <EventsGrid events={filteredEvents} />

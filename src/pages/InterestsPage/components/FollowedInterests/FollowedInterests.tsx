@@ -17,7 +17,7 @@ export function FollowedInterests({
   return (
     <div className="followed-interests">
       <div className="followed-interests__header">
-        <h2 className="followed-interests__title section-header__title">Following:</h2>
+        <h2 className="global-title-text followed-interests__title">Following:</h2>
         {/* <h3 className="followed-interests__title">Following:</h3> */}
         <span className="followed-interests__count">
           ({followedInterests.length}/{maxFollowed})

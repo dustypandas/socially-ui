@@ -54,7 +54,7 @@ export function InterestsPage() {
         <div className="width-container">
           <ColumnsLayout mainPosition="left" stackAt={780}>
             <ColumnsLayout.Main>
-              <h2 className="interests-page__heading section-header__title">Popular Interests:</h2>
+              <h2 className="global-header-text interests-page__heading">Popular Interests:</h2>
               <InterestsSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}

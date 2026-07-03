@@ -1,13 +1,19 @@
 import { useEffect } from 'react';
 import Leaflet from 'leaflet';
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
+import {
+  MapContainer as LeafletMapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMap,
+} from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import type { MemberFollower } from '../../../../../data/dummyData';
-import iconMapMarkerSvg from '../../../../../assets/icon-map-marker.svg?raw';
+import type { MemberFollower } from '../../data/dummyData';
+import iconMapMarkerSvg from '../../assets/icon-map-marker.svg?raw';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.Default.css';
-import './followers-map.css';
+import './map-container.css';
 
 const MADRID_CENTER: Leaflet.LatLngExpression = [40.4168, -3.7038];
 
@@ -19,16 +25,15 @@ const markerSvgHtml = iconMapMarkerSvg
   .replace('height="24"', `height="${MARKER_SIZE}"`);
 
 const followerMarkerIcon = Leaflet.divIcon({
-  className: 'followers-map__marker-icon',
+  className: 'map-container__marker-icon',
   html: markerSvgHtml,
   iconSize: [MARKER_SIZE, MARKER_SIZE],
   iconAnchor: [MARKER_SIZE / 2, MARKER_SIZE],
   popupAnchor: [0, -MARKER_SIZE],
 });
 
-type FollowersMapProps = {
+type MapContainerProps = {
   followers: MemberFollower[];
-  followersCount?: number;
 };
 
 function MapResizeHandler() {
@@ -45,18 +50,14 @@ function MapResizeHandler() {
   return null;
 }
 
-export function FollowersMap({ followers, followersCount }: FollowersMapProps) {
+export function MapContainer({ followers }: MapContainerProps) {
   return (
-    <div className="followers-map-wrap">
-      {followersCount != null && (
-        <h3 className="global-heading-text followers-map__title">{followersCount}+ followers</h3>
-      )}
-      <div className="followers-map">
-      <MapContainer
+    <div className="map-container">
+      <LeafletMapContainer
         center={MADRID_CENTER}
         zoom={13}
         scrollWheelZoom={false}
-        className="followers-map__canvas"
+        className="map-container__canvas"
         attributionControl={false}
       >
         <MapResizeHandler />
@@ -71,8 +72,7 @@ export function FollowersMap({ followers, followersCount }: FollowersMapProps) {
             </Marker>
           ))}
         </MarkerClusterGroup>
-      </MapContainer>
-      </div>
+      </LeafletMapContainer>
     </div>
   );
 }

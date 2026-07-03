@@ -71,7 +71,7 @@ export function InterestsPage() {
                 onUnfollow={dummyUnfollowInterest}
               />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky>
+            <ColumnsLayout.Aside sticky={50}>
               <FollowedInterests
                 followedInterests={dummyFollowedInterests}
                 maxFollowed={dummyMaxFollowed}

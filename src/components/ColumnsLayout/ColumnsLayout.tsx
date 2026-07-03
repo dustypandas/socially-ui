@@ -80,20 +80,35 @@ function ColumnsLayoutRoot({
 
 type ColumnSlotProps = {
   children: ReactNode;
-  sticky?: boolean;
+  sticky?: number | boolean;
   className?: string;
 };
 
-function Main({ children, sticky = false, className = '' }: ColumnSlotProps) {
+function isStickyEnabled(sticky: number | boolean | undefined, isStacked: boolean) {
+  return sticky !== undefined && sticky !== false && !isStacked;
+}
+
+function getStickyTopStyle(
+  sticky: number | boolean | undefined,
+  isStacked: boolean,
+): CSSProperties | undefined {
+  if (!isStickyEnabled(sticky, isStacked)) return undefined;
+  const offsetPx = sticky === true ? 0 : sticky;
+  return { '--columns-slot-sticky-top': `calc(var(--layout-sticky-top) + ${offsetPx}px)` } as CSSProperties;
+}
+
+function Main({ children, sticky, className = '' }: ColumnSlotProps) {
   const { isStacked } = useColumnsLayoutContext();
 
   const slotClassName = [
     'columns-layout__main',
-    sticky && !isStacked && 'columns-layout__slot--sticky',
+    isStickyEnabled(sticky, isStacked) && 'columns-layout__slot--sticky',
     className,
   ].filter(Boolean).join(' ');
 
-  return <div className={slotClassName}>{children}</div>;
+  const style = getStickyTopStyle(sticky, isStacked);
+
+  return <div className={slotClassName} style={style}>{children}</div>;
 }
 
 type AsideProps = ColumnSlotProps & {
@@ -102,24 +117,25 @@ type AsideProps = ColumnSlotProps & {
 
 function Aside({
   children,
-  sticky = false,
+  sticky,
   asideWidth,
   className = '',
 }: AsideProps) {
   const { isStacked } = useColumnsLayoutContext();
 
-  const style: CSSProperties | undefined = asideWidth
-    ? { '--columns-aside-width': asideWidth } as CSSProperties
-    : undefined;
+  const style: CSSProperties = {
+    ...(asideWidth ? { '--columns-aside-width': asideWidth } : {}),
+    ...getStickyTopStyle(sticky, isStacked),
+  } as CSSProperties;
 
   const slotClassName = [
     'columns-layout__aside',
-    sticky && !isStacked && 'columns-layout__slot--sticky',
+    isStickyEnabled(sticky, isStacked) && 'columns-layout__slot--sticky',
     className,
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={slotClassName} style={style}>
+    <div className={slotClassName} style={Object.keys(style).length > 0 ? style : undefined}>
       {children}
     </div>
   );

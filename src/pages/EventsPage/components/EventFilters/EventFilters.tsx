@@ -1,4 +1,4 @@
-import { BulletButton } from '../../../../components';
+import { ButtonsGroup } from '../../../../components';
 import { TIME_FILTER_OPTIONS, type TimeFilter } from '../../helpers';
 import './event-filters.css';
 
@@ -25,13 +25,13 @@ export function EventFilters({
           aria-label="Filter by time"
         >
           {TIME_FILTER_OPTIONS.map(option => (
-            <BulletButton
+            <ButtonsGroup
               key={option.value}
               selected={timeFilter === option.value}
               onClick={() => onTimeFilterChange(option.value)}
             >
               {option.label}
-            </BulletButton>
+            </ButtonsGroup>
           ))}
         </div>
       </div>

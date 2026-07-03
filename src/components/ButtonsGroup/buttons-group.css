@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-.bullet-button {
+.buttons-group {
   cursor: pointer;
   border: none;
   border-radius: 9999px;
@@ -17,17 +17,17 @@
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
-.bullet-button:hover {
+.buttons-group:hover {
   box-shadow: 0 1px 3px var(--home-box-shadow);
   transform: scale(1.03);
 }
 
-.bullet-button--selected {
+.buttons-group--selected {
   background: var(--global-btn-purple);
   color: white;
   box-shadow: 0 1px 3px var(--home-box-shadow);
 }
 
-.bullet-button--selected:hover {
+.buttons-group--selected:hover {
   transform: scale(1.03);
 }

@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+.map-container {
+  aspect-ratio: 1;
+  width: 100%;
+  overflow: hidden;
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.25rem;
+}
+
+.map-container__canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.map-container__marker-icon {
+  background: none;
+  border: none;
+  color: var(--global-link-blue);
+}
+
+.map-container__marker-icon svg {
+  display: block;
+}
+
+.map-container .marker-cluster div {
+  background-color: var(--global-link-blue);
+}
+
+.map-container .marker-cluster span {
+  color: white;
+}
+
+@media (max-width: 780px) {
+  .map-container {
+    aspect-ratio: 4 / 3;
+  }
+}

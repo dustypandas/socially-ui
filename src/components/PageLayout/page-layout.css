@@ -5,7 +5,7 @@
 
   min-height: 100vh;
   background: #ffffff url('/assets/bg-transparent-cream-paper.png');
-  background-size: 200px 200px;
+  background-size: 150px 150px;
   color: var(--global-text);
 }
 
@@ -13,7 +13,7 @@
   position: relative;
   z-index: 1;
   background: white url('/assets/bg-transparent-cream-paper.png');
-  background-size: 200px 200px;
+  background-size: 150px 150px;
   padding-top: 1rem;
 }
 

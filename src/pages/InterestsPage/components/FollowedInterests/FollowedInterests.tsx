@@ -1,5 +1,5 @@
 import type { Interest, MemberFollower } from '../../../../data/dummyData';
-import { FollowersMap } from './FollowersMap/FollowersMap';
+import { MapContainer } from '../../../../components';
 import './followed-interests.css';
 
 type FollowedInterestsProps = {
@@ -39,7 +39,7 @@ export function FollowedInterests({
           </p>
         )}
       </div>
-      <FollowersMap followers={mapFollowers} />
+      <MapContainer followers={mapFollowers} />
     </div>
   );
 }

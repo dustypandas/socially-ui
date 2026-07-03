@@ -16,7 +16,7 @@
   align-items: stretch;
   justify-content: flex-end;
   background: white url('/assets/bg-transparent-cream-paper.png');
-  background-size: 200px 200px;
+  background-size: 150px 150px;
   border-bottom: 1px solid var(--home-section-border);
   padding: 0 0 1rem;
   box-sizing: border-box;

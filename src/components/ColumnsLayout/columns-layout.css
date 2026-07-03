@@ -26,7 +26,7 @@
 
 .columns-layout__slot--sticky {
   position: sticky;
-  top: var(--layout-sticky-top);
+  top: var(--columns-slot-sticky-top, var(--layout-sticky-top));
   align-self: flex-start;
 }
 

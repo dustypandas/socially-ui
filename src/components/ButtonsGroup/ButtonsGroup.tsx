@@ -1,25 +1,25 @@
 import type { ReactNode } from 'react';
-import './bullet-button.css';
+import './buttons-group.css';
 
-type BulletButtonProps = {
+type ButtonsGroupProps = {
   selected?: boolean;
   onClick?: () => void;
   children: ReactNode;
   className?: string;
 };
 
-export function BulletButton({
+export function ButtonsGroup({
   selected = false,
   onClick,
   children,
   className,
-}: BulletButtonProps) {
+}: ButtonsGroupProps) {
   return (
     <button
       type="button"
       className={[
-        'bullet-button',
-        selected && 'bullet-button--selected',
+        'buttons-group',
+        selected && 'buttons-group--selected',
         className,
       ].filter(Boolean).join(' ')}
       aria-pressed={selected}

@@ -25,7 +25,7 @@ export function EventsPage() {
               <PageHeader title={`Upcoming Events - ${getTimeFilterLabel(timeFilter)}`} />
               <EventsGrid events={filteredEvents} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky>
+            <ColumnsLayout.Aside sticky={50}>
               <EventFilters
                 interestQuery={interestQuery}
                 onInterestQueryChange={setInterestQuery}

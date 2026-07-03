@@ -3,8 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
 import { memberFollowers, spanishInterestEvents } from '../../data/dummyData.js';
 import { useAppSelector } from '../../store/hooks';
-import { DiscussionSection, EventCardHorizontal, ExternalLinks } from './components';
-import { FollowersMap } from '../InterestsPage/components/FollowedInterests/FollowersMap/FollowersMap';
+import { DiscussionSection, EventCardHorizontal, ExternalLinks, FollowersSection } from './components';
 import { getUniqueMapFollowers } from '../InterestsPage/helpers';
 import './interest-one-page.css';
 
@@ -36,12 +35,7 @@ export function InterestOnePage() {
                 title={interest?.name ?? 'Spanish'}
                 backHref="#/interests-ui"
               />
-              <div
-                className={[
-                  'interest-one-page__events',
-                  events.length > 0 && 'interest-one-page__events--has-items',
-                ].filter(Boolean).join(' ')}
-              >
+              <div className="interest-one-page__events">
                 {events.length > 0 ? (
                   <>
                     <div className="interest-one-page__events-list">
@@ -78,6 +72,20 @@ export function InterestOnePage() {
                   </button>
                 </div>
               </div>
+            </ColumnsLayout.Main>
+            <ColumnsLayout.Aside sticky={50}>
+              <div className="interest-one-page__aside">
+                {interest && (
+                  <FollowersSection
+                    followers={mapFollowers}
+                    followersCount={interest.followersCount ?? 0}
+                  />
+                )}
+              </div>
+            </ColumnsLayout.Aside>
+          </ColumnsLayout>
+          <ColumnsLayout>
+            <ColumnsLayout.Main>
               <DiscussionSection
                 interestId={INTEREST_ID}
                 isEmpty={isEmptyVariant}
@@ -86,16 +94,10 @@ export function InterestOnePage() {
             <ColumnsLayout.Aside sticky>
               <div className="interest-one-page__aside">
                 {interest && (
-                  <>
-                    <FollowersMap
-                      followers={mapFollowers}
-                      followersCount={interest.followersCount}
-                    />
-                    <ExternalLinks
-                      interestId={INTEREST_ID}
-                      links={interest.relatedLinks ?? []}
-                    />
-                  </>
+                  <ExternalLinks
+                    interestId={INTEREST_ID}
+                    links={interest.relatedLinks ?? []}
+                  />
                 )}
               </div>
             </ColumnsLayout.Aside>

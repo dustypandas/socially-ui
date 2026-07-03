@@ -18,7 +18,7 @@ export function EventOnePage() {
     <PageLayout isEventPage>
       <section className="event-one-page">
         <div className="width-container">
-          <ColumnsLayout mainPosition="right" stackAt={780}>
+          <ColumnsLayout mainPosition="right">
             <ColumnsLayout.Main>
               <div className="event-one-page__main">
                 <EventIntro

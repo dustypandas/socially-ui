@@ -318,12 +318,23 @@ html {
   --home-box-shadow: rgba(28, 24, 18, 0.25);
 }
 
-.global-title-text {
-  color: var(--global-text-heading);
+.global-heading-text {
   font-family: 'Cabin Sketch', cursive;
   font-size: 1.5rem;
+  color: var(--global-text-heading);
   font-weight: 700;
   line-height: 1.2;
+  margin: 0;
+}
+
+.global-h2 {
+  font-size: 1.5rem;
+  color: var(--global-text-heading);
+}
+
+.global-h3 {
+  font-size: 1.25rem;
+  color: var(--global-text-light);
 }
 
 .global-btn {

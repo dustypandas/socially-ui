@@ -6,33 +6,6 @@
   padding-bottom: 2rem;
 }
 
-.interest-one-page__header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 0.25rem 1rem 1rem;
-}
-
-.interest-one-page__back {
-  justify-self: start;
-  color: var(--global-text-muted);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-md);
-  text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--global-text);
-  }
-}
-
-.interest-one-page__title {
-  grid-column: 2;
-  justify-self: center;
-  margin: 0;
-  font-size: 2rem;
-}
-
 .interest-one-page__events {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ColumnsLayout, PageLayout } from '../../components';
+import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
 import { useAppSelector } from '../../store/hooks';
 import { EventFilters, EventsGrid } from './components';
 import { filterEvents, getTimeFilterLabel, type TimeFilter } from './helpers';
@@ -20,14 +20,12 @@ export function EventsPage() {
     <PageLayout>
       <section className="events-page">
         <div className="width-container">
-          <ColumnsLayout mainPosition="left" stackAt={780}>
+          <ColumnsLayout>
             <ColumnsLayout.Main>
-              <h2 className="global-title-text events-page__heading">
-                Upcoming Events - {getTimeFilterLabel(timeFilter)}
-              </h2>
+              <PageHeader title={`Upcoming Events - ${getTimeFilterLabel(timeFilter)}`} />
               <EventsGrid events={filteredEvents} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky asideWidth="min(300px, 30%)">
+            <ColumnsLayout.Aside sticky>
               <EventFilters
                 interestQuery={interestQuery}
                 onInterestQueryChange={setInterestQuery}

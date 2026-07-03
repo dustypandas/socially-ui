@@ -15,6 +15,7 @@
 
 .followed-interests__title {
   margin: 0;
+  font-size: 1.25rem;
   /* color: var(--global-text-light); */
   /* font-family: 'Courier Prime', monospace; */
 }

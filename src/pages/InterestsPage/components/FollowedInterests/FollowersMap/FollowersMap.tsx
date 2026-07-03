@@ -49,7 +49,7 @@ export function FollowersMap({ followers, followersCount }: FollowersMapProps) {
   return (
     <div className="followers-map-wrap">
       {followersCount != null && (
-        <p className="followers-map__title">{followersCount}+ followers</p>
+        <h3 className="global-heading-text followers-map__title">{followersCount}+ followers</h3>
       )}
       <div className="followers-map">
       <MapContainer

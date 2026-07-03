@@ -7,7 +7,7 @@ type EventDescriptionProps = {
 export function EventDescription({ details }: EventDescriptionProps) {
   return (
     <section className="event-description">
-      <h2 className="global-title-text event-description__title">Event Details</h2>
+      <h3 className="global-heading-text event-description__title">Event Details</h3>
       <div
         className="event-description__content"
         dangerouslySetInnerHTML={{ __html: details }}

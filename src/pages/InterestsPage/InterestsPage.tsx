@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ColumnsLayout, PageLayout } from '../../components';
+import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
 import { memberFollowers } from '../../data/dummyData.js';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { addInterest } from '../../store/slices/interestsSlice';
@@ -52,9 +52,9 @@ export function InterestsPage() {
     <PageLayout>
       <section className="interests-page">
         <div className="width-container">
-          <ColumnsLayout mainPosition="left" stackAt={780}>
+          <ColumnsLayout>
             <ColumnsLayout.Main>
-              <h2 className="global-header-text interests-page__heading">Popular Interests:</h2>
+              <PageHeader title="Popular Interests" />
               <InterestsSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}
@@ -71,7 +71,7 @@ export function InterestsPage() {
                 onUnfollow={dummyUnfollowInterest}
               />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky asideWidth="min(380px, 38%)">
+            <ColumnsLayout.Aside sticky>
               <FollowedInterests
                 followedInterests={dummyFollowedInterests}
                 maxFollowed={dummyMaxFollowed}

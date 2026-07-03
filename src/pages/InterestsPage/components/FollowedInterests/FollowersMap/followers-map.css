@@ -9,8 +9,9 @@
 .followers-map__title {
   margin: 0;
   color: var(--global-text-light);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-lg);
+  /* font-family: 'Courier Prime', monospace; */
+  /* font-size: var(--font-size-lg); */
+  font-size: 1.25rem;
   line-height: 1.4;
 }
 

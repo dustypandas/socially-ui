@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ColumnsLayout, PageLayout } from '../../components';
+import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
 import { memberFollowers, spanishInterestEvents } from '../../data/dummyData.js';
 import { useAppSelector } from '../../store/hooks';
 import { DiscussionSection, EventCardHorizontal, ExternalLinks } from './components';
@@ -30,16 +30,12 @@ export function InterestOnePage() {
     <PageLayout>
       <section className="interest-one-page">
         <div className="width-container">
-          <div className="interest-one-page__header">
-            <a href="#/interests-ui" className="interest-one-page__back">
-              ← Interests
-            </a>
-            <h1 className="global-title-text interest-one-page__title">
-              {interest?.name ?? 'Spanish'}
-            </h1>
-          </div>
-          <ColumnsLayout mainPosition="left" stackAt={780}>
+          <ColumnsLayout>
             <ColumnsLayout.Main>
+              <PageHeader
+                title={interest?.name ?? 'Spanish'}
+                backHref="#/interests-ui"
+              />
               <div
                 className={[
                   'interest-one-page__events',
@@ -48,7 +44,6 @@ export function InterestOnePage() {
               >
                 {events.length > 0 ? (
                   <>
-                    <h2 className="global-title-text">{`${events.length} Upcoming Events`}</h2>
                     <div className="interest-one-page__events-list">
                       {events.map(event => (
                         <div key={event.id} className="interest-one-page__event-item">
@@ -88,7 +83,7 @@ export function InterestOnePage() {
                 isEmpty={isEmptyVariant}
               />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky asideWidth="min(380px, 38%)">
+            <ColumnsLayout.Aside sticky>
               <div className="interest-one-page__aside">
                 {interest && (
                   <>

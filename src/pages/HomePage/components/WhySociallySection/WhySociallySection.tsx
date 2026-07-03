@@ -37,7 +37,7 @@ export function WhySociallySection() {
         <div className="why-socially-section__grid">
           {COLUMNS.map(col => (
             <div key={col.title} className="why-socially-section__column">
-              <h3 className="global-title-text why-socially-section__column-title" dangerouslySetInnerHTML={{ __html: col.title }} />
+              <h2 className="global-heading-text why-socially-section__column-title" dangerouslySetInnerHTML={{ __html: col.title }} />
               <div className="why-socially-section__column-text">
                 {col.text.map((paragraph, index) => (
                   <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />

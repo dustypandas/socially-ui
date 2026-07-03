@@ -40,7 +40,7 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
   return (
     <section className="external-links">
       <div className="external-links__header">
-        <h2 className="external-links__title">External Links</h2>
+        <h3 className="global-heading-text global-h3 external-links__title">External Links</h3>
       </div>
       <div className="external-links__content">
         <p className="external-links__description">

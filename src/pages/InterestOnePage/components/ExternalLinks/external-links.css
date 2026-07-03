@@ -13,17 +13,13 @@
 }
 
 .external-links__title {
-  margin: 0;
-  color: var(--global-text-light);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-lg);
-  line-height: 1.4;
+  /* line-height: 1.4; */
   margin-top: 1rem;
 }
 
-.external-links__content {
-  /* margin: 0 1rem; */
-}
+/* .external-links__content {
+  margin: 0 1rem;
+} */
 
 .external-links__description {
   color: var(--global-text-muted);

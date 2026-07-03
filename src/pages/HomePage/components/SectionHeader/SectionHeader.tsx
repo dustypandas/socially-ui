@@ -42,7 +42,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className="section-header">
-      <h2 className="global-title-text section-header__title">{title}</h2>
+      <h2 className="global-heading-text global-h2 section-header__title">{title}</h2>
       {!hideMore && (
         <SectionMoreLink href={moreHref} label={moreLabel} variant="inline" />
       )}

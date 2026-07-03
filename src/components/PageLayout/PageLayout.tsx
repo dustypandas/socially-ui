@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { markRouteLoaded } from '../../utils/shouldPlayEntry';
 import { LayoutHeader } from './LayoutHeader/LayoutHeader';
 import { LayoutFooter } from './LayoutFooter/LayoutFooter';
 import './page-layout.css';
@@ -17,6 +20,14 @@ export function PageLayout({
   isEventPage = false,
   shouldShowHeader,
 }: PageLayoutProps) {
+  const { pathname } = useLocation();
+
+  // scroll to top whenever new route is loaded
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    markRouteLoaded();
+  }, [pathname]);
+
   return (
     <div className={[
       'page-layout',

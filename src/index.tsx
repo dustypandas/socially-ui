@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './pages/index.css';
-import { ScrollToTop } from './components';
 import {
   CommunityPage,
   EventPage,
@@ -20,7 +19,6 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
     <HashRouter>
-      <ScrollToTop />
       <Routes>
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />

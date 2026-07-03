@@ -1,4 +1,3 @@
-export { ScrollToTop } from './ScrollToTop/ScrollToTop';
 export { ButtonsGroup } from './ButtonsGroup/ButtonsGroup';
 export { ColumnsLayout } from './ColumnsLayout/ColumnsLayout';
 export { PageLayout } from './PageLayout/PageLayout';

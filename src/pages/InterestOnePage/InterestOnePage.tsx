@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
-import { memberFollowers, spanishInterestEvents } from '../../data/dummyData.js';
+import { memberFollowers, spanishInterestEvents, spanishRelatedCommunities } from '../../data/dummyData.js';
 import { useAppSelector } from '../../store/hooks';
-import { DiscussionSection, EventCardHorizontal, ExternalLinks, FollowersSection } from './components';
+import { CommunitiesSection, EventCardHorizontal, ExternalLinks, FollowersSection } from './components';
 import { getUniqueMapFollowers } from '../InterestsPage/helpers';
 import './interest-one-page.css';
 
@@ -24,6 +24,7 @@ export function InterestOnePage() {
   const events = isEmptyVariant
     ? []
     : spanishInterestEvents.filter(event => event.interestIds?.includes(INTEREST_ID));
+  const communities = isEmptyVariant ? [] : spanishRelatedCommunities;
 
   return (
     <PageLayout>
@@ -84,14 +85,12 @@ export function InterestOnePage() {
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>
-          <ColumnsLayout>
+          <ColumnsLayout className="interest-one-page__second-section">
             <ColumnsLayout.Main>
-              <DiscussionSection
-                interestId={INTEREST_ID}
-                isEmpty={isEmptyVariant}
-              />
+              <div className="global__page-divider interest-one-page__divider" />
+              <CommunitiesSection communities={communities} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky>
+            <ColumnsLayout.Aside sticky={12}>
               <div className="interest-one-page__aside">
                 {interest && (
                   <ExternalLinks

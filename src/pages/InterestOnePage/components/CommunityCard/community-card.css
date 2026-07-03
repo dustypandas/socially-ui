@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+
+.community-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 200px;
+  height: 100%;
+  border-radius: 0.25rem;
+  background: white;
+  color: var(--global-text);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 1px 2px var(--home-box-shadow);
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: 0 1px 7px var(--home-box-shadow);
+    animation: hover-swing 0.8s ease forwards;
+  }
+}
+
+.community-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.community-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 0.875rem 1rem 1.125rem;
+}
+
+.community-card__title {
+  margin: 0 0 0.25rem;
+  color: var(--global-text);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.community-card__row {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--font-size-sm);
+  color: var(--global-text-muted);
+  line-height: 1.5;
+}
+
+.community-card__icon {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.community-card__icon--rating {
+  color: var(--color-yellow-500);
+}

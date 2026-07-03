@@ -38,8 +38,6 @@ export function DiscussionSection({ interestId, isEmpty = false }: DiscussionSec
 
   return (
     <section className="discussion-section">
-      <div className="global__page-divider" />
-
       <div className="discussion-section__composer">
         <DiscussionComposer
           placeholder="Questions & Ideas..."

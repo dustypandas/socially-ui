@@ -553,6 +553,36 @@ export const spanishInterestEvents = [
   },
 ];
 
+export const spanishRelatedCommunities = [
+  {
+    id: 'madrid-language-exchange',
+    name: 'Madrid Language Exchange',
+    image: '../../assets/event-lightning.avif',
+    href: '#/prev-community-ui',
+    memberCount: 412,
+    rating: 4.8,
+    ratingCount: 96,
+  },
+  {
+    id: 'cultura-madrid',
+    name: 'Cultura Madrid',
+    image: '../../assets/event-sketch.avif',
+    href: '#/prev-community-ui',
+    memberCount: 287,
+    rating: 4.9,
+    ratingCount: 54,
+  },
+  {
+    id: 'tapas-and-talk',
+    name: 'Tapas & Talk',
+    image: '../../assets/event-wine.jpg',
+    href: '#/prev-community-ui',
+    memberCount: 193,
+    rating: 4.7,
+    ratingCount: 71,
+  },
+];
+
 export const memberAvatarUrls = [
   './assets/member-peter.webp',
   './assets/member-maria.jpg',

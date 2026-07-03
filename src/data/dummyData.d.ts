@@ -8,6 +8,16 @@ export type RelatedLink = {
   href: string;
 };
 
+export type Community = {
+  id: string;
+  name: string;
+  image: string;
+  href: string;
+  memberCount: number;
+  rating: number;
+  ratingCount: number;
+};
+
 export type Interest = {
   id: string;
   name: string;
@@ -114,6 +124,7 @@ export const followedInterestIds: string[];
 export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];
 export const spanishInterestEvents: HomeEvent[];
+export const spanishRelatedCommunities: Community[];
 export const sampleFullEvent: FullEvent;
 export const memberAvatarUrls: string[];
 export const mockCurrentUser: MockCurrentUser;

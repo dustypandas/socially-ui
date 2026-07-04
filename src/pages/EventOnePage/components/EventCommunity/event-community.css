@@ -48,6 +48,10 @@
   color: var(--global-text);
   font-size: var(--font-size-sm);
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .event-community__about {

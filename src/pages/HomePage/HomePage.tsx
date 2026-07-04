@@ -34,7 +34,7 @@ export function HomePage() {
   return (
     <PageLayout
       isHomePage
-      shouldShowHeader={shouldShowHeader}
+      shouldShowHomePageHeader={shouldShowHeader}
     >
       <div className={[
         'home__entry-cover',

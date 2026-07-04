@@ -8,6 +8,31 @@ export type RelatedLink = {
   href: string;
 };
 
+export type CommunityOrganizer = {
+  name: string;
+  image: string;
+};
+
+export type CommunityMemberProfile = {
+  name: string;
+  image: string;
+};
+
+export type CommunityPageData = {
+  id: string;
+  name: string;
+  image: string;
+  memberCount: number;
+  rating: number;
+  ratingCount: number;
+  pastEventsCount: number;
+  pastEvents: HomeEvent[];
+  detailsHtml: string;
+  organizers: CommunityOrganizer[];
+  memberProfiles: CommunityMemberProfile[];
+  upcomingEvents: HomeEvent[];
+};
+
 export type Community = {
   id: string;
   name: string;
@@ -16,6 +41,8 @@ export type Community = {
   memberCount: number;
   rating: number;
   ratingCount: number;
+  description?: string;
+  interests?: string[];
 };
 
 export type Interest = {
@@ -124,7 +151,10 @@ export const followedInterestIds: string[];
 export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];
 export const spanishInterestEvents: HomeEvent[];
+export const communities: Community[];
+export const myCommunityIds: string[];
 export const spanishRelatedCommunities: Community[];
+export const sampleCommunityPage: CommunityPageData;
 export const sampleFullEvent: FullEvent;
 export const memberAvatarUrls: string[];
 export const mockCurrentUser: MockCurrentUser;

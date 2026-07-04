@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+.community-organizers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.community-organizers__content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.community-organizers__avatar {
+  width: 3.75rem;
+  height: 3.75rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 100%;
+  background: #ddd;
+}
+
+.community-organizers__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.community-organizers__contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--global-link-blue);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.community-organizers__contact-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 960px) {
+  .community-organizers {
+    display: none;
+  }
+}

@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+.community-members {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.community-members__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  text-decoration: none;
+}
+
+.community-members__avatar {
+  width: 3.75rem;
+  height: 3.75rem;
+  object-fit: cover;
+  border-radius: 100%;
+  background: #ddd;
+}
+
+@media (max-width: 960px) {
+  .community-members {
+    display: none;
+  }
+}

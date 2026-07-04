@@ -28,14 +28,14 @@
     border-top: 1.5px solid rgba(255, 255, 255, 0.55);
   }
 
-  &.layout--show-header {
+  &.layout--show-home-page-header {
     .layout-header {
       transform: translateY(0);
     }
   }
 }
 
-.layout--is-event {
+.layout--has-static-header {
   --layout-sticky-top: 1rem;
 
   .layout-header {

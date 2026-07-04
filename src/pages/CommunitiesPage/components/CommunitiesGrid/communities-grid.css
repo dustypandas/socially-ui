@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+.communities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem 1.5rem;
+  margin: 0 1rem;
+  padding: 0.25rem 0 1rem;
+}
+
+.communities-grid__empty {
+  margin: 0 1rem 1rem;
+  color: var(--global-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+@media (max-width: 1070px) {
+  .communities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .communities-grid {
+    grid-template-columns: 1fr;
+  }
+}

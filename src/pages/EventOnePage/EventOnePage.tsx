@@ -15,7 +15,7 @@ export function EventOnePage() {
   const eventData = sampleFullEvent;
 
   return (
-    <PageLayout isEventPage>
+    <PageLayout hasStaticHeader>
       <section className="event-one-page">
         <div className="width-container">
           <ColumnsLayout mainPosition="right">

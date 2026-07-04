@@ -5,12 +5,14 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import './pages/index.css';
 import {
   CommunityPage,
+  CommunitiesPage,
   EventPage,
   EventsPage,
   HomePage,
   IndexPage,
   InterestsPage,
   InterestOnePage,
+  CommunityOnePage,
   EventOnePage,
 } from './pages';
 import { store } from './store';
@@ -24,6 +26,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/home-ui' element={<HomePage />} />
         <Route path='/events-ui' element={<EventsPage />} />
         <Route path='/event-one-ui' element={<EventOnePage />} />
+        <Route path='/community-one-ui' element={<CommunityOnePage />} />
+        <Route path='/communities-ui' element={<CommunitiesPage />} />
         <Route path='/interests-ui' element={<InterestsPage />} />
         <Route path='/interest-one-ui' element={<InterestOnePage />} />
         <Route path='/interest-one-ui-empty' element={<InterestOnePage />} />

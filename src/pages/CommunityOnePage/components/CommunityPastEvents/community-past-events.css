@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+.community-past-events {
+  padding: 0 0 1rem;
+}
+
+.community-past-events .events-grid {
+  > :nth-child(n + 4) {
+    display: none;
+  }
+}

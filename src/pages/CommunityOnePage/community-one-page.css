@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+.community-one-page {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2rem;
+}
+
+/* .community-one-page__hero {
+  padding: 0;
+} */
+
+.community-one-page__content {
+  padding-top: 0.5rem;
+}
+
+.community-one-page__aside {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 960px) {
+  .community-one-page__aside {
+    display: none;
+  }
+}

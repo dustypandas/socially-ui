@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+.community-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.community-nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.community-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.community-nav__link {
+  color: var(--global-text-muted);
+  font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-md);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--global-text);
+  }
+}
+
+.community-nav__follow-btn {
+  flex-shrink: 0;
+  margin-right: 1rem;
+  padding: 0.375rem 1rem;
+  font-size: var(--font-size-sm);
+}
+
+.community-nav__divider {
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .community-nav__follow-btn {
+    display: none;
+  }
+}

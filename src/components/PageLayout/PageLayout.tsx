@@ -8,17 +8,17 @@ import './page-layout.css';
 type PageLayoutProps = {
   children?: React.ReactNode;
   isHomePage?: boolean;
-  isEventPage?: boolean;
   isEntryRevealed1?: boolean;
   isEntryRevealed2?: boolean;
-  shouldShowHeader?: boolean;
+  shouldShowHomePageHeader?: boolean;
+  hasStaticHeader?: boolean;
 };
 
 export function PageLayout({
   children,
   isHomePage = false,
-  isEventPage = false,
-  shouldShowHeader,
+  hasStaticHeader = false,
+  shouldShowHomePageHeader,
 }: PageLayoutProps) {
   const { pathname } = useLocation();
 
@@ -32,8 +32,8 @@ export function PageLayout({
     <div className={[
       'page-layout',
       isHomePage && 'layout--is-home',
-      isEventPage && 'layout--is-event',
-      isHomePage && shouldShowHeader && 'layout--show-header',
+      isHomePage && shouldShowHomePageHeader && 'layout--show-home-page-header',
+      hasStaticHeader && 'layout--has-static-header',
     ].filter(Boolean).join(' ')}>
       <LayoutHeader isHomePage={isHomePage} />
       {isHomePage ? (

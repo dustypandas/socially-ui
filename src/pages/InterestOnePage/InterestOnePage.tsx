@@ -90,6 +90,8 @@ export function InterestOnePage() {
             <ColumnsLayout.Main>
               <div className="global__page-divider interest-one-page__divider" />
               <CommunitiesSection communities={communities} />
+              {/* <div className="global__page-divider interest-one-page__divider" />
+              <DiscussionSection interestId='Spanish' /> */}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
               <div className="global__page-divider interest-one-page__divider--hidden" />

@@ -1,13 +1,13 @@
 import type { Interest } from '../../store/slices/interestsSlice';
 import type { HomeEvent } from '../../store/slices/eventsSlice';
 
-export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'all';
+export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'anytime';
 
 export const TIME_FILTER_OPTIONS: { value: TimeFilter; label: string }[] = [
   { value: 'today', label: 'Today' },
   { value: 'thisWeek', label: 'This Week' },
   { value: 'nextWeek', label: 'Next Week' },
-  { value: 'all', label: 'All' },
+  { value: 'anytime', label: 'Anytime' },
 ];
 
 const TIME_FILTER_LABELS = Object.fromEntries(
@@ -52,7 +52,7 @@ export function matchesTimeFilter(
   filter: TimeFilter,
   now = new Date(),
 ): boolean {
-  if (filter === 'all') return true;
+  if (filter === 'anytime') return true;
 
   const eventDate = new Date(startsAt);
 

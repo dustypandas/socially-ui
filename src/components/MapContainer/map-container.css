@@ -34,5 +34,13 @@
 @media (max-width: 780px) {
   .map-container {
     aspect-ratio: 4 / 3;
+    margin: 0 15%;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-container {
+    margin: 0 1rem;
   }
 }

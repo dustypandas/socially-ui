@@ -75,6 +75,7 @@ export function InterestOnePage() {
               </div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
+              <div className="global__page-divider interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
                   <FollowersSection
@@ -91,6 +92,7 @@ export function InterestOnePage() {
               <CommunitiesSection communities={communities} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
+              <div className="global__page-divider interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
                   <ExternalLinks

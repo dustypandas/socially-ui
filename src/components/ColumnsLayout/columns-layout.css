@@ -38,8 +38,17 @@
   width: 100%;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 980px) {
   .columns-layout {
-    --columns-gap: 1.25rem;
+    gap: 1.25rem;
+  }
+}
+@media (max-width: 780px) {
+  .columns-layout {
+    flex-direction: column;
+  }
+  .column-left,
+  .column-right {
+    width: 100%;
   }
 }

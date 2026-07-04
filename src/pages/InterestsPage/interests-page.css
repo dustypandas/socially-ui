@@ -9,3 +9,14 @@
 .interests-page__heading {
   margin: 0.75rem 0 0.75rem;
 }
+
+.interests-page__divider--hidden {
+  margin: 0.75rem 0 1rem;
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .interests-page__divider--hidden {
+    display: block;
+  }
+}

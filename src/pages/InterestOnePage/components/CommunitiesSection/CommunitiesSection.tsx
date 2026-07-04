@@ -19,6 +19,14 @@ export function CommunitiesSection({ communities }: CommunitiesSectionProps) {
           ))}
         </div>
       )}
+      <div className="communities-section__create">
+        <button
+          type="button"
+          className="global-btn global-btn--white-purple communities-section__create-btn"
+        >
+          {communities.length > 0 ? 'Create Another Community?' : 'Create a Community?'}
+        </button>
+      </div>
     </section>
   );
 }

@@ -299,9 +299,6 @@ html {
   --global-text-bg: rgba(28, 24, 18, 0.04);
   --global-link-blue: #3b6fd4;
   --global-header-height: 3.75rem;
-  /* Canonical max-width breakpoints; keep in sync with @media (max-width: …) rules. */
-  /* --global-breakpoint-sm: 480px;
-  --global-breakpoint-md: 780px; */
 
   --global-orange: #e67e22;
   --global-purple: #9b6dff;
@@ -378,21 +375,6 @@ html {
   border-top: 1.5px solid var(--home-section-border);
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.55);
   margin: 2rem 0 0;
-}
-
-@media (max-width: 980px) {
-  .columns-layout {
-    gap: 1.25rem;
-  }
-}
-@media (max-width: 780px) {
-  .columns-layout {
-    flex-direction: column;
-  }
-  .column-left,
-  .column-right {
-    width: 100%;
-  }
 }
 
 @keyframes hover-wiggle {

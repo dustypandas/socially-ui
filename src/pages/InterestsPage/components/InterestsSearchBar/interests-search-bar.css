@@ -54,9 +54,3 @@
 .interests-search-bar__add-btn--visible {
   display: block;
 }
-
-@media (max-width: 780px) {
-  .interests-search-bar-wrap {
-    max-width: none;
-  }
-}

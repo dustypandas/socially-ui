@@ -19,6 +19,7 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
   const dispatch = useAppDispatch();
   const [label, setLabel] = useState('');
   const [href, setHref] = useState('');
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const trimmedLabel = label.trim();
   const trimmedHref = href.trim();
   const isSubmitDisabled = trimmedLabel.length === 0 || trimmedHref.length === 0;
@@ -64,23 +65,31 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
           </ul>
         )}
 
-        <div className="external-links__input-container">
+        <div
+          className="external-links__input-container"
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={event => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              setIsInputFocused(false);
+            }
+          }}
+        >
           <input
-            type="url"
-            className="external-links__input external-links__input--url"
-            placeholder="suggest a new link?"
-            value={href}
-            onChange={event => setHref(event.target.value)}
-            aria-label="Link URL"
+            type="text"
+            className="external-links__input external-links__input--name"
+            placeholder={isInputFocused ? 'link name...' : 'suggest a new link...'}
+            value={label}
+            onChange={event => setLabel(event.target.value)}
+            aria-label="Link name"
           />
           <div className="external-links__input-extra">
             <input
-              type="text"
-              className="external-links__input"
-              placeholder="link name?"
-              value={label}
-              onChange={event => setLabel(event.target.value)}
-              aria-label="Link name"
+              type="url"
+              className="external-links__input external-links__input--url"
+              placeholder="link url..."
+              value={href}
+              onChange={event => setHref(event.target.value)}
+              aria-label="Link URL"
             />
             <button
               type="button"

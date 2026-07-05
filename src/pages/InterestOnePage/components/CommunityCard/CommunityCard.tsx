@@ -9,7 +9,7 @@ type CommunityCardProps = {
 
 export function CommunityCard({ community }: CommunityCardProps) {
   return (
-    <a href={community.href} className="community-card">
+    <a href={community.href} className="community-card" target="_blank">
       <img className="community-card__image" src={community.image} alt="" />
       <div className="community-card__body">
         <h3 className="community-card__title">
@@ -24,7 +24,7 @@ export function CommunityCard({ community }: CommunityCardProps) {
         <div className="community-card__row">
           <IconStar className="community-card__icon community-card__icon--rating" />
           <span className="community-card__text">
-            {community.rating} ({community.ratingCount} ratings)
+            {community.ratingCount ? community.rating : 'NEW'} ({community.ratingCount} ratings)
           </span>
         </div>
       </div>

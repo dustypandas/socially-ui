@@ -2,12 +2,14 @@ import IconCalendar from '../../../../../assets/icon-calendar-outline.svg?react'
 import IconMapMarker from '../../../../../assets/icon-map-marker-outline.svg?react';
 import IconGroup from '../../../../../assets/icon-group-outline.svg?react';
 import IconStar from '../../../../../assets/icon-star.svg?react';
-import type { HomeEvent } from '../../../../../store/slices/eventsSlice';
+import type { Event } from '../../../../../store/slices/eventsSlice';
 import './event-card.css';
 
 type EventCardProps = {
-  event: HomeEvent;
+  event: EventCardEvent;
 };
+
+export type EventCardEvent = Event & { dateTimeLabel: string };
 
 export function EventCard({ event }: EventCardProps) {
   return (
@@ -20,7 +22,7 @@ export function EventCard({ event }: EventCardProps) {
         <div className="event-card__row">
           <IconCalendar className="event-card__icon" />
           <span>
-            {event.dateLabel}, {event.timeLabel}
+            {event.dateTimeLabel}
           </span>
         </div>
         <div className="event-card__row">

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .communities-section__title {
   margin: 1rem 0;
@@ -20,13 +21,13 @@
 }
 
 /* special breakpoint for column grid */
-@media (max-width: 1070px) {
+@media (max-width: theme(--breakpoint-columns-card-grid-2)) {
   .communities-section__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: theme(--soc-breakpoint-sm)) {
   .communities-section__grid {
     grid-template-columns: 1fr;
 

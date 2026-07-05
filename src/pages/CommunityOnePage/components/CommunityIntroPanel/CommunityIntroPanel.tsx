@@ -45,7 +45,7 @@ export function CommunityIntroPanel({
       </div>
       <button
         type="button"
-        className="global-btn global-btn--purple-white community-intro-panel__follow-btn"
+        className="global-btn global-btn--purple-white community-intro-panel__join-btn"
       >
         Join this community
       </button>

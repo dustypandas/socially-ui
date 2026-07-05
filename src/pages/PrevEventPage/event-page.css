@@ -41,7 +41,7 @@
     object-position: center center;
     background-color: #ddd;
   }
-  .event-intro__title {
+  .prev-event-intro__title {
     font-size: 2.5rem;
   }
   .event-intro__attributes {
@@ -373,7 +373,7 @@
 
 @media (max-width: 960px) {
   .event-page {
-    h1, .event-intro__title {
+    h1, .prev-event-intro__title {
       font-size: 2rem;
     }
     /* .community-menu__actions-container,
@@ -394,7 +394,7 @@
 }
 @media (max-width: 780px) {
   .event-page {
-    h1, .event-intro__title {
+    h1, .prev-event-intro__title {
       font-size: 1.75rem;
     }
     .event-content-left {
@@ -422,7 +422,7 @@
 }
 @media (max-width: 420px) {
   .event-page {
-    h1, .event-intro__title {
+    h1, .prev-event-intro__title {
       font-size: 1.5rem;
     }
     h2 {

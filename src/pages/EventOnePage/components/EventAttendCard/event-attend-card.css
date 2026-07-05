@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .event-attend-card {
   background: white;
@@ -10,6 +11,7 @@
 .event-attend-card__header {
   background: var(--global-text-bg);
   padding: 0.5rem 1rem;
+  @apply courier-inline;
 }
 
 .event-attend-card__header-label {

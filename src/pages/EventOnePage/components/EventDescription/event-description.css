@@ -2,16 +2,14 @@
 
 .event-description {
   padding: 1rem 0;
-}
 
-.event-description__title {
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
+  .section-header {
+    padding: 0 0 0.75rem;
+  }
 }
 
 .event-description__content {
-  /* color: var(--global-text-muted); */
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   line-height: 1.75;
   word-wrap: break-word;
 

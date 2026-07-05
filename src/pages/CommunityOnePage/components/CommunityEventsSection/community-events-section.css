@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .community-events-section {
   padding: 0 0 1rem;
@@ -72,7 +73,7 @@
   padding: 1.5rem 0 0;
 }
 
-@media (max-width: 480px) {
+@media (max-width: theme(--soc-breakpoint-sm)) {
   .community-events-section__footer {
     display: flex;
   }

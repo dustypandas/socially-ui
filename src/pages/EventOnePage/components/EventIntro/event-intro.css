@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .event-intro {
   padding: 0 0 1rem;
@@ -89,19 +90,19 @@
   font-size: var(--font-size-sm);
 }
 
-@media (max-width: 960px) {
+/* @media (max-width: 960px) {
   .event-intro__title {
     font-size: 2rem;
   }
-}
+} */
 
-@media (max-width: 780px) {
+@media (max-width: theme(--soc-breakpoint-md)) {
   .event-intro__title {
     font-size: 1.75rem;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: theme(--soc-breakpoint-sm)) {
   .event-intro__title {
     font-size: 1.5rem;
   }

@@ -1,0 +1,14 @@
+@theme {
+  --soc-breakpoint-sm: 480px;
+  --soc-breakpoint-md: 780px;
+  --soc-breakpoint-lg: 980px; /* for grid-specific breakpoints */
+
+  --breakpoint-columns-card-grid-2: 1070px; /* for column card grid breakpoints */
+}
+
+@utility courier-inline { /* for fixing courier font spacing */
+  font-family: 'Courier Prime', monospace;
+  padding-top: 0.5rem;
+  padding-bottom: 0.375rem;
+}
+  

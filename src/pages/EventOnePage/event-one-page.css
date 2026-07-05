@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .event-one-page {
   position: relative;
@@ -24,7 +25,7 @@
   z-index: 10;
 }
 
-@media (max-width: 780px) {
+@media (max-width: theme(--soc-breakpoint-md)) {
   .event-one-page {
     padding-bottom: 5rem;
   }

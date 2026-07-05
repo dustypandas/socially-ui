@@ -13,7 +13,7 @@ export function EventsSection() {
         <SectionHeader title="Upcoming Events" moreHref="#/events-ui" />
         <div className="events-section__grid">
           {events.map(event => (
-            <EventCard key={event.id} event={event} />
+            <EventCard key={event.id} event={{ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }} />
           ))}
         </div>
         <SectionMoreLink href="#/events-ui" variant="footer" />

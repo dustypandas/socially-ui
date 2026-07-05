@@ -2,12 +2,12 @@ import { useMemo } from 'react';
 import IconMapMarker from '../../../../assets/icon-map-marker-outline.svg?react';
 import IconStar from '../../../../assets/icon-star.svg?react';
 import { memberAvatarUrls } from '../../../../data/dummyData.js';
-import type { HomeEvent } from '../../../../store/slices/eventsSlice.js';
+import type { Event } from '../../../../store/slices/eventsSlice.js';
 import './event-card-horizontal.css';
 import { getAttendeesLabel } from '../../../../utils/getAttendeesLabel.js';
 
 type EventCardHorizontalProps = {
-  event: HomeEvent;
+  event: Event & { dateTimeLabel: string },
 };
 
 function pickMemberAvatars(eventId: string, count: number): string[] {
@@ -38,7 +38,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
   const attendeesLabel = getAttendeesLabel(event.attendees.count, avatarUrls.length);
 
   return (
-    <a href="#/event-one-ui" className="event-card-horizontal">
+    <a href="#/event-one-ui" className="event-card-horizontal" target="_blank">
       <div className="event-card-horizontal__body">
         <h3 className="event-card-horizontal__title">
           <span className="event-card-horizontal__title-text">{event.title}</span>

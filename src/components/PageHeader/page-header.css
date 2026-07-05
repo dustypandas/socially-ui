@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .page-header {
   display: grid;
@@ -10,8 +11,7 @@
 .page-header__back {
   justify-self: start;
   color: var(--global-text-muted);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-md);
+  @apply courier-inline;
   text-decoration: none;
   transition: color 0.2s ease;
 

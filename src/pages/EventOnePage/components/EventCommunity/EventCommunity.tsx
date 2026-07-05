@@ -9,7 +9,7 @@ type EventCommunityProps = {
 export function EventCommunity({ name, img, details }: EventCommunityProps) {
   return (
     <section className="event-community">
-      <a href="#/community-one-ui" className="event-community__header">
+      <a href="#/community-one-ui" className="event-community__header" target="_blank">
         <img className="event-community__img" src={img} alt="" />
         <div className="event-community__title-group">
           <span className="event-community__label">Organised by</span>

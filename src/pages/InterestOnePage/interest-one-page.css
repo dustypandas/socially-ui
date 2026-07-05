@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .interest-one-page {
   position: relative;
@@ -98,6 +99,7 @@
 .interest-one-page__suggest-btn,
 .communities-section__create-btn {
   padding: 0.5rem 1rem;
+  @apply courier-inline;
 }
 
 .interest-one-page__second-section {
@@ -119,7 +121,7 @@
   gap: 0.75rem;
 }
 
-@media (max-width: 780px) {
+@media (max-width: theme(--soc-breakpoint-md)) {
   .interest-one-page__divider--hidden {
     display: block;
   }

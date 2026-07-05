@@ -22,8 +22,12 @@ export function EventsPage() {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader title={`Upcoming Events - ${getTimeFilterLabel(timeFilter)}`} />
-              <EventsGrid events={filteredEvents} />
+              <PageHeader
+                title={`Events - ${getTimeFilterLabel(timeFilter)}`}
+                backLabel="← Home"
+                backHref="#/home-ui"
+              />
+              <EventsGrid events={filteredEvents.map(event => ({ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }))} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
               <EventFilters

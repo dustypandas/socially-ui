@@ -17,7 +17,7 @@ export function CommunityPastEvents({ count, events }: CommunityPastEventsProps)
         moreHref="#"
         moreLabel="past events →"
       />
-      <EventsGrid events={events} />
+      <EventsGrid events={events.map(event => ({ ...event, dateTimeLabel: `${event.dateLabel}` }))} />
     </section>
   );
 }

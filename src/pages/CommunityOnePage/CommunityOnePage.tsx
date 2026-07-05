@@ -23,7 +23,7 @@ export function CommunityOnePage() {
             <ColumnsLayout.Main>
               <CommunityHero image={community.image} name={community.name} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside>
+            <ColumnsLayout.Aside asideWidth="min(380px, 38%)">
               <CommunityIntroPanel
                 name={community.name}
                 memberCount={community.memberCount}
@@ -47,7 +47,7 @@ export function CommunityOnePage() {
                 events={community.pastEvents}
               />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky={50}>
+            <ColumnsLayout.Aside sticky={50} asideWidth="min(380px, 38%)">
               <div className="community-one-page__aside">
                 <CommunityOrganizers organizers={community.organizers} />
                 <CommunityMembers

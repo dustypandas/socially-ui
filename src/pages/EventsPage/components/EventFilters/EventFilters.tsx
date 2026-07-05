@@ -40,7 +40,7 @@ export function EventFilters({
 
       all events / Attending (/ by my communities / of my interests)
       ratings (3 / 4 / 5)
-      public / invite only
+      public / exclusive / invite only
       nearest metro (search)
       */}
 

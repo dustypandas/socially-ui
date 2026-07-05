@@ -33,7 +33,7 @@ export function CommunityEventsSection({ events }: CommunityEventsSectionProps) 
                 <div className="community-events-section__item-dot" />
               </div>
             </div>
-            <EventCardHorizontal event={event} />
+            <EventCardHorizontal event={{ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }} />
           </div>
         ))}
       </div>

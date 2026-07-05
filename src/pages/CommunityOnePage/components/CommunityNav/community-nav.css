@@ -1,16 +1,21 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .community-nav {
   position: sticky;
   top: 0;
   z-index: 20;
+  background: white url('/assets/bg-transparent-cream-paper.png');
+  background-size: 150px 150px;
+  border-bottom: 1.5px solid var(--home-section-border);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.community-nav--docked {
+    box-shadow: 0 1px 3px var(--home-section-border);
+  }
 }
 
 .community-nav__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   padding: 0.75rem 1rem;
 }
 
@@ -24,8 +29,8 @@
 
 .community-nav__link {
   color: var(--global-text-muted);
-  font-family: 'Courier Prime', monospace;
   font-size: var(--font-size-md);
+  @apply courier-inline;
   text-decoration: none;
   transition: color 0.2s ease;
 
@@ -34,19 +39,26 @@
   }
 }
 
-.community-nav__follow-btn {
+.community-nav__join-btn {
   flex-shrink: 0;
   margin-right: 1rem;
-  padding: 0.375rem 1rem;
-  font-size: var(--font-size-sm);
+  padding: 0.5rem 1rem;
+  @apply courier-inline;
+  font-size: var(--font-size-md);
 }
 
 .community-nav__divider {
   margin: 0;
+  border-top: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.community-nav--docked {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 960px) {
-  .community-nav__follow-btn {
+  .community-nav__join-btn {
     display: none;
   }
 }

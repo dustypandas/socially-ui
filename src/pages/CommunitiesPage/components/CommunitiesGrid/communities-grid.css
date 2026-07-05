@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .communities-grid {
   display: grid;
@@ -15,13 +16,13 @@
   line-height: 1.5;
 }
 
-@media (max-width: 1070px) {
+@media (max-width: theme(--breakpoint-columns-card-grid-2)) {
   .communities-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: theme(--soc-breakpoint-sm)) {
   .communities-grid {
     grid-template-columns: 1fr;
   }

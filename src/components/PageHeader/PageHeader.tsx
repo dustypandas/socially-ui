@@ -9,7 +9,7 @@ type PageHeaderProps = {
 export function PageHeader({
   title,
   backHref,
-  backLabel = '← Interests',
+  backLabel = '← Back',
 }: PageHeaderProps) {
   return (
     <div className="page-header">

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .columns-layout {
   --columns-gap: 2rem;
@@ -38,12 +39,12 @@
   width: 100%;
 }
 
-@media (max-width: 980px) {
+@media (max-width: theme(--soc-breakpoint-lg)) {
   .columns-layout {
     gap: 1.25rem;
   }
 }
-@media (max-width: 780px) {
+@media (max-width: theme(--soc-breakpoint-md)) {
   .columns-layout {
     flex-direction: column;
   }

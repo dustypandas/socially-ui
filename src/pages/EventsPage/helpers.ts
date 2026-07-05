@@ -1,5 +1,5 @@
 import type { Interest } from '../../store/slices/interestsSlice';
-import type { HomeEvent } from '../../store/slices/eventsSlice';
+import type { Event } from '../../store/slices/eventsSlice';
 
 export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'anytime';
 
@@ -84,12 +84,12 @@ function getMatchingInterestIds(interests: Interest[], query: string): Set<strin
 }
 
 export function filterEvents(
-  events: HomeEvent[],
+  events: Event[],
   interests: Interest[],
   interestQuery: string,
   timeFilter: TimeFilter,
   now = new Date(),
-): HomeEvent[] {
+): Event[] {
   const matchingInterestIds = getMatchingInterestIds(interests, interestQuery);
   const hasInterestFilter = interestQuery.trim().length > 0;
 

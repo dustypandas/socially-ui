@@ -1,9 +1,8 @@
-import { EventCard } from '../../../HomePage/components/EventsSection/EventCard/EventCard';
-import type { HomeEvent } from '../../../../store/slices/eventsSlice';
+import { EventCard, EventCardEvent } from '../../../HomePage/components/EventsSection/EventCard/EventCard';
 import './events-grid.css';
 
 type EventsGridProps = {
-  events: HomeEvent[];
+  events: EventCardEvent[];
 };
 
 export function EventsGrid({ events }: EventsGridProps) {

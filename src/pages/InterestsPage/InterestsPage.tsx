@@ -54,7 +54,11 @@ export function InterestsPage() {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader title="Popular Interests" />
+              <PageHeader
+                title="Popular Interests"
+                backLabel="← Home"
+                backHref="#/home-ui"
+              />
               <InterestsSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}

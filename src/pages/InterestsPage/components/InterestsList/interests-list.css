@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .interests-list {
   display: flex;
@@ -82,7 +83,7 @@
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: theme(--soc-breakpoint-md)) {
   .interests-list__grid {
     grid-template-columns: 1fr;
   }

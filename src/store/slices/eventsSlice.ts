@@ -11,7 +11,7 @@ export type EventLocation = {
   href: string;
 };
 
-export type HomeEvent = {
+export type Event = {
   id: string;
   title: string;
   image: string;
@@ -29,13 +29,13 @@ export type HomeEvent = {
 };
 
 type EventsState = {
-  items: HomeEvent[];
+  items: Event[];
 };
 
 const allEvents = [...events, ...spanishInterestEvents];
 
 const initialState: EventsState = {
-  items: allEvents as HomeEvent[],
+  items: allEvents as Event[],
 };
 
 export const eventsSlice = createSlice({

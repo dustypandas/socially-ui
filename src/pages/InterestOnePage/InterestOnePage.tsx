@@ -34,6 +34,7 @@ export function InterestOnePage() {
             <ColumnsLayout.Main>
               <PageHeader
                 title={interest?.name ?? 'Spanish'}
+                backLabel="← Interests"
                 backHref="#/interests-ui"
               />
               <div className="interest-one-page__events">
@@ -56,7 +57,7 @@ export function InterestOnePage() {
                               <div className="interest-one-page__event-item-dot" />
                             </div>
                           </div>
-                          <EventCardHorizontal event={event} />
+                          <EventCardHorizontal event={{ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }} />
                         </div>
                       ))}
                     </div>

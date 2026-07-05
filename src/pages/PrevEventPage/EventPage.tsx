@@ -148,7 +148,7 @@ export function EventPage() {
         </div>
         <div className='event-content-main prev-column-main'>
           <div className='event-intro'>
-            <h1 className='event-intro__title'>
+            <h1 className='prev-event-intro__title'>
               {eventData.title}
             </h1>
             <div className='event-intro__attributes'>

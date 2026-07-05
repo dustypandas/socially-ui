@@ -40,7 +40,7 @@
   border-radius: 0.25rem;
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .about-section__content {
     flex-direction: column;
   }

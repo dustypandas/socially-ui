@@ -34,7 +34,7 @@ export function InterestOnePage() {
             <ColumnsLayout.Main>
               <PageHeader
                 title={interest?.name ?? 'Spanish'}
-                backLabel="← Interests"
+                backLabel="←&thinsp;Interests"
                 backHref="#/interests-ui"
               />
               <div className="interest-one-page__events">

@@ -30,20 +30,20 @@
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-lg)) {
+@media (max-width: theme(--breakpoint-lg)) {
   .interests-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .interests-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem 1rem;
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-sm)) {
+@media (max-width: theme(--breakpoint-sm)) {
   .interests-grid {
     grid-template-columns: 1fr;
   }

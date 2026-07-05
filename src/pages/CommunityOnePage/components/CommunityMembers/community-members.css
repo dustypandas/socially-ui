@@ -22,9 +22,3 @@
   border-radius: 100%;
   background: #ddd;
 }
-
-@media (max-width: 960px) {
-  .community-members {
-    display: none;
-  }
-}

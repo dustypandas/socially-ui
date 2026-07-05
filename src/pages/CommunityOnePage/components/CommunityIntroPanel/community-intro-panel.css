@@ -57,21 +57,20 @@
   margin-top: 0.25rem;
   padding: 0.5rem 1rem;
   @apply courier-inline;
-  font-size: var(--font-size-md);
 }
 
-@media (max-width: 960px) {
+@media (max-width: theme(--breakpoint-lg)) {
   .community-intro-panel__title {
     font-size: 2rem;
   }
-
-  .community-intro-panel__join-btn {
-    display: inline-flex;
-  }
 }
 
-@media (max-width: 780px) {
+@media (max-width: theme(--breakpoint-md)) {
   .community-intro-panel__title {
     font-size: 1.75rem;
+  }
+
+  .community-intro-panel__join-btn {
+    display: flex;
   }
 }

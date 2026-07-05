@@ -156,7 +156,7 @@
   color: var(--global-purple);
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .home-hero__copy,
   .home-hero__cta-wrap {
     margin: 1rem;
@@ -174,7 +174,7 @@
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-sm)) {
+@media (max-width: theme(--breakpoint-sm)) {
   .home-hero__copy,
   .home-hero__cta-wrap {
     margin: 0;

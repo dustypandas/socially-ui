@@ -29,7 +29,6 @@
 
 .community-nav__link {
   color: var(--global-text-muted);
-  font-size: var(--font-size-md);
   @apply courier-inline;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -44,7 +43,6 @@
   margin-right: 1rem;
   padding: 0.5rem 1rem;
   @apply courier-inline;
-  font-size: var(--font-size-md);
 }
 
 .community-nav__divider {
@@ -57,7 +55,7 @@
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: theme(--breakpoint-md)) {
   .community-nav__join-btn {
     display: none;
   }

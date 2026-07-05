@@ -11,6 +11,7 @@ type EventAttendCardProps = {
   attendeeCount: number;
   priceLabel?: string;
   className?: string;
+  isFixedBar?: boolean;
 };
 
 export function EventAttendCard({
@@ -18,12 +19,21 @@ export function EventAttendCard({
   attendeeCount,
   priceLabel = 'Free',
   className = '',
+  isFixedBar = false,
 }: EventAttendCardProps) {
   return (
-    <div className={['event-attend-card', className].filter(Boolean).join(' ')}>
-      <div className="event-attend-card__header">
-        <span className="event-attend-card__header-label">Attend</span>
-      </div>
+    <div
+      className={[
+        'event-attend-card',
+        isFixedBar && 'event-attend-card--fixed-bar',
+        className,
+      ].filter(Boolean).join(' ')}
+    >
+      {!isFixedBar && (
+        <div className="event-attend-card__header">
+          <span className="event-attend-card__header-label">Attend</span>
+        </div>
+      )}
       <div className="event-attend-card__body">
         <div className="event-attend-card__left">
           <div className="event-attend-card__attendees">

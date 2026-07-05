@@ -56,7 +56,7 @@ export function InterestsPage() {
             <ColumnsLayout.Main>
               <PageHeader
                 title="Popular Interests"
-                backLabel="← Home"
+                backLabel="←&thinsp;Home"
                 backHref="#/home-ui"
               />
               <InterestsSearchBar

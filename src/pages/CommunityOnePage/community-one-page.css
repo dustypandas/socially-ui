@@ -18,9 +18,3 @@
   display: flex;
   flex-direction: column;
 }
-
-@media (max-width: 960px) {
-  .community-one-page__aside {
-    display: none;
-  }
-}

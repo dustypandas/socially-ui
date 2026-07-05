@@ -1,7 +1,6 @@
 import { ColumnsLayout, PageLayout } from '../../components';
 import { sampleFullEvent } from '../../data/dummyData.js';
 import {
-  EventAttendBar,
   EventAttendCard,
   EventCommunity,
   EventDescription,
@@ -20,12 +19,17 @@ export function EventOnePage() {
         <div className="width-container">
           <ColumnsLayout mainPosition="right">
             <ColumnsLayout.Main>
-              <div className="event-one-page__main">
+              <div className="event-one-page__hero">
+                <div className="event-one-page__stacked-image">
+                  <EventImage src={eventData.img} alt={eventData.title} />
+                </div>
                 <EventIntro
                   title={eventData.title}
                   date={eventData.date.pageLabels}
                   location={eventData.location}
                 />
+              </div>
+              <div className="event-one-page__main">
                 <EventAttendCard
                   className="event-one-page__attend-card"
                   profiles={eventData.attendees.profiles}
@@ -36,7 +40,9 @@ export function EventOnePage() {
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">
               <div className="event-one-page__aside">
-                <EventImage src={eventData.img} alt={eventData.title} />
+                <div className="event-one-page__aside-image">
+                  <EventImage src={eventData.img} alt={eventData.title} />
+                </div>
                 <EventCommunity
                   name={eventData.community.name}
                   img={eventData.community.img}
@@ -48,7 +54,8 @@ export function EventOnePage() {
           </ColumnsLayout>
         </div>
       </section>
-      <EventAttendBar
+      <EventAttendCard
+        isFixedBar
         profiles={eventData.attendees.profiles}
         attendeeCount={eventData.attendees.count}
       />

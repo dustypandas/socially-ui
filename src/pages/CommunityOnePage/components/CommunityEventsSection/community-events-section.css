@@ -73,7 +73,7 @@
   padding: 1.5rem 0 0;
 }
 
-@media (max-width: theme(--soc-breakpoint-sm)) {
+@media (max-width: theme(--breakpoint-sm)) {
   .community-events-section__footer {
     display: flex;
   }

@@ -1,14 +1,26 @@
-@theme {
-  --soc-breakpoint-sm: 480px;
-  --soc-breakpoint-md: 780px;
-  --soc-breakpoint-lg: 980px; /* for grid-specific breakpoints */
+@import 'tailwindcss';
 
-  --breakpoint-columns-card-grid-2: 1070px; /* for column card grid breakpoints */
+@theme {
+  --breakpoint-sm: 480px; /* mobile touch layout */
+  --breakpoint-md: 780px; /* column layout becomes stacked */
+  --breakpoint-lg: 980px; /* full screen grid 4->3, columns grid 2->1 */
+
+  --breakpoint-columns-card-grid-2: 1070px; /* columns card grid 3->2 */
+
+  --z-index-footer: 1;
+  --z-index-fixed-bar: 10;
 }
 
 @utility courier-inline { /* for fixing courier font spacing */
   font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-md);
   padding-top: 0.5rem;
   padding-bottom: 0.375rem;
 }
-  
+
+@utility courier-inline-extra-padding { /* for fixing courier font spacing */
+  font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-md);
+  padding-top: 0.625rem;
+  padding-bottom: 0.5rem;
+}

@@ -9,7 +9,7 @@ type SectionMoreLinkProps = {
 
 export function SectionMoreLink({
   href,
-  label = 'more\u2009→',
+  label = 'more&thinsp;→',
   variant = 'inline',
   className,
 }: SectionMoreLinkProps) {
@@ -21,9 +21,8 @@ export function SectionMoreLink({
         `section-header__more--${variant}`,
         className,
       ].filter(Boolean).join(' ')}
-    >
-      {label}
-    </a>
+      dangerouslySetInnerHTML={{ __html: label }}
+    />
   );
 }
 
@@ -37,7 +36,7 @@ type SectionHeaderProps = {
 export function SectionHeader({
   title,
   moreHref = '#',
-  moreLabel = 'more\u2009→',
+  moreLabel,
   hideMore = false,
 }: SectionHeaderProps) {
   return (

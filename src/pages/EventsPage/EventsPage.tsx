@@ -24,7 +24,7 @@ export function EventsPage() {
             <ColumnsLayout.Main>
               <PageHeader
                 title={`Events - ${getTimeFilterLabel(timeFilter)}`}
-                backLabel="← Home"
+                backLabel="←&thinsp;Home"
                 backHref="#/home-ui"
               />
               <EventsGrid events={filteredEvents.map(event => ({ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }))} />

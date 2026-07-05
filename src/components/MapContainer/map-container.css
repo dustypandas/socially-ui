@@ -32,7 +32,7 @@
   color: white;
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .map-container {
     aspect-ratio: 4 / 3;
     margin: 0 15%;
@@ -40,7 +40,7 @@
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-sm)) {
+@media (max-width: theme(--breakpoint-sm)) {
   .map-container {
     margin: 0 1rem;
   }

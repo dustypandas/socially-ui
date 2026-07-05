@@ -98,8 +98,8 @@
 
 .interest-one-page__suggest-btn,
 .communities-section__create-btn {
-  padding: 0.5rem 1rem;
-  @apply courier-inline;
+  padding: 0 1rem;
+  @apply courier-inline-extra-padding;
 }
 
 .interest-one-page__second-section {
@@ -121,7 +121,7 @@
   gap: 0.75rem;
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .interest-one-page__divider--hidden {
     display: block;
   }

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .interests-search-bar-wrap {
   display: flex;
@@ -17,8 +18,7 @@
   border-radius: 0.25rem;
   background: rgba(255, 255, 255, 0.5);
   color: var(--global-text);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1rem;
+  @apply courier-inline-extra-padding;
   text-align: center;
   outline: none;
   transition: background 0.3s ease;

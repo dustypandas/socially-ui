@@ -80,30 +80,25 @@
 .event-intro__attribute-primary {
   color: var(--global-text);
   /* font-family: 'Courier Prime', monospace; */
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   font-weight: 500;
 }
 
 .event-intro__attribute-secondary {
   color: var(--global-text-muted);
   /* font-family: 'Courier Prime', monospace; */
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
 }
 
-/* @media (max-width: 960px) {
+@media (max-width: theme(--breakpoint-md)) {
   .event-intro__title {
     font-size: 2rem;
-  }
-} */
-
-@media (max-width: theme(--soc-breakpoint-md)) {
-  .event-intro__title {
-    font-size: 1.75rem;
+    text-align: center;
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-sm)) {
+@media (max-width: theme(--breakpoint-sm)) {
   .event-intro__title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 }

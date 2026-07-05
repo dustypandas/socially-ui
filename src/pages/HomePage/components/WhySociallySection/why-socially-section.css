@@ -33,7 +33,7 @@
   margin-top: 1rem;
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .why-socially-section__grid {
     grid-template-columns: 1fr;
   }

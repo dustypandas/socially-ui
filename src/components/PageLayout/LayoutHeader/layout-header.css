@@ -59,7 +59,6 @@
 
 .layout-header__nav-link {
   color: var(--global-text-muted);
-  font-size: var(--font-size-md);
   @apply courier-inline;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -140,7 +139,7 @@
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .layout-header__menu-toggle {
     display: flex;
   }
@@ -167,7 +166,8 @@
   }
 
   .layout-header__nav-link {
-    padding: 0.625rem 1rem 0.5rem;
+    padding: 0.5rem 1rem;
+    @apply courier-inline-extra-padding;
     text-align: center;
   }
 }

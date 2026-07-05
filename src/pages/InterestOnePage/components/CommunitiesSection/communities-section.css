@@ -27,7 +27,7 @@
   }
 }
 
-@media (max-width: theme(--soc-breakpoint-sm)) {
+@media (max-width: theme(--breakpoint-sm)) {
   .communities-section__grid {
     grid-template-columns: 1fr;
 

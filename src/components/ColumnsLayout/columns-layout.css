@@ -39,12 +39,12 @@
   width: 100%;
 }
 
-@media (max-width: theme(--soc-breakpoint-lg)) {
+@media (max-width: theme(--breakpoint-lg)) {
   .columns-layout {
     gap: 1.25rem;
   }
 }
-@media (max-width: theme(--soc-breakpoint-md)) {
+@media (max-width: theme(--breakpoint-md)) {
   .columns-layout {
     flex-direction: column;
   }

@@ -1,10 +1,15 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .community-organizers {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem 0;
+}
+
+.community-organizers__title {
+  @apply heading-h3;
 }
 
 .community-organizers__content {

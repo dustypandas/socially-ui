@@ -3,6 +3,8 @@ import type { Event } from '../../store/slices/eventsSlice';
 
 export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'anytime';
 
+export type OpenToFilter = 'any' | 'public' | 'selective' | 'invite-only';
+
 export const TIME_FILTER_OPTIONS: { value: TimeFilter; label: string }[] = [
   { value: 'today', label: 'Today' },
   { value: 'thisWeek', label: 'This Week' },
@@ -16,6 +18,21 @@ const TIME_FILTER_LABELS = Object.fromEntries(
 
 export function getTimeFilterLabel(filter: TimeFilter): string {
   return TIME_FILTER_LABELS[filter];
+}
+
+export const OPEN_TO_FILTER_OPTIONS: { value: OpenToFilter; label: string }[] = [
+  { value: 'any', label: 'Any' },
+  { value: 'public', label: 'Public' },
+  { value: 'selective', label: 'Selective' },
+  { value: 'invite-only', label: 'Invite Only' },
+];
+
+export function matchesOpenToFilter(
+  openTo: Event['openTo'],
+  filter: OpenToFilter,
+): boolean {
+  if (filter === 'any') return true;
+  return openTo === filter;
 }
 
 function startOfDay(date: Date): Date {
@@ -88,6 +105,7 @@ export function filterEvents(
   interests: Interest[],
   interestQuery: string,
   timeFilter: TimeFilter,
+  openToFilter: OpenToFilter,
   now = new Date(),
 ): Event[] {
   const matchingInterestIds = getMatchingInterestIds(interests, interestQuery);
@@ -95,6 +113,10 @@ export function filterEvents(
 
   return events.filter(event => {
     if (!matchesTimeFilter(event.startsAt, timeFilter, now)) {
+      return false;
+    }
+
+    if (!matchesOpenToFilter(event.openTo, openToFilter)) {
       return false;
     }
 

@@ -25,7 +25,8 @@
 
 .event-one-page__attend-card {
   position: sticky;
-  top: 0;
+  /* top: 0; */
+  top: -2.1875rem; /* event attend card header height */
   z-index: 10;
 }
 

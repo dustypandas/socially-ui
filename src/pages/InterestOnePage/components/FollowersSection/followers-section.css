@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .followers-section {
   display: flex;
@@ -7,8 +8,6 @@
 }
 
 .followers-section__title {
-  margin: 0;
-  color: var(--global-text-light);
-  font-size: 1.25rem;
+  @apply heading-h3;
   line-height: 1.4;
 }

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../../globals.css';
 
 .event-card {
   display: flex;
@@ -7,10 +8,10 @@
   min-width: 200px;
   height: 100%;
   /* border: 1px solid var(--home-border); */
-  border-radius: 0.25rem;
   background: white;
   color: var(--global-text);
   overflow: hidden;
+  @apply rounded-corners;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   box-shadow: 0 1px 2px var(--home-box-shadow);
   /* transform-origin: center bottom;

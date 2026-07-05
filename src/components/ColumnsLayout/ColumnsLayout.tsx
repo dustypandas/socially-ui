@@ -170,4 +170,4 @@ Aside.displayName = 'ColumnsLayoutAside';
 ColumnsLayout.Main = Main;
 ColumnsLayout.Aside = Aside;
 
-export { ColumnsLayout };
+export { ColumnsLayout, useColumnsLayoutContext as useColumnsLayout };

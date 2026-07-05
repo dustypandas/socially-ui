@@ -37,7 +37,7 @@
   width: 330px;
   max-width: 100%;
   display: block;
-  border-radius: 0.25rem;
+  @apply rounded-corners;
 }
 
 @media (max-width: theme(--breakpoint-md)) {

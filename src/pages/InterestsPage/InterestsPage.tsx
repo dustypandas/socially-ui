@@ -76,7 +76,7 @@ export function InterestsPage() {
               />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
-              <div className="global__page-divider interests-page__divider--hidden" />
+              <div className="interests-page__divider--hidden" />
               <FollowedInterests
                 followedInterests={dummyFollowedInterests}
                 maxFollowed={dummyMaxFollowed}

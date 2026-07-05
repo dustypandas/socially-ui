@@ -373,6 +373,7 @@ export const events = [
     location: { name: 'Madrid Palacio', href: '#' },
     rating: 4.7,
     ratingCount: 95,
+    openTo: 'public',
     interestIds: ['ai'],
   },
   {
@@ -387,6 +388,7 @@ export const events = [
     location: { name: 'Tropicana', href: '#' },
     rating: 4.8,
     ratingCount: 106,
+    openTo: 'selective',
   },
   {
     id: 'psychedelic-sharing-circle',
@@ -400,6 +402,7 @@ export const events = [
     location: { name: 'Centro', href: '#' },
     rating: 4.9,
     ratingCount: 34,
+    openTo: 'invite-only',
     interestIds: ['psychedelics'],
   },
   {
@@ -414,6 +417,7 @@ export const events = [
     location: { name: 'CentroCentro', href: '#' },
     rating: 4.8,
     ratingCount: 367,
+    openTo: 'public',
     interestIds: ['painting'],
   },
   {
@@ -428,6 +432,7 @@ export const events = [
     location: { name: 'Parque del Retiro', href: '#' },
     rating: 4.9,
     ratingCount: 106,
+    openTo: 'selective',
     interestIds: ['tango'],
   },
   {
@@ -442,6 +447,7 @@ export const events = [
     location: { name: 'Wine Bar', href: '#' },
     rating: 4.7,
     ratingCount: 56,
+    openTo: 'invite-only',
     interestIds: ['cooking'],
   }
 ];
@@ -521,6 +527,7 @@ export const spanishInterestEvents = [
     location: { name: 'Café Comercial', href: '#' },
     rating: 4.8,
     ratingCount: 41,
+    openTo: 'public',
     interestIds: ['spanish'],
   },
   {
@@ -535,6 +542,7 @@ export const spanishInterestEvents = [
     location: { name: 'Museo del Prado', href: '#' },
     rating: 4.9,
     ratingCount: 28,
+    openTo: 'selective',
     interestIds: ['spanish'],
   },
   {
@@ -549,6 +557,7 @@ export const spanishInterestEvents = [
     location: { name: 'Malasaña', href: '#' },
     rating: 4.7,
     ratingCount: 63,
+    openTo: 'invite-only',
     interestIds: ['spanish'],
   },
 ];

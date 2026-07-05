@@ -85,6 +85,7 @@ export type HomeEvent = {
   rating: number;
   ratingCount: number;
   startsAt: string;
+  openTo: 'public' | 'selective' | 'invite-only';
   interestIds?: string[];
 };
 

@@ -22,6 +22,13 @@ export function CommunitiesPage() {
 
   const pageTitle = communityScope === 'mine' ? 'My Communities' : 'Popular Communities';
 
+  const filterProps = {
+    value: searchQuery,
+    onChange: setSearchQuery,
+    scope: communityScope,
+    onScopeChange: setCommunityScope,
+  };
+
   return (
     <PageLayout>
       <section className="communities-page">
@@ -29,15 +36,13 @@ export function CommunitiesPage() {
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <PageHeader title={pageTitle} />
+              <div className="communities-page__filters communities-page__filters--main">
+                <CommunityFilters {...filterProps} />
+              </div>
               <CommunitiesGrid communities={filteredCommunities} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky={50}>
-              <CommunityFilters
-                value={searchQuery}
-                onChange={setSearchQuery}
-                scope={communityScope}
-                onScopeChange={setCommunityScope}
-              />
+            <ColumnsLayout.Aside sticky={50} className="communities-page__aside">
+              <CommunityFilters {...filterProps} />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>

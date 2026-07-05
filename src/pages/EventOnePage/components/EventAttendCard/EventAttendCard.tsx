@@ -31,7 +31,7 @@ export function EventAttendCard({
     >
       {!isFixedBar && (
         <div className="event-attend-card__header">
-          <span className="event-attend-card__header-label">Attend</span>
+          Attend
         </div>
       )}
       <div className="event-attend-card__body">
@@ -54,7 +54,7 @@ export function EventAttendCard({
           </div>
           <span className="event-attend-card__price">{priceLabel}</span>
         </div>
-        <button type="button" className="global-btn global-btn--purple-white event-attend-card__btn">
+        <button type="button" className="event-attend-card__btn">
           Join event
         </button>
       </div>

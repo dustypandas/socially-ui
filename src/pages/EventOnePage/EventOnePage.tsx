@@ -29,16 +29,14 @@ export function EventOnePage() {
                   location={eventData.location}
                 />
               </div>
-              <div className="event-one-page__main">
-                <EventAttendCard
-                  className="event-one-page__attend-card"
-                  profiles={eventData.attendees.profiles}
-                  attendeeCount={eventData.attendees.count}
-                />
-                <EventDescription details={eventData.details} />
-              </div>
+              <EventAttendCard
+                className="event-one-page__attend-card"
+                profiles={eventData.attendees.profiles}
+                attendeeCount={eventData.attendees.count}
+              />
+              <EventDescription details={eventData.details} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">
+            <ColumnsLayout.Aside asideWidth="min(320px, 32%)">
               <div className="event-one-page__aside">
                 <div className="event-one-page__aside-image">
                   <EventImage src={eventData.img} alt={eventData.title} />

@@ -21,8 +21,7 @@
 }
 
 .community-intro-panel__title {
-  margin: 0;
-  font-size: 2rem;
+  @apply heading-h1;
   line-height: 1.3;
 }
 
@@ -55,15 +54,14 @@
   display: none;
   align-self: flex-start;
   margin-top: 0.25rem;
-  padding: 0.5rem 1rem;
-  @apply courier-inline;
+  @apply btn-purple-white;
 }
 
-@media (max-width: theme(--breakpoint-lg)) {
+/* @media (max-width: theme(--breakpoint-lg)) {
   .community-intro-panel__title {
     font-size: 2rem;
   }
-}
+} */
 
 @media (max-width: theme(--breakpoint-md)) {
   .community-intro-panel__title {

@@ -17,7 +17,7 @@ type EventIntroProps = {
 export function EventIntro({ title, date, location }: EventIntroProps) {
   return (
     <header className="event-intro">
-      <h1 className="global-heading-text event-intro__title">{title}</h1>
+      <h1 className="event-intro__title">{title}</h1>
       <div className="event-intro__attributes">
         <div className="event-intro__attribute-row">
           <div className="event-intro__calendar" aria-hidden="true">

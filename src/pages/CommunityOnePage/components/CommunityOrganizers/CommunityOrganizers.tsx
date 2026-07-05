@@ -12,7 +12,7 @@ export function CommunityOrganizers({ organizers }: CommunityOrganizersProps) {
 
   return (
     <section className="community-organizers">
-      <h3 className="global-heading-text global-h3 community-organizers__title">Organised by</h3>
+      <h3 className="community-organizers__title">Organised by</h3>
       <div className="community-organizers__content">
         {primaryOrganizer && (
           <img

@@ -23,8 +23,7 @@
 .page-header__title {
   grid-column: 2;
   justify-self: center;
-  margin: 0;
-  font-size: 2rem;
+  @apply heading-h1;
 }
 
 @media (max-width: theme(--breakpoint-md)) {

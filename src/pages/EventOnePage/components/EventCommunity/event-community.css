@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .event-community {
   display: flex;
@@ -25,7 +26,7 @@
   height: 2.5rem;
   object-fit: cover;
   background-color: var(--global-text-bg);
-  border-radius: 0.25rem;
+  @apply rounded-corners;
   display: block;
   flex-shrink: 0;
 }

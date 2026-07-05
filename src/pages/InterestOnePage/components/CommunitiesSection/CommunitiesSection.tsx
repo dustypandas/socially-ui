@@ -9,7 +9,7 @@ type CommunitiesSectionProps = {
 export function CommunitiesSection({ communities }: CommunitiesSectionProps) {
   return (
     <section className="communities-section">
-      <h3 className="global-heading-text communities-section__title">Related Communities</h3>
+      <h3 className="communities-section__title">Related Communities</h3>
       {communities.length === 0 ? (
         <p className="communities-section__empty">No related communities yet</p>
       ) : (
@@ -22,7 +22,7 @@ export function CommunitiesSection({ communities }: CommunitiesSectionProps) {
       <div className="communities-section__create">
         <button
           type="button"
-          className="global-btn global-btn--white-purple communities-section__create-btn"
+          className="communities-section__create-btn"
         >
           {communities.length > 0 ? 'Create Another Community?' : 'Create a Community?'}
         </button>

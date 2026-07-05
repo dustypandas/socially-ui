@@ -1,5 +1,10 @@
 import { ButtonsGroup } from '../../../../components';
-import { TIME_FILTER_OPTIONS, type TimeFilter } from '../../helpers';
+import {
+  OPEN_TO_FILTER_OPTIONS,
+  TIME_FILTER_OPTIONS,
+  type OpenToFilter,
+  type TimeFilter,
+} from '../../helpers';
 import './event-filters.css';
 
 type EventFiltersProps = {
@@ -7,6 +12,8 @@ type EventFiltersProps = {
   onInterestQueryChange: (value: string) => void;
   timeFilter: TimeFilter;
   onTimeFilterChange: (value: TimeFilter) => void;
+  openToFilter: OpenToFilter;
+  onOpenToFilterChange: (value: OpenToFilter) => void;
 };
 
 export function EventFilters({
@@ -14,11 +21,13 @@ export function EventFilters({
   // onInterestQueryChange,
   timeFilter,
   onTimeFilterChange,
+  openToFilter,
+  onOpenToFilterChange,
 }: EventFiltersProps) {
   return (
     <div className="event-filters">
       <div className="event-filters__field">
-        <h3 className="global-heading-text event-filters__label">When:</h3>
+        <h3 className="event-filters__label">When:</h3>
         <div
           className="event-filters__time-group"
           role="radiogroup"
@@ -35,12 +44,30 @@ export function EventFilters({
           ))}
         </div>
       </div>
-      
+
+      <div className="event-filters__field">
+        <h3 className="event-filters__label">Open to:</h3>
+        <div
+          className="event-filters__time-group"
+          role="radiogroup"
+          aria-label="Filter by open to"
+        >
+          {OPEN_TO_FILTER_OPTIONS.map(option => (
+            <ButtonsGroup
+              key={option.value}
+              selected={openToFilter === option.value}
+              onClick={() => onOpenToFilterChange(option.value)}
+            >
+              {option.label}
+            </ButtonsGroup>
+          ))}
+        </div>
+      </div>
+
       {/*
 
       all events / Attending (/ by my communities / of my interests)
       ratings (3 / 4 / 5)
-      public / exclusive / invite only
       nearest metro (search)
       */}
 

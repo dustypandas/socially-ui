@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .events-page {
   position: relative;
@@ -8,4 +9,23 @@
 
 .events-page__heading {
   margin: 0.75rem 0 0.75rem;
+}
+
+.events-page__filters--main {
+  display: none;
+  margin: 0 1rem 2rem;
+
+  .event-filters__label {
+    display: none;
+  }
+}
+
+@media (max-width: theme(--breakpoint-md)) {
+  .events-page__filters--main {
+    display: block;
+  }
+
+  .events-page__aside {
+    display: none;
+  }
 }

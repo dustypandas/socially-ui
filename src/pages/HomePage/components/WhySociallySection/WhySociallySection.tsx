@@ -32,12 +32,12 @@ export function WhySociallySection() {
   return (
     <section className="why-socially-section">
       <div className="width-container">
-        <div className="global__page-divider" />
+        <div className="page__divider" />
         {/* <SectionHeader title="Why Socially" hideMore /> */}
         <div className="why-socially-section__grid">
           {COLUMNS.map(col => (
             <div key={col.title} className="why-socially-section__column">
-              <h2 className="global-heading-text why-socially-section__column-title" dangerouslySetInnerHTML={{ __html: col.title }} />
+              <h2 className="why-socially-section__column-title" dangerouslySetInnerHTML={{ __html: col.title }} />
               <div className="why-socially-section__column-text">
                 {col.text.map((paragraph, index) => (
                   <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />

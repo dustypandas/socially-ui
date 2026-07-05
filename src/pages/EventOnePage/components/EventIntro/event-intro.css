@@ -2,17 +2,16 @@
 @import '../../../../globals.css';
 
 .event-intro {
-  padding: 0 0 1rem;
+  /* padding: 0 0 1rem; */
 }
 
 .event-intro__title {
-  margin: 0;
+  @apply heading-h1;
   font-size: 2.5rem;
-  line-height: 1.2;
 }
 
 .event-intro__attributes {
-  margin: 1.25rem 0 0;
+  margin: 1.25rem 0 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -28,7 +27,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid var(--home-section-border);
-  border-radius: 0.25rem;
+  @apply rounded-corners;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -37,7 +36,7 @@
 }
 
 .event-intro__calendar-month {
-  background: var(--global-text-bg);
+  background: var(--home-section-border);
   color: var(--global-text-muted);
   /* font-family: 'Courier Prime', monospace; */
   font-size: 0.5rem;
@@ -49,7 +48,7 @@
 .event-intro__calendar-date {
   color: var(--global-text);
   /* font-family: 'Courier Prime', monospace; */
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   font-weight: 500;
   transform: translateY(-1px);
 }
@@ -58,7 +57,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid var(--home-section-border);
-  border-radius: 0.25rem;
+  @apply rounded-corners;
   color: var(--global-purple);
   display: flex;
   align-items: center;
@@ -67,38 +66,36 @@
 }
 
 .event-intro__icon {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1.625rem;
+  height: 1.625rem;
 }
 
 .event-intro__attribute-details {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  /* gap: 0.125rem; */
 }
 
 .event-intro__attribute-primary {
   color: var(--global-text);
-  /* font-family: 'Courier Prime', monospace; */
   font-size: var(--font-size-md);
   font-weight: 500;
 }
 
 .event-intro__attribute-secondary {
   color: var(--global-text-muted);
-  /* font-family: 'Courier Prime', monospace; */
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
 }
 
 @media (max-width: theme(--breakpoint-md)) {
   .event-intro__title {
     font-size: 2rem;
-    text-align: center;
   }
 }
 
 @media (max-width: theme(--breakpoint-sm)) {
   .event-intro__title {
     font-size: 1.75rem;
+    text-align: center;
   }
 }

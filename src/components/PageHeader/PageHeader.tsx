@@ -16,7 +16,7 @@ export function PageHeader({
       {backHref && (
         <a href={backHref} className="page-header__back" dangerouslySetInnerHTML={{ __html: backLabel }} />
       )}
-      <h1 className="global-heading-text page-header__title">{title}</h1>
+      <h1 className="page-header__title">{title}</h1>
     </div>
   );
 }

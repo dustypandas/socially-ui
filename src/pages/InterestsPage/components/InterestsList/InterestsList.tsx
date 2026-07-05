@@ -99,7 +99,7 @@ export function InterestsList({
                 {!isFollowed && (
                   <button
                     type="button"
-                    className='global-btn global-btn--white-purple interests-list__follow-btn'
+                    className='interests-list__follow-btn'
                     aria-label={`Follow ${interest.name}`}
                     disabled={!canFollowMore}
                     onClick={() => onFollow(interest.id)}
@@ -110,7 +110,7 @@ export function InterestsList({
                 {isFollowed && (
                   <button
                     type="button"
-                    className="global-btn global-btn--purple-white interests-list__unfollow-btn"
+                    className="interests-list__unfollow-btn"
                     aria-label={`Unfollow ${interest.name}`}
                     onClick={() => onUnfollow(interest.id)}
                   >

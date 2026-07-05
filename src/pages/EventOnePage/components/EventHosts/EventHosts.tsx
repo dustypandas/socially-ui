@@ -12,7 +12,7 @@ type EventHostsProps = {
 export function EventHosts({ hosts }: EventHostsProps) {
   return (
     <section className="event-hosts">
-      <div className="global__page-divider event-hosts__divider"/>
+      <div className="event-hosts__divider"/>
       <h3 className="event-hosts__title">Hosted by</h3>
       <div className="event-hosts__list">
         {hosts.map(host => (

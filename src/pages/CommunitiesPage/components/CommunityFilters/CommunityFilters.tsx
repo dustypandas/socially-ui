@@ -17,7 +17,7 @@ export function CommunityFilters({
 }: CommunityFiltersProps) {
   return (
     <div className="community-filters">
-      <h3 className="global-heading-text global-h3 community-filters__title">Find</h3>
+      <h3 className="community-filters__title">Find</h3>
       <input
         type="search"
         className="community-filters__search"

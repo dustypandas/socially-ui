@@ -50,7 +50,7 @@ export function CommunityNav() {
             <ColumnsLayout.Aside asideWidth="min(380px, 38%)">
               <button
                 type="button"
-                className="global-btn global-btn--purple-white community-nav__join-btn"
+                className="community-nav__join-btn"
               >
                 Join this community
               </button>
@@ -59,7 +59,7 @@ export function CommunityNav() {
         </div>
       </nav>
       <div
-        className={`global__page-divider community-nav__divider${isDocked ? ' community-nav__divider--docked' : ''}`}
+        className={`community-nav__divider${isDocked ? ' community-nav__divider--docked' : ''}`}
       />
     </>
   );

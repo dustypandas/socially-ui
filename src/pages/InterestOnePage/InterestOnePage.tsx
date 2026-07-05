@@ -68,7 +68,7 @@ export function InterestOnePage() {
                 <div className="interest-one-page__suggest">
                   <button
                     type="button"
-                    className="global-btn global-btn--white-purple interest-one-page__suggest-btn"
+                    className="interest-one-page__suggest-btn"
                   >
                     {events.length > 0 ? 'Suggest Another Activity?' : 'Suggest An Activity?'}
                   </button>
@@ -76,7 +76,7 @@ export function InterestOnePage() {
               </div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
-              <div className="global__page-divider interest-one-page__divider--hidden" />
+              <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
                   <FollowersSection
@@ -89,13 +89,13 @@ export function InterestOnePage() {
           </ColumnsLayout>
           <ColumnsLayout className="interest-one-page__second-section">
             <ColumnsLayout.Main>
-              <div className="global__page-divider interest-one-page__divider" />
+              <div className="interest-one-page__divider" />
               <CommunitiesSection communities={communities} />
-              {/* <div className="global__page-divider interest-one-page__divider" />
+              {/* <div className="interest-one-page__divider" />
               <DiscussionSection interestId='Spanish' /> */}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
-              <div className="global__page-divider interest-one-page__divider--hidden" />
+              <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
                   <ExternalLinks

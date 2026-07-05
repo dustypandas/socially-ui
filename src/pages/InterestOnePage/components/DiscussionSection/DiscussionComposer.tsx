@@ -43,7 +43,7 @@ export function DiscussionComposer({
         />
         <button
           type="button"
-          className="global-btn global-btn--purple-white discussion-composer__submit"
+          className="discussion-composer__submit"
           disabled={isSubmitDisabled}
           onClick={handleSubmit}
         >

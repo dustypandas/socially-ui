@@ -40,12 +40,11 @@
 
 .community-nav__join-btn {
   flex-shrink: 0;
-  margin-right: 1rem;
-  padding: 0.5rem 1rem;
-  @apply courier-inline;
+  @apply btn-purple-white;
 }
 
 .community-nav__divider {
+  @apply page-divider;
   margin: 0;
   border-top: none;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);

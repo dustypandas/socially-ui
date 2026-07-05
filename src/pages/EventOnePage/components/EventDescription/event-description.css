@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 .event-description {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 
   .section-header {
     padding: 0 0 0.75rem;

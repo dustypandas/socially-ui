@@ -98,8 +98,8 @@
 
 .interest-one-page__suggest-btn,
 .communities-section__create-btn {
-  padding: 0 1rem;
-  @apply courier-inline-extra-padding;
+  padding: 0.5rem 1rem;
+  @apply btn-white-purple;
 }
 
 .interest-one-page__second-section {
@@ -107,10 +107,12 @@
 }
 
 .interest-one-page__divider {
+  @apply page-divider;
   margin-top: 0.75rem;
 }
 
 .interest-one-page__divider--hidden {
+  @apply page-divider;
   margin: 0.75rem 0 1rem;
   display: none;
 }

@@ -10,7 +10,7 @@ type FollowersSectionProps = {
 export function FollowersSection({ followers, followersCount }: FollowersSectionProps) {
   return (
     <div className="followers-section">
-      <h3 className="global-heading-text followers-section__title">
+      <h3 className="followers-section__title">
         {followersCount}+ followers
       </h3>
       <MapContainer followers={followers} />

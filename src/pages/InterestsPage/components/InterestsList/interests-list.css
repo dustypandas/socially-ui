@@ -69,6 +69,8 @@
   height: 2rem;
   position: relative;
   top: -3px;
+  @apply btn-white-purple;
+  padding: 0;
 }
 .interests-list__btn-icon {
   display: inline-block;
@@ -78,6 +80,9 @@
 }
 
 .interests-list__unfollow-btn {
+  @apply btn-purple-white;
+  padding: 0;
+
   .interests-list__btn-icon {
     left: -1px;
     transform: rotate(45deg);

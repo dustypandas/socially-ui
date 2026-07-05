@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .external-links {
   display: flex;
@@ -12,14 +13,11 @@
   gap: 0.25rem;
 }
 
-/* .external-links__title {
-  line-height: 1.4;
-  margin-top: 1rem;
-} */
-
-/* .external-links__content {
-  margin: 0 1rem;
-} */
+.external-links__title {
+  @apply heading-h3;
+  /* line-height: 1.4;
+  margin-top: 1rem; */
+}
 
 .external-links__description {
   color: var(--global-text-muted);
@@ -71,42 +69,29 @@
   transition: opacity 0.15s ease, max-height 0.2s ease;
 }
 
-.external-links__input-container:focus-within .external-links__input-extra {
-  max-height: 6rem;
-  margin-top: 0.5rem;
-  opacity: 1;
-  visibility: visible;
-}
-
-.external-links__input-container:focus-within .external-links__input--url {
-  background: white;
-}
-
-.external-links__input {
-  display: block;
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: none;
-  border-radius: 0.25rem;
-  background: rgba(255, 255, 255, 0.5);
-  color: var(--global-text);
-  font-family: inherit;
-  font-size: var(--font-size-md);
-  line-height: 1.5;
-  outline: none;
-  transition: background 0.3s ease;
-
-  &::placeholder {
-    color: var(--global-text-light);
+.external-links__input-container:focus-within {
+  .external-links__input-extra {
+    max-height: 6rem;
+    margin-top: 0.5rem;
+    opacity: 1;
+    visibility: visible;
   }
-
-  &:focus {
+  .external-links__input--url {
     background: white;
   }
 }
 
+.external-links__input {
+  @apply text-input;
+  font-family: inherit;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-md);
+}
+
 .external-links__submit {
   align-self: flex-end;
-  padding: 0.125rem 1rem;
+  padding: 0.5rem 1rem;
+  @apply btn-purple-white;
   font-size: var(--font-size-sm);
 }

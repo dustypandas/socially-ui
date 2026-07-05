@@ -1,9 +1,14 @@
 @import 'tailwindcss';
+@import '../../../globals.css';
 
 .layout-footer {
   position: relative;
   z-index: 0;
   padding-top: 4rem;
+}
+
+.layout-footer__divider {
+  @apply page-divider;
 }
 
 .layout-footer__text {

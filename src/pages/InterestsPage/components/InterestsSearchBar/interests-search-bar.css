@@ -10,47 +10,35 @@
 }
 
 .interests-search-bar {
-  display: block;
+  @apply text-input;
   flex: 1;
-  min-width: 0;
-  margin-bottom: 0;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
-  background: rgba(255, 255, 255, 0.5);
-  color: var(--global-text);
-  @apply courier-inline-extra-padding;
-  text-align: center;
-  outline: none;
-  transition: background 0.3s ease;
-
-  &::placeholder {
-    color: var(--global-text-light);
-  }
-
-  &:focus {
-    background: white;
-  }
 }
 
 .interests-search-bar__add-btn {
   display: none;
   flex-shrink: 0;
-  padding: 0 0.75rem;
+  align-items: center;
   white-space: nowrap;
-  line-height: 1.75rem;
+  @apply btn-white-purple;
+  padding: 0 0.75rem;
+  /* line-height: 1.75rem; */
 
-  &:disabled {
+  /* &:disabled {
     cursor: not-allowed;
     background: var(--home-section-border);    
-    /* color: white; */
     opacity: 0.5;
-  }
+  } */
 
   .interests-list__btn-icon {
-    top: 3px;
+    top: 1px;
+  }
+
+  .interests-search-bar__add-btn-text {
+    position: relative;
+    top: 1px;
   }
 }
 
 .interests-search-bar__add-btn--visible {
-  display: block;
+  display: flex;
 }

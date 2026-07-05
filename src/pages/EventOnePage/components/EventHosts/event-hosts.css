@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .event-hosts {
   display: flex;
@@ -6,6 +7,7 @@
 }
 
 .event-hosts__divider {
+  @apply page-divider;
   margin: 0;
 }
 

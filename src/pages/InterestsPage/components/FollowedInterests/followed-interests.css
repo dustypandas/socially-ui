@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .followed-interests {
   display: flex;
@@ -14,10 +15,7 @@
 }
 
 .followed-interests__title {
-  margin: 0;
-  font-size: 1.25rem;
-  /* color: var(--global-text-light); */
-  /* font-family: 'Courier Prime', monospace; */
+  @apply heading-h3;
 }
 
 .followed-interests__count {

@@ -11,6 +11,8 @@ export type EventLocation = {
   href: string;
 };
 
+export type EventOpenTo = 'public' | 'selective' | 'invite-only';
+
 export type Event = {
   id: string;
   title: string;
@@ -25,6 +27,7 @@ export type Event = {
   rating: number;
   ratingCount: number;
   startsAt: string;
+  openTo: EventOpenTo;
   interestIds?: string[];
 };
 

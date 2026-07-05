@@ -2,9 +2,8 @@
 @import '../../../../globals.css';
 
 .communities-section__title {
+  @apply heading-h3;
   margin: 1rem 0;
-  color: var(--global-text-light);
-  font-size: 1.25rem;
   line-height: 1.4;
 }
 

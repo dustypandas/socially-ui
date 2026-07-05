@@ -1,7 +1,28 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .communities-page {
   position: relative;
   z-index: 1;
   padding-bottom: 2rem;
+}
+
+.communities-page__filters--main {
+  display: none;
+  margin: 0 1rem 2rem;
+
+  .community-filters__title {
+    display: none;
+  }
+}
+
+@media (max-width: theme(--breakpoint-md)) {
+  .communities-page__filters--main {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .communities-page__aside {
+    display: none;
+  }
 }

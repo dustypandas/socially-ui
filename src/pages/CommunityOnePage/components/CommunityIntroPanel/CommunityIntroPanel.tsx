@@ -22,7 +22,7 @@ export function CommunityIntroPanel({
 }: CommunityIntroPanelProps) {
   return (
     <div className="community-intro-panel">
-      <h1 className="global-heading-text community-intro-panel__title">{name}</h1>
+      <h1 className="community-intro-panel__title">{name}</h1>
       <div className="community-intro-panel__attributes">
         <div className="community-intro-panel__attribute">
           <IconGroup className="community-intro-panel__icon" />
@@ -45,7 +45,7 @@ export function CommunityIntroPanel({
       </div>
       <button
         type="button"
-        className="global-btn global-btn--purple-white community-intro-panel__join-btn"
+        className="community-intro-panel__join-btn"
       >
         Join this community
       </button>

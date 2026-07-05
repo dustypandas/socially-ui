@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .event-filters {
   display: flex;
@@ -18,35 +19,12 @@
 }
 
 .event-filters__label {
-  color: var(--global-text-light);
-  /* font-family: 'Courier Prime', monospace; */
-  /* font-size: var(--font-size-sm); */
-  font-size: 1.25rem;
+  @apply heading-h3;
   margin: 0 0 0.25rem;
 }
 
 .event-filters__input {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  padding: 0.5rem 0.75rem;
-  border: none;
-  border-radius: 0.25rem;
-  background: rgba(255, 255, 255, 0.5);
-  color: var(--global-text);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1rem;
-  text-align: center;
-  outline: none;
-  transition: background 0.3s ease;
-}
-
-.event-filters__input::placeholder {
-  color: var(--global-text-light);
-}
-
-.event-filters__input:focus {
-  background: white;
+  @apply text-input;
 }
 
 .event-filters__time-group {

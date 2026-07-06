@@ -10,13 +10,11 @@
   background: white;
   color: var(--global-text);
   overflow: hidden;
-  @apply rounded-corners;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 1px 2px var(--home-box-shadow);
   text-decoration: none;
+  @apply rounded-corners;
+  @apply card-shadow;
 
   &:hover {
-    box-shadow: 0 1px 7px var(--home-box-shadow);
     animation: hover-swing 0.8s ease forwards;
   }
 }

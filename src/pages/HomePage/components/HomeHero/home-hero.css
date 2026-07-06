@@ -60,7 +60,7 @@
 
 .home-hero__title,
 .home-hero__subtitle {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: 'Cabin Sketch', sans-serif;
   /* color: rgba(255, 255, 255, 0.85); */
   opacity: 0.75;
 }

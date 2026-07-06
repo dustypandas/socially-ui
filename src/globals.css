@@ -30,7 +30,7 @@
 }
 
 @utility heading-text {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: 'Cabin Sketch', sans-serif;
   font-size: 1.5rem;
   color: var(--global-text-heading);
   font-weight: 700;
@@ -81,15 +81,14 @@
   text-align: center;
   border: none;
   padding: 0.5rem 1rem;
-  @apply courier-inline-extra-padding;
-  @apply rounded-corners;
-  box-shadow: 0 1px 2px var(--home-section-border);
   transform-origin: center bottom;
   transform: scale(1);
+  @apply courier-inline-extra-padding;
+  @apply rounded-corners;
+  @apply btn-shadow;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    box-shadow: 0 1px 3px var(--home-box-shadow);
     transform: scale(1.03);
   }
   &:disabled {
@@ -105,7 +104,7 @@
   color: var(--global-purple);
 
   &:disabled {
-    background: var(--home-section-border);
+    background: var(--light-shadow);
   }
 }
 
@@ -117,28 +116,39 @@
 
 @utility page-divider {
   height: 0;
-  border-top: 1.5px solid var(--home-section-border);
+  border-top: 1.5px solid var(--light-shadow);
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.55);
   margin: 2rem 0 0;
 }
 
-html {
-  --global-text: rgba(28, 24, 18, 0.88);
-  --global-text-muted: rgba(28, 24, 18, 0.55);
-  --global-text-light: rgba(28, 24, 18, 0.3);
-  --global-text-heading: rgba(28, 24, 18, 0.45);
-  --global-text-bg: rgba(28, 24, 18, 0.04);
-  --global-link-blue: #3b6fd4;
-  --global-header-height: 3.75rem;
+@utility page-divider--hidden {
+  @apply page-divider;
+  margin: 0.75rem 0 1rem;
+  display: none;
+}
 
-  --global-orange: #e67e22;
-  --global-purple: #9b6dff;
-  --global-purple-light: color-mix(in srgb, var(--global-purple) 80%, white 20%);
-  --global-btn-purple: rgba(155, 109, 255, 0.55);
+@utility texture-bg {
+  background: white url('/assets/bg-transparent-cream-paper.png');
+  background-size: 150px 150px;
+}
 
-  --font-size-sm: 0.875rem;
-  --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
+@utility header-shadow {
+  box-shadow: 0 1px 3px var(--light-shadow);
+}
 
-  --border-radius-sm: 0.25rem;
+@utility btn-shadow {
+  box-shadow: 0 1px 2px var(--light-shadow);
+
+  &:hover {
+    box-shadow: 0 1px 3px var(--medium-shadow);
+  }
+}
+
+@utility card-shadow {
+  box-shadow: 0 1px 2px var(--medium-shadow);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 1px 7px var(--medium-shadow);
+  }
 }

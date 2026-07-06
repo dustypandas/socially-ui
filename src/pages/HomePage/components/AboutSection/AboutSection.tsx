@@ -5,7 +5,7 @@ export function AboutSection() {
   return (
     <section className="about-section">
       <div className="width-container">
-        <div className="page__divider"></div>
+        <div className="home-page__divider"></div>
         <SectionHeader title="Who We Are" hideMore />
 
         <div className="about-section__content">

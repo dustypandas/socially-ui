@@ -12,9 +12,7 @@
 }
 
 .interests-page__divider--hidden {
-  @apply page-divider;
-  margin: 0.75rem 0 1rem;
-  display: none;
+  @apply page-divider--hidden;
 }
 
 @media (max-width: theme(--breakpoint-md)) {

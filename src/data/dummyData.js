@@ -360,6 +360,51 @@ export const memberFollowers = [
   { id: 'member-40', name: 'Víctor Aguilera', lat: 40.4000, lng: -3.6300 },
 ];
 
+function addDays(date, days) {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+function pad(value) {
+  return String(value).padStart(2, '0');
+}
+
+function toLocalIso(date) {
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:00`;
+}
+
+function formatShortTime(hours, minutes) {
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).toLowerCase().replace(/\s/g, '');
+}
+
+function createHomeEventDate(daysFromNow, hours, minutes) {
+  const date = addDays(new Date(), daysFromNow);
+  date.setHours(hours, minutes, 0, 0);
+  return {
+    dateLabel: date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+    timeLabel: formatShortTime(hours, minutes),
+    startsAt: toLocalIso(date),
+  };
+}
+
+function createCommunityEventDate(daysFromNow, hours, minutes) {
+  const date = addDays(new Date(), daysFromNow);
+  date.setHours(hours, minutes, 0, 0);
+  const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
+  return {
+    dateLabel: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+    timeLabel: `${weekday}, ${formatShortTime(hours, minutes)}`,
+    startsAt: toLocalIso(date),
+  };
+}
+
 export const events = [
   {
     id: 'lightning-talks',
@@ -367,9 +412,7 @@ export const events = [
     image: '../../assets/event-lightning.avif',
     host: { name: 'Polylogue', href: '#/community-ui' },
     attendees: { count: 47 },
-    dateLabel: 'Tue, Jun 30',
-    timeLabel: '1:30pm',
-    startsAt: '2026-06-30T13:30:00',
+    ...createHomeEventDate(2, 13, 30),
     location: { name: 'Madrid Palacio', href: '#' },
     rating: 4.7,
     ratingCount: 95,
@@ -382,9 +425,7 @@ export const events = [
     image: '../../assets/event-story.avif',
     host: { name: 'Freshers of Madrid', href: '#/community-ui' },
     attendees: { count: 17 },
-    dateLabel: 'Wed, Jul 1',
-    timeLabel: '7:00pm',
-    startsAt: '2026-07-01T19:00:00',
+    ...createHomeEventDate(3, 19, 0),
     location: { name: 'Tropicana', href: '#' },
     rating: 4.8,
     ratingCount: 106,
@@ -396,9 +437,7 @@ export const events = [
     image: '../../assets/event-circle.avif',
     host: { name: 'The Conscious Collective', href: '#/community-ui' },
     attendees: { count: 9 },
-    dateLabel: 'Fri, Jul 3',
-    timeLabel: '5:00pm',
-    startsAt: '2026-07-03T17:00:00',
+    ...createHomeEventDate(5, 17, 0),
     location: { name: 'Centro', href: '#' },
     rating: 4.9,
     ratingCount: 34,
@@ -411,9 +450,7 @@ export const events = [
     image: '../../assets/event-sketch.avif',
     host: { name: 'The Madrid Sketch Squad', href: '#/community-ui' },
     attendees: { count: 14 },
-    dateLabel: 'Sat, Jul 4',
-    timeLabel: '7:30pm',
-    startsAt: '2026-07-04T19:30:00',
+    ...createHomeEventDate(6, 19, 30),
     location: { name: 'CentroCentro', href: '#' },
     rating: 4.8,
     ratingCount: 367,
@@ -426,9 +463,7 @@ export const events = [
     image: '../../assets/event-swing.avif',
     host: { name: 'Happy Feet', href: '#/community-ui' },
     attendees: { count: 39 },
-    dateLabel: 'Tue, Jul 7',
-    timeLabel: '1:00pm',
-    startsAt: '2026-07-07T13:00:00',
+    ...createHomeEventDate(9, 13, 0),
     location: { name: 'Parque del Retiro', href: '#' },
     rating: 4.9,
     ratingCount: 106,
@@ -441,9 +476,7 @@ export const events = [
     image: '../../assets/event-wine.jpg',
     host: { name: 'Wine Society', href: '#/community-ui' },
     attendees: { count: 15 },
-    dateLabel: 'Thu, Jul 9',
-    timeLabel: '6:00pm',
-    startsAt: '2026-07-09T18:00:00',
+    ...createHomeEventDate(11, 18, 0),
     location: { name: 'Wine Bar', href: '#' },
     rating: 4.7,
     ratingCount: 56,
@@ -502,7 +535,7 @@ export const sampleFullEvent = {
   },
   date: {
     timelineLabels: [
-      'Feb 4, 2025',
+      'Feb 4, 2026',
       'Tuesday, 7:10pm',
     ],
     pageLabels: {
@@ -521,9 +554,7 @@ export const spanishInterestEvents = [
     image: '../../assets/event-lightning.avif',
     host: { name: 'Madrid Language Exchange', href: '#/community-ui' },
     attendees: { count: 22 },
-    dateLabel: 'Tue, Jun 30',
-    timeLabel: '7:00pm',
-    startsAt: '2026-06-30T19:00:00',
+    ...createHomeEventDate(2, 19, 0),
     location: { name: 'Café Comercial', href: '#' },
     rating: 4.8,
     ratingCount: 41,
@@ -536,9 +567,7 @@ export const spanishInterestEvents = [
     image: '../../assets/event-sketch.avif',
     host: { name: 'Cultura Madrid', href: '#/community-ui' },
     attendees: { count: 11 },
-    dateLabel: 'Sat, Jul 11',
-    timeLabel: '11:00am',
-    startsAt: '2026-07-11T11:00:00',
+    ...createHomeEventDate(13, 11, 0),
     location: { name: 'Museo del Prado', href: '#' },
     rating: 4.9,
     ratingCount: 28,
@@ -551,9 +580,7 @@ export const spanishInterestEvents = [
     image: '../../assets/event-wine.jpg',
     host: { name: 'Tapas & Talk', href: '#/community-ui' },
     attendees: { count: 16 },
-    dateLabel: 'Mon, Jul 20',
-    timeLabel: '8:00pm',
-    startsAt: '2026-07-20T20:00:00',
+    ...createHomeEventDate(22, 20, 0),
     location: { name: 'Malasaña', href: '#' },
     rating: 4.7,
     ratingCount: 63,
@@ -705,9 +732,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 47 },
-      dateLabel: 'Feb 4, 2025',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2025-02-04T19:10:00',
+      ...createCommunityEventDate(3, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -718,9 +743,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 39 },
-      dateLabel: 'Feb 18, 2025',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2025-02-18T19:10:00',
+      ...createCommunityEventDate(7, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -731,9 +754,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 44 },
-      dateLabel: 'Mar 4, 2025',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2025-03-04T19:10:00',
+      ...createCommunityEventDate(12, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -746,9 +767,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 52 },
-      dateLabel: 'Jan 7, 2025',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2025-01-07T19:10:00',
+      ...createCommunityEventDate(-3, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -759,9 +778,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 48 },
-      dateLabel: 'Jan 21, 2025',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2025-01-21T19:10:00',
+      ...createCommunityEventDate(-6, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -772,9 +789,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 55 },
-      dateLabel: 'Dec 17, 2024',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2024-12-17T19:10:00',
+      ...createCommunityEventDate(-7, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -785,9 +800,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 41 },
-      dateLabel: 'Dec 3, 2024',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2024-12-03T19:10:00',
+      ...createCommunityEventDate(-14, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -798,9 +811,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 46 },
-      dateLabel: 'Nov 19, 2024',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2024-11-19T19:10:00',
+      ...createCommunityEventDate(-19, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,
@@ -811,9 +822,7 @@ export const sampleCommunityPage = {
       image: '../../assets/event-lightning.avif',
       host: { name: 'Polylogue', href: '#/community-one-ui' },
       attendees: { count: 43 },
-      dateLabel: 'Nov 5, 2024',
-      timeLabel: 'Tuesday, 7:10pm',
-      startsAt: '2024-11-05T19:10:00',
+      ...createCommunityEventDate(-21, 19, 10),
       location: { name: 'Palacio', href: '#' },
       rating: 4.7,
       ratingCount: 95,

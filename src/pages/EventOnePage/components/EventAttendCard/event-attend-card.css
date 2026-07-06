@@ -2,10 +2,11 @@
 @import '../../../../globals.css';
 
 .event-attend-card {
+  overflow: hidden;
   background: white;
   @apply rounded-corners;
-  box-shadow: 0 1px 2px var(--home-box-shadow);
-  overflow: hidden;
+  @apply card-shadow;
+  &:hover { box-shadow: 0 1px 2px var(--medium-shadow); } /* same as card-shadow, no hover effect */
 }
 
 .event-attend-card--fixed-bar {
@@ -16,8 +17,8 @@
   bottom: 0;
   z-index: var(--z-index-fixed-bar);
   border-radius: 0;
-  box-shadow: 0 -1px 3px var(--home-section-border);
-  border-top: 1px solid var(--home-section-border);
+  border-top: 1px solid var(--light-shadow);
+  box-shadow: 0 -1px 3px var(--light-shadow); /* same as header-shadow, on top */
   overflow: visible;
 
   .event-attend-card__body {

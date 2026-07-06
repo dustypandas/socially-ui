@@ -26,17 +26,17 @@
 .event-intro__calendar {
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid var(--home-section-border);
-  @apply rounded-corners;
+  border: 1px solid var(--light-shadow);
   display: flex;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
   flex-shrink: 0;
+  @apply rounded-corners;
 }
 
 .event-intro__calendar-month {
-  background: var(--home-section-border);
+  background: var(--light-shadow);
   color: var(--global-text-muted);
   /* font-family: 'Courier Prime', monospace; */
   font-size: 0.5rem;
@@ -56,13 +56,13 @@
 .event-intro__icon-box {
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid var(--home-section-border);
-  @apply rounded-corners;
+  border: 1px solid var(--light-shadow);
   color: var(--global-purple);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  @apply rounded-corners;
 }
 
 .event-intro__icon {

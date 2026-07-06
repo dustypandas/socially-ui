@@ -1,20 +1,19 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .page-layout {
   --layout-sticky-top: calc(var(--global-header-height, 3.75rem) + 1rem);
 
   min-height: 100vh;
-  background: #ffffff url('/assets/bg-transparent-cream-paper.png');
-  background-size: 150px 150px;
-  color: var(--global-text);
+  @apply texture-bg;
+  /* color: var(--global-text); */
 }
 
 .layout__main {
   position: relative;
   z-index: 1;
-  background: white url('/assets/bg-transparent-cream-paper.png');
-  background-size: 150px 150px;
   padding-top: 1rem;
+  @apply texture-bg;
 }
 
 /* home-only: entry animations + hidden header until scroll */
@@ -46,4 +45,13 @@
 
 .text--full-color {
   color: black;
+}
+
+@media (max-width: theme(--breakpoint-md)) {
+  .layout--has-static-header {
+    .layout-header {
+      position: sticky;
+      border-bottom: 1px solid var(--light-shadow);
+    }
+  }
 }

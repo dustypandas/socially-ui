@@ -1,7 +1,25 @@
+@import 'tailwindcss';
+@import '../../globals.css';
+
 #home-top {
   scroll-margin-top: calc(var(--global-header-height) + var(--home-hero-height));
 }
 
+.home__entry-logo-image {
+  width: 100%;
+  height: 60px;
+  background: url('/assets/logo-socially.png') center center / contain no-repeat;
+  animation: hover-wiggle 1.2s infinite;
+  -webkit-filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.5)) drop-shadow(0 1px 0 rgba(255, 255, 255, 1));
+  filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.5)) drop-shadow(0 1px 0 rgba(255, 255, 255, 1));
+  transition: all 0.6s ease-out;
+}
+
+.home-page__divider {
+  @apply page-divider;
+}
+
+/* entry animations */
 .home__entry-cover {
   --home-entry-cover-height: var(--home-hero-height);
 
@@ -15,12 +33,11 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-end;
-  background: white url('/assets/bg-transparent-cream-paper.png');
-  background-size: 150px 150px;
-  border-bottom: 1px solid var(--home-section-border);
+  border-bottom: 1px solid var(--light-shadow);
   padding: 0 0 1rem;
   box-sizing: border-box;
   transition: transform 1.2s cubic-bezier(.3,.8,.4,.9);
+  @apply texture-bg;
 
   &.home-page--entry-revealed1 {
     transform: translateY(calc(-1 * var(--home-entry-cover-height) + 4px));
@@ -37,17 +54,6 @@
   }
 }
 
-.home__entry-logo-image {
-  width: 100%;
-  height: 60px;
-  background: url('/assets/logo-socially.png') center center / contain no-repeat;
-  animation: hover-wiggle 1.2s infinite;
-  -webkit-filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.5)) drop-shadow(0 1px 0 rgba(255, 255, 255, 1));
-  filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.5)) drop-shadow(0 1px 0 rgba(255, 255, 255, 1));
-  transition: all 0.6s ease-out;
-}
-
-/* entry animations */
 .home-page {
   .interests-section,
   .events-section,
@@ -79,3 +85,4 @@
     }
   }
 }
+

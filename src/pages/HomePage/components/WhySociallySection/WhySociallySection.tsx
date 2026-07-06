@@ -14,7 +14,7 @@ const COLUMNS = [
     title: 'By Expats, For Expats <span class="text--full-color">🌍</span>',
     text: [
       'What does it mean to be a resident in a foreign city, to build a new life from a fresh, blank canvas?',
-      'How do we find the people who can walk and dance alongside us, as we navigate the wild, winding, sometimes unexpected turns of this new, unfamiliar journey?',
+      'How do we find the people who can walk and dance alongside us, as we navigate the wild, winding, sometimes unexpected turns on this new, unfamiliar journey?',
       'Come join us in our little experiment, made by fellow expats living in Madrid - to help build the kind of community we\'d love to be a part of, in our new home. <span class="text--full-color">🦖</span>',
     ],
   },
@@ -22,7 +22,7 @@ const COLUMNS = [
     title: 'Free, Forever <span class="text--full-color">🎉</span>',
     text: [
       'Great communities take effort and energy, and the organizers are heroes, who help make this city feel just a little warmer, a little more enjoyable and fun, for all of us!',
-      'So Socially will always be FREE for creators of our events and communities.',
+      'So Socially will always be FREE for the creators of our events and communities.',
       'Instead of being "customers" - we\'re all in this together. Come be a comrade, come be a friend! <span class="text--full-color">🍔</span>',
     ],
   },
@@ -32,7 +32,7 @@ export function WhySociallySection() {
   return (
     <section className="why-socially-section">
       <div className="width-container">
-        <div className="page__divider" />
+        <div className="home-page__divider" />
         {/* <SectionHeader title="Why Socially" hideMore /> */}
         <div className="why-socially-section__grid">
           {COLUMNS.map(col => (

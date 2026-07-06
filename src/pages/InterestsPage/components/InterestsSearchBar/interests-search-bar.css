@@ -21,13 +21,6 @@
   white-space: nowrap;
   @apply btn-white-purple;
   padding: 0 0.75rem;
-  /* line-height: 1.75rem; */
-
-  /* &:disabled {
-    cursor: not-allowed;
-    background: var(--home-section-border);    
-    opacity: 0.5;
-  } */
 
   .interests-list__btn-icon {
     top: 1px;

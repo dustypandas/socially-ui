@@ -43,8 +43,6 @@ export function EventOnePage() {
                 />
               </div>
               <EventAttendCard
-                title={eventData.title}
-                isExpanded={isExpandedAttendCard}
                 className={[
                   'event-one-page__attend-card',
                   isExpandedAttendCard && 'event-one-page__attend-card--expanded',
@@ -60,12 +58,22 @@ export function EventOnePage() {
                 <div ref={imageRef} className="event-one-page__aside-image">
                   <EventImage src={eventData.img} alt={eventData.title} />
                 </div>
-                <EventCommunity
-                  name={eventData.community.name}
-                  img={eventData.community.img}
-                  details={eventData.community.details}
-                />
-                <EventHosts hosts={eventData.hosts} />
+                <div className="event-one-page__aside-sticky">
+                  <h3
+                    className={[
+                      'event-one-page__aside-title',
+                      isExpandedAttendCard && 'event-one-page__aside-title--visible',
+                    ].filter(Boolean).join(' ')}
+                  >
+                    {eventData.title}
+                  </h3>
+                  <EventCommunity
+                    name={eventData.community.name}
+                    img={eventData.community.img}
+                    details={eventData.community.details}
+                  />
+                  <EventHosts hosts={eventData.hosts} />
+                </div>
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>

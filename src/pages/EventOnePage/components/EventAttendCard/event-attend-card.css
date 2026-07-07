@@ -27,43 +27,11 @@
 }
 
 .event-attend-card__header {
-  position: relative;
   background: var(--global-text-bg);
   padding: 0.5rem 1rem;
   color: var(--global-text-muted);
   @apply courier-inline;
   font-size: var(--font-size-sm);
-}
-
-.event-attend-card__header-label {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.event-attend-card--expanded .event-attend-card__header-label {
-  opacity: 0;
-}
-
-.event-attend-card__sticky-title {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  padding: inherit;
-  margin: 0;
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  color: var(--global-text);
-  opacity: 0;
-  transform: translateY(0.5rem);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.event-attend-card__sticky-title--visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .event-attend-card__body {

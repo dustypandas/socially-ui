@@ -13,8 +13,6 @@ type EventAttendCardProps = {
   priceLabel?: string;
   className?: string;
   isFixedBar?: boolean;
-  title?: string;
-  isExpanded?: boolean;
 };
 
 export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
@@ -25,8 +23,6 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       priceLabel = 'Free',
       className = '',
       isFixedBar = false,
-      title,
-      isExpanded = false,
     },
     ref,
   ) {
@@ -36,23 +32,12 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
         className={[
           'event-attend-card',
           isFixedBar && 'event-attend-card--fixed-bar',
-          isExpanded && 'event-attend-card--expanded',
           className,
         ].filter(Boolean).join(' ')}
       >
         {!isFixedBar && (
           <div className="event-attend-card__header">
             <span className="event-attend-card__header-label">Attend</span>
-            {title && (
-              <h3
-                className={[
-                  'event-attend-card__sticky-title',
-                  isExpanded && 'event-attend-card__sticky-title--visible',
-                ].filter(Boolean).join(' ')}
-              >
-                {title}
-              </h3>
-            )}
           </div>
         )}
         <div className="event-attend-card__body">

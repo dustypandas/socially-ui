@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
-import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
-import { memberFollowers } from '../../data/dummyData.js';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { addInterest } from '../../store/slices/interestsSlice';
+import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { memberFollowers } from '@src/data/dummyData.js';
+import { useAppDispatch, useAppSelector } from '@src/store/hooks';
+import { addInterest } from '@src/store/slices/interestsSlice';
 import {
   FollowedInterests,
   InterestsList,

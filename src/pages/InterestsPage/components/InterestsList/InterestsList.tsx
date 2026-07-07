@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '../../../../store/hooks';
-import type { Interest } from '../../../../store/slices/interestsSlice';
+import { useAppSelector } from '@src/store/hooks';
+import type { Interest } from '@src/store/slices/interestsSlice';
 import './interests-list.css';
 
 type InterestsListProps = {
@@ -100,7 +100,6 @@ export function InterestsList({
                   <button
                     type="button"
                     className='interests-list__follow-btn'
-                    aria-label={`Follow ${interest.name}`}
                     disabled={!canFollowMore}
                     onClick={() => onFollow(interest.id)}
                   >
@@ -111,7 +110,6 @@ export function InterestsList({
                   <button
                     type="button"
                     className="interests-list__unfollow-btn"
-                    aria-label={`Unfollow ${interest.name}`}
                     onClick={() => onUnfollow(interest.id)}
                   >
                     <span className="interests-list__btn-icon">+</span>

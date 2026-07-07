@@ -1,5 +1,5 @@
-import type { MemberFollower } from '../../../../data/dummyData';
-import { MapContainer } from '../../../../components';
+import type { MemberFollower } from '@src/data/dummyData';
+import { MapContainer } from '@src/components';
 import './followers-section.css';
 
 type FollowersSectionProps = {

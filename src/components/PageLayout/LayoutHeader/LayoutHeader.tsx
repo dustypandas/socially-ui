@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { smoothScrollToSection } from '../../../utils/smoothScroll';
+import { smoothScrollToSection } from '@src/utils/smoothScroll';
 import './layout-header.css';
 
 const navLinks = [
@@ -68,14 +68,11 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
           <button
             type="button"
             className="layout-header__menu-toggle"
-            aria-expanded={isMenuOpen}
-            aria-controls="layout-header-nav"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setIsMenuOpen(open => !open)}
           >
-            <span className="layout-header__menu-icon" aria-hidden="true" />
+            <span className="layout-header__menu-icon" />
           </button>
-          <nav id="layout-header-nav" className="layout-header__nav" aria-label="Main">
+          <nav id="layout-header-nav" className="layout-header__nav">
             {navLinks.map(link => (
               <a
                 key={link.label}
@@ -87,7 +84,7 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
               </a>
             ))}
           </nav>
-          {/* <a href="#" className="layout-header__profile" aria-label="Profile">
+          {/* <a href="#" className="layout-header__profile">
             <IconUser className="layout-header__profile-icon" />
           </a> */}
         </div>

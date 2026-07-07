@@ -1,6 +1,6 @@
-import IconContact from '../../../../assets/icon-email-outline.svg?react';
-import type { CommunityOrganizer } from '../../../../data/dummyData';
-import { nameAndOthersLabel } from '../../helpers';
+import IconContact from '@src/assets/icon-email-outline.svg?react';
+import type { CommunityOrganizer } from '@src/data/dummyData';
+import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-organizers.css';
 
 type CommunityOrganizersProps = {

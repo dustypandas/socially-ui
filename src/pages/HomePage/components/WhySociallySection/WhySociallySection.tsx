@@ -1,4 +1,4 @@
-// import { SectionHeader } from '../../../../components/SectionHeader/SectionHeader';
+// import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
 import './why-socially-section.css';
 
 const COLUMNS = [

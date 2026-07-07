@@ -1,5 +1,5 @@
-import type { Interest } from '../../store/slices/interestsSlice';
-import type { MemberFollower } from '../../data/dummyData';
+import type { Interest } from '@src/store/slices/interestsSlice';
+import type { MemberFollower } from '@src/data/dummyData';
 
 export function hasExactInterestMatch(interests: Interest[], query: string): boolean {
   const normalized = query.trim().toLowerCase();

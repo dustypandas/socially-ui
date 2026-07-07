@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { spanishDiscussionPosts } from '../../data/dummyData.js';
+import { spanishDiscussionPosts } from '@src/data/dummyData.js';
 
 export type DiscussionReply = {
   id: string;

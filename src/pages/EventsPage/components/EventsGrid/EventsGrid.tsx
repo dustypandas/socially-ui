@@ -1,4 +1,4 @@
-import { EventCard, EventCardEvent } from '../../../HomePage/components/EventsSection/EventCard/EventCard';
+import { EventCard, EventCardEvent } from '@src/pages/HomePage/components/EventsSection/EventCard/EventCard';
 import './events-grid.css';
 
 type EventsGridProps = {

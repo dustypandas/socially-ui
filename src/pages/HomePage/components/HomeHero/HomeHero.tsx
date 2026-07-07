@@ -1,7 +1,7 @@
 import { forwardRef, useCallback, useRef } from 'react';
-import { smoothScrollToSection } from '../../../../utils/smoothScroll';
-import { useHeroParallax } from '../../hooks/useHeroParallax';
-import { useWordCarousel } from '../../hooks/useWordCarousel';
+import { smoothScrollToSection } from '@src/utils/smoothScroll';
+import { useHeroParallax } from '@src/pages/HomePage/hooks/useHeroParallax';
+import { useWordCarousel } from '@src/pages/HomePage/hooks/useWordCarousel';
 import './home-hero.css';
 
 const HERO_WORDS = [
@@ -52,14 +52,14 @@ export const HomeHero = forwardRef<HTMLElement, HomeHeroProps>(function HomeHero
   return (
     <>
       <section className="home-hero" id="home-hero" ref={setHeroRef}>
-        <div className="home-hero__media" aria-hidden="true">
+        <div className="home-hero__media">
           <div className="home-hero__overlay" />
         </div>
         <div className="home-hero__content width-container">
           <div className="home-hero__copy">
             <h1 className="home-hero__title">
               A home of{' '}
-              <span className="home-hero__word-carousel" aria-live="polite">
+              <span className="home-hero__word-carousel">
                 {outgoingIndex !== null && (
                   <span className="home-hero__word-carousel-item home-hero__word-carousel-item--exiting">
                     {outgoingWord}
@@ -102,7 +102,7 @@ export const HomeHero = forwardRef<HTMLElement, HomeHeroProps>(function HomeHero
           </div>
         </div>
       </section>
-      <div className="home-hero__spacer" aria-hidden="true" />
+      <div className="home-hero__spacer" />
     </>
   );
 });

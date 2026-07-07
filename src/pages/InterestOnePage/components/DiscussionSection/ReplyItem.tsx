@@ -1,4 +1,4 @@
-import type { DiscussionReply } from '../../../../store/slices/postsSlice.js';
+import type { DiscussionReply } from '@src/store/slices/postsSlice.js';
 import { formatRelativeTime, getMemberAvatarUrl, getMemberById } from './helpers.js';
 import './reply-item.css';
 

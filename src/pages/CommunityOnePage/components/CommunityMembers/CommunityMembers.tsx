@@ -1,4 +1,4 @@
-import type { CommunityMemberProfile } from '../../../../data/dummyData';
+import type { CommunityMemberProfile } from '@src/data/dummyData';
 import './community-members.css';
 
 type CommunityMembersProps = {

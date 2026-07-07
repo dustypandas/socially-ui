@@ -1,6 +1,6 @@
-import type { HomeEvent } from '../../../../data/dummyData';
-import { SectionHeader, SectionMoreLink } from '../../../HomePage/components/SectionHeader/SectionHeader';
-import { EventCardHorizontal } from '../../../InterestOnePage/components/EventCardHorizontal/EventCardHorizontal';
+import type { HomeEvent } from '@src/data/dummyData';
+import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
+import { EventCardHorizontal } from '@src/pages/InterestOnePage/components/EventCardHorizontal/EventCardHorizontal';
 import './community-events-section.css';
 
 type CommunityEventsSectionProps = {

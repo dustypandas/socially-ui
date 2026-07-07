@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { PageLayout, LayoutFooter } from '../../components';
-import { useScrolledPastDistance } from '../../hooks/useScrolledPastDistance';
-import { getShouldPlayEntry } from '../../utils/shouldPlayEntry';
+import { PageLayout, LayoutFooter } from '@src/components';
+import { useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
+import { getShouldPlayEntry } from '@src/utils/shouldPlayEntry';
 import {
   HomeHero,
   InterestsSection,
@@ -44,7 +44,7 @@ export function HomePage() {
         'home__entry-cover',
         isEntryRevealed1 && 'home-page--entry-revealed1',
         isEntryRevealed3 && 'home-page--entry-revealed3',
-      ].filter(Boolean).join(' ')} aria-hidden="true">
+      ].filter(Boolean).join(' ')}>
         <div className="home__entry-logo-image" />
       </div>
       <div id="home-top" />

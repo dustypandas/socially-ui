@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { events, spanishInterestEvents } from '../../data/dummyData.js';
+import { events, spanishInterestEvents } from '@src/data/dummyData.js';
 
 export type EventHost = {
   name: string;

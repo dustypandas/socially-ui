@@ -1,5 +1,5 @@
-import { ColumnsLayout, PageLayout } from '../../components';
-import { sampleCommunityPage } from '../../data/dummyData.js';
+import { ColumnsLayout, PageLayout } from '@src/components';
+import { sampleCommunityPage } from '@src/data/dummyData.js';
 import {
   CommunityAbout,
   CommunityEventsSection,

@@ -1,5 +1,5 @@
-import type { Interest } from '../../store/slices/interestsSlice';
-import type { Event } from '../../store/slices/eventsSlice';
+import type { Interest } from '@src/store/slices/interestsSlice';
+import type { Event } from '@src/store/slices/eventsSlice';
 
 export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'anytime';
 

@@ -1,4 +1,4 @@
-import { memberAvatarUrls, memberFollowers } from '../../../../data/dummyData.js';
+import { memberAvatarUrls, memberFollowers } from '@src/data/dummyData.js';
 
 export function getMemberById(id: string) {
   return memberFollowers.find(member => member.id === id);

@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import IconMapMarker from '../../../../assets/icon-map-marker-outline.svg?react';
-import IconStar from '../../../../assets/icon-star.svg?react';
-import { memberAvatarUrls } from '../../../../data/dummyData.js';
-import type { Event } from '../../../../store/slices/eventsSlice.js';
+import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
+import IconStar from '@src/assets/icon-star.svg?react';
+import { memberAvatarUrls } from '@src/data/dummyData.js';
+import type { Event } from '@src/store/slices/eventsSlice.js';
 import './event-card-horizontal.css';
-import { getAttendeesLabel } from '../../../../utils/getAttendeesLabel.js';
+import { getAttendeesLabel } from '@src/utils/getAttendeesLabel.js';
 
 type EventCardHorizontalProps = {
   event: Event & { dateTimeLabel: string },

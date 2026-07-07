@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import IconLocation from '../../assets/icon-map-marker-outline.svg?react';
-// import IconRatings from '../assets/icon-star.svg?react';
-import { PageFooter, PageHeader } from '../PrevCommunityPage/prevComponents';
-import { sampleFullEvent } from '../PrevCommunityPage/prevData';
+import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
+// import IconRatings from '@src/pages/assets/icon-star.svg?react';
+import { PageFooter, PageHeader } from '@src/pages/PrevCommunityPage/prevComponents';
+import { sampleFullEvent } from '@src/pages/PrevCommunityPage/prevData';
 import './event-page.css';
 
 export function EventPage() {
@@ -277,7 +277,7 @@ export function EventPage() {
       </div>
     </section>
 
-    <section className={`section-container event-actions-bottom${!!hasScrolledNearEnd ? '' : ' has-border'}`}>
+    <section className={`section-container event-actions-bottom${hasScrolledNearEnd ? '' : ' has-border'}`}>
       <div className='width-container prev-columns-layout'>
         <div className='event-actions__left-container'>
           <div className='event-attendances__attendees'>

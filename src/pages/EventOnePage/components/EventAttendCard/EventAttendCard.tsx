@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { getAttendeesLabel } from '../../../../utils/getAttendeesLabel';
+import { getAttendeesLabel } from '@src/utils/getAttendeesLabel';
 import './event-attend-card.css';
 
 type AttendeeProfile = {

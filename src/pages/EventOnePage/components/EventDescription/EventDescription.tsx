@@ -1,4 +1,4 @@
-import { SectionHeader } from '../../../HomePage/components/SectionHeader/SectionHeader';
+import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import './event-description.css';
 
 type EventDescriptionProps = {

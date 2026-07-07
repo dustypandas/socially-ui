@@ -1,4 +1,4 @@
-import type { Community } from '../../data/dummyData';
+import type { Community } from '@src/data/dummyData';
 
 export type CommunityScope = 'all' | 'mine' | 'interests';
 

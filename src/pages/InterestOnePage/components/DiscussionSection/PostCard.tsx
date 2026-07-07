@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import IconMessage from '../../../../assets/icon-message-outline.svg?react';
-import IconStar from '../../../../assets/icon-star.svg?react';
-import IconHeartOutline from '../../../../assets/icon-heart-outline-temp.svg?react';
-import type { DiscussionPost } from '../../../../store/slices/postsSlice.js';
+import IconMessage from '@src/assets/icon-message-outline.svg?react';
+import IconStar from '@src/assets/icon-star.svg?react';
+import IconHeartOutline from '@src/assets/icon-heart-outline-temp.svg?react';
+import type { DiscussionPost } from '@src/store/slices/postsSlice.js';
 import { DiscussionComposer } from './DiscussionComposer.js';
 import { ReplyItem } from './ReplyItem.js';
 import { formatRelativeTime, getMemberAvatarUrl, getMemberById } from './helpers.js';
@@ -73,7 +73,6 @@ export function PostCard({ post, onReplySubmit }: PostCardProps) {
             isLiked && 'discussion-post__stat--active',
           ].filter(Boolean).join(' ')}
           onClick={handleLikeClick}
-          aria-label={`${likeCount} likes`}
         >
           {isLiked ? (
             <IconStar className="discussion-post__stat-icon" />
@@ -90,7 +89,6 @@ export function PostCard({ post, onReplySubmit }: PostCardProps) {
             commentsExpanded && replyCount > 0 && 'discussion-post__stat--active',
           ].filter(Boolean).join(' ')}
           onClick={handleCommentsClick}
-          aria-label={`${replyCount} comments`}
           disabled={replyCount === 0}
         >
           <IconMessage className="discussion-post__stat-icon" />
@@ -100,7 +98,7 @@ export function PostCard({ post, onReplySubmit }: PostCardProps) {
 
       {showReplies && (
         <>
-          <div className="discussion-post__divider" aria-hidden="true" />
+          <div className="discussion-post__divider" />
           <div className="discussion-post__replies">
             {post.replies.map(reply => (
               <ReplyItem key={reply.id} reply={reply} />
@@ -109,7 +107,7 @@ export function PostCard({ post, onReplySubmit }: PostCardProps) {
         </>
       )}
 
-      <div className="discussion-post__divider" aria-hidden="true" />
+      <div className="discussion-post__divider" />
       <div className="discussion-post__reply-box">
         <DiscussionComposer
           placeholder="reply..."

@@ -1,5 +1,5 @@
-import { ButtonsGroup } from '../../../../components';
-import { COMMUNITY_SCOPE_OPTIONS, type CommunityScope } from '../../helpers';
+import { ButtonsGroup } from '@src/components';
+import { COMMUNITY_SCOPE_OPTIONS, type CommunityScope } from '@src/pages/CommunitiesPage/helpers';
 import './community-filters.css';
 
 type CommunityFiltersProps = {
@@ -24,13 +24,8 @@ export function CommunityFilters({
         placeholder="search..."
         value={value}
         onChange={event => onChange(event.target.value)}
-        aria-label="Search communities"
       />
-      <div
-        className="community-filters__scope-group"
-        role="radiogroup"
-        aria-label="Filter communities by membership"
-      >
+      <div className="community-filters__scope-group">
         {COMMUNITY_SCOPE_OPTIONS.map(option => (
           <ButtonsGroup
             key={option.value}

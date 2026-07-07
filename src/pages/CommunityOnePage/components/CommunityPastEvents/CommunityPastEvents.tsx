@@ -1,6 +1,6 @@
-import type { HomeEvent } from '../../../../data/dummyData';
-import { EventsGrid } from '../../../EventsPage/components/EventsGrid/EventsGrid';
-import { SectionHeader } from '../../../HomePage/components/SectionHeader/SectionHeader';
+import type { HomeEvent } from '@src/data/dummyData';
+import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
+import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import './community-past-events.css';
 
 type CommunityPastEventsProps = {

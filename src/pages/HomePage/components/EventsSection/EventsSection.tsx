@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../../../store/hooks';
-import { SectionHeader, SectionMoreLink } from '../SectionHeader/SectionHeader';
+import { useAppSelector } from '@src/store/hooks';
+import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import { EventCard } from './EventCard/EventCard';
 import './events-section.css';
 

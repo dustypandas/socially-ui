@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { ColumnsLayout, PageLayout } from '../../components';
-import { sampleFullEvent } from '../../data/dummyData.js';
+import { ColumnsLayout, PageLayout } from '@src/components';
+import { sampleFullEvent } from '@src/data/dummyData.js';
 import {
   EventAttendCard,
   EventCommunity,
@@ -12,7 +12,7 @@ import {
 import {
   getElementDocumentOffsetTop,
   useScrolledPastDistance,
-} from '../../hooks/useScrolledPastDistance';
+} from '@src/hooks/useScrolledPastDistance';
 import './event-one-page.css';
 
 export function EventOnePage() {

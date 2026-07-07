@@ -23,6 +23,17 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'JSXAttribute[name.name=/^aria-/]',
+          message: 'Do not use ARIA attributes in this project.',
+        },
+        {
+          selector: 'JSXAttribute[name.name="role"]',
+          message: 'Do not use role attributes in this project.',
+        },
+      ],
     },
   },
 )

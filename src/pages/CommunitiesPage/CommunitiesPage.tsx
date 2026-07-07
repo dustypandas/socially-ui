@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
-import { communities, myCommunityIds } from '../../data/dummyData.js';
+import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { communities, myCommunityIds } from '@src/data/dummyData.js';
 import { CommunitiesGrid, CommunityFilters } from './components';
 import { filterCommunities, type CommunityScope } from './helpers';
 import './communities-page.css';

@@ -1,5 +1,5 @@
-import type { Community } from '../../../../data/dummyData';
-import { CommunityCard } from '../../../InterestOnePage/components/CommunityCard/CommunityCard';
+import type { Community } from '@src/data/dummyData';
+import { CommunityCard } from '@src/pages/InterestOnePage/components/CommunityCard/CommunityCard';
 import './communities-grid.css';
 
 type CommunitiesGridProps = {

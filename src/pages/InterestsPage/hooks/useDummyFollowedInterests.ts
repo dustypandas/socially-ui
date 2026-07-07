@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
-import { followedInterestIds, MAX_FOLLOWED_INTERESTS } from '../../../data/dummyData.js';
-import type { Interest } from '../../../store/slices/interestsSlice';
+import { followedInterestIds, MAX_FOLLOWED_INTERESTS } from '@src/data/dummyData.js';
+import type { Interest } from '@src/store/slices/interestsSlice';
 
 export function useDummyFollowedInterests(interests: Interest[]) {
   const [dummyFollowedIds, setDummyFollowedIds] = useState(

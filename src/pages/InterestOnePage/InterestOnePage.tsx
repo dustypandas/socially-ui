@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
-import { memberFollowers, spanishInterestEvents, spanishRelatedCommunities } from '../../data/dummyData.js';
-import { useAppSelector } from '../../store/hooks';
+import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { memberFollowers, spanishInterestEvents, spanishRelatedCommunities } from '@src/data/dummyData.js';
+import { useAppSelector } from '@src/store/hooks';
 import { CommunitiesSection, EventCardHorizontal, ExternalLinks, FollowersSection } from './components';
-import { getUniqueMapFollowers } from '../InterestsPage/helpers';
+import { getUniqueMapFollowers } from '@src/pages/InterestsPage/helpers';
 import './interest-one-page.css';
 
 const INTEREST_ID = 'spanish';

@@ -39,7 +39,6 @@ export function DiscussionComposer({
           onChange={event => setBody(event.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          aria-label={placeholder}
         />
         <button
           type="button"

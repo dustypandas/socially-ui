@@ -1,0 +1,14 @@
+---
+description: Do not use ARIA or role attributes in this project
+alwaysApply: true
+---
+
+# No ARIA or role attributes
+
+This codebase intentionally does not use ARIA or `role` attributes.
+
+Do not add:
+- `aria-*` attributes (e.g. `aria-label`, `aria-hidden`, `aria-live`, `aria-pressed`, `aria-expanded`, `aria-controls`)
+- `role` attributes (e.g. `role="radiogroup"`, `role="button"`)
+
+Use visible text, semantic HTML, and CSS for structure and presentation instead.

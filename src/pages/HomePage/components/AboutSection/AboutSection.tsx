@@ -1,4 +1,4 @@
-import { SectionHeader } from '../SectionHeader/SectionHeader';
+import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import './about-section.css';
 
 export function AboutSection() {

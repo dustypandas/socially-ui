@@ -1,4 +1,4 @@
-import IconLocation from '../../../../assets/icon-map-marker-outline.svg?react';
+import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
 import './event-intro.css';
 
 type DateLabels = {
@@ -20,7 +20,7 @@ export function EventIntro({ title, date, location }: EventIntroProps) {
       <h1 className="event-intro__title">{title}</h1>
       <div className="event-intro__attributes">
         <div className="event-intro__attribute-row">
-          <div className="event-intro__calendar" aria-hidden="true">
+          <div className="event-intro__calendar">
             <div className="event-intro__calendar-month">{date.monthShort}</div>
             <div className="event-intro__calendar-date">{date.dateShort}</div>
           </div>

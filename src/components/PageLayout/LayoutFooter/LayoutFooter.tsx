@@ -12,7 +12,7 @@ export function LayoutFooter() {
 
   return (
     <footer className="layout-footer">
-      <div className="layout-footer__divider" aria-hidden="true" />
+      <div className="layout-footer__divider" />
       <div className="width-container">
         <p className="layout-footer__text">© {year} - Made with {icon}</p>
       </div>

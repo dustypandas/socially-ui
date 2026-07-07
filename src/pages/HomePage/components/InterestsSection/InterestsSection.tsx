@@ -1,4 +1,4 @@
-import { SectionHeader, SectionMoreLink } from '../SectionHeader/SectionHeader';
+import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import { InterestsGrid } from './InterestsGrid/InterestsGrid';
 import './interests-section.css';
 

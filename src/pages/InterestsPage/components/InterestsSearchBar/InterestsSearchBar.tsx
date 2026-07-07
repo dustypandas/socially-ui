@@ -23,7 +23,6 @@ export function InterestsSearchBar({
         placeholder="search..."
         value={value}
         onChange={event => onChange(event.target.value)}
-        aria-label="Search interests"
       />
       <button
         type="button"
@@ -33,7 +32,6 @@ export function InterestsSearchBar({
         ].filter(Boolean).join(' ')}
         disabled={isAddButtonDisabled}
         onClick={onAdd}
-        aria-label={`Add ${value.trim()} as a new interest`}
       >
         <span className="interests-list__btn-icon">+</span>&thinsp;<span className="interests-search-bar__add-btn-text">follow</span>
       </button>

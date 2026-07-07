@@ -1,8 +1,8 @@
-import IconGroup from '../../../../assets/icon-group-outline.svg?react';
-import IconStar from '../../../../assets/icon-star.svg?react';
-import IconUser from '../../../../assets/icon-user-outline.svg?react';
-import type { CommunityOrganizer } from '../../../../data/dummyData';
-import { nameAndOthersLabel } from '../../helpers';
+import IconGroup from '@src/assets/icon-group-outline.svg?react';
+import IconStar from '@src/assets/icon-star.svg?react';
+import IconUser from '@src/assets/icon-user-outline.svg?react';
+import type { CommunityOrganizer } from '@src/data/dummyData';
+import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-intro-panel.css';
 
 type CommunityIntroPanelProps = {

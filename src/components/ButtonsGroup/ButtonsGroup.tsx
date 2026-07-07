@@ -22,7 +22,6 @@ export function ButtonsGroup({
         selected && 'buttons-group--selected',
         className,
       ].filter(Boolean).join(' ')}
-      aria-pressed={selected}
       onClick={onClick}
     >
       {children}

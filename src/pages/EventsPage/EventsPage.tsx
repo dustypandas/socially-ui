@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { ColumnsLayout, PageHeader, PageLayout } from '../../components';
-import { useAppSelector } from '../../store/hooks';
+import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { useAppSelector } from '@src/store/hooks';
 import { EventFilters, EventsGrid } from './components';
 import {
   filterEvents,

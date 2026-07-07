@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '../../../../../store/hooks';
+import { useAppSelector } from '@src/store/hooks';
 import './interests-grid.css';
 
 const MAX_POPULAR_INTERESTS = 12;

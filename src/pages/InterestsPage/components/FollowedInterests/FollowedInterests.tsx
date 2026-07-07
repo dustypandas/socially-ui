@@ -1,5 +1,5 @@
-import type { Interest, MemberFollower } from '../../../../data/dummyData';
-import { MapContainer } from '../../../../components';
+import type { Interest, MemberFollower } from '@src/data/dummyData';
+import { MapContainer } from '@src/components';
 import './followed-interests.css';
 
 type FollowedInterestsProps = {

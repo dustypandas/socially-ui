@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { mockCurrentUser } from '../../../../data/dummyData.js';
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import { addPost, addReply } from '../../../../store/slices/postsSlice.js';
+import { mockCurrentUser } from '@src/data/dummyData.js';
+import { useAppDispatch, useAppSelector } from '@src/store/hooks';
+import { addPost, addReply } from '@src/store/slices/postsSlice.js';
 import { DiscussionComposer } from './DiscussionComposer.js';
 import { PostCard } from './PostCard.js';
 import './discussion-section.css';

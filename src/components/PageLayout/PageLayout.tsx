@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { markRouteLoaded } from '../../utils/shouldPlayEntry';
+import { markRouteLoaded } from '@src/utils/shouldPlayEntry';
 import { LayoutHeader } from './LayoutHeader/LayoutHeader';
 import { LayoutFooter } from './LayoutFooter/LayoutFooter';
 import './page-layout.css';

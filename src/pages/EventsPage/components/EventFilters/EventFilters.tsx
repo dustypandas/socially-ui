@@ -1,10 +1,10 @@
-import { ButtonsGroup } from '../../../../components';
+import { ButtonsGroup } from '@src/components';
 import {
   OPEN_TO_FILTER_OPTIONS,
   TIME_FILTER_OPTIONS,
   type OpenToFilter,
   type TimeFilter,
-} from '../../helpers';
+} from '@src/pages/EventsPage/helpers';
 import './event-filters.css';
 
 type EventFiltersProps = {
@@ -28,11 +28,7 @@ export function EventFilters({
     <div className="event-filters">
       <div className="event-filters__field">
         <h3 className="event-filters__label">When:</h3>
-        <div
-          className="event-filters__time-group"
-          role="radiogroup"
-          aria-label="Filter by time"
-        >
+        <div className="event-filters__time-group">
           {TIME_FILTER_OPTIONS.map(option => (
             <ButtonsGroup
               key={option.value}
@@ -47,11 +43,7 @@ export function EventFilters({
 
       <div className="event-filters__field">
         <h3 className="event-filters__label">Open to:</h3>
-        <div
-          className="event-filters__time-group"
-          role="radiogroup"
-          aria-label="Filter by open to"
-        >
+        <div className="event-filters__time-group">
           {OPEN_TO_FILTER_OPTIONS.map(option => (
             <ButtonsGroup
               key={option.value}
@@ -79,7 +71,6 @@ export function EventFilters({
           placeholder="search..."
           value={interestQuery}
           onChange={event => onInterestQueryChange(event.target.value)}
-          aria-label="Search by interest"
         />
       </label> */}
     </div>

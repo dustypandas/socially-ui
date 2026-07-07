@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import type { RelatedLink } from '../../../../data/dummyData.js';
-import { useAppDispatch } from '../../../../store/hooks';
-import { addRelatedLink } from '../../../../store/slices/interestsSlice.js';
+import type { RelatedLink } from '@src/data/dummyData.js';
+import { useAppDispatch } from '@src/store/hooks';
+import { addRelatedLink } from '@src/store/slices/interestsSlice.js';
 import './external-links.css';
 
 type ExternalLinksProps = {
@@ -80,7 +80,6 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
             placeholder={isInputFocused ? 'link name...' : 'suggest a new link...'}
             value={label}
             onChange={event => setLabel(event.target.value)}
-            aria-label="Link name"
           />
           <div className="external-links__input-extra">
             <input
@@ -89,7 +88,6 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
               placeholder="link url..."
               value={href}
               onChange={event => setHref(event.target.value)}
-              aria-label="Link URL"
             />
             <button
               type="button"

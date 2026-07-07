@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import { ColumnsLayout } from '../../../../components';
+import { ColumnsLayout } from '@src/components';
 import {
   getElementDocumentOffsetTop,
   useScrolledPastDistance,
-} from '@/hooks/useScrolledPastDistance';
+} from '@src/hooks/useScrolledPastDistance';
 import './community-nav.css';
 
 const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
@@ -20,7 +20,6 @@ export function CommunityNav() {
       <nav
         ref={navRef}
         className={`community-nav${isDocked ? ' community-nav--docked' : ''}`}
-        aria-label="Community sections"
       >
         <div className="width-container community-nav__container">
           <ColumnsLayout>

@@ -1,33 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ColumnsLayout } from '../../../../components';
+import {
+  getElementDocumentOffsetTop,
+  useScrolledPastDistance,
+} from '@/hooks/useScrolledPastDistance';
 import './community-nav.css';
 
 const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
 
 export function CommunityNav() {
   const navRef = useRef<HTMLElement>(null);
-  const [isDocked, setIsDocked] = useState(false);
-
-  useEffect(() => {
-    const handleUpdate = () => {
-      const nav = navRef.current;
-      if (!nav) {
-        return;
-      }
-
-      const docked = window.scrollY >= (nav.offsetTop + 50);
-      setIsDocked(prev => (prev !== docked ? docked : prev));
-    };
-
-    handleUpdate();
-    window.addEventListener('scroll', handleUpdate, { passive: true });
-    window.addEventListener('resize', handleUpdate);
-
-    return () => {
-      window.removeEventListener('scroll', handleUpdate);
-      window.removeEventListener('resize', handleUpdate);
-    };
-  }, []);
+  const isDocked = useScrolledPastDistance({
+    ref: navRef,
+    getDistance: (nav) => getElementDocumentOffsetTop(nav) + 50,
+  });
 
   return (
     <>

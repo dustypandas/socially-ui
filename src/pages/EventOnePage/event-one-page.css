@@ -28,6 +28,12 @@
   /* top: 0; */
   top: -2.1875rem; /* event attend card header height */
   z-index: 10;
+  margin: 0;
+  transition: margin 0.3s ease-in-out;
+}
+
+.event-one-page__attend-card--expanded {
+  margin: 0 -1rem;
 }
 
 

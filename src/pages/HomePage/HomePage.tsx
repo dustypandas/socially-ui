@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { PageLayout, LayoutFooter } from '../../components';
+import { useScrolledPastDistance } from '../../hooks/useScrolledPastDistance';
+import { getShouldPlayEntry } from '../../utils/shouldPlayEntry';
 import {
   HomeHero,
   InterestsSection,
   EventsSection,
   WhySociallySection,
 } from './components';
-import { useHeaderScrollCompact } from './hooks/useHeaderScrollCompact';
-import { getShouldPlayEntry } from '../../utils/shouldPlayEntry';
 import './home-page.css';
 
 export function HomePage() {
@@ -15,7 +15,11 @@ export function HomePage() {
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(!shouldPlayEntry);
   const [isEntryRevealed2, setIsEntryRevealed2] = useState(!shouldPlayEntry);
   const [isEntryRevealed3, setIsEntryRevealed3] = useState(!shouldPlayEntry);
-  const shouldShowHeader = useHeaderScrollCompact();
+  const heroRef = useRef<HTMLElement>(null);
+  const shouldShowHeader = useScrolledPastDistance({
+    ref: heroRef,
+    getDistance: (hero) => hero.offsetHeight,
+  });
 
   useEffect(() => {
     if (!shouldPlayEntry) return;
@@ -44,13 +48,17 @@ export function HomePage() {
         <div className="home__entry-logo-image" />
       </div>
       <div id="home-top" />
-      <HomeHero carouselEnabled={isEntryRevealed2} syncInitialDelayWithEntry={shouldPlayEntry} />
+      <HomeHero
+        ref={heroRef}
+        carouselEnabled={isEntryRevealed2}
+        syncInitialDelayWithEntry={shouldPlayEntry}
+      />
       <main className="layout__main">
         <section className={[
           'home-page',
           isEntryRevealed1 && 'home-page--entry-revealed1',
           isEntryRevealed2 && 'home-page--entry-revealed2',
-        ].filter(Boolean).join(' ')}>        
+        ].filter(Boolean).join(' ')}>
           <InterestsSection />
           <EventsSection />
           <WhySociallySection />
@@ -61,4 +69,3 @@ export function HomePage() {
     </PageLayout>
   );
 }
-

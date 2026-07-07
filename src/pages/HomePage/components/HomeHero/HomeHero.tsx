@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useCallback, useRef } from 'react';
 import { smoothScrollToSection } from '../../../../utils/smoothScroll';
 import { useHeroParallax } from '../../hooks/useHeroParallax';
 import { useWordCarousel } from '../../hooks/useWordCarousel';
@@ -16,16 +16,28 @@ const HERO_WORDS = [
   'psychedelic 🍄',
   'culinary 🌮',
   'wizarding 🧙‍♂️',
-]; // reflective 🧘‍♀️, 
+]; // reflective 🧘‍♀️,
 
 type HomeHeroProps = {
   carouselEnabled?: boolean;
   syncInitialDelayWithEntry?: boolean;
 };
 
-export function HomeHero({ carouselEnabled = false, syncInitialDelayWithEntry = false }: HomeHeroProps) {
+export const HomeHero = forwardRef<HTMLElement, HomeHeroProps>(function HomeHero(
+  { carouselEnabled = false, syncInitialDelayWithEntry = false },
+  forwardedRef,
+) {
   const heroRef = useRef<HTMLElement>(null);
   useHeroParallax(heroRef);
+
+  const setHeroRef = useCallback((node: HTMLElement | null) => {
+    heroRef.current = node;
+    if (typeof forwardedRef === 'function') {
+      forwardedRef(node);
+    } else if (forwardedRef) {
+      forwardedRef.current = node;
+    }
+  }, [forwardedRef]);
 
   const intervalMs = 3600;
   const exitMs = 1200;
@@ -39,7 +51,7 @@ export function HomeHero({ carouselEnabled = false, syncInitialDelayWithEntry = 
 
   return (
     <>
-      <section className="home-hero" id="home-hero" ref={heroRef}>
+      <section className="home-hero" id="home-hero" ref={setHeroRef}>
         <div className="home-hero__media" aria-hidden="true">
           <div className="home-hero__overlay" />
         </div>
@@ -93,4 +105,4 @@ export function HomeHero({ carouselEnabled = false, syncInitialDelayWithEntry = 
       <div className="home-hero__spacer" aria-hidden="true" />
     </>
   );
-}
+});

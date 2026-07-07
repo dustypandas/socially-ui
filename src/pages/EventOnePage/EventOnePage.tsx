@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { ColumnsLayout, PageLayout } from '../../components';
 import { sampleFullEvent } from '../../data/dummyData.js';
 import {
@@ -8,10 +9,22 @@ import {
   EventImage,
   EventIntro,
 } from './components';
+import {
+  getElementDocumentOffsetTop,
+  useScrolledPastDistance,
+} from '../../hooks/useScrolledPastDistance';
 import './event-one-page.css';
 
 export function EventOnePage() {
   const eventData = sampleFullEvent;
+  const imageRef = useRef<HTMLDivElement>(null);
+  const isExpandedAttendCard = useScrolledPastDistance(
+    {
+      ref: imageRef,
+      getDistance: (image) => getElementDocumentOffsetTop(image) + image.offsetHeight,
+    },
+    { mediaQuery: '(min-width: 780px)' },
+  );
 
   return (
     <PageLayout hasStaticHeader>
@@ -30,15 +43,21 @@ export function EventOnePage() {
                 />
               </div>
               <EventAttendCard
-                className="event-one-page__attend-card"
+                title={eventData.title}
+                isExpanded={isExpandedAttendCard}
+                className={[
+                  'event-one-page__attend-card',
+                  isExpandedAttendCard && 'event-one-page__attend-card--expanded',
+                ].filter(Boolean).join(' ')}
                 profiles={eventData.attendees.profiles}
                 attendeeCount={eventData.attendees.count}
               />
               <EventDescription details={eventData.details} />
+              <div style={{ minHeight: '20rem' }}></div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(320px, 32%)">
               <div className="event-one-page__aside">
-                <div className="event-one-page__aside-image">
+                <div ref={imageRef} className="event-one-page__aside-image">
                   <EventImage src={eventData.img} alt={eventData.title} />
                 </div>
                 <EventCommunity

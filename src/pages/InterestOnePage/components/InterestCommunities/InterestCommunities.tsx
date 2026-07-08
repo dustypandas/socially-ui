@@ -1,28 +1,28 @@
 import type { Community } from '@src/data/dummyData';
 import { CommunityCard } from '@src/pages/InterestOnePage/components/CommunityCard/CommunityCard';
-import './communities-section.css';
+import './interest-communities.css';
 
-type CommunitiesSectionProps = {
+type InterestCommunitiesProps = {
   communities: Community[];
 };
 
-export function CommunitiesSection({ communities }: CommunitiesSectionProps) {
+export function InterestCommunities({ communities }: InterestCommunitiesProps) {
   return (
-    <section className="communities-section">
-      <h3 className="communities-section__title">Related Communities</h3>
+    <section className="interest-communities">
+      <h3 className="interest-communities__title">Related Communities</h3>
       {communities.length === 0 ? (
-        <p className="communities-section__empty">No related communities yet</p>
+        <p className="interest-communities__empty">No related communities yet</p>
       ) : (
-        <div className="communities-section__grid">
+        <div className="interest-communities__grid">
           {communities.map(community => (
             <CommunityCard key={community.id} community={community} />
           ))}
         </div>
       )}
-      <div className="communities-section__create">
+      <div className="interest-communities__create">
         <button
           type="button"
-          className="communities-section__create-btn"
+          className="interest-communities__create-btn"
         >
           {communities.length > 0 ? 'Create Another Community?' : 'Create a Community?'}
         </button>

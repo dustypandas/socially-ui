@@ -33,7 +33,7 @@ export function InterestsSearchBar({
         disabled={isAddButtonDisabled}
         onClick={onAdd}
       >
-        <span className="interests-list__btn-icon">+</span>&thinsp;<span className="interests-search-bar__add-btn-text">follow</span>
+        <span className="interests-list__btn-icon">+</span>&thinsp;<span className="interests-search-bar__add-btn-text">add</span>
       </button>
     </div>
   );

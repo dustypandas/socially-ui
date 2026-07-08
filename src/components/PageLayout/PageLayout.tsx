@@ -11,6 +11,7 @@ type PageLayoutProps = {
   isEntryRevealed1?: boolean;
   isEntryRevealed2?: boolean;
   shouldShowHomePageHeader?: boolean;
+  shouldShowHomePageFooter?: boolean;
   hasStaticHeader?: boolean;
 };
 
@@ -19,6 +20,7 @@ export function PageLayout({
   isHomePage = false,
   hasStaticHeader = false,
   shouldShowHomePageHeader,
+  shouldShowHomePageFooter,
 }: PageLayoutProps) {
   const { pathname } = useLocation();
 
@@ -33,17 +35,16 @@ export function PageLayout({
       'page-layout',
       isHomePage && 'layout--is-home',
       isHomePage && shouldShowHomePageHeader && 'layout--show-home-page-header',
+      isHomePage && shouldShowHomePageFooter && 'layout--show-home-page-footer',
       hasStaticHeader && 'layout--has-static-header',
     ].filter(Boolean).join(' ')}>
       <LayoutHeader isHomePage={isHomePage} />
       {isHomePage ? (
         children
       ) : (
-        <>
-          <main className="layout__main">{children}</main>
-          <LayoutFooter />
-        </>
+        <main className="layout__main">{children}</main>
       )}
+      <LayoutFooter />
     </div>
   );
 }

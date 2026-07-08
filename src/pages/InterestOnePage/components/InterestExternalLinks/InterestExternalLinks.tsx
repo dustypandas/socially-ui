@@ -2,9 +2,9 @@ import { useState } from 'react';
 import type { RelatedLink } from '@src/data/dummyData.js';
 import { useAppDispatch } from '@src/store/hooks';
 import { addRelatedLink } from '@src/store/slices/interestsSlice.js';
-import './external-links.css';
+import './interest-external-links.css';
 
-type ExternalLinksProps = {
+type InterestExternalLinksProps = {
   interestId: string;
   links: RelatedLink[];
 };
@@ -15,7 +15,7 @@ function normalizeHref(href: string): string {
   return `https://${trimmed}`;
 }
 
-export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
+export function InterestExternalLinks({ interestId, links }: InterestExternalLinksProps) {
   const dispatch = useAppDispatch();
   const [label, setLabel] = useState('');
   const [href, setHref] = useState('');
@@ -39,21 +39,21 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
   };
 
   return (
-    <section className="external-links">
-      <div className="external-links__header">
-        <h3 className="external-links__title">External Links</h3>
+    <section className="interest-external-links">
+      <div className="interest-external-links__header">
+        <h3 className="interest-external-links__title">External Links</h3>
       </div>
-      <div className="external-links__content">
-        <p className="external-links__description">
+      <div className="interest-external-links__content">
+        <p className="interest-external-links__description">
           A few other groups and links (not related to Socially) that could be of interest.
         </p>
 
         {links.length > 0 && (
-          <ul className="external-links__list">
+          <ul className="interest-external-links__list">
             {links.map(link => (
-              <li key={`${link.label}-${link.href}`} className="external-links__list-item">
+              <li key={`${link.label}-${link.href}`} className="interest-external-links__list-item">
                 <a
-                  className="external-links__link"
+                  className="interest-external-links__link"
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -66,7 +66,7 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
         )}
 
         <div
-          className="external-links__input-container"
+          className="interest-external-links__input-container"
           onFocus={() => setIsInputFocused(true)}
           onBlur={event => {
             if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
@@ -76,22 +76,22 @@ export function ExternalLinks({ interestId, links }: ExternalLinksProps) {
         >
           <input
             type="text"
-            className="external-links__input external-links__input--name"
+            className="interest-external-links__input interest-external-links__input--name"
             placeholder={isInputFocused ? 'link name...' : 'suggest a new link...'}
             value={label}
             onChange={event => setLabel(event.target.value)}
           />
-          <div className="external-links__input-extra">
+          <div className="interest-external-links__input-extra">
             <input
               type="url"
-              className="external-links__input external-links__input--url"
+              className="interest-external-links__input interest-external-links__input--url"
               placeholder="link url..."
               value={href}
               onChange={event => setHref(event.target.value)}
             />
             <button
               type="button"
-              className="external-links__submit"
+              className="interest-external-links__submit"
               disabled={isSubmitDisabled}
               onClick={handleSubmit}
             >

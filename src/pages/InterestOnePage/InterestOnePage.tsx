@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
 import { memberFollowers, spanishInterestEvents, spanishRelatedCommunities } from '@src/data/dummyData.js';
 import { useAppSelector } from '@src/store/hooks';
-import { CommunitiesSection, EventCardHorizontal, ExternalLinks, FollowersSection } from './components';
+import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
 import { getUniqueMapFollowers } from '@src/pages/InterestsPage/helpers';
 import './interest-one-page.css';
 
@@ -79,7 +79,7 @@ export function InterestOnePage() {
               <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
-                  <FollowersSection
+                  <InterestFollowers
                     followers={mapFollowers}
                     followersCount={interest.followersCount ?? 0}
                   />
@@ -90,15 +90,15 @@ export function InterestOnePage() {
           <ColumnsLayout className="interest-one-page__second-section">
             <ColumnsLayout.Main>
               <div className="interest-one-page__divider" />
-              <CommunitiesSection communities={communities} />
+              <InterestCommunities communities={communities} />
               {/* <div className="interest-one-page__divider" />
-              <DiscussionSection interestId='Spanish' /> */}
+              <InterestDiscussion interestId='Spanish' /> */}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
               <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
-                  <ExternalLinks
+                  <InterestExternalLinks
                     interestId={INTEREST_ID}
                     links={interest.relatedLinks ?? []}
                   />

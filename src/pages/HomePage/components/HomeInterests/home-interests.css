@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.interests-section {
+.home-interests {
   position: relative;
-  z-index: theme(--z-index-interests-section);
+  z-index: theme(--z-index-home-interests);
   scroll-margin-top: 20px;
 }

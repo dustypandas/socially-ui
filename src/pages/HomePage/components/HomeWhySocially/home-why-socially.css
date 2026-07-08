@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.why-socially-section {
+.home-why-socially {
   position: relative;
-  z-index: theme(--z-index-why-socially-section);
+  z-index: theme(--z-index-home-why-socially);
 }
 
-.why-socially-section__grid {
+.home-why-socially__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem 2.5rem;
@@ -14,28 +14,28 @@
   padding: 0;
 }
 
-.why-socially-section__column-title {
+.home-why-socially__column-title {
   @apply heading-h2;
   text-align: center;
   padding: 1rem 0 1.25rem;
 }
 
-.why-socially-section__column-text {
+.home-why-socially__column-text {
   font-size: var(--font-size-md);
   line-height: 1.6;
   color: var(--global-text-muted);
 }
 
-.why-socially-section__column-text p {
+.home-why-socially__column-text p {
   margin: 0;
 }
 
-.why-socially-section__column-text p + p {
+.home-why-socially__column-text p + p {
   margin-top: 1rem;
 }
 
 @media (max-width: theme(--breakpoint-md)) {
-  .why-socially-section__grid {
+  .home-why-socially__grid {
     grid-template-columns: 1fr;
   }
 }

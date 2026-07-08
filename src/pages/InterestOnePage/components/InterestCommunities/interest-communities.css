@@ -1,13 +1,13 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.communities-section__title {
+.interest-communities__title {
   @apply heading-h3;
   margin: 1rem 0;
   line-height: 1.4;
 }
 
-.communities-section__grid {
+.interest-communities__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem 1.5rem;
@@ -21,13 +21,13 @@
 
 /* special breakpoint for column grid */
 @media (max-width: theme(--breakpoint-columns-card-grid-2)) {
-  .communities-section__grid {
+  .interest-communities__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: theme(--breakpoint-sm)) {
-  .communities-section__grid {
+  .interest-communities__grid {
     grid-template-columns: 1fr;
 
     > :nth-child(n + 6) {

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
 import { useAppSelector } from '@src/store/hooks';
-import { EventFilters, EventsGrid } from './components';
+import { EventsFilters, EventsGrid } from './components';
 import {
   filterEvents,
   getTimeFilterLabel,
@@ -43,12 +43,12 @@ export function EventsPage() {
                 backHref="#/home-ui"
               />
               <div className="events-page__filters events-page__filters--main">
-                <EventFilters {...filterProps} />
+                <EventsFilters {...filterProps} />
               </div>
               <EventsGrid events={filteredEvents.map(event => ({ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }))} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50} className="events-page__aside">
-              <EventFilters {...filterProps} />
+              <EventsFilters {...filterProps} />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>

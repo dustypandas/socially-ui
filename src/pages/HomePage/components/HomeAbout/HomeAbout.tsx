@@ -1,15 +1,15 @@
 import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
-import './about-section.css';
+import './home-about.css';
 
-export function AboutSection() {
+export function HomeAbout() {
   return (
-    <section className="about-section">
+    <section className="home-about">
       <div className="width-container">
         <div className="home-page__divider"></div>
         <SectionHeader title="Who We Are" hideMore />
 
-        <div className="about-section__content">
-          <div className="about-section__text">
+        <div className="home-about__content">
+          <div className="home-about__text">
             <p>
               This project was made by a small group of friends, all international residents, dancers, board gamers, wine-drinkers, living in Madrid.
             </p>
@@ -37,7 +37,7 @@ export function AboutSection() {
           <img
             src="../../../../assets/about-us.jpg"
             alt="Socially Madrid community"
-            className="about-section__image"
+            className="home-about__image"
           />
         </div>
       </div>

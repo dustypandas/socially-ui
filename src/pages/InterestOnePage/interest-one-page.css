@@ -81,7 +81,7 @@
 }
 
 .interest-one-page__events-empty,
-.communities-section__empty {
+.interest-communities__empty {
   margin: 3rem 0 1rem;
   color: var(--global-text-light);
   font-size: var(--font-size-md);
@@ -90,14 +90,14 @@
 }
 
 .interest-one-page__suggest,
-.communities-section__create {
+.interest-communities__create {
   display: flex;
   justify-content: center;
   padding-top: 1rem;
 }
 
 .interest-one-page__suggest-btn,
-.communities-section__create-btn {
+.interest-communities__create-btn {
   padding: 0.5rem 1rem;
   @apply btn-white-purple;
 }

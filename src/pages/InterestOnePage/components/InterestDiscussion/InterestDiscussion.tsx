@@ -4,14 +4,14 @@ import { useAppDispatch, useAppSelector } from '@src/store/hooks';
 import { addPost, addReply } from '@src/store/slices/postsSlice.js';
 import { DiscussionComposer } from './DiscussionComposer.js';
 import { PostCard } from './PostCard.js';
-import './discussion-section.css';
+import './interest-discussion.css';
 
-type DiscussionSectionProps = {
+type InterestDiscussionProps = {
   interestId: string;
   isEmpty?: boolean;
 };
 
-export function DiscussionSection({ interestId, isEmpty = false }: DiscussionSectionProps) {
+export function InterestDiscussion({ interestId, isEmpty = false }: InterestDiscussionProps) {
   const dispatch = useAppDispatch();
   const allPosts = useAppSelector(state => state.posts.items);
 
@@ -37,8 +37,8 @@ export function DiscussionSection({ interestId, isEmpty = false }: DiscussionSec
   };
 
   return (
-    <section className="discussion-section">
-      <div className="discussion-section__composer">
+    <section className="interest-discussion">
+      <div className="interest-discussion__composer">
         <DiscussionComposer
           placeholder="Questions & Ideas..."
           submitLabel="Post"
@@ -47,9 +47,9 @@ export function DiscussionSection({ interestId, isEmpty = false }: DiscussionSec
       </div>
 
       {posts.length === 0 ? (
-        <p className="discussion-section__empty">No discussions yet</p>
+        <p className="interest-discussion__empty">No discussions yet</p>
       ) : (
-        <div className="discussion-section__list">
+        <div className="interest-discussion__list">
           {posts.map(post => (
             <PostCard
               key={post.id}

@@ -5,9 +5,9 @@ import {
   type OpenToFilter,
   type TimeFilter,
 } from '@src/pages/EventsPage/helpers';
-import './event-filters.css';
+import './events-filters.css';
 
-type EventFiltersProps = {
+type EventsFiltersProps = {
   interestQuery: string;
   onInterestQueryChange: (value: string) => void;
   timeFilter: TimeFilter;
@@ -16,19 +16,19 @@ type EventFiltersProps = {
   onOpenToFilterChange: (value: OpenToFilter) => void;
 };
 
-export function EventFilters({
+export function EventsFilters({
   // interestQuery,
   // onInterestQueryChange,
   timeFilter,
   onTimeFilterChange,
   openToFilter,
   onOpenToFilterChange,
-}: EventFiltersProps) {
+}: EventsFiltersProps) {
   return (
-    <div className="event-filters">
-      <div className="event-filters__field">
-        <h3 className="event-filters__label">When:</h3>
-        <div className="event-filters__time-group">
+    <div className="events-filters">
+      <div className="events-filters__field">
+        <h3 className="events-filters__label">When:</h3>
+        <div className="events-filters__time-group">
           {TIME_FILTER_OPTIONS.map(option => (
             <ButtonsGroup
               key={option.value}
@@ -41,9 +41,9 @@ export function EventFilters({
         </div>
       </div>
 
-      <div className="event-filters__field">
-        <h3 className="event-filters__label">Open to:</h3>
-        <div className="event-filters__time-group">
+      <div className="events-filters__field">
+        <h3 className="events-filters__label">Open to:</h3>
+        <div className="events-filters__time-group">
           {OPEN_TO_FILTER_OPTIONS.map(option => (
             <ButtonsGroup
               key={option.value}
@@ -63,11 +63,11 @@ export function EventFilters({
       nearest metro (search)
       */}
 
-      {/* <h2 className="global-title-text event-filters__title">Something specific</h2> */}
-      {/* <label className="event-filters__field">
+      {/* <h2 className="global-title-text events-filters__title">Something specific</h2> */}
+      {/* <label className="events-filters__field">
         <input
           type="filter"
-          className="event-filters__input"
+          className="events-filters__input"
           placeholder="search..."
           value={interestQuery}
           onChange={event => onInterestQueryChange(event.target.value)}

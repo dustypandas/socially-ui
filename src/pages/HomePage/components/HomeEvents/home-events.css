@@ -1,13 +1,13 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.events-section {
+.home-events {
   position: relative;
-  z-index: theme(--z-index-events-section);
+  z-index: theme(--z-index-home-events);
   scroll-margin-top: var(--global-header-height);
 }
 
-.events-section__grid {
+.home-events__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem 1.5rem;
@@ -19,7 +19,7 @@
 }
 
 @media (max-width: theme(--breakpoint-lg)) {
-  .events-section__grid {
+  .home-events__grid {
     grid-template-columns: repeat(3, 1fr);
 
     > :nth-child(n + 10) {
@@ -29,7 +29,7 @@
 }
 
 @media (max-width: theme(--breakpoint-md)) {
-  .events-section__grid {
+  .home-events__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem 1rem;
 
@@ -40,7 +40,7 @@
 }
 
 @media (max-width: theme(--breakpoint-sm)) {
-  .events-section__grid {
+  .home-events__grid {
     grid-template-columns: 1fr;
 
     > :nth-child(n + 6) {

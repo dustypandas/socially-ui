@@ -96,25 +96,25 @@ export function InterestsList({
                 >
                   {interest.name} ({interest.followersCount})
                 </a>
-                {!isFollowed && (
-                  <button
-                    type="button"
-                    className='interests-list__follow-btn'
-                    disabled={!canFollowMore}
-                    onClick={() => onFollow(interest.id)}
-                  >
-                    <span className="interests-list__btn-icon">+</span>
-                  </button>
-                )}
-                {isFollowed && (
-                  <button
-                    type="button"
-                    className="interests-list__unfollow-btn"
-                    onClick={() => onUnfollow(interest.id)}
-                  >
-                    <span className="interests-list__btn-icon">+</span>
-                  </button>
-                )}                
+                {isFollowed
+                  ? (<button
+                      type="button"
+                      className="interests-list__unfollow-btn"
+                      onClick={() => onUnfollow(interest.id)}
+                    >
+                      <span className="interests-list__btn-icon">+</span>
+                    </button>
+                  )
+                  : (<button
+                      type="button"
+                      className='interests-list__follow-btn'
+                      disabled={!canFollowMore}
+                      onClick={() => onFollow(interest.id)}
+                    >
+                      <span className="interests-list__btn-icon">+</span>
+                    </button>
+                  )
+                }                
               </li>
               );
             })}

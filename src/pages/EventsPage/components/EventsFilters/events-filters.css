@@ -1,33 +1,33 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.event-filters {
+.events-filters {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.event-filters__title {
+.events-filters__title {
   margin: 0;
 }
 
-.event-filters__field {
+.events-filters__field {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
   /* margin: 0 1rem; */
 }
 
-.event-filters__label {
+.events-filters__label {
   @apply heading-h3;
   margin: 0 0 0.25rem;
 }
 
-.event-filters__input {
+.events-filters__input {
   @apply text-input;
 }
 
-.event-filters__time-group {
+.events-filters__time-group {
   display: flex;
   flex-flow: row wrap;
   gap: 0.5rem;

@@ -1,5 +1,5 @@
 // import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
-import './why-socially-section.css';
+import './home-why-socially.css';
 
 const COLUMNS = [
   {
@@ -28,17 +28,17 @@ const COLUMNS = [
   },
 ] as const;
 
-export function WhySociallySection() {
+export function HomeWhySocially() {
   return (
-    <section className="why-socially-section">
+    <section className="home-why-socially">
       <div className="width-container">
         <div className="home-page__divider" />
         {/* <SectionHeader title="Why Socially" hideMore /> */}
-        <div className="why-socially-section__grid">
+        <div className="home-why-socially__grid">
           {COLUMNS.map(col => (
-            <div key={col.title} className="why-socially-section__column">
-              <h2 className="why-socially-section__column-title" dangerouslySetInnerHTML={{ __html: col.title }} />
-              <div className="why-socially-section__column-text">
+            <div key={col.title} className="home-why-socially__column">
+              <h2 className="home-why-socially__column-title" dangerouslySetInnerHTML={{ __html: col.title }} />
+              <div className="home-why-socially__column-text">
                 {col.text.map((paragraph, index) => (
                   <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
                 ))}

@@ -1,16 +1,16 @@
 import type { MemberFollower } from '@src/data/dummyData';
 import { MapContainer } from '@src/components';
-import './followers-section.css';
+import './interest-followers.css';
 
-type FollowersSectionProps = {
+type InterestFollowersProps = {
   followers: MemberFollower[];
   followersCount: number;
 };
 
-export function FollowersSection({ followers, followersCount }: FollowersSectionProps) {
+export function InterestFollowers({ followers, followersCount }: InterestFollowersProps) {
   return (
-    <div className="followers-section">
-      <h3 className="followers-section__title">
+    <div className="interest-followers">
+      <h3 className="interest-followers__title">
         {followersCount}+ followers
       </h3>
       <MapContainer followers={followers} />

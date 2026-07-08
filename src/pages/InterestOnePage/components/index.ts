@@ -1,6 +1,6 @@
-export { CommunitiesSection } from './CommunitiesSection/CommunitiesSection';
+export { InterestCommunities } from './InterestCommunities/InterestCommunities';
 export { CommunityCard } from './CommunityCard/CommunityCard';
-export { ExternalLinks } from './ExternalLinks/ExternalLinks';
-export { FollowersSection } from './FollowersSection/FollowersSection';
-export { DiscussionSection } from './DiscussionSection/DiscussionSection';
+export { InterestExternalLinks } from './InterestExternalLinks/InterestExternalLinks';
+export { InterestFollowers } from './InterestFollowers/InterestFollowers';
+export { InterestDiscussion } from './InterestDiscussion/InterestDiscussion';
 export { EventCardHorizontal } from './EventCardHorizontal/EventCardHorizontal';

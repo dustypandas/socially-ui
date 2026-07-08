@@ -1,13 +1,13 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.followers-section {
+.interest-followers {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.followers-section__title {
+.interest-followers__title {
   @apply heading-h3;
   line-height: 1.4;
 }

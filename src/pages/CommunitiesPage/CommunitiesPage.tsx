@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
 import { communities, myCommunityIds } from '@src/data/dummyData.js';
-import { CommunitiesGrid, CommunityFilters } from './components';
+import { CommunitiesGrid, CommunitiesFilters } from './components';
 import { filterCommunities, type CommunityScope } from './helpers';
 import './communities-page.css';
 
@@ -37,12 +37,12 @@ export function CommunitiesPage() {
             <ColumnsLayout.Main>
               <PageHeader title={pageTitle} />
               <div className="communities-page__filters communities-page__filters--main">
-                <CommunityFilters {...filterProps} />
+                <CommunitiesFilters {...filterProps} />
               </div>
               <CommunitiesGrid communities={filteredCommunities} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50} className="communities-page__aside">
-              <CommunityFilters {...filterProps} />
+              <CommunitiesFilters {...filterProps} />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>

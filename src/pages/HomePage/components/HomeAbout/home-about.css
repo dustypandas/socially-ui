@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.about-section {
+.home-about {
   position: relative;
-  z-index: theme(--z-index-about-section);
+  z-index: theme(--z-index-home-about);
 }
 
-.about-section__content {
+.home-about__content {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -19,20 +19,20 @@
   color: var(--global-text-muted);
 }
 
-.about-section__text {
+.home-about__text {
   flex: 1;
   min-width: 0;
 }
 
-.about-section__text p {
+.home-about__text p {
   margin: 0;
 }
 
-.about-section__text p + p {
+.home-about__text p + p {
   margin-top: 1rem;
 }
 
-.about-section__image {
+.home-about__image {
   flex-shrink: 0;
   width: 330px;
   max-width: 100%;
@@ -41,11 +41,11 @@
 }
 
 @media (max-width: theme(--breakpoint-md)) {
-  .about-section__content {
+  .home-about__content {
     flex-direction: column;
   }
 
-  .about-section__image {
+  .home-about__image {
     width: 100%;
     order: -1;
   }

@@ -18,10 +18,10 @@
   --z-index-home-entry-cover: 202;
   --z-index-home-hero: 0;
   --z-index-home-hero-content: 1;
-  --z-index-events-section: 1;
-  --z-index-interests-section: 1;
-  --z-index-why-socially-section: 1;
-  --z-index-about-section: 1;
+  --z-index-home-events: 1;
+  --z-index-home-interests: 1;
+  --z-index-home-why-socially: 1;
+  --z-index-home-about: 1;
   /* pages */
   --z-index-event-one-page: 1;
   --z-index-event-one-page-aside: 1;

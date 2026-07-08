@@ -1,64 +1,64 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.external-links {
+.interest-external-links {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.external-links__header {
+.interest-external-links__header {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.external-links__title {
+.interest-external-links__title {
   @apply heading-h3;
   /* line-height: 1.4;
   margin-top: 1rem; */
 }
 
-.external-links__description {
+.interest-external-links__description {
   color: var(--global-text-muted);
   font-size: var(--font-size-sm);
   line-height: 1.5;
   margin: 0 1rem;
 }
 
-.external-links__list {
+.interest-external-links__list {
   list-style: disc;
   margin: 0;
   padding-left: 1.25rem;
   margin-top: 1rem;
 }
 
-.external-links__list-item {
+.interest-external-links__list-item {
   margin: 0;
 }
 
-.external-links__list-item + .external-links__list-item {
+.interest-external-links__list-item + .interest-external-links__list-item {
   margin-top: 0.25rem;
 }
 
-.external-links__list-item::marker {
+.interest-external-links__list-item::marker {
   color: var(--global-text-light);
 }
 
-.external-links__link {
+.interest-external-links__link {
   display: block;
   color: var(--global-link-blue);
   line-height: 1.5;
   text-decoration: none;
 }
 
-.external-links__input-container {
+.interest-external-links__input-container {
   margin-top: 1rem;
   position: relative;
   outline: none;
 }
 
-.external-links__input-extra {
+.interest-external-links__input-extra {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -69,19 +69,19 @@
   transition: opacity 0.15s ease, max-height 0.2s ease;
 }
 
-.external-links__input-container:focus-within {
-  .external-links__input-extra {
+.interest-external-links__input-container:focus-within {
+  .interest-external-links__input-extra {
     max-height: 6rem;
     margin-top: 0.5rem;
     opacity: 1;
     visibility: visible;
   }
-  .external-links__input--url {
+  .interest-external-links__input--url {
     background: white;
   }
 }
 
-.external-links__input {
+.interest-external-links__input {
   @apply text-input;
   font-family: inherit;
   text-align: left;
@@ -89,7 +89,7 @@
   font-size: var(--font-size-md);
 }
 
-.external-links__submit {
+.interest-external-links__submit {
   align-self: flex-end;
   padding: 0.5rem 1rem;
   @apply btn-purple-white;

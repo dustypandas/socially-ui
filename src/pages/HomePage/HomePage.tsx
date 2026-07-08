@@ -4,9 +4,9 @@ import { useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { getShouldPlayEntry } from '@src/utils/shouldPlayEntry';
 import {
   HomeHero,
-  InterestsSection,
-  EventsSection,
-  WhySociallySection,
+  HomeInterests,
+  HomeEvents,
+  HomeWhySocially,
 } from './components';
 import './home-page.css';
 
@@ -39,6 +39,7 @@ export function HomePage() {
     <PageLayout
       isHomePage
       shouldShowHomePageHeader={shouldShowHeader}
+      shouldShowHomePageFooter={isEntryRevealed3}
     >
       <div className={[
         'home__entry-cover',
@@ -59,11 +60,10 @@ export function HomePage() {
           isEntryRevealed1 && 'home-page--entry-revealed1',
           isEntryRevealed2 && 'home-page--entry-revealed2',
         ].filter(Boolean).join(' ')}>
-          <InterestsSection />
-          <EventsSection />
-          <WhySociallySection />
-          {/* <AboutSection /> */}
-          <LayoutFooter />
+          <HomeInterests />
+          <HomeEvents />
+          <HomeWhySocially />
+          {/* <HomeAbout /> */}
         </section>
       </main>
     </PageLayout>

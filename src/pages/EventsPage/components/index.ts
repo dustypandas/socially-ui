@@ -1,2 +1,2 @@
-export { EventFilters } from './EventFilters/EventFilters';
+export { EventsFilters } from './EventsFilters/EventsFilters';
 export { EventsGrid } from './EventsGrid/EventsGrid';

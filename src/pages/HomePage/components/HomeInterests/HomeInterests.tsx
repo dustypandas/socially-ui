@@ -1,10 +1,10 @@
 import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import { InterestsGrid } from './InterestsGrid/InterestsGrid';
-import './interests-section.css';
+import './home-interests.css';
 
-export function InterestsSection() {
+export function HomeInterests() {
   return (
-    <section className="interests-section" id="home-interests">
+    <section className="home-interests" id="home-interests">
       <div className="width-container">
         <SectionHeader title="Popular Interests" moreHref="#/interests-ui" />
         <InterestsGrid />

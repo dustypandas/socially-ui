@@ -1,22 +1,22 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.community-filters {
+.communities-filters {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.community-filters__title {
+.communities-filters__title {
   @apply heading-h3;
 }
 
-.community-filters__search {
+.communities-filters__search {
   @apply text-input;
   margin: 0 0 0.5rem;
 }
 
-.community-filters__scope-group {
+.communities-filters__scope-group {
   display: flex;
   flex-flow: row wrap;
   gap: 0.5rem;

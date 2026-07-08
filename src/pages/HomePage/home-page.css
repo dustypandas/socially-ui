@@ -55,10 +55,10 @@
 }
 
 .home-page {
-  .interests-section,
-  .events-section,
-  .why-socially-section,
-  .about-section,
+  .home-interests,
+  .home-events,
+  .home-why-socially,
+  .home-about,
   .layout-footer {
     display: none;
     opacity: 0;
@@ -66,21 +66,19 @@
   }
 
   &.home-page--entry-revealed1 {
-    .interests-section,
-    .events-section,
-    .why-socially-section,
-    .about-section,
-    .layout-footer {
+    .home-interests,
+    .home-events,
+    .home-why-socially,
+    .home-about {
       display: block;
     }
   }
 
   &.home-page--entry-revealed2 {
-    .interests-section,
-    .events-section,
-    .why-socially-section,
-    .about-section,
-    .layout-footer {
+    .home-interests,
+    .home-events,
+    .home-why-socially,
+    .home-about {
       opacity: 1;
     }
   }

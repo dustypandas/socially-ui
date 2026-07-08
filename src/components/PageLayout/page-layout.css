@@ -27,9 +27,20 @@
     border-top: 1.5px solid rgba(255, 255, 255, 0.55);
   }
 
+  .layout-footer {
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+  }
+
   &.layout--show-home-page-header {
     .layout-header {
       transform: translateY(0);
+    }
+  }
+
+  &.layout--show-home-page-footer {
+    .layout-footer {
+      opacity: 1;
     }
   }
 }

@@ -1,8 +1,9 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .community-one-page {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-community-one-page);
   padding-bottom: 2rem;
 }
 

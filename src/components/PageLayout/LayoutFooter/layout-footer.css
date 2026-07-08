@@ -3,7 +3,7 @@
 
 .layout-footer {
   position: relative;
-  z-index: 0;
+  z-index: theme(--z-index-page-layout-footer);
   padding-top: 4rem;
 }
 

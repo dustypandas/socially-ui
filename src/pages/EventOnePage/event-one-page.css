@@ -3,7 +3,7 @@
 
 .event-one-page {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-event-one-page);
   padding-bottom: 2rem;
 
   --event-one-page-aside-sticky-top: 1.25rem;
@@ -17,7 +17,7 @@
   position: sticky;
   margin-top: calc(-1 * var(--event-one-page-aside-title-height, 0px));
   top: var(--event-one-page-aside-sticky-top);
-  z-index: 40;
+  z-index: theme(--z-index-event-one-page-aside);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -25,19 +25,18 @@
 
 .event-one-page__aside-title {
   margin: 0 0 2rem;
-  @apply heading-h2;
   opacity: 0;
   transform: translateY(0.5rem);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @apply heading-h2;
+  @apply text-ellipsis;
   line-clamp: 2;
   -webkit-line-clamp: 2;
-}
 
-.event-one-page__aside-title--visible {
-  opacity: 1;
-  transform: translateY(0);
+  &.event-one-page__aside-title--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .event-one-page__stacked-image {

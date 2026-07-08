@@ -3,7 +3,7 @@
 
 .events-section {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-events-section);
   scroll-margin-top: var(--global-header-height);
 }
 

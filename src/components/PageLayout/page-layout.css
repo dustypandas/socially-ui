@@ -11,7 +11,7 @@
 
 .layout__main {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-page-layout-main);
   padding-top: 1rem;
   @apply texture-bg;
 }

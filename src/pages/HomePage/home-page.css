@@ -27,7 +27,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 202;
+  z-index: theme(--z-index-home-entry-cover);
   height: var(--home-entry-cover-height);
   display: flex;
   flex-direction: column;

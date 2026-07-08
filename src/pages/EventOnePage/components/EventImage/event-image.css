@@ -3,7 +3,7 @@
 
 .event-image {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-event-image);
 }
 
 .event-image__wrapper,

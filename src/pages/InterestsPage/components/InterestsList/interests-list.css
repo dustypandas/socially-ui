@@ -52,9 +52,9 @@
   color: var(--global-link-blue);
   text-decoration: none;
   @apply courier-inline;
-  @apply text-ellipsis;
+  /* @apply text-ellipsis;
   line-clamp: 2;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2; */
 }
 
 .interests-list__item--followed .interests-list__link {

@@ -30,8 +30,8 @@
     position: relative;
     top: 1px;
   }
-}
 
-.interests-search-bar__add-btn--visible {
-  display: flex;
+  &.interests-search-bar__add-btn--visible {
+    display: flex;
+  }
 }

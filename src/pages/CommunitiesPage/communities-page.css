@@ -3,7 +3,7 @@
 
 .communities-page {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-communities-page);
   padding-bottom: 2rem;
 }
 

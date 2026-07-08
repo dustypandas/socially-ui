@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 0;
+  z-index: theme(--z-index-home-hero);
   height: var(--home-hero-height);
   overflow: hidden;
   display: flex;
@@ -37,7 +37,7 @@
 
 .home-hero__content {
   position: relative;
-  z-index: 1;
+  z-index: theme(--z-index-home-hero-content);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

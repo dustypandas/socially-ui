@@ -7,8 +7,33 @@
 
   --breakpoint-columns-card-grid-2: 1070px; /* columns card grid 3->2 */
 
+  --z-index-page-layout-main: 1;
+  --z-index-page-layout-footer: 0;
+  --z-index-page-layout-header: 200;
+  --z-index-page-layout-header-nav: 201;
   --z-index-footer: 1;
-  --z-index-fixed-bar: 10;
+  --z-index-fixed-bar: 30;
+
+  /* home page */
+  --z-index-home-entry-cover: 202;
+  --z-index-home-hero: 0;
+  --z-index-home-hero-content: 1;
+  --z-index-events-section: 1;
+  --z-index-interests-section: 1;
+  --z-index-why-socially-section: 1;
+  --z-index-about-section: 1;
+  /* pages */
+  --z-index-event-one-page: 1;
+  --z-index-event-one-page-aside: 1;
+  --z-index-event-image: 1;
+  --z-index-events-page: 1;
+  --z-index-communities-page: 1;
+  --z-index-community-one-page: 1;
+  --z-index-community-nav: 20;
+  --z-index-interests-page: 1;
+  --z-index-interest-one-page: 1;
+  /* prev */
+  --z-index-page-bg: 100;
 }
 
 @utility courier-inline { /* for fixing courier font spacing */

@@ -46,7 +46,7 @@
 }
 
 .event-intro__calendar-date {
-  color: var(--global-text);
+  color: var(--global-text-muted);
   /* font-family: 'Courier Prime', monospace; */
   font-size: var(--font-size-md);
   font-weight: 500;
@@ -57,7 +57,7 @@
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid var(--light-shadow);
-  color: var(--global-purple);
+  color: var(--global-text-muted);
   display: flex;
   align-items: center;
   justify-content: center;

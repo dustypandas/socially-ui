@@ -89,14 +89,14 @@ export function matchesTimeFilter(
   return eventDate >= nextWeekStart && eventDate <= nextWeekEnd;
 }
 
-function getMatchingInterestIds(interests: Interest[], query: string): Set<string> {
+function getMatchingInterestNames(interests: Interest[], query: string): Set<string> {
   const normalizedQuery = query.trim().toLowerCase();
   if (!normalizedQuery) return new Set();
 
   return new Set(
     interests
       .filter(interest => interest.name.toLowerCase().includes(normalizedQuery))
-      .map(interest => interest.id),
+      .map(interest => interest.name),
   );
 }
 
@@ -108,7 +108,7 @@ export function filterEvents(
   openToFilter: OpenToFilter,
   now = new Date(),
 ): Event[] {
-  const matchingInterestIds = getMatchingInterestIds(interests, interestQuery);
+  const matchingInterestNames = getMatchingInterestNames(interests, interestQuery);
   const hasInterestFilter = interestQuery.trim().length > 0;
 
   return events.filter(event => {
@@ -124,10 +124,10 @@ export function filterEvents(
       return true;
     }
 
-    if (!event.interestIds?.length) {
+    if (!event.eventInterests?.length) {
       return false;
     }
 
-    return event.interestIds.some(id => matchingInterestIds.has(id));
+    return event.eventInterests.some(name => matchingInterestNames.has(name));
   });
 }

@@ -4,7 +4,8 @@ import './event-reviews.css';
 export function EventReviews() {
   return (
     <section className="event-reviews">
-      <h3 className="event-reviews__title">Reviews</h3>
+      <SectionHeader title="Reviews" hideMore />
+      {/* <h3 className="event-reviews__title">Reviews</h3> */}
       <p className="event-reviews__empty">No reviews yet</p>
     </section>
   );

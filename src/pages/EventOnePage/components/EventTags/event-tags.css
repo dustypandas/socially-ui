@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.event-tags {
+  margin: 1.25rem 0.75rem 0;
+}
+
+.event-tags__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.25rem 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event-tags__item {
+  color: var(--global-text-light);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+}

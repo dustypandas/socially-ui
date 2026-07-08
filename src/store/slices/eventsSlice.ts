@@ -28,7 +28,7 @@ export type Event = {
   ratingCount: number;
   startsAt: string;
   openTo: EventOpenTo;
-  interestIds?: string[];
+  eventInterests?: string[];
 };
 
 type EventsState = {

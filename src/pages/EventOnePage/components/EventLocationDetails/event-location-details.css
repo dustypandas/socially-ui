@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.event-location-details {
+  /* margin-top: 1.5rem; */
+}
+
+.event-location-details__title {
+  @apply heading-h3;
+  margin: 0.75rem 0;
+}
+
+.event-location-details__map {
+  margin: 0 0.75rem;
+}
+
+.event-location-details__map .map-container {
+  width: 11rem;
+  margin: 0;
+  border-width: 6px;
+  aspect-ratio: 1;
+}
+
+@media (max-width: theme(--breakpoint-sm)) {
+  .event-location-details__map .map-container {
+    width: 100%;
+    max-width: 11rem;
+    margin: 0 auto;
+  }
+}

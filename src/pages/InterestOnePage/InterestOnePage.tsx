@@ -7,12 +7,12 @@ import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, Intere
 import { getUniqueMapFollowers } from '@src/pages/InterestsPage/helpers';
 import './interest-one-page.css';
 
-const INTEREST_ID = 'spanish';
+const INTEREST_NAME = 'Spanish';
 
 export function InterestOnePage() {
   const location = useLocation();
   const interest = useAppSelector(state =>
-    state.interests.items.find(item => item.id === INTEREST_ID),
+    state.interests.items.find(item => item.name === INTEREST_NAME),
   );
 
   const mapFollowers = useMemo(
@@ -23,7 +23,7 @@ export function InterestOnePage() {
   const isEmptyVariant = location.pathname === '/interest-one-ui-empty';
   const events = isEmptyVariant
     ? []
-    : spanishInterestEvents.filter(event => event.interestIds?.includes(INTEREST_ID));
+    : spanishInterestEvents.filter(event => event.eventInterests?.includes(INTEREST_NAME));
   const communities = isEmptyVariant ? [] : spanishRelatedCommunities;
 
   return (
@@ -81,7 +81,7 @@ export function InterestOnePage() {
                 {interest && (
                   <InterestFollowers
                     followers={mapFollowers}
-                    followersCount={interest.followersCount ?? 0}
+                    followersCount={(interest.followerIds ?? []).length}
                   />
                 )}
               </div>
@@ -92,14 +92,14 @@ export function InterestOnePage() {
               <div className="interest-one-page__divider" />
               <InterestCommunities communities={communities} />
               {/* <div className="interest-one-page__divider" />
-              <InterestDiscussion interestId='Spanish' /> */}
+              <InterestDiscussion interestName='Spanish' /> */}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
               <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 {interest && (
                   <InterestExternalLinks
-                    interestId={INTEREST_ID}
+                    interestName={INTEREST_NAME}
                     links={interest.relatedLinks ?? []}
                   />
                 )}

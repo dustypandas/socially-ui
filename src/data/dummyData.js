@@ -1,8 +1,6 @@
 export const interests = [
   {
-    id: 'cycling',
     name: 'Cycling',
-    followersCount: 15,
     category: 'Sport',
     followerIds: [
       'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
@@ -21,9 +19,7 @@ export const interests = [
     ],
   },
   {
-    id: 'hiking',
     name: 'Hiking',
-    followersCount: 10,
     category: 'Sport',
     followerIds: [
       'member-2', 'member-5', 'member-8', 'member-11', 'member-14',
@@ -37,9 +33,7 @@ export const interests = [
     ],
   },
   {
-    id: 'tennis',
     name: 'Tennis',
-    followersCount: 31,
     category: 'Sport',
     followerIds: [
       'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
@@ -58,9 +52,7 @@ export const interests = [
     ],
   },
   {
-    id: 'unicycling',
     name: 'Unicycling',
-    followersCount: 15,
     category: 'Sport',
     followerIds: [
       'member-10', 'member-11', 'member-12', 'member-13', 'member-14',
@@ -75,9 +67,7 @@ export const interests = [
     ],
   },
   {
-    id: 'painting',
     name: 'Painting',
-    followersCount: 12,
     category: 'Creative',
     followerIds: [
       'member-3', 'member-6', 'member-9', 'member-12', 'member-15',
@@ -92,9 +82,7 @@ export const interests = [
     ],
   },
   {
-    id: 'tango',
     name: 'Tango',
-    followersCount: 8,
     category: 'Creative',
     followerIds: [
       'member-4', 'member-8', 'member-12', 'member-16', 'member-20',
@@ -108,9 +96,7 @@ export const interests = [
     ],
   },
   {
-    id: 'self-development',
     name: 'Self-development',
-    followersCount: 3,
     category: 'Self Care',
     followerIds: ['member-5', 'member-10', 'member-15'],
     relatedLinks: [
@@ -121,9 +107,7 @@ export const interests = [
     ],
   },
   {
-    id: 'yoga',
     name: 'Yoga',
-    followersCount: 21,
     category: 'Self Care',
     followerIds: [
       'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
@@ -140,9 +124,7 @@ export const interests = [
     ],
   },
   {
-    id: 'dinosaurs',
     name: 'Dinosaurs',
-    followersCount: 5,
     category: 'General',
     followerIds: ['member-22', 'member-23', 'member-24', 'member-25', 'member-26'],
     relatedLinks: [
@@ -153,9 +135,7 @@ export const interests = [
     ],
   },
   {
-    id: 'chess',
     name: 'Chess',
-    followersCount: 15,
     category: 'General',
     followerIds: [
       'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
@@ -170,9 +150,7 @@ export const interests = [
     ],
   },
   {
-    id: 'boardgames',
     name: 'Boardgames',
-    followersCount: 30,
     category: 'General',
     followerIds: [
       'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
@@ -190,9 +168,7 @@ export const interests = [
     ],
   },
   {
-    id: 'ai',
     name: 'AI',
-    followersCount: 25,
     category: 'General',
     followerIds: [
       'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
@@ -209,9 +185,7 @@ export const interests = [
     ],
   },
   {
-    id: 'cooking',
     name: 'Cooking',
-    followersCount: 3,
     category: 'General',
     followerIds: ['member-36', 'member-37', 'member-38'],
     relatedLinks: [
@@ -222,9 +196,7 @@ export const interests = [
     ],
   },
   {
-    id: 'psychedelics',
     name: 'Psychedelics',
-    followersCount: 8,
     category: 'General',
     followerIds: [
       'member-33', 'member-34', 'member-35', 'member-36',
@@ -238,9 +210,7 @@ export const interests = [
     ],
   },
   {
-    id: 'spanish',
     name: 'Spanish',
-    followersCount: 18,
     category: 'languages',
     followerIds: [
       'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
@@ -260,9 +230,7 @@ export const interests = [
     ],
   },
   {
-    id: 'german',
     name: 'German',
-    followersCount: 12,
     category: 'languages',
     followerIds: [
       'member-19', 'member-20', 'member-21', 'member-22', 'member-23',
@@ -277,9 +245,7 @@ export const interests = [
     ],
   },
   {
-    id: 'mandarin',
     name: 'Mandarin',
-    followersCount: 14,
     category: 'languages',
     followerIds: [
       'member-5', 'member-10', 'member-15', 'member-20', 'member-25',
@@ -294,9 +260,7 @@ export const interests = [
     ],
   },
   {
-    id: 'french',
     name: 'French',
-    followersCount: 16,
     category: 'languages',
     followerIds: [
       'member-2', 'member-3', 'member-6', 'member-7', 'member-11',
@@ -315,7 +279,7 @@ export const interests = [
 
 export const MAX_FOLLOWED_INTERESTS = 10;
 
-export const followedInterestIds = [];
+export const followedInterestNames = [];
 
 export const memberFollowers = [
   { id: 'member-1', name: 'Ana García', lat: 40.4168, lng: -3.7038 },
@@ -417,7 +381,7 @@ export const events = [
     rating: 4.7,
     ratingCount: 95,
     openTo: 'public',
-    interestIds: ['ai'],
+    eventInterests: ['AI'],
   },
   {
     id: 'open-mic-storytelling',
@@ -442,7 +406,7 @@ export const events = [
     rating: 4.9,
     ratingCount: 34,
     openTo: 'invite-only',
-    interestIds: ['psychedelics'],
+    eventInterests: ['Psychedelics'],
   },
   {
     id: 'urban-sketching',
@@ -455,7 +419,7 @@ export const events = [
     rating: 4.8,
     ratingCount: 367,
     openTo: 'public',
-    interestIds: ['painting'],
+    eventInterests: ['Painting'],
   },
   {
     id: 'open-air-lindy-hop-class',
@@ -468,7 +432,7 @@ export const events = [
     rating: 4.9,
     ratingCount: 106,
     openTo: 'selective',
-    interestIds: ['tango'],
+    eventInterests: ['Tango'],
   },
   {
     id: 'wine-tasting-event',
@@ -481,14 +445,18 @@ export const events = [
     rating: 4.7,
     ratingCount: 56,
     openTo: 'invite-only',
-    interestIds: ['cooking'],
+    eventInterests: ['Cooking'],
   }
 ];
 
 export const sampleFullEvent = {
   title: 'Lightning Talks @ Maria Pandora',
   img: './assets/event-lightning.avif',
-  location: 'Palacio',
+  location: {
+    name: 'Palacio',
+    lat: 40.4254,
+    lng: -3.7038,
+  },
   details: `<p>
               5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
             </p>
@@ -545,6 +513,7 @@ export const sampleFullEvent = {
       timeLong: '12:00pm - 1:00pm',
     },
   },
+  eventInterests: ['public-speaking', 'technology', 'fresh'],
 };
 
 export const spanishInterestEvents = [
@@ -559,7 +528,7 @@ export const spanishInterestEvents = [
     rating: 4.8,
     ratingCount: 41,
     openTo: 'public',
-    interestIds: ['spanish'],
+    eventInterests: ['Spanish'],
   },
   {
     id: 'museum-visit-prado',
@@ -572,7 +541,7 @@ export const spanishInterestEvents = [
     rating: 4.9,
     ratingCount: 28,
     openTo: 'selective',
-    interestIds: ['spanish'],
+    eventInterests: ['Spanish'],
   },
   {
     id: 'tapas-spanish-practice-malasana',
@@ -585,7 +554,7 @@ export const spanishInterestEvents = [
     rating: 4.7,
     ratingCount: 63,
     openTo: 'invite-only',
-    interestIds: ['spanish'],
+    eventInterests: ['Spanish'],
   },
 ];
 
@@ -838,7 +807,7 @@ export const mockCurrentUser = {
 export const spanishDiscussionPosts = [
   {
     id: 'post-spanish-conversation-tips',
-    interestId: 'spanish',
+    interestName: 'Spanish',
     authorId: 'member-3',
     body: 'Anyone have tips for keeping conversations going past small talk? I can order coffee fine, but I freeze once the chat moves past the weather.',
     createdAt: '2026-06-25T14:30:00.000Z',
@@ -865,7 +834,7 @@ export const spanishDiscussionPosts = [
   },
   {
     id: 'post-spanish-subjunctive',
-    interestId: 'spanish',
+    interestName: 'Spanish',
     authorId: 'member-5',
     body: 'Still struggling with when to use subjunctive after "creo que" vs "no creo que". Any simple rules of thumb?',
     createdAt: '2026-06-22T11:00:00.000Z',
@@ -886,7 +855,7 @@ export const spanishDiscussionPosts = [
   },
   {
     id: 'post-spanish-tapas-malasaña',
-    interestId: 'spanish',
+    interestName: 'Spanish',
     authorId: 'member-11',
     body: 'Best tapas bars in Malasaña for practicing Spanish with locals? Prefer somewhere not too touristy.',
     createdAt: '2026-06-18T20:00:00.000Z',

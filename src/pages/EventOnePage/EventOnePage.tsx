@@ -5,10 +5,12 @@ import {
   EventAttendCard,
   EventCommunity,
   EventDetails,
+  EventLocationDetails,
   EventHosts,
   EventImage,
   EventIntro,
   EventReviews,
+  EventTags,
 } from './components';
 import {
   getElementDocumentOffsetTop,
@@ -41,7 +43,6 @@ export function EventOnePage() {
         '--event-one-page-aside-title-height',
         `${title.offsetHeight}px`,
       );
-      // console.log('hello x: ', title.offsetHeight);
     };
 
     updateTitleHeight();
@@ -76,8 +77,9 @@ export function EventOnePage() {
                 attendeeCount={eventData.attendees.count}
               />
               <EventDetails details={eventData.details} />
+              <EventTags interests={eventData.eventInterests} />
               <div className="event-one-page__divider" />
-              <div style={{ minHeight: '20rem' }} />
+              <EventReviews />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(320px, 32%)">
               <div className="event-one-page__aside">
@@ -102,7 +104,7 @@ export function EventOnePage() {
                   <div className="event-one-page__divider" />
                   <EventHosts hosts={eventData.hosts} />
                   <div className="event-one-page__divider" />
-                  <EventReviews />
+                  <EventLocationDetails location={eventData.location} />
                 </div>
               </div>
             </ColumnsLayout.Aside>

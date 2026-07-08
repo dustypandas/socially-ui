@@ -1,38 +1,38 @@
 import { useCallback, useMemo, useState } from 'react';
-import { followedInterestIds, MAX_FOLLOWED_INTERESTS } from '@src/data/dummyData.js';
+import { followedInterestNames, MAX_FOLLOWED_INTERESTS } from '@src/data/dummyData.js';
 import type { Interest } from '@src/store/slices/interestsSlice';
 
 export function useDummyFollowedInterests(interests: Interest[]) {
-  const [dummyFollowedIds, setDummyFollowedIds] = useState(
-    () => [...followedInterestIds],
+  const [dummyFollowedNames, setDummyFollowedNames] = useState(
+    () => [...followedInterestNames],
   );
 
   const dummyFollowedInterests = useMemo(
-    () => interests.filter(interest => dummyFollowedIds.includes(interest.id)),
-    [interests, dummyFollowedIds],
+    () => interests.filter(interest => dummyFollowedNames.includes(interest.name)),
+    [interests, dummyFollowedNames],
   );
 
-  const dummyFollowInterest = useCallback((interestId: string) => {
-    setDummyFollowedIds(prev => {
-      if (prev.includes(interestId) || prev.length >= MAX_FOLLOWED_INTERESTS) {
+  const dummyFollowInterest = useCallback((interestName: string) => {
+    setDummyFollowedNames(prev => {
+      if (prev.includes(interestName) || prev.length >= MAX_FOLLOWED_INTERESTS) {
         return prev;
       }
-      return [...prev, interestId];
+      return [...prev, interestName];
     });
   }, []);
 
-  const dummyUnfollowInterest = useCallback((interestId: string) => {
-    setDummyFollowedIds(prev =>
-      prev.includes(interestId)
-        ? prev.filter(id => id !== interestId)
+  const dummyUnfollowInterest = useCallback((interestName: string) => {
+    setDummyFollowedNames(prev =>
+      prev.includes(interestName)
+        ? prev.filter(name => name !== interestName)
         : prev,
     );
   }, []);
 
-  const canDummyFollowMore = dummyFollowedIds.length < MAX_FOLLOWED_INTERESTS;
+  const canDummyFollowMore = dummyFollowedNames.length < MAX_FOLLOWED_INTERESTS;
 
   return {
-    dummyFollowedIds,
+    dummyFollowedNames,
     dummyFollowedInterests,
     dummyFollowInterest,
     dummyUnfollowInterest,

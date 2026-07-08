@@ -7,22 +7,22 @@ import { PostCard } from './PostCard.js';
 import './interest-discussion.css';
 
 type InterestDiscussionProps = {
-  interestId: string;
+  interestName: string;
   isEmpty?: boolean;
 };
 
-export function InterestDiscussion({ interestId, isEmpty = false }: InterestDiscussionProps) {
+export function InterestDiscussion({ interestName, isEmpty = false }: InterestDiscussionProps) {
   const dispatch = useAppDispatch();
   const allPosts = useAppSelector(state => state.posts.items);
 
   const posts = useMemo(() => {
     if (isEmpty) return [];
-    return allPosts.filter(post => post.interestId === interestId);
-  }, [allPosts, interestId, isEmpty]);
+    return allPosts.filter(post => post.interestName === interestName);
+  }, [allPosts, interestName, isEmpty]);
 
   const handleAddPost = (body: string) => {
     dispatch(addPost({
-      interestId,
+      interestName,
       authorId: mockCurrentUser.id,
       body,
     }));

@@ -4,7 +4,7 @@
 .event-one-page {
   position: relative;
   z-index: theme(--z-index-event-one-page);
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
 
   --event-one-page-aside-sticky-top: 1.25rem;
 }

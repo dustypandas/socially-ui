@@ -9,7 +9,7 @@ import {
   InterestsSearchBar,
 } from './components';
 import { useDummyFollowedInterests } from './hooks/useDummyFollowedInterests';
-import { createInterestId, hasExactInterestMatch, getUniqueMapFollowers } from './helpers';
+import { hasExactInterestMatch, getUniqueMapFollowers } from './helpers';
 import './interests-page.css';
 
 export function InterestsPage() {
@@ -17,7 +17,7 @@ export function InterestsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const interests = useAppSelector(state => state.interests.items);
   const {
-    dummyFollowedIds,
+    dummyFollowedNames,
     dummyFollowedInterests,
     dummyFollowInterest,
     dummyUnfollowInterest,
@@ -39,12 +39,8 @@ export function InterestsPage() {
     if (isAddButtonDisabled) return;
 
     const name = trimmedQuery;
-    const id = createInterestId(name, new Set(interests.map(interest => interest.id)));
-    dispatch(addInterest({
-      id,
-      name,
-    }));
-    dummyFollowInterest(id);
+    dispatch(addInterest({ name }));
+    dummyFollowInterest(name);
     setSearchQuery('');
   };
 
@@ -68,7 +64,7 @@ export function InterestsPage() {
               />
               <InterestsList
                 searchQuery={searchQuery}
-                followedIds={dummyFollowedIds}
+                followedNames={dummyFollowedNames}
                 maxFollowed={dummyMaxFollowed}
                 canFollowMore={canDummyFollowMore}
                 onFollow={dummyFollowInterest}

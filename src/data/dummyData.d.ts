@@ -46,9 +46,7 @@ export type Community = {
 };
 
 export type Interest = {
-  id: string;
   name: string;
-  followersCount?: number;
   category?: string;
   followerIds?: string[];
   relatedLinks?: RelatedLink[];
@@ -86,7 +84,7 @@ export type HomeEvent = {
   ratingCount: number;
   startsAt: string;
   openTo: 'public' | 'selective' | 'invite-only';
-  interestIds?: string[];
+  eventInterests?: string[];
 };
 
 export type MockCurrentUser = {
@@ -103,7 +101,7 @@ export type DiscussionReply = {
 
 export type DiscussionPost = {
   id: string;
-  interestId: string;
+  interestName: string;
   authorId: string;
   body: string;
   createdAt: string;
@@ -122,6 +120,12 @@ export type EventPageMember = {
   img: string;
 };
 
+export type EventPageLocation = {
+  name: string;
+  lat: number;
+  lng: number;
+};
+
 export type EventPageCommunity = {
   name: string;
   img: string;
@@ -131,7 +135,7 @@ export type EventPageCommunity = {
 export type FullEvent = {
   title: string;
   img: string;
-  location: string;
+  location: EventPageLocation;
   details: string;
   community: EventPageCommunity;
   hosts: EventPageMember[];
@@ -143,12 +147,13 @@ export type FullEvent = {
     timelineLabels: string[];
     pageLabels: EventPageDateLabels;
   };
+  eventInterests: string[];
 };
 
 export const navLinks: NavLink[];
 export const interests: Interest[];
 export const MAX_FOLLOWED_INTERESTS: number;
-export const followedInterestIds: string[];
+export const followedInterestNames: string[];
 export const memberFollowers: MemberFollower[];
 export const events: HomeEvent[];
 export const spanishInterestEvents: HomeEvent[];

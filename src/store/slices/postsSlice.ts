@@ -10,7 +10,7 @@ export type DiscussionReply = {
 
 export type DiscussionPost = {
   id: string;
-  interestId: string;
+  interestName: string;
   authorId: string;
   body: string;
   createdAt: string;
@@ -26,7 +26,7 @@ const initialState: PostsState = {
 };
 
 type AddPostPayload = {
-  interestId: string;
+  interestName: string;
   authorId: string;
   body: string;
 };
@@ -42,10 +42,10 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {
     addPost: (state, action: PayloadAction<AddPostPayload>) => {
-      const { interestId, authorId, body } = action.payload;
+      const { interestName, authorId, body } = action.payload;
       state.items.unshift({
         id: `post-${crypto.randomUUID()}`,
-        interestId,
+        interestName,
         authorId,
         body,
         createdAt: new Date().toISOString(),

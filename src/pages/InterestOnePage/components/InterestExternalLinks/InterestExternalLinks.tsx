@@ -5,7 +5,7 @@ import { addRelatedLink } from '@src/store/slices/interestsSlice.js';
 import './interest-external-links.css';
 
 type InterestExternalLinksProps = {
-  interestId: string;
+  interestName: string;
   links: RelatedLink[];
 };
 
@@ -15,7 +15,7 @@ function normalizeHref(href: string): string {
   return `https://${trimmed}`;
 }
 
-export function InterestExternalLinks({ interestId, links }: InterestExternalLinksProps) {
+export function InterestExternalLinks({ interestName, links }: InterestExternalLinksProps) {
   const dispatch = useAppDispatch();
   const [label, setLabel] = useState('');
   const [href, setHref] = useState('');
@@ -27,7 +27,7 @@ export function InterestExternalLinks({ interestId, links }: InterestExternalLin
   const handleSubmit = () => {
     if (isSubmitDisabled) return;
     dispatch(addRelatedLink({
-      interestId,
+      interestName,
       label: trimmedLabel,
       href: normalizeHref(trimmedHref),
     }));

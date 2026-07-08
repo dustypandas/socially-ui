@@ -32,9 +32,15 @@ const followerMarkerIcon = Leaflet.divIcon({
   popupAnchor: [0, -MARKER_SIZE],
 });
 
-type MapContainerProps = {
-  followers: MemberFollower[];
+type MapLocation = {
+  lat: number;
+  lng: number;
+  label: string;
 };
+
+type MapContainerProps =
+  | { followers: MemberFollower[]; location?: never; zoom?: number }
+  | { followers?: never; location: MapLocation; zoom?: number };
 
 function MapResizeHandler() {
   const map = useMap();
@@ -50,12 +56,41 @@ function MapResizeHandler() {
   return null;
 }
 
-export function MapContainer({ followers }: MapContainerProps) {
+export function MapContainer(props: MapContainerProps) {
+  const zoom = props.zoom ?? 13;
+
+  if (props.location) {
+    const { location } = props;
+
+    return (
+      <div className="map-container">
+        <LeafletMapContainer
+          center={[location.lat, location.lng]}
+          zoom={zoom}
+          scrollWheelZoom={false}
+          className="map-container__canvas"
+          attributionControl={false}
+        >
+          <MapResizeHandler />
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[location.lat, location.lng]} icon={followerMarkerIcon}>
+            <Popup>{location.label}</Popup>
+          </Marker>
+        </LeafletMapContainer>
+      </div>
+    );
+  }
+
+  const { followers } = props;
+
   return (
     <div className="map-container">
       <LeafletMapContainer
         center={MADRID_CENTER}
-        zoom={13}
+        zoom={zoom}
         scrollWheelZoom={false}
         className="map-container__canvas"
         attributionControl={false}

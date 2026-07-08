@@ -7,28 +7,6 @@ export function hasExactInterestMatch(interests: Interest[], query: string): boo
   return interests.some(interest => interest.name.toLowerCase() === normalized);
 }
 
-function slugifyInterestName(name: string): string {
-  return name
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '') || 'interest';
-}
-
-export function createInterestId(name: string, existingIds: Set<string>): string {
-  const baseId = slugifyInterestName(name);
-  if (!existingIds.has(baseId)) {
-    return baseId;
-  }
-
-  let suffix = 2;
-  while (existingIds.has(`${baseId}-${suffix}`)) {
-    suffix += 1;
-  }
-
-  return `${baseId}-${suffix}`;
-}
-
 export function getUniqueMapFollowers(
   followedInterests: Interest[],
   members: MemberFollower[],

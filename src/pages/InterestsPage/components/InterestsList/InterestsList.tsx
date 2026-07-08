@@ -5,11 +5,11 @@ import './interests-list.css';
 
 type InterestsListProps = {
   searchQuery: string;
-  followedIds: string[];
+  followedNames: string[];
   maxFollowed: number;
   canFollowMore: boolean;
-  onFollow: (interestId: string) => void;
-  onUnfollow: (interestId: string) => void;
+  onFollow: (interestName: string) => void;
+  onUnfollow: (interestName: string) => void;
 };
 
 type CategoryGroup = {
@@ -46,7 +46,7 @@ function groupInterestsByCategory(
     .map(([category, items]) => ({
       category,
       items,
-      totalFollowers: items.reduce((sum, interest) => sum + (interest.followersCount ?? 0), 0),
+      totalFollowers: items.reduce((sum, interest) => sum + (interest.followerIds?.length ?? 0), 0),
     }))
     .sort((a, b) => {
       const aGeneral = isGeneralCategory(a.category);
@@ -61,13 +61,13 @@ function groupInterestsByCategory(
 
 export function InterestsList({
   searchQuery,
-  followedIds,
+  followedNames,
   canFollowMore,
   onFollow,
   onUnfollow,
 }: InterestsListProps) {
   const interests = useAppSelector(state => state.interests.items);
-  const followedSet = useMemo(() => new Set(followedIds), [followedIds]);
+  const followedSet = useMemo(() => new Set(followedNames), [followedNames]);
   const categoryGroups = useMemo(
     () => groupInterestsByCategory(interests, searchQuery),
     [interests, searchQuery],
@@ -80,11 +80,11 @@ export function InterestsList({
           <h3 className="interests-list__category-title">{group.category}</h3>
           <ul className="interests-list__grid">
             {group.items.map(interest => {
-              const isFollowed = followedSet.has(interest.id);
+              const isFollowed = followedSet.has(interest.name);
 
               return (
               <li
-                key={interest.id}
+                key={interest.name}
                 className={[
                   'interests-list__item',
                   isFollowed && 'interests-list__item--followed',
@@ -94,13 +94,13 @@ export function InterestsList({
                   href="#/interest-one-ui"
                   className="interests-list__link"
                 >
-                  {interest.name} ({interest.followersCount})
+                  {interest.name} ({interest.followerIds?.length ?? 0})
                 </a>
                 {isFollowed
                   ? (<button
                       type="button"
                       className="interests-list__unfollow-btn"
-                      onClick={() => onUnfollow(interest.id)}
+                      onClick={() => onUnfollow(interest.name)}
                     >
                       <span className="interests-list__btn-icon">+</span>
                     </button>
@@ -109,12 +109,12 @@ export function InterestsList({
                       type="button"
                       className='interests-list__follow-btn'
                       disabled={!canFollowMore}
-                      onClick={() => onFollow(interest.id)}
+                      onClick={() => onFollow(interest.name)}
                     >
                       <span className="interests-list__btn-icon">+</span>
                     </button>
                   )
-                }                
+                }
               </li>
               );
             })}

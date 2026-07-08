@@ -7,11 +7,9 @@ export type RelatedLink = {
 };
 
 export type Interest = {
-  id: string;
   name: string;
   category?: string;
   followerIds?: string[];
-  followersCount?: number;
   relatedLinks?: RelatedLink[];
 };
 
@@ -20,7 +18,7 @@ type InterestsState = {
 };
 
 type AddRelatedLinkPayload = {
-  interestId: string;
+  interestName: string;
   label: string;
   href: string;
 };
@@ -41,13 +39,12 @@ export const interestsSlice = createSlice({
           ...action.payload,
           category: action.payload.category ?? 'General',
           followerIds: action.payload.followerIds ?? [], // TODO include self id
-          followersCount: action.payload.followersCount ?? 0,
         });
       }
     },
     addRelatedLink: (state, action: PayloadAction<AddRelatedLinkPayload>) => {
-      const { interestId, label, href } = action.payload;
-      const interest = state.items.find(item => item.id === interestId);
+      const { interestName, label, href } = action.payload;
+      const interest = state.items.find(item => item.name === interestName);
       if (!interest) return;
 
       if (!interest.relatedLinks) {

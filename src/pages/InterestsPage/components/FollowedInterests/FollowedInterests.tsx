@@ -6,7 +6,7 @@ type FollowedInterestsProps = {
   followedInterests: Interest[];
   maxFollowed: number;
   mapFollowers: MemberFollower[];
-  onUnfollow: (interestId: string) => void;
+  onUnfollow: (interestName: string) => void;
 };
 
 export function FollowedInterests({
@@ -26,7 +26,7 @@ export function FollowedInterests({
         {followedInterests.length > 0 ? (
           <ul className="followed-interests__list">
             {followedInterests.map(interest => (
-              <li key={interest.id} className="followed-interests__list-item">
+              <li key={interest.name} className="followed-interests__list-item">
                 <a href="#/interest-one-ui" className="followed-interests__list-link">
                   {interest.name}
                 </a>

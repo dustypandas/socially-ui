@@ -4,4 +4,6 @@ export { EventHosts } from './EventHosts/EventHosts';
 export { EventIntro } from './EventIntro/EventIntro';
 export { EventAttendCard } from './EventAttendCard/EventAttendCard';
 export { EventDetails } from './EventDetails/EventDetails';
+export { EventLocationDetails } from './EventLocationDetails/EventLocationDetails';
+export { EventTags } from './EventTags/EventTags';
 export { EventReviews } from './EventReviews/EventReviews';

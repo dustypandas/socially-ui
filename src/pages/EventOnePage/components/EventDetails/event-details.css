@@ -1,24 +1,26 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.event-description {
-  padding: 1.5rem 0;
+.event-details {
+  padding-bottom: 2rem;
 
   .section-header {
-    padding: 0 0 0.75rem;
+    padding-top: 1.5rem;
+    /* padding: 1.5rem 0 1rem; */
   }
 }
 
-.event-description__title {
+.event-details__title {
   @apply heading-h3;
-  color: var(--global-text-heading);
-  margin: 0 0 1rem;
+  /* color: var(--global-text-heading); */
+  margin: 1.5rem 0 1rem;
 }
 
-.event-description__content {
+.event-details__content {
+  margin: 0 0.75rem;
   font-size: var(--font-size-md);
   color: var(--global-text);
-  line-height: 1.75;
+  line-height: 1.5;
   word-wrap: break-word;
 
   h1, h2, h3, p {

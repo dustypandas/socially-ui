@@ -6,11 +6,6 @@
   flex-direction: column;
 }
 
-.event-hosts__divider {
-  @apply page-divider;
-  margin: 0;
-}
-
 .event-hosts__title {
   @apply heading-h3;
   margin: 0.75rem 0;

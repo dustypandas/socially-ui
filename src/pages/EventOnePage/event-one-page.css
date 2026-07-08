@@ -18,13 +18,13 @@
   margin-top: calc(-1 * var(--event-one-page-aside-title-height, 0px));
   top: var(--event-one-page-aside-sticky-top);
   z-index: theme(--z-index-event-one-page-aside);
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.5rem; */
 }
 
 .event-one-page__aside-title {
-  margin: 0 0 2rem;
+  /* margin: 0 0 2rem; */
   opacity: 0;
   transform: translateY(0.5rem);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -32,6 +32,7 @@
   @apply text-ellipsis;
   line-clamp: 2;
   -webkit-line-clamp: 2;
+  font-size: 1.875rem;
 
   &.event-one-page__aside-title--visible {
     opacity: 1;
@@ -49,8 +50,10 @@
   gap: 1rem;
 }
 
-.event-one-page__attend-card {
-  margin: 0 -0.75rem;
+.event-one-page__divider {
+  @apply page-divider;
+  margin-top: 1.5rem;
+  /* margin: 0; */
 }
 
 /* .event-one-page .columns-layout--stacked .event-one-page__hero .event-intro {

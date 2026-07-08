@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.event-reviews {
+}
+
+.event-reviews__title {
+  @apply heading-h3;
+  /* color: var(--global-text-heading); */
+  margin: 0.75rem 0;
+}
+
+.event-reviews__empty {
+  font-size: var(--font-size-md);
+  color: var(--global-text-muted);
+  margin: 0 0.75rem;
+}

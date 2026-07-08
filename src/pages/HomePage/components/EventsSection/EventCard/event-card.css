@@ -43,6 +43,9 @@
   font-size: var(--font-size-md);
   font-weight: 500;
   line-height: 1.5;
+  @apply text-ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .event-card__row {

@@ -30,18 +30,12 @@
 
 .event-card-horizontal__title {
   margin: 0 0 0.25rem;
+  color: var(--global-text);
   font-size: var(--font-size-md);
   font-weight: 500;
   line-height: 1.5;
   min-width: 0;
-}
-
-.event-card-horizontal__title-text {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--global-text);
+  @apply text-ellipsis;
 }
 
 .event-card-horizontal__row {

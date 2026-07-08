@@ -15,7 +15,7 @@
 
 .event-one-page__aside-sticky {
   position: sticky;
-  margin-top: -2rem;
+  margin-top: calc(-1 * var(--event-one-page-aside-title-height, 0px));
   top: var(--event-one-page-aside-sticky-top);
   z-index: 40;
   display: flex;
@@ -30,8 +30,9 @@
   transform: translateY(0.5rem);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .event-one-page__aside-title--visible {
@@ -50,18 +51,8 @@
 }
 
 .event-one-page__attend-card {
-  position: sticky;
-  /* top: 0; */
-  top: -2.1875rem; /* event attend card header height */
-  z-index: 10;
-  margin: 0;
-  transition: margin 0.3s ease-in-out;
+  margin: 0 -0.75rem;
 }
-
-.event-one-page__attend-card--expanded {
-  margin: 0 -1rem;
-}
-
 
 /* .event-one-page .columns-layout--stacked .event-one-page__hero .event-intro {
   flex: 1;
@@ -83,6 +74,7 @@
 
   .event-one-page__aside-sticky {
     position: static;
+    margin-top: 0;
   }
 
   .event-one-page__aside-title {

@@ -10,7 +10,7 @@
 }
 
 .event-attend-card--fixed-bar {
-  display: none;
+  display: block;
   position: fixed;
   left: 0;
   right: 0;
@@ -20,10 +20,17 @@
   border-top: 1px solid var(--light-shadow);
   box-shadow: 0 -1px 3px var(--light-shadow); /* same as header-shadow, on top */
   overflow: visible;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  pointer-events: none;
 
   .event-attend-card__body {
-    padding: 0.875rem 1rem;
+    padding: 0.875rem 0rem;
   }
+}
+
+.event-attend-card--fixed-bar--visible {
+  transform: translateY(0);
 }
 
 .event-attend-card__header {
@@ -111,7 +118,7 @@
 
 @media (max-width: theme(--breakpoint-md)) {
   .event-attend-card--fixed-bar {
-    display: block;
+    transform: translateY(0);
   }
 }
 

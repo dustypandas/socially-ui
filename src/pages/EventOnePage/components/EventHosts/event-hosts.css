@@ -12,11 +12,11 @@
 }
 
 .event-hosts__title {
-  margin: 1rem 0;
-  /* padding-bottom: 0.25rem; */
-  color: var(--global-text-muted);
+  @apply heading-h3;
+  margin: 0.75rem 0;
+  /* color: var(--global-text-muted);
   font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-sm); */
 }
 
 .event-hosts__list {
@@ -54,4 +54,5 @@
   color: var(--global-text);
   font-size: var(--font-size-md);
   font-weight: 500;
+  @apply text-ellipsis;
 }

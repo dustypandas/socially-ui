@@ -23,6 +23,7 @@
   color: var(--global-link-blue);
   font-size: var(--font-size-lg);
   text-decoration: none;
+  @apply text-ellipsis;
 
   &:hover {
     animation: hover-wiggle 1.2s infinite;

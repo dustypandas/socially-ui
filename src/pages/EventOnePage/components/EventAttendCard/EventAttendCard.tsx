@@ -13,6 +13,7 @@ type EventAttendCardProps = {
   priceLabel?: string;
   className?: string;
   isFixedBar?: boolean;
+  isFixedBarVisible?: boolean;
 };
 
 export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
@@ -23,47 +24,56 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       priceLabel = 'Free',
       className = '',
       isFixedBar = false,
+      isFixedBarVisible = false,
     },
     ref,
   ) {
+    const body = (
+      <div className="event-attend-card__body">
+        <div className="event-attend-card__left">
+          <div className="event-attend-card__attendees">
+            <div className="event-attend-card__avatars">
+              {profiles.map((profile, index) => (
+                <img
+                  key={profile.name}
+                  className="event-attend-card__avatar"
+                  src={profile.img}
+                  alt=""
+                  style={{ zIndex: 20 - index }}
+                />
+              ))}
+            </div>
+            <span className="event-attend-card__attendees-label">
+              {getAttendeesLabel(attendeeCount, profiles.length)}
+            </span>
+          </div>
+          <span className="event-attend-card__price">{priceLabel}</span>
+        </div>
+        <button type="button" className="event-attend-card__btn">
+          Join event
+        </button>
+      </div>
+    );
+
     return (
       <div
         ref={ref}
         className={[
           'event-attend-card',
           isFixedBar && 'event-attend-card--fixed-bar',
+          isFixedBar && isFixedBarVisible && 'event-attend-card--fixed-bar--visible',
           className,
         ].filter(Boolean).join(' ')}
       >
-        {!isFixedBar && (
-          <div className="event-attend-card__header">
-            <span className="event-attend-card__header-label">Attend</span>
-          </div>
-        )}
-        <div className="event-attend-card__body">
-          <div className="event-attend-card__left">
-            <div className="event-attend-card__attendees">
-              <div className="event-attend-card__avatars">
-                {profiles.map((profile, index) => (
-                  <img
-                    key={profile.name}
-                    className="event-attend-card__avatar"
-                    src={profile.img}
-                    alt=""
-                    style={{ zIndex: 20 - index }}
-                  />
-                ))}
-              </div>
-              <span className="event-attend-card__attendees-label">
-                {getAttendeesLabel(attendeeCount, profiles.length)}
-              </span>
+        {isFixedBar
+          ? (<div className="width-container">{body}</div>)
+          : (<>
+            <div className="event-attend-card__header">
+              <span className="event-attend-card__header-label">Attend</span>
             </div>
-            <span className="event-attend-card__price">{priceLabel}</span>
-          </div>
-          <button type="button" className="event-attend-card__btn">
-            Join event
-          </button>
-        </div>
+            {body}
+          </>)
+        }
       </div>
     );
   },

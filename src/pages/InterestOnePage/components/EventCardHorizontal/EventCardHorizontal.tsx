@@ -41,7 +41,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
     <a href="#/event-one-ui" className="event-card-horizontal" target="_blank">
       <div className="event-card-horizontal__body">
         <h3 className="event-card-horizontal__title">
-          <span className="event-card-horizontal__title-text">{event.title}</span>
+          {event.title}
         </h3>
         <div className="event-card-horizontal__row">
           <IconMapMarker className="event-card-horizontal__icon event-card-horizontal__icon--location" />

@@ -50,11 +50,11 @@
 .interests-list__link {
   min-width: 0;
   color: var(--global-link-blue);
-  /* font-family: 'Courier Prime', monospace;
-  font-size: 1rem; */
   text-decoration: none;
-  /* line-height: 2; */
   @apply courier-inline;
+  @apply text-ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .interests-list__item--followed .interests-list__link {

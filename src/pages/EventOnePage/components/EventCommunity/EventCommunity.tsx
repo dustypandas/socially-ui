@@ -12,8 +12,8 @@ export function EventCommunity({ name, img, details }: EventCommunityProps) {
       <a href="#/community-one-ui" className="event-community__header" target="_blank">
         <img className="event-community__img" src={img} alt="" />
         <div className="event-community__title-group">
-          <span className="event-community__label">Organised by</span>
-          <span className="event-community__name">{name}</span>
+          <div className="event-community__label">Organised by</div>
+          <div className="event-community__name">{name}{name}</div>
         </div>
       </a>
       <div

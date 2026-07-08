@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .event-description {
   padding: 1.5rem 0;
@@ -6,6 +7,12 @@
   .section-header {
     padding: 0 0 0.75rem;
   }
+}
+
+.event-description__title {
+  @apply heading-h3;
+  color: var(--global-text-heading);
+  margin: 0 0 1rem;
 }
 
 .event-description__content {

@@ -152,3 +152,12 @@
     box-shadow: 0 1px 7px var(--medium-shadow);
   }
 }
+
+@utility text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+}

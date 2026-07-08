@@ -1,4 +1,3 @@
-import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import './event-description.css';
 
 type EventDescriptionProps = {
@@ -8,7 +7,8 @@ type EventDescriptionProps = {
 export function EventDescription({ details }: EventDescriptionProps) {
   return (
     <section className="event-description">
-      <SectionHeader title="Event Details" hideMore />
+      <h3 className="event-description__title">Event Details</h3>
+
       <div
         className="event-description__content"
         dangerouslySetInnerHTML={{ __html: details }}

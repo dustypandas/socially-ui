@@ -8,7 +8,7 @@ import {
   useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import type { MemberFollower } from '@src/data/dummyData';
+import type { MemberProfile } from '@src/data';
 import iconMapMarkerSvg from '@src/assets/icon-map-marker.svg?raw';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';
@@ -39,7 +39,7 @@ type MapLocation = {
 };
 
 type MapContainerProps =
-  | { followers: MemberFollower[]; location?: never; zoom?: number }
+  | { followers: MemberProfile[]; location?: never; zoom?: number }
   | { followers?: never; location: MapLocation; zoom?: number };
 
 function MapResizeHandler() {

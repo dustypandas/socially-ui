@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { sampleFullEvent } from '@src/data/dummyData.js';
+import { sampleFullEvent } from '@src/data/types.js';
 import {
   EventAttendCard,
   EventCommunity,

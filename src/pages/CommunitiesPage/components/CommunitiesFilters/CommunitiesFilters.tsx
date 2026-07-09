@@ -1,5 +1,6 @@
 import { ButtonsGroup } from '@src/components';
-import { COMMUNITY_SCOPE_OPTIONS, type CommunityScope } from '@src/pages/CommunitiesPage/helpers';
+import { CommunityScope } from '@src/data';
+import { COMMUNITY_SCOPE_OPTIONS } from '../../helpers';
 import './communities-filters.css';
 
 type CommunitiesFiltersProps = {

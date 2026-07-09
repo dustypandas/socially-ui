@@ -1,5 +1,5 @@
 import IconContact from '@src/assets/icon-email-outline.svg?react';
-import type { CommunityOrganizer } from '@src/data/dummyData';
+import type { CommunityOrganizer } from '@src/data';
 import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-organizers.css';
 

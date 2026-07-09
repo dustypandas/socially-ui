@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import { memberAvatarUrls } from '@src/data/dummyData.js';
+import { memberAvatarUrls } from '@src/data/types.js';
 import type { Event } from '@src/store/slices/eventsSlice.js';
 import './event-card-horizontal.css';
 import { getAttendeesLabel } from '@src/utils/getAttendeesLabel.js';

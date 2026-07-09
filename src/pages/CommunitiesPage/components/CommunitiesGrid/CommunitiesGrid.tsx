@@ -1,4 +1,4 @@
-import type { Community } from '@src/data/dummyData';
+import type { Community } from '@src/data';
 import { CommunityCard } from '@src/pages/InterestOnePage/components/CommunityCard/CommunityCard';
 import './communities-grid.css';
 

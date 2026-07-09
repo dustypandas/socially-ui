@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { events, spanishInterestEvents } from '@src/data/dummyData.js';
+import { events } from '@src/data/types.js';
 
 export type EventHost = {
   name: string;
@@ -35,7 +35,7 @@ type EventsState = {
   items: Event[];
 };
 
-const allEvents = [...events, ...spanishInterestEvents];
+const allEvents = events;
 
 const initialState: EventsState = {
   items: allEvents as Event[],

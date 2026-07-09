@@ -1,6 +1,6 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { Community } from '@src/data/dummyData';
+import type { Community } from '@src/data';
 import './community-card.css';
 
 type CommunityCardProps = {

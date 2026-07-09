@@ -1,4 +1,4 @@
-import type { HomeEvent } from '@src/data/dummyData';
+import type { HomeEvent } from '@src/data';
 import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import { EventCardHorizontal } from '@src/pages/InterestOnePage/components/EventCardHorizontal/EventCardHorizontal';
 import './community-events-section.css';

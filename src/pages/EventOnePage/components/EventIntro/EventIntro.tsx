@@ -1,5 +1,5 @@
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
-import type { EventPageLocation } from '@src/data/dummyData';
+import type { EventPageLocation } from '@src/data';
 import './event-intro.css';
 
 type DateLabels = {

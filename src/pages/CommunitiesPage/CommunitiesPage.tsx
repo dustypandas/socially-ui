@@ -1,23 +1,16 @@
 import { useMemo, useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { communities, myCommunityIds } from '@src/data/dummyData.js';
+import { getCommunities, CommunityScope } from '@src/data';
 import { CommunitiesGrid, CommunitiesFilters } from './components';
-import { filterCommunities, type CommunityScope } from './helpers';
 import './communities-page.css';
 
 export function CommunitiesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [communityScope, setCommunityScope] = useState<CommunityScope>('all');
 
-  const scopedCommunities = useMemo(() => {
-    if (communityScope === 'all') return communities;
-    const joined = new Set(myCommunityIds);
-    return communities.filter(community => joined.has(community.id));
-  }, [communityScope]);
-
   const filteredCommunities = useMemo(
-    () => filterCommunities(scopedCommunities, searchQuery),
-    [scopedCommunities, searchQuery],
+    () => getCommunities(searchQuery, communityScope),
+    [searchQuery, communityScope],
   );
 
   const pageTitle = communityScope === 'mine' ? 'My Communities' : 'Popular Communities';

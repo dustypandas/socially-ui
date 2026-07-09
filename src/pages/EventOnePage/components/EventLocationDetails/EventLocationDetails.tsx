@@ -1,4 +1,4 @@
-import type { EventPageLocation } from '@src/data/dummyData';
+import type { EventPageLocation } from '@src/data';
 import { MapContainer } from '@src/components';
 import './event-location-details.css';
 

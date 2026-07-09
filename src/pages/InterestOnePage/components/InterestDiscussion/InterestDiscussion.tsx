@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { mockCurrentUser } from '@src/data/dummyData.js';
+import { sampleCurrentUser } from '@src/data/types.js';
 import { useAppDispatch, useAppSelector } from '@src/store/hooks';
 import { addPost, addReply } from '@src/store/slices/postsSlice.js';
 import { DiscussionComposer } from './DiscussionComposer.js';
@@ -23,7 +23,7 @@ export function InterestDiscussion({ interestName, isEmpty = false }: InterestDi
   const handleAddPost = (body: string) => {
     dispatch(addPost({
       interestName,
-      authorId: mockCurrentUser.id,
+      authorId: sampleCurrentUser.id,
       body,
     }));
   };
@@ -31,7 +31,7 @@ export function InterestDiscussion({ interestName, isEmpty = false }: InterestDi
   const handleAddReply = (postId: string, body: string) => {
     dispatch(addReply({
       postId,
-      authorId: mockCurrentUser.id,
+      authorId: sampleCurrentUser.id,
       body,
     }));
   };

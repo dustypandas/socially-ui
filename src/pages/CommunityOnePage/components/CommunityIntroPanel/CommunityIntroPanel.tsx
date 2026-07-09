@@ -1,7 +1,7 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 import IconUser from '@src/assets/icon-user-outline.svg?react';
-import type { CommunityOrganizer } from '@src/data/dummyData';
+import type { CommunityOrganizer } from '@src/data';
 import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-intro-panel.css';
 

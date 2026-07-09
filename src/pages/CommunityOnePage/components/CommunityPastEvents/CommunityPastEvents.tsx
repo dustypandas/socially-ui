@@ -1,4 +1,4 @@
-import type { HomeEvent } from '@src/data/dummyData';
+import type { HomeEvent } from '@src/data';
 import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
 import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
 import './community-past-events.css';

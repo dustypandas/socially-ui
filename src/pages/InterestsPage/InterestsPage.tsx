@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { memberFollowers } from '@src/data/dummyData.js';
+import { members } from '@src/data/types.js';
 import { useAppDispatch, useAppSelector } from '@src/store/hooks';
 import { addInterest } from '@src/store/slices/interestsSlice';
 import {
@@ -26,7 +26,7 @@ export function InterestsPage() {
   } = useDummyFollowedInterests(interests);
 
   const mapFollowers = useMemo(
-    () => getUniqueMapFollowers(dummyFollowedInterests, memberFollowers),
+    () => getUniqueMapFollowers(dummyFollowedInterests, members),
     [dummyFollowedInterests],
   );
 

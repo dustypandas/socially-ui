@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { RelatedLink } from '@src/data/dummyData.js';
+import type { RelatedLink } from '@src/data';
 import { useAppDispatch } from '@src/store/hooks';
 import { addRelatedLink } from '@src/store/slices/interestsSlice.js';
 import './interest-external-links.css';

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { memberFollowers, spanishInterestEvents, spanishRelatedCommunities } from '@src/data/dummyData.js';
+import { members, sampleFullInterest } from '@src/data/types.js';
 import { useAppSelector } from '@src/store/hooks';
 import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
 import { getUniqueMapFollowers } from '@src/pages/InterestsPage/helpers';
@@ -16,15 +16,13 @@ export function InterestOnePage() {
   );
 
   const mapFollowers = useMemo(
-    () => (interest ? getUniqueMapFollowers([interest], memberFollowers) : []),
+    () => (interest ? getUniqueMapFollowers([interest], members) : []),
     [interest],
   );
 
   const isEmptyVariant = location.pathname === '/interest-one-ui-empty';
-  const events = isEmptyVariant
-    ? []
-    : spanishInterestEvents.filter(event => event.eventInterests?.includes(INTEREST_NAME));
-  const communities = isEmptyVariant ? [] : spanishRelatedCommunities;
+  const events = isEmptyVariant ? [] : sampleFullInterest.events;
+  const communities = isEmptyVariant ? [] : sampleFullInterest.relatedCommunities;
 
   return (
     <PageLayout>

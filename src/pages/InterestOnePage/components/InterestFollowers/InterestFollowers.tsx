@@ -1,9 +1,9 @@
-import type { MemberFollower } from '@src/data/dummyData';
+import type { MemberProfile } from '@src/data';
 import { MapContainer } from '@src/components';
 import './interest-followers.css';
 
 type InterestFollowersProps = {
-  followers: MemberFollower[];
+  followers: MemberProfile[];
   followersCount: number;
 };
 

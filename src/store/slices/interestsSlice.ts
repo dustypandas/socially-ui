@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { interests } from '@src/data/dummyData.js';
+import { interests } from '@src/data/types.js';
 
 export type RelatedLink = {
   label: string;

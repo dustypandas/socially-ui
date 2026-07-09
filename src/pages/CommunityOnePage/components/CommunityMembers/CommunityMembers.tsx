@@ -1,9 +1,9 @@
-import type { CommunityMemberProfile } from '@src/data/dummyData';
+import type { MemberProfile } from '@src/data';
 import './community-members.css';
 
 type CommunityMembersProps = {
   memberCount: number;
-  memberProfiles: CommunityMemberProfile[];
+  memberProfiles: MemberProfile[];
 };
 
 export function CommunityMembers({ memberCount, memberProfiles }: CommunityMembersProps) {
@@ -14,9 +14,9 @@ export function CommunityMembers({ memberCount, memberProfiles }: CommunityMembe
       <div className="community-members__grid">
         {memberProfiles.map(profile => (
           <img
-            key={`${profile.name}-${profile.image}`}
+            key={profile.id}
             className="community-members__avatar"
-            src={profile.image}
+            src={profile.avatar}
             alt=""
           />
         ))}

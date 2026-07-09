@@ -1,5 +1,5 @@
 import type { Interest } from '@src/store/slices/interestsSlice';
-import type { MemberFollower } from '@src/data/dummyData';
+import type { MemberProfile } from '@src/data';
 
 export function hasExactInterestMatch(interests: Interest[], query: string): boolean {
   const normalized = query.trim().toLowerCase();
@@ -9,8 +9,8 @@ export function hasExactInterestMatch(interests: Interest[], query: string): boo
 
 export function getUniqueMapFollowers(
   followedInterests: Interest[],
-  members: MemberFollower[],
-): MemberFollower[] {
+  members: MemberProfile[],
+): MemberProfile[] {
   const byId = new Map(members.map(member => [member.id, member]));
   const ids = new Set<string>();
 

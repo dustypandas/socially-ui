@@ -2,14 +2,14 @@ import IconCalendar from '@src/assets/icon-calendar-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { Event } from '@src/store/slices/eventsSlice';
+import type { EventBasic } from '@src/data';
 import './event-card.css';
 
 type EventCardProps = {
   event: EventCardEvent;
 };
 
-export type EventCardEvent = Event & { dateTimeLabel: string };
+export type EventCardEvent = EventBasic & { dateTimeLabel: string };
 
 export function EventCard({ event }: EventCardProps) {
   return (
@@ -28,7 +28,7 @@ export function EventCard({ event }: EventCardProps) {
         <div className="event-card__row">
           <IconMapMarker className="event-card__icon event-card__icon--location" />
           <span className="event-card__text">
-            {event.location.name}
+            {event.location.label}
           </span>
         </div>
         <div className="event-card__row">

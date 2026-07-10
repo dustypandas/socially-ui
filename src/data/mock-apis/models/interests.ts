@@ -1,9 +1,11 @@
 import {
+  interests,
   MAX_FOLLOWED_INTERESTS,
   members,
   myFollowedInterests,
 } from '../../dummyData.ts';
-import type { Interest, MemberProfile } from '../../types.ts';
+import type { Interest, MemberFollower } from '../../types.ts';
+import { shuffleArray } from './helpers.ts';
 
 let followedInterestNames = [...myFollowedInterests];
 
@@ -28,7 +30,7 @@ export async function unfollowInterest(interestName: string): Promise<void> {
   followedInterestNames = followedInterestNames.filter(name => name !== interestName);
 }
 
-export async function getMapFollowers(interests: Interest[]): Promise<MemberProfile[]> {
+export async function getInterestsMapFollowers(interests: Interest[]): Promise<MemberFollower[]> {
   const byId = new Map(members.map(member => [member.id, member]));
   const ids = new Set<string>();
 
@@ -42,4 +44,14 @@ export async function getMapFollowers(interests: Interest[]): Promise<MemberProf
     const member = byId.get(id);
     return member ? [member] : [];
   });
+}
+
+export async function getHomePopularInterests(): Promise<Interest[]> {
+  const MAX_HOME_POPULAR_INTERESTS = 12;
+
+  return shuffleArray(
+    [...interests]
+      .sort((a, b) => (b.followerIds?.length ?? 0) - (a.followerIds?.length ?? 0))
+      .slice(0, MAX_HOME_POPULAR_INTERESTS),
+  );
 }

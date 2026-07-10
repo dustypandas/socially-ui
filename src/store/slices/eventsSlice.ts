@@ -1,50 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { events } from '@src/data/types.js';
+// import { createSlice } from '@reduxjs/toolkit';
+// import type { Event } from '@src/data';
+// import { events } from '@src/data/dummyData.ts';
 
-export type EventHost = {
-  name: string;
-  href: string;
-};
+// export type { Event } from '@src/data';
+// export type EventOpenTo = Event['openTo'];
 
-export type EventLocation = {
-  name: string;
-  href: string;
-};
+// type EventsState = {
+//   items: Event[];
+// };
 
-export type EventOpenTo = 'public' | 'selective' | 'invite-only';
+// const initialState: EventsState = {
+//   items: events,
+// };
 
-export type Event = {
-  id: string;
-  title: string;
-  image: string;
-  host: EventHost;
-  attendees: {
-    count: number;
-  };
-  dateLabel: string;
-  timeLabel: string;
-  location: EventLocation;
-  rating: number;
-  ratingCount: number;
-  startsAt: string;
-  openTo: EventOpenTo;
-  eventInterests?: string[];
-};
+// export const eventsSlice = createSlice({
+//   name: 'events',
+//   initialState,
+//   reducers: {},
+// });
 
-type EventsState = {
-  items: Event[];
-};
-
-const allEvents = events;
-
-const initialState: EventsState = {
-  items: allEvents as Event[],
-};
-
-export const eventsSlice = createSlice({
-  name: 'events',
-  initialState,
-  reducers: {},
-});
-
-export default eventsSlice.reducer;
+// export default eventsSlice.reducer;

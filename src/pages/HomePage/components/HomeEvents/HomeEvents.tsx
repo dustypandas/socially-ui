@@ -1,20 +1,29 @@
-import { useAppSelector } from '@src/store/hooks';
+import type { EventBasic } from '@src/data';
 import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
+import { EventDateHelper } from '@src/utils/eventDateHelper';
 import { EventCard } from './EventCard/EventCard';
 import './home-events.css';
 
-export function HomeEvents() {
-  const events = useAppSelector(state => state.events.items);
+type HomeEventsProps = {
+  upcomingEvents: EventBasic[];
+};
 
+export function HomeEvents({ upcomingEvents }: HomeEventsProps) {
   return (
     <section className="home-events" id="home-events">
       <div className="width-container">
         <div className="home-page__divider"></div>
         <SectionHeader title="Upcoming Events" moreHref="#/events-ui" />
         <div className="home-events__grid">
-          {events.map(event => (
-            <EventCard key={event.id} event={{ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }} />
-          ))}
+          {upcomingEvents.map(event => {
+            const dateHelper = new EventDateHelper(event.startTime);
+            return (
+              <EventCard
+                key={event.id}
+                event={{ ...event, dateTimeLabel: dateHelper.dateTimeLabel }}
+              />
+            );
+          })}
         </div>
         <SectionMoreLink href="#/events-ui" variant="footer" />
       </div>

@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { members } from '@src/data/types.js';
 import { useAppDispatch, useAppSelector } from '@src/store/hooks';
 import { addInterest } from '@src/store/slices/interestsSlice';
 import {
@@ -8,8 +7,8 @@ import {
   InterestsList,
   InterestsSearchBar,
 } from './components';
-import { useDummyFollowedInterests } from './hooks/useDummyFollowedInterests';
-import { hasExactInterestMatch, getUniqueMapFollowers } from './helpers';
+import { useFollowedInterests } from './hooks/useFollowedInterests';
+import { hasExactInterestMatch } from './helpers';
 import './interests-page.css';
 
 export function InterestsPage() {
@@ -17,18 +16,14 @@ export function InterestsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const interests = useAppSelector(state => state.interests.items);
   const {
-    dummyFollowedNames,
+    followedInterests,
     dummyFollowedInterests,
+    memberFollowers,
     dummyFollowInterest,
     dummyUnfollowInterest,
     dummyMaxFollowed,
     canDummyFollowMore,
-  } = useDummyFollowedInterests(interests);
-
-  const mapFollowers = useMemo(
-    () => getUniqueMapFollowers(dummyFollowedInterests, members),
-    [dummyFollowedInterests],
-  );
+  } = useFollowedInterests(interests);
 
   const trimmedQuery = searchQuery.trim();
   const hasExactMatch = hasExactInterestMatch(interests, trimmedQuery);
@@ -64,7 +59,7 @@ export function InterestsPage() {
               />
               <InterestsList
                 searchQuery={searchQuery}
-                followedNames={dummyFollowedNames}
+                followedInterests={followedInterests}
                 maxFollowed={dummyMaxFollowed}
                 canFollowMore={canDummyFollowMore}
                 onFollow={dummyFollowInterest}
@@ -76,7 +71,7 @@ export function InterestsPage() {
               <FollowedInterests
                 followedInterests={dummyFollowedInterests}
                 maxFollowed={dummyMaxFollowed}
-                mapFollowers={mapFollowers}
+                mapFollowers={memberFollowers}
                 onUnfollow={dummyUnfollowInterest}
               />
             </ColumnsLayout.Aside>

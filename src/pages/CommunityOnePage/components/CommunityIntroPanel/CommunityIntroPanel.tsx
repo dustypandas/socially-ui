@@ -1,7 +1,7 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 import IconUser from '@src/assets/icon-user-outline.svg?react';
-import type { CommunityOrganizer } from '@src/data';
+import type { MemberAvatar } from '@src/data';
 import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-intro-panel.css';
 
@@ -10,7 +10,7 @@ type CommunityIntroPanelProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
-  organizers: CommunityOrganizer[];
+  organizers: MemberAvatar[];
 };
 
 export function CommunityIntroPanel({

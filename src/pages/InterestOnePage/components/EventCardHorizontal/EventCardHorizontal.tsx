@@ -1,41 +1,16 @@
-import { useMemo } from 'react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import { memberAvatarUrls } from '@src/data/types.js';
-import type { Event } from '@src/store/slices/eventsSlice.js';
-import './event-card-horizontal.css';
+import type { EventBasic, MemberAvatar } from '@src/data';
 import { getAttendeesLabel } from '@src/utils/getAttendeesLabel.js';
+import './event-card-horizontal.css';
 
 type EventCardHorizontalProps = {
-  event: Event & { dateTimeLabel: string },
+  event: EventBasic,
 };
 
-function pickMemberAvatars(eventId: string, count: number): string[] {
-  if (count <= 0) return [];
-
-  let seed = 0;
-  for (let i = 0; i < eventId.length; i += 1) {
-    seed = (seed * 31 + eventId.charCodeAt(i)) | 0;
-  }
-
-  const shuffled = [...memberAvatarUrls];
-  for (let i = shuffled.length - 1; i > 0; i -= 1) {
-    seed = (seed * 1103515245 + 12345) | 0;
-    const j = (seed >>> 0) % (i + 1);
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-
-  return shuffled.slice(0, Math.min(count, shuffled.length));
-}
-
 export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
-  const avatarCount = Math.min(event.attendees.count, 3);
-  const avatarUrls = useMemo(
-    () => pickMemberAvatars(event.id, avatarCount),
-    [event.id, avatarCount],
-  );
   const ratingLabel = `${event.rating} (${event.ratingCount} ratings)`;
-  const attendeesLabel = getAttendeesLabel(event.attendees.count, avatarUrls.length);
+  const attendeesLabel = getAttendeesLabel(event.attendees.count, event.attendees.avatars.length);
 
   return (
     <a href="#/event-one-ui" className="event-card-horizontal" target="_blank">
@@ -46,7 +21,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
         <div className="event-card-horizontal__row">
           <IconMapMarker className="event-card-horizontal__icon event-card-horizontal__icon--location" />
           <span className="event-card-horizontal__text">
-            {event.location.name}
+            {event.location.label}
           </span>
         </div>
         <div className="event-card-horizontal__row">
@@ -55,16 +30,16 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
             {ratingLabel}
           </span>
         </div>
-        {avatarCount > 0 && (
+        {event.attendees.avatars.length > 0 && (
           <div className="event-card-horizontal__attendees">
             <div className="event-card-horizontal__attendees-img-container">
-              {avatarUrls.map((url, index) => (
+              {event.attendees.avatars.map((avatar: MemberAvatar, index: number) => (
                 <img
-                  key={url}
+                  key={avatar.id}
                   className="event-card-horizontal__attendee-img"
-                  src={url}
+                  src={avatar.image}
                   alt=""
-                  style={{ zIndex: avatarUrls.length - index }}
+                  style={{ zIndex: event.attendees.avatars.length - index }}
                 />
               ))}
             </div>

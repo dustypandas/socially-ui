@@ -1,10 +1,10 @@
 import IconContact from '@src/assets/icon-email-outline.svg?react';
-import type { CommunityOrganizer } from '@src/data';
+import type { MemberAvatar } from '@src/data';
 import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-organizers.css';
 
 type CommunityOrganizersProps = {
-  organizers: CommunityOrganizer[];
+  organizers: MemberAvatar[];
 };
 
 export function CommunityOrganizers({ organizers }: CommunityOrganizersProps) {

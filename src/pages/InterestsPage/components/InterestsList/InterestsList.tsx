@@ -5,7 +5,7 @@ import './interests-list.css';
 
 type InterestsListProps = {
   searchQuery: string;
-  followedNames: string[];
+  followedInterests: string[];
   maxFollowed: number;
   canFollowMore: boolean;
   onFollow: (interestName: string) => void;
@@ -61,13 +61,13 @@ function groupInterestsByCategory(
 
 export function InterestsList({
   searchQuery,
-  followedNames,
+  followedInterests,
   canFollowMore,
   onFollow,
   onUnfollow,
 }: InterestsListProps) {
   const interests = useAppSelector(state => state.interests.items);
-  const followedSet = useMemo(() => new Set(followedNames), [followedNames]);
+  const followedSet = useMemo(() => new Set(followedInterests), [followedInterests]);
   const categoryGroups = useMemo(
     () => groupInterestsByCategory(interests, searchQuery),
     [interests, searchQuery],

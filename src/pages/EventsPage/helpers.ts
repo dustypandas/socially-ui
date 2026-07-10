@@ -1,5 +1,5 @@
 import type { Interest } from '@src/store/slices/interestsSlice';
-import type { Event } from '@src/store/slices/eventsSlice';
+import type { Event } from '@src/data';
 
 export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'anytime';
 
@@ -65,13 +65,13 @@ function isSameDay(a: Date, b: Date): boolean {
 }
 
 export function matchesTimeFilter(
-  startsAt: string,
+  startTime: number,
   filter: TimeFilter,
   now = new Date(),
 ): boolean {
   if (filter === 'anytime') return true;
 
-  const eventDate = new Date(startsAt);
+  const eventDate = new Date(startTime);
 
   if (filter === 'today') {
     return isSameDay(eventDate, now);
@@ -112,7 +112,7 @@ export function filterEvents(
   const hasInterestFilter = interestQuery.trim().length > 0;
 
   return events.filter(event => {
-    if (!matchesTimeFilter(event.startsAt, timeFilter, now)) {
+    if (!matchesTimeFilter(event.startTime, timeFilter, now)) {
       return false;
     }
 

@@ -1,22 +1,17 @@
-import { useMemo } from 'react';
-import { useAppSelector } from '@src/store/hooks';
+import type { Interest } from '@src/data';
 import './interests-grid.css';
 
-const MAX_POPULAR_INTERESTS = 12;
+type InterestsGridProps = {
+  popularInterests: Interest[];
+};
 
-export function InterestsGrid() {
-  const interests = useAppSelector(state => state.interests.items);
-  const popularInterests = useMemo(
-    () => interests.slice(0, MAX_POPULAR_INTERESTS),
-    [interests],
-  );
-
+export function InterestsGrid({ popularInterests }: InterestsGridProps) {
   return (
     <ul className="interests-grid">
       {popularInterests.map(interest => (
-        <li key={interest.name} className="interests-grid__item">
+        <li key={interest.label} className="interests-grid__item">
           <a href="#/interest-one-ui" className="interests-grid__link">
-            {interest.name} ({interest.followerIds?.length ?? 0})
+            {interest.label} ({interest.followerIds?.length ?? 0})
           </a>
         </li>
       ))}

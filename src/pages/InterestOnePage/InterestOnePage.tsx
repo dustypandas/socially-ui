@@ -1,28 +1,41 @@
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { members, sampleFullInterest } from '@src/data/types.js';
-import { useAppSelector } from '@src/store/hooks';
+import {
+  getInterestPageData,
+  getInterestsMapFollowers,
+  type InterestPageData,
+  type MemberProfile,
+} from '@src/data';
+import { EventDateHelper } from '@src/utils/eventDateHelper';
 import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
-import { getUniqueMapFollowers } from '@src/pages/InterestsPage/helpers';
 import './interest-one-page.css';
-
-const INTEREST_NAME = 'Spanish';
 
 export function InterestOnePage() {
   const location = useLocation();
-  const interest = useAppSelector(state =>
-    state.interests.items.find(item => item.name === INTEREST_NAME),
-  );
+  const [interestPageData, setInterestPageData] = useState<InterestPageData | null>(null);
+  const [mapFollowers, setMapFollowers] = useState<MemberProfile[]>([]);
 
-  const mapFollowers = useMemo(
-    () => (interest ? getUniqueMapFollowers([interest], members) : []),
-    [interest],
-  );
+  useEffect(() => {
+    getInterestPageData().then(setInterestPageData);
+  }, []);
+
+  useEffect(() => {
+    if (!interest) {
+      setMapFollowers([]);
+      return;
+    }
+
+    getInterestsMapFollowers([interest]).then(setMapFollowers);
+  }, [interest]);
+
+  if (!interestPageData) {
+    return null;
+  }
 
   const isEmptyVariant = location.pathname === '/interest-one-ui-empty';
-  const events = isEmptyVariant ? [] : sampleFullInterest.events;
-  const communities = isEmptyVariant ? [] : sampleFullInterest.relatedCommunities;
+  const events = isEmptyVariant ? [] : interestPageData.relatedEvents;
+  const communities = isEmptyVariant ? [] : interestPageData.relatedCommunities;
 
   return (
     <PageLayout>
@@ -31,7 +44,7 @@ export function InterestOnePage() {
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <PageHeader
-                title={interest?.name ?? 'Spanish'}
+                title={`#${interestPageData.interestLabel}`}
                 backLabel="←&thinsp;Interests"
                 backHref="#/interests-ui"
               />
@@ -39,25 +52,28 @@ export function InterestOnePage() {
                 {events.length > 0 ? (
                   <>
                     <div className="interest-one-page__events-list">
-                      {events.map(event => (
+                      {events.map(event => {
+                        const dateHelper = new EventDateHelper(event.startTime, 'community');
+                        return (
                         <div key={event.id} className="interest-one-page__event-item">
                           <div className="interest-one-page__event-item-line" />
                           <div className="interest-one-page__event-item-timeline">
                             <div className="interest-one-page__event-item-datetime">
                               <span className="interest-one-page__event-item-date">
-                                {event.dateLabel}
+                                {dateHelper.dateLabel}
                               </span>
                               <span className="interest-one-page__event-item-time">
-                                {event.timeLabel}
+                                {dateHelper.timeLabel}
                               </span>
                             </div>
                             <div className="interest-one-page__event-item-dot-wrapper">
                               <div className="interest-one-page__event-item-dot" />
                             </div>
                           </div>
-                          <EventCardHorizontal event={{ ...event, dateTimeLabel: `${event.dateLabel}, ${event.timeLabel}` }} />
+                          <EventCardHorizontal event={{ ...event }} />
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </>
                 ) : (

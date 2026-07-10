@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { PageLayout, LayoutFooter } from '@src/components';
+import { PageLayout } from '@src/components';
+import { getHomePageData, type HomePageData } from '@src/data';
 import { useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { getShouldPlayEntry } from '@src/utils/shouldPlayEntry';
 import {
@@ -11,6 +12,9 @@ import {
 import './home-page.css';
 
 export function HomePage() {
+  // data state
+  const [homePageData, setHomePageData] = useState<HomePageData | null>(null);
+  // ui-orchestration states
   const shouldPlayEntry = useRef(getShouldPlayEntry()).current;
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(!shouldPlayEntry);
   const [isEntryRevealed2, setIsEntryRevealed2] = useState(!shouldPlayEntry);
@@ -20,6 +24,10 @@ export function HomePage() {
     ref: heroRef,
     getDistance: (hero) => hero.offsetHeight,
   });
+
+  useEffect(() => {
+    getHomePageData().then(setHomePageData);
+  }, []);
 
   useEffect(() => {
     if (!shouldPlayEntry) return;
@@ -34,6 +42,10 @@ export function HomePage() {
       clearTimeout(timer3);
     };
   }, [shouldPlayEntry]);
+
+  if (!homePageData) {
+    return null;
+  }
 
   return (
     <PageLayout
@@ -60,8 +72,8 @@ export function HomePage() {
           isEntryRevealed1 && 'home-page--entry-revealed1',
           isEntryRevealed2 && 'home-page--entry-revealed2',
         ].filter(Boolean).join(' ')}>
-          <HomeInterests />
-          <HomeEvents />
+          <HomeInterests popularInterests={homePageData.popularInterests} />
+          <HomeEvents upcomingEvents={homePageData.upcomingEvents} />
           <HomeWhySocially />
           {/* <HomeAbout /> */}
         </section>

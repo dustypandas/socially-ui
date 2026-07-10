@@ -4,16 +4,16 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import {
-  CommunityPage,
-  CommunitiesPage,
-  EventPage,
-  EventsPage,
+  // CommunityPage,
+  // CommunitiesPage,
+  // EventPage,
+  // EventsPage,
   HomePage,
   IndexPage,
   InterestsPage,
-  InterestOnePage,
-  CommunityOnePage,
-  EventOnePage,
+  // InterestOnePage,
+  // CommunityOnePage,
+  // EventOnePage,
 } from './pages';
 import { store } from './store';
 
@@ -24,15 +24,15 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />
-        <Route path='/events-ui' element={<EventsPage />} />
+        {/* <Route path='/events-ui' element={<EventsPage />} />
         <Route path='/event-one-ui' element={<EventOnePage />} />
         <Route path='/community-one-ui' element={<CommunityOnePage />} />
-        <Route path='/communities-ui' element={<CommunitiesPage />} />
+        <Route path='/communities-ui' element={<CommunitiesPage />} /> */}
         <Route path='/interests-ui' element={<InterestsPage />} />
-        <Route path='/interest-one-ui' element={<InterestOnePage />} />
+        {/* <Route path='/interest-one-ui' element={<InterestOnePage />} />
         <Route path='/interest-one-ui-empty' element={<InterestOnePage />} />
         <Route path='/prev-community-ui' element={<CommunityPage />} />
-        <Route path='/prev-event-ui' element={<EventPage />} />
+        <Route path='/prev-event-ui' element={<EventPage />} /> */}
         {/* default invalid? */}
       </Routes>
     </HashRouter>

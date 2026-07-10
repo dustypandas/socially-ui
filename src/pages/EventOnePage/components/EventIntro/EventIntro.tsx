@@ -1,5 +1,5 @@
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
-import type { EventPageLocation } from '@src/data';
+import type { MapLocation } from '@src/data';
 import './event-intro.css';
 
 type DateLabels = {
@@ -12,7 +12,7 @@ type DateLabels = {
 type EventIntroProps = {
   title: string;
   date: DateLabels;
-  location: EventPageLocation;
+  location: MapLocation;
 };
 
 export function EventIntro({ title, date, location }: EventIntroProps) {
@@ -39,7 +39,7 @@ export function EventIntro({ title, date, location }: EventIntroProps) {
               Exact location visible for attendees
             </div>
             <div className="event-intro__attribute-secondary">
-              {location.name}, Madrid
+              {location.label}, Madrid
             </div>
           </div>
         </div>

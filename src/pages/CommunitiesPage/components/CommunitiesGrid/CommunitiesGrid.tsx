@@ -1,9 +1,9 @@
-import type { Community } from '@src/data';
+import type { CommunityBasic } from '@src/data';
 import { CommunityCard } from '@src/pages/InterestOnePage/components/CommunityCard/CommunityCard';
 import './communities-grid.css';
 
 type CommunitiesGridProps = {
-  communities: Community[];
+  communities: CommunityBasic[];
 };
 
 export function CommunitiesGrid({ communities }: CommunitiesGridProps) {

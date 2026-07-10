@@ -5,7 +5,7 @@ export type NavLink = {
 };
 
 export type MapLocation = {
-  label: string;
+  label?: string;
   lat: number;
   lng: number;
 };
@@ -63,6 +63,7 @@ export type EventBasic = {
   id: string;
   title: string;
   image: string;
+  href: string;
   location: Pick<MapLocation, 'label'>;
   attendees: {
     count: number;
@@ -94,9 +95,10 @@ export type MemberAvatar = {
   href: string;
 };
 
-export type MemberFollower = {
+export type MemberFollower =
+& MapLocation
+& {
   id: string;
-  location: MapLocation;
 };
 
 export type MemberProfile =
@@ -111,6 +113,11 @@ export type MemberProfile =
 };
 
 // pages data
+export type HomePageData = {
+  popularInterests: Interest[];
+  upcomingEvents: EventBasic[];
+};
+
 export type CommunityPageData =
 & Community
 & {
@@ -145,6 +152,7 @@ export type EventPageData =
 
 export type InterestPageData = {
   interestLabel: string;
+  memberFollowers: MemberFollower[];
   relatedEvents: EventBasic[];
   relatedCommunities: CommunityBasic[];
 };

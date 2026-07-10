@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { sampleFullEvent } from '@src/data/types.js';
+import { getEventPageData, type EventPageData } from '@src/data';
 import {
   EventAttendCard,
   EventCommunity,
@@ -19,7 +19,7 @@ import {
 import './event-one-page.css';
 
 export function EventOnePage() {
-  const eventData = sampleFullEvent;
+  const [eventData, setEventData] = useState<EventPageData | null>(null);
   const attendCardRef = useRef<HTMLDivElement>(null);
   const asideTitleRef = useRef<HTMLHeadingElement>(null);
   const asideStickyRef = useRef<HTMLDivElement>(null);
@@ -32,16 +32,20 @@ export function EventOnePage() {
   );
 
   useEffect(() => {
-    const title = asideTitleRef.current;
-    const sticky = asideStickyRef.current;
-    if (!title || !sticky) {
+    getEventPageData().then(setEventData);
+  }, []);
+
+  useEffect(() => {
+    const $title = asideTitleRef.current;
+    const $sticky = asideStickyRef.current;
+    if (!$title || !$sticky || !eventData) {
       return;
     }
 
     const updateTitleHeight = () => {
-      sticky.style.setProperty(
+      $sticky.style.setProperty(
         '--event-one-page-aside-title-height',
-        `${title.offsetHeight}px`,
+        `${$title.offsetHeight}px`,
       );
     };
 
@@ -50,9 +54,13 @@ export function EventOnePage() {
 
     return () => {
       window.removeEventListener('resize', updateTitleHeight);
-      sticky.style.removeProperty('--event-one-page-aside-title-height');
+      $sticky.style.removeProperty('--event-one-page-aside-title-height');
     };
-  }, [eventData.title]);
+  }, [eventData?.title]);
+
+  if (!eventData) {
+    return null;
+  }
 
   return (
     <PageLayout hasStaticHeader>

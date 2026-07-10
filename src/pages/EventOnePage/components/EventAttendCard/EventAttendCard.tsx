@@ -1,14 +1,10 @@
 import { forwardRef } from 'react';
+import type { MemberAvatar } from '@src/data';
 import { getAttendeesLabel } from '@src/utils/getAttendeesLabel';
 import './event-attend-card.css';
 
-type AttendeeProfile = {
-  name: string;
-  img: string;
-};
-
 type EventAttendCardProps = {
-  profiles: AttendeeProfile[];
+  profiles: MemberAvatar[];
   attendeeCount: number;
   priceLabel?: string;
   className?: string;
@@ -35,9 +31,9 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
             <div className="event-attend-card__avatars">
               {profiles.map((profile, index) => (
                 <img
-                  key={profile.name}
+                  key={profile.id}
                   className="event-attend-card__avatar"
-                  src={profile.img}
+                  src={profile.image}
                   alt=""
                   style={{ zIndex: 20 - index }}
                 />

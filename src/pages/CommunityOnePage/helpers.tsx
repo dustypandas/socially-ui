@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
-export function nameAndOthersLabel(members: { name: string }[]): ReactNode {
-  const primary = members[0]?.name;
+export function nameAndOthersLabel(members: { label: string }[]): ReactNode {
+  const primary = members[0]?.label;
 
   return (
     <>

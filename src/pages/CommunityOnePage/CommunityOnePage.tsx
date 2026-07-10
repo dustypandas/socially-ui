@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { sampleCommunityPage } from '@src/data/types.js';
+import { getCommunityPageData, type CommunityPageData } from '@src/data';
 import {
   CommunityAbout,
   CommunityEventsSection,
@@ -13,7 +14,15 @@ import {
 import './community-one-page.css';
 
 export function CommunityOnePage() {
-  const community = sampleCommunityPage;
+  const [community, setCommunity] = useState<CommunityPageData | null>(null);
+
+  useEffect(() => {
+    getCommunityPageData().then(setCommunity);
+  }, []);
+
+  if (!community) {
+    return null;
+  }
 
   return (
     <PageLayout hasStaticHeader>
@@ -51,7 +60,7 @@ export function CommunityOnePage() {
               <div className="community-one-page__aside">
                 <CommunityOrganizers organizers={community.organizers} />
                 <CommunityMembers
-                  memberCount={community.memberCount}
+                  membersCount={community.memberCount}
                   memberProfiles={community.memberProfiles}
                 />
               </div>

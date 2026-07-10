@@ -80,50 +80,6 @@ function createAttendees(attendeesCount: number) {
   };
 }
 
-// ??
-const HOST_POLYLOGUE: MemberAvatar = {
-  id: 'polylogue-madrid',
-  label: 'Polylogue',
-  image: './assets/community-polylogue.avif',
-  href: '#/community-ui',
-};
-
-const HOST_FRESHERS: MemberAvatar = {
-  id: 'freshers-of-madrid',
-  label: 'Freshers of Madrid',
-  image: './assets/community-freshers.avif',
-  href: '#/community-ui',
-};
-
-const HOST_CONSCIOUS: MemberAvatar = {
-  id: 'conscious-collective',
-  label: 'The Conscious Collective',
-  image: './assets/community-conscious.avif',
-  href: '#/community-ui',
-};
-
-const HOST_SKETCH: MemberAvatar = {
-  id: 'madrid-sketch-squad',
-  label: 'The Madrid Sketch Squad',
-  image: './assets/community-sketch.avif',
-  href: '#/community-ui',
-};
-
-const HOST_HAPPY_FEET: MemberAvatar = {
-  id: 'happy-feet',
-  label: 'Happy Feet',
-  image: './assets/community-dance.avif',
-  href: '#/community-ui',
-};
-
-const HOST_WINE: MemberAvatar = {
-  id: 'wine-society',
-  label: 'Wine Society',
-  image: './assets/event-wine.jpg',
-  href: '#/community-ui',
-};
-
-
 const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
   'achi': {
     id: 'orgaizer-achi',
@@ -214,15 +170,51 @@ export const communities: CommunityBasic[] = [
   },
 ];
 
+export const communitiesForInterest: CommunityBasic[] = [
+  {
+    id: 'madrid-language-exchange',
+    name: 'Madrid Language Exchange',
+    image: '../../assets/event-lightning.avif',
+    href: '#/community-one-ui',
+    membersCount: 412,
+    rating: 4.8,
+    ratingCount: 96,
+    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+    interests: ['language-exchange', 'spanish', 'spanish-practice'],
+  },
+  {
+    id: 'cultura-madrid',
+    name: 'Cultura Madrid',
+    image: '../../assets/event-sketch.avif',
+    href: '#/community-one-ui',
+    membersCount: 287,
+    rating: 4.9,
+    ratingCount: 54,
+    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+    interests: ['spanish', 'spanish-practice'],
+  },
+  {
+    id: 'tapas-and-talk',
+    name: 'Tapas & Talk',
+    image: '../../assets/event-wine.jpg',
+    href: '#/community-one-ui',
+    membersCount: 193,
+    rating: 4.7,
+    ratingCount: 71,
+    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+    interests: ['spanish', 'spanish-practice', 'food'],
+  },
+];
+
 export const events: EventBasic[] = [
   {
     id: 'lightning-talks',
     title: 'Lighting Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
-    // host: HOST_POLYLOGUE,
-    attendees: createAttendees(47),
-    ...createHomeEventDate(2, 13, 30),
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(2, 13, 30),
     location: { label: 'Madrid Palacio' },
+    attendees: createAttendees(47),
     rating: 4.7,
     ratingCount: 95,
     openTo: 'public',
@@ -232,10 +224,10 @@ export const events: EventBasic[] = [
     id: 'open-mic-storytelling',
     title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
     image: '../../assets/event-story.avif',
-    // host: HOST_FRESHERS,
-    attendees: createAttendees(17),
-    ...createHomeEventDate(3, 19, 0),
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(3, 19, 0),
     location: { label: 'Tropicana' },
+    attendees: createAttendees(17),
     rating: 4.8,
     ratingCount: 106,
     openTo: 'selective',
@@ -244,10 +236,10 @@ export const events: EventBasic[] = [
     id: 'psychedelic-sharing-circle',
     title: 'Psychedelic sharing circle',
     image: '../../assets/event-circle.avif',
-    // host: HOST_CONSCIOUS,
-    attendees: createAttendees(9),
-    ...createHomeEventDate(5, 17, 0),
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(5, 17, 0),
     location: { label: 'Centro' },
+    attendees: createAttendees(9),
     rating: 4.9,
     ratingCount: 34,
     openTo: 'invite-only',
@@ -257,10 +249,10 @@ export const events: EventBasic[] = [
     id: 'urban-sketching',
     title: 'Urban sketching: CentroCentro',
     image: '../../assets/event-sketch.avif',
-    // host: HOST_SKETCH,
-    attendees: createAttendees(14),
-    ...createHomeEventDate(6, 19, 30),
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(6, 19, 30),
     location: { label: 'CentroCentro' },
+    attendees: createAttendees(14),
     rating: 4.8,
     ratingCount: 367,
     openTo: 'public',
@@ -270,10 +262,10 @@ export const events: EventBasic[] = [
     id: 'open-air-lindy-hop-class',
     title: 'Open Air Lindy Hop Class',
     image: '../../assets/event-swing.avif',
-    // host: HOST_HAPPY_FEET,
-    attendees: createAttendees(39),
-    ...createHomeEventDate(9, 13, 0),
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(9, 13, 0),
     location: { label: 'Parque del Retiro' },
+    attendees: createAttendees(39),
     rating: 4.9,
     ratingCount: 106,
     openTo: 'selective',
@@ -283,15 +275,54 @@ export const events: EventBasic[] = [
     id: 'wine-tasting-event',
     title: 'Wine Tasting @ Monkeys Bar',
     image: '../../assets/event-wine.jpg',
-    // host: HOST_WINE,
-    attendees: createAttendees(15),
-    ...createHomeEventDate(11, 18, 0),
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(11, 18, 0),
     location: { label: 'Wine Bar' },
+    attendees: createAttendees(15),
     rating: 4.7,
     ratingCount: 56,
     openTo: 'invite-only',
     // eventInterests: ['Cooking'],
   }
+];
+
+export const eventsForInterest: EventBasic[] = [
+  {
+    id: 'spanish-conversations-cafe-comercial',
+    title: 'Spanish Conversations @ Café Comercial',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(2, 19, 0),
+    location: { label: 'Café Comercial' },
+    attendees: createAttendees(22),
+    rating: 4.8,
+    ratingCount: 41,
+    openTo: 'public',
+  },
+  {
+    id: 'museum-visit-prado',
+    title: 'Museum Visit @ Prado',
+    image: '../../assets/event-sketch.avif',
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(13, 11, 0),
+    location: { label: 'Museo del Prado' },
+    attendees: createAttendees(11),
+    rating: 4.9,
+    ratingCount: 28,
+    openTo: 'public',
+  },
+  {
+    id: 'tapas-spanish-practice-malasana',
+    title: 'Tapas & Spanish Practice @ Malasaña',
+    image: '../../assets/event-wine.jpg',
+    href: '#/event-one-ui',
+    startTime: createEventStartTime(22, 20, 0),
+    location: { label: 'Malasaña' },
+    attendees: createAttendees(16),
+    rating: 4.7,
+    ratingCount: 63,
+    openTo: 'public',
+  },
 ];
 
 export const interests: Interest[] = [
@@ -584,24 +615,10 @@ function addDays(date: Date, days: number): Date {
   return result;
 }
 
-function createEventStartTime(daysFromNow: number, hours: number, minutes: number): {
-  startTime: number;
-} {
+function createEventStartTime(daysFromNow: number, hours: number, minutes: number): number {
   const date = addDays(new Date(), daysFromNow);
   date.setHours(hours, minutes, 0, 0);
-  return { startTime: date.getTime() };
-}
-
-function createHomeEventDate(daysFromNow: number, hours: number, minutes: number): {
-  startTime: number;
-} {
-  return createEventStartTime(daysFromNow, hours, minutes);
-}
-
-function createCommunityEventDate(daysFromNow: number, hours: number, minutes: number): {
-  startTime: number;
-} {
-  return createEventStartTime(daysFromNow, hours, minutes);
+  return date.getTime();
 }
 
 export const sampleFullCommunity: CommunityPageData = {
@@ -631,9 +648,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-feb-4',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(47),
-      ...createCommunityEventDate(3, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(3, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(47),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -642,9 +660,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-feb-18',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(39),
-      ...createCommunityEventDate(7, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(7, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(39),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -653,9 +672,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-mar-4',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(44),
-      ...createCommunityEventDate(12, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(12, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(44),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -666,9 +686,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-jan-7',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(52),
-      ...createCommunityEventDate(-3, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(-3, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(52),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -677,9 +698,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-jan-21',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(48),
-      ...createCommunityEventDate(-6, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(-6, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(48),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -688,9 +710,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-dec-17',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(55),
-      ...createCommunityEventDate(-7, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(-7, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(55),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -699,9 +722,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-dec-3',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(41),
-      ...createCommunityEventDate(-14, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(-14, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(41),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -710,9 +734,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-nov-19',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(46),
-      ...createCommunityEventDate(-19, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(-19, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(46),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -721,9 +746,10 @@ export const sampleFullCommunity: CommunityPageData = {
       id: 'polylogue-lightning-nov-5',
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(43),
-      ...createCommunityEventDate(-21, 19, 10),
+      href: '#/event-one-ui',
+      startTime: createEventStartTime(-21, 19, 10),
       location: { label: 'Palacio' },
+      attendees: createAttendees(43),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -735,6 +761,7 @@ export const sampleFullEvent: EventPageData = {
   id: 'polylogue-lightning-feb-4',
   title: 'Lightning Talks @ Maria Pandora',
   image: './assets/event-lightning.avif',
+  href: '#/event-one-ui',
   rating: 4.7,
   ratingCount: 95,
   startTime: 1741123200000,
@@ -795,142 +822,4 @@ export const sampleFullEvent: EventPageData = {
   eventInterests: ['public-speaking', 'technology', 'fresh'],
 };
 
-export const sampleFullInterest: InterestPageData = {
-  interestLabel: 'spanish',
-  relatedEvents: [
-    {
-      id: 'spanish-conversations-cafe-comercial',
-      title: 'Spanish Conversations @ Café Comercial',
-      image: '../../assets/event-lightning.avif',
-      attendees: createAttendees(22),
-      ...createEventStartTime(2, 19, 0),
-      location: { label: 'Café Comercial' },
-      rating: 4.8,
-      ratingCount: 41,
-      openTo: 'public',
-    },
-    {
-      id: 'museum-visit-prado',
-      title: 'Museum Visit @ Prado',
-      image: '../../assets/event-sketch.avif',
-      attendees: createAttendees(11),
-      ...createEventStartTime(13, 11, 0),
-      location: { label: 'Museo del Prado' },
-      rating: 4.9,
-      ratingCount: 28,
-      openTo: 'public',
-    },
-    {
-      id: 'tapas-spanish-practice-malasana',
-      title: 'Tapas & Spanish Practice @ Malasaña',
-      image: '../../assets/event-wine.jpg',
-      attendees: createAttendees(16),
-      ...createEventStartTime(22, 20, 0),
-      location: { label: 'Malasaña' },
-      rating: 4.7,
-      ratingCount: 63,
-      openTo: 'public',
-    },
-  ],
-  relatedCommunities: [
-    {
-      id: 'madrid-language-exchange',
-      name: 'Madrid Language Exchange',
-      image: '../../assets/event-lightning.avif',
-      href: '#/community-one-ui',
-      membersCount: 412,
-      rating: 4.8,
-      ratingCount: 96,
-      description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
-      interests: ['language-exchange', 'spanish', 'spanish-practice'],
-    },
-    {
-      id: 'cultura-madrid',
-      name: 'Cultura Madrid',
-      image: '../../assets/event-sketch.avif',
-      href: '#/community-one-ui',
-      membersCount: 287,
-      rating: 4.9,
-      ratingCount: 54,
-      description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
-      interests: ['language-exchange', 'spanish', 'spanish-practice'],
-    },
-    {
-      id: 'tapas-and-talk',
-      name: 'Tapas & Talk',
-      image: '../../assets/event-wine.jpg',
-      href: '#/community-one-ui',
-      membersCount: 193,
-      rating: 4.7,
-      ratingCount: 71,
-      description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
-      interests: ['language-exchange', 'spanish', 'spanish-practice'],
-    },
-  ],
-  // discussionPosts: [
-  //   {
-  //     id: 'post-spanish-conversation-tips',
-  //     interestName: 'Spanish',
-  //     authorId: 'member-3',
-  //     body: 'Anyone have tips for keeping conversations going past small talk? I can order coffee fine, but I freeze once the chat moves past the weather.',
-  //     createdAt: '2026-06-25T14:30:00.000Z',
-  //     replies: [
-  //       {
-  //         id: 'reply-post-spanish-conversation-tips-1',
-  //         authorId: 'member-1',
-  //         body: 'Prepare two follow-up questions before you arrive — something about Madrid, food, or weekend plans usually works.',
-  //         createdAt: '2026-06-25T16:10:00.000Z',
-  //       },
-  //       {
-  //         id: 'reply-post-spanish-conversation-tips-2',
-  //         authorId: 'member-12',
-  //         body: 'I keep a note on my phone with phrases like "¿Qué te gusta hacer los fines de semana?" It feels silly but it helps.',
-  //         createdAt: '2026-06-25T18:45:00.000Z',
-  //       },
-  //       {
-  //         id: 'reply-post-spanish-conversation-tips-3',
-  //         authorId: 'member-6',
-  //         body: 'Language exchange nights at Café Comercial are great for this — low pressure and everyone is learning.',
-  //         createdAt: '2026-06-26T09:20:00.000Z',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: 'post-spanish-subjunctive',
-  //     interestName: 'Spanish',
-  //     authorId: 'member-5',
-  //     body: 'Still struggling with when to use subjunctive after "creo que" vs "no creo que". Any simple rules of thumb?',
-  //     createdAt: '2026-06-22T11:00:00.000Z',
-  //     replies: [
-  //       {
-  //         id: 'reply-post-spanish-subjunctive-1',
-  //         authorId: 'member-9',
-  //         body: 'Affirmative "creo que" → indicative. Negative "no creo que" → subjunctive. That alone cleared up half my mistakes.',
-  //         createdAt: '2026-06-22T13:15:00.000Z',
-  //       },
-  //       {
-  //         id: 'reply-post-spanish-subjunctive-2',
-  //         authorId: 'member-14',
-  //         body: 'Also watch for doubt/emotion triggers — "es posible que", "me alegra que" always push you into subjunctive.',
-  //         createdAt: '2026-06-22T19:40:00.000Z',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: 'post-spanish-tapas-malasaña',
-  //     interestName: 'Spanish',
-  //     authorId: 'member-11',
-  //     body: 'Best tapas bars in Malasaña for practicing Spanish with locals? Prefer somewhere not too touristy.',
-  //     createdAt: '2026-06-18T20:00:00.000Z',
-  //     replies: [
-  //       {
-  //         id: 'reply-post-spanish-tapas-malasaña-1',
-  //         authorId: 'member-4',
-  //         body: 'La Ardosa on Calle Colón — busy but friendly staff who will chat if you go on a weekday evening.',
-  //         createdAt: '2026-06-19T10:30:00.000Z',
-  //       },
-  //     ],
-  //   },
-  // ],
-};
 export const sampleCurrentUser = members[7];

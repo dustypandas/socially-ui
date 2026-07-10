@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import type { RelatedLink } from '@src/data';
+import type { Link } from '@src/data';
 import { useAppDispatch } from '@src/store/hooks';
 import { addRelatedLink } from '@src/store/slices/interestsSlice.js';
 import './interest-external-links.css';
 
 type InterestExternalLinksProps = {
   interestName: string;
-  links: RelatedLink[];
+  links: Link[];
 };
 
 function normalizeHref(href: string): string {

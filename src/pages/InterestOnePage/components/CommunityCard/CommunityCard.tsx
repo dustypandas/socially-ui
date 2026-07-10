@@ -1,10 +1,10 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { Community } from '@src/data';
+import type { CommunityBasic } from '@src/data';
 import './community-card.css';
 
 type CommunityCardProps = {
-  community: Community;
+  community: CommunityBasic;
 };
 
 export function CommunityCard({ community }: CommunityCardProps) {
@@ -18,7 +18,7 @@ export function CommunityCard({ community }: CommunityCardProps) {
         <div className="community-card__row">
           <IconGroup className="community-card__icon community-card__icon--members" />
           <span className="community-card__text">
-            {community.memberCount} members
+            {community.membersCount} members
           </span>
         </div>
         <div className="community-card__row">

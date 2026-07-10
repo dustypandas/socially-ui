@@ -1,9 +1,9 @@
-import type { EventPageLocation } from '@src/data';
+import type { MapLocation } from '@src/data';
 import { MapContainer } from '@src/components';
 import './event-location-details.css';
 
 type EventLocationDetailsProps = {
-  location: EventPageLocation;
+  location: MapLocation;
 };
 
 export function EventLocationDetails({ location }: EventLocationDetailsProps) {
@@ -15,7 +15,7 @@ export function EventLocationDetails({ location }: EventLocationDetailsProps) {
           location={{
             lat: location.lat,
             lng: location.lng,
-            label: location.name,
+            label: location.label,
           }}
           zoom={13}
         />

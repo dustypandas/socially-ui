@@ -43,6 +43,6 @@ export async function getHomeUpcomingEvents(): Promise<EventBasic[]> {
   );
 }
 
-export async function getEventsByInterest(): Promise<EventBasic[]> {
+export async function getEventsForOneInterest(): Promise<EventBasic[]> {
   return eventsForOneInterest;
 }

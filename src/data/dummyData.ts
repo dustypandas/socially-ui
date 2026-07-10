@@ -1,4 +1,4 @@
-import type { CommunityBasic, CommunityPageData, EventBasic, EventPageData, Interest, Link, MemberAvatar } from './types.ts';
+import type { CommunityBasic, CommunityOnePageData, EventBasic, Interest, Link, MemberAvatar } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -14,9 +14,9 @@ export const MEMBER_AVATAR_URLS = [
 ];
 
 export const members = [
-  { id: 'member-1', name: 'Ana García', lat: 40.4168, lng: -3.7038 },
-  { id: 'member-2', name: 'Carlos Ruiz', lat: 40.4236, lng: -3.6947 },
-  { id: 'member-3', name: 'Lucía Fernández', lat: 40.4095, lng: -3.6924 },
+  { id: 'organiser-peter', name: 'Peter C', lat: 40.4168, lng: -3.7038 },
+  { id: 'organiser-maria', name: 'Maria M', lat: 40.4236, lng: -3.6947 },
+  { id: 'organiser-achi', name: 'Achi J', lat: 40.4095, lng: -3.6924 },
   { id: 'member-4', name: 'Marco Silva', lat: 40.4289, lng: -3.7177 },
   { id: 'member-5', name: 'Elena Torres', lat: 40.4050, lng: -3.7126 },
   { id: 'member-6', name: 'David Kim', lat: 40.4378, lng: -3.6795 },
@@ -68,7 +68,13 @@ function getMemberAvatar(member: (typeof members)[number]): MemberAvatar {
   };
 }
 
-function createAttendees(attendeesCount: number) {
+export const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
+  'achi': getMemberAvatar(members[2]),
+  'peter': getMemberAvatar(members[0]),
+  'maria': getMemberAvatar(members[1]),
+};
+
+function getDynamicAttendees(attendeesCount: number) {
   const attendeeAvatarsCount = Math.min(5, Math.max(1, Math.ceil(Math.cbrt(1.5 * attendeesCount))));
 
   return {
@@ -77,27 +83,6 @@ function createAttendees(attendeesCount: number) {
       .map(getMemberAvatar),
   };
 }
-
-const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
-  'achi': {
-    id: 'orgaizer-achi',
-    label: 'Achi J',
-    image: './assets/member-achi.avif',
-    href: '#',
-  },
-  'peter': {
-    id: 'organizer-peter',
-    label: 'Peter C',
-    image: './assets/member-peter.webp',
-    href: '#',
-  },
-  'maria': {
-    id: 'organizer-maria',
-    label: 'Maria M',
-    image: './assets/member-maria.jpg',
-    href: '#',
-  },
-};
 
 export const communities: CommunityBasic[] = [
   {
@@ -168,15 +153,23 @@ export const communities: CommunityBasic[] = [
   },
 ];
 
+// for one specific event (lightning talks) only
+export const communityForOneEvent: CommunityBasic = communities[1];
+
+export const attendeesForOneEvent: {
+  count: number;
+  avatars: MemberAvatar[];
+} = getDynamicAttendees(47);
+
 export const events: EventBasic[] = [
   {
     id: 'lightning-talks',
     title: 'Lighting Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(2, 13, 30),
+    startTime: getDynamicEventStartTime(2, 13, 30),
     location: { label: 'Madrid Palacio' },
-    attendees: createAttendees(47),
+    attendees: getDynamicAttendees(47),
     rating: 4.7,
     ratingCount: 95,
     openTo: 'public',
@@ -187,9 +180,9 @@ export const events: EventBasic[] = [
     title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
     image: '../../assets/event-story.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(3, 19, 0),
+    startTime: getDynamicEventStartTime(3, 19, 0),
     location: { label: 'Tropicana' },
-    attendees: createAttendees(17),
+    attendees: getDynamicAttendees(17),
     rating: 4.8,
     ratingCount: 106,
     openTo: 'selective',
@@ -199,9 +192,9 @@ export const events: EventBasic[] = [
     title: 'Psychedelic sharing circle',
     image: '../../assets/event-circle.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(5, 17, 0),
+    startTime: getDynamicEventStartTime(5, 17, 0),
     location: { label: 'Centro' },
-    attendees: createAttendees(9),
+    attendees: getDynamicAttendees(9),
     rating: 4.9,
     ratingCount: 34,
     openTo: 'invite-only',
@@ -212,9 +205,9 @@ export const events: EventBasic[] = [
     title: 'Urban sketching: CentroCentro',
     image: '../../assets/event-sketch.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(6, 19, 30),
+    startTime: getDynamicEventStartTime(6, 19, 30),
     location: { label: 'CentroCentro' },
-    attendees: createAttendees(14),
+    attendees: getDynamicAttendees(14),
     rating: 4.8,
     ratingCount: 367,
     openTo: 'public',
@@ -225,9 +218,9 @@ export const events: EventBasic[] = [
     title: 'Open Air Lindy Hop Class',
     image: '../../assets/event-swing.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(9, 13, 0),
+    startTime: getDynamicEventStartTime(9, 13, 0),
     location: { label: 'Parque del Retiro' },
-    attendees: createAttendees(39),
+    attendees: getDynamicAttendees(39),
     rating: 4.9,
     ratingCount: 106,
     openTo: 'selective',
@@ -238,9 +231,9 @@ export const events: EventBasic[] = [
     title: 'Wine Tasting @ Monkeys Bar',
     image: '../../assets/event-wine.jpg',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(11, 18, 0),
+    startTime: getDynamicEventStartTime(11, 18, 0),
     location: { label: 'Wine Bar' },
-    attendees: createAttendees(15),
+    attendees: getDynamicAttendees(15),
     rating: 4.7,
     ratingCount: 56,
     openTo: 'invite-only',
@@ -526,9 +519,9 @@ export const eventsForOneInterest: EventBasic[] = [
     title: 'Spanish Conversations @ Café Comercial',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(2, 19, 0),
+    startTime: getDynamicEventStartTime(2, 19, 0),
     location: { label: 'Café Comercial' },
-    attendees: createAttendees(22),
+    attendees: getDynamicAttendees(22),
     rating: 4.8,
     ratingCount: 41,
     openTo: 'public',
@@ -538,9 +531,9 @@ export const eventsForOneInterest: EventBasic[] = [
     title: 'Museum Visit @ Prado',
     image: '../../assets/event-sketch.avif',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(13, 11, 0),
+    startTime: getDynamicEventStartTime(13, 11, 0),
     location: { label: 'Museo del Prado' },
-    attendees: createAttendees(11),
+    attendees: getDynamicAttendees(11),
     rating: 4.9,
     ratingCount: 28,
     openTo: 'public',
@@ -550,9 +543,9 @@ export const eventsForOneInterest: EventBasic[] = [
     title: 'Tapas & Spanish Practice @ Malasaña',
     image: '../../assets/event-wine.jpg',
     href: '#/event-one-ui',
-    startTime: createEventStartTime(22, 20, 0),
+    startTime: getDynamicEventStartTime(22, 20, 0),
     location: { label: 'Malasaña' },
-    attendees: createAttendees(16),
+    attendees: getDynamicAttendees(16),
     rating: 4.7,
     ratingCount: 63,
     openTo: 'public',
@@ -610,20 +603,19 @@ export const myFollowedInterests: string[] = [];
 
 export const myCommunityIds: string[] = [];
 
-
-function addDays(date: Date, days: number): Date {
-  const result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
-}
-
-function createEventStartTime(daysFromNow: number, hours: number, minutes: number): number {
+function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: number): number {
   const date = addDays(new Date(), daysFromNow);
   date.setHours(hours, minutes, 0, 0);
   return date.getTime();
+
+  function addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
 }
 
-export const sampleFullCommunity: CommunityPageData = {
+export const sampleFullCommunity: CommunityOnePageData = {
   id: 'polylogue-madrid',
   name: 'Polylogue Madrid: share • learn • inspire',
   image: './assets/community-polylogue.avif',
@@ -651,9 +643,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(3, 19, 10),
+      startTime: getDynamicEventStartTime(3, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(47),
+      attendees: getDynamicAttendees(47),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -663,9 +655,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(7, 19, 10),
+      startTime: getDynamicEventStartTime(7, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(39),
+      attendees: getDynamicAttendees(39),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -675,9 +667,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(12, 19, 10),
+      startTime: getDynamicEventStartTime(12, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(44),
+      attendees: getDynamicAttendees(44),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -689,9 +681,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(-3, 19, 10),
+      startTime: getDynamicEventStartTime(-3, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(52),
+      attendees: getDynamicAttendees(52),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -701,9 +693,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(-6, 19, 10),
+      startTime: getDynamicEventStartTime(-6, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(48),
+      attendees: getDynamicAttendees(48),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -713,9 +705,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(-7, 19, 10),
+      startTime: getDynamicEventStartTime(-7, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(55),
+      attendees: getDynamicAttendees(55),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -725,9 +717,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(-14, 19, 10),
+      startTime: getDynamicEventStartTime(-14, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(41),
+      attendees: getDynamicAttendees(41),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -737,9 +729,9 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(-19, 19, 10),
+      startTime: getDynamicEventStartTime(-19, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(46),
+      attendees: getDynamicAttendees(46),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
@@ -749,79 +741,14 @@ export const sampleFullCommunity: CommunityPageData = {
       title: 'Lightning Talks @ Maria Pandora',
       image: '../../assets/event-lightning.avif',
       href: '#/event-one-ui',
-      startTime: createEventStartTime(-21, 19, 10),
+      startTime: getDynamicEventStartTime(-21, 19, 10),
       location: { label: 'Palacio' },
-      attendees: createAttendees(43),
+      attendees: getDynamicAttendees(43),
       rating: 4.7,
       ratingCount: 95,
       openTo: 'public',
     },
   ],
-};
-
-export const sampleFullEvent: EventPageData = {
-  id: 'polylogue-lightning-feb-4',
-  title: 'Lightning Talks @ Maria Pandora',
-  image: './assets/event-lightning.avif',
-  href: '#/event-one-ui',
-  rating: 4.7,
-  ratingCount: 95,
-  startTime: 1741123200000,
-  location: {
-    label: 'Palacio',
-    lat: 40.4254,
-    lng: -3.7038,
-  },
-  openTo: 'public',
-  details: `<p>
-              5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
-            </p>
-            <p>
-              Lightning Talks is a format where a number of speakers give <b>5 minute presentations</b> about <b>any topic of their choosing</b>, followed by 5 minutes of open questions.
-            </p>
-            <p>
-              There will be <b>5-6 talks starting at 19:30</b>, followed by drinks and social.
-            </p>
-            <p>
-              Come join us to hear and discuss some unexpected ideas across surprising topics, broaden our horizons and meet interesting people.
-            </p>
-            <p>
-              You can find photos from some of our recent events here:<br/>
-              <a href='#'><b>https://www.instagram.com/polylogue_madrid</b></a>
-            </p>
-            <p>
-              or sign up here if you'd like to give a talk at our next event:<br/>
-              <a href='#'><b>https://forms.gle/Nx2847ZENMxkBMut8</b></a>
-            </p>`,
-  community: {
-    id: 'polylogue-madrid',
-    name: 'Polylogue Madrid: share • learn • inspire',
-    image: './assets/community-polylogue.avif',
-    href: '#/community-one-ui',
-    description: `
-      <p>
-        Polylogue is a community for meeting people who share diverse interests, eclectic curiosities, wayward stories and uncommon perspectives. 🎓📚💫
-      </p>
-      <p>
-        Come join us for fortnightly "Lightning Talks" - where a number of speakers give 5 minute presentations about any topic of their choosing, followed by 5 minutes of open questions.
-      </p>
-    `,
-  },
-  hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
-  attendees: createAttendees(27),
-  date: {
-    timelineLabels: [
-      'Feb 4, 2026',
-      'Tuesday, 7:10pm',
-    ],
-    pageLabels: {
-      monthShort: 'Feb',
-      dateShort: '04',
-      dateLong: 'Tuesday, February 4, 2025',
-      timeLong: '12:00pm - 1:00pm',
-    },
-  },
-  eventInterests: ['public-speaking', 'technology', 'fresh'],
 };
 
 export const sampleCurrentUser = members[7];

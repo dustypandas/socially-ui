@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { getCommunityPageData, type CommunityPageData } from '@src/data';
+import { getCommunityPageData, type CommunityOnePageData } from '@src/data';
 import {
   CommunityAbout,
   CommunityEventsSection,
@@ -14,7 +14,7 @@ import {
 import './community-one-page.css';
 
 export function CommunityOnePage() {
-  const [community, setCommunity] = useState<CommunityPageData | null>(null);
+  const [community, setCommunity] = useState<CommunityOnePageData | null>(null);
 
   useEffect(() => {
     getCommunityPageData().then(setCommunity);

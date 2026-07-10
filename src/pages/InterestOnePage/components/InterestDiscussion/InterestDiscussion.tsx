@@ -1,6 +1,5 @@
 // import { useMemo } from 'react';
 // // import { sampleCurrentUser } from '@src/data';
-// import { useAppDispatch, useAppSelector } from '@src/store/hooks';
 // import { addPost, addReply } from '@src/store/slices/postsSlice.js';
 // import { DiscussionComposer } from './DiscussionComposer.js';
 // import { PostCard } from './PostCard.js';
@@ -12,8 +11,6 @@
 // };
 
 // export function InterestDiscussion({ interestName, isEmpty = false }: InterestDiscussionProps) {
-//   const dispatch = useAppDispatch();
-//   const allPosts = useAppSelector(state => state.posts.items);
 
 //   const posts = useMemo(() => {
 //     if (isEmpty) return [];

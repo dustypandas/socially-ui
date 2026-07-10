@@ -2,7 +2,7 @@ export * from './HomePage/HomePage';
 // export * from './CommunitiesPage/CommunitiesPage';
 // export * from './CommunityOnePage/CommunityOnePage';
 export * from './EventsPage/EventsPage';
-// export * from './EventOnePage/EventOnePage';
+export * from './EventOnePage/EventOnePage';
 export * from './InterestsPage/InterestsPage';
 export * from './InterestOnePage/InterestOnePage';
 // export * from './PrevCommunityPage/CommunityPage';

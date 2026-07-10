@@ -65,10 +65,7 @@ export type EventBasic = {
   image: string;
   href: string;
   location: Pick<MapLocation, 'label'>;
-  attendees: {
-    count: number;
-    avatars: MemberAvatar[];
-  };
+  attendees: EventAttendees;
   rating: number;
   ratingCount: number;
   startTime: number;
@@ -79,6 +76,11 @@ export type Event = EventBasic & {
   hosts: MemberAvatar[];
   location: MapLocation;
   eventInterests?: string[];
+};
+
+export type EventAttendees = {
+  count: number;
+  avatars: MemberAvatar[];
 };
 
 export type Interest = {
@@ -122,7 +124,7 @@ export type HomePageData = {
   upcomingEvents: EventBasic[];
 };
 
-export type CommunityPageData =
+export type CommunityOnePageData =
 & Community
 & {
   organizers: MemberAvatar[];
@@ -133,15 +135,34 @@ export type CommunityPageData =
   pastEvents: EventBasic[];
 };
 
-export type EventPageData =
+export type InterestsPageData = {
+  filteredInterests: Interest[];
+  followedInterests: Interest[];
+  memberFollowers: MemberFollower[];
+  maxFollowedInterests: number;
+  canFollowMore: boolean;
+};
+
+export type InterestOnePageData = {
+  interestLabel: string;
+  memberFollowers: MemberFollower[];
+  memberFollowersCount: number; // can be much more than membersFollowers.length
+  relatedEvents: EventBasic[];
+  relatedCommunities: CommunityBasic[];
+  externalLinks?: Link[];
+};
+
+
+export type EventsPageData = {
+  filteredEvents: EventBasic[];
+};
+
+export type EventOnePageData =
 & Event
 & {
   details: string;
   community: CommunityAvatar;
-  attendees: {
-    count: number;
-    avatars: MemberAvatar[];
-  };
+  attendees: EventAttendees;
   date: {
     timelineLabels: string[];
     pageLabels: {
@@ -152,25 +173,4 @@ export type EventPageData =
     };
   };
   eventInterests: string[];
-};
-
-export type InterestPageData = {
-  interestLabel: string;
-  memberFollowers: MemberFollower[];
-  memberFollowersCount: number; // can be much more than membersFollowers.length
-  relatedEvents: EventBasic[];
-  relatedCommunities: CommunityBasic[];
-  externalLinks?: Link[];
-};
-
-export type InterestsPageData = {
-  filteredInterests: Interest[];
-  followedInterests: Interest[];
-  memberFollowers: MemberFollower[];
-  maxFollowedInterests: number;
-  canFollowMore: boolean;
-};
-
-export type EventsPageData = {
-  filteredEvents: EventBasic[];
 };

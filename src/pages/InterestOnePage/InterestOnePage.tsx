@@ -6,14 +6,14 @@ import './interest-one-page.css';
 
 export function InterestOnePage() {
   const {
-    interestPageData,
+    interestOnePageData,
     events,
     communities,
     externalLinks,
     handleAddExternalLink,
   } = useInterestOneStates();
 
-  if (!interestPageData) {
+  if (!interestOnePageData) {
     return null;
   }
 
@@ -24,7 +24,7 @@ export function InterestOnePage() {
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <PageHeader
-                title={`#${interestPageData.interestLabel}`}
+                title={`#${interestOnePageData.interestLabel}`}
                 backLabel="←&thinsp;Interests"
                 backHref="#/interests-ui"
               />
@@ -73,8 +73,8 @@ export function InterestOnePage() {
               <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
                 <InterestFollowers
-                  followers={interestPageData.memberFollowers}
-                  followersCount={interestPageData.memberFollowersCount}
+                  followers={interestOnePageData.memberFollowers}
+                  followersCount={interestOnePageData.memberFollowersCount}
                 />
               </div>
             </ColumnsLayout.Aside>

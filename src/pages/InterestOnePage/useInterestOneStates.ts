@@ -2,36 +2,36 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   addExternalLink as addExternalLinkApi,
-  getInterestPageData,
-  type InterestPageData,
+  getInterestOnePageData,
+  type InterestOnePageData,
   type Link,
 } from '@src/data';
 
 export function useInterestOneStates() {
   const location = useLocation();
-  const [interestPageData, setInterestPageData] = useState<InterestPageData | null>(null);
+  const [interestOnePageData, setInterestOnePageData] = useState<InterestOnePageData | null>(null);
 
-  const applyPageData = useCallback((data: InterestPageData) => {
-    setInterestPageData(data);
+  const applyPageData = useCallback((data: InterestOnePageData) => {
+    setInterestOnePageData(data);
   }, []);
 
   // load initial data
   useEffect(() => {
-    getInterestPageData().then(applyPageData);
+    getInterestOnePageData().then(applyPageData);
   }, [applyPageData]);
 
   // mutating external links
   const handleRefreshInterestOne = useCallback(async () => {
     try {
-      getInterestPageData().then(applyPageData);
+      getInterestOnePageData().then(applyPageData);
     } catch {
       alert('error');
     }
   }, [applyPageData]);
 
   const handleAddExternalLink = useCallback(async (link: Link) => {
-    const prev = interestPageData;
-    setInterestPageData(current => current
+    const prev = interestOnePageData;
+    setInterestOnePageData(current => current
       ? { ...current, externalLinks: [...(current.externalLinks ?? []), link] }
       : current,
     );
@@ -41,30 +41,30 @@ export function useInterestOneStates() {
       await handleRefreshInterestOne();
     } catch {
       alert('error');
-      setInterestPageData(prev);
+      setInterestOnePageData(prev);
     }
-  }, [interestPageData, handleRefreshInterestOne]);
+  }, [interestOnePageData, handleRefreshInterestOne]);
 
   // empty variant
   const isEmptyVariant = location.pathname === '/interest-one-ui-empty';
 
   const events = useMemo(
-    () => (isEmptyVariant ? [] : interestPageData?.relatedEvents ?? []),
-    [isEmptyVariant, interestPageData],
+    () => (isEmptyVariant ? [] : interestOnePageData?.relatedEvents ?? []),
+    [isEmptyVariant, interestOnePageData],
   );
 
   const communities = useMemo(
-    () => (isEmptyVariant ? [] : interestPageData?.relatedCommunities ?? []),
-    [isEmptyVariant, interestPageData],
+    () => (isEmptyVariant ? [] : interestOnePageData?.relatedCommunities ?? []),
+    [isEmptyVariant, interestOnePageData],
   );
 
   const externalLinks = useMemo(
-    () => (isEmptyVariant ? [] : interestPageData?.externalLinks ?? []),
-    [isEmptyVariant, interestPageData],
+    () => (isEmptyVariant ? [] : interestOnePageData?.externalLinks ?? []),
+    [isEmptyVariant, interestOnePageData],
   );
 
   return {
-    interestPageData,
+    interestOnePageData,
     events,
     communities,
     externalLinks,

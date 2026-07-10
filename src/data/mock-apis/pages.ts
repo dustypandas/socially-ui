@@ -1,8 +1,9 @@
-import { interests, MAX_FOLLOWED_INTERESTS, sampleFullCommunity, sampleFullEvent } from '../dummyData';
-import type { CommunityPageData, EventPageData, EventsPageData, HomePageData, InterestPageData, InterestsPageData } from '../types.ts';
-import { getCommunitiesForInterest } from './models/communities.ts';
-import { getEventsByInterest, getFilteredEvents, getHomeUpcomingEvents } from './models/events.ts';
+import { events, interests, MAX_FOLLOWED_INTERESTS, ORGANIZERS, sampleFullCommunity } from '../dummyData';
+import type { CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData } from '../types.ts';
+import { getCommunitiesForOneInterest, getCommunityForOneEvent } from './models/communities.ts';
+import { getEventsForOneInterest, getFilteredEvents, getHomeUpcomingEvents } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers } from './models/interests.ts';
+import { getAttendeesForOneEvent } from './models/members.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
@@ -11,12 +12,8 @@ export async function getHomePageData(): Promise<HomePageData> {
   };
 }
 
-export async function getCommunityPageData(): Promise<CommunityPageData> {
+export async function getCommunityPageData(): Promise<CommunityOnePageData> {
   return sampleFullCommunity;
-}
-
-export async function getEventPageData(): Promise<EventPageData> {
-  return sampleFullEvent;
 }
 
 export async function getInterestsPageData(): Promise<InterestsPageData> {
@@ -33,18 +30,15 @@ export async function getInterestsPageData(): Promise<InterestsPageData> {
   return interestsPageData;
 }
 
-export async function getInterestPageData(): Promise<InterestPageData> {
-  const {
-    label,
-    followerIds,
-  } = interests.find(interest => interest.label === 'spanish')!;
+export async function getInterestOnePageData(): Promise<InterestOnePageData> {
+  const targetInterest = interests.find(interest => interest.label === 'spanish')!;
   
-  const interestPageData: InterestPageData = {
-    interestLabel: label,
+  const interestOnePageData: InterestOnePageData = {
+    interestLabel: targetInterest.label,
     memberFollowers: await getInterestsMemberFollowers(['spanish']),
-    memberFollowersCount: (3 * (followerIds?.length ?? 0)),
-    relatedEvents: await getEventsByInterest(),
-    relatedCommunities: await getCommunitiesForInterest(),
+    memberFollowersCount: (3 * (targetInterest.followerIds?.length ?? 0)),
+    relatedEvents: await getEventsForOneInterest(),
+    relatedCommunities: await getCommunitiesForOneInterest(),
     externalLinks: await getInterestExternalLinks(),
     // discussionPosts: [
     //   {
@@ -113,7 +107,7 @@ export async function getInterestPageData(): Promise<InterestPageData> {
     // ],
   };
 
-  return interestPageData;
+  return interestOnePageData;
 }
 
 export async function getEventsPageData(): Promise<EventsPageData> {
@@ -124,4 +118,61 @@ export async function getEventsPageData(): Promise<EventsPageData> {
       openToFilter: 'any',
     }),
   };
+}
+
+export async function getEventOnePageData(): Promise<EventOnePageData> {
+  const targetEvent = events.find(event => event.id === 'lightning-talks')!;
+
+  return {
+    id: targetEvent.id,
+    title: targetEvent.title,
+    image: targetEvent.image,
+    href: targetEvent.href,
+    rating: targetEvent.rating,
+    ratingCount: targetEvent.ratingCount,
+    startTime: targetEvent.startTime, // 1741123200000,
+    location: {
+      label: 'Palacio',
+      lat: 40.4254,
+      lng: -3.7038,
+    },
+    openTo: targetEvent.openTo,
+    details: `<p>
+        5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
+      </p>
+      <p>
+        Lightning Talks is a format where a number of speakers give <b>5 minute presentations</b> about <b>any topic of their choosing</b>, followed by 5 minutes of open questions.
+      </p>
+      <p>
+        There will be <b>5-6 talks starting at 19:30</b>, followed by drinks and social.
+      </p>
+      <p>
+        Come join us to hear and discuss some unexpected ideas across surprising topics, broaden our horizons and meet interesting people.
+      </p>
+      <p>
+        You can find photos from some of our recent events here:<br/>
+        <a href='#'><b>https://www.instagram.com/polylogue_madrid</b></a>
+      </p>
+      <p>
+        or sign up here if you'd like to give a talk at our next event:<br/>
+        <a href='#'><b>https://forms.gle/Nx2847ZENMxkBMut8</b></a>
+      </p>
+    `,
+    community: await getCommunityForOneEvent(), // to denormalise
+    hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
+    attendees: await getAttendeesForOneEvent(),
+    date: {
+      timelineLabels: [
+        'Feb 4, 2026',
+        'Tuesday, 7:10pm',
+      ],
+      pageLabels: {
+        monthShort: 'Feb',
+        dateShort: '04',
+        dateLong: 'Tuesday, February 4, 2025',
+        timeLong: '12:00pm - 1:00pm',
+      },
+    },
+    eventInterests: ['public-speaking', 'technology', 'fresh'],
+  };;
 }

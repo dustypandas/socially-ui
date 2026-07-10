@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { getEventPageData, type EventPageData } from '@src/data';
+import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import {
   EventAttendCard,
   EventCommunity,
@@ -12,14 +12,14 @@ import {
   EventReviews,
   EventTags,
 } from './components';
-import {
-  getElementDocumentOffsetTop,
-  useScrolledPastDistance,
-} from '@src/hooks/useScrolledPastDistance';
+import { useEventOneStates } from './useEventOneStates';
 import './event-one-page.css';
 
 export function EventOnePage() {
-  const [eventData, setEventData] = useState<EventPageData | null>(null);
+  const {
+    eventOnePageData,
+  } = useEventOneStates();
+
   const attendCardRef = useRef<HTMLDivElement>(null);
   const asideTitleRef = useRef<HTMLHeadingElement>(null);
   const asideStickyRef = useRef<HTMLDivElement>(null);
@@ -32,13 +32,9 @@ export function EventOnePage() {
   );
 
   useEffect(() => {
-    getEventPageData().then(setEventData);
-  }, []);
-
-  useEffect(() => {
     const $title = asideTitleRef.current;
     const $sticky = asideStickyRef.current;
-    if (!$title || !$sticky || !eventData) {
+    if (!$title || !$sticky || !eventOnePageData) {
       return;
     }
 
@@ -56,9 +52,9 @@ export function EventOnePage() {
       window.removeEventListener('resize', updateTitleHeight);
       $sticky.style.removeProperty('--event-one-page-aside-title-height');
     };
-  }, [eventData?.title]);
+  }, [eventOnePageData?.title]);
 
-  if (!eventData) {
+  if (!eventOnePageData) {
     return null;
   }
 
@@ -70,29 +66,29 @@ export function EventOnePage() {
             <ColumnsLayout.Main>
               <div className="event-one-page__hero">
                 <div className="event-one-page__stacked-image">
-                  <EventImage src={eventData.img} alt={eventData.title} />
+                  <EventImage src={eventOnePageData.image} alt={eventOnePageData.title} />
                 </div>
                 <EventIntro
-                  title={eventData.title}
-                  date={eventData.date.pageLabels}
-                  location={eventData.location}
+                  title={eventOnePageData.title}
+                  date={eventOnePageData.date.pageLabels}
+                  location={eventOnePageData.location}
                 />
               </div>
               <EventAttendCard
                 ref={attendCardRef}
                 className="event-one-page__attend-card"
-                profiles={eventData.attendees.profiles}
-                attendeeCount={eventData.attendees.count}
+                profiles={eventOnePageData.attendees.avatars}
+                attendeeCount={eventOnePageData.attendees.count}
               />
-              <EventDetails details={eventData.details} />
-              <EventTags interests={eventData.eventInterests} />
+              <EventDetails details={eventOnePageData.details} />
+              <EventTags interests={eventOnePageData.eventInterests} />
               <div className="event-one-page__divider" />
               <EventReviews />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(320px, 32%)">
               <div className="event-one-page__aside">
                 <div className="event-one-page__aside-image">
-                  <EventImage src={eventData.img} alt={eventData.title} />
+                  <EventImage src={eventOnePageData.image} alt={eventOnePageData.title} />
                 </div>
                 <div ref={asideStickyRef} className="event-one-page__aside-sticky">
                   <h3
@@ -102,17 +98,17 @@ export function EventOnePage() {
                       isPastAttendCard && 'event-one-page__aside-title--visible',
                     ].filter(Boolean).join(' ')}
                   >
-                    {eventData.title}
+                    {eventOnePageData.title}
                   </h3>
                   <EventCommunity
-                    name={eventData.community.name}
-                    img={eventData.community.img}
-                    details={eventData.community.details}
+                    name={eventOnePageData.community.name}
+                    img={eventOnePageData.community.image}
+                    details={eventOnePageData.community.description}
                   />
                   <div className="event-one-page__divider" />
-                  <EventHosts hosts={eventData.hosts} />
+                  <EventHosts hosts={eventOnePageData.hosts} />
                   <div className="event-one-page__divider" />
-                  <EventLocationDetails location={eventData.location} />
+                  <EventLocationDetails location={eventOnePageData.location} />
                 </div>
               </div>
             </ColumnsLayout.Aside>
@@ -122,8 +118,8 @@ export function EventOnePage() {
       <EventAttendCard
         isFixedBar
         isFixedBarVisible={isPastAttendCard}
-        profiles={eventData.attendees.profiles}
-        attendeeCount={eventData.attendees.count}
+        profiles={eventOnePageData.attendees.avatars}
+        attendeeCount={eventOnePageData.attendees.count}
       />
     </PageLayout>
   );

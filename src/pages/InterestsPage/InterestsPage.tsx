@@ -5,7 +5,7 @@ import {
   InterestsList,
   InterestsSearchBar,
 } from './components';
-import { useInterests } from './useInterests';
+import { useInterestsStates } from './useInterestsStates';
 import { hasExactInterestMatch } from './helpers';
 import './interests-page.css';
 
@@ -20,7 +20,7 @@ export function InterestsPage() {
     handleFollowInterest,
     handleUnfollowInterest,
     handleAddInterest,
-  } = useInterests(searchQuery);
+  } = useInterestsStates(searchQuery);
 
   const trimmedQuery = searchQuery.trim();
   const hasExactMatch = hasExactInterestMatch(filteredInterests, trimmedQuery);

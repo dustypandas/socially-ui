@@ -12,7 +12,7 @@ import {
 
 const MAX_FOLLOWED_INTERESTS = 10;
 
-export function useInterests(searchQuery: string) {
+export function useInterestsStates(searchQuery: string) {
   const pageDataRef = useRef<InterestsPageData | null>(null);
   const [filteredInterests, setFilteredInterests] = useState<Interest[]>([]);
   const [followedInterests, setFollowedInterests] = useState<Interest[]>([]);

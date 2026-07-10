@@ -1,7 +1,7 @@
 import { interests, MAX_FOLLOWED_INTERESTS, sampleFullCommunity, sampleFullEvent } from '../dummyData';
-import type { CommunityPageData, EventPageData, HomePageData, InterestPageData, InterestsPageData } from '../types.ts';
+import type { CommunityPageData, EventPageData, EventsPageData, HomePageData, InterestPageData, InterestsPageData } from '../types.ts';
 import { getCommunitiesForInterest } from './models/communities.ts';
-import { getEventsByInterest, getHomeUpcomingEvents } from './models/events.ts';
+import { getEventsByInterest, getFilteredEvents, getHomeUpcomingEvents } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers } from './models/interests.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
@@ -114,4 +114,14 @@ export async function getInterestPageData(): Promise<InterestPageData> {
   };
 
   return interestPageData;
+}
+
+export async function getEventsPageData(): Promise<EventsPageData> {
+  return {
+    filteredEvents: await getFilteredEvents({
+      interestQuery: '',
+      timeFilter: 'thisWeek',
+      openToFilter: 'any',
+    }),
+  };
 }

@@ -4,12 +4,12 @@ import {
   TIME_FILTER_OPTIONS,
   type OpenToFilter,
   type TimeFilter,
-} from '@src/pages/EventsPage/helpers';
+} from '@src/data';
 import './events-filters.css';
 
 type EventsFiltersProps = {
-  interestQuery: string;
-  onInterestQueryChange: (value: string) => void;
+  // interestQuery: string;
+  // onInterestQueryChange: (value: string) => void;
   timeFilter: TimeFilter;
   onTimeFilterChange: (value: TimeFilter) => void;
   openToFilter: OpenToFilter;
@@ -17,8 +17,6 @@ type EventsFiltersProps = {
 };
 
 export function EventsFilters({
-  // interestQuery,
-  // onInterestQueryChange,
   timeFilter,
   onTimeFilterChange,
   openToFilter,

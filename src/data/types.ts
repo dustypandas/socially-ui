@@ -170,3 +170,7 @@ export type InterestsPageData = {
   maxFollowedInterests: number;
   canFollowMore: boolean;
 };
+
+export type EventsPageData = {
+  filteredEvents: EventBasic[];
+};

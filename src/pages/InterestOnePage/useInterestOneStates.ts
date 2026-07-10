@@ -7,7 +7,7 @@ import {
   type Link,
 } from '@src/data';
 
-export function useInterestOne() {
+export function useInterestOneStates() {
   const location = useLocation();
   const [interestPageData, setInterestPageData] = useState<InterestPageData | null>(null);
 

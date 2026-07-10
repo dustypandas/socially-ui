@@ -1,31 +1,20 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { useAppSelector } from '@src/store/hooks';
 import { EventDateHelper } from '@src/utils/eventDateHelper';
 import { EventsFilters, EventsGrid } from './components';
-import {
-  filterEvents,
-  getTimeFilterLabel,
-  type OpenToFilter,
-  type TimeFilter,
-} from './helpers';
+import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter, } from '@src/data';
+import { useEventsStates } from './useEventsStates';
 import './events-page.css';
 
 export function EventsPage() {
-  const [interestQuery, setInterestQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [timeFilter, setTimeFilter] = useState<TimeFilter>('thisWeek');
   const [openToFilter, setOpenToFilter] = useState<OpenToFilter>('any');
-  const events = useAppSelector(state => state.events.items);
-  const interests = useAppSelector(state => state.interests.items);
-
-  const filteredEvents = useMemo(
-    () => filterEvents(events, interests, interestQuery, timeFilter, openToFilter),
-    [events, interests, interestQuery, timeFilter, openToFilter],
-  );
+  const { filteredEvents } = useEventsStates(searchQuery, timeFilter, openToFilter);
 
   const filterProps = {
-    interestQuery,
-    onInterestQueryChange: setInterestQuery,
+    interestQuery: searchQuery,
+    onInterestQueryChange: setSearchQuery,
     timeFilter,
     onTimeFilterChange: setTimeFilter,
     openToFilter,
@@ -39,7 +28,7 @@ export function EventsPage() {
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <PageHeader
-                title={`Events - ${getTimeFilterLabel(timeFilter)}`}
+                title={`Events - ${TIME_FILTER_LABELS[timeFilter]}`}
                 backLabel="←&thinsp;Home"
                 backHref="#/home-ui"
               />

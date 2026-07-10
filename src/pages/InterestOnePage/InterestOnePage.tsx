@@ -1,7 +1,7 @@
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
 import { EventDateHelper } from '@src/utils/eventDateHelper';
 import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
-import { useInterestOne } from './useInterestOne';
+import { useInterestOneStates } from './useInterestOneStates';
 import './interest-one-page.css';
 
 export function InterestOnePage() {
@@ -11,7 +11,7 @@ export function InterestOnePage() {
     communities,
     externalLinks,
     handleAddExternalLink,
-  } = useInterestOne();
+  } = useInterestOneStates();
 
   if (!interestPageData) {
     return null;

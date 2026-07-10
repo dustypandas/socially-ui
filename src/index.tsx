@@ -7,7 +7,7 @@ import {
   // CommunityPage,
   // CommunitiesPage,
   // EventPage,
-  // EventsPage,
+  EventsPage,
   HomePage,
   IndexPage,
   InterestsPage,
@@ -24,8 +24,8 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />
-        {/* <Route path='/events-ui' element={<EventsPage />} />
-        <Route path='/event-one-ui' element={<EventOnePage />} />
+        <Route path='/events-ui' element={<EventsPage />} />
+        {/* <Route path='/event-one-ui' element={<EventOnePage />} />
         <Route path='/community-one-ui' element={<CommunityOnePage />} />
         <Route path='/communities-ui' element={<CommunitiesPage />} /> */}
         <Route path='/interests-ui' element={<InterestsPage />} />

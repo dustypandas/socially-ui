@@ -1,5 +1,5 @@
 import type { EventBasic } from '@src/data';
-import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
+import { SectionHeader, SectionMoreLink } from '@src/components/SectionHeader/SectionHeader';
 import { EventCardHorizontal } from '@src/pages/InterestOnePage/components/EventCardHorizontal/EventCardHorizontal';
 import { EventDateHelper } from '@src/utils/eventDateHelper';
 import './community-events-section.css';

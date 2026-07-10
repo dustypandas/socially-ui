@@ -1,17 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { getCommunities, CommunityScope, type CommunityBasic } from '@src/data';
+import { CommunityScope } from '@src/data';
 import { CommunitiesGrid, CommunitiesFilters } from './components';
+import { useCommunitiesStates } from './useCommunitiesStates';
 import './communities-page.css';
 
 export function CommunitiesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [communityScope, setCommunityScope] = useState<CommunityScope>('all');
-  const [filteredCommunities, setFilteredCommunities] = useState<CommunityBasic[]>([]);
-
-  useEffect(() => {
-    getCommunities(searchQuery, communityScope).then(setFilteredCommunities);
-  }, [searchQuery, communityScope]);
+  const { filteredCommunities } = useCommunitiesStates(searchQuery, communityScope);
 
   const pageTitle = communityScope === 'mine' ? 'My Communities' : 'Popular Communities';
 

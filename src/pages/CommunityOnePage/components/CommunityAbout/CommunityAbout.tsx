@@ -1,4 +1,4 @@
-import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
+import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
 import './community-about.css';
 
 type CommunityAboutProps = {

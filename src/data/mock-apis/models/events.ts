@@ -1,4 +1,4 @@
-import { events, eventsForOneInterest } from '../../dummyData.ts';
+import { events, eventsForOneInterest, futureEventsForOneCommunity, pastEventsForOneCommunity } from '../../dummyData.ts';
 import type { Event, EventBasic } from '../../types.ts';
 import { OpenToFilter, TimeFilter } from '../global-helpers.ts';
 import { filterEvents } from './events-filters.ts';
@@ -45,4 +45,12 @@ export async function getHomeUpcomingEvents(): Promise<EventBasic[]> {
 
 export async function getEventsForOneInterest(): Promise<EventBasic[]> {
   return eventsForOneInterest;
+}
+
+export async function getFutureEventsForOneCommunity(): Promise<EventBasic[]> {
+  return futureEventsForOneCommunity;
+}
+
+export async function getPastEventsForOneCommunity(): Promise<EventBasic[]> {
+  return pastEventsForOneCommunity;
 }

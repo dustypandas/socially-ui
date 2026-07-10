@@ -1,4 +1,4 @@
-import type { CommunityBasic, CommunityOnePageData, EventBasic, Interest, Link, MemberAvatar } from './types.ts';
+import type { CommunityBasic, EventBasic, Interest, Link, MemberAvatar } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -75,7 +75,7 @@ export const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
 };
 
 function getDynamicAttendees(attendeesCount: number) {
-  const attendeeAvatarsCount = Math.min(5, Math.max(1, Math.ceil(Math.cbrt(1.5 * attendeesCount))));
+  const attendeeAvatarsCount = Math.min(5, Math.max(1, Math.ceil((1.5 * attendeesCount) ** 0.3)));
 
   return {
     count: attendeesCount,
@@ -153,13 +153,124 @@ export const communities: CommunityBasic[] = [
   },
 ];
 
-// for one specific event (lightning talks) only
-export const communityForOneEvent: CommunityBasic = communities[1];
+// for one specific community (polylogue madrid) only
+export const membersForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
+  .map(getMemberAvatar);
 
-export const attendeesForOneEvent: {
-  count: number;
-  avatars: MemberAvatar[];
-} = getDynamicAttendees(47);
+export const futureEventsForOneCommunity: EventBasic[] = [
+  {
+    id: 'polylogue-lightning-feb-4',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(3, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(47),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-feb-18',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(7, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(39),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-mar-4',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(12, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(44),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+];
+
+export const pastEventsForOneCommunity: EventBasic[] = [
+  {
+    id: 'polylogue-lightning-jan-7',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(-3, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(52),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-jan-21',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(-6, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(48),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-dec-17',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(-7, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(55),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-dec-3',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(-14, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(41),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-nov-19',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(-19, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(46),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+  {
+    id: 'polylogue-lightning-nov-5',
+    title: 'Lightning Talks @ Maria Pandora',
+    image: '../../assets/event-lightning.avif',
+    href: '#/event-one-ui',
+    startTime: getDynamicEventStartTime(-21, 19, 10),
+    location: { label: 'Palacio' },
+    attendees: getDynamicAttendees(43),
+    rating: 4.7,
+    ratingCount: 95,
+    openTo: 'public',
+  },
+];
+//
 
 export const events: EventBasic[] = [
   {
@@ -240,6 +351,15 @@ export const events: EventBasic[] = [
     // eventInterests: ['Cooking'],
   }
 ];
+
+// for one specific event (lightning talks) only
+export const communityForOneEvent: CommunityBasic = communities[1];
+
+export const attendeesForOneEvent: {
+  count: number;
+  avatars: MemberAvatar[];
+} = getDynamicAttendees(47);
+//
 
 export const MAX_FOLLOWED_INTERESTS = 10; // can change later
 
@@ -598,6 +718,7 @@ export const externalLinksForOneInterest: Link[] = [
     href: 'https://www.meetup.com/example-language-exchanges',
   },
 ];
+//
 
 export const myFollowedInterests: string[] = [];
 
@@ -614,141 +735,5 @@ function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: n
     return result;
   }
 }
-
-export const sampleFullCommunity: CommunityOnePageData = {
-  id: 'polylogue-madrid',
-  name: 'Polylogue Madrid: share • learn • inspire',
-  image: './assets/community-polylogue.avif',
-  href: '#/community-one-ui',
-  membersCount: 841,
-  rating: 4.7,
-  ratingCount: 188,
-  futureEventsCount: 5,
-  pastEventsCount: 25,
-  descriptionHtml: `
-    <p>
-      Polylogue is a community for meeting people who share diverse interests, eclectic curiosities, wayward stories and uncommon perspectives. 🎓📚💫
-    </p>
-    <p>
-      Come join us for fortnightly "Lightning Talks" - where a number of speakers give 5 minute presentations about any topic of their choosing, followed by 5 minutes of open questions.
-    </p>
-  `,
-  organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
-  memberProfiles: members.slice(0, MEMBER_AVATAR_URLS.length)
-    .map(getMemberAvatar),
-  interests: ['public-speaking', 'technology', 'fresh'],
-  futureEvents: [
-    {
-      id: 'polylogue-lightning-feb-4',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(3, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(47),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-feb-18',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(7, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(39),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-mar-4',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(12, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(44),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-  ],
-  pastEvents: [
-    {
-      id: 'polylogue-lightning-jan-7',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(-3, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(52),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-jan-21',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(-6, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(48),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-dec-17',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(-7, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(55),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-dec-3',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(-14, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(41),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-nov-19',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(-19, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(46),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-    {
-      id: 'polylogue-lightning-nov-5',
-      title: 'Lightning Talks @ Maria Pandora',
-      image: '../../assets/event-lightning.avif',
-      href: '#/event-one-ui',
-      startTime: getDynamicEventStartTime(-21, 19, 10),
-      location: { label: 'Palacio' },
-      attendees: getDynamicAttendees(43),
-      rating: 4.7,
-      ratingCount: 95,
-      openTo: 'public',
-    },
-  ],
-};
 
 export const sampleCurrentUser = members[7];

@@ -1,5 +1,5 @@
 import type { Interest } from '@src/data';
-import { SectionHeader, SectionMoreLink } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
+import { SectionHeader, SectionMoreLink } from '@src/components/SectionHeader/SectionHeader';
 import { InterestsGrid } from './InterestsGrid/InterestsGrid';
 import './home-interests.css';
 

@@ -124,17 +124,6 @@ export type HomePageData = {
   upcomingEvents: EventBasic[];
 };
 
-export type CommunityOnePageData =
-& Community
-& {
-  organizers: MemberAvatar[];
-  memberProfiles: MemberAvatar[];
-  futureEventsCount: number;
-  futureEvents: EventBasic[];
-  pastEventsCount: number;
-  pastEvents: EventBasic[];
-};
-
 export type InterestsPageData = {
   filteredInterests: Interest[];
   followedInterests: Interest[];
@@ -160,7 +149,7 @@ export type EventsPageData = {
 export type EventOnePageData =
 & Event
 & {
-  details: string;
+  descriptionHtml: string;
   community: CommunityAvatar;
   attendees: EventAttendees;
   date: {
@@ -173,4 +162,19 @@ export type EventOnePageData =
     };
   };
   eventInterests: string[];
+};
+
+export type CommunitiesPageData = {
+  filteredCommunities: CommunityBasic[];
+};
+
+export type CommunityOnePageData =
+& Community
+& {
+  organizers: MemberAvatar[];
+  memberProfiles: MemberAvatar[];
+  futureEventsCount: number;
+  futureEvents: EventBasic[];
+  pastEventsCount: number;
+  pastEvents: EventBasic[];
 };

@@ -3,9 +3,9 @@ import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
 // import IconRatings from '@src/pages/assets/icon-star.svg?react';
 import { PageFooter, PageHeader } from '@src/pages/PrevCommunityPage/prevComponents';
 import { sampleFullEvent } from '@src/pages/PrevCommunityPage/prevData';
-import './event-page.css';
+import './prev-event-page.css';
 
-export function EventPage() {
+export function PrevEventPage() {
   const [hasScrolledABit, setHasScrolledABit] = useState(false);
   const [hasScrolledNearEnd, setHasScrolledNearEnd] = useState(false);
   useEffect(() => {

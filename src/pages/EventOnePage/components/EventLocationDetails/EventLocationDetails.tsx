@@ -4,9 +4,10 @@ import './event-location-details.css';
 
 type EventLocationDetailsProps = {
   location: MapLocation;
+  label?: string;
 };
 
-export function EventLocationDetails({ location }: EventLocationDetailsProps) {
+export function EventLocationDetails({ location, label }: EventLocationDetailsProps) {
   return (
     <section className="event-location-details">
       <h3 className="event-location-details__title">How to Find Us</h3>
@@ -15,7 +16,7 @@ export function EventLocationDetails({ location }: EventLocationDetailsProps) {
           location={{
             lat: location.lat,
             lng: location.lng,
-            label: location.label,
+            label: label ?? location.label ??'',
           }}
           zoom={13}
         />

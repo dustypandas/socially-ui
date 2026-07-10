@@ -4,14 +4,14 @@ import IconMember from '@src/assets/icon-user-outline.svg?react';
 import IconRatings from '@src/assets/icon-star.svg?react';
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
 import IconContact from '@src/assets/icon-email-outline.svg?react';
-import './community-page.css';
+import './prev-community-page.css';
 import {
   PageFooter,
   PageHeader,
 } from './prevComponents';
 import { communities, sampleFullEvent } from './prevData';
 
-export function CommunityPage() {
+export function PrevCommunityPage() {
   const [hasScrolledLittle, setHasScrolledLittle] = useState(false);
   const [hasScrolledMuch, setHasScrolledMuch] = useState(false);
   useEffect(() => {

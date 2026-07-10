@@ -9,7 +9,7 @@ import type { CommunityBasic } from '../../types.ts';
 
 export type CommunityScope = 'all' | 'mine' | 'interests';
 
-export async function getCommunities(
+export async function getFilteredCommunities(
   searchQuery: string,
   communityScope: CommunityScope,
 ): Promise<CommunityBasic[]> {

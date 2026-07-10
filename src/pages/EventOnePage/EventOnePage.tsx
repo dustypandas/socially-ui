@@ -4,7 +4,7 @@ import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks
 import {
   EventAttendCard,
   EventCommunity,
-  EventDetails,
+  EventDescription,
   EventLocationDetails,
   EventHosts,
   EventImage,
@@ -80,7 +80,7 @@ export function EventOnePage() {
                 profiles={eventOnePageData.attendees.avatars}
                 attendeeCount={eventOnePageData.attendees.count}
               />
-              <EventDetails details={eventOnePageData.details} />
+              <EventDescription htmlContent={eventOnePageData.descriptionHtml} />
               <EventTags interests={eventOnePageData.eventInterests} />
               <div className="event-one-page__divider" />
               <EventReviews />
@@ -108,7 +108,10 @@ export function EventOnePage() {
                   <div className="event-one-page__divider" />
                   <EventHosts hosts={eventOnePageData.hosts} />
                   <div className="event-one-page__divider" />
-                  <EventLocationDetails location={eventOnePageData.location} />
+                  <EventLocationDetails
+                    location={eventOnePageData.location}
+                    // label={eventOnePageData.title}
+                  />
                 </div>
               </div>
             </ColumnsLayout.Aside>

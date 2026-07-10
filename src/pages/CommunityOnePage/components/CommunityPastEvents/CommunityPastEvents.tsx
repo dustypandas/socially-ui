@@ -1,6 +1,6 @@
 import type { EventBasic } from '@src/data';
 import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
-import { SectionHeader } from '@src/pages/HomePage/components/SectionHeader/SectionHeader';
+import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
 import { EventDateHelper } from '@src/utils/eventDateHelper';
 import './community-past-events.css';
 

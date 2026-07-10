@@ -1,19 +1,15 @@
-import { events, interests, MAX_FOLLOWED_INTERESTS, ORGANIZERS, sampleFullCommunity } from '../dummyData';
-import type { CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData } from '../types.ts';
-import { getCommunitiesForOneInterest, getCommunityForOneEvent } from './models/communities.ts';
-import { getEventsForOneInterest, getFilteredEvents, getHomeUpcomingEvents } from './models/events.ts';
+import { communities, events, interests, MAX_FOLLOWED_INTERESTS, ORGANIZERS } from '../dummyData';
+import type { CommunitiesPageData, CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData } from '../types.ts';
+import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommunities, type CommunityScope } from './models/communities.ts';
+import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getPastEventsForOneCommunity } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers } from './models/interests.ts';
-import { getAttendeesForOneEvent } from './models/members.ts';
+import { getAttendeesForOneEvent, getMembersForOneCommunity } from './models/members.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
     popularInterests: await getHomePopularInterests(),
     upcomingEvents: await getHomeUpcomingEvents(),
   };
-}
-
-export async function getCommunityPageData(): Promise<CommunityOnePageData> {
-  return sampleFullCommunity;
 }
 
 export async function getInterestsPageData(): Promise<InterestsPageData> {
@@ -123,21 +119,14 @@ export async function getEventsPageData(): Promise<EventsPageData> {
 export async function getEventOnePageData(): Promise<EventOnePageData> {
   const targetEvent = events.find(event => event.id === 'lightning-talks')!;
 
-  return {
-    id: targetEvent.id,
-    title: targetEvent.title,
-    image: targetEvent.image,
-    href: targetEvent.href,
-    rating: targetEvent.rating,
-    ratingCount: targetEvent.ratingCount,
-    startTime: targetEvent.startTime, // 1741123200000,
+  const eventOnePageData: EventOnePageData = {
+    ...targetEvent,
     location: {
       label: 'Palacio',
       lat: 40.4254,
       lng: -3.7038,
     },
-    openTo: targetEvent.openTo,
-    details: `<p>
+    descriptionHtml: `<p>
         5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
       </p>
       <p>
@@ -174,5 +163,44 @@ export async function getEventOnePageData(): Promise<EventOnePageData> {
       },
     },
     eventInterests: ['public-speaking', 'technology', 'fresh'],
-  };;
+  };
+
+  return eventOnePageData;
 }
+
+export async function getCommunitiesPageData(
+  searchQuery: string,
+  communityScope: CommunityScope,
+): Promise<CommunitiesPageData> {
+  const communitiesPageData: CommunitiesPageData = {
+    filteredCommunities: await getFilteredCommunities(searchQuery, communityScope),
+  };
+
+  return communitiesPageData;
+}
+
+export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
+  const targetCommunity = communities.find(community => community.id === 'polylogue-madrid')!;
+
+  const communityOnePageData: CommunityOnePageData = {
+    ...targetCommunity,
+    futureEventsCount: 5,
+    pastEventsCount: 25,
+    descriptionHtml: `
+      <p>
+        Polylogue is a community for meeting people who share diverse interests, eclectic curiosities, wayward stories and uncommon perspectives. 🎓📚💫
+      </p>
+      <p>
+        Come join us for fortnightly "Lightning Talks" - where a number of speakers give 5 minute presentations about any topic of their choosing, followed by 5 minutes of open questions.
+      </p>
+    `,
+    interests: ['public-speaking', 'technology', 'fresh'],
+    organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
+    memberProfiles: await getMembersForOneCommunity(),
+    futureEvents: await getFutureEventsForOneCommunity(),
+    pastEvents: await getPastEventsForOneCommunity(),
+  };
+
+  return communityOnePageData;
+}
+

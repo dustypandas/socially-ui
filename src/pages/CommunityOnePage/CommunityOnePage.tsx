@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { getCommunityPageData, type CommunityOnePageData } from '@src/data';
+import { getCommunityOnePageData, type CommunityOnePageData } from '@src/data';
 import {
   CommunityAbout,
   CommunityEventsSection,
@@ -14,13 +14,13 @@ import {
 import './community-one-page.css';
 
 export function CommunityOnePage() {
-  const [community, setCommunity] = useState<CommunityOnePageData | null>(null);
+  const [communityOnePageData, setCommunityOnePageData] = useState<CommunityOnePageData | null>(null);
 
   useEffect(() => {
-    getCommunityPageData().then(setCommunity);
+    getCommunityOnePageData().then(setCommunityOnePageData);
   }, []);
 
-  if (!community) {
+  if (!communityOnePageData) {
     return null;
   }
 
@@ -30,15 +30,15 @@ export function CommunityOnePage() {
         <div className="width-container community-one-page__hero">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <CommunityHero image={community.image} name={community.name} />
+              <CommunityHero image={communityOnePageData.image} name={communityOnePageData.name} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(380px, 38%)">
               <CommunityIntroPanel
-                name={community.name}
-                memberCount={community.memberCount}
-                rating={community.rating}
-                ratingCount={community.ratingCount}
-                organizers={community.organizers}
+                name={communityOnePageData.name}
+                memberCount={communityOnePageData.membersCount}
+                rating={communityOnePageData.rating}
+                ratingCount={communityOnePageData.ratingCount}
+                organizers={communityOnePageData.organizers}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
@@ -49,19 +49,19 @@ export function CommunityOnePage() {
         <div className="width-container community-one-page__content">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <CommunityAbout detailsHtml={community.detailsHtml} />
-              <CommunityEventsSection events={community.upcomingEvents} />
+              <CommunityAbout detailsHtml={communityOnePageData.descriptionHtml} />
+              <CommunityEventsSection events={communityOnePageData.futureEvents} />
               <CommunityPastEvents
-                count={community.pastEventsCount}
-                events={community.pastEvents}
+                count={communityOnePageData.pastEventsCount}
+                events={communityOnePageData.pastEvents}
               />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50} asideWidth="min(380px, 38%)">
               <div className="community-one-page__aside">
-                <CommunityOrganizers organizers={community.organizers} />
+                <CommunityOrganizers organizers={communityOnePageData.organizers} />
                 <CommunityMembers
-                  membersCount={community.memberCount}
-                  memberProfiles={community.memberProfiles}
+                  membersCount={communityOnePageData.membersCount}
+                  memberProfiles={communityOnePageData.memberProfiles}
                 />
               </div>
             </ColumnsLayout.Aside>

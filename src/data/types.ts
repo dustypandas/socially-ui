@@ -69,6 +69,7 @@ export type EventBasic = {
   rating: number;
   ratingCount: number;
   startTime: number;
+  // startTimeCardLabel: string;
   openTo: 'public' | 'selective' | 'invite-only';
 };
 

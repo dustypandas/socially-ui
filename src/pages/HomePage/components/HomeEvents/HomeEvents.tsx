@@ -1,7 +1,5 @@
 import type { EventBasic } from '@src/data';
-import { SectionHeader, SectionMoreLink } from '@src/components/SectionHeader/SectionHeader';
-import { EventDateHelper } from '@src/utils/eventDateHelper';
-import { EventCard } from './EventCard/EventCard';
+import { EventCard, SectionHeader, SectionMoreLink } from '@src/components';
 import './home-events.css';
 
 type HomeEventsProps = {
@@ -16,11 +14,10 @@ export function HomeEvents({ upcomingEvents }: HomeEventsProps) {
         <SectionHeader title="Upcoming Events" moreHref="#/events-ui" />
         <div className="home-events__grid">
           {upcomingEvents.map(event => {
-            const dateHelper = new EventDateHelper(event.startTime);
             return (
               <EventCard
                 key={event.id}
-                event={{ ...event, dateTimeLabel: dateHelper.dateTimeLabel }}
+                event={event}
               />
             );
           })}

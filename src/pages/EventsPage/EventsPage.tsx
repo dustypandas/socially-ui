@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { EventDateHelper } from '@src/utils/eventDateHelper';
 import { EventsFilters, EventsGrid } from './components';
 import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter, } from '@src/data';
 import { useEventsStates } from './useEventsStates';
@@ -35,10 +34,7 @@ export function EventsPage() {
               <div className="events-page__filters events-page__filters--main">
                 <EventsFilters {...filterProps} />
               </div>
-              <EventsGrid events={filteredEvents.map(event => {
-                const dateHelper = new EventDateHelper(event.startTime);
-                return { ...event, dateTimeLabel: dateHelper.dateTimeLabel };
-              })} />
+              <EventsGrid events={filteredEvents} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50} className="events-page__aside">
               <EventsFilters {...filterProps} />

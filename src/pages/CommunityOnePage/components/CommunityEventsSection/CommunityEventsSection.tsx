@@ -1,8 +1,7 @@
 import type { EventBasic } from '@src/data';
-import { SectionHeader, SectionMoreLink } from '@src/components/SectionHeader/SectionHeader';
-import { EventCardHorizontal } from '@src/pages/InterestOnePage/components/EventCardHorizontal/EventCardHorizontal';
-import { EventDateHelper } from '@src/utils/eventDateHelper';
+import { EventCardHorizontal, SectionHeader, SectionMoreLink } from '@src/components';
 import './community-events-section.css';
+import { getDateAndTimeLabels } from '@src/utils/getDatetimeLabels';
 
 type CommunityEventsSectionProps = {
   events: EventBasic[];
@@ -19,17 +18,18 @@ export function CommunityEventsSection({ events }: CommunityEventsSectionProps) 
       />
       <div className="community-events-section__list">
         {events.map(event => {
-          const dateHelper = new EventDateHelper(event.startTime, 'community');
+          const dateAndTimeLabels = getDateAndTimeLabels(event.startTime);
+
           return (
             <div key={event.id} className="community-events-section__item">
               <div className="community-events-section__item-line" />
               <div className="community-events-section__item-timeline">
                 <div className="community-events-section__item-datetime">
                   <span className="community-events-section__item-date">
-                    {dateHelper.dateLabel}
+                    {dateAndTimeLabels.dateLabel}
                   </span>
                   <span className="community-events-section__item-time">
-                    {dateHelper.timeLabel}
+                    {dateAndTimeLabels.timeLabel}
                   </span>
                 </div>
                 <div className="community-events-section__item-dot-wrapper">

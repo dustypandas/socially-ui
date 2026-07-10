@@ -1,7 +1,6 @@
 import type { EventBasic } from '@src/data';
 import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
 import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
-import { EventDateHelper } from '@src/utils/eventDateHelper';
 import './community-past-events.css';
 
 type CommunityPastEventsProps = {
@@ -18,10 +17,7 @@ export function CommunityPastEvents({ count, events }: CommunityPastEventsProps)
         moreHref="#"
         moreLabel="past events →"
       />
-      <EventsGrid events={events.map(event => {
-        const dateHelper = new EventDateHelper(event.startTime, 'community');
-        return { ...event, dateTimeLabel: dateHelper.dateLabel };
-      })} />
+      <EventsGrid events={events} />
     </section>
   );
 }

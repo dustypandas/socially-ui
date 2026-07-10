@@ -1,6 +1,6 @@
-import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { EventDateHelper } from '@src/utils/eventDateHelper';
-import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
+import { ColumnsLayout, EventCardHorizontal, PageHeader, PageLayout } from '@src/components';
+import { getDateAndTimeLabels } from '@src/utils/getDatetimeLabels';
+import { InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
 import { useInterestOneStates } from './useInterestOneStates';
 import './interest-one-page.css';
 
@@ -33,24 +33,25 @@ export function InterestOnePage() {
                   <>
                     <div className="interest-one-page__events-list">
                       {events.map(event => {
-                        const dateHelper = new EventDateHelper(event.startTime, 'community');
+                        const dateAndTimeLabels = getDateAndTimeLabels(event.startTime);
+
                         return (
                         <div key={event.id} className="interest-one-page__event-item">
                           <div className="interest-one-page__event-item-line" />
                           <div className="interest-one-page__event-item-timeline">
                             <div className="interest-one-page__event-item-datetime">
                               <span className="interest-one-page__event-item-date">
-                                {dateHelper.dateLabel}
+                                {dateAndTimeLabels.dateLabel}
                               </span>
                               <span className="interest-one-page__event-item-time">
-                                {dateHelper.timeLabel}
+                                {dateAndTimeLabels.timeLabel}
                               </span>
                             </div>
                             <div className="interest-one-page__event-item-dot-wrapper">
                               <div className="interest-one-page__event-item-dot" />
                             </div>
                           </div>
-                          <EventCardHorizontal event={{ ...event }} />
+                          <EventCardHorizontal event={event} />
                         </div>
                         );
                       })}

@@ -3,15 +3,16 @@ import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 import type { EventBasic } from '@src/data';
+import { getDatetimeLabel } from '@src/utils/getDatetimeLabels';
 import './event-card.css';
 
 type EventCardProps = {
-  event: EventCardEvent;
+  event: EventBasic;
 };
 
-export type EventCardEvent = EventBasic & { dateTimeLabel: string };
-
 export function EventCard({ event }: EventCardProps) {
+  const datetimeLabel = getDatetimeLabel(event.startTime);
+
   return (
     <a href="#/event-one-ui" className="event-card" target="_blank">
       <img className="event-card__image" src={event.image} alt="" />
@@ -22,7 +23,7 @@ export function EventCard({ event }: EventCardProps) {
         <div className="event-card__row">
           <IconCalendar className="event-card__icon" />
           <span>
-            {event.dateTimeLabel}
+            {datetimeLabel}
           </span>
         </div>
         <div className="event-card__row">

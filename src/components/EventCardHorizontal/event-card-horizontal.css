@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '../../../../globals.css';
+@import '../../globals.css';
 
 .event-card-horizontal {
   display: flex;

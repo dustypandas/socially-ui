@@ -1,77 +1,31 @@
 import { useMemo } from 'react';
-import { useAppSelector } from '@src/store/hooks';
-import type { Interest } from '@src/store/slices/interestsSlice';
+import type { Interest } from '@src/data';
 import './interests-list.css';
+import { groupInterestsByCategory } from '../../helpers';
 
 type InterestsListProps = {
-  searchQuery: string;
-  followedInterests: string[];
-  maxFollowed: number;
+  interests: Interest[];
+  followedInterests: Interest[];
   canFollowMore: boolean;
-  onFollow: (interestName: string) => void;
-  onUnfollow: (interestName: string) => void;
+  onFollow: (interest: Interest) => void;
+  onUnfollow: (interestLabel: string) => void;
 };
-
-type CategoryGroup = {
-  category: string;
-  items: Interest[];
-};
-
-function isGeneralCategory(category: string): boolean {
-  return category.toLowerCase() === 'general';
-}
-
-function groupInterestsByCategory(
-  interests: Interest[],
-  searchQuery: string,
-): CategoryGroup[] {
-  const normalizedQuery = searchQuery.trim().toLowerCase();
-
-  const filtered = normalizedQuery
-    ? interests.filter(interest =>
-        interest.name.toLowerCase().includes(normalizedQuery),
-      )
-    : interests;
-
-  const grouped = new Map<string, Interest[]>();
-
-  for (const interest of filtered) {
-    const category = interest.category ?? 'general';
-    const items = grouped.get(category) ?? [];
-    items.push(interest);
-    grouped.set(category, items);
-  }
-
-  return [...grouped.entries()]
-    .map(([category, items]) => ({
-      category,
-      items,
-      totalFollowers: items.reduce((sum, interest) => sum + (interest.followerIds?.length ?? 0), 0),
-    }))
-    .sort((a, b) => {
-      const aGeneral = isGeneralCategory(a.category);
-      const bGeneral = isGeneralCategory(b.category);
-      if (aGeneral !== bGeneral) return aGeneral ? 1 : -1;
-
-      return b.totalFollowers - a.totalFollowers
-        || a.category.localeCompare(b.category);
-    })
-    .map(({ category, items }) => ({ category, items }));
-}
 
 export function InterestsList({
-  searchQuery,
+  interests,
   followedInterests,
   canFollowMore,
   onFollow,
   onUnfollow,
 }: InterestsListProps) {
-  const interests = useAppSelector(state => state.interests.items);
-  const followedSet = useMemo(() => new Set(followedInterests), [followedInterests]);
-  const categoryGroups = useMemo(
-    () => groupInterestsByCategory(interests, searchQuery),
-    [interests, searchQuery],
+  const followedSet = useMemo(
+    () => new Set(followedInterests.map(interest => interest.label)),
+    [followedInterests],
   );
+
+  const categoryGroups = useMemo(() => {
+    return groupInterestsByCategory(interests);
+  }, [interests]);
 
   return (
     <div className="interests-list">
@@ -80,11 +34,11 @@ export function InterestsList({
           <h3 className="interests-list__category-title">{group.category}</h3>
           <ul className="interests-list__grid">
             {group.items.map(interest => {
-              const isFollowed = followedSet.has(interest.name);
+              const isFollowed = followedSet.has(interest.label);
 
               return (
               <li
-                key={interest.name}
+                key={interest.label}
                 className={[
                   'interests-list__item',
                   isFollowed && 'interests-list__item--followed',
@@ -94,13 +48,13 @@ export function InterestsList({
                   href="#/interest-one-ui"
                   className="interests-list__link"
                 >
-                  {interest.name} ({interest.followerIds?.length ?? 0})
+                  {interest.label} ({interest.followerIds?.length ?? 0})
                 </a>
                 {isFollowed
                   ? (<button
                       type="button"
                       className="interests-list__unfollow-btn"
-                      onClick={() => onUnfollow(interest.name)}
+                      onClick={() => onUnfollow(interest.label)}
                     >
                       <span className="interests-list__btn-icon">+</span>
                     </button>
@@ -109,7 +63,7 @@ export function InterestsList({
                       type="button"
                       className='interests-list__follow-btn'
                       disabled={!canFollowMore}
-                      onClick={() => onFollow(interest.name)}
+                      onClick={() => onFollow(interest)}
                     >
                       <span className="interests-list__btn-icon">+</span>
                     </button>

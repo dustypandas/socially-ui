@@ -1,42 +1,35 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import { useAppDispatch, useAppSelector } from '@src/store/hooks';
-import { addInterest } from '@src/store/slices/interestsSlice';
 import {
   FollowedInterests,
   InterestsList,
   InterestsSearchBar,
 } from './components';
-import { useFollowedInterests } from './hooks/useFollowedInterests';
+import { useInterests } from './hooks/useInterests';
 import { hasExactInterestMatch } from './helpers';
 import './interests-page.css';
 
 export function InterestsPage() {
-  const dispatch = useAppDispatch();
   const [searchQuery, setSearchQuery] = useState('');
-  const interests = useAppSelector(state => state.interests.items);
   const {
+    // categoryGroups,
+    filteredInterests,
     followedInterests,
-    dummyFollowedInterests,
     memberFollowers,
-    dummyFollowInterest,
-    dummyUnfollowInterest,
-    dummyMaxFollowed,
-    canDummyFollowMore,
-  } = useFollowedInterests(interests);
+    maxFollowed,
+    canFollowMore,
+    handleFollowInterest,
+    handleUnfollowInterest,
+    handleAddInterest,
+  } = useInterests(searchQuery);
 
   const trimmedQuery = searchQuery.trim();
-  const hasExactMatch = hasExactInterestMatch(interests, trimmedQuery);
+  const hasExactMatch = hasExactInterestMatch(filteredInterests, trimmedQuery);
   const showAddButton = trimmedQuery.length >= 3 && !hasExactMatch;
-  const isAddButtonDisabled = !canDummyFollowMore;
 
-  const handleAddInterest = () => {
-    if (isAddButtonDisabled) return;
-
-    const name = trimmedQuery;
-    dispatch(addInterest({ name }));
-    dummyFollowInterest(name);
-    setSearchQuery('');
+  const onAddInterest = async () => {
+    const added = await handleAddInterest(trimmedQuery);
+    if (added) setSearchQuery('');
   };
 
   return (
@@ -54,25 +47,24 @@ export function InterestsPage() {
                 value={searchQuery}
                 onChange={setSearchQuery}
                 showAddButton={showAddButton}
-                isAddButtonDisabled={isAddButtonDisabled}
-                onAdd={handleAddInterest}
+                isAddButtonDisabled={!canFollowMore}
+                onAdd={onAddInterest}
               />
               <InterestsList
-                searchQuery={searchQuery}
+                interests={filteredInterests}
                 followedInterests={followedInterests}
-                maxFollowed={dummyMaxFollowed}
-                canFollowMore={canDummyFollowMore}
-                onFollow={dummyFollowInterest}
-                onUnfollow={dummyUnfollowInterest}
+                canFollowMore={canFollowMore}
+                onFollow={handleFollowInterest}
+                onUnfollow={handleUnfollowInterest}
               />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
               <div className="interests-page__divider--hidden" />
               <FollowedInterests
-                followedInterests={dummyFollowedInterests}
-                maxFollowed={dummyMaxFollowed}
+                followedInterests={followedInterests}
+                maxFollowed={maxFollowed}
                 mapFollowers={memberFollowers}
-                onUnfollow={dummyUnfollowInterest}
+                onUnfollow={handleUnfollowInterest}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>

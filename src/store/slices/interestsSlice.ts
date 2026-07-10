@@ -1,4 +1,3 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export type RelatedLink = {
   label: string;

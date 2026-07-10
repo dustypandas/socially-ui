@@ -1,11 +1,11 @@
-import type { Interest, MemberProfile } from '@src/data';
+import type { Interest, MemberFollower } from '@src/data';
 import { MapContainer } from '@src/components';
 import './followed-interests.css';
 
 type FollowedInterestsProps = {
   followedInterests: Interest[];
   maxFollowed: number;
-  mapFollowers: MemberProfile[];
+  mapFollowers: MemberFollower[];
   onUnfollow: (interestName: string) => void;
 };
 

@@ -1,8 +1,8 @@
-import { interests, sampleFullCommunity, sampleFullEvent } from '../dummyData';
-import type { CommunityPageData, EventPageData, HomePageData, InterestPageData } from '../types.ts';
+import { MAX_FOLLOWED_INTERESTS, sampleFullCommunity, sampleFullEvent } from '../dummyData';
+import type { CommunityPageData, EventPageData, HomePageData, InterestPageData, InterestsPageData } from '../types.ts';
 import { getCommunitiesForInterest } from './models/communities.ts';
 import { getEventsByInterest, getHomeUpcomingEvents } from './models/events.ts';
-import { getHomePopularInterests, getInterestsMapFollowers } from './models/interests.ts';
+import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestsMapFollowers } from './models/interests.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
@@ -19,12 +19,36 @@ export async function getEventPageData(): Promise<EventPageData> {
   return sampleFullEvent;
 }
 
+export async function getInterestsPageData(): Promise<InterestsPageData> {
+  const followedInterests = await getFollowedInterests();
+
+  const interestsPageData: InterestsPageData = {
+    filteredInterests: await getFilteredInterests(''),
+    followedInterests,
+    memberFollowers: await getInterestsMapFollowers(followedInterests.map(interest => interest.label)),
+    maxFollowedInterests: MAX_FOLLOWED_INTERESTS,
+    canFollowMore: await getCanFollowMore(),
+  };
+
+  return interestsPageData;
+}
+
 export async function getInterestPageData(): Promise<InterestPageData> {
   const interestPageData: InterestPageData = {
     interestLabel: 'spanish',
-    memberFollowers: await getInterestsMapFollowers([interests.find(interest => interest.label === 'spanish')!]),
+    memberFollowers: await getInterestsMapFollowers(['spanish']),
     relatedEvents: await getEventsByInterest(),
     relatedCommunities: await getCommunitiesForInterest(),
+    relatedLinks: [
+      {
+        label: 'Spanish Coffee whatsapp group',
+        href: 'https://chat.whatsapp.com/example-spanish-coffee',
+      },
+      {
+        label: 'Real Language Exchanges group',
+        href: 'https://www.meetup.com/example-language-exchanges',
+      },
+    ],
     // discussionPosts: [
     //   {
     //     id: 'post-spanish-conversation-tips',

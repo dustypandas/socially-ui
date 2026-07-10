@@ -38,7 +38,7 @@ export async function getCommunities(
       return communities.filter(community => joined.has(community.id));
     }
   
-    const followed = new Set((await getFollowedInterests()).map(interest => interest.toLowerCase()));
+    const followed = new Set((await getFollowedInterests()).map(interest => interest.label.toLowerCase()));
     return communities.filter(community =>
       community.interests?.some(tag => followed.has(tag.toLowerCase())),
     );

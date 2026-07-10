@@ -85,7 +85,11 @@ export type Interest = {
   label: string;
   category?: string;
   followerIds?: string[];
-  relatedLinks?: Link[];
+};
+
+export type InterestCategoryGroup = {
+  category: string;
+  items: Interest[];
 };
 
 export type MemberAvatar = {
@@ -155,4 +159,13 @@ export type InterestPageData = {
   memberFollowers: MemberFollower[];
   relatedEvents: EventBasic[];
   relatedCommunities: CommunityBasic[];
+  relatedLinks?: Link[];
+};
+
+export type InterestsPageData = {
+  filteredInterests: Interest[];
+  followedInterests: Interest[];
+  memberFollowers: MemberFollower[];
+  maxFollowedInterests: number;
+  canFollowMore: boolean;
 };

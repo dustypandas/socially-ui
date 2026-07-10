@@ -8,7 +8,7 @@ import {
   useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import type { MemberProfile } from '@src/data';
+import type { MemberFollower } from '@src/data';
 import iconMapMarkerSvg from '@src/assets/icon-map-marker.svg?raw';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';
@@ -39,7 +39,7 @@ type MapLocation = {
 };
 
 type MapContainerProps =
-  | { followers: MemberProfile[]; location?: never; zoom?: number }
+  | { followers: MemberFollower[]; location?: never; zoom?: number }
   | { followers?: never; location: MapLocation; zoom?: number };
 
 function MapResizeHandler() {
@@ -103,7 +103,7 @@ export function MapContainer(props: MapContainerProps) {
         <MarkerClusterGroup chunkedLoading maxClusterRadius={50}>
           {followers.map(follower => (
             <Marker key={follower.id} position={[follower.lat, follower.lng]} icon={followerMarkerIcon}>
-              <Popup>{follower.name}</Popup>
+              <Popup>{follower.label}</Popup>
             </Marker>
           ))}
         </MarkerClusterGroup>

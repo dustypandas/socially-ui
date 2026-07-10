@@ -1,41 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
-import {
-  getInterestPageData,
-  getInterestsMapFollowers,
-  type InterestPageData,
-  type MemberProfile,
-} from '@src/data';
 import { EventDateHelper } from '@src/utils/eventDateHelper';
 import { EventCardHorizontal, InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
+import { useInterestOne } from './useInterestOne';
 import './interest-one-page.css';
 
 export function InterestOnePage() {
-  const location = useLocation();
-  const [interestPageData, setInterestPageData] = useState<InterestPageData | null>(null);
-  const [mapFollowers, setMapFollowers] = useState<MemberProfile[]>([]);
-
-  useEffect(() => {
-    getInterestPageData().then(setInterestPageData);
-  }, []);
-
-  useEffect(() => {
-    if (!interest) {
-      setMapFollowers([]);
-      return;
-    }
-
-    getInterestsMapFollowers([interest]).then(setMapFollowers);
-  }, [interest]);
+  const {
+    interestPageData,
+    events,
+    communities,
+    externalLinks,
+    handleAddExternalLink,
+  } = useInterestOne();
 
   if (!interestPageData) {
     return null;
   }
-
-  const isEmptyVariant = location.pathname === '/interest-one-ui-empty';
-  const events = isEmptyVariant ? [] : interestPageData.relatedEvents;
-  const communities = isEmptyVariant ? [] : interestPageData.relatedCommunities;
 
   return (
     <PageLayout>
@@ -92,12 +72,10 @@ export function InterestOnePage() {
             <ColumnsLayout.Aside sticky={50}>
               <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
-                {interest && (
-                  <InterestFollowers
-                    followers={mapFollowers}
-                    followersCount={(interest.followerIds ?? []).length}
-                  />
-                )}
+                <InterestFollowers
+                  followers={interestPageData.memberFollowers}
+                  followersCount={interestPageData.memberFollowersCount}
+                />
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>
@@ -106,17 +84,15 @@ export function InterestOnePage() {
               <div className="interest-one-page__divider" />
               <InterestCommunities communities={communities} />
               {/* <div className="interest-one-page__divider" />
-              <InterestDiscussion interestName='Spanish' /> */}
+              <InterestDiscussion interestName='spanish' /> */}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
               <div className="interest-one-page__divider--hidden" />
               <div className="interest-one-page__aside">
-                {interest && (
-                  <InterestExternalLinks
-                    interestName={INTEREST_NAME}
-                    links={interest.relatedLinks ?? []}
-                  />
-                )}
+                <InterestExternalLinks
+                  links={externalLinks}
+                  onAdd={handleAddExternalLink}
+                />
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>

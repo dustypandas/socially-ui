@@ -11,7 +11,7 @@ import {
   HomePage,
   IndexPage,
   InterestsPage,
-  // InterestOnePage,
+  InterestOnePage,
   // CommunityOnePage,
   // EventOnePage,
 } from './pages';
@@ -29,9 +29,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/community-one-ui' element={<CommunityOnePage />} />
         <Route path='/communities-ui' element={<CommunitiesPage />} /> */}
         <Route path='/interests-ui' element={<InterestsPage />} />
-        {/* <Route path='/interest-one-ui' element={<InterestOnePage />} />
+        <Route path='/interest-one-ui' element={<InterestOnePage />} />
         <Route path='/interest-one-ui-empty' element={<InterestOnePage />} />
-        <Route path='/prev-community-ui' element={<CommunityPage />} />
+        {/* <Route path='/prev-community-ui' element={<CommunityPage />} />
         <Route path='/prev-event-ui' element={<EventPage />} /> */}
         {/* default invalid? */}
       </Routes>

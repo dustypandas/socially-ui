@@ -157,9 +157,10 @@ export type EventPageData =
 export type InterestPageData = {
   interestLabel: string;
   memberFollowers: MemberFollower[];
+  memberFollowersCount: number; // can be much more than membersFollowers.length
   relatedEvents: EventBasic[];
   relatedCommunities: CommunityBasic[];
-  relatedLinks?: Link[];
+  externalLinks?: Link[];
 };
 
 export type InterestsPageData = {

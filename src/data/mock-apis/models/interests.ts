@@ -1,11 +1,12 @@
 import {
+  externalLinksForOneInterest,
   interests,
   MAX_FOLLOWED_INTERESTS,
   members,
   myFollowedInterests,
   sampleCurrentUser,
 } from '../../dummyData.ts';
-import type { Interest, MemberFollower } from '../../types.ts';
+import type { Interest, Link, MemberFollower } from '../../types.ts';
 import { shuffleArray } from './helpers.ts';
 
 export async function getHomePopularInterests(): Promise<Interest[]> {
@@ -18,7 +19,7 @@ export async function getHomePopularInterests(): Promise<Interest[]> {
   );
 }
 
-export async function getInterestsMapFollowers(selectedInterests: string[]): Promise<MemberFollower[]> {
+export async function getInterestsMemberFollowers(selectedInterests: string[]): Promise<MemberFollower[]> {
   const byId = new Map(members.map(member => [member.id, member]));
   const ids = new Set<string>();
 
@@ -40,6 +41,15 @@ export async function getInterestsMapFollowers(selectedInterests: string[]): Pro
 // mutable, for interests page
 let tempFollowedInterests = [...myFollowedInterests];
 let tempInterests = [...interests];
+let tempInterestExternalLinks = [...externalLinksForOneInterest];
+
+export async function getInterestExternalLinks(): Promise<Link[]> {
+  return [...tempInterestExternalLinks];
+}
+
+export async function addExternalLink(link: Link): Promise<void> {
+  tempInterestExternalLinks = [...tempInterestExternalLinks, link];
+}
 
 export async function followInterest(interestName: string): Promise<void> {
   if (

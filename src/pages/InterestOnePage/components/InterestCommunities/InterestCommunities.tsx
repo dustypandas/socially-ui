@@ -1,9 +1,9 @@
-import type { Community } from '@src/data';
+import type { CommunityBasic } from '@src/data';
 import { CommunityCard } from '@src/pages/InterestOnePage/components/CommunityCard/CommunityCard';
 import './interest-communities.css';
 
 type InterestCommunitiesProps = {
-  communities: Community[];
+  communities: CommunityBasic[];
 };
 
 export function InterestCommunities({ communities }: InterestCommunitiesProps) {

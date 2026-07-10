@@ -1,8 +1,8 @@
-import { MAX_FOLLOWED_INTERESTS, sampleFullCommunity, sampleFullEvent } from '../dummyData';
+import { interests, MAX_FOLLOWED_INTERESTS, sampleFullCommunity, sampleFullEvent } from '../dummyData';
 import type { CommunityPageData, EventPageData, HomePageData, InterestPageData, InterestsPageData } from '../types.ts';
 import { getCommunitiesForInterest } from './models/communities.ts';
 import { getEventsByInterest, getHomeUpcomingEvents } from './models/events.ts';
-import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestsMapFollowers } from './models/interests.ts';
+import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers } from './models/interests.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
@@ -25,7 +25,7 @@ export async function getInterestsPageData(): Promise<InterestsPageData> {
   const interestsPageData: InterestsPageData = {
     filteredInterests: await getFilteredInterests(''),
     followedInterests,
-    memberFollowers: await getInterestsMapFollowers(followedInterests.map(interest => interest.label)),
+    memberFollowers: await getInterestsMemberFollowers(followedInterests.map(interest => interest.label)),
     maxFollowedInterests: MAX_FOLLOWED_INTERESTS,
     canFollowMore: await getCanFollowMore(),
   };
@@ -34,21 +34,18 @@ export async function getInterestsPageData(): Promise<InterestsPageData> {
 }
 
 export async function getInterestPageData(): Promise<InterestPageData> {
+  const {
+    label,
+    followerIds,
+  } = interests.find(interest => interest.label === 'spanish')!;
+  
   const interestPageData: InterestPageData = {
-    interestLabel: 'spanish',
-    memberFollowers: await getInterestsMapFollowers(['spanish']),
+    interestLabel: label,
+    memberFollowers: await getInterestsMemberFollowers(['spanish']),
+    memberFollowersCount: (3 * (followerIds?.length ?? 0)),
     relatedEvents: await getEventsByInterest(),
     relatedCommunities: await getCommunitiesForInterest(),
-    relatedLinks: [
-      {
-        label: 'Spanish Coffee whatsapp group',
-        href: 'https://chat.whatsapp.com/example-spanish-coffee',
-      },
-      {
-        label: 'Real Language Exchanges group',
-        href: 'https://www.meetup.com/example-language-exchanges',
-      },
-    ],
+    externalLinks: await getInterestExternalLinks(),
     // discussionPosts: [
     //   {
     //     id: 'post-spanish-conversation-tips',

@@ -4,7 +4,7 @@ export * from './HomePage/HomePage';
 // export * from './EventsPage/EventsPage';
 // export * from './EventOnePage/EventOnePage';
 export * from './InterestsPage/InterestsPage';
-// export * from './InterestOnePage/InterestOnePage';
+export * from './InterestOnePage/InterestOnePage';
 // export * from './PrevCommunityPage/CommunityPage';
 // export * from './PrevEventPage/EventPage';
 export * from './IndexPage';

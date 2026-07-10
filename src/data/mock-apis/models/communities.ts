@@ -1,6 +1,6 @@
 import {
   communities,
-  communitiesForInterest,
+  communitiesForOneInterest,
   myCommunityIds,
 } from '../../dummyData.ts';
 import { getFollowedInterests } from './interests.ts';
@@ -46,5 +46,5 @@ export async function getCommunities(
 }
 
 export async function getCommunitiesForInterest(): Promise<CommunityBasic[]> {
-  return communitiesForInterest;
+  return communitiesForOneInterest;
 }

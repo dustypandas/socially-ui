@@ -1,4 +1,4 @@
-import { events, eventsForInterest } from '@src/data/dummyData.ts';
+import { events, eventsForOneInterest } from '@src/data/dummyData.ts';
 import type { EventBasic } from '../../types.ts';
 import { shuffleArray } from './helpers.ts';
 
@@ -16,5 +16,5 @@ export async function getHomeUpcomingEvents(): Promise<EventBasic[]> {
 }
 
 export async function getEventsByInterest(): Promise<EventBasic[]> {
-  return eventsForInterest;
+  return eventsForOneInterest;
 }

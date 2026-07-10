@@ -5,14 +5,13 @@ import {
   InterestsList,
   InterestsSearchBar,
 } from './components';
-import { useInterests } from './hooks/useInterests';
+import { useInterests } from './useInterests';
 import { hasExactInterestMatch } from './helpers';
 import './interests-page.css';
 
 export function InterestsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const {
-    // categoryGroups,
     filteredInterests,
     followedInterests,
     memberFollowers,

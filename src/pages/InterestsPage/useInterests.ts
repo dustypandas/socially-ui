@@ -6,11 +6,9 @@ import {
   getInterestsPageData,
   unfollowInterest,
   type Interest,
-  // type InterestCategoryGroup,
   type InterestsPageData,
   type MemberFollower,
 } from '@src/data';
-// import { groupInterestsByCategory } from '../helpers';
 
 const MAX_FOLLOWED_INTERESTS = 10;
 
@@ -18,7 +16,6 @@ export function useInterests(searchQuery: string) {
   const pageDataRef = useRef<InterestsPageData | null>(null);
   const [filteredInterests, setFilteredInterests] = useState<Interest[]>([]);
   const [followedInterests, setFollowedInterests] = useState<Interest[]>([]);
-  // const [categoryGroups, setCategoryGroups] = useState<InterestCategoryGroup[]>([]);
   const [memberFollowers, setMemberFollowers] = useState<MemberFollower[]>([]);
   const [canFollowMore, setCanFollowMore] = useState(true);
 
@@ -28,7 +25,6 @@ export function useInterests(searchQuery: string) {
     setFollowedInterests(data.followedInterests);
     setMemberFollowers(data.memberFollowers);
     setCanFollowMore(data.canFollowMore);
-    // setCategoryGroups(groupInterestsByCategory(filteredInterests));
   }, []);
 
   // load initial data

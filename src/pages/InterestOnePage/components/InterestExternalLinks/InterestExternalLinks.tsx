@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import type { Link } from '@src/data';
-import { useAppDispatch } from '@src/store/hooks';
-import { addRelatedLink } from '@src/store/slices/interestsSlice.js';
 import './interest-external-links.css';
 
 type InterestExternalLinksProps = {
-  interestName: string;
   links: Link[];
+  onAdd: (link: Link) => void;
 };
 
 function normalizeHref(href: string): string {
@@ -15,8 +13,7 @@ function normalizeHref(href: string): string {
   return `https://${trimmed}`;
 }
 
-export function InterestExternalLinks({ interestName, links }: InterestExternalLinksProps) {
-  const dispatch = useAppDispatch();
+export function InterestExternalLinks({ links, onAdd }: InterestExternalLinksProps) {
   const [label, setLabel] = useState('');
   const [href, setHref] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
@@ -26,11 +23,10 @@ export function InterestExternalLinks({ interestName, links }: InterestExternalL
 
   const handleSubmit = () => {
     if (isSubmitDisabled) return;
-    dispatch(addRelatedLink({
-      interestName,
+    onAdd({
       label: trimmedLabel,
       href: normalizeHref(trimmedHref),
-    }));
+    });
     setLabel('');
     setHref('');
     if (document.activeElement instanceof HTMLElement) {

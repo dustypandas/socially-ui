@@ -1,4 +1,4 @@
-import type { CommunityBasic, CommunityPageData, Event, EventBasic, EventPageData, Interest, InterestPageData, MemberAvatar } from './types.ts';
+import type { CommunityBasic, CommunityPageData, EventBasic, EventPageData, Interest, Link, MemberAvatar } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -168,42 +168,6 @@ export const communities: CommunityBasic[] = [
   },
 ];
 
-export const communitiesForInterest: CommunityBasic[] = [
-  {
-    id: 'madrid-language-exchange',
-    name: 'Madrid Language Exchange',
-    image: '../../assets/event-lightning.avif',
-    href: '#/community-one-ui',
-    membersCount: 412,
-    rating: 4.8,
-    ratingCount: 96,
-    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
-    interests: ['language-exchange', 'spanish', 'spanish-practice'],
-  },
-  {
-    id: 'cultura-madrid',
-    name: 'Cultura Madrid',
-    image: '../../assets/event-sketch.avif',
-    href: '#/community-one-ui',
-    membersCount: 287,
-    rating: 4.9,
-    ratingCount: 54,
-    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
-    interests: ['spanish', 'spanish-practice'],
-  },
-  {
-    id: 'tapas-and-talk',
-    name: 'Tapas & Talk',
-    image: '../../assets/event-wine.jpg',
-    href: '#/community-one-ui',
-    membersCount: 193,
-    rating: 4.7,
-    ratingCount: 71,
-    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
-    interests: ['spanish', 'spanish-practice', 'food'],
-  },
-];
-
 export const events: EventBasic[] = [
   {
     id: 'lightning-talks',
@@ -284,7 +248,279 @@ export const events: EventBasic[] = [
   }
 ];
 
-export const eventsForInterest: EventBasic[] = [
+export const MAX_FOLLOWED_INTERESTS = 10; // can change later
+
+export const interests: Interest[] = [
+  {
+    label: 'cycling',
+    category: 'Sport',
+    followerIds: [
+      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
+      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Madrid Cycling Club',
+    //     href: 'https://www.meetup.com/example-madrid-cycling-club',
+    //   },
+    //   {
+    //     label: 'Strava Madrid Riders',
+    //     href: 'https://www.strava.com/clubs/example-madrid-riders',
+    //   },
+    // ],
+  },
+  {
+    label: 'hiking',
+    category: 'Sport',
+    followerIds: [
+      'member-2', 'member-5', 'member-8', 'member-11', 'member-14',
+      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Madrid Hikers Meetup',
+    //     href: 'https://www.meetup.com/example-madrid-hikers',
+    //   },
+    // ],
+  },
+  {
+    label: 'tennis',
+    category: 'Sport',
+    followerIds: [
+      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
+      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+      'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
+      'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
+      'member-31',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Local Tennis Ladder group',
+    //     href: 'https://chat.whatsapp.com/example-tennis-ladder',
+    //   },
+    // ],
+  },
+  {
+    label: 'unicycling',
+    category: 'Sport',
+    followerIds: [
+      'member-10', 'member-11', 'member-12', 'member-13', 'member-14',
+      'member-15', 'member-16', 'member-17', 'member-18', 'member-19',
+      'member-20', 'member-21', 'member-22', 'member-23', 'member-24',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Unicycle Madrid community',
+    //     href: 'https://www.meetup.com/example-unicycle-madrid',
+    //   },
+    // ],
+  },
+  {
+    label: 'painting',
+    category: 'Creative',
+    followerIds: [
+      'member-3', 'member-6', 'member-9', 'member-12', 'member-15',
+      'member-18', 'member-21', 'member-24', 'member-25', 'member-27',
+      'member-30', 'member-33',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Madrid Art Studio group',
+    //     href: 'https://www.meetup.com/example-madrid-art-studio',
+    //   },
+    // ],
+  },
+  {
+    label: 'tango',
+    category: 'Creative',
+    followerIds: [
+      'member-4', 'member-8', 'member-12', 'member-16', 'member-20',
+      'member-24', 'member-28', 'member-32',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Tango Milonga Madrid',
+    //     href: 'https://www.meetup.com/example-tango-milonga-madrid',
+    //   },
+    // ],
+  },
+  {
+    label: 'self-development',
+    category: 'Self Care',
+    followerIds: ['member-5', 'member-10', 'member-15'],
+    // externalLinks: [
+    //   {
+    //     label: 'Personal Growth Book Club',
+    //     href: 'https://chat.whatsapp.com/example-personal-growth-book-club',
+    //   },
+    // ],
+  },
+  {
+    label: 'yoga',
+    category: 'Self Care',
+    followerIds: [
+      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
+      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+      'member-21',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Madrid Yoga Circle',
+    //     href: 'https://www.meetup.com/example-madrid-yoga-circle',
+    //   },
+    // ],
+  },
+  {
+    label: 'dinosaurs',
+    category: 'General',
+    followerIds: ['member-22', 'member-23', 'member-24', 'member-25', 'member-26'],
+    // externalLinks: [
+    //   {
+    //     label: 'Paleontology Enthusiasts forum',
+    //     href: 'https://www.example.com/paleontology-enthusiasts',
+    //   },
+    // ],
+  },
+  {
+    label: 'chess',
+    category: 'General',
+    followerIds: [
+      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Madrid Chess Club',
+    //     href: 'https://www.meetup.com/example-madrid-chess-club',
+    //   },
+    // ],
+  },
+  {
+    label: 'boardgames',
+    category: 'General',
+    followerIds: [
+      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
+      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+      'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
+      'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Board Game Night Madrid',
+    //     href: 'https://www.meetup.com/example-board-game-night-madrid',
+    //   },
+    // ],
+  },
+  {
+    label: 'ai',
+    category: 'General',
+    followerIds: [
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
+      'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
+      'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
+      'member-31', 'member-32', 'member-33', 'member-34', 'member-35',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'AI Builders Madrid',
+    //     href: 'https://www.meetup.com/example-ai-builders-madrid',
+    //   },
+    // ],
+  },
+  {
+    label: 'cooking',
+    category: 'General',
+    followerIds: ['member-36', 'member-37', 'member-38'],
+    // externalLinks: [
+    //   {
+    //     label: 'Home Cooks Madrid',
+    //     href: 'https://chat.whatsapp.com/example-home-cooks-madrid',
+    //   },
+    // ],
+  },
+  {
+    label: 'psychedelics',
+    category: 'General',
+    followerIds: [
+      'member-33', 'member-34', 'member-35', 'member-36',
+      'member-37', 'member-38', 'member-39', 'member-40',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Integration Circle',
+    //     href: 'https://www.example.com/integration-circle',
+    //   },
+    // ],
+  },
+  {
+    label: 'spanish',
+    category: 'languages',
+    followerIds: [
+      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
+      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
+      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
+      'member-16', 'member-17', 'member-18',
+    ],
+  },
+  {
+    label: 'german',
+    category: 'languages',
+    followerIds: [
+      'member-19', 'member-20', 'member-21', 'member-22', 'member-23',
+      'member-24', 'member-25', 'member-26', 'member-27', 'member-28',
+      'member-29', 'member-30',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'German Conversation Café',
+    //     href: 'https://www.meetup.com/example-german-conversation-cafe',
+    //   },
+    // ],
+  },
+  {
+    label: 'mandarin',
+    category: 'languages',
+    followerIds: [
+      'member-5', 'member-10', 'member-15', 'member-20', 'member-25',
+      'member-30', 'member-31', 'member-32', 'member-33', 'member-34',
+      'member-35', 'member-36', 'member-37', 'member-38',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'Mandarin Exchange Madrid',
+    //     href: 'https://www.meetup.com/example-mandarin-exchange-madrid',
+    //   },
+    // ],
+  },
+  {
+    label: 'french',
+    category: 'languages',
+    followerIds: [
+      'member-2', 'member-3', 'member-6', 'member-7', 'member-11',
+      'member-12', 'member-16', 'member-17', 'member-21', 'member-22',
+      'member-26', 'member-27', 'member-32', 'member-33', 'member-37',
+      'member-40',
+    ],
+    // externalLinks: [
+    //   {
+    //     label: 'French Table Talk group',
+    //     href: 'https://chat.whatsapp.com/example-french-table-talk',
+    //   },
+    // ],
+  },
+];
+
+// for one specific interest (spanish) only
+export const eventsForOneInterest: EventBasic[] = [
   {
     id: 'spanish-conversations-cafe-comercial',
     title: 'Spanish Conversations @ Café Comercial',
@@ -323,274 +559,50 @@ export const eventsForInterest: EventBasic[] = [
   },
 ];
 
-export const MAX_FOLLOWED_INTERESTS = 10; // can change later
+export const communitiesForOneInterest: CommunityBasic[] = [
+  {
+    id: 'madrid-language-exchange',
+    name: 'Madrid Language Exchange',
+    image: '../../assets/event-lightning.avif',
+    href: '#/community-one-ui',
+    membersCount: 412,
+    rating: 4.8,
+    ratingCount: 96,
+    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+    interests: ['language-exchange', 'spanish', 'spanish-practice'],
+  },
+  {
+    id: 'cultura-madrid',
+    name: 'Cultura Madrid',
+    image: '../../assets/event-sketch.avif',
+    href: '#/community-one-ui',
+    membersCount: 287,
+    rating: 4.9,
+    ratingCount: 54,
+    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+    interests: ['spanish', 'spanish-practice'],
+  },
+  {
+    id: 'tapas-and-talk',
+    name: 'Tapas & Talk',
+    image: '../../assets/event-wine.jpg',
+    href: '#/community-one-ui',
+    membersCount: 193,
+    rating: 4.7,
+    ratingCount: 71,
+    description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+    interests: ['spanish', 'spanish-practice', 'food'],
+  },
+];
 
-export const interests: Interest[] = [
+export const externalLinksForOneInterest: Link[] = [
   {
-    label: 'cycling',
-    category: 'Sport',
-    followerIds: [
-      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
-      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Madrid Cycling Club',
-    //     href: 'https://www.meetup.com/example-madrid-cycling-club',
-    //   },
-    //   {
-    //     label: 'Strava Madrid Riders',
-    //     href: 'https://www.strava.com/clubs/example-madrid-riders',
-    //   },
-    // ],
+    label: 'Spanish Coffee whatsapp group',
+    href: 'https://chat.whatsapp.com/example-spanish-coffee',
   },
   {
-    label: 'hiking',
-    category: 'Sport',
-    followerIds: [
-      'member-2', 'member-5', 'member-8', 'member-11', 'member-14',
-      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Madrid Hikers Meetup',
-    //     href: 'https://www.meetup.com/example-madrid-hikers',
-    //   },
-    // ],
-  },
-  {
-    label: 'tennis',
-    category: 'Sport',
-    followerIds: [
-      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
-      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
-      'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
-      'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
-      'member-31',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Local Tennis Ladder group',
-    //     href: 'https://chat.whatsapp.com/example-tennis-ladder',
-    //   },
-    // ],
-  },
-  {
-    label: 'unicycling',
-    category: 'Sport',
-    followerIds: [
-      'member-10', 'member-11', 'member-12', 'member-13', 'member-14',
-      'member-15', 'member-16', 'member-17', 'member-18', 'member-19',
-      'member-20', 'member-21', 'member-22', 'member-23', 'member-24',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Unicycle Madrid community',
-    //     href: 'https://www.meetup.com/example-unicycle-madrid',
-    //   },
-    // ],
-  },
-  {
-    label: 'painting',
-    category: 'Creative',
-    followerIds: [
-      'member-3', 'member-6', 'member-9', 'member-12', 'member-15',
-      'member-18', 'member-21', 'member-24', 'member-25', 'member-27',
-      'member-30', 'member-33',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Madrid Art Studio group',
-    //     href: 'https://www.meetup.com/example-madrid-art-studio',
-    //   },
-    // ],
-  },
-  {
-    label: 'tango',
-    category: 'Creative',
-    followerIds: [
-      'member-4', 'member-8', 'member-12', 'member-16', 'member-20',
-      'member-24', 'member-28', 'member-32',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Tango Milonga Madrid',
-    //     href: 'https://www.meetup.com/example-tango-milonga-madrid',
-    //   },
-    // ],
-  },
-  {
-    label: 'self-development',
-    category: 'Self Care',
-    followerIds: ['member-5', 'member-10', 'member-15'],
-    // relatedLinks: [
-    //   {
-    //     label: 'Personal Growth Book Club',
-    //     href: 'https://chat.whatsapp.com/example-personal-growth-book-club',
-    //   },
-    // ],
-  },
-  {
-    label: 'yoga',
-    category: 'Self Care',
-    followerIds: [
-      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
-      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
-      'member-21',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Madrid Yoga Circle',
-    //     href: 'https://www.meetup.com/example-madrid-yoga-circle',
-    //   },
-    // ],
-  },
-  {
-    label: 'dinosaurs',
-    category: 'General',
-    followerIds: ['member-22', 'member-23', 'member-24', 'member-25', 'member-26'],
-    // relatedLinks: [
-    //   {
-    //     label: 'Paleontology Enthusiasts forum',
-    //     href: 'https://www.example.com/paleontology-enthusiasts',
-    //   },
-    // ],
-  },
-  {
-    label: 'chess',
-    category: 'General',
-    followerIds: [
-      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Madrid Chess Club',
-    //     href: 'https://www.meetup.com/example-madrid-chess-club',
-    //   },
-    // ],
-  },
-  {
-    label: 'boardgames',
-    category: 'General',
-    followerIds: [
-      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
-      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
-      'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
-      'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Board Game Night Madrid',
-    //     href: 'https://www.meetup.com/example-board-game-night-madrid',
-    //   },
-    // ],
-  },
-  {
-    label: 'ai',
-    category: 'General',
-    followerIds: [
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-      'member-16', 'member-17', 'member-18', 'member-19', 'member-20',
-      'member-21', 'member-22', 'member-23', 'member-24', 'member-25',
-      'member-26', 'member-27', 'member-28', 'member-29', 'member-30',
-      'member-31', 'member-32', 'member-33', 'member-34', 'member-35',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'AI Builders Madrid',
-    //     href: 'https://www.meetup.com/example-ai-builders-madrid',
-    //   },
-    // ],
-  },
-  {
-    label: 'cooking',
-    category: 'General',
-    followerIds: ['member-36', 'member-37', 'member-38'],
-    // relatedLinks: [
-    //   {
-    //     label: 'Home Cooks Madrid',
-    //     href: 'https://chat.whatsapp.com/example-home-cooks-madrid',
-    //   },
-    // ],
-  },
-  {
-    label: 'psychedelics',
-    category: 'General',
-    followerIds: [
-      'member-33', 'member-34', 'member-35', 'member-36',
-      'member-37', 'member-38', 'member-39', 'member-40',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Integration Circle',
-    //     href: 'https://www.example.com/integration-circle',
-    //   },
-    // ],
-  },
-  {
-    label: 'spanish',
-    category: 'languages',
-    followerIds: [
-      'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
-      'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
-      'member-11', 'member-12', 'member-13', 'member-14', 'member-15',
-      'member-16', 'member-17', 'member-18',
-    ],
-  },
-  {
-    label: 'german',
-    category: 'languages',
-    followerIds: [
-      'member-19', 'member-20', 'member-21', 'member-22', 'member-23',
-      'member-24', 'member-25', 'member-26', 'member-27', 'member-28',
-      'member-29', 'member-30',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'German Conversation Café',
-    //     href: 'https://www.meetup.com/example-german-conversation-cafe',
-    //   },
-    // ],
-  },
-  {
-    label: 'mandarin',
-    category: 'languages',
-    followerIds: [
-      'member-5', 'member-10', 'member-15', 'member-20', 'member-25',
-      'member-30', 'member-31', 'member-32', 'member-33', 'member-34',
-      'member-35', 'member-36', 'member-37', 'member-38',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'Mandarin Exchange Madrid',
-    //     href: 'https://www.meetup.com/example-mandarin-exchange-madrid',
-    //   },
-    // ],
-  },
-  {
-    label: 'french',
-    category: 'languages',
-    followerIds: [
-      'member-2', 'member-3', 'member-6', 'member-7', 'member-11',
-      'member-12', 'member-16', 'member-17', 'member-21', 'member-22',
-      'member-26', 'member-27', 'member-32', 'member-33', 'member-37',
-      'member-40',
-    ],
-    // relatedLinks: [
-    //   {
-    //     label: 'French Table Talk group',
-    //     href: 'https://chat.whatsapp.com/example-french-table-talk',
-    //   },
-    // ],
+    label: 'Real Language Exchanges group',
+    href: 'https://www.meetup.com/example-language-exchanges',
   },
 ];
 

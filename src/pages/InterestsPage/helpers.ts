@@ -1,12 +1,5 @@
 import type { Interest, InterestCategoryGroup } from '@src/data';
 
-const MAX_ITEMS_PER_GROUP = 6;
-const MAX_GENERAL_ITEMS = 12;
-
-function getMaxItemsForCategory(category: string): number {
-  return category.toLowerCase() === 'general' ? MAX_GENERAL_ITEMS : MAX_ITEMS_PER_GROUP;
-}
-
 export function groupInterestsByCategory(interests: Interest[]): InterestCategoryGroup[] {
   const grouped = new Map<string, Interest[]>();
 
@@ -32,6 +25,13 @@ export function groupInterestsByCategory(interests: Interest[]): InterestCategor
       return b.totalFollowers - a.totalFollowers || a.category.localeCompare(b.category);
     })
     .map(({ category, items }) => ({ category, items }));
+
+  function getMaxItemsForCategory(category: string): number {
+    const MAX_ITEMS_PER_GROUP = 6;
+    const MAX_GENERAL_ITEMS = 12;
+  
+    return category.toLowerCase() === 'general' ? MAX_GENERAL_ITEMS : MAX_ITEMS_PER_GROUP;
+  }
 }
 
 export function hasExactInterestMatch(interests: Interest[], query: string): boolean {

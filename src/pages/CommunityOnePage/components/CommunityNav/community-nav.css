@@ -15,20 +15,21 @@
 }
 
 .community-nav__container {
-  padding: 0.75rem 1rem;
+  padding: 0.625rem 1rem 0.625rem;
 }
 
 .community-nav__links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  /* align-items: flex-start; */
   gap: 2rem;
   padding: 0 1rem;
 }
 
 .community-nav__link {
   color: var(--global-text-muted);
-  @apply courier-inline;
+  @apply courier-inline-extra-padding;
   text-decoration: none;
   transition: color 0.2s ease;
 

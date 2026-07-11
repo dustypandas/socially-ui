@@ -64,7 +64,7 @@ function getMemberAvatar(member: (typeof members)[number]): MemberAvatar {
     id: member.id,
     label: member.name,
     image: member.avatar,
-    href: '#',
+    href: '#/member-one-ui',
   };
 }
 

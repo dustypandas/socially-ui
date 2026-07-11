@@ -1,8 +1,8 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import IconUser from '@src/assets/icon-user-outline.svg?react';
-import type { MemberAvatar } from '@src/data';
-import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
+// import IconUser from '@src/assets/icon-user-outline.svg?react';
+// import type { MemberAvatar } from '@src/data';
+// import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
 import './community-intro-panel.css';
 
 type CommunityIntroPanelProps = {
@@ -10,7 +10,7 @@ type CommunityIntroPanelProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
-  organizers: MemberAvatar[];
+  // organizers: MemberAvatar[];
 };
 
 export function CommunityIntroPanel({
@@ -18,7 +18,7 @@ export function CommunityIntroPanel({
   memberCount,
   rating,
   ratingCount,
-  organizers,
+  // organizers,
 }: CommunityIntroPanelProps) {
   return (
     <div className="community-intro-panel">
@@ -30,12 +30,12 @@ export function CommunityIntroPanel({
             {memberCount} followers
           </span>
         </div>
-        <div className="community-intro-panel__attribute">
+        {/* <div className="community-intro-panel__attribute">
           <IconUser className="community-intro-panel__icon" />
           <span className="community-intro-panel__attribute-label">
             Organized by {nameAndOthersLabel(organizers)}
           </span>
-        </div>
+        </div> */}
         <div className="community-intro-panel__attribute">
           <IconStar className="community-intro-panel__icon community-intro-panel__icon--rating" />
           <span className="community-intro-panel__attribute-label">

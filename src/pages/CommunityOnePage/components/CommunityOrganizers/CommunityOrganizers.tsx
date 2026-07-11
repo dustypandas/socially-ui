@@ -25,7 +25,7 @@ export function CommunityOrganizers({ organizers }: CommunityOrganizersProps) {
           <div className="community-organizers__label">
             {nameAndOthersLabel(organizers)}
           </div>
-          <a href="#" className="community-organizers__contact">
+          <a href="#/member-one-ui" className="community-organizers__contact">
             <IconContact className="community-organizers__contact-icon" />
             <span>contact</span>
           </a>

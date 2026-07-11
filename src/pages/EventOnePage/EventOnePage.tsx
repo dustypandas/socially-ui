@@ -80,6 +80,7 @@ export function EventOnePage() {
                 profiles={eventOnePageData.attendees.avatars}
                 attendeeCount={eventOnePageData.attendees.count}
               />
+              <div className="interest-one-page__divider--hidden" />
               <EventDescription htmlContent={eventOnePageData.descriptionHtml} />
               <EventTags interests={eventOnePageData.eventInterests} />
               <div className="event-one-page__divider" />
@@ -100,12 +101,9 @@ export function EventOnePage() {
                   >
                     {eventOnePageData.title}
                   </h3>
-                  <EventCommunity
-                    name={eventOnePageData.community.name}
-                    img={eventOnePageData.community.image}
-                    details={eventOnePageData.community.description}
-                  />
-                  <div className="event-one-page__divider" />
+                  <div className="interest-one-page__divider--hidden" />
+                  <EventCommunity community={eventOnePageData.community} />
+                  <div className="event-one-page__divider--reverse-hidden" />
                   <EventHosts hosts={eventOnePageData.hosts} />
                   <div className="event-one-page__divider" />
                   <EventLocationDetails

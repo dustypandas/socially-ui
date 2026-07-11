@@ -14,7 +14,7 @@ export function EventCard({ event }: EventCardProps) {
   const datetimeLabel = getDatetimeLabel(event.startTime);
 
   return (
-    <a href="#/event-one-ui" className="event-card" target="_blank">
+    <a href={event.href} className="event-card" target="_blank">
       <img className="event-card__image" src={event.image} alt="" />
       <div className="event-card__body">
         <h3 className="event-card__title">

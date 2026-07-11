@@ -56,7 +56,7 @@ export function CommunityOnePage() {
                 events={communityOnePageData.pastEvents}
               />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky={50} asideWidth="min(380px, 38%)">
+            <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
               <div className="community-one-page__aside">
                 <CommunityOrganizers organizers={communityOnePageData.organizers} />
                 <CommunityMembers

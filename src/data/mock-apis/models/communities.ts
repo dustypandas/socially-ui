@@ -5,7 +5,7 @@ import {
   myCommunityIds,
 } from '../../dummyData.ts';
 import { getFollowedInterests } from './interests.ts';
-import type { CommunityBasic } from '../../types.ts';
+import type { CommunityAvatar, CommunityBasic } from '../../types.ts';
 
 export type CommunityScope = 'all' | 'mine' | 'interests';
 
@@ -50,7 +50,7 @@ export async function getCommunitiesForOneInterest(): Promise<CommunityBasic[]> 
   return communitiesForOneInterest;
 }
 
-export async function getCommunityForOneEvent(): Promise<CommunityBasic> {
+export async function getCommunityForOneEvent(): Promise<CommunityAvatar> {
   return communityForOneEvent;
 }
 

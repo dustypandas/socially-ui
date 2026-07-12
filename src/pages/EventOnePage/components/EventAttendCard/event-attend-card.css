@@ -2,11 +2,8 @@
 @import '../../../../globals.css';
 
 .event-attend-card {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 1px 2px var(--medium-shadow); /* same as card-shadow */
   margin: 1.5rem 0;
-  @apply rounded-corners;
+  @apply card-style--no-hover;
 }
 
 .event-attend-card--fixed-bar {
@@ -19,7 +16,6 @@
   z-index: var(--z-index-fixed-bar);
   border-radius: 0;
   border-top: 1px solid var(--light-shadow);
-  box-shadow: 0 -1px 3px var(--light-shadow); /* same as header-shadow, on top */
   transform: translateY(100%);
   transition: transform 0.3s ease-out;
 
@@ -30,6 +26,10 @@
   &.event-attend-card--fixed-bar--visible {
     transform: translateY(0);
   }
+}
+.event-attend-card--fixed-bar,
+.event-attend-card--fixed-bar:hover {
+  box-shadow: 0 -1px 2px var(--light-shadow); /* same as header-shadow, on top */
 }
 
 .event-attend-card__header {

@@ -25,7 +25,11 @@ export function CommunitiesPage() {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader title={pageTitle} />
+              <PageHeader
+                title={pageTitle}
+                backLabel="←&thinsp;Home"
+                backHref="#/home-ui"
+              />
               <div className="communities-page__filters communities-page__filters--main">
                 <CommunitiesFilters {...filterProps} />
               </div>

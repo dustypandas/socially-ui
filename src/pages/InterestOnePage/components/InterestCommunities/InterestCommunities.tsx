@@ -1,5 +1,5 @@
 import type { CommunityBasic } from '@src/data';
-import { CommunityCard } from '@src/pages/InterestOnePage/components/CommunityCard/CommunityCard';
+import { CommunityCard } from '@src/components';
 import './interest-communities.css';
 
 type InterestCommunitiesProps = {

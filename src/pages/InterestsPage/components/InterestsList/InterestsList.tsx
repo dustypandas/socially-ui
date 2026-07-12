@@ -48,7 +48,7 @@ export function InterestsList({
                   href="#/interest-one-ui"
                   className="interests-list__link"
                 >
-                  {interest.label} ({interest.followerIds?.length ?? 0})
+                  #{interest.label} ({interest.followerIds?.length ?? 0})
                 </a>
                 {isFollowed
                   ? (<button

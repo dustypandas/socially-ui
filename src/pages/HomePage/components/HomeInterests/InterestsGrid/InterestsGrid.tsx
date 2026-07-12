@@ -11,7 +11,7 @@ export function InterestsGrid({ popularInterests }: InterestsGridProps) {
       {popularInterests.map(interest => (
         <li key={interest.label} className="interests-grid__item">
           <a href="#/interest-one-ui" className="interests-grid__link">
-            {interest.label} ({interest.followerIds?.length ?? 0})
+            #{interest.label} ({interest.followerIds?.length ?? 0})
           </a>
         </li>
       ))}

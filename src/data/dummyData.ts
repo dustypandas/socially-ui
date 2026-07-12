@@ -1,4 +1,4 @@
-import type { CommunityBasic, EventBasic, Interest, Link, MemberAvatar, MemberProfile } from './types.ts';
+import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, Interest, InterestBasic, InterestEngagement, Link, MemberAvatar, MemberProfile } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -59,7 +59,7 @@ export const members = [
   avatar: MEMBER_AVATAR_URLS[index % MEMBER_AVATAR_URLS.length],
 }));
 
-function getMemberAvatar(member: (typeof members)[number]): MemberAvatar {
+function toMemberAvatar(member: (typeof members)[number]): MemberAvatar {
   return {
     id: member.id,
     label: member.name,
@@ -69,9 +69,9 @@ function getMemberAvatar(member: (typeof members)[number]): MemberAvatar {
 }
 
 export const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
-  'achi': getMemberAvatar(members[2]),
-  'peter': getMemberAvatar(members[0]),
-  'maria': getMemberAvatar(members[1]),
+  'achi': toMemberAvatar(members[2]),
+  'peter': toMemberAvatar(members[0]),
+  'maria': toMemberAvatar(members[1]),
 };
 
 function getDynamicAttendees(attendeesCount: number) {
@@ -80,7 +80,7 @@ function getDynamicAttendees(attendeesCount: number) {
   return {
     count: attendeesCount,
     avatars: members.slice(0, attendeeAvatarsCount)
-      .map(getMemberAvatar),
+      .map(toMemberAvatar),
   };
 }
 
@@ -92,8 +92,8 @@ export const memberForOneProfile: MemberProfile = {
   inCurrCitySince: new Date('2025-01'),
   prevCities: ['London, United Kingdom', 'Barcelona, Spain', 'Paris, France'],
   nearestMetro: 'Tribunal',
-  lat: 40.4168,
-  lng: -3.7038,
+  lat: 40.42624,
+  lng: -3.70109,
 };
 
 export const communities: CommunityBasic[] = [
@@ -165,9 +165,19 @@ export const communities: CommunityBasic[] = [
   },
 ];
 
+function toCommunityAvatar(community: CommunityBasic): CommunityAvatar {
+  return {
+    id: community.id,
+    name: community.name,
+    image: community.image,
+    href: community.href,
+    description: community.description,
+  };
+}
+
 // for one specific community (polylogue madrid) only
 export const memberAvatarsForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
-  .map(getMemberAvatar);
+  .map(toMemberAvatar);
 
 export const futureEventsForOneCommunity: EventBasic[] = [
   {
@@ -365,7 +375,7 @@ export const events: EventBasic[] = [
 ];
 
 // for one specific event (lightning talks) only
-export const communityForOneEvent: CommunityBasic = communities[1];
+export const communityForOneEvent: CommunityAvatar = toCommunityAvatar(communities[1]);
 
 export const attendeesForOneEvent: {
   count: number;
@@ -644,6 +654,12 @@ export const interests: Interest[] = [
   },
 ];
 
+function toInterestBasic(interest: Interest): InterestBasic {
+  return {
+    label: interest.label,
+  }
+}
+
 // for one specific interest (spanish) only
 export const eventsForOneInterest: EventBasic[] = [
   {
@@ -751,3 +767,41 @@ function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: n
 }
 
 // ----- no edit to data above this point, except with explicit permission -----
+
+export const communityEngagementsForOneMember: CommunityEngagement[] = [
+  {
+    ...toCommunityAvatar(communities[3]),
+    attendedCount: 21,
+    hostedCount: 7,
+    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    isHost: true,
+  },
+  {
+    ...toCommunityAvatar(communities[4]),
+    attendedCount: 11,
+    hostedCount: 3,
+    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    isHost: true,
+    isContributor: true,
+  },
+  {
+    ...toCommunityAvatar(communities[5]),
+    attendedCount: 4,
+    hostedCount: 0,
+    joinedSince: getDynamicEventStartTime(2, 19, 0),
+  },
+];
+
+export const interestEngagementsForOneMember: InterestEngagement[] = [
+  interests[1],
+  interests[3],
+  interests[5],
+  interests[7],
+  interests[9],
+  interests[11],
+].map(interest => ({
+  ...toInterestBasic(interest),
+  attendedCount: Math.floor(Math.random() * 20) + 1,
+  hostedCount: 5,
+  joinedSince: getDynamicEventStartTime(2, 19, 0),
+}));

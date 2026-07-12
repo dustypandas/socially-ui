@@ -1,8 +1,8 @@
 import { ColumnsLayout, PageLayout } from '@src/components';
 import {
   MemberProfile,
-  MemberActiveCommunities,
-  MemberTopInterests,
+  MemberCommunities,
+  MemberInterests,
 } from './components';
 import { useMemberOneStates } from './useMemberOneStates';
 import './member-one-page.css';
@@ -20,9 +20,11 @@ export function MemberOnePage() {
         <div className="width-container">
           <ColumnsLayout mainPosition="right">
             <ColumnsLayout.Main>
-              <MemberTopInterests interests={memberOnePageData.activityHistory.interests} />
-              <MemberActiveCommunities
-                communities={memberOnePageData.activityHistory.communities}
+              <MemberInterests
+                interests={memberOnePageData.engagements.interests}
+              />
+              <MemberCommunities
+                communities={memberOnePageData.engagements.communities}
               />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">

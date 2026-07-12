@@ -1,3 +1,3 @@
 export { MemberProfile } from './MemberProfile/MemberProfile';
-export { MemberTopInterests } from './MemberTopInterests/MemberTopInterests';
-export { MemberActiveCommunities } from './MemberActiveCommunities/MemberActiveCommunities';
+export { MemberInterests } from './MemberInterests/MemberInterests';
+export { MemberCommunities } from './MemberCommunities/MemberCommunities';

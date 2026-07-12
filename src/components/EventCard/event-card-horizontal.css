@@ -6,17 +6,7 @@
   flex-direction: row;
   align-items: flex-start;
   width: 100%;
-  background: white;
-  color: var(--global-text);
-  overflow: hidden;
-  text-decoration: none;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-  @apply rounded-corners;
-  @apply card-shadow;
-
-  &:hover {
-    animation: hover-swing 0.8s ease forwards;
-  }
+  @apply card-style;
 }
 
 .event-card-horizontal__body {

@@ -1,9 +1,9 @@
+import type { EventBasic } from '@src/data';
 import IconCalendar from '@src/assets/icon-calendar-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { EventBasic } from '@src/data';
-import { getDatetimeLabel } from '@src/utils/getDatetimeLabels';
+import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
 import './event-card.css';
 
 type EventCardProps = {
@@ -11,7 +11,7 @@ type EventCardProps = {
 };
 
 export function EventCard({ event }: EventCardProps) {
-  const datetimeLabel = getDatetimeLabel(event.startTime);
+  const { datetimeLabel } = getDateAndTimeLabels(event.startTime);
 
   return (
     <a href={event.href} className="event-card" target="_blank">

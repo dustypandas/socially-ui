@@ -3,7 +3,7 @@ import type { CommunitiesPageData, CommunityOnePageData, EventOnePageData, Event
 import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommunities, getOneCommunity, type CommunityScope } from './models/communities.ts';
 import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getOneEvent, getPastEventsForOneCommunity } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers, getMaxFollowedInterests, getOneInterest } from './models/interests.ts';
-import { getAttendeesForOneEvent, getMemberAvatarsForOneCommunity, getOneMember } from './models/members.ts';
+import { getAttendeesForOneEvent, getMemberAvatarsForOneCommunity, getOneMemberAndEngagements } from './models/members.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
@@ -167,33 +167,10 @@ export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
 }
 
 export async function getMemberOnePageData(): Promise<MemberOnePageData> {
-  const targetMember = await getOneMember();
+  const targetMemberAndEngagements = await getOneMemberAndEngagements();
+
   return {
-    ...targetMember,
-    activityHistory: {
-      interests: [
-        {
-          interest: 'public-speaking',
-          joinedCount: 5,
-          hostedCount: 0,
-          followingSince: '2025-01',
-        },
-        {
-          interest: 'tango',
-          joinedCount: 2,
-          hostedCount: 0,
-          followingSince: '2025-03',
-        },
-        {
-          interest: 'open-social',
-          joinedCount: 15,
-          hostedCount: 0,
-          followingSince: '2024-06',
-        },
-      ],
-      communities: [],
-    },
+    ...targetMemberAndEngagements,
   };
-  ;
 }
 

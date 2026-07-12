@@ -1,23 +1,14 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.event-community {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 1.5rem;
-}
-
-.event-community__header {
+.community-avatar {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  color: inherit;
-
   @apply clickable-text;
 }
 
-.event-community__img {
+.community-avatar__img {
   width: 2.5rem;
   height: 2.5rem;
   margin-bottom: 0.75rem;
@@ -28,31 +19,26 @@
   flex-shrink: 0;
 }
 
-.event-community__title-group {
+.community-avatar__title-group {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
 }
 
-.event-community__label {
-  color: var(--global-text-muted);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-sm);
-  line-height: 1.25;
-}
-
-.event-community__name {
+.community-avatar__name {
   color: var(--global-text);
   font-size: var(--font-size-md);
   padding-bottom: 0.25rem;
   font-weight: 500;
+  line-height: 1;
   @apply text-ellipsis;
 }
 
-.event-community__about {
+.community-avatar__description {
   color: var(--global-text-muted);
   font-size: var(--font-size-sm);
   line-height: 1.5;
+  margin: 0;
   @apply text-ellipsis;
   line-clamp: 2;
   -webkit-line-clamp: 2;

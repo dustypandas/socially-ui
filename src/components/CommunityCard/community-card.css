@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '../../../../globals.css';
+@import '../../globals.css';
 
 .community-card {
   display: flex;
@@ -7,16 +7,7 @@
   width: 100%;
   min-width: 200px;
   height: 100%;
-  background: white;
-  color: var(--global-text);
-  overflow: hidden;
-  text-decoration: none;
-  @apply rounded-corners;
-  @apply card-shadow;
-
-  &:hover {
-    animation: hover-swing 0.8s ease forwards;
-  }
+  @apply card-style;
 }
 
 .community-card__image {

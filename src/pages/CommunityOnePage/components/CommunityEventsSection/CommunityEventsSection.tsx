@@ -1,7 +1,7 @@
 import type { EventBasic } from '@src/data';
 import { EventCardHorizontal, SectionHeader, SectionMoreLink } from '@src/components';
+import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
 import './community-events-section.css';
-import { getDateAndTimeLabels } from '@src/utils/getDatetimeLabels';
 
 type CommunityEventsSectionProps = {
   events: EventBasic[];

@@ -20,10 +20,14 @@ export function MemberProfile({ member }: MemberProfileProps) {
           <div className="member-profile__detail-value">{inCurrCitySinceLabel}</div>
         </div>
         <div className="member-profile__detail-group">
+          <div className="member-profile__detail-label">Near:</div>
+          <div className="member-profile__detail-value">{member.nearestMetro}</div>
+        </div>
+        <div className="member-profile__detail-group">
           <div className="member-profile__detail-label">Previously lived in:</div>
           <div className="member-profile__detail-value">
             <div className="member-profile__previous-city">{previousLocation}</div>
-            <div className="member-profile__other-cities">{extraLocations.length > 0 && `and ${extraLocations.length} more`}</div>
+            <div className="member-profile__other-cities">{extraLocations.length > 0 && `+${extraLocations.length} others`}</div>
           </div>
         </div>
       </div>

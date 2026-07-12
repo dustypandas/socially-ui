@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import type { MemberAvatar } from '@src/data';
-import { getAttendeesLabel } from '@src/utils/getAttendeesLabel';
+import { getAttendeesLabel } from '@src/utils/labelHelpers';
 import './event-attend-card.css';
 
 type EventAttendCardProps = {

@@ -7,20 +7,7 @@
   width: 100%;
   min-width: 200px;
   height: 100%;
-  /* border: 1px solid var(--home-border); */
-  background: white;
-  color: var(--global-text);
-  overflow: hidden;
-  @apply rounded-corners;
-  @apply card-shadow;
-
-  &:hover {
-    /* transform: scale(1.02); */
-    /* transform: translateY(-2px) scale(1.02); */
-    animation: hover-swing 0.8s ease forwards;
-    /* animation: hover-zoom 0.6s ease forwards; */
-    /* animation: hover-pop 0.4s ease forwards; */
-  }
+  @apply card-style;
 }
 
 .event-card__image {

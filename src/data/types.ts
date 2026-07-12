@@ -15,6 +15,12 @@ export type Link = {
   href: string;
 };
 
+export type Engagement = {
+  attendedCount: number;
+  hostedCount: number;
+  joinedSince: number;
+};
+
 // export type DiscussionReply = {
 //   id: string;
 //   authorId: string;
@@ -85,8 +91,12 @@ export type EventAttendees = {
   avatars: MemberAvatar[];
 };
 
-export type Interest = {
+export type InterestBasic = {
   label: string;
+};
+
+export type Interest =
+InterestBasic & {
   category?: string;
   followerIds?: string[];
 };
@@ -124,18 +134,17 @@ export type MemberProfile =
   // updatedAt: string;
 };
 
-export type InterestActivityHistory = {
-  interest: string;
-  joinedCount: number;
-  hostedCount: number;
-  followingSince: string;
-};
-export type CommunityActivityHistory = {
-  communityId: string;
-  name: string;
-  joinedCount: number;
-  hostedCount: number;
-  joinedSince: string;
+// complex types
+export type InterestEngagement =
+& InterestBasic
+& Engagement;
+
+export type CommunityEngagement =
+& CommunityAvatar
+& Engagement
+& {
+  isHost?: boolean;
+  isContributor?: boolean;
 };
 
 // pages data
@@ -194,9 +203,9 @@ export type CommunityOnePageData =
 
 export type MemberOnePageData =
 & MemberProfile
-&{
-  activityHistory: {
-    interests: InterestActivityHistory[];
-    communities: CommunityActivityHistory[];
+& {
+  engagements: {
+    interests: InterestEngagement[];
+    communities: CommunityEngagement[];
   };
 };

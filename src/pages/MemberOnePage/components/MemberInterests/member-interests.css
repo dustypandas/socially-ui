@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.member-top-interests {
+.member-interests {
   padding-bottom: 2rem;
 
   .section-header {
@@ -9,7 +9,7 @@
   }
 }
 
-.member-top-interests__grid {
+.member-interests__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.25rem 1.5rem;
@@ -18,7 +18,7 @@
   padding: 0 0.75rem;
 }
 
-.member-top-interests__item {
+.member-interests__item {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -27,7 +27,7 @@
   line-height: 1.5;
 }
 
-.member-top-interests__link {
+.member-interests__link {
   color: var(--global-link-blue);
   @apply courier-inline;
 
@@ -36,13 +36,14 @@
   }
 }
 
-.member-top-interests__count {
+.member-interests__count {
   color: var(--global-text-light);
   @apply courier-inline;
+  font-size: var(--font-size-sm);
 }
 
 @media (max-width: theme(--breakpoint-lg)) {
-  .member-top-interests__grid {
+  .member-interests__grid {
     grid-template-columns: 1fr;
   }
 }

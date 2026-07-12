@@ -3,6 +3,7 @@ export function IndexPage() {
     <a href='#/home-ui'>Home page ui</a><br/><br/>
     <a href='#/communities-ui'>Communities page ui</a><br/><br/>
     <a href='#/community-one-ui'>Community one page ui</a><br/><br/>
+    <a href='#/member-one-ui'>Member one page ui</a><br/><br/>
     <a href='#/events-ui'>Events page ui</a><br/><br/>
     <a href='#/event-one-ui'>Event one page ui</a><br/><br/>
     <a href='#/interests-ui'>Interests page ui</a><br/><br/>

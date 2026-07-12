@@ -1,5 +1,5 @@
-import { communities, events, interests, MAX_FOLLOWED_INTERESTS, ORGANIZERS } from '../dummyData';
-import type { CommunitiesPageData, CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData } from '../types.ts';
+import { communities, events, interests, MAX_FOLLOWED_INTERESTS, ORGANIZERS, sampleMemberOnePageData } from '../dummyData';
+import type { CommunitiesPageData, CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData, MemberOnePageData } from '../types.ts';
 import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommunities, type CommunityScope } from './models/communities.ts';
 import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getPastEventsForOneCommunity } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers } from './models/interests.ts';
@@ -202,5 +202,9 @@ export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
   };
 
   return communityOnePageData;
+}
+
+export async function getMemberOnePageData(): Promise<MemberOnePageData> {
+  return sampleMemberOnePageData;
 }
 

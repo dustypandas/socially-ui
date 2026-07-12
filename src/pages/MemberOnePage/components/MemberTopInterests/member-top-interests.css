@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.member-top-interests {
+  padding-bottom: 2rem;
+
+  .section-header {
+    padding-top: 0;
+  }
+}
+
+.member-top-interests__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.75rem;
+}
+
+.member-top-interests__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+}
+
+.member-top-interests__tag {
+  color: var(--global-link-blue);
+  @apply courier-inline;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.member-top-interests__count {
+  color: var(--global-text-muted);
+  @apply courier-inline;
+}

@@ -11,6 +11,7 @@ import {
   IndexPage,
   InterestsPage,
   InterestOnePage,
+  MemberOnePage,
   PrevCommunityPage,
   PrevEventPage,
 } from './pages';
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/event-one-ui' element={<EventOnePage />} />
         <Route path='/communities-ui' element={<CommunitiesPage />} />
         <Route path='/community-one-ui' element={<CommunityOnePage />} />
+        <Route path='/member-one-ui' element={<MemberOnePage />} />
         <Route path='/prev-community-ui' element={<PrevCommunityPage />} />
         <Route path='/prev-event-ui' element={<PrevEventPage />} />
         {/* default invalid? */}

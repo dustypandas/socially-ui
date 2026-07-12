@@ -1,4 +1,4 @@
-// basics
+// primitives
 export type NavLink = {
   label: string;
   href: string;
@@ -119,6 +119,26 @@ export type MemberProfile =
   // updatedAt: string;
 };
 
+export type MemberActivityHistory = {
+  memberId: string;
+  interests: InterestActivityHistory[];
+  communities: CommunityActivityHistory[];
+};
+
+export type InterestActivityHistory = {
+  interest: string;
+  joinedCount: number;
+  hostedCount: number;
+  followingSince: string;
+};
+export type CommunityActivityHistory = {
+  communityId: string;
+  name: string;
+  joinedCount: number;
+  hostedCount: number;
+  joinedSince: string;
+};
+
 // pages data
 export type HomePageData = {
   popularInterests: Interest[];
@@ -178,4 +198,14 @@ export type CommunityOnePageData =
   futureEvents: EventBasic[];
   pastEventsCount: number;
   pastEvents: EventBasic[];
+};
+
+export type MemberOneProfile = MemberAvatar & {
+  inCurrentCitySince: string;
+  previousCities: string[];
+};
+
+export type MemberOnePageData = {
+  member: MemberOneProfile;
+  activityHistory: MemberActivityHistory;
 };

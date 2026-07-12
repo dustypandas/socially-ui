@@ -1,4 +1,4 @@
-import type { CommunityBasic, EventBasic, Interest, Link, MemberAvatar } from './types.ts';
+import type { CommunityBasic, EventBasic, Interest, Link, MemberAvatar, MemberOnePageData } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -737,3 +737,35 @@ function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: n
 }
 
 export const sampleCurrentUser = members[7];
+
+export const sampleMemberOnePageData: MemberOnePageData = {
+  member: {
+    ...ORGANIZERS.maria,
+    inCurrentCitySince: '< 1 year',
+    previousCities: ['London, United Kingdom', 'Madrid, Spain', 'Barcelona, Spain', 'Paris, France'],
+  },
+  activityHistory: {
+    memberId: ORGANIZERS.maria.id,
+    interests: [
+      {
+        interest: 'public-speaking',
+        joinedCount: 5,
+        hostedCount: 0,
+        followingSince: '2025-01',
+      },
+      {
+        interest: 'tango',
+        joinedCount: 2,
+        hostedCount: 0,
+        followingSince: '2025-03',
+      },
+      {
+        interest: 'open-social',
+        joinedCount: 15,
+        hostedCount: 0,
+        followingSince: '2024-06',
+      },
+    ],
+    communities: [],
+  },
+};

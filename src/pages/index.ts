@@ -5,6 +5,7 @@ export * from './EventsPage/EventsPage';
 export * from './EventOnePage/EventOnePage';
 export * from './InterestsPage/InterestsPage';
 export * from './InterestOnePage/InterestOnePage';
+export * from './MemberOnePage/MemberOnePage';
 export * from './PrevCommunityPage/PrevCommunityPage';
 export * from './PrevEventPage/PrevEventPage';
 export * from './IndexPage';

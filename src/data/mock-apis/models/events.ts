@@ -1,4 +1,4 @@
-import { events, eventsForOneInterest, futureEventsForOneCommunity, pastEventsForOneCommunity } from '../../dummyData.ts';
+import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity } from '../../dummyData.ts';
 import type { Event, EventBasic } from '../../types.ts';
 import { OpenToFilter, TimeFilter } from '../global-helpers.ts';
 import { filterEvents } from './events-filters.ts';
@@ -12,7 +12,7 @@ const EVENT_INTERESTS_BY_ID: Record<string, string[]> = {
   'wine-tasting-event': ['cooking'],
 };
 
-let tempEvents: Event[] = events.map(event => ({
+let tempEvents: EventBasic[] = events.map(event => ({
   ...event,
   hosts: [],
   location: { ...event.location, lat: 0, lng: 0 },
@@ -53,4 +53,38 @@ export async function getFutureEventsForOneCommunity(): Promise<EventBasic[]> {
 
 export async function getPastEventsForOneCommunity(): Promise<EventBasic[]> {
   return pastEventsForOneCommunity;
+}
+
+export async function getOneEvent(): Promise<Event> {
+  return {
+    ...events.find(event => event.id === 'lightning-talks')!,
+    hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
+    location: {
+      label: 'Palacio',
+      lat: 40.4254,
+      lng: -3.7038,
+    },
+    descriptionHtml: `<p>
+        5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
+      </p>
+      <p>
+        Lightning Talks is a format where a number of speakers give <b>5 minute presentations</b> about <b>any topic of their choosing</b>, followed by 5 minutes of open questions.
+      </p>
+      <p>
+        There will be <b>5-6 talks starting at 19:30</b>, followed by drinks and social.
+      </p>
+      <p>
+        Come join us to hear and discuss some unexpected ideas across surprising topics, broaden our horizons and meet interesting people.
+      </p>
+      <p>
+        You can find photos from some of our recent events here:<br/>
+        <a href='#'><b>https://www.instagram.com/polylogue_madrid</b></a>
+      </p>
+      <p>
+        or sign up here if you'd like to give a talk at our next event:<br/>
+        <a href='#'><b>https://forms.gle/Nx2847ZENMxkBMut8</b></a>
+      </p>
+    `,
+    eventInterests: ['public-speaking', 'technology', 'fresh'],
+  };
 }

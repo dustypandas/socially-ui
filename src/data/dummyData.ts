@@ -1,4 +1,4 @@
-import type { CommunityBasic, EventBasic, Interest, Link, MemberAvatar, MemberOnePageData } from './types.ts';
+import type { CommunityBasic, EventBasic, Interest, Link, MemberAvatar, MemberProfile } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -84,6 +84,18 @@ function getDynamicAttendees(attendeesCount: number) {
   };
 }
 
+export const memberForOneProfile: MemberProfile = {
+  ...ORGANIZERS.maria,
+  firstName: 'Maria',
+  lastName: 'Miku',
+  city: 'Madrid, Spain',
+  inCurrCitySince: new Date('2025-01'),
+  prevCities: ['London, United Kingdom', 'Barcelona, Spain', 'Paris, France'],
+  nearestMetro: 'Tribunal',
+  lat: 40.4168,
+  lng: -3.7038,
+};
+
 export const communities: CommunityBasic[] = [
   {
     id: 'freshers-of-madrid',
@@ -154,7 +166,7 @@ export const communities: CommunityBasic[] = [
 ];
 
 // for one specific community (polylogue madrid) only
-export const membersForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
+export const memberAvatarsForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
   .map(getMemberAvatar);
 
 export const futureEventsForOneCommunity: EventBasic[] = [
@@ -720,6 +732,8 @@ export const externalLinksForOneInterest: Link[] = [
 ];
 //
 
+export const currentUser = members[7];
+
 export const myFollowedInterests: string[] = [];
 
 export const myCommunityIds: string[] = [];
@@ -736,36 +750,4 @@ function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: n
   }
 }
 
-export const sampleCurrentUser = members[7];
-
-export const sampleMemberOnePageData: MemberOnePageData = {
-  member: {
-    ...ORGANIZERS.maria,
-    inCurrentCitySince: '< 1 year',
-    previousCities: ['London, United Kingdom', 'Madrid, Spain', 'Barcelona, Spain', 'Paris, France'],
-  },
-  activityHistory: {
-    memberId: ORGANIZERS.maria.id,
-    interests: [
-      {
-        interest: 'public-speaking',
-        joinedCount: 5,
-        hostedCount: 0,
-        followingSince: '2025-01',
-      },
-      {
-        interest: 'tango',
-        joinedCount: 2,
-        hostedCount: 0,
-        followingSince: '2025-03',
-      },
-      {
-        interest: 'open-social',
-        joinedCount: 15,
-        hostedCount: 0,
-        followingSince: '2024-06',
-      },
-    ],
-    communities: [],
-  },
-};
+// ----- no edit to data above this point, except with explicit permission -----

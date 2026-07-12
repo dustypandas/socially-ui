@@ -1,5 +1,5 @@
 // import { useMemo } from 'react';
-// // import { sampleCurrentUser } from '@src/data';
+// // import { currentUser } from '@src/data';
 // import { addPost, addReply } from '@src/store/slices/postsSlice.js';
 // import { DiscussionComposer } from './DiscussionComposer.js';
 // import { PostCard } from './PostCard.js';
@@ -20,7 +20,7 @@
 //   const handleAddPost = (body: string) => {
 //     dispatch(addPost({
 //       interestName,
-//       authorId: sampleCurrentUser.id,
+//       authorId: currentUser.id,
 //       body,
 //     }));
 //   };
@@ -28,7 +28,7 @@
 //   const handleAddReply = (postId: string, body: string) => {
 //     dispatch(addReply({
 //       postId,
-//       authorId: sampleCurrentUser.id,
+//       authorId: currentUser.id,
 //       body,
 //     }));
 //   };

@@ -70,7 +70,7 @@ export function EventOnePage() {
                 </div>
                 <EventIntro
                   title={eventOnePageData.title}
-                  date={eventOnePageData.date.pageLabels}
+                  startTime={eventOnePageData.startTime}
                   location={eventOnePageData.location}
                 />
               </div>

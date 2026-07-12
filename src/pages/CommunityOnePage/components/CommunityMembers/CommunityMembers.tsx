@@ -3,20 +3,20 @@ import './community-members.css';
 
 type CommunityMembersProps = {
   membersCount: number;
-  memberProfiles: MemberAvatar[];
+  memberAvatars: MemberAvatar[];
 };
 
-export function CommunityMembers({ membersCount, memberProfiles }: CommunityMembersProps) {
+export function CommunityMembers({ membersCount, memberAvatars }: CommunityMembersProps) {
   return (
     <section className="community-members">
       <h3 className="community-organizers__title">{`Members (${membersCount})`}</h3>
 
       <div className="community-members__grid">
-        {memberProfiles.map(profile => (
+        {memberAvatars.map(member => (
           <img
-            key={profile.id}
+            key={member.id}
             className="community-members__avatar"
-            src={profile.image}
+            src={member.image}
             alt=""
           />
         ))}

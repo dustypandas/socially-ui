@@ -6,14 +6,6 @@ type MemberTopInterestsProps = {
   interests: InterestActivityHistory[];
 };
 
-function getJoinedLabel(joinedCount: number): string {
-  if (joinedCount >= 5) {
-    return '5+ attended';
-  }
-
-  return `${joinedCount} attended`;
-}
-
 export function MemberTopInterests({ interests }: MemberTopInterestsProps) {
   if (interests.length === 0) {
     return null;
@@ -22,10 +14,10 @@ export function MemberTopInterests({ interests }: MemberTopInterestsProps) {
   return (
     <section className="member-top-interests">
       <SectionHeader title="Top interests" moreHref="#/interests-ui" />
-      <ul className="member-top-interests__list">
+      <ul className="member-top-interests__grid">
         {interests.map(interest => (
           <li key={interest.interest} className="member-top-interests__item">
-            <a href="#/interest-one-ui" className="member-top-interests__tag">
+            <a href="#/interest-one-ui" className="member-top-interests__link">
               #{interest.interest}
             </a>
             <span className="member-top-interests__count">
@@ -36,4 +28,21 @@ export function MemberTopInterests({ interests }: MemberTopInterestsProps) {
       </ul>
     </section>
   );
+}
+
+function getJoinedLabel(joinedCount: number): string {
+  if (joinedCount <= 4) {
+    return `${joinedCount} attended`;
+  }
+
+  if (joinedCount < 10) {
+    return '5+ attended';
+  }
+
+  if (joinedCount >= 100) {
+    return '100+ attended';
+  }
+
+  const bucket = Math.floor(joinedCount / 10) * 10;
+  return `${bucket}+ attended`;
 }

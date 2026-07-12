@@ -38,7 +38,6 @@ export function CommunityOnePage() {
                 memberCount={communityOnePageData.membersCount}
                 rating={communityOnePageData.rating}
                 ratingCount={communityOnePageData.ratingCount}
-                organizers={communityOnePageData.organizers}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
@@ -61,7 +60,7 @@ export function CommunityOnePage() {
                 <CommunityOrganizers organizers={communityOnePageData.organizers} />
                 <CommunityMembers
                   membersCount={communityOnePageData.membersCount}
-                  memberProfiles={communityOnePageData.memberProfiles}
+                  memberAvatars={communityOnePageData.memberAvatars}
                 />
               </div>
             </ColumnsLayout.Aside>

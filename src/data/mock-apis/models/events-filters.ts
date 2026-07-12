@@ -1,8 +1,8 @@
-import type { Event } from '../../types.ts';
+import type { EventBasic } from '../../types.ts';
 import { OpenToFilter, TimeFilter } from '../global-helpers.ts';
 
 export function matchesOpenToFilter(
-  openTo: Event['openTo'],
+  openTo: EventBasic['openTo'],
   filter: OpenToFilter,
 ): boolean {
   if (filter === 'any') return true;
@@ -55,12 +55,12 @@ export function matchesTimeFilter(
 }
 
 export function filterEvents(
-  events: Event[],
+  events: EventBasic[],
   searchQuery: string,
   timeFilter: TimeFilter,
   openToFilter: OpenToFilter,
   now = new Date(),
-): Event[] {
+): EventBasic[] {
   const normalisedSearchQuery = searchQuery.trim().toLowerCase();
 
   return events.filter(event => {

@@ -1,15 +1,14 @@
-import type { MemberOneProfile } from '@src/data';
+import type { MemberProfile } from '@src/data';
 import './member-profile.css';
 
 type MemberProfileProps = {
-  member: MemberOneProfile;
+  member: MemberProfile;
 };
 
-const LIVED_IN_VISIBLE_COUNT = 1;
-
 export function MemberProfile({ member }: MemberProfileProps) {
-  const previousLocation = member.previousCities.slice(0, 1).pop();
-  const extraLocations = member.previousCities.slice(1);
+  const inCurrCitySinceLabel = getInCurrCitySinceLabel(member.inCurrCitySince);
+  const previousLocation = member.prevCities.slice(0, 1).pop();
+  const extraLocations = member.prevCities.slice(1);
 
   return (
     <section className="member-profile">
@@ -18,7 +17,7 @@ export function MemberProfile({ member }: MemberProfileProps) {
       <div className="member-profile__details">
         <div className="member-profile__detail-group">
           <div className="member-profile__detail-label">In Madrid since:</div>
-          <div className="member-profile__detail-value">{member.inCurrentCitySince}</div>
+          <div className="member-profile__detail-value">{inCurrCitySinceLabel}</div>
         </div>
         <div className="member-profile__detail-group">
           <div className="member-profile__detail-label">Previously lived in:</div>
@@ -42,4 +41,18 @@ export function MemberProfile({ member }: MemberProfileProps) {
       </div> */}
     </section>
   );
+}
+
+function getInCurrCitySinceLabel(inCurrCitySince: Date): string {
+  const now = new Date();
+  const monthsElapsed =
+    (now.getFullYear() - inCurrCitySince.getFullYear()) * 12
+    + (now.getMonth() - inCurrCitySince.getMonth());
+  const yearsElapsed = monthsElapsed / 12;
+
+  if (yearsElapsed < 1) return '< 1 year';
+  if (yearsElapsed < 2) return '1 year';
+  if (yearsElapsed < 5) return '2+ years';
+  if (yearsElapsed < 10) return '5+ years';
+  return '10+ years';
 }

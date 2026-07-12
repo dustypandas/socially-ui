@@ -1,6 +1,6 @@
 import { ColumnsLayout, PageLayout } from '@src/components';
 import {
-  Member,
+  MemberProfile,
   MemberActiveCommunities,
   MemberTopInterests,
 } from './components';
@@ -26,7 +26,7 @@ export function MemberOnePage() {
               />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">
-              <Member member={memberOnePageData.member} />
+              <MemberProfile member={memberOnePageData} />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>

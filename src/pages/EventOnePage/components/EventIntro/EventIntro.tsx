@@ -2,6 +2,12 @@ import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
 import type { MapLocation } from '@src/data';
 import './event-intro.css';
 
+type EventIntroProps = {
+  title: string;
+  startTime: number;
+  location: MapLocation;
+};
+
 type DateLabels = {
   monthShort: string;
   dateShort: string;
@@ -9,25 +15,47 @@ type DateLabels = {
   timeLong: string;
 };
 
-type EventIntroProps = {
-  title: string;
-  date: DateLabels;
-  location: MapLocation;
-};
+function getDateLabels(startTime: number): DateLabels {
+  const date = new Date(startTime);
 
-export function EventIntro({ title, date, location }: EventIntroProps) {
+  const monthShort = date.toLocaleDateString('en-US', { month: 'short' });
+  const dateShort = date.toLocaleDateString('en-US', { day: '2-digit' });
+  const dateLong = date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  const timeLong = date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).toLowerCase().replace(/\s/g, '');
+
+  return { monthShort, dateShort, dateLong, timeLong };
+}
+
+export function EventIntro({ title, startTime, location }: EventIntroProps) {
+
+  const {
+    monthShort,
+    dateShort,
+    dateLong,
+    timeLong,
+  } = getDateLabels(startTime);
+
   return (
     <header className="event-intro">
       <h1 className="event-intro__title">{title}</h1>
       <div className="event-intro__attributes">
         <div className="event-intro__attribute-row">
           <div className="event-intro__calendar">
-            <div className="event-intro__calendar-month">{date.monthShort}</div>
-            <div className="event-intro__calendar-date">{date.dateShort}</div>
+            <div className="event-intro__calendar-month">{monthShort}</div>
+            <div className="event-intro__calendar-date">{dateShort}</div>
           </div>
           <div className="event-intro__attribute-details">
-            <div className="event-intro__attribute-primary">{date.dateLong}</div>
-            <div className="event-intro__attribute-secondary">{date.timeLong}</div>
+            <div className="event-intro__attribute-primary">{dateLong}</div>
+            <div className="event-intro__attribute-secondary">{timeLong}</div>
           </div>
         </div>
         <div className="event-intro__attribute-row">

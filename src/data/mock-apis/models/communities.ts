@@ -53,3 +53,7 @@ export async function getCommunitiesForOneInterest(): Promise<CommunityBasic[]> 
 export async function getCommunityForOneEvent(): Promise<CommunityBasic> {
   return communityForOneEvent;
 }
+
+export async function getOneCommunity(): Promise<CommunityBasic> {
+  return communities.find(community => community.id === 'polylogue-madrid')!;
+}

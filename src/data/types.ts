@@ -77,6 +77,7 @@ export type Event = EventBasic & {
   hosts: MemberAvatar[];
   location: MapLocation;
   eventInterests?: string[];
+  descriptionHtml: string;
 };
 
 export type EventAttendees = {
@@ -115,14 +116,12 @@ export type MemberProfile =
   id: string;
   firstName: string;
   lastName: string;
+  city: string;
+  inCurrCitySince: Date; // (month and year)
+  prevCities: string[];
+  nearestMetro: string;
   // createdAt: string;
   // updatedAt: string;
-};
-
-export type MemberActivityHistory = {
-  memberId: string;
-  interests: InterestActivityHistory[];
-  communities: CommunityActivityHistory[];
 };
 
 export type InterestActivityHistory = {
@@ -173,15 +172,6 @@ export type EventOnePageData =
   descriptionHtml: string;
   community: CommunityAvatar;
   attendees: EventAttendees;
-  date: {
-    timelineLabels: string[];
-    pageLabels: {
-      monthShort: string;
-      dateShort: string;
-      dateLong: string;
-      timeLong: string;
-    };
-  };
   eventInterests: string[];
 };
 
@@ -189,23 +179,24 @@ export type CommunitiesPageData = {
   filteredCommunities: CommunityBasic[];
 };
 
+// ----- no edit to data above this point, except with explicit permission -----
+
 export type CommunityOnePageData =
 & Community
 & {
   organizers: MemberAvatar[];
-  memberProfiles: MemberAvatar[];
+  memberAvatars: MemberAvatar[];
   futureEventsCount: number;
   futureEvents: EventBasic[];
   pastEventsCount: number;
   pastEvents: EventBasic[];
 };
 
-export type MemberOneProfile = MemberAvatar & {
-  inCurrentCitySince: string;
-  previousCities: string[];
-};
-
-export type MemberOnePageData = {
-  member: MemberOneProfile;
-  activityHistory: MemberActivityHistory;
+export type MemberOnePageData =
+& MemberProfile
+&{
+  activityHistory: {
+    interests: InterestActivityHistory[];
+    communities: CommunityActivityHistory[];
+  };
 };

@@ -1,9 +1,9 @@
-import { communities, events, interests, MAX_FOLLOWED_INTERESTS, ORGANIZERS, sampleMemberOnePageData } from '../dummyData';
+import { ORGANIZERS } from '../dummyData'; // pages shouldn't import any data from dummyData directly, only through model apis
 import type { CommunitiesPageData, CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData, MemberOnePageData } from '../types.ts';
-import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommunities, type CommunityScope } from './models/communities.ts';
-import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getPastEventsForOneCommunity } from './models/events.ts';
-import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers } from './models/interests.ts';
-import { getAttendeesForOneEvent, getMembersForOneCommunity } from './models/members.ts';
+import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommunities, getOneCommunity, type CommunityScope } from './models/communities.ts';
+import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getOneEvent, getPastEventsForOneCommunity } from './models/events.ts';
+import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers, getMaxFollowedInterests, getOneInterest } from './models/interests.ts';
+import { getAttendeesForOneEvent, getMemberAvatarsForOneCommunity, getOneMember } from './models/members.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
@@ -14,12 +14,13 @@ export async function getHomePageData(): Promise<HomePageData> {
 
 export async function getInterestsPageData(): Promise<InterestsPageData> {
   const followedInterests = await getFollowedInterests();
+  const maxFollowedInterests = await getMaxFollowedInterests();
 
   const interestsPageData: InterestsPageData = {
     filteredInterests: await getFilteredInterests(''),
     followedInterests,
+    maxFollowedInterests,
     memberFollowers: await getInterestsMemberFollowers(followedInterests.map(interest => interest.label)),
-    maxFollowedInterests: MAX_FOLLOWED_INTERESTS,
     canFollowMore: await getCanFollowMore(),
   };
 
@@ -27,7 +28,7 @@ export async function getInterestsPageData(): Promise<InterestsPageData> {
 }
 
 export async function getInterestOnePageData(): Promise<InterestOnePageData> {
-  const targetInterest = interests.find(interest => interest.label === 'spanish')!;
+  const targetInterest = await getOneInterest();
   
   const interestOnePageData: InterestOnePageData = {
     interestLabel: targetInterest.label,
@@ -117,51 +118,12 @@ export async function getEventsPageData(): Promise<EventsPageData> {
 }
 
 export async function getEventOnePageData(): Promise<EventOnePageData> {
-  const targetEvent = events.find(event => event.id === 'lightning-talks')!;
+  const targetEvent = await getOneEvent();
 
   const eventOnePageData: EventOnePageData = {
     ...targetEvent,
-    location: {
-      label: 'Palacio',
-      lat: 40.4254,
-      lng: -3.7038,
-    },
-    descriptionHtml: `<p>
-        5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️
-      </p>
-      <p>
-        Lightning Talks is a format where a number of speakers give <b>5 minute presentations</b> about <b>any topic of their choosing</b>, followed by 5 minutes of open questions.
-      </p>
-      <p>
-        There will be <b>5-6 talks starting at 19:30</b>, followed by drinks and social.
-      </p>
-      <p>
-        Come join us to hear and discuss some unexpected ideas across surprising topics, broaden our horizons and meet interesting people.
-      </p>
-      <p>
-        You can find photos from some of our recent events here:<br/>
-        <a href='#'><b>https://www.instagram.com/polylogue_madrid</b></a>
-      </p>
-      <p>
-        or sign up here if you'd like to give a talk at our next event:<br/>
-        <a href='#'><b>https://forms.gle/Nx2847ZENMxkBMut8</b></a>
-      </p>
-    `,
     community: await getCommunityForOneEvent(), // to denormalise
-    hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
     attendees: await getAttendeesForOneEvent(),
-    date: {
-      timelineLabels: [
-        'Feb 4, 2026',
-        'Tuesday, 7:10pm',
-      ],
-      pageLabels: {
-        monthShort: 'Feb',
-        dateShort: '04',
-        dateLong: 'Tuesday, February 4, 2025',
-        timeLong: '12:00pm - 1:00pm',
-      },
-    },
     eventInterests: ['public-speaking', 'technology', 'fresh'],
   };
 
@@ -180,7 +142,7 @@ export async function getCommunitiesPageData(
 }
 
 export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
-  const targetCommunity = communities.find(community => community.id === 'polylogue-madrid')!;
+  const targetCommunity = await getOneCommunity();
 
   const communityOnePageData: CommunityOnePageData = {
     ...targetCommunity,
@@ -196,7 +158,7 @@ export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
     `,
     interests: ['public-speaking', 'technology', 'fresh'],
     organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
-    memberProfiles: await getMembersForOneCommunity(),
+    memberAvatars: await getMemberAvatarsForOneCommunity(),
     futureEvents: await getFutureEventsForOneCommunity(),
     pastEvents: await getPastEventsForOneCommunity(),
   };
@@ -205,6 +167,33 @@ export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
 }
 
 export async function getMemberOnePageData(): Promise<MemberOnePageData> {
-  return sampleMemberOnePageData;
+  const targetMember = await getOneMember();
+  return {
+    ...targetMember,
+    activityHistory: {
+      interests: [
+        {
+          interest: 'public-speaking',
+          joinedCount: 5,
+          hostedCount: 0,
+          followingSince: '2025-01',
+        },
+        {
+          interest: 'tango',
+          joinedCount: 2,
+          hostedCount: 0,
+          followingSince: '2025-03',
+        },
+        {
+          interest: 'open-social',
+          joinedCount: 15,
+          hostedCount: 0,
+          followingSince: '2024-06',
+        },
+      ],
+      communities: [],
+    },
+  };
+  ;
 }
 

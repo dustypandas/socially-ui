@@ -9,10 +9,10 @@
   }
 }
 
-.member-top-interests__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.member-top-interests__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0 0.75rem;
@@ -22,22 +22,27 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.35rem;
+  gap: 1.5rem;
   font-size: var(--font-size-md);
   line-height: 1.5;
 }
 
-.member-top-interests__tag {
+.member-top-interests__link {
   color: var(--global-link-blue);
   @apply courier-inline;
-  text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    animation: hover-wiggle 1.2s infinite;
   }
 }
 
 .member-top-interests__count {
-  color: var(--global-text-muted);
+  color: var(--global-text-light);
   @apply courier-inline;
+}
+
+@media (max-width: theme(--breakpoint-lg)) {
+  .member-top-interests__grid {
+    grid-template-columns: 1fr;
+  }
 }

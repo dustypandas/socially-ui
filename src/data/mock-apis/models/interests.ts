@@ -4,7 +4,7 @@ import {
   MAX_FOLLOWED_INTERESTS,
   members,
   myFollowedInterests,
-  sampleCurrentUser,
+  currentUser,
 } from '../../dummyData.ts';
 import type { Interest, Link, MemberFollower } from '../../types.ts';
 import { shuffleArray } from './helpers.ts';
@@ -75,7 +75,7 @@ export async function addInterest(newInterest: string): Promise<void> {
   const exists = tempInterests.some(i => i.label.toLowerCase() === normalisedLabel);
   if (exists) return;
 
-  tempInterests = [...tempInterests, { label: normalisedLabel, category: 'General', followerIds: [sampleCurrentUser.id] }];
+  tempInterests = [...tempInterests, { label: normalisedLabel, category: 'General', followerIds: [currentUser.id] }];
   tempFollowedInterests = [...tempFollowedInterests, normalisedLabel];
 }
 
@@ -95,6 +95,10 @@ export async function getFollowedInterests(): Promise<Interest[]> {
   });
 }
 
+export async function getMaxFollowedInterests(): Promise<number> {
+  return MAX_FOLLOWED_INTERESTS;
+}
+
 // export async function getInterests(): Promise<Interest[]> {
 //   return [...allInterests];
 // }
@@ -103,3 +107,6 @@ export async function getCanFollowMore(): Promise<boolean> {
   return tempFollowedInterests.length < MAX_FOLLOWED_INTERESTS;
 }
 
+export async function getOneInterest(): Promise<Interest> {
+  return interests.find(interest => interest.label === 'spanish')!;
+}

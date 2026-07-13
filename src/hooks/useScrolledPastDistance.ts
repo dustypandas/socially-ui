@@ -53,9 +53,12 @@ export function useScrolledPastDistance(
   const [isPast, setIsPast] = useState(false);
   const cachedDistanceRef = useRef<number | undefined>(undefined);
   const inputRef = useRef(input);
-  inputRef.current = input;
   const optionsRef = useRef(options);
-  optionsRef.current = options;
+
+  useEffect(() => {
+    inputRef.current = input;
+    optionsRef.current = options;
+  });
 
   useEffect(() => {
     const mediaQueryString = optionsRef.current?.mediaQuery;

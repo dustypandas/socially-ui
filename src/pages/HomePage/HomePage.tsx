@@ -15,7 +15,7 @@ export function HomePage() {
   // data state
   const [homePageData, setHomePageData] = useState<HomePageData | null>(null);
   // ui-orchestration states
-  const shouldPlayEntry = useRef(getShouldPlayEntry()).current;
+  const [shouldPlayEntry] = useState(() => getShouldPlayEntry());
   const [isEntryRevealed1, setIsEntryRevealed1] = useState(!shouldPlayEntry);
   const [isEntryRevealed2, setIsEntryRevealed2] = useState(!shouldPlayEntry);
   const [isEntryRevealed3, setIsEntryRevealed3] = useState(!shouldPlayEntry);

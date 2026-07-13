@@ -22,17 +22,18 @@ export function useWordCarousel(
   const exitTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const cancelledRef = useRef(false);
+  const isActive = isEnabled && words.length > 0;
 
-  indexRef.current = index;
+  useEffect(() => {
+    indexRef.current = index;
+  }, [index]);
 
   useEffect(() => {
     const firstDelay = initialDelayMs ?? exitMs;
 
     cancelledRef.current = false;
 
-    if (!isEnabled || words.length === 0) {
-      setIndex(0);
-      setOutgoingIndex(null);
+    if (!isActive) {
       indexRef.current = 0;
       if (exitTimeoutRef.current) {
         clearTimeout(exitTimeoutRef.current);
@@ -79,12 +80,15 @@ export function useWordCarousel(
         clearTimeout(exitTimeoutRef.current);
       }
     };
-  }, [words.length, intervalMs, exitMs, initialDelayMs, isEnabled]);
+  }, [words.length, intervalMs, exitMs, initialDelayMs, isActive]);
+
+  const displayIndex = isActive ? index : 0;
+  const displayOutgoingIndex = isActive ? outgoingIndex : null;
 
   return {
-    word: words[index] ?? '',
-    index,
-    outgoingIndex,
-    outgoingWord: outgoingIndex !== null ? (words[outgoingIndex] ?? '') : '',
+    word: words[displayIndex] ?? '',
+    index: displayIndex,
+    outgoingIndex: displayOutgoingIndex,
+    outgoingWord: displayOutgoingIndex !== null ? (words[displayOutgoingIndex] ?? '') : '',
   };
 }

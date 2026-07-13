@@ -88,7 +88,7 @@ export const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
 };
 
 function getDynamicAttendees(attendeesCount: number) {
-  const attendeeAvatarsCount = Math.min(5, Math.max(1, Math.ceil((1.5 * attendeesCount) ** 0.3)));
+  const attendeeAvatarsCount = Math.min(7, Math.ceil(attendeesCount / 10));
 
   return {
     count: attendeesCount,

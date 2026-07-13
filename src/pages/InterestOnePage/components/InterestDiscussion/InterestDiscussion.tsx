@@ -44,7 +44,7 @@
 //       </div>
 
 //       {posts.length === 0 ? (
-//         <p className="interest-discussion__empty">No discussions yet</p>
+//         <div className="interest-discussion__empty">No discussions yet</div>
 //       ) : (
 //         <div className="interest-discussion__list">
 //           {posts.map(post => (

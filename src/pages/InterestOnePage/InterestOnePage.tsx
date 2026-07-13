@@ -1,17 +1,17 @@
 import { ColumnsLayout, EventCardHorizontal, PageHeader, PageLayout } from '@src/components';
 import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
 import { InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
-import { useInterestOneStates } from './useInterestOneStates';
+import { InterestOnePageProps, useInterestOneStates } from './useInterestOneStates';
 import './interest-one-page.css';
 
-export function InterestOnePage() {
+export function InterestOnePage({ variant }: InterestOnePageProps) {
   const {
     interestOnePageData,
     events,
     communities,
     externalLinks,
     handleAddExternalLink,
-  } = useInterestOneStates();
+  } = useInterestOneStates({ variant });
 
   if (!interestOnePageData) {
     return null;
@@ -58,7 +58,7 @@ export function InterestOnePage() {
                     </div>
                   </>
                 ) : (
-                  <p className="interest-one-page__events-empty">No upcoming events</p>
+                  <div className="interest-one-page__events-empty">No upcoming events</div>
                 )}
                 <div className="interest-one-page__suggest">
                   <button

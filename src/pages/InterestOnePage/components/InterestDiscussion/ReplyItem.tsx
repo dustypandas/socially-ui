@@ -26,7 +26,7 @@
 //             {formatRelativeTime(reply.createdAt)}
 //           </span>
 //         </div>
-//         <p className="discussion-reply__body">{reply.body}</p>
+//         <div className="discussion-reply__body">{reply.body}</div>
 //       </div>
 //     </article>
 //   );

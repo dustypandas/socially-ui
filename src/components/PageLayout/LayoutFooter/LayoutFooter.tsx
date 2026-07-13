@@ -14,7 +14,7 @@ export function LayoutFooter() {
     <footer className="layout-footer">
       <div className="layout-footer__divider" />
       <div className="width-container">
-        <p className="layout-footer__text">© {year} - Made with {icon}</p>
+        <div className="layout-footer__text">© {year} - Made with {icon}</div>
       </div>
     </footer>
   );

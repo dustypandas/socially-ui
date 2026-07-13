@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.member-about {
+  padding-bottom: 2rem;
+
+  .section-header {
+    padding-top: 0;
+  }
+}
+
+.member-about__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0.75rem;
+}
+
+.member-about__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.member-about__key {
+  color: var(--global-text-light);
+  font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-sm);
+  line-height: 1.25;
+}
+
+.member-about__value {
+  color: var(--global-text);
+  font-size: var(--font-size-md);
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+}

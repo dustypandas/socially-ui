@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import {
   addExternalLink as addExternalLinkApi,
   getInterestOnePageData,
@@ -7,8 +6,7 @@ import {
   type Link,
 } from '@src/data';
 
-export function useInterestOneStates() {
-  const location = useLocation();
+export function useInterestOneStates({ variant }: InterestOnePageProps) {
   const [interestOnePageData, setInterestOnePageData] = useState<InterestOnePageData | null>(null);
 
   const applyPageData = useCallback((data: InterestOnePageData) => {
@@ -46,7 +44,7 @@ export function useInterestOneStates() {
   }, [interestOnePageData, handleRefreshInterestOne]);
 
   // empty variant
-  const isEmptyVariant = location.pathname === '/interest-one-ui-empty';
+  const isEmptyVariant = variant === 'empty';
 
   const events = useMemo(
     () => (isEmptyVariant ? [] : interestOnePageData?.relatedEvents ?? []),
@@ -71,3 +69,11 @@ export function useInterestOneStates() {
     handleAddExternalLink,
   };
 }
+
+export const PAGE_VARIANT_OPTIONS = [
+  'empty'
+] as const;
+
+export type InterestOnePageProps = {
+  variant?: (typeof PAGE_VARIANT_OPTIONS)[number];
+};

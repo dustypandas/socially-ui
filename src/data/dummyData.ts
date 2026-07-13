@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, Interest, InterestBasic, InterestEngagement, Link, MemberAvatar, MemberProfile } from './types.ts';
+import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -767,7 +767,6 @@ function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: n
 }
 
 // ----- no edit to data above this point, except with explicit permission -----
-
 export const communityEngagementsForOneMember: CommunityEngagement[] = [
   {
     ...toCommunityAvatar(communities[3]),
@@ -775,6 +774,7 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     hostedCount: 7,
     joinedSince: getDynamicEventStartTime(2, 19, 0),
     isHost: true,
+    status: 'member',
   },
   {
     ...toCommunityAvatar(communities[4]),
@@ -783,12 +783,35 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     joinedSince: getDynamicEventStartTime(2, 19, 0),
     isHost: true,
     isContributor: true,
+    status: 'member',
   },
   {
     ...toCommunityAvatar(communities[5]),
     attendedCount: 4,
     hostedCount: 0,
     joinedSince: getDynamicEventStartTime(2, 19, 0),
+    status: 'member',
+  },
+  {
+    ...toCommunityAvatar(communities[0]),
+    attendedCount: 0,
+    hostedCount: 0,
+    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    status: 'pending',
+  },
+  {
+    ...toCommunityAvatar(communities[1]),
+    attendedCount: 0,
+    hostedCount: 0,
+    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    status: 'rejected',
+  },
+  {
+    ...toCommunityAvatar(communities[2]),
+    attendedCount: 0,
+    hostedCount: 0,
+    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    status: 'banned',
   },
 ];
 
@@ -805,3 +828,9 @@ export const interestEngagementsForOneMember: InterestEngagement[] = [
   hostedCount: 5,
   joinedSince: getDynamicEventStartTime(2, 19, 0),
 }));
+
+export const memberAboutForOneMember: MemberAbout = {
+  'What brings you to Madrid?': 'I\'m here to learn Spanish and meet new people.',
+  'What\'s one amazing thing that you\'ve done?': 'I once free climbed the Eiffel Tower',
+  'Quotes to live life by?': 'To be a sailor of the world, bound for all ports'
+};

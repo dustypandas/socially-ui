@@ -9,7 +9,7 @@ type EventsGridProps = {
 export function EventsGrid({ events }: EventsGridProps) {
   if (events.length === 0) {
     return (
-      <p className="events-grid__empty">No events match your filters.</p>
+      <div className="events-grid__empty">No events match your filters.</div>
     );
   }
 

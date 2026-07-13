@@ -34,9 +34,9 @@ export function FollowedInterests({
             ))}
           </ul>
         ) : (
-          <p className="followed-interests__description">
+          <div className="followed-interests__description">
             Follow specific interests, to be notified when new related events are created
-          </p>
+          </div>
         )}
       </div>
       <MapContainer followers={mapFollowers} />

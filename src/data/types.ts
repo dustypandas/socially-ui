@@ -145,6 +145,7 @@ export type CommunityEngagement =
 & {
   isHost?: boolean;
   isContributor?: boolean;
+  status: 'member' | 'pending' | 'rejected' | 'banned';
 };
 
 // pages data
@@ -201,6 +202,8 @@ export type CommunityOnePageData =
   pastEvents: EventBasic[];
 };
 
+export type MemberAbout = Record<string, string>;
+
 export type MemberOnePageData =
 & MemberProfile
 & {
@@ -208,4 +211,5 @@ export type MemberOnePageData =
     interests: InterestEngagement[];
     communities: CommunityEngagement[];
   };
+  about: MemberAbout;
 };

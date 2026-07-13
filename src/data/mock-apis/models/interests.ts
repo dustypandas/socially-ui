@@ -23,8 +23,8 @@ export async function getInterestsMemberFollowers(selectedInterests: string[]): 
   const byId = new Map(members.map(member => [member.id, member]));
   const ids = new Set<string>();
 
-  for (const interest of selectedInterests) {
-    const interestData = tempInterests.find(i => i.label === interest);
+  for (const interestLabel of selectedInterests) {
+    const interestData = tempInterests.find(i => i.label === interestLabel);
     if (interestData) {
       for (const id of interestData.followerIds ?? []) {
         ids.add(id);
@@ -51,15 +51,15 @@ export async function addExternalLink(link: Link): Promise<void> {
   tempInterestExternalLinks = [...tempInterestExternalLinks, link];
 }
 
-export async function followInterest(interestName: string): Promise<void> {
+export async function followInterest(interestLabel: string): Promise<void> {
   if (
-    tempFollowedInterests.includes(interestName)
+    tempFollowedInterests.includes(interestLabel)
     || !(await getCanFollowMore())
   ) {
     return;
   }
 
-  tempFollowedInterests = [...tempFollowedInterests, interestName];
+  tempFollowedInterests = [...tempFollowedInterests, interestLabel];
 }
 
 export async function unfollowInterest(interestName: string): Promise<void> {

@@ -9,7 +9,7 @@ type CommunitiesGridProps = {
 export function CommunitiesGrid({ communities }: CommunitiesGridProps) {
   if (communities.length === 0) {
     return (
-      <p className="communities-grid__empty">No communities match your search</p>
+      <div className="communities-grid__empty">No communities match your search</div>
     );
   }
 

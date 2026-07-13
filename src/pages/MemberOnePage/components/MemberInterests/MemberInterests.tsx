@@ -7,25 +7,25 @@ type MemberInterestsProps = {
 };
 
 export function MemberInterests({ interests }: MemberInterestsProps) {
-  if (interests.length === 0) {
-    return null;
-  }
-
   return (
     <section className="member-interests">
       <SectionHeader title="Top interests" moreHref="#/interests-ui" />
-      <ul className="member-interests__grid">
-        {interests.map(interest => (
-          <li key={interest.label} className="member-interests__item">
-            <a href="#/interest-one-ui" className="member-interests__link">
-              #{interest.label}
-            </a>
-            <span className="member-interests__count">
-              {getAttendedLabel(interest.attendedCount)}
-            </span>
-          </li>
-        ))}
-      </ul>
+      {interests.length === 0 ? (
+        <div className="member-interests__empty">no followed interests</div>
+      ) : (
+        <ul className="member-interests__grid">
+          {interests.map(interest => (
+            <li key={interest.label} className="member-interests__item">
+              <a href="#/interest-one-ui" className="member-interests__link">
+                #{interest.label}
+              </a>
+              <span className="member-interests__count">
+                {getAttendedLabel(interest.attendedCount)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

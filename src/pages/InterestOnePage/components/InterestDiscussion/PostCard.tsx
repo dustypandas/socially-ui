@@ -63,7 +63,7 @@
 //         </div>
 //       </div>
 
-//       <p className="discussion-post__body">{post.body}</p>
+//       <div className="discussion-post__body">{post.body}</div>
 
 //       <div className="discussion-post__stats">
 //         <button

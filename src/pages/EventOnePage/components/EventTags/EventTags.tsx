@@ -10,9 +10,9 @@ export function EventTags({ interests }: EventTagsProps) {
   return (
     <section className="event-tags">
       <ul className="event-tags__list">
-        {interests.map(interest => (
-          <li key={interest} className="event-tags__item">
-            #{interest}
+        {interests.map(interestLabel => (
+          <li key={interestLabel} className="event-tags__item">
+            #{interestLabel}
           </li>
         ))}
       </ul>

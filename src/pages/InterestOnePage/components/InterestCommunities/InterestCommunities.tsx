@@ -11,7 +11,7 @@ export function InterestCommunities({ communities }: InterestCommunitiesProps) {
     <section className="interest-communities">
       <h3 className="interest-communities__title">Related Communities</h3>
       {communities.length === 0 ? (
-        <p className="interest-communities__empty">No related communities yet</p>
+        <div className="interest-communities__empty">No related communities yet</div>
       ) : (
         <div className="interest-communities__grid">
           {communities.map(community => (

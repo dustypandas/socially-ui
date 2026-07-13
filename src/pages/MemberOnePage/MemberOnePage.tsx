@@ -1,14 +1,15 @@
 import { ColumnsLayout, PageLayout } from '@src/components';
 import {
   MemberProfile,
+  MemberAbout,
   MemberCommunities,
   MemberInterests,
 } from './components';
-import { useMemberOneStates } from './useMemberOneStates';
+import { MemberOnePageProps, useMemberOneStates } from './useMemberOneStates';
 import './member-one-page.css';
 
-export function MemberOnePage() {
-  const { memberOnePageData } = useMemberOneStates();
+export function MemberOnePage({ variant }: MemberOnePageProps) {
+  const { memberOnePageData, interests, communities } = useMemberOneStates({ variant });
 
   if (!memberOnePageData) {
     return null;
@@ -20,12 +21,9 @@ export function MemberOnePage() {
         <div className="width-container">
           <ColumnsLayout mainPosition="right">
             <ColumnsLayout.Main>
-              <MemberInterests
-                interests={memberOnePageData.engagements.interests}
-              />
-              <MemberCommunities
-                communities={memberOnePageData.engagements.communities}
-              />
+              <MemberInterests interests={interests} />
+              <MemberCommunities communities={communities} />
+              <MemberAbout about={memberOnePageData.about} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">
               <MemberProfile member={memberOnePageData} />

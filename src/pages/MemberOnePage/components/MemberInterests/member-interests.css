@@ -42,6 +42,14 @@
   font-size: var(--font-size-sm);
 }
 
+.member-interests__empty {
+  margin: 3rem 0 1rem;
+  color: var(--global-text-light);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  text-align: center;
+}
+
 @media (max-width: theme(--breakpoint-lg)) {
   .member-interests__grid {
     grid-template-columns: 1fr;

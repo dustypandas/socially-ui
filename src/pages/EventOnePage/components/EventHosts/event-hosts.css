@@ -26,13 +26,12 @@
   align-items: center;
   gap: 0.5rem;
   padding-left: 0.5rem;
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s ease;
+  @apply clickable-text;
 
   &:hover {
-    opacity: 0.85;
+    transform: scale(1.03); /* more noticeable hover*/
   }
+
 }
 
 .event-hosts__img {

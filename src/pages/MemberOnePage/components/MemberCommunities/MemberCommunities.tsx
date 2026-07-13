@@ -32,7 +32,7 @@ export function MemberCommunities({ communities }: MemberCommunitiesProps) {
                   <div className="member-communities__host">Host</div>
                 )}
                 {community.isContributor && (
-                  <div className="member-communities__contributor">Star!</div>
+                  <div className="member-communities__star">Star!</div>
                 )}
                 {community.attendedCount > 0 && (
                   <div className="member-communities__attended">

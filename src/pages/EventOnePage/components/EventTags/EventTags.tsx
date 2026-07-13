@@ -1,11 +1,11 @@
 import './event-tags.css';
 
 type EventTagsProps = {
-  interests: string[];
+  interests?: string[];
 };
 
 export function EventTags({ interests }: EventTagsProps) {
-  if (interests.length === 0) return null;
+  if (!interests?.length) return null;
 
   return (
     <section className="event-tags">

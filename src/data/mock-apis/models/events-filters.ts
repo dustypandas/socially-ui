@@ -29,25 +29,23 @@ function isSameDay(a: Date, b: Date): boolean {
 }
 
 export function matchesTimeFilter(
-  startTime: number,
+  startTime: Date,
   filter: TimeFilter,
   now = new Date(),
 ): boolean {
   if (filter === 'anytime') return true;
 
-  const eventDate = new Date(startTime);
-
   if (filter === 'today') {
-    return isSameDay(eventDate, now);
+    return isSameDay(startTime, now);
   }
 
   if (filter === 'thisWeek') {
-    const dayOffset = dayOffsetFromToday(eventDate, now);
+    const dayOffset = dayOffsetFromToday(startTime, now);
     return dayOffset >= 0 && dayOffset <= 7;
   }
 
   if (filter === 'nextWeek') {
-    const dayOffset = dayOffsetFromToday(eventDate, now);
+    const dayOffset = dayOffsetFromToday(startTime, now);
     return dayOffset >= 8 && dayOffset <= 14;
   }
 

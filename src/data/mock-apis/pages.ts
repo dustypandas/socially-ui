@@ -4,6 +4,7 @@ import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommu
 import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getOneEvent, getPastEventsForOneCommunity } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers, getMaxFollowedInterests, getOneInterest } from './models/interests.ts';
 import { getAttendeesForOneEvent, getMemberAvatarsForOneCommunity, getOneMemberAndEngagements } from './models/members.ts';
+import { getReviewsForOneEvent } from './models/reviews.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   return {
@@ -124,7 +125,7 @@ export async function getEventOnePageData(): Promise<EventOnePageData> {
     ...targetEvent,
     community: await getCommunityForOneEvent(), // to denormalise
     attendees: await getAttendeesForOneEvent(),
-    eventInterests: ['public-speaking', 'technology', 'fresh'],
+    reviews: await getReviewsForOneEvent(),
   };
 
   return eventOnePageData;

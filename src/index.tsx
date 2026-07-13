@@ -27,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/interest-one-ui-empty' element={<InterestOnePage variant="empty" />} />
         <Route path='/events-ui' element={<EventsPage />} />
         <Route path='/event-one-ui' element={<EventOnePage />} />
+        <Route path='/event-one-ui-empty' element={<EventOnePage variant="empty" />} />
         <Route path='/communities-ui' element={<CommunitiesPage />} />
         <Route path='/community-one-ui' element={<CommunityOnePage />} />
         <Route path='/member-one-ui' element={<MemberOnePage />} />

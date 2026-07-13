@@ -1,4 +1,4 @@
-import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity } from '../../dummyData.ts';
+import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity, reviewsForOneEvent } from '../../dummyData.ts';
 import type { Event, EventBasic } from '../../types.ts';
 import { OpenToFilter, TimeFilter } from '../global-helpers.ts';
 import { filterEvents } from './events-filters.ts';
@@ -38,7 +38,7 @@ export async function getHomeUpcomingEvents(): Promise<EventBasic[]> {
   const MAX_HOME_UPCOMING_EVENTS = 8;
 
   return shuffleArray([...events]
-    .sort((a, b) => a.startTime - b.startTime)
+    .sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf())
     .slice(0, MAX_HOME_UPCOMING_EVENTS),
   );
 }
@@ -85,6 +85,7 @@ export async function getOneEvent(): Promise<Event> {
         <a href='#'><b>https://forms.gle/Nx2847ZENMxkBMut8</b></a>
       </p>
     `,
-    eventInterests: ['public-speaking', 'technology', 'fresh'],
+    interests: ['public-speaking', 'technology', 'fresh'],
+    reviews: reviewsForOneEvent,
   };
 }

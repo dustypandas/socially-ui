@@ -40,7 +40,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
               ))}
             </div>
             <span className="event-attend-card__attendees-label">
-              {getAttendeesLabel(attendeeCount, profiles.length)}
+              {getAttendeesLabel({ count: attendeeCount, avatars: profiles })}
             </span>
           </div>
           <span className="event-attend-card__price">{priceLabel}</span>

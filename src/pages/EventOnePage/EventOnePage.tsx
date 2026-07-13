@@ -12,13 +12,13 @@ import {
   EventReviews,
   EventTags,
 } from './components';
-import { useEventOneStates } from './useEventOneStates';
+import { EventOnePageProps, useEventOneStates } from './useEventOneStates';
 import './event-one-page.css';
 
-export function EventOnePage() {
+export function EventOnePage({ variant }: EventOnePageProps) {
   const {
     eventOnePageData,
-  } = useEventOneStates();
+  } = useEventOneStates({ variant });
 
   const attendCardRef = useRef<HTMLDivElement>(null);
   const asideTitleRef = useRef<HTMLHeadingElement>(null);
@@ -82,9 +82,9 @@ export function EventOnePage() {
               />
               <div className="interest-one-page__divider--hidden" />
               <EventDescription htmlContent={eventOnePageData.descriptionHtml} />
-              <EventTags interests={eventOnePageData.eventInterests} />
+              <EventTags interests={eventOnePageData.interests} />
               <div className="event-one-page__divider" />
-              <EventReviews />
+              <EventReviews reviews={eventOnePageData.reviews ?? []} />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(320px, 32%)">
               <div className="event-one-page__aside">

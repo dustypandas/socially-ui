@@ -18,7 +18,7 @@ export type Link = {
 export type Engagement = {
   attendedCount: number;
   hostedCount: number;
-  joinedSince: number;
+  joinedSince: Date;
 };
 
 // export type DiscussionReply = {
@@ -65,16 +65,21 @@ export type Community =
   descriptionHtml: string;
 };
 
-export type EventBasic = {
+export type EventLink = {
   id: string;
   title: string;
-  image: string;
   href: string;
+};
+
+export type EventBasic =
+& EventLink
+& {
+  image: string;
   location: Pick<MapLocation, 'label'>;
   attendees: EventAttendees;
   rating: number;
   ratingCount: number;
-  startTime: number;
+  startTime: Date;
   // startTimeCardLabel: string;
   openTo: 'public' | 'selective' | 'invite-only';
 };
@@ -82,8 +87,9 @@ export type EventBasic = {
 export type Event = EventBasic & {
   hosts: MemberAvatar[];
   location: MapLocation;
-  eventInterests?: string[];
   descriptionHtml: string;
+  interests?: string[];
+  reviews?: EventReview[];
 };
 
 export type EventAttendees = {
@@ -135,6 +141,15 @@ export type MemberProfile =
 };
 
 // complex types
+export type EventReview = {
+  event: EventLink;
+  member: MemberAvatar;
+  communityId: string;
+  rating: number;
+  content: string;
+  date: Date;
+};
+
 export type InterestEngagement =
 & InterestBasic
 & Engagement;
@@ -179,10 +194,8 @@ export type EventsPageData = {
 export type EventOnePageData =
 & Event
 & {
-  descriptionHtml: string;
   community: CommunityAvatar;
   attendees: EventAttendees;
-  eventInterests: string[];
 };
 
 export type CommunitiesPageData = {

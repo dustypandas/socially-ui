@@ -17,7 +17,7 @@
 .map-container__marker-icon {
   background: none;
   border: none;
-  color: var(--global-link-blue);
+  color: var(--global-purple-dark);
 }
 
 .map-container__marker-icon svg {
@@ -25,7 +25,7 @@
 }
 
 .map-container .marker-cluster div {
-  background-color: var(--global-link-blue);
+  background-color: var(--global-purple-dark);
 }
 
 .map-container .marker-cluster span {

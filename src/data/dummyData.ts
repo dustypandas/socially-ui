@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from './types.ts';
+import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from './types.ts';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -59,7 +59,20 @@ export const members = [
   avatar: MEMBER_AVATAR_URLS[index % MEMBER_AVATAR_URLS.length],
 }));
 
+function getFirstName(name: string): string {
+  return name.split(' ')[0];
+}
+
 function toMemberAvatar(member: (typeof members)[number]): MemberAvatar {
+  return {
+    id: member.id,
+    label: getFirstName(member.name),
+    image: member.avatar,
+    href: '#/member-one-ui',
+  };
+}
+
+function toMemberHostAvatar(member: (typeof members)[number]): MemberAvatar {
   return {
     id: member.id,
     label: member.name,
@@ -69,9 +82,9 @@ function toMemberAvatar(member: (typeof members)[number]): MemberAvatar {
 }
 
 export const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
-  'achi': toMemberAvatar(members[2]),
-  'peter': toMemberAvatar(members[0]),
-  'maria': toMemberAvatar(members[1]),
+  'achi': toMemberHostAvatar(members[2]),
+  'peter': toMemberHostAvatar(members[0]),
+  'maria': toMemberHostAvatar(members[1]),
 };
 
 function getDynamicAttendees(attendeesCount: number) {
@@ -185,7 +198,7 @@ export const futureEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(3, 19, 10),
+    startTime: getTimestampFromNow(3, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(47),
     rating: 4.7,
@@ -197,7 +210,7 @@ export const futureEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(7, 19, 10),
+    startTime: getTimestampFromNow(7, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(39),
     rating: 4.7,
@@ -209,7 +222,7 @@ export const futureEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(12, 19, 10),
+    startTime: getTimestampFromNow(12, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(44),
     rating: 4.7,
@@ -224,7 +237,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(-3, 19, 10),
+    startTime: getTimestampFromNow(-3, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(52),
     rating: 4.7,
@@ -236,7 +249,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(-6, 19, 10),
+    startTime: getTimestampFromNow(-6, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(48),
     rating: 4.7,
@@ -248,7 +261,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(-7, 19, 10),
+    startTime: getTimestampFromNow(-7, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(55),
     rating: 4.7,
@@ -260,7 +273,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(-14, 19, 10),
+    startTime: getTimestampFromNow(-14, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(41),
     rating: 4.7,
@@ -272,7 +285,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(-19, 19, 10),
+    startTime: getTimestampFromNow(-19, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(46),
     rating: 4.7,
@@ -284,7 +297,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     title: 'Lightning Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(-21, 19, 10),
+    startTime: getTimestampFromNow(-21, 19, 10),
     location: { label: 'Palacio' },
     attendees: getDynamicAttendees(43),
     rating: 4.7,
@@ -300,7 +313,7 @@ export const events: EventBasic[] = [
     title: 'Lighting Talks @ Maria Pandora',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(2, 13, 30),
+    startTime: getTimestampFromNow(2, 13, 30),
     location: { label: 'Madrid Palacio' },
     attendees: getDynamicAttendees(47),
     rating: 4.7,
@@ -313,7 +326,7 @@ export const events: EventBasic[] = [
     title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
     image: '../../assets/event-story.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(3, 19, 0),
+    startTime: getTimestampFromNow(3, 19, 0),
     location: { label: 'Tropicana' },
     attendees: getDynamicAttendees(17),
     rating: 4.8,
@@ -325,7 +338,7 @@ export const events: EventBasic[] = [
     title: 'Psychedelic sharing circle',
     image: '../../assets/event-circle.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(5, 17, 0),
+    startTime: getTimestampFromNow(5, 17, 0),
     location: { label: 'Centro' },
     attendees: getDynamicAttendees(9),
     rating: 4.9,
@@ -338,7 +351,7 @@ export const events: EventBasic[] = [
     title: 'Urban sketching: CentroCentro',
     image: '../../assets/event-sketch.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(6, 19, 30),
+    startTime: getTimestampFromNow(6, 19, 30),
     location: { label: 'CentroCentro' },
     attendees: getDynamicAttendees(14),
     rating: 4.8,
@@ -351,7 +364,7 @@ export const events: EventBasic[] = [
     title: 'Open Air Lindy Hop Class',
     image: '../../assets/event-swing.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(9, 13, 0),
+    startTime: getTimestampFromNow(9, 13, 0),
     location: { label: 'Parque del Retiro' },
     attendees: getDynamicAttendees(39),
     rating: 4.9,
@@ -364,7 +377,7 @@ export const events: EventBasic[] = [
     title: 'Wine Tasting @ Monkeys Bar',
     image: '../../assets/event-wine.jpg',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(11, 18, 0),
+    startTime: getTimestampFromNow(11, 18, 0),
     location: { label: 'Wine Bar' },
     attendees: getDynamicAttendees(15),
     rating: 4.7,
@@ -374,6 +387,14 @@ export const events: EventBasic[] = [
   }
 ];
 
+function toEventLink(event: EventBasic): EventLink {
+  return {
+    id: event.id,
+    title: event.title,
+    href: event.href,
+  };
+}
+
 // for one specific event (lightning talks) only
 export const communityForOneEvent: CommunityAvatar = toCommunityAvatar(communities[1]);
 
@@ -381,6 +402,33 @@ export const attendeesForOneEvent: {
   count: number;
   avatars: MemberAvatar[];
 } = getDynamicAttendees(47);
+
+export const reviewsForOneEvent: EventReview[] = [
+  {
+    event: toEventLink(events[0]),
+    member: toMemberAvatar(members[0]),
+    communityId: 'polylogue-madrid',
+    rating: 5,
+    content: 'Great event!',
+    date: new Date(),
+  },
+  {
+    event: toEventLink(events[0]),
+    member: toMemberAvatar(members[1]),
+    communityId: 'polylogue-madrid',
+    rating: 4,
+    content: 'Good event!',
+    date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000),
+  },
+  {
+    event: toEventLink(events[0]),
+    member: toMemberAvatar(members[2]),
+    communityId: 'polylogue-madrid',
+    rating: 3,
+    content: 'Ok event!',
+    date: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000),
+  },
+];
 //
 
 export const MAX_FOLLOWED_INTERESTS = 10; // can change later
@@ -667,7 +715,7 @@ export const eventsForOneInterest: EventBasic[] = [
     title: 'Spanish Conversations @ Café Comercial',
     image: '../../assets/event-lightning.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(2, 19, 0),
+    startTime: getTimestampFromNow(2, 19, 0),
     location: { label: 'Café Comercial' },
     attendees: getDynamicAttendees(22),
     rating: 4.8,
@@ -679,7 +727,7 @@ export const eventsForOneInterest: EventBasic[] = [
     title: 'Museum Visit @ Prado',
     image: '../../assets/event-sketch.avif',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(13, 11, 0),
+    startTime: getTimestampFromNow(13, 11, 0),
     location: { label: 'Museo del Prado' },
     attendees: getDynamicAttendees(11),
     rating: 4.9,
@@ -691,7 +739,7 @@ export const eventsForOneInterest: EventBasic[] = [
     title: 'Tapas & Spanish Practice @ Malasaña',
     image: '../../assets/event-wine.jpg',
     href: '#/event-one-ui',
-    startTime: getDynamicEventStartTime(22, 20, 0),
+    startTime: getTimestampFromNow(22, 20, 0),
     location: { label: 'Malasaña' },
     attendees: getDynamicAttendees(16),
     rating: 4.7,
@@ -748,31 +796,12 @@ export const externalLinksForOneInterest: Link[] = [
 ];
 //
 
-export const currentUser = members[7];
-
-export const myFollowedInterests: string[] = [];
-
-export const myCommunityIds: string[] = [];
-
-function getDynamicEventStartTime(daysFromNow: number, hours: number, minutes: number): number {
-  const date = addDays(new Date(), daysFromNow);
-  date.setHours(hours, minutes, 0, 0);
-  return date.getTime();
-
-  function addDays(date: Date, days: number): Date {
-    const result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
-  }
-}
-
-// ----- no edit to data above this point, except with explicit permission -----
 export const communityEngagementsForOneMember: CommunityEngagement[] = [
   {
     ...toCommunityAvatar(communities[3]),
     attendedCount: 21,
     hostedCount: 7,
-    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    joinedSince: getTimestampFromNow(2, 19, 0),
     isHost: true,
     status: 'member',
   },
@@ -780,7 +809,7 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     ...toCommunityAvatar(communities[4]),
     attendedCount: 11,
     hostedCount: 3,
-    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    joinedSince: getTimestampFromNow(2, 19, 0),
     isHost: true,
     isContributor: true,
     status: 'member',
@@ -789,28 +818,28 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     ...toCommunityAvatar(communities[5]),
     attendedCount: 4,
     hostedCount: 0,
-    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    joinedSince: getTimestampFromNow(2, 19, 0),
     status: 'member',
   },
   {
     ...toCommunityAvatar(communities[0]),
     attendedCount: 0,
     hostedCount: 0,
-    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    joinedSince: getTimestampFromNow(2, 19, 0),
     status: 'pending',
   },
   {
     ...toCommunityAvatar(communities[1]),
     attendedCount: 0,
     hostedCount: 0,
-    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    joinedSince: getTimestampFromNow(2, 19, 0),
     status: 'rejected',
   },
   {
     ...toCommunityAvatar(communities[2]),
     attendedCount: 0,
     hostedCount: 0,
-    joinedSince: getDynamicEventStartTime(2, 19, 0),
+    joinedSince: getTimestampFromNow(2, 19, 0),
     status: 'banned',
   },
 ];
@@ -826,7 +855,7 @@ export const interestEngagementsForOneMember: InterestEngagement[] = [
   ...toInterestBasic(interest),
   attendedCount: Math.floor(Math.random() * 20) + 1,
   hostedCount: 5,
-  joinedSince: getDynamicEventStartTime(2, 19, 0),
+  joinedSince: getTimestampFromNow(2, 19, 0),
 }));
 
 export const memberAboutForOneMember: MemberAbout = {
@@ -834,3 +863,25 @@ export const memberAboutForOneMember: MemberAbout = {
   'What\'s one amazing thing that you\'ve done?': 'I once free climbed the Eiffel Tower',
   'Quotes to live life by?': 'To be a sailor of the world, bound for all ports'
 };
+
+
+export const currentUser = members[7];
+
+export const myFollowedInterests: string[] = [];
+
+export const myCommunityIds: string[] = [];
+
+// use timestamp for easier sorting
+function getTimestampFromNow(daysFromNow: number, hours: number, minutes: number): Date {
+  const date = addDays(new Date(), daysFromNow);
+  date.setHours(hours, minutes, 0, 0);
+  return date;
+
+  function addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+}
+
+// ----- no edit to data above this point, except with explicit permission -----

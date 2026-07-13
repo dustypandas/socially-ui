@@ -35,7 +35,7 @@
 }
 
 .member-communities__host,
-.member-communities__contributor,
+.member-communities__star,
 .member-communities__attended,
 .member-communities__rejected,
 .member-communities__banned,
@@ -51,7 +51,7 @@
   font-weight: 700;
   color: var(--global-orange);
 }
-.member-communities__contributor {
+.member-communities__star {
   font-weight: 700;
   color: var(--global-purple);
 }

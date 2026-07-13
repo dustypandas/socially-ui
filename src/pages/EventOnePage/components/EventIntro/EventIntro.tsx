@@ -4,36 +4,9 @@ import './event-intro.css';
 
 type EventIntroProps = {
   title: string;
-  startTime: number;
+  startTime: Date;
   location: MapLocation;
 };
-
-type DateLabels = {
-  monthShort: string;
-  dateShort: string;
-  dateLong: string;
-  timeLong: string;
-};
-
-function getDateLabels(startTime: number): DateLabels {
-  const date = new Date(startTime);
-
-  const monthShort = date.toLocaleDateString('en-US', { month: 'short' });
-  const dateShort = date.toLocaleDateString('en-US', { day: '2-digit' });
-  const dateLong = date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-  const timeLong = date.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-  }).toLowerCase().replace(/\s/g, '');
-
-  return { monthShort, dateShort, dateLong, timeLong };
-}
 
 export function EventIntro({ title, startTime, location }: EventIntroProps) {
 
@@ -74,4 +47,29 @@ export function EventIntro({ title, startTime, location }: EventIntroProps) {
       </div>
     </header>
   );
+}
+
+type DateLabels = {
+  monthShort: string;
+  dateShort: string;
+  dateLong: string;
+  timeLong: string;
+};
+
+function getDateLabels(startTime: Date): DateLabels {
+  const monthShort = startTime.toLocaleDateString('en-US', { month: 'short' });
+  const dateShort = startTime.toLocaleDateString('en-US', { day: '2-digit' });
+  const dateLong = startTime.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  const timeLong = startTime.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).toLowerCase().replace(/\s/g, '');
+
+  return { monthShort, dateShort, dateLong, timeLong };
 }

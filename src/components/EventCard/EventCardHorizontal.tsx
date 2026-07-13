@@ -10,7 +10,7 @@ type EventCardHorizontalProps = {
 
 export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
   const ratingLabel = `${event.rating} (${event.ratingCount} ratings)`;
-  const attendeesLabel = getAttendeesLabel(event.attendees.count, event.attendees.avatars.length);
+  const attendeesLabel = getAttendeesLabel(event.attendees);
 
   return (
     <a href="#/event-one-ui" className="event-card-horizontal" target="_blank">

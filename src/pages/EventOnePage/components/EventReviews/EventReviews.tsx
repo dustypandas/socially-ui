@@ -1,12 +1,30 @@
+import type { EventReview as EventReviewData } from '@src/data';
 import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
+import { EventReview } from './EventReview/EventReview';
 import './event-reviews.css';
 
-export function EventReviews() {
+type EventReviewsProps = {
+  reviews: EventReviewData[];
+};
+
+export function EventReviews({ reviews }: EventReviewsProps) {
   return (
     <section className="event-reviews">
-      <SectionHeader title="Reviews" hideMore />
-      {/* <h3 className="event-reviews__title">Reviews</h3> */}
-      <div className="event-reviews__empty">No reviews yet</div>
+      <SectionHeader title="Reviews" />
+      {reviews.length === 0 ? (
+        <div className="event-reviews__empty">No reviews yet</div>
+      ) : (
+        <ul className="event-reviews__list">
+          {reviews.map((review, index) => (
+            <li
+              key={`${review.member.id}-${review.event.id}-${index}`}
+              className="event-reviews__item"
+            >
+              <EventReview review={review} />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

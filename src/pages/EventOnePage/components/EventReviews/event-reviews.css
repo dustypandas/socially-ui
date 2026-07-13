@@ -17,3 +17,16 @@
   font-size: var(--font-size-md);
   text-align: center;
 }
+
+.event-reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.75rem;
+}
+
+.event-reviews__item {
+  margin: 0;
+}

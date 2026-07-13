@@ -118,6 +118,7 @@
 }
 .event-one-page__divider--reverse-hidden {
   display: block;
+  margin-bottom: 0;
 }
 
 .interest-one-page__aside {

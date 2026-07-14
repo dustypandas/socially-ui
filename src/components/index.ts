@@ -4,6 +4,6 @@ export { CommunityCard } from './CommunityCard/CommunityCard'
 export { EventCard } from './EventCard/EventCard';
 export { EventCardHorizontal } from './EventCard/EventCardHorizontal';
 export { MapContainer } from './MapContainer/MapContainer';
-export { PageHeader } from './PageHeader/PageHeader';
 export { PageLayout } from './PageLayout/PageLayout';
-export * from './SectionHeader/SectionHeader';
+export { PageTitle } from './PageTitle/PageTitle';
+export * from './SectionTitle/SectionTitle';

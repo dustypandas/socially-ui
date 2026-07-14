@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
 import {
   FollowedInterests,
   InterestsList,
@@ -37,7 +37,7 @@ export function InterestsPage() {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader
+              <PageTitle
                 title="Popular Interests"
                 backLabel="←&thinsp;Home"
                 backHref="#/home-ui"

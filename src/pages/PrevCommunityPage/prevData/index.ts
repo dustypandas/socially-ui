@@ -1,39 +1,39 @@
 export const members = {
   peter: {
     name: 'Peter C',
-    img: './assets/member-peter.webp',
+    img: './assets/_dummy-data_/member-peter.webp',
   },
   maria: {
     name: 'Maria M',
-    img: './assets/member-maria.jpg',
+    img: './assets/_dummy-data_/member-maria.jpg',
   },
   achi: {
     name: 'Achi J',
-    img: './assets/member-achi.avif',
+    img: './assets/_dummy-data_/member-achi.avif',
   },
   olivia: {
     name: 'Olivia M',
-    img: './assets/member-olivia.jpg',
+    img: './assets/_dummy-data_/member-olivia.jpg',
   },
   caro: {
     name: 'Caro M',
-    img: './assets/member-caro.jpg',
+    img: './assets/_dummy-data_/member-caro.jpg',
   },
   dom: {
     name: 'Dominik',
-    img: './assets/member-dom.jpg',
+    img: './assets/_dummy-data_/member-dom.jpg',
   },
   chloe: {
     name: 'Chloe Dupont',
-    img: './assets/member-chloe.jpg',
+    img: './assets/_dummy-data_/member-chloe.jpg',
   },
   lucy: {
     name: 'Lucy Petroski',
-    img: './assets/member-lucy.jpg',
+    img: './assets/_dummy-data_/member-lucy.jpg',
   },
   sam: {
     name: 'Sam Harris',
-    img: './assets/member-sam.jpg',
+    img: './assets/_dummy-data_/member-sam.jpg',
   },
 };
 export const membersArray = Object.values(members);
@@ -41,7 +41,7 @@ export const membersArray = Object.values(members);
 export const communities = {
   freshers: {
     name: 'Freshers of Madrid',
-    img: './assets/community-freshers.avif',
+    img: './assets/_dummy-data_/community-freshers.avif',
     details: `<p>
                 We are a community for <strong>recent arrivers and international residents</strong> from anywhere in the world, exploring and building our new lives in Madrid ☀️
               </p>
@@ -69,7 +69,7 @@ export const communities = {
   },
   polylogue: {
     name: 'Polylogue Madrid: share • learn • inspire',
-    img: './assets/community-polylogue.avif',
+    img: './assets/_dummy-data_/community-polylogue.avif',
     details: `<p>
                 Polylogue is a community for meeting people who share diverse interests, eclectic curiosities, wayward stories and uncommon perspectives. 🎓📚💫
               </p>
@@ -96,7 +96,7 @@ export const communities = {
   },
   conscious: {
     name: 'The Conscious Collective',
-    img: './assets/community-conscious.avif',
+    img: './assets/_dummy-data_/community-conscious.avif',
     details: `<p>
                 The Conscious Collective Madrid is an international community for explorers of counter-culture; psychedelics, an expression of certain values; and a connection to an alternative way of life.
               </p>
@@ -122,7 +122,7 @@ export const communities = {
   },
   dance: {
     name: 'Happy Feet',
-    img: './assets/community-dance.avif',
+    img: './assets/_dummy-data_/community-dance.avif',
     details: `<p>
                 For Salsa, Bachata, Tango or Swing, Happy Feet is an international community for lovers of partner dancing in Madrid
               </p>`,
@@ -145,7 +145,7 @@ export const communities = {
   },
   philosophy: {
     name: 'Literature and Philosophy Reading Group',
-    img: './assets/community-philosophy.webp',
+    img: './assets/_dummy-data_/community-philosophy.webp',
     details: `<p>
                 This group is for people interested in reading and discussing themes in philosophy and literature, aided by close readings of classics in both subjects. It’s really that simple—to meet and connect with people who share these interests for discussion on a wide range of topics/texts.
               </p>`,
@@ -168,7 +168,7 @@ export const communities = {
   },
   sketch: {
     name: 'The Madrid Sketch Squad',
-    img: './assets/community-sketch.avif',
+    img: './assets/_dummy-data_/community-sketch.avif',
     details: `<p>
                 🇬🇧 Welcome to Madrid Sketch Squad! We're a bilingual drawing group based in Madrid. Join us to discover the city and explore drawing techniques like pencils or watercolor. From capturing the city's architecture to sketching its landscapes, we'll let our creativity flow.
               </p>
@@ -197,7 +197,7 @@ export const communitiesArray = Object.values(communities);
 export const events = {
   lightning: {
     title: 'Lightning Talks @ Maria Pandora',
-    img: './assets/event-lightning.avif',
+    img: './assets/_dummy-data_/event-lightning.avif',
     community: communities.polylogue,
     attendees: {
       count: 47,
@@ -208,7 +208,7 @@ export const events = {
   },
   story: {
     title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
-    img: './assets/event-story.avif',
+    img: './assets/_dummy-data_/event-story.avif',
     community: communities.freshers,
     attendees: {
       count: 17,
@@ -219,7 +219,7 @@ export const events = {
   },
   circle: {
     title: 'Psychedelic sharing circle',
-    img: './assets/event-circle.avif',
+    img: './assets/_dummy-data_/event-circle.avif',
     community: communities.conscious,
     attendees: {
       count: 9,
@@ -230,7 +230,7 @@ export const events = {
   },
   sketch: {
     title: 'Urban sketching: CentroCentro',
-    img: './assets/event-sketch.avif',
+    img: './assets/_dummy-data_/event-sketch.avif',
     community: communities.sketch,
     attendees: {
       count: 14,
@@ -241,7 +241,7 @@ export const events = {
   },
   swing: {
     title: 'Open Air Lindy Hop Class',
-    img: './assets/event-swing.avif',
+    img: './assets/_dummy-data_/event-swing.avif',
     community: communities.dance,
     attendees: {
       count: 39,

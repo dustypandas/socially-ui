@@ -1,5 +1,5 @@
 import type { EventReview as EventReviewData } from '@src/data';
-import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
+import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import { EventReview } from './EventReview/EventReview';
 import './event-reviews.css';
 
@@ -10,7 +10,7 @@ type EventReviewsProps = {
 export function EventReviews({ reviews }: EventReviewsProps) {
   return (
     <section className="event-reviews">
-      <SectionHeader title="Reviews" />
+      <SectionTitle title="Reviews" />
       {reviews.length === 0 ? (
         <div className="event-reviews__empty">No reviews yet</div>
       ) : (

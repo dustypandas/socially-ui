@@ -17,6 +17,7 @@
 .home-why-socially__column-title {
   @apply heading-h2;
   text-align: center;
+  line-height: 2.375rem; /* to match sectionTitle height */
   padding: 1rem 0 1.25rem;
 }
 

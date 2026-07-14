@@ -1,5 +1,5 @@
 import type { CommunityEngagement } from '@src/data';
-import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
+import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import { CommunityAvatar } from '../CommunityAvatar/CommunityAvatar';
 import './member-communities.css';
 
@@ -10,7 +10,7 @@ type MemberCommunitiesProps = {
 export function MemberCommunities({ communities }: MemberCommunitiesProps) {
   return (
     <section className="member-communities">
-      <SectionHeader title="Active Communities" />
+      <SectionTitle title="Active Communities" />
       {communities.length === 0 ? (
         <div className="member-communities__empty">No active communities</div>
       ) : (

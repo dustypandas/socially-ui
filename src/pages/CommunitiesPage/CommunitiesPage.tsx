@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
 import { CommunityScope } from '@src/data';
 import { CommunitiesGrid, CommunitiesFilters } from './components';
 import { useCommunitiesStates } from './useCommunitiesStates';
@@ -25,7 +25,7 @@ export function CommunitiesPage() {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader
+              <PageTitle
                 title={pageTitle}
                 backLabel="←&thinsp;Home"
                 backHref="#/home-ui"

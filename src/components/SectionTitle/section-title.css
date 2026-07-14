@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../../globals.css';
 
-.section-header {
+.section-title {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -10,11 +10,11 @@
   padding: 1rem 0 1.25rem;
 }
 
-.section-header__title {
+.section-title__title {
   @apply heading-h2;
 }
 
-.section-header__more {
+.section-title__more {
   display: flex;
   flex-shrink: 0;
   color: var(--global-text-muted);
@@ -29,7 +29,7 @@
   }
 }
 
-.section-header__more--footer {
+.section-title__more--footer {
   display: none;
   padding: 0.5rem 0;
   font-size: var(--font-size-lg);
@@ -37,20 +37,20 @@
 }
 
 @media (max-width: theme(--breakpoint-sm)) {
-  .section-header {
+  .section-title {
     justify-content: center;
   }
 
-  .section-header__title {
+  .section-title__title {
     width: 100%;
     text-align: center;
   }
 
-  .section-header__more--inline {
+  .section-title__more--inline {
     display: none;
   }
 
-  .section-header__more--footer {
+  .section-title__more--footer {
     display: flex;
   }
 }

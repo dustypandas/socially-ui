@@ -1,5 +1,5 @@
 import type { EventBasic } from '@src/data';
-import { EventCardHorizontal, SectionHeader, SectionMoreLink } from '@src/components';
+import { EventCardHorizontal, SectionTitle, SectionMoreLink } from '@src/components';
 import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
 import './community-events-section.css';
 
@@ -10,7 +10,7 @@ type CommunityEventsSectionProps = {
 export function CommunityEventsSection({ events }: CommunityEventsSectionProps) {
   return (
     <section className="community-events-section">
-      <SectionHeader
+      <SectionTitle
         title={`Upcoming Events (${events.length})`}
         hideMore={events.length <= 3}
         moreHref="#"

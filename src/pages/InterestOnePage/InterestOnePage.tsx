@@ -1,4 +1,4 @@
-import { ColumnsLayout, EventCardHorizontal, PageHeader, PageLayout } from '@src/components';
+import { ColumnsLayout, EventCardHorizontal, PageTitle, PageLayout } from '@src/components';
 import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
 import { InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
 import { InterestOnePageProps, useInterestOneStates } from './useInterestOneStates';
@@ -23,7 +23,7 @@ export function InterestOnePage({ variant }: InterestOnePageProps) {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader
+              <PageTitle
                 title={`#${interestOnePageData.interestLabel}`}
                 backLabel="←&thinsp;Interests"
                 backHref="#/interests-ui"

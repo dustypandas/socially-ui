@@ -1,4 +1,4 @@
-import './section-header.css';
+import './section-title.css';
 
 type SectionMoreLinkProps = {
   href: string;
@@ -17,8 +17,8 @@ export function SectionMoreLink({
     <a
       href={href}
       className={[
-        'section-header__more',
-        `section-header__more--${variant}`,
+        'section-title__more',
+        `section-title__more--${variant}`,
         className,
       ].filter(Boolean).join(' ')}
       dangerouslySetInnerHTML={{ __html: label }}
@@ -26,22 +26,22 @@ export function SectionMoreLink({
   );
 }
 
-type SectionHeaderProps = {
+type SectionTitleProps = {
   title: string;
   moreHref?: string;
   moreLabel?: string;
   hideMore?: boolean;
 };
 
-export function SectionHeader({
+export function SectionTitle({
   title,
   moreHref = '#',
   moreLabel,
   hideMore = false,
-}: SectionHeaderProps) {
+}: SectionTitleProps) {
   return (
-    <div className="section-header">
-      <h2 className="section-header__title">{title}</h2>
+    <div className="section-title">
+      <h2 className="section-title__title">{title}</h2>
       {!hideMore && (
         <SectionMoreLink href={moreHref} label={moreLabel} variant="inline" />
       )}

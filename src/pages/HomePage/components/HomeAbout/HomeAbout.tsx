@@ -1,4 +1,4 @@
-import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
+import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import './home-about.css';
 
 export function HomeAbout() {
@@ -6,7 +6,7 @@ export function HomeAbout() {
     <section className="home-about">
       <div className="width-container">
         <div className="home-page__divider"></div>
-        <SectionHeader title="Who We Are" hideMore />
+        <SectionTitle title="Who We Are" hideMore />
 
         <div className="home-about__content">
           <div className="home-about__text">

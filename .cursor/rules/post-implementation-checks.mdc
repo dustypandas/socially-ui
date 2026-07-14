@@ -1,0 +1,16 @@
+---
+description: Prefer lint/typecheck after implementations; skip build unless asked
+alwaysApply: true
+---
+
+# Post-implementation verification
+
+After completing an implementation:
+
+1. Run `pnpm lint` and/or `pnpm exec tsc --noEmit` to verify the change.
+2. Fix any lint or type errors before finishing.
+3. Do not run `pnpm build` unless the user explicitly requests a build.
+
+A full build is slower and includes steps (e.g. Google Fonts fetch, static generation) that are unnecessary for most change verification.
+
+Use `pnpm` in this repo, not `npm`, unless the user specifically says otherwise.

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ColumnsLayout, PageHeader, PageLayout } from '@src/components';
+import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
 import { EventsFilters, EventsGrid } from './components';
 import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter, } from '@src/data';
 import { useEventsStates } from './useEventsStates';
@@ -26,7 +26,7 @@ export function EventsPage() {
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
-              <PageHeader
+              <PageTitle
                 title={`Events - ${TIME_FILTER_LABELS[timeFilter]}`}
                 backLabel="←&thinsp;Home"
                 backHref="#/home-ui"

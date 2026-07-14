@@ -1,5 +1,5 @@
 import type { EventBasic } from '@src/data';
-import { EventCard, SectionHeader, SectionMoreLink } from '@src/components';
+import { EventCard, SectionTitle, SectionMoreLink } from '@src/components';
 import './home-events.css';
 
 type HomeEventsProps = {
@@ -11,7 +11,7 @@ export function HomeEvents({ upcomingEvents }: HomeEventsProps) {
     <section className="home-events" id="home-events">
       <div className="width-container">
         <div className="home-page__divider"></div>
-        <SectionHeader title="Upcoming Events" moreHref="#/events-ui" />
+        <SectionTitle title="Upcoming Events" moreHref="#/events-ui" />
         <div className="home-events__grid">
           {upcomingEvents.map(event => {
             return (

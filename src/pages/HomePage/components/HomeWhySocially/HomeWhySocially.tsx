@@ -1,4 +1,3 @@
-// import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
 import './home-why-socially.css';
 
 const COLUMNS = [
@@ -33,7 +32,6 @@ export function HomeWhySocially() {
     <section className="home-why-socially">
       <div className="width-container">
         <div className="home-page__divider" />
-        {/* <SectionHeader title="Why Socially" hideMore /> */}
         <div className="home-why-socially__grid">
           {COLUMNS.map(col => (
             <div key={col.title} className="home-why-socially__column">

@@ -1,5 +1,5 @@
 import type { InterestEngagement } from '@src/data';
-import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
+import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import './member-interests.css';
 
 type MemberInterestsProps = {
@@ -9,7 +9,7 @@ type MemberInterestsProps = {
 export function MemberInterests({ interests }: MemberInterestsProps) {
   return (
     <section className="member-interests">
-      <SectionHeader title="Top interests" moreHref="#/interests-ui" />
+      <SectionTitle title="Top interests" moreHref="#/interests-ui" />
       {interests.length === 0 ? (
         <div className="member-interests__empty">no followed interests</div>
       ) : (

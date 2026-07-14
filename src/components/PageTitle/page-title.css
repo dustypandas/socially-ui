@@ -1,14 +1,14 @@
 @import 'tailwindcss';
 @import '../../globals.css';
 
-.page-header {
+.page-title {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: baseline;
   padding: 1rem 1rem 2rem;
 }
 
-.page-header__back {
+.page-title__back {
   justify-self: start;
   color: var(--global-text-muted);
   @apply courier-inline;
@@ -20,14 +20,14 @@
   }
 }
 
-.page-header__title {
+.page-title__title {
   grid-column: 2;
   justify-self: center;
   @apply heading-h1;
 }
 
 @media (max-width: theme(--breakpoint-md)) {
-  .page-header__back {
+  .page-title__back {
     display: none;
   }
 }

@@ -1,4 +1,4 @@
-import { SectionHeader } from '@src/components/SectionHeader/SectionHeader';
+import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import type { MemberAbout as MemberAboutData } from '@src/data';
 import './member-about.css';
 
@@ -15,7 +15,7 @@ export function MemberAbout({ about }: MemberAboutProps) {
 
   return (
     <section className="member-about">
-      <SectionHeader title="About" moreHref="#" />
+      <SectionTitle title="About" moreHref="#" />
       <dl className="member-about__list">
         {entries.map(([key, value]) => (
           <div key={key} className="member-about__item">

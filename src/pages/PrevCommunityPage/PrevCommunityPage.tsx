@@ -50,7 +50,7 @@ export function PrevCommunityPage() {
         <div className='community-intro__img-container prev-column-main'>
           <img
             className='community-intro__img'
-            src='./assets/_dummy-data_/community-philosophy.webp'
+            src='./assets/dummy-data/community-philosophy.webp'
           />
         </div>
         <div className='community-intro__info-container prev-column-right'>

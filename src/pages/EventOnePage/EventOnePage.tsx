@@ -52,7 +52,7 @@ export function EventOnePage({ variant }: EventOnePageProps) {
       window.removeEventListener('resize', updateTitleHeight);
       $sticky.style.removeProperty('--event-one-page-aside-title-height');
     };
-  }, [eventOnePageData?.title]);
+  }, [eventOnePageData]);
 
   if (!eventOnePageData) {
     return null;

@@ -2,15 +2,15 @@ import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, 
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
-  './assets/_dummy-data_/member-peter.webp',
-  './assets/_dummy-data_/member-maria.jpg',
-  './assets/_dummy-data_/member-achi.avif',
-  './assets/_dummy-data_/member-olivia.jpg',
-  './assets/_dummy-data_/member-caro.jpg',
-  './assets/_dummy-data_/member-dom.jpg',
-  './assets/_dummy-data_/member-chloe.jpg',
-  './assets/_dummy-data_/member-lucy.jpg',
-  './assets/_dummy-data_/member-sam.jpg',
+  './assets/dummy-data/member-peter.webp',
+  './assets/dummy-data/member-maria.jpg',
+  './assets/dummy-data/member-achi.avif',
+  './assets/dummy-data/member-olivia.jpg',
+  './assets/dummy-data/member-caro.jpg',
+  './assets/dummy-data/member-dom.jpg',
+  './assets/dummy-data/member-chloe.jpg',
+  './assets/dummy-data/member-lucy.jpg',
+  './assets/dummy-data/member-sam.jpg',
 ];
 
 export const members = [
@@ -113,7 +113,7 @@ export const communities: CommunityBasic[] = [
   {
     id: 'freshers-of-madrid',
     name: 'Freshers of Madrid',
-    image: './assets/_dummy-data_/community-freshers.avif',
+    image: './assets/dummy-data/community-freshers.avif',
     href: '#/community-one-ui',
     membersCount: 360,
     rating: 4.8,
@@ -124,7 +124,7 @@ export const communities: CommunityBasic[] = [
   {
     id: 'polylogue-madrid',
     name: 'Polylogue Madrid: share • learn • inspire',
-    image: './assets/_dummy-data_/community-polylogue.avif',
+    image: './assets/dummy-data/community-polylogue.avif',
     href: '#/community-one-ui',
     membersCount: 841,
     rating: 4.7,
@@ -135,7 +135,7 @@ export const communities: CommunityBasic[] = [
   {
     id: 'conscious-collective',
     name: 'The Conscious Collective',
-    image: './assets/_dummy-data_/community-conscious.avif',
+    image: './assets/dummy-data/community-conscious.avif',
     href: '#/community-one-ui',
     membersCount: 258,
     rating: 4.9,
@@ -146,7 +146,7 @@ export const communities: CommunityBasic[] = [
   {
     id: 'happy-feet',
     name: 'Happy Feet',
-    image: './assets/_dummy-data_/community-dance.avif',
+    image: './assets/dummy-data/community-dance.avif',
     href: '#/community-one-ui',
     membersCount: 7,
     rating: 0,
@@ -157,7 +157,7 @@ export const communities: CommunityBasic[] = [
   {
     id: 'literature-philosophy',
     name: 'Literature and Philosophy Reading Group',
-    image: './assets/_dummy-data_/community-philosophy.webp',
+    image: './assets/dummy-data/community-philosophy.webp',
     href: '#/community-one-ui',
     membersCount: 334,
     rating: 4.8,
@@ -168,7 +168,7 @@ export const communities: CommunityBasic[] = [
   {
     id: 'madrid-sketch-squad',
     name: 'The Madrid Sketch Squad',
-    image: './assets/_dummy-data_/community-sketch.avif',
+    image: './assets/dummy-data/community-sketch.avif',
     href: '#/community-one-ui',
     membersCount: 1456,
     rating: 4.8,
@@ -196,7 +196,7 @@ export const futureEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-feb-4',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(3, 19, 10),
     location: { label: 'Palacio' },
@@ -208,7 +208,7 @@ export const futureEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-feb-18',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(7, 19, 10),
     location: { label: 'Palacio' },
@@ -220,7 +220,7 @@ export const futureEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-mar-4',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(12, 19, 10),
     location: { label: 'Palacio' },
@@ -235,7 +235,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-jan-7',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(-3, 19, 10),
     location: { label: 'Palacio' },
@@ -247,7 +247,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-jan-21',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(-6, 19, 10),
     location: { label: 'Palacio' },
@@ -259,7 +259,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-dec-17',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(-7, 19, 10),
     location: { label: 'Palacio' },
@@ -271,7 +271,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-dec-3',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(-14, 19, 10),
     location: { label: 'Palacio' },
@@ -283,7 +283,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-nov-19',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(-19, 19, 10),
     location: { label: 'Palacio' },
@@ -295,7 +295,7 @@ export const pastEventsForOneCommunity: EventBasic[] = [
   {
     id: 'polylogue-lightning-nov-5',
     title: 'Lightning Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(-21, 19, 10),
     location: { label: 'Palacio' },
@@ -311,7 +311,7 @@ export const events: EventBasic[] = [
   {
     id: 'lightning-talks',
     title: 'Lighting Talks @ Maria Pandora',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(2, 13, 30),
     location: { label: 'Madrid Palacio' },
@@ -324,7 +324,7 @@ export const events: EventBasic[] = [
   {
     id: 'open-mic-storytelling',
     title: 'Open Mic Storytelling @ Tropicana - "TRAVEL 🏞"',
-    image: './assets/_dummy-data_/event-story.avif',
+    image: './assets/dummy-data/event-story.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(3, 19, 0),
     location: { label: 'Tropicana' },
@@ -336,7 +336,7 @@ export const events: EventBasic[] = [
   {
     id: 'psychedelic-sharing-circle',
     title: 'Psychedelic sharing circle',
-    image: './assets/_dummy-data_/event-circle.avif',
+    image: './assets/dummy-data/event-circle.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(5, 17, 0),
     location: { label: 'Centro' },
@@ -349,7 +349,7 @@ export const events: EventBasic[] = [
   {
     id: 'urban-sketching',
     title: 'Urban sketching: CentroCentro',
-    image: './assets/_dummy-data_/event-sketch.avif',
+    image: './assets/dummy-data/event-sketch.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(6, 19, 30),
     location: { label: 'CentroCentro' },
@@ -362,7 +362,7 @@ export const events: EventBasic[] = [
   {
     id: 'open-air-lindy-hop-class',
     title: 'Open Air Lindy Hop Class',
-    image: './assets/_dummy-data_/event-swing.avif',
+    image: './assets/dummy-data/event-swing.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(9, 13, 0),
     location: { label: 'Parque del Retiro' },
@@ -375,7 +375,7 @@ export const events: EventBasic[] = [
   {
     id: 'wine-tasting-event',
     title: 'Wine Tasting @ Monkeys Bar',
-    image: './assets/_dummy-data_/event-wine.jpg',
+    image: './assets/dummy-data/event-wine.jpg',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(11, 18, 0),
     location: { label: 'Wine Bar' },
@@ -713,7 +713,7 @@ export const eventsForOneInterest: EventBasic[] = [
   {
     id: 'spanish-conversations-cafe-comercial',
     title: 'Spanish Conversations @ Café Comercial',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(2, 19, 0),
     location: { label: 'Café Comercial' },
@@ -725,7 +725,7 @@ export const eventsForOneInterest: EventBasic[] = [
   {
     id: 'museum-visit-prado',
     title: 'Museum Visit @ Prado',
-    image: './assets/_dummy-data_/event-sketch.avif',
+    image: './assets/dummy-data/event-sketch.avif',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(13, 11, 0),
     location: { label: 'Museo del Prado' },
@@ -737,7 +737,7 @@ export const eventsForOneInterest: EventBasic[] = [
   {
     id: 'tapas-spanish-practice-malasana',
     title: 'Tapas & Spanish Practice @ Malasaña',
-    image: './assets/_dummy-data_/event-wine.jpg',
+    image: './assets/dummy-data/event-wine.jpg',
     href: '#/event-one-ui',
     startTime: getTimestampFromNow(22, 20, 0),
     location: { label: 'Malasaña' },
@@ -752,7 +752,7 @@ export const communitiesForOneInterest: CommunityBasic[] = [
   {
     id: 'madrid-language-exchange',
     name: 'Madrid Language Exchange',
-    image: './assets/_dummy-data_/event-lightning.avif',
+    image: './assets/dummy-data/event-lightning.avif',
     href: '#/community-one-ui',
     membersCount: 412,
     rating: 4.8,
@@ -763,7 +763,7 @@ export const communitiesForOneInterest: CommunityBasic[] = [
   {
     id: 'cultura-madrid',
     name: 'Cultura Madrid',
-    image: './assets/_dummy-data_/event-sketch.avif',
+    image: './assets/dummy-data/event-sketch.avif',
     href: '#/community-one-ui',
     membersCount: 287,
     rating: 4.9,
@@ -774,7 +774,7 @@ export const communitiesForOneInterest: CommunityBasic[] = [
   {
     id: 'tapas-and-talk',
     name: 'Tapas & Talk',
-    image: './assets/_dummy-data_/event-wine.jpg',
+    image: './assets/dummy-data/event-wine.jpg',
     href: '#/community-one-ui',
     membersCount: 193,
     rating: 4.7,

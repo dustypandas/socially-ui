@@ -209,9 +209,9 @@ export type CommunityOnePageData =
 & {
   organizers: MemberAvatar[];
   memberAvatars: MemberAvatar[];
-  futureEventsCount: number;
+  futureEventsTotalCount: number;
   futureEvents: EventBasic[];
-  pastEventsCount: number;
+  pastEventsTotalCount: number;
   pastEvents: EventBasic[];
 };
 

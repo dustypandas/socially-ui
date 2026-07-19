@@ -19,6 +19,7 @@ export function IndexPage() {
       <a href='#/communities-ui'>Communities ui</a>
       <span>
         &emsp;<a href='#/community-one-ui'>One Community ui</a>
+        &emsp;&emsp;&emsp;<a href='#/community-one-ui-empty'>(empty)</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

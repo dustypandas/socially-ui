@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
-import { getCommunityOnePageData, type CommunityOnePageData } from '@src/data';
 import {
   CommunityAbout,
   CommunityEventsSection,
@@ -11,14 +9,11 @@ import {
   CommunityOrganizers,
   CommunityPastEvents,
 } from './components';
+import { CommunityOnePageProps, useCommunityOneStates } from './useCommunityOneStates';
 import './community-one-page.css';
 
-export function CommunityOnePage() {
-  const [communityOnePageData, setCommunityOnePageData] = useState<CommunityOnePageData | null>(null);
-
-  useEffect(() => {
-    getCommunityOnePageData().then(setCommunityOnePageData);
-  }, []);
+export function CommunityOnePage({ variant }: CommunityOnePageProps) {
+  const { communityOnePageData } = useCommunityOneStates({ variant });
 
   if (!communityOnePageData) {
     return null;
@@ -51,11 +46,15 @@ export function CommunityOnePage() {
               <CommunityAbout detailsHtml={communityOnePageData.descriptionHtml} />
               <div className="community-one-page__divider--hidden" />
               <CommunityEventsSection events={communityOnePageData.futureEvents} />
-              <div className="community-one-page__divider--hidden" />
-              <CommunityPastEvents
-                count={communityOnePageData.pastEventsCount}
-                events={communityOnePageData.pastEvents}
-              />
+              {communityOnePageData.pastEventsTotalCount > 0 && (
+                <>
+                  <div className="community-one-page__divider--hidden" />
+                  <CommunityPastEvents
+                    count={communityOnePageData.pastEventsTotalCount}
+                    events={communityOnePageData.pastEvents}
+                  />
+                </>
+              )}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
               <div className="community-one-page__aside">

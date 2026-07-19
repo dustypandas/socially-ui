@@ -9,7 +9,9 @@ type CommunityMembersProps = {
 export function CommunityMembers({ membersCount, memberAvatars }: CommunityMembersProps) {
   return (
     <section className="community-members">
-      <h3 className="community-organizers__title">{`Members (${membersCount})`}</h3>
+      <h3 className="community-organizers__title">
+        {`${membersCount} ${membersCount === 1 ? 'Member' : 'Members'}`}
+      </h3>
 
       <div className="community-members__grid">
         {memberAvatars.map(member => (

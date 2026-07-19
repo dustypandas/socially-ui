@@ -27,7 +27,7 @@ export function CommunityIntroPanel({
         <div className="community-intro-panel__attribute">
           <IconGroup className="community-intro-panel__icon" />
           <span className="community-intro-panel__attribute-label">
-            {memberCount} followers
+            {memberCount} members
           </span>
         </div>
         {/* <div className="community-intro-panel__attribute">

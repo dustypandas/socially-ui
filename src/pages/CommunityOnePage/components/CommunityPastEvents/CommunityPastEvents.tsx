@@ -1,6 +1,7 @@
 import type { EventBasic } from '@src/data';
 import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
+import { getPastEventsSectionTitle } from '@src/utils/labelHelpers';
 import './community-past-events.css';
 
 type CommunityPastEventsProps = {
@@ -12,7 +13,7 @@ export function CommunityPastEvents({ count, events }: CommunityPastEventsProps)
   return (
     <section className="community-past-events">
       <SectionTitle
-        title={`Past Events (${count})`}
+        title={getPastEventsSectionTitle(count)}
         hideMore={count <= 3}
         moreHref="#"
         moreLabel="past events →"

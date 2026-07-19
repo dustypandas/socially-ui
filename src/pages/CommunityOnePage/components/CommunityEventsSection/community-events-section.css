@@ -5,6 +5,13 @@
   padding: 0 0 1rem;
 }
 
+.community-events-section__empty {
+  margin: 2rem 0.75rem 1rem;
+  color: var(--global-text-light);
+  font-size: var(--font-size-md);
+  text-align: center;
+}
+
 .community-events-section__list {
   padding: 0.25rem 0 0;
 }

@@ -22,13 +22,8 @@
   display: inline-block;
   color: var(--global-link-blue);
   font-size: var(--font-size-lg);
-  text-decoration: none;
   /* @apply text-ellipsis; */ /* full widht, changes wiggle center */
-
-  &:hover {
-    animation: hover-wiggle 1.2s infinite;
-    /* animation: hover-swing 0.6s ease forwards; */
-  }
+  @apply wiggle-link;
 }
 
 @media (max-width: theme(--breakpoint-lg)) {

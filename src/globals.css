@@ -226,3 +226,11 @@
     animation: none;
   }
 }
+
+@utility wiggle-link {
+  text-decoration: none;
+
+  &:hover {
+    animation: hover-wiggle 1.2s infinite;
+  }
+}

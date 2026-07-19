@@ -29,11 +29,7 @@
 .layout-header__logo-link {
   display: block;
   flex-shrink: 0;
-  text-decoration: none;
-
-  &:hover {
-    animation: hover-wiggle 1.2s infinite;
-  }
+  @apply wiggle-link;
 }
 
 .layout-header__logo {
@@ -64,7 +60,6 @@
 
   &:hover {
     color: var(--global-text);
-    /* animation: hover-wiggle 1.2s infinite; */
   }
 }
 
@@ -101,7 +96,7 @@
   height: 2px;
   background: currentColor;
   transition: background 0.2s ease;
-  @apply rounded-circle;
+  @apply rounded-corners;
 
   &::before,
   &::after {
@@ -112,7 +107,7 @@
     height: 2px;
     background: currentColor;
     transition: transform 0.2s ease;
-    @apply rounded-circle;
+    @apply rounded-corners;
   }
 
   &::before {

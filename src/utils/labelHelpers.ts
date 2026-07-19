@@ -63,3 +63,13 @@ export function getReviewTimeLabel(date: Date, now = new Date()): string {
   const n = Math.max(1, Math.floor(diffDays / 365));
   return n === 1 ? '1 year ago' : `${n} years ago`;
 }
+
+export function getUpcomingEventsSectionTitle(count: number): string {
+  const noun = count === 1 ? 'Event' : 'Events';
+  return `${count} Upcoming ${noun}`;
+}
+
+export function getPastEventsSectionTitle(count: number): string {
+  const noun = count === 1 ? 'Event' : 'Events';
+  return `${count} Past ${noun}`;
+}

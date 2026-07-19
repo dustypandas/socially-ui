@@ -55,15 +55,15 @@
 }
 
 @media (max-width: theme(--breakpoint-md)) {
+  .community-nav {
+    top: var(--global-header-height);
+  }
   .community-nav__join-btn-container {
     display: none;
   }
 }
 
 @media (max-width: theme(--breakpoint-sm)) {
-  .community-nav {
-    top: var(--global-header-height);
-  }
   .community-nav__container {
     padding: 0.625rem 0;
   }

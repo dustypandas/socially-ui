@@ -147,8 +147,8 @@ export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
 
   const communityOnePageData: CommunityOnePageData = {
     ...targetCommunity,
-    futureEventsCount: 5,
-    pastEventsCount: 25,
+    futureEventsTotalCount: 5,
+    pastEventsTotalCount: 25,
     descriptionHtml: `
       <p>
         Polylogue is a community for meeting people who share diverse interests, eclectic curiosities, wayward stories and uncommon perspectives. 🎓📚💫

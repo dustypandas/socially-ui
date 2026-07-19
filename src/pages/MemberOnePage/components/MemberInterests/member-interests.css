@@ -30,10 +30,7 @@
 .member-interests__link {
   color: var(--global-link-blue);
   @apply courier-inline;
-
-  &:hover {
-    animation: hover-wiggle 1.2s infinite;
-  }
+  @apply wiggle-link;
 }
 
 .member-interests__count {

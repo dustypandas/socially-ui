@@ -72,3 +72,19 @@
     display: flex;
   }
 }
+
+@media (max-width: theme(--breakpoint-sm)) {
+  /* .community-intro-panel {
+    align-items: center;
+  } */
+  .community-intro-panel__title {
+    text-align: center;
+  }
+  .community-intro-panel__attributes {
+    align-items: center;
+  }
+  .community-intro-panel__join-btn {
+    display: block;
+    align-self: normal;
+  }
+}

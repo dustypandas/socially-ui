@@ -49,7 +49,9 @@ export function CommunityOnePage() {
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <CommunityAbout detailsHtml={communityOnePageData.descriptionHtml} />
+              <div className="community-one-page__divider--hidden" />
               <CommunityEventsSection events={communityOnePageData.futureEvents} />
+              <div className="community-one-page__divider--hidden" />
               <CommunityPastEvents
                 count={communityOnePageData.pastEventsCount}
                 events={communityOnePageData.pastEvents}
@@ -57,6 +59,7 @@ export function CommunityOnePage() {
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
               <div className="community-one-page__aside">
+                <div className="community-one-page__divider--hidden" />
                 <CommunityOrganizers organizers={communityOnePageData.organizers} />
                 <CommunityMembers
                   membersCount={communityOnePageData.membersCount}

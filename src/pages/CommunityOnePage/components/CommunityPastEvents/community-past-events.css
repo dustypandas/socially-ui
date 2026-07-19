@@ -3,6 +3,10 @@
 
 .community-past-events {
   padding: 0 0 1rem;
+
+  .events-grid {
+    margin: 0;
+  }
 }
 
 .community-past-events .events-grid {

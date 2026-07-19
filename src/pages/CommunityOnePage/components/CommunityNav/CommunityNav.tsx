@@ -12,7 +12,7 @@ export function CommunityNav() {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
     ref: navRef,
-    getDistance: (nav) => getElementDocumentOffsetTop(nav) + 50,
+    getDistance: (nav) => getElementDocumentOffsetTop(nav) + 50, // should substract header height, only on mobile
   });
 
   return (
@@ -32,7 +32,7 @@ export function CommunityNav() {
                 ))}
               </div>
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside asideWidth="min(380px, 38%)">
+            <ColumnsLayout.Aside asideWidth="min(380px, 38%)" className="community-nav__join-btn-container">
               <button
                 type="button"
                 className="community-nav__join-btn"

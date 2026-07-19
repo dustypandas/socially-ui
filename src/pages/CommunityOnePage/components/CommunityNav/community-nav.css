@@ -15,7 +15,7 @@
 }
 
 .community-nav__container {
-  padding: 0.625rem 1rem 0.625rem;
+  padding: 0.625rem 1rem;
 }
 
 .community-nav__links {
@@ -55,7 +55,20 @@
 }
 
 @media (max-width: theme(--breakpoint-md)) {
-  .community-nav__join-btn {
+  .community-nav__join-btn-container {
     display: none;
+  }
+}
+
+@media (max-width: theme(--breakpoint-sm)) {
+  .community-nav {
+    top: var(--global-header-height);
+  }
+  .community-nav__container {
+    padding: 0.625rem 0;
+  }
+  .community-nav__links {
+    gap: 0;
+    justify-content: space-between;
   }
 }

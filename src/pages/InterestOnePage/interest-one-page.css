@@ -113,7 +113,8 @@
 
 .interest-one-page__divider--hidden,
 .event-one-page__divider--hidden,
-.event-one-page__divider--reverse-hidden {
+.event-one-page__divider--reverse-hidden,
+.community-one-page__divider--hidden {
   @apply page-divider--hidden;
 }
 .event-one-page__divider--reverse-hidden {
@@ -129,7 +130,8 @@
 
 @media (max-width: theme(--breakpoint-md)) {
   .interest-one-page__divider--hidden,
-  .event-one-page__divider--hidden {
+  .event-one-page__divider--hidden,
+  .community-one-page__divider--hidden {
     display: block;
   }
   .event-one-page__divider--reverse-hidden {

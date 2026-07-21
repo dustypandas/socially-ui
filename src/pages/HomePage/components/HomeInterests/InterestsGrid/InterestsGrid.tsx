@@ -10,7 +10,7 @@ export function InterestsGrid({ popularInterests }: InterestsGridProps) {
     <ul className="interests-grid">
       {popularInterests.map(interest => (
         <li key={interest.label} className="interests-grid__item">
-          <a href="#/interest-one-ui" className="interests-grid__link">
+          <a href="#/one-interest-ui" className="interests-grid__link">
             #{interest.label} ({interest.followerIds?.length ?? 0})
           </a>
         </li>

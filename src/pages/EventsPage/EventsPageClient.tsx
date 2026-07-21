@@ -5,7 +5,7 @@ import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter, } from '@src/da
 import { useEventsStates } from './useEventsStates';
 import './events-page.css';
 
-export function EventsPage() {
+export function EventsPageClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [timeFilter, setTimeFilter] = useState<TimeFilter>('thisWeek');
   const [openToFilter, setOpenToFilter] = useState<OpenToFilter>('any');

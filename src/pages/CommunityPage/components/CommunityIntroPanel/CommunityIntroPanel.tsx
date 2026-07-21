@@ -2,7 +2,7 @@ import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 // import IconUser from '@src/assets/icon-user-outline.svg?react';
 // import type { MemberAvatar } from '@src/data';
-// import { nameAndOthersLabel } from '@src/pages/CommunityOnePage/helpers';
+// import { nameAndOthersLabel } from '@src/pages/CommunityPage/helpers';
 import './community-intro-panel.css';
 
 type CommunityIntroPanelProps = {

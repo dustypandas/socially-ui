@@ -45,7 +45,7 @@ export function InterestsList({
                 ].filter(Boolean).join(' ')}
               >
                 <a
-                  href="#/interest-one-ui"
+                  href="#/one-interest-ui"
                   className="interests-list__link"
                 >
                   #{interest.label} ({interest.followerIds?.length ?? 0})

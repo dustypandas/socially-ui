@@ -1,21 +1,21 @@
 @import 'tailwindcss';
 @import '../../globals.css';
 
-.community-one-page {
+.community-page {
   position: relative;
-  z-index: theme(--z-index-community-one-page);
+  z-index: theme(--z-index-community-page);
   padding-bottom: 2rem;
 }
 
-/* .community-one-page__hero {
+/* .community-page__hero {
   padding: 0;
 } */
 
-.community-one-page__content {
+.community-page__content {
   padding-top: 0.5rem;
 }
 
-.community-one-page__aside {
+.community-page__aside {
   display: flex;
   flex-direction: column;
 }

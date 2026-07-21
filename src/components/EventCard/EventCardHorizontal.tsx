@@ -13,7 +13,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
   const attendeesLabel = getAttendeesLabel(event.attendees);
 
   return (
-    <a href="#/event-one-ui" className="event-card-horizontal" target="_blank">
+    <a href="#/one-event-ui" className="event-card-horizontal" target="_blank">
       <div className="event-card-horizontal__body">
         <h3 className="event-card-horizontal__title">
           {event.title}

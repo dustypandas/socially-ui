@@ -16,7 +16,7 @@ export function MemberInterests({ interests }: MemberInterestsProps) {
         <ul className="member-interests__grid">
           {interests.map(interest => (
             <li key={interest.label} className="member-interests__item">
-              <a href="#/interest-one-ui" className="member-interests__link">
+              <a href="#/one-interest-ui" className="member-interests__link">
                 #{interest.label}
               </a>
               <span className="member-interests__count">

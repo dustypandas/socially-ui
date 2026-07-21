@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { getMemberOnePageData, type CommunityEngagement, type MemberOnePageData } from '@src/data';
+import { getMemberPageData, type CommunityEngagement, type MemberPageData } from '@src/data';
 
 function getCommunityStatusRank(status: CommunityEngagement['status']): number {
   if (status === 'rejected' || status === 'banned') {
@@ -13,49 +13,49 @@ function getCommunityStatusRank(status: CommunityEngagement['status']): number {
   return 2;
 }
 
-export function useMemberOneStates({ variant }: MemberOnePageProps) {
-  const [rawMemberOnePageData, setRawMemberOnePageData] = useState<MemberOnePageData | null>(null);
+export function useMemberPageStates({ variant }: MemberPageClientProps) {
+  const [rawMemberPageData, setRawMemberPageData] = useState<MemberPageData | null>(null);
 
-  const applyPageData = useCallback((data: MemberOnePageData) => {
-    setRawMemberOnePageData(data);
+  const applyPageData = useCallback((data: MemberPageData) => {
+    setRawMemberPageData(data);
   }, []);
 
   useEffect(() => {
-    getMemberOnePageData().then(applyPageData);
+    getMemberPageData().then(applyPageData);
   }, [applyPageData]);
 
-  const memberOnePageData = useMemo(() => {
-    if (!rawMemberOnePageData) {
+  const memberPageData = useMemo(() => {
+    if (!rawMemberPageData) {
       return null;
     }
 
     switch (variant) {
       case 'empty':
         return {
-          ...rawMemberOnePageData,
+          ...rawMemberPageData,
           engagements: { interests: [], communities: [] },
           about: {},
         };
       case 'related':
-        return rawMemberOnePageData;
+        return rawMemberPageData;
       case 'admin':
         return {
-          ...rawMemberOnePageData,
-          label: `${rawMemberOnePageData.firstName} ${rawMemberOnePageData.lastName}`,
+          ...rawMemberPageData,
+          label: `${rawMemberPageData.firstName} ${rawMemberPageData.lastName}`,
         };
       case 'public':
       default:
         return {
-          ...rawMemberOnePageData,
+          ...rawMemberPageData,
           about: {},
         };
     }
-  }, [variant, rawMemberOnePageData]);
+  }, [variant, rawMemberPageData]);
 
-  const interests = memberOnePageData?.engagements.interests ?? [];
+  const interests = memberPageData?.engagements.interests ?? [];
 
   const communities = useMemo(() => {
-    const raw = memberOnePageData?.engagements.communities ?? [];
+    const raw = memberPageData?.engagements.communities ?? [];
 
     const visible = variant === 'admin'
       ? raw
@@ -73,10 +73,10 @@ export function useMemberOneStates({ variant }: MemberOnePageProps) {
 
       return b.attendedCount - a.attendedCount;
     });
-  }, [memberOnePageData, variant]);
+  }, [memberPageData, variant]);
 
   return {
-    memberOnePageData,
+    memberPageData,
     interests,
     communities,
   };
@@ -89,6 +89,6 @@ export const PAGE_VARIANT_OPTIONS = [
   'empty'
 ] as const;
 
-export type MemberOnePageProps = {
+export type MemberPageClientProps = {
   variant?: (typeof PAGE_VARIANT_OPTIONS)[number];
 };

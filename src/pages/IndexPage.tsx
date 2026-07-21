@@ -4,30 +4,30 @@ export function IndexPage() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/interests-ui'>Interests ui</a>
       <span>
-        &emsp;<a href='#/interest-one-ui'>One interest ui</a>
-        &emsp;&emsp;&emsp;<a href='#/interest-one-ui-empty'>(empty)</a>
+        &emsp;<a href='#/one-interest-ui'>One Interest ui</a>
+        &emsp;&emsp;&emsp;<a href='#/one-interest-ui-empty'>(empty)</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/events-ui'>Events ui</a>
       <span>
-        &emsp;<a href='#/event-one-ui'>Event one ui</a>
-        &emsp;&emsp;&emsp;<a href='#/event-one-ui-empty'>(empty)</a>
+        &emsp;<a href='#/one-event-ui'>One Event ui</a>
+        &emsp;&emsp;&emsp;<a href='#/one-event-ui-empty'>(empty)</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/communities-ui'>Communities ui</a>
       <span>
-        &emsp;<a href='#/community-one-ui'>One Community ui</a>
-        &emsp;&emsp;&emsp;<a href='#/community-one-ui-empty'>(empty)</a>
+        &emsp;<a href='#/one-community-ui'>One Community ui</a>
+        &emsp;&emsp;&emsp;<a href='#/one-community-ui-empty'>(empty)</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <span>
-        <a href='#/member-one-ui'>One Member ui public</a>
-        &emsp;&emsp;&emsp;<a href='#/interest-one-ui-empty'>(empty)</a>
-        &emsp;&emsp;&emsp;<a href='#/interest-one-ui-related'>(related)</a>
-        &emsp;&emsp;&emsp;<a href='#/interest-one-ui-admin'>(admin)</a>
+        <a href='#/one-member-ui'>One Member ui public</a>
+        &emsp;&emsp;&emsp;<a href='#/one-interest-ui-empty'>(empty)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-interest-ui-related'>(related)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-interest-ui-admin'>(admin)</a>
       </span>
     </div>
     

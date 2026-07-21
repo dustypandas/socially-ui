@@ -1,5 +1,5 @@
 import { ORGANIZERS } from '../dummyData'; // pages shouldn't import any data from dummyData directly, only through model apis
-import type { CommunitiesPageData, CommunityOnePageData, EventOnePageData, EventsPageData, HomePageData, InterestOnePageData, InterestsPageData, MemberOnePageData } from '../types.ts';
+import type { CommunitiesPageData, CommunityPageData, EventPageData, EventsPageData, HomePageData, InterestPageData, InterestsPageData, MemberPageData } from '../types.ts';
 import { getCommunitiesForOneInterest, getCommunityForOneEvent, getFilteredCommunities, getOneCommunity, type CommunityScope } from './models/communities.ts';
 import { getEventsForOneInterest, getFilteredEvents, getFutureEventsForOneCommunity, getHomeUpcomingEvents, getOneEvent, getPastEventsForOneCommunity } from './models/events.ts';
 import { getCanFollowMore, getFilteredInterests, getFollowedInterests, getHomePopularInterests, getInterestExternalLinks, getInterestsMemberFollowers, getMaxFollowedInterests, getOneInterest } from './models/interests.ts';
@@ -28,10 +28,10 @@ export async function getInterestsPageData(): Promise<InterestsPageData> {
   return interestsPageData;
 }
 
-export async function getInterestOnePageData(): Promise<InterestOnePageData> {
+export async function getInterestPageData(): Promise<InterestPageData> {
   const targetInterest = await getOneInterest();
   
-  const interestOnePageData: InterestOnePageData = {
+  const interestPageData: InterestPageData = {
     interestLabel: targetInterest.label,
     memberFollowers: await getInterestsMemberFollowers(['spanish']),
     memberFollowersCount: (3 * (targetInterest.followerIds?.length ?? 0)),
@@ -105,7 +105,7 @@ export async function getInterestOnePageData(): Promise<InterestOnePageData> {
     // ],
   };
 
-  return interestOnePageData;
+  return interestPageData;
 }
 
 export async function getEventsPageData(): Promise<EventsPageData> {
@@ -118,17 +118,17 @@ export async function getEventsPageData(): Promise<EventsPageData> {
   };
 }
 
-export async function getEventOnePageData(): Promise<EventOnePageData> {
+export async function getEventPageData(): Promise<EventPageData> {
   const targetEvent = await getOneEvent();
 
-  const eventOnePageData: EventOnePageData = {
+  const eventPageData: EventPageData = {
     ...targetEvent,
     community: await getCommunityForOneEvent(), // to denormalise
     attendees: await getAttendeesForOneEvent(),
     reviews: await getReviewsForOneEvent(),
   };
 
-  return eventOnePageData;
+  return eventPageData;
 }
 
 export async function getCommunitiesPageData(
@@ -142,10 +142,10 @@ export async function getCommunitiesPageData(
   return communitiesPageData;
 }
 
-export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
+export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
 
-  const communityOnePageData: CommunityOnePageData = {
+  const communityPageData: CommunityPageData = {
     ...targetCommunity,
     futureEventsTotalCount: 5,
     pastEventsTotalCount: 25,
@@ -164,10 +164,10 @@ export async function getCommunityOnePageData(): Promise<CommunityOnePageData> {
     pastEvents: await getPastEventsForOneCommunity(),
   };
 
-  return communityOnePageData;
+  return communityPageData;
 }
 
-export async function getMemberOnePageData(): Promise<MemberOnePageData> {
+export async function getMemberPageData(): Promise<MemberPageData> {
   const targetMemberAndEngagements = await getOneMemberAndEngagements();
 
   return {

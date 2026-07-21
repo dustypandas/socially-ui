@@ -177,7 +177,7 @@ export type InterestsPageData = {
   canFollowMore: boolean;
 };
 
-export type InterestOnePageData = {
+export type InterestPageData = {
   interestLabel: string;
   memberFollowers: MemberFollower[];
   memberFollowersCount: number; // can be much more than membersFollowers.length
@@ -191,7 +191,7 @@ export type EventsPageData = {
   filteredEvents: EventBasic[];
 };
 
-export type EventOnePageData =
+export type EventPageData =
 & Event
 & {
   community: CommunityAvatar;
@@ -204,7 +204,7 @@ export type CommunitiesPageData = {
 
 // ----- no edit to data above this point, except with explicit permission -----
 
-export type CommunityOnePageData =
+export type CommunityPageData =
 & Community
 & {
   organizers: MemberAvatar[];
@@ -217,7 +217,7 @@ export type CommunityOnePageData =
 
 export type MemberAbout = Record<string, string>;
 
-export type MemberOnePageData =
+export type MemberPageData =
 & MemberProfile
 & {
   engagements: {

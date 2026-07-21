@@ -23,15 +23,15 @@
   --z-index-home-why-socially: 1;
   --z-index-home-about: 1;
   /* pages */
-  --z-index-event-one-page: 1;
-  --z-index-event-one-page-aside: 1;
+  --z-index-event-page: 1;
+  --z-index-event-page-aside: 1;
   --z-index-event-image: 1;
   --z-index-events-page: 1;
   --z-index-communities-page: 1;
-  --z-index-community-one-page: 1;
+  --z-index-community-page: 1;
   --z-index-community-nav: 20;
   --z-index-interests-page: 1;
-  --z-index-interest-one-page: 1;
+  --z-index-interest-page: 1;
   /* prev */
   --z-index-page-bg: 100;
 }

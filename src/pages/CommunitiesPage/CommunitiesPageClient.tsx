@@ -5,7 +5,7 @@ import { CommunitiesGrid, CommunitiesFilters } from './components';
 import { useCommunitiesStates } from './useCommunitiesStates';
 import './communities-page.css';
 
-export function CommunitiesPage() {
+export function CommunitiesPageClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [communityScope, setCommunityScope] = useState<CommunityScope>('all');
   const { filteredCommunities } = useCommunitiesStates(searchQuery, communityScope);

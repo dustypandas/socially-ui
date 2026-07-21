@@ -1,54 +1,54 @@
 import { ColumnsLayout, EventCardHorizontal, PageTitle, PageLayout } from '@src/components';
 import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
 import { InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
-import { InterestOnePageProps, useInterestOneStates } from './useInterestOneStates';
-import './interest-one-page.css';
+import { InterestPageClientProps, useInterestPageStates } from './useInterestPageStates';
+import './interest-page.css';
 
-export function InterestOnePage({ variant }: InterestOnePageProps) {
+export function InterestPageClient({ variant }: InterestPageClientProps) {
   const {
-    interestOnePageData,
+    interestPageData,
     events,
     communities,
     externalLinks,
     handleAddExternalLink,
-  } = useInterestOneStates({ variant });
+  } = useInterestPageStates({ variant });
 
-  if (!interestOnePageData) {
+  if (!interestPageData) {
     return null;
   }
 
   return (
     <PageLayout>
-      <section className="interest-one-page">
+      <section className="interest-page">
         <div className="width-container">
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <PageTitle
-                title={`#${interestOnePageData.interestLabel}`}
+                title={`#${interestPageData.interestLabel}`}
                 backLabel="←&thinsp;Interests"
                 backHref="#/interests-ui"
               />
-              <div className="interest-one-page__events">
+              <div className="interest-page__events">
                 {events.length > 0 ? (
                   <>
-                    <div className="interest-one-page__events-list">
+                    <div className="interest-page__events-list">
                       {events.map(event => {
                         const dateAndTimeLabels = getDateAndTimeLabels(event.startTime);
 
                         return (
-                        <div key={event.id} className="interest-one-page__event-item">
-                          <div className="interest-one-page__event-item-line" />
-                          <div className="interest-one-page__event-item-timeline">
-                            <div className="interest-one-page__event-item-datetime">
-                              <span className="interest-one-page__event-item-date">
+                        <div key={event.id} className="interest-page__event-item">
+                          <div className="interest-page__event-item-line" />
+                          <div className="interest-page__event-item-timeline">
+                            <div className="interest-page__event-item-datetime">
+                              <span className="interest-page__event-item-date">
                                 {dateAndTimeLabels.dateLabel}
                               </span>
-                              <span className="interest-one-page__event-item-time">
+                              <span className="interest-page__event-item-time">
                                 {dateAndTimeLabels.timeLabel}
                               </span>
                             </div>
-                            <div className="interest-one-page__event-item-dot-wrapper">
-                              <div className="interest-one-page__event-item-dot" />
+                            <div className="interest-page__event-item-dot-wrapper">
+                              <div className="interest-page__event-item-dot" />
                             </div>
                           </div>
                           <EventCardHorizontal event={event} />
@@ -58,12 +58,12 @@ export function InterestOnePage({ variant }: InterestOnePageProps) {
                     </div>
                   </>
                 ) : (
-                  <div className="interest-one-page__events-empty">No upcoming events</div>
+                  <div className="interest-page__events-empty">No upcoming events</div>
                 )}
-                <div className="interest-one-page__suggest">
+                <div className="interest-page__suggest">
                   <button
                     type="button"
-                    className="interest-one-page__suggest-btn"
+                    className="interest-page__suggest-btn"
                   >
                     {events.length > 0 ? 'Suggest Another Activity?' : 'Suggest An Activity?'}
                   </button>
@@ -71,25 +71,25 @@ export function InterestOnePage({ variant }: InterestOnePageProps) {
               </div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
-              <div className="interest-one-page__divider--hidden" />
-              <div className="interest-one-page__aside">
+              <div className="interest-page__divider--hidden" />
+              <div className="interest-page__aside">
                 <InterestFollowers
-                  followers={interestOnePageData.memberFollowers}
-                  followersCount={interestOnePageData.memberFollowersCount}
+                  followers={interestPageData.memberFollowers}
+                  followersCount={interestPageData.memberFollowersCount}
                 />
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>
-          <ColumnsLayout className="interest-one-page__second-section">
+          <ColumnsLayout className="interest-page__second-section">
             <ColumnsLayout.Main>
-              <div className="interest-one-page__divider" />
+              <div className="interest-page__divider" />
               <InterestCommunities communities={communities} />
-              {/* <div className="interest-one-page__divider" />
+              {/* <div className="interest-page__divider" />
               <InterestDiscussion interestName='spanish' /> */}
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={12}>
-              <div className="interest-one-page__divider--hidden" />
-              <div className="interest-one-page__aside">
+              <div className="interest-page__divider--hidden" />
+              <div className="interest-page__aside">
                 <InterestExternalLinks
                   links={externalLinks}
                   onAdd={handleAddExternalLink}

@@ -9,7 +9,7 @@ import { useInterestsStates } from './useInterestsStates';
 import { hasExactInterestMatch } from './helpers';
 import './interests-page.css';
 
-export function InterestsPage() {
+export function InterestsPageClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const {
     filteredInterests,

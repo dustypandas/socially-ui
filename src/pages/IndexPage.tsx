@@ -34,6 +34,18 @@ export function IndexPage() {
     <br/>
     <br/>
     <br/>
+    <a href='#/login-ui'>Login ui</a>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <span>
+        <a href='#/signup-ui'>Signup ui</a>
+        &emsp;&emsp;&emsp;<a href='#/signup-step2-ui'>(step-2)</a>
+      </span>
+    </div>
+    <a href='#/create-community-ui'>Create community</a>
+    <a href='#/create-event-ui'>Create event</a>
+    <br/>
+    <br/>
+    <br/>
     <a href='#/prev-community-ui'>Prev Community page ui</a>
     <a href='#/prev-event-ui'>Prev Event page ui</a>
   </div>);

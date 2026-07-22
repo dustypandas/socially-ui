@@ -1,45 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import IconUser from '@src/assets/icon-user-outline.svg?react';
 import { smoothScrollToSection } from '@src/helpers/smoothScroll';
 import './layout-header.css';
 
-const navLinks = [
+export type LayoutHeaderVariant = 'loggedOut' | 'loggedIn' | 'auth' | 'auth2';
+
+type HeaderNavLink = {
+  label: string;
+  href: string;
+};
+
+const mainNavLinks: HeaderNavLink[] = [
   { label: 'Events', href: '#/events-ui' },
   { label: 'Communities', href: '#/communities-ui' },
-  { label: 'Sign-In', href: '#' },
 ];
-
-const MOBILE_BREAKPOINT_PX = 480;
 
 type LayoutHeaderProps = {
   isHomePage?: boolean;
+  variant?: LayoutHeaderVariant;
 };
 
-export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
+export function LayoutHeader({
+  isHomePage = false,
+  variant = 'loggedOut',
+}: LayoutHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`);
-
-    const handleViewportChange = () => {
-      if (!mediaQuery.matches) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleViewportChange);
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleViewportChange);
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
+  const isAuth2 = variant === 'auth2';
+  const showLoggedOutAuth = variant === 'loggedOut';
+  const showProfileLink = variant === 'loggedIn';
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -51,19 +39,34 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
   };
 
   return (
-    <header className={`layout-header${isMenuOpen ? ' layout-header--menu-open' : ''}`}>
+    <header className={[
+      'layout-header',
+      isAuth2 && 'layout-header--auth2',
+      isMenuOpen && 'layout-header--menu-open',
+    ].filter(Boolean).join(' ')}>
       <div className="layout-header__container width-container">
-        <a
-          href="#/home-ui"
-          className="layout-header__logo-link"
-          onClick={handleLogoClick}
-        >
-          <img
-            className="layout-header__logo"
-            src="../../../assets/logo-socially.png"
-            alt="socially madrid"
-          />
-        </a>
+        {isAuth2 ? (
+          <div className="layout-header__logo layout-header__logo--static">
+            <img
+              className="layout-header__logo-image"
+              src="../../../assets/logo-socially.png"
+              alt="socially madrid"
+            />
+          </div>
+        ) : (
+          <a
+            href="#/home-ui"
+            className="layout-header__logo-link"
+            onClick={handleLogoClick}
+          >
+            <img
+              className="layout-header__logo"
+              src="../../../assets/logo-socially.png"
+              alt="socially madrid"
+            />
+          </a>
+        )}
+        {!isAuth2 && (
         <div className="layout-header__right">
           <button
             type="button"
@@ -73,7 +76,7 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
             <span className="layout-header__menu-icon" />
           </button>
           <nav id="layout-header-nav" className="layout-header__nav">
-            {navLinks.map(link => (
+            {mainNavLinks.map(link => (
               <a
                 key={link.label}
                 href={link.href}
@@ -83,11 +86,25 @@ export function LayoutHeader({ isHomePage = false }: LayoutHeaderProps) {
                 {link.label}
               </a>
             ))}
+            {showLoggedOutAuth && (
+              <>
+                <a
+                  href="#/login-ui"
+                  className="layout-header__join-link"
+                  onClick={closeMenu}
+                >
+                  Log In
+                </a>
+              </>
+            )}
           </nav>
-          {/* <a href="#" className="layout-header__profile">
-            <IconUser className="layout-header__profile-icon" />
-          </a> */}
+          {showProfileLink && (
+            <a href="#/one-member-ui" className="layout-header__profile" onClick={closeMenu}>
+              <IconUser className="layout-header__profile-icon" />
+            </a>
+          )}
         </div>
+        )}
       </div>
     </header>
   );

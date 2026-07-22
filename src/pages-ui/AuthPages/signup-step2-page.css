@@ -1,0 +1,39 @@
+@import './signup-page.css';
+
+.signup-step2-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--global-header-height) - 6rem);
+  padding: 2rem 0 4rem;
+}
+
+.signup-step2-page__content {
+  width: 100%;
+  max-width: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.signup-step2-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.signup-step2-page__row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.signup-step2-page__row > .signup-page__field {
+  flex: 1;
+  min-width: 0;
+}
+
+.signup-step2-page__input {
+  @apply text-input--content;
+  text-align: left;
+}

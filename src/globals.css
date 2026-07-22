@@ -23,15 +23,9 @@
   --z-index-home-why-socially: 1;
   --z-index-home-about: 1;
   /* pages */
-  --z-index-event-page: 1;
-  --z-index-event-page-aside: 1;
-  --z-index-event-image: 1;
-  --z-index-events-page: 1;
-  --z-index-communities-page: 1;
-  --z-index-community-page: 1;
+  --z-index-page-content: 1;
+  --z-index-event-image: 2;
   --z-index-community-nav: 20;
-  --z-index-interests-page: 1;
-  --z-index-interest-page: 1;
   /* prev */
   --z-index-page-bg: 100;
 }
@@ -84,7 +78,7 @@
   color: var(--global-text-light);
 }
 
-@utility text-input {
+@utility text-input--content {
   display: block;
   width: 100%;
   text-align: center;
@@ -92,10 +86,9 @@
   padding: 0.5rem 0.75rem;
   background: rgba(255, 255, 255, 0.5);
   color: var(--global-text);
-  @apply courier-inline-extra-padding;
-  @apply rounded-corners;
   outline: none;
   transition: background 0.3s ease;
+  @apply rounded-corners;
 
   &::placeholder {
     color: var(--global-text-light);
@@ -104,6 +97,11 @@
   &:focus {
     background: white;
   }
+}
+
+@utility text-input {
+  @apply text-input--content;
+  @apply courier-inline-extra-padding;
 }
 
 @utility btn {

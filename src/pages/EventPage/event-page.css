@@ -3,7 +3,7 @@
 
 .event-page {
   position: relative;
-  z-index: theme(--z-index-event-page);
+  z-index: theme(--z-index-page-content);
   /* padding-bottom: 2rem; */
 
   --event-page-aside-sticky-top: 1.25rem;
@@ -17,7 +17,6 @@
   position: sticky;
   margin-top: calc(-1 * var(--event-page-aside-title-height, 0px));
   top: var(--event-page-aside-sticky-top);
-  z-index: theme(--z-index-event-page-aside);
   /* display: flex;
   flex-direction: column;
   gap: 1.5rem; */

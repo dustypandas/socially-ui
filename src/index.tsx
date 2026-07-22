@@ -13,7 +13,15 @@ import {
   InterestPageClient,
   MemberPageClient,
 } from './pages';
-import { PrevCommunityPage, PrevEventPage } from './pages-ui';
+import {
+  CreateCommunityPage,
+  CreateEventPage,
+  LoginPage,
+  PrevCommunityPage,
+  PrevEventPage,
+  SignupPage,
+  SignupStep2Page,
+} from './pages-ui';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -34,6 +42,12 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/one-member-ui-empty' element={<MemberPageClient variant="empty" />} />
         <Route path='/one-member-ui-related' element={<MemberPageClient variant="related" />} />
         <Route path='/one-member-ui-admin' element={<MemberPageClient variant="admin" />} />
+        <Route path='/login-ui' element={<LoginPage />} />
+        <Route path='/signup-ui' element={<SignupPage />} />
+        <Route path='/signup-step2-ui' element={<SignupStep2Page />} />
+        <Route path='/create-event-ui' element={<CreateEventPage />} />
+        <Route path='/create-community-ui' element={<CreateCommunityPage />} />
+
         <Route path='/prev-community-ui' element={<PrevCommunityPage />} />
         <Route path='/prev-event-ui' element={<PrevEventPage />} />
         {/* default invalid? */}

@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+@import '../../../globals.css';
+
+.search-dropdown {
+  position: relative;
+}
+
+.search-dropdown__input {
+  @apply text-input--content;
+  /* text-align: left; */
+}
+
+.search-dropdown__list {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  max-height: 12rem;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid var(--light-shadow);
+  @apply rounded-corners;
+  @apply btn-shadow;
+}
+
+.search-dropdown__item {
+  margin: 0;
+}
+
+.search-dropdown__option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--global-text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+
+  &:hover {
+    background: rgba(17, 44, 89, 0.04);
+  }
+}

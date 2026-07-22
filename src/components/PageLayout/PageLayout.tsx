@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { markRouteLoaded } from '@src/helpers/shouldPlayEntry';
-import { LayoutHeader } from './LayoutHeader/LayoutHeader';
+import { LayoutHeader, type LayoutHeaderVariant } from './LayoutHeader/LayoutHeader';
 import { LayoutFooter } from './LayoutFooter/LayoutFooter';
 import './page-layout.css';
 
@@ -13,6 +13,7 @@ type PageLayoutProps = {
   shouldShowHomePageHeader?: boolean;
   shouldShowHomePageFooter?: boolean;
   hasStaticHeader?: boolean;
+  headerVariant?: LayoutHeaderVariant;
 };
 
 export function PageLayout({
@@ -21,6 +22,7 @@ export function PageLayout({
   hasStaticHeader = false,
   shouldShowHomePageHeader,
   shouldShowHomePageFooter,
+  headerVariant = 'loggedOut',
 }: PageLayoutProps) {
   const { pathname } = useLocation();
 
@@ -38,7 +40,7 @@ export function PageLayout({
       isHomePage && shouldShowHomePageFooter && 'layout--show-home-page-footer',
       hasStaticHeader && 'layout--has-static-header',
     ].filter(Boolean).join(' ')}>
-      <LayoutHeader isHomePage={isHomePage} />
+      <LayoutHeader isHomePage={isHomePage} variant={headerVariant} />
       {isHomePage ? (
         children
       ) : (

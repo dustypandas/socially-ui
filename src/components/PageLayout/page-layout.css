@@ -55,10 +55,6 @@
   }
 }
 
-.text--full-color {
-  color: black;
-}
-
 @media (max-width: theme(--breakpoint-md)) {
   .layout--has-static-header {
     .layout-header {

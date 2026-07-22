@@ -325,6 +325,10 @@ a {
   outline: none;
 }
 
+.text--full-color {
+  color: black;
+}
+
 @keyframes hover-wiggle {
   0% { transform: translate(1px, 0) rotate(1deg); }
   15% { transform: translate(-1px, 0) rotate(-1deg); }

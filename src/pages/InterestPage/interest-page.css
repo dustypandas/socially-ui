@@ -3,7 +3,7 @@
 
 .interest-page {
   position: relative;
-  z-index: theme(--z-index-interest-page);
+  z-index: theme(--z-index-page-content);
   padding-bottom: 2rem;
 }
 

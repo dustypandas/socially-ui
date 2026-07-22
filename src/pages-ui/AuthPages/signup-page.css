@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+@import '../../globals.css';
+
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--global-header-height) - 6rem);
+  padding: 2rem 0 4rem;
+}
+
+.signup-page__content {
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.signup-page__title {
+  @apply heading-h2;
+  margin: 0;
+  text-align: center;
+}
+
+.signup-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.signup-page__input {
+  @apply text-input--content;
+}
+
+.signup-page__submit {
+  @apply btn-purple-white;
+  margin-top: 0.5rem;
+}
+
+.signup-page__cross-link {
+  @apply clickable-text;
+  color: var(--global-text-light);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.signup-page__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.signup-page__label {
+  @apply courier-inline;
+  font-size: var(--font-size-sm);
+  color: var(--global-text-light);
+}
+
+.signup-page__error {
+  color: var(--color-red-600, #dc2626);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}

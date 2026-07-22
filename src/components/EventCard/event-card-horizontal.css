@@ -61,7 +61,7 @@
   height: 9rem;
   flex-shrink: 0;
   object-fit: cover;
-  background: #ddd;
+  /* background: #ddd; */
 }
 
 .event-card-horizontal__attendees {

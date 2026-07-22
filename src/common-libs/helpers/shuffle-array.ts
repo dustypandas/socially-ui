@@ -1,5 +1,3 @@
-// like server-side helpers
-
 export function shuffleArray<T>(items: T[]): T[] {
   const shuffled = [...items];
 

@@ -1,7 +1,7 @@
-import type { EventBasic } from '../../types.ts';
-import { OpenToFilter, TimeFilter } from '../global-helpers.ts';
+import type { EventBasic } from '@src/common-libs/types';
+import type { OpenToFilter, TimeFilter } from '@src/common-libs/helpers';
 
-export function matchesOpenToFilter(
+function matchesOpenToFilter(
   openTo: EventBasic['openTo'],
   filter: OpenToFilter,
 ): boolean {
@@ -28,7 +28,7 @@ function isSameDay(a: Date, b: Date): boolean {
   );
 }
 
-export function matchesTimeFilter(
+function matchesTimeFilter(
   startTime: Date,
   filter: TimeFilter,
   now = new Date(),
@@ -74,8 +74,6 @@ export function filterEvents(
       return true;
     }
 
-    return (event.title.toLowerCase().includes(normalisedSearchQuery)
-      // || !event.description.label.toLowerCase().includes(normalisedSearchQuery)
-    );
+    return event.title.toLowerCase().includes(normalisedSearchQuery);
   });
 }

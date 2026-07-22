@@ -6,6 +6,4 @@ export * from './EventPage/EventPageClient';
 export * from './InterestsPage/InterestsPageClient';
 export * from './InterestPage/InterestPageClient';
 export * from './MemberPage/MemberPageClient';
-export * from './PrevCommunityPage/PrevCommunityPage';
-export * from './PrevEventPage/PrevEventPage';
 export * from './IndexPage';

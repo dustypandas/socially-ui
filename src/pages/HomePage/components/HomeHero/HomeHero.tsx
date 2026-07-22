@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useRef } from 'react';
-import { smoothScrollToSection } from '@src/utils/smoothScroll';
+import { smoothScrollToSection } from '@src/helpers/smoothScroll';
 import { useHeroParallax } from '@src/pages/HomePage/hooks/useHeroParallax';
 import { useWordCarousel } from '@src/pages/HomePage/hooks/useWordCarousel';
 import './home-hero.css';

@@ -24,7 +24,7 @@
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 100%;
-  background: #ddd;
+  /* background: #ddd; */
 }
 
 .community-organizers__details {

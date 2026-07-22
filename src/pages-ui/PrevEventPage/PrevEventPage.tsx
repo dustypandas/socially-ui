@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
 // import IconRatings from '@src/pages/assets/icon-star.svg?react';
-import { PageFooter, PageHeader } from '@src/pages/PrevCommunityPage/prevComponents';
-import { sampleFullEvent } from '@src/pages/PrevCommunityPage/prevData';
+import { PageFooter, PageHeader } from '../PrevCommunityPage/prevComponents';
+import { sampleFullEvent } from '../PrevCommunityPage/prevData';
 import './prev-event-page.css';
 
 export function PrevEventPage() {
@@ -43,7 +43,7 @@ export function PrevEventPage() {
       </p>`
   };
 
-  return (<div className='event-page'>
+  return (<div className='prev-event-page'>
     <div className='page-bg'>
       <div className='page-bg__solid'></div>
       <div className='page-bg__gradient'></div>

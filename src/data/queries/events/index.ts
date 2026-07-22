@@ -1,8 +1,7 @@
-import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity, reviewsForOneEvent } from '../../dummyData.ts';
-import type { Event, EventBasic } from '../../types.ts';
-import { OpenToFilter, TimeFilter } from '../global-helpers.ts';
-import { filterEvents } from './events-filters.ts';
-import { shuffleArray } from './helpers.ts';
+import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity, reviewsForOneEvent } from '../../stores/dummyData.ts';
+import type { Event, EventBasic } from '@src/common-libs/types';
+import { type EventsFilterParams, shuffleArray } from '@src/common-libs/helpers';
+import { filterEvents } from './filters.ts';
 
 const EVENT_INTERESTS_BY_ID: Record<string, string[]> = {
   'lightning-talks': ['ai'],
@@ -18,12 +17,6 @@ const tempEvents: EventBasic[] = events.map(event => ({
   location: { ...event.location, lat: 0, lng: 0 },
   eventInterests: EVENT_INTERESTS_BY_ID[event.id],
 }));
-
-export type EventsFilterParams = {
-  interestQuery: string;
-  timeFilter: TimeFilter;
-  openToFilter: OpenToFilter;
-};
 
 export async function getFilteredEvents(params: EventsFilterParams): Promise<EventBasic[]> {
   return filterEvents(

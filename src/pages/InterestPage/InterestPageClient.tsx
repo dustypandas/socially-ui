@@ -1,5 +1,5 @@
 import { ColumnsLayout, EventCardHorizontal, PageTitle, PageLayout } from '@src/components';
-import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
+import { getDateAndTimeLabels } from '@src/helpers/labelHelpers';
 import { InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
 import { InterestPageClientProps, useInterestPageStates } from './useInterestPageStates';
 import './interest-page.css';

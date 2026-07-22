@@ -3,7 +3,7 @@ import IconCalendar from '@src/assets/icon-calendar-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import { getDateAndTimeLabels } from '@src/utils/labelHelpers';
+import { getDateAndTimeLabels } from '@src/helpers/labelHelpers';
 import './event-card.css';
 
 type EventCardProps = {

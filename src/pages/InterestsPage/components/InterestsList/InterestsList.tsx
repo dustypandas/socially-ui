@@ -31,7 +31,7 @@ export function InterestsList({
     <div className="interests-list">
       {categoryGroups.map(group => (
         <section key={group.category} className="interests-list__category">
-          <h3 className="interests-list__category-title">{group.category}</h3>
+          <div className="interests-list__category-title">{group.category}</div>
           <ul className="interests-list__grid">
             {group.items.map(interest => {
               const isFollowed = followedSet.has(interest.label);

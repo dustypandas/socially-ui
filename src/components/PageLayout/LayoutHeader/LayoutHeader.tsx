@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { smoothScrollToSection } from '@src/utils/smoothScroll';
+import { smoothScrollToSection } from '@src/helpers/smoothScroll';
 import './layout-header.css';
 
 const navLinks = [

@@ -1,6 +1,6 @@
 import IconStar from '@src/assets/icon-star.svg?react';
 import type { EventReview as EventReviewData } from '@src/data';
-import { getReviewTimeLabel } from '@src/utils/labelHelpers';
+import { getReviewTimeLabel } from '@src/helpers/labelHelpers';
 import './event-review.css';
 
 type EventReviewProps = {

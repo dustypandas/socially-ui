@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from './types.ts';
+import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from '@src/common-libs/types';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -646,7 +646,7 @@ export const interests: Interest[] = [
   },
   {
     label: 'spanish',
-    category: 'languages',
+    category: 'Languages',
     followerIds: [
       'member-1', 'member-2', 'member-3', 'member-4', 'member-5',
       'member-6', 'member-7', 'member-8', 'member-9', 'member-10',
@@ -656,7 +656,7 @@ export const interests: Interest[] = [
   },
   {
     label: 'german',
-    category: 'languages',
+    category: 'Languages',
     followerIds: [
       'member-19', 'member-20', 'member-21', 'member-22', 'member-23',
       'member-24', 'member-25', 'member-26', 'member-27', 'member-28',
@@ -671,7 +671,7 @@ export const interests: Interest[] = [
   },
   {
     label: 'mandarin',
-    category: 'languages',
+    category: 'Languages',
     followerIds: [
       'member-5', 'member-10', 'member-15', 'member-20', 'member-25',
       'member-30', 'member-31', 'member-32', 'member-33', 'member-34',
@@ -686,7 +686,7 @@ export const interests: Interest[] = [
   },
   {
     label: 'french',
-    category: 'languages',
+    category: 'Languages',
     followerIds: [
       'member-2', 'member-3', 'member-6', 'member-7', 'member-11',
       'member-12', 'member-16', 'member-17', 'member-21', 'member-22',

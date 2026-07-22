@@ -1,7 +1,7 @@
 import type { EventBasic } from '@src/data';
-import { EventsGrid } from '@src/pages/EventsPageClient/components/EventsGrid/EventsGrid';
+import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
-import { getPastEventsSectionTitle } from '@src/utils/labelHelpers';
+import { getPastEventsSectionTitle } from '@src/helpers/labelHelpers';
 import './community-past-events.css';
 
 type CommunityPastEventsProps = {

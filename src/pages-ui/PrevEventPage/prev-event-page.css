@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-.event-page {
+.prev-event-page {
   background: var(--bg-color-prev);
 
   .event-content {
@@ -372,7 +372,7 @@
 }
 
 @media (max-width: 960px) {
-  .event-page {
+  .prev-event-page {
     h1, .prev-event-intro__title {
       font-size: 2rem;
     }
@@ -393,7 +393,7 @@
   }
 }
 @media (max-width: 780px) {
-  .event-page {
+  .prev-event-page {
     h1, .prev-event-intro__title {
       font-size: 1.75rem;
     }
@@ -421,7 +421,7 @@
   }
 }
 @media (max-width: 420px) {
-  .event-page {
+  .prev-event-page {
     h1, .prev-event-intro__title {
       font-size: 1.5rem;
     }

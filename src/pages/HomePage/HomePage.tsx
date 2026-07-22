@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { PageLayout } from '@src/components';
 import { getHomePageData, type HomePageData } from '@src/data';
 import { useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
-import { getShouldPlayEntry } from '@src/utils/shouldPlayEntry';
+import { getShouldPlayEntry } from '@src/helpers/shouldPlayEntry';
 import {
   HomeHero,
   HomeInterests,

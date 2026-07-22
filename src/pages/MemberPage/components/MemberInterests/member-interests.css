@@ -30,6 +30,7 @@
 .member-interests__link {
   color: var(--global-link-blue);
   @apply courier-inline;
+  font-size: var(--font-size-lg);
   @apply wiggle-link;
 }
 

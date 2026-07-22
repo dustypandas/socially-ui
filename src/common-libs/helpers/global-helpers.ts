@@ -2,6 +2,18 @@ export type TimeFilter = 'today' | 'thisWeek' | 'nextWeek' | 'anytime';
 
 export type OpenToFilter = 'any' | 'public' | 'selective' | 'inviteOnly';
 
+export type EventsFilterParams = {
+  interestQuery: string;
+  timeFilter: TimeFilter;
+  openToFilter: OpenToFilter;
+};
+
+export type CommunityScope = 'all' | 'mine' | 'interests';
+
+export function toDate(value: Date | string | number): Date {
+  return value instanceof Date ? value : new Date(value);
+}
+
 export const TIME_FILTER_OPTIONS: { value: TimeFilter; label: string }[] = [
   { value: 'today', label: 'Today' },
   { value: 'thisWeek', label: 'This Week' },

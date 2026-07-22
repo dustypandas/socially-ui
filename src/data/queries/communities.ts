@@ -3,11 +3,10 @@ import {
   communitiesForOneInterest,
   communityForOneEvent,
   myCommunityIds,
-} from '../../dummyData.ts';
+} from '../stores/dummyData.ts';
 import { getFollowedInterests } from './interests.ts';
-import type { CommunityAvatar, CommunityBasic } from '../../types.ts';
-
-export type CommunityScope = 'all' | 'mine' | 'interests';
+import type { CommunityAvatar, CommunityBasic } from '@src/common-libs/types';
+import type { CommunityScope } from '@src/common-libs/helpers';
 
 export async function getFilteredCommunities(
   searchQuery: string,
@@ -33,12 +32,12 @@ export async function getFilteredCommunities(
 
   async function getScopedCommunities(communityScope: CommunityScope): Promise<CommunityBasic[]> {
     if (communityScope === 'all') return communities;
-  
+
     if (communityScope === 'mine') {
       const joined = new Set(myCommunityIds);
       return communities.filter(community => joined.has(community.id));
     }
-  
+
     const followed = new Set((await getFollowedInterests()).map(interest => interest.label.toLowerCase()));
     return communities.filter(community =>
       community.interests?.some(tag => followed.has(tag.toLowerCase())),

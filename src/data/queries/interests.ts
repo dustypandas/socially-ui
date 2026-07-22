@@ -1,13 +1,15 @@
 import {
-  externalLinksForOneInterest,
   interests,
   MAX_FOLLOWED_INTERESTS,
   members,
-  myFollowedInterests,
-  currentUser,
-} from '../../dummyData.ts';
-import type { Interest, Link, MemberFollower } from '../../types.ts';
-import { shuffleArray } from './helpers.ts';
+} from '../stores/dummyData.ts';
+import type { Interest, Link, MemberFollower } from '@src/common-libs/types';
+import {
+  tempFollowedInterests,
+  tempInterestExternalLinks,
+  tempInterests,
+} from '../stores/interests.ts';
+import { shuffleArray } from '@src/common-libs/helpers';
 
 export async function getHomePopularInterests(): Promise<Interest[]> {
   const MAX_HOME_POPULAR_INTERESTS = 12;
@@ -38,45 +40,8 @@ export async function getInterestsMemberFollowers(selectedInterests: string[]): 
   });
 }
 
-// mutable, for interests page
-let tempFollowedInterests = [...myFollowedInterests];
-let tempInterests = [...interests];
-let tempInterestExternalLinks = [...externalLinksForOneInterest];
-
 export async function getInterestExternalLinks(): Promise<Link[]> {
   return [...tempInterestExternalLinks];
-}
-
-export async function addExternalLink(link: Link): Promise<void> {
-  tempInterestExternalLinks = [...tempInterestExternalLinks, link];
-}
-
-export async function followInterest(interestLabel: string): Promise<void> {
-  if (
-    tempFollowedInterests.includes(interestLabel)
-    || !(await getCanFollowMore())
-  ) {
-    return;
-  }
-
-  tempFollowedInterests = [...tempFollowedInterests, interestLabel];
-}
-
-export async function unfollowInterest(interestName: string): Promise<void> {
-  if (!tempFollowedInterests.includes(interestName)) return;
-
-  tempFollowedInterests = tempFollowedInterests.filter(name => name !== interestName);
-}
-
-export async function addInterest(newInterest: string): Promise<void> {
-  const normalisedLabel = newInterest.trim().toLowerCase();
-  if (!normalisedLabel) return;
-
-  const exists = tempInterests.some(i => i.label.toLowerCase() === normalisedLabel);
-  if (exists) return;
-
-  tempInterests = [...tempInterests, { label: normalisedLabel, category: 'General', followerIds: [currentUser.id] }];
-  tempFollowedInterests = [...tempFollowedInterests, normalisedLabel];
 }
 
 export async function getFilteredInterests(searchQuery: string): Promise<Interest[]> {
@@ -98,10 +63,6 @@ export async function getFollowedInterests(): Promise<Interest[]> {
 export async function getMaxFollowedInterests(): Promise<number> {
   return MAX_FOLLOWED_INTERESTS;
 }
-
-// export async function getInterests(): Promise<Interest[]> {
-//   return [...allInterests];
-// }
 
 export async function getCanFollowMore(): Promise<boolean> {
   return tempFollowedInterests.length < MAX_FOLLOWED_INTERESTS;

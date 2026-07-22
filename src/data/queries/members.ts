@@ -1,5 +1,5 @@
-import { attendeesForOneEvent, communityEngagementsForOneMember, interestEngagementsForOneMember, memberAboutForOneMember, memberAvatarsForOneCommunity, memberForOneProfile } from '../../dummyData.ts';
-import type { EventAttendees, MemberAvatar, MemberPageData, MemberProfile } from '../../types.ts';
+import { attendeesForOneEvent, communityEngagementsForOneMember, interestEngagementsForOneMember, memberAboutForOneMember, memberAvatarsForOneCommunity, memberForOneProfile } from '../stores/dummyData.ts';
+import type { EventAttendees, MemberAvatar, MemberPageData, MemberProfile } from '@src/common-libs/types';
 
 export async function getAttendeesForOneEvent(): Promise<EventAttendees> {
   return attendeesForOneEvent;

@@ -1,6 +1,6 @@
 import type { EventBasic } from '@src/data';
 import { EventCardHorizontal, SectionTitle, SectionMoreLink } from '@src/components';
-import { getDateAndTimeLabels, getUpcomingEventsSectionTitle } from '@src/utils/labelHelpers';
+import { getDateAndTimeLabels, getUpcomingEventsSectionTitle } from '@src/helpers/labelHelpers';
 import './community-events-section.css';
 
 type CommunityEventsSectionProps = {

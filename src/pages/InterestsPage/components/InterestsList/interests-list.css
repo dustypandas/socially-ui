@@ -8,15 +8,6 @@
   margin: 0 1rem;
 }
 
-.interests-list__category-title {
-  margin: 0 0 0.5rem;
-  color: var(--global-text-light);
-  font-family: 'Courier Prime', monospace;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.4;
-}
-
 .interests-list__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -47,11 +38,18 @@
   }
 }
 
+.interests-list__category-title {
+  color: var(--global-text-light);
+  @apply courier-inline;
+  padding: 0;
+}
+
 .interests-list__link {
   min-width: 0;
   color: var(--global-link-blue);
   text-decoration: none;
   @apply courier-inline;
+  font-size: var(--font-size-lg);
   /* @apply text-ellipsis;
   line-clamp: 2;
   -webkit-line-clamp: 2; */

@@ -39,7 +39,7 @@ export function PrevCommunityPage() {
     { ...sampleFullEvent, date: { ...sampleFullEvent.date, timelineLabels: ['Apr 1, 2025', 'Tuesday, 7:10pm'] } },
   ];
 
-  return (<div className='community-page'>
+  return (<div className='prev-community-page'>
     <div className='page-bg'>
       <div className='page-bg__solid'></div>
       <div className='page-bg__gradient'></div>

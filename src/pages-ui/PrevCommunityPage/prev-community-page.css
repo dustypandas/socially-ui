@@ -54,7 +54,7 @@
   }
 }
 
-.community-page {
+.prev-community-page {
   background: var(--bg-color-prev);
 
   .community-intro, .community-menu {
@@ -388,7 +388,7 @@
 }
 
 @media (max-width: 960px) {
-  .community-page {
+  .prev-community-page {
     h1, .community-intro__title {
       font-size: 2rem;
     }
@@ -405,7 +405,7 @@
   }
 }
 @media (max-width: 780px) {
-  .community-page {
+  .prev-community-page {
     h1, .community-intro__title {
       font-size: 1.75rem;
     }
@@ -424,7 +424,7 @@
   }
 }
 @media (max-width: 420px) {
-  .community-page {
+  .prev-community-page {
     h1, .community-intro__title {
       font-size: 1.5rem;
     }

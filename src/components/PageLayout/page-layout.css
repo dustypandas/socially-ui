@@ -13,7 +13,6 @@
   position: relative;
   z-index: theme(--z-index-page-layout-main);
   padding-top: 1rem;
-  @apply texture-bg;
 }
 
 /* home-only: entry animations + hidden header until scroll */
@@ -25,6 +24,7 @@
 
   .layout__main {
     border-top: 1.5px solid rgba(255, 255, 255, 0.55);
+    @apply texture-bg;
   }
 
   .layout-footer {
@@ -51,6 +51,7 @@
   .layout-header {
     position: static;
     border-bottom: none;
+    box-shadow: none;
   }
 }
 

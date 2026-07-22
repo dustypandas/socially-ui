@@ -12,9 +12,8 @@ import {
   InterestsPageClient,
   InterestPageClient,
   MemberPageClient,
-  PrevCommunityPage,
-  PrevEventPage,
 } from './pages';
+import { PrevCommunityPage, PrevEventPage } from './pages-ui';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

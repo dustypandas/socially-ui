@@ -134,7 +134,7 @@ export type MemberProfile =
   lastName: string;
   city: string;
   inCurrCitySince: Date; // (month and year)
-  prevCities: string[];
+  prevCountries: string[];
   nearestMetro: string;
   // createdAt: string;
   // updatedAt: string;

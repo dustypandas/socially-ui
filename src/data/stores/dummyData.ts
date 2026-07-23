@@ -103,7 +103,7 @@ export const memberForOneProfile: MemberProfile = {
   lastName: 'Miku',
   city: 'Madrid, Spain',
   inCurrCitySince: new Date('2025-01'),
-  prevCities: ['London, United Kingdom', 'Barcelona, Spain', 'Paris, France'],
+  prevCountries: ['United Kingdom', 'Spain', 'France'],
   nearestMetro: 'Tribunal',
   lat: 40.42624,
   lng: -3.70109,

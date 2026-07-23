@@ -19,15 +19,17 @@ export function MemberPageClient({ variant }: MemberPageClientProps) {
     <PageLayout hasStaticHeader>
       <section className="member-page">
         <div className="width-container">
-          <ColumnsLayout mainPosition="right">
-            <ColumnsLayout.Main>
-              <MemberInterests interests={interests} />
-              <MemberCommunities communities={communities} />
-              <MemberAbout about={memberPageData.about} />
-            </ColumnsLayout.Main>
+          <ColumnsLayout>
             <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">
               <MemberProfile member={memberPageData} />
             </ColumnsLayout.Aside>
+            <ColumnsLayout.Main>
+              <div className="member-page__divider--hidden" />
+              <MemberInterests interests={interests} />
+              <div className="member-page__divider--hidden" />
+              <MemberCommunities communities={communities} />
+              <MemberAbout about={memberPageData.about} />
+            </ColumnsLayout.Main>
           </ColumnsLayout>
         </div>
       </section>

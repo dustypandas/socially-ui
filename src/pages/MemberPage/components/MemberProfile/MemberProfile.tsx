@@ -7,8 +7,8 @@ type MemberProfileProps = {
 
 export function MemberProfile({ member }: MemberProfileProps) {
   const inCurrCitySinceLabel = getInCurrCitySinceLabel(member.inCurrCitySince);
-  const previousLocation = member.prevCities.slice(0, 1).pop();
-  const extraLocations = member.prevCities.slice(1);
+  const prevCountry = member.prevCountries[0];
+  const prevCountriesCount = member.prevCountries.length - 1;
 
   return (
     <section className="member-profile">
@@ -26,8 +26,10 @@ export function MemberProfile({ member }: MemberProfileProps) {
         <div className="member-profile__detail-group">
           <div className="member-profile__detail-label">Previously lived in:</div>
           <div className="member-profile__detail-value">
-            <div className="member-profile__previous-city">{previousLocation}</div>
-            <div className="member-profile__other-cities">{extraLocations.length > 0 && `+${extraLocations.length} others`}</div>
+            <div className="member-profile__previous-homes">{prevCountry}</div>
+            <div className="member-profile__previous-homes-count">
+              {prevCountriesCount > 0 && `+${prevCountriesCount} others`}
+            </div>
           </div>
         </div>
       </div>

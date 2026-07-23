@@ -50,11 +50,11 @@
   font-weight: 500;
 }
 
-.member-profile__previous-city {
+.member-profile__previous-homes {
   @apply text-ellipsis;
 }
 
-.member-profile__other-cities {
+.member-profile__previous-homes-count {
   color: var(--global-text-light);
   font-weight: 400;
 }

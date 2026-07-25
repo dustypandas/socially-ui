@@ -43,7 +43,6 @@
 }
 
 .layout-header__logo-link {
-  display: block;
   flex-shrink: 0;
   @apply wiggle-link;
 }

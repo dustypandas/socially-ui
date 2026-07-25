@@ -321,7 +321,7 @@ html {
   --home-hero-height: 61vh; /* vs 25rem? */
 }
 
-a {
+a, button, input, textarea {
   outline: none;
 }
 

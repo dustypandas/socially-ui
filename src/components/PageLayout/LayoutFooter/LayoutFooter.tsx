@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import './layout-footer.css';
 
 const FOOTER_ICONS = ['🍷', '🌀', '🍔', '🌈', '🍕', '☕️', '🥦'] as const;
 
 export function LayoutFooter() {
-  const year = new Date().getFullYear();
-  const [icon] = useState(
-    () => FOOTER_ICONS[Math.floor(Math.random() * FOOTER_ICONS.length)],
-  );
+  const currDate = new Date();
+  const year = currDate.getFullYear();
+  const icon = FOOTER_ICONS[currDate.getMinutes() % FOOTER_ICONS.length];
 
   return (
     <footer className="layout-footer">

@@ -226,6 +226,7 @@
 }
 
 @utility wiggle-link {
+  display: block;
   text-decoration: none;
 
   &:hover {

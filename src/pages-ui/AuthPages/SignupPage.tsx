@@ -14,7 +14,10 @@ export function SignupPage() {
     <PageLayout hasStaticHeader headerVariant="auth">
       <section className="signup-page">
         <div className="width-container signup-page__content">
-          <h1 className="signup-page__title">Bienvenido <span className="text--full-color">🙂</span> Let's get started!</h1>
+          <h1 className="signup-page__title">
+            Bienvenido, let's get started!
+            {/* <span className="text--full-color">🙂</span> */}
+          </h1>
           <form className="signup-page__form" onSubmit={handleSubmit}>
             <input
               type="email"
@@ -25,9 +28,12 @@ export function SignupPage() {
               Continue
             </button>
           </form>
-          <a href="#/login-ui" className="signup-page__cross-link">
-            Already have an account?
-          </a>
+          <div className="signup-page__cross-link-label">
+            Already have an account?{' '}
+            <a href="#/login-ui" className="signup-page__cross-link">
+              Login
+            </a>
+          </div>
         </div>
       </section>
     </PageLayout>

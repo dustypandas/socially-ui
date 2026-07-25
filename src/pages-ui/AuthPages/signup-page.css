@@ -15,6 +15,7 @@
   max-width: 24rem;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 1.5rem;
 }
 
@@ -39,11 +40,22 @@
   margin-top: 0.5rem;
 }
 
-.signup-page__cross-link {
-  @apply clickable-text;
-  color: var(--global-text-light);
+.signup-page__cross-link-label {
+  margin: 0;
   text-align: center;
+  color: var(--global-text-light);
+  /* @apply courier-inline; */
   font-size: var(--font-size-sm);
+}
+
+.signup-page__cross-link {
+  /* display: block;
+  @apply btn-white-purple;
+  width: 70%;
+  margin: 1.5rem auto; */
+  color: var(--global-link-blue);
+  @apply wiggle-link;
+  display: inline-block;
 }
 
 .signup-page__field {

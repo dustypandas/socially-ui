@@ -89,11 +89,11 @@ export function LayoutHeader({
             {showLoggedOutAuth && (
               <>
                 <a
-                  href="#/login-ui"
+                  href="#/signup-ui"
                   className="layout-header__join-link"
                   onClick={closeMenu}
                 >
-                  Log In
+                  Join Us
                 </a>
               </>
             )}

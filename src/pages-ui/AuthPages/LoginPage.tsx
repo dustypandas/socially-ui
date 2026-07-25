@@ -26,9 +26,12 @@ export function LoginPage() {
               Sign in
             </button>
           </form>
-          <a href="#/signup-ui" className="signup-page__cross-link">
-            Create an account
-          </a>
+          <div className="signup-page__cross-link-label">
+            Don't have an account yet?{' '}
+            <a href="#/signup-ui" className="signup-page__cross-link">
+              Join Us
+            </a>
+          </div>
         </div>
       </section>
     </PageLayout>

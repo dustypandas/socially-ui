@@ -39,6 +39,7 @@ export function PageLayout({
       isHomePage && shouldShowHomePageHeader && 'layout--show-home-page-header',
       isHomePage && shouldShowHomePageFooter && 'layout--show-home-page-footer',
       hasStaticHeader && 'layout--has-static-header',
+      'antialiased',
     ].filter(Boolean).join(' ')}>
       <LayoutHeader isHomePage={isHomePage} variant={headerVariant} />
       {isHomePage ? (

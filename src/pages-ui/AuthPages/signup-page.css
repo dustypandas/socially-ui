@@ -25,6 +25,66 @@
   text-align: center;
 }
 
+.signup-page__transition {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  /* overflow: hidden; */
+}
+
+.signup-page__panel {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.signup-page__panel--form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.signup-page__panel--confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.signup-page__panel--entering {
+  animation: signupPanelSlideIn 0.3s ease-out forwards;
+}
+
+.signup-page__panel--exiting {
+  animation: signupPanelSlideOut 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes signupPanelSlideIn {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes signupPanelSlideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-20%);
+    /* filter: blur(6px); */
+    opacity: 0;
+  }
+}
+
 .signup-page__form {
   display: flex;
   flex-direction: column;
@@ -38,6 +98,50 @@
 .signup-page__submit {
   @apply btn-purple-white;
   margin-top: 0.5rem;
+}
+
+.signup-page__submit--loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.signup-page__submit--loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: signup-submit-spin 0.8s linear infinite;
+}
+
+@keyframes signup-submit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signup-page__confirmation-text {
+  margin: 0;
+  color: var(--global-text);
+  font-size: var(--font-size-sm);
+}
+
+.signup-page__try-again {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--global-link-blue);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  @apply wiggle-link;
+  display: inline-block;
 }
 
 .signup-page__cross-link-label {
@@ -58,6 +162,12 @@
   display: inline-block;
 }
 
+.signup-page__cross-link--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .signup-page__field {
   display: flex;
   flex-direction: column;
@@ -74,4 +184,10 @@
   color: var(--color-red-600, #dc2626);
   font-size: var(--font-size-sm);
   text-align: center;
+}
+
+.auth-page__divider {
+  @apply page-divider;
+  margin: 0.75rem auto 1.25rem;
+  width: 5rem;
 }

@@ -27,6 +27,7 @@ export function LoginPage() {
             </button>
           </form>
           <div className="signup-page__cross-link-label">
+            <div className="auth-page__divider" />
             Don't have an account yet?{' '}
             <a href="#/signup-ui" className="signup-page__cross-link">
               Join Us

@@ -37,8 +37,13 @@ export function IndexPage() {
     <a href='#/login-ui'>Login ui</a>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <span>
+        &emsp;&emsp;&emsp;<a href='#/reset-password-ui'>Reset password ui</a>
+      </span>
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <span>
         <a href='#/signup-ui'>Signup ui</a>
-        &emsp;&emsp;&emsp;<a href='#/signup-step2-ui'>(step-2)</a>
+        &emsp;&emsp;&emsp;<a href='#/signup-final-ui'>(final)</a>
       </span>
     </div>
     <a href='#/create-community-ui'>Create community</a>

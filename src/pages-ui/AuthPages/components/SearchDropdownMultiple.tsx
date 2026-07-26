@@ -32,8 +32,8 @@ export function SearchDropdownMultiple({
   };
 
   return (
-    <div className="search-dropdown-multiple signup-page__field">
-      <span className="signup-page__label">{label}</span>
+    <div className="search-dropdown-multiple auth-page__field">
+      <span className="auth-page__label">{label}</span>
       {values.length > 0 && (
         <ul className="search-dropdown-multiple__selected-list">
           {values.map(value => (

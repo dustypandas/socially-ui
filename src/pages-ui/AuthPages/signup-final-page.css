@@ -1,6 +1,6 @@
-@import './signup-page.css';
+@import './auth-page.css';
 
-.signup-step2-page {
+.signup-final-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
   padding: 2rem 0 4rem;
 }
 
-.signup-step2-page__content {
+.signup-final-page__content {
   width: 100%;
   max-width: 35rem;
   display: flex;
@@ -17,23 +17,29 @@
   gap: 1.5rem;
 }
 
-.signup-step2-page__form {
+.signup-final-page__form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.signup-step2-page__row {
+.signup-final-page__input-row {
   display: flex;
   gap: 0.75rem;
 }
 
-.signup-step2-page__row > .signup-page__field {
+.signup-final-page__input-row > .signup-final-page__input {
   flex: 1;
   min-width: 0;
 }
 
-.signup-step2-page__input {
+@media (max-width: theme(--breakpoint-sm)) {
+  .signup-final-page__input-row {
+    flex-direction: column;
+  }
+}
+
+.signup-final-page__input {
   @apply text-input--content;
   text-align: left;
 }

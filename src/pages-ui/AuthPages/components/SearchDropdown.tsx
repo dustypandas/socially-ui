@@ -9,6 +9,8 @@ type SearchDropdownProps = {
   onChange: (value: string) => void;
 };
 
+const MAX_VISIBLE_OPTIONS = 50;
+
 export function SearchDropdown({
   label,
   placeholder,
@@ -35,6 +37,7 @@ export function SearchDropdown({
   const filteredOptions = normalizedQuery.length === 0
     ? options
     : options.filter(option => option.toLowerCase().includes(normalizedQuery));
+  const visibleOptions = filteredOptions.slice(0, MAX_VISIBLE_OPTIONS);
 
   const openDropdown = () => {
     if (blurTimeoutRef.current !== null) {
@@ -74,9 +77,9 @@ export function SearchDropdown({
   };
 
   return (
-    <div className={hasLabel ? 'search-dropdown signup-page__field' : 'search-dropdown'}>
+    <div className={hasLabel ? 'search-dropdown auth-page__field' : 'search-dropdown'}>
       {hasLabel && (
-        <label className="signup-page__label" htmlFor={inputId}>
+        <label className="auth-page__label" htmlFor={inputId}>
           {label}
         </label>
       )}
@@ -91,9 +94,9 @@ export function SearchDropdown({
         onClick={handleClick}
         onBlur={handleBlur}
       />
-      {isOpen && filteredOptions.length > 0 && (
+      {isOpen && visibleOptions.length > 0 && (
         <ul className="search-dropdown__list">
-          {filteredOptions.map(option => (
+          {visibleOptions.map(option => (
             <li key={option} className="search-dropdown__item">
               <button
                 type="button"

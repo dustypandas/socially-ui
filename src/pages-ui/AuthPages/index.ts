@@ -1,3 +1,4 @@
 export * from './LoginPage';
+export * from './ResetPasswordPage';
 export * from './SignupPage';
-export * from './SignupStep2Page';
+export * from './SignupFinalPage';

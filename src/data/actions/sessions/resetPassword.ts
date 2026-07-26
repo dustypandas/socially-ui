@@ -1,4 +1,4 @@
-export async function signupStep1(email: string): Promise<void> {
+export async function resetPassword(email: string): Promise<void> {
   const trimmed = email.trim();
   if (!trimmed) throw new Error('Email is required');
 

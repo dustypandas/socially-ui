@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { PageLayout } from '@src/components';
-import { signupInitial } from '@src/data';
-import './signup-page.css';
+import { resetPassword } from '@src/data';
+import './reset-password-page.css';
 
-type SignupStatus = 'idle' | 'loading' | 'complete';
+type ResetPasswordStatus = 'idle' | 'loading' | 'complete';
 
-export function SignupPage() {
+export function ResetPasswordPage() {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<SignupStatus>('idle');
+  const [status, setStatus] = useState<ResetPasswordStatus>('idle');
   const [error, setError] = useState('');
 
   const isLoading = status === 'loading';
@@ -19,7 +19,7 @@ export function SignupPage() {
     setError('');
 
     try {
-      await signupInitial(email);
+      await resetPassword(email);
       setStatus('complete');
     } catch {
       setStatus('idle');
@@ -59,15 +59,14 @@ export function SignupPage() {
           ].filter(Boolean).join(' ')}
           disabled={isLoading}
         >
-          Continue
-          {/* Join our waitlist! */}
+          Send reset link
         </button>
         {error && <p className="auth-page__error">{error}</p>}
       </form>
 
       <div className="auth-page__cross-link-label">
         <div className="auth-page__divider" />
-        Already have an account?{' '}
+        Remember your password?{' '}
         <a
           href="#/login-ui"
           className={[
@@ -86,21 +85,18 @@ export function SignupPage() {
     <PageLayout hasStaticHeader headerVariant="auth">
       <section className="auth-page">
         <div className="width-container auth-page__content">
-          <h1 className="auth-page__title">
-            Bienvenido, let's get started!
-            {/* <span className="text--full-color">🙂</span> */}
-          </h1>
+          <h1 className="auth-page__title">Reset my password</h1>
           {isComplete ? (
-            <div className="signup-page__transition">
-              <div className="signup-page__panel signup-page__panel--form signup-page__panel--exiting">
+            <div className="reset-password-page__transition">
+              <div className="reset-password-page__panel reset-password-page__panel--form reset-password-page__panel--exiting">
                 {formContent}
               </div>
-              <div className="signup-page__panel signup-page__panel--confirmation signup-page__panel--entering">
-                <div className="signup-page__confirmation-text">
-                  We've sent a link to <strong>{email}</strong> 👍
+              <div className="reset-password-page__panel reset-password-page__panel--confirmation reset-password-page__panel--entering">
+                <div className="reset-password-page__confirmation-text">
+                  We've sent a reset link to <strong>{email}</strong> 👍
                 </div>
-                <div className="signup-page__confirmation-text">
-                  Check your email to complete the next step.
+                <div className="reset-password-page__confirmation-text">
+                  Check your email to continue.
                 </div>
 
                 <div className="auth-page__cross-link-label">
@@ -108,7 +104,7 @@ export function SignupPage() {
                   Didn't receive the email?{' '}
                   <button
                     type="button"
-                    className="signup-page__try-again"
+                    className="reset-password-page__try-again"
                     onClick={handleTryAgain}
                   >
                     Try again

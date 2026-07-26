@@ -17,16 +17,18 @@ import {
   CreateCommunityPage,
   CreateEventPage,
   LoginPage,
+  ResetPasswordPage,
   PrevCommunityPage,
   PrevEventPage,
   SignupPage,
-  SignupStep2Page,
+  SignupFinalPage,
 } from './pages-ui';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
       <Routes>
+        {/* part 0.1 - concept arts */}
         <Route path='/' element={<IndexPage />} />
         <Route path='/home-ui' element={<HomePage />} />
         <Route path='/interests-ui' element={<InterestsPageClient />} />
@@ -42,9 +44,12 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/one-member-ui-empty' element={<MemberPageClient variant="empty" />} />
         <Route path='/one-member-ui-related' element={<MemberPageClient variant="related" />} />
         <Route path='/one-member-ui-admin' element={<MemberPageClient variant="admin" />} />
+        {/* part 0.2 - auth, member critial path funnel */}
         <Route path='/login-ui' element={<LoginPage />} />
+        <Route path='/reset-password-ui' element={<ResetPasswordPage />} />
         <Route path='/signup-ui' element={<SignupPage />} />
-        <Route path='/signup-step2-ui' element={<SignupStep2Page />} />
+        <Route path='/signup-final-ui' element={<SignupFinalPage />} />
+        {/* part 0.3 - create content */}
         <Route path='/create-event-ui' element={<CreateEventPage />} />
         <Route path='/create-community-ui' element={<CreateCommunityPage />} />
 

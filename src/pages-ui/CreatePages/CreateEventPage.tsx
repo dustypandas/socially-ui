@@ -10,10 +10,10 @@ export function CreateEventPage() {
     <PageLayout hasStaticHeader>
       <section className="create-page">
         <div className="width-container create-page__content">
-          <h1 className="signup-page__title">Create event</h1>
+          <h1 className="auth-page__title">Create event</h1>
           <form className="create-page__form" onSubmit={handleSubmit}>
-            <div className="signup-page__field">
-              <label className="signup-page__label" htmlFor="create-event-title">
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="create-event-title">
                 Title
               </label>
               <input
@@ -25,8 +25,8 @@ export function CreateEventPage() {
               />
             </div>
 
-            <div className="signup-page__field">
-              <label className="signup-page__label" htmlFor="create-event-start-time">
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="create-event-start-time">
                 Date &amp; time
               </label>
               <input
@@ -38,8 +38,8 @@ export function CreateEventPage() {
               />
             </div>
 
-            <div className="signup-page__field">
-              <label className="signup-page__label" htmlFor="create-event-location">
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="create-event-location">
                 Location
               </label>
               <input
@@ -51,8 +51,8 @@ export function CreateEventPage() {
               />
             </div>
 
-            <div className="signup-page__field">
-              <label className="signup-page__label" htmlFor="create-event-description">
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="create-event-description">
                 Description
               </label>
               <textarea
@@ -64,7 +64,7 @@ export function CreateEventPage() {
               />
             </div>
 
-            <button type="submit" className="signup-page__submit">
+            <button type="submit" className="auth-page__submit">
               Create event
             </button>
           </form>

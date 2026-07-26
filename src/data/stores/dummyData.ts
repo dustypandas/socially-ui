@@ -867,6 +867,16 @@ export const memberAboutForOneMember: MemberAbout = {
 
 export const currentUser = members[7];
 
+export const authUser = {
+  email: 'test@test.com',
+  password: 'test',
+  firstName: 'James',
+  lastName: 'Wright',
+  madridSince: '2020',
+  livingNear: 'Tribunal',
+  previousHomes: ['United Kingdom'],
+};
+
 export const myFollowedInterests: string[] = [];
 
 export const myCommunityIds: string[] = [];

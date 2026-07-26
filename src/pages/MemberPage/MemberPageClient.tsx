@@ -20,7 +20,7 @@ export function MemberPageClient({ variant }: MemberPageClientProps) {
       <section className="member-page">
         <div className="width-container">
           <ColumnsLayout>
-            <ColumnsLayout.Aside sticky asideWidth="min(320px, 32%)">
+            <ColumnsLayout.Aside sticky>
               <MemberProfile member={memberPageData} />
             </ColumnsLayout.Aside>
             <ColumnsLayout.Main>

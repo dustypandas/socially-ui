@@ -11,17 +11,18 @@ import {
   IndexPage,
   InterestsPageClient,
   InterestPageClient,
+  LoginPage,
   MemberPageClient,
+  ResetPasswordPage,
+  SignupFinalPage,
+  SignupPage,
 } from './pages';
 import {
   CreateCommunityPage,
   CreateEventPage,
-  LoginPage,
-  ResetPasswordPage,
+  // HomeLoggedinPage,
   PrevCommunityPage,
   PrevEventPage,
-  SignupPage,
-  SignupFinalPage,
 } from './pages-ui';
 
 createRoot(document.getElementById('root')!).render(
@@ -49,6 +50,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/reset-password-ui' element={<ResetPasswordPage />} />
         <Route path='/signup-ui' element={<SignupPage />} />
         <Route path='/signup-final-ui' element={<SignupFinalPage />} />
+        {/* <Route path='/home-loggedin-ui' element={<HomeLoggedinPage />} /> */}
         {/* part 0.3 - create content */}
         <Route path='/create-event-ui' element={<CreateEventPage />} />
         <Route path='/create-community-ui' element={<CreateCommunityPage />} />

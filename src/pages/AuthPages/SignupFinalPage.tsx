@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PageLayout } from '@src/components';
 import { signupFinal } from '@src/data';
+import { getAuthSuccessRedirect } from '@src/pages/AuthPages/helpers/getAuthSuccessRedirect';
 import { SearchDropdown } from './components/SearchDropdown';
 import { SearchDropdownMultiple } from './components/SearchDropdownMultiple';
 import { countries } from './data/countries';
@@ -15,6 +16,7 @@ type SignupFinalStatus = 'idle' | 'loading';
 
 export function SignupFinalPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
@@ -56,7 +58,7 @@ export function SignupFinalPage() {
         livingNear,
         previousHomes,
       });
-      navigate('/home-ui');
+      navigate(getAuthSuccessRedirect(searchParams));
     } catch {
       setStatus('idle');
       setError('Something went wrong. Please try again.');

@@ -1,3 +1,4 @@
+export * from './AuthPages';
 export * from './HomePage/HomePage';
 export * from './CommunitiesPage/CommunitiesPageClient';
 export * from './CommunityPage/CommunityPageClient';

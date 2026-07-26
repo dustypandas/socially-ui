@@ -1,6 +1,12 @@
 export function IndexPage() {
   return (<div style={{ padding: '5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-    <a href='#/home-ui'>Home ui</a>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <a href='#/home-ui'>Home ui</a>
+      <span>
+        &emsp;<a href='#/home-loggedin-ui'>Home logged-in ui</a>
+      </span>
+    </div>
+
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/interests-ui'>Interests ui</a>
       <span>
@@ -30,22 +36,25 @@ export function IndexPage() {
         &emsp;&emsp;&emsp;<a href='#/one-interest-ui-admin'>(admin)</a>
       </span>
     </div>
-    
+
     <br/>
-    <br/>
-    <br/>
-    <a href='#/login-ui'>Login ui</a>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <a href='#/login-ui'>Login ui</a>
       <span>
-        &emsp;&emsp;&emsp;<a href='#/reset-password-ui'>Reset password ui</a>
+        &emsp;<a href='#/reset-password-ui'>Reset password ui</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <a href='#/signup-ui'>Signup ui</a>
       <span>
-        <a href='#/signup-ui'>Signup ui</a>
-        &emsp;&emsp;&emsp;<a href='#/signup-final-ui'>(final)</a>
+        &emsp;<a href='#/signup-final-ui'>Signup final step</a>
       </span>
     </div>
+
+    <br/>
+    <br/>
+    <br/>
+
     <a href='#/create-community-ui'>Create community</a>
     <a href='#/create-event-ui'>Create event</a>
     <br/>

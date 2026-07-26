@@ -1,4 +1,4 @@
-@import '../AuthPages/auth-page.css';
+@import '../../pages/AuthPages/auth-page.css';
 
 .create-page {
   display: flex;

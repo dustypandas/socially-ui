@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { PageLayout } from '@src/components';
 import { login } from '@src/data';
+import { getAuthSuccessRedirect } from '@src/pages/AuthPages/helpers/getAuthSuccessRedirect';
 import './login-page.css';
 
 type LoginStatus = 'idle' | 'loading';
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +25,7 @@ export function LoginPage() {
 
     try {
       await login(email, password);
-      navigate('/home-ui');
+      navigate(getAuthSuccessRedirect(searchParams));
     } catch (caughtError) {
       setStatus('idle');
       setError(

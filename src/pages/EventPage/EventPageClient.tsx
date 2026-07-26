@@ -86,7 +86,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
               <div className="event-page__divider" />
               <EventReviews reviews={eventPageData.reviews ?? []} />
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside asideWidth="min(320px, 32%)">
+            <ColumnsLayout.Aside>
               <div className="event-page__aside">
                 <div className="event-page__aside-image">
                   <EventImage src={eventPageData.image} alt={eventPageData.title} />

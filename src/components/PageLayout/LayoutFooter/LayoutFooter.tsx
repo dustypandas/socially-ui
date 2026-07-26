@@ -1,6 +1,6 @@
 import './layout-footer.css';
 
-const FOOTER_ICONS = ['🍷', '🌀', '🍔', '🌈', '🍕', '☕️', '🥦'] as const;
+const FOOTER_ICONS = ['🍷', '🌀', '🍰', '🌈', '🍕', '☕️', '🥦'] as const;
 
 export function LayoutFooter() {
   const currDate = new Date();

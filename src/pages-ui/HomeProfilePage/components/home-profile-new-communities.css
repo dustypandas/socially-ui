@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+@import '../../../globals.css';
+
+.home-profile-new-communities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.home-profile-new-communities__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: theme(--breakpoint-md)) {
+  .home-profile-new-communities__list {
+    grid-template-columns: 1fr;
+  }
+}

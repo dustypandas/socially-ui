@@ -6,8 +6,11 @@ import {
 import { getHomePageData, type HomePageData } from '@src/data';
 import {
   HomeProfileMember,
+  HomeProfileNewCommunities,
+  HomeProfileNewEvents,
+  HomeProfileNewInterests,
+  HomeProfileNewMembers,
   HomeProfileUpcomingEvents,
-  HomeProfileWhatsNew,
 } from './components';
 import './home-profile-page.css';
 
@@ -29,9 +32,12 @@ export function HomeProfilePage() {
                   events={homePageData?.upcomingEvents ?? []}
                 />
 
-                <HomeProfileWhatsNew
+                <HomeProfileNewMembers />
+                <HomeProfileNewCommunities />
+                <HomeProfileNewInterests
                   popularInterests={homePageData?.popularInterests ?? []}
                 />
+                <HomeProfileNewEvents />
               </div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky>

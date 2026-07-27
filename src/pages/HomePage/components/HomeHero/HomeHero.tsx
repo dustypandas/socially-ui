@@ -16,7 +16,7 @@ const HERO_WORDS = [
   'psychedelic 🍄',
   'culinary 🌮',
   'wizarding 🧙‍♂️',
-]; // reflective 🧘‍♀️,
+]; // meaningful, intimate, enduring, nourishing, co-created, diverse, reflective 🧘‍♀️,
 
 type HomeHeroProps = {
   carouselEnabled?: boolean;

@@ -3,7 +3,7 @@ export function IndexPage() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/home-ui'>Home ui</a>
       <span>
-        &emsp;<a href='#/home-loggedin-ui'>Home logged-in ui</a>
+        &emsp;<a href='#/home-profile-ui'>Home profile ui</a>
       </span>
     </div>
 

@@ -1,4 +1,4 @@
 export * from './PrevCommunityPage/PrevCommunityPage';
 export * from './PrevEventPage/PrevEventPage';
-// export * from './HomeLoggedinPage/HomeLoggedinPage';
+export * from './HomeProfilePage/HomeProfilePage';
 export * from './CreatePages';

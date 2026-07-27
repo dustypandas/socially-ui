@@ -20,7 +20,7 @@ import {
 import {
   CreateCommunityPage,
   CreateEventPage,
-  // HomeLoggedinPage,
+  HomeProfilePage,
   PrevCommunityPage,
   PrevEventPage,
 } from './pages-ui';
@@ -50,7 +50,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/reset-password-ui' element={<ResetPasswordPage />} />
         <Route path='/signup-ui' element={<SignupPage />} />
         <Route path='/signup-final-ui' element={<SignupFinalPage />} />
-        {/* <Route path='/home-loggedin-ui' element={<HomeLoggedinPage />} /> */}
+        <Route path='/home-profile-ui' element={<HomeProfilePage />} />
         {/* part 0.3 - create content */}
         <Route path='/create-event-ui' element={<CreateEventPage />} />
         <Route path='/create-community-ui' element={<CreateCommunityPage />} />

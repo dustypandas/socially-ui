@@ -1,45 +1,54 @@
 import { useMemo, useState } from 'react';
 import { ButtonsGroup, EventCardHorizontal, SectionTitle } from '@src/components';
-import { filterEvents, type EventBasic, type TimeFilter } from '@src/data';
+import type { EventBasic } from '@src/data';
 import { getDateAndTimeLabels } from '@src/helpers/labelHelpers';
+import {
+  countHomeProfileEventsByScope,
+  filterHomeProfileEvents,
+  type HomeProfileEventScope,
+} from '../../data/homeProfileEventScopes';
 import './home-profile-upcoming-events.css';
 
-const HOME_PROFILE_TIME_FILTER_OPTIONS = [
-  { value: 'today', label: 'Today' },
-  { value: 'thisWeek', label: 'This week' },
-  { value: 'nextWeek', label: 'Next week' },
-] as const satisfies { value: TimeFilter; label: string }[];
+const HOME_PROFILE_EVENT_SCOPE_OPTIONS = [
+  { value: 'myInterests', label: 'My interests' },
+  { value: 'attending', label: 'Attending' },
+  { value: 'discover', label: 'Discover' },
+] as const satisfies { value: HomeProfileEventScope; label: string }[];
 
 type HomeProfileUpcomingEventsProps = {
   events: EventBasic[];
 };
 
 export function HomeProfileUpcomingEvents({ events }: HomeProfileUpcomingEventsProps) {
-  const [timeFilter, setTimeFilter] = useState<TimeFilter>('thisWeek');
+  const [eventScope, setEventScope] = useState<HomeProfileEventScope>('attending');
+
+  const scopeCounts = useMemo(
+    () => countHomeProfileEventsByScope(events),
+    [events],
+  );
 
   const filteredEvents = useMemo(
-    () => filterEvents(events, '', timeFilter, 'any'),
-    [events, timeFilter],
+    () => filterHomeProfileEvents(events, eventScope),
+    [events, eventScope],
   );
 
   const isEmpty = filteredEvents.length === 0;
 
   return (
-    <section className="home-profile-upcoming-events">
+    <section id="upcoming-events" className="home-profile-upcoming-events">
       <SectionTitle
         title="Upcoming Events"
-        hideMore={filteredEvents.length <= 3}
         moreHref="#/events-ui"
-        moreLabel="all events →"
+        moreLabel="more events →"
       />
       <div className="home-profile-upcoming-events__filters">
-        {HOME_PROFILE_TIME_FILTER_OPTIONS.map(option => (
+        {HOME_PROFILE_EVENT_SCOPE_OPTIONS.map(option => (
           <ButtonsGroup
             key={option.value}
-            selected={timeFilter === option.value}
-            onClick={() => setTimeFilter(option.value)}
+            selected={eventScope === option.value}
+            onClick={() => setEventScope(option.value)}
           >
-            {option.label}
+            {option.label} ({scopeCounts[option.value]})
           </ButtonsGroup>
         ))}
       </div>
@@ -72,6 +81,10 @@ export function HomeProfileUpcomingEvents({ events }: HomeProfileUpcomingEventsP
           })}
         </div>
       )}
+      <div
+        className="home-profile-section__end"
+        data-section-id="upcoming-events"
+      />
     </section>
   );
 }

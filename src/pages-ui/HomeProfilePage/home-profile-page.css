@@ -12,3 +12,12 @@
   flex-direction: column;
   gap: 2.5rem;
 }
+
+.home-profile-page__main > section {
+  scroll-margin-top: var(--layout-sticky-top);
+}
+
+.home-profile-section__end {
+  height: 0;
+  width: 100%;
+}

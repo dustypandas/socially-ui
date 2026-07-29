@@ -12,9 +12,10 @@
 }
 
 .buttons-group--selected {
-  @apply btn-purple-white;
+  @apply btn-white-purple;
   @apply courier-inline;
   @apply rounded-circle;
   font-size: var(--font-size-sm);
+  border: 1px solid var(--global-purple);
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }

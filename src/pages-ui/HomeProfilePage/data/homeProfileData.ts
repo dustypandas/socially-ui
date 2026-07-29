@@ -1,4 +1,4 @@
-import type { CommunityBasic, EventBasic } from '@src/data';
+import type { CommunityBasic } from '@src/data';
 
 export type HomeProfileMember = {
   id: string;
@@ -50,40 +50,6 @@ export const newCommunities: CommunityBasic[] = [
     rating: 4.6,
     ratingCount: 8,
     interests: ['games', 'social'],
-  },
-];
-
-function getTimestampFromNow(daysFromNow: number, hour = 19, minute = 0): number {
-  const date = new Date();
-  date.setDate(date.getDate() + daysFromNow);
-  date.setHours(hour, minute, 0, 0);
-  return date.getTime();
-}
-
-export const newEvents: EventBasic[] = [
-  {
-    id: 'new-event-1',
-    title: 'Sunset Picnic in Retiro',
-    image: './assets/dummy-data/event-lightning.avif',
-    href: '#/one-event-ui',
-    startTime: getTimestampFromNow(4, 18, 30),
-    location: { label: 'Retiro Park' },
-    attendees: { count: 18, avatars: [] },
-    rating: 4.9,
-    ratingCount: 6,
-    openTo: 'public',
-  },
-  {
-    id: 'new-event-2',
-    title: 'Spanish Conversation Hour',
-    image: './assets/dummy-data/event-lightning.avif',
-    href: '#/one-event-ui',
-    startTime: getTimestampFromNow(6, 19, 0),
-    location: { label: 'Malasaña' },
-    attendees: { count: 24, avatars: [] },
-    rating: 4.7,
-    ratingCount: 11,
-    openTo: 'public',
   },
 ];
 

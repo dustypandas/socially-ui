@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '../../../globals.css';
+@import '../../../../globals.css';
 
 .home-profile-upcoming-events {
   padding: 0 0 1rem;

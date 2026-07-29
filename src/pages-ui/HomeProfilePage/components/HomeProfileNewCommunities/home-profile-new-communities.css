@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.home-profile-new-communities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .communities-grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

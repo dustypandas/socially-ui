@@ -1,6 +1,5 @@
-export * from './HomeProfileMember';
-export * from './HomeProfileNewCommunities';
-export * from './HomeProfileNewEvents';
-export * from './HomeProfileNewInterests';
-export * from './HomeProfileNewMembers';
-export * from './HomeProfileUpcomingEvents';
+export { HomeProfileNav, type HomeProfileNavItem } from './HomeProfileNav/HomeProfileNav';
+export { HomeProfileNewCommunities } from './HomeProfileNewCommunities/HomeProfileNewCommunities';
+export { HomeProfileNewInterests } from './HomeProfileNewInterests/HomeProfileNewInterests';
+export { HomeProfileNewMembers } from './HomeProfileNewMembers/HomeProfileNewMembers';
+export { HomeProfileUpcomingEvents } from './HomeProfileUpcomingEvents/HomeProfileUpcomingEvents';

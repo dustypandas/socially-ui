@@ -1,7 +1,7 @@
 export type HomeProfileSectionId =
   | 'upcoming-events'
-  | 'new-communities'
+  | 'fresh-communities'
   | 'new-members'
-  | 'fresh-interests';
+  | 'trending-interests';
 
 export const tempViewedHomeSections: HomeProfileSectionId[] = [];

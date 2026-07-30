@@ -1,24 +1,24 @@
 import { SectionTitle } from '@src/components';
 import type { CommunityBasic } from '@src/data';
 import { CommunitiesGrid } from '@src/pages/CommunitiesPage/components/CommunitiesGrid/CommunitiesGrid';
-import './home-profile-new-communities.css';
+import './home-profile-fresh-communities.css';
 
-type HomeProfileNewCommunitiesProps = {
+type HomeProfileFreshCommunitiesProps = {
   communities: CommunityBasic[];
 };
 
-export function HomeProfileNewCommunities({ communities }: HomeProfileNewCommunitiesProps) {
+export function HomeProfileFreshCommunities({ communities }: HomeProfileFreshCommunitiesProps) {
   return (
-    <section id="new-communities" className="home-profile-new-communities">
+    <section id="fresh-communities" className="home-profile-fresh-communities">
       <SectionTitle
-        title="New Communities"
+        title="Fresh Communities"
         moreHref="#/communities-ui"
         moreLabel="more communities →"
       />
       <CommunitiesGrid communities={communities} />
       <div
         className="home-profile-section__end"
-        data-section-id="new-communities"
+        data-section-id="fresh-communities"
       />
     </section>
   );

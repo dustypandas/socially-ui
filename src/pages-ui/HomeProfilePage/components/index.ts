@@ -1,5 +1,5 @@
 export { HomeProfileNav, type HomeProfileNavItem } from './HomeProfileNav/HomeProfileNav';
-export { HomeProfileNewCommunities } from './HomeProfileNewCommunities/HomeProfileNewCommunities';
-export { HomeProfileNewInterests } from './HomeProfileNewInterests/HomeProfileNewInterests';
+export { HomeProfileFreshCommunities } from './HomeProfileFreshCommunities/HomeProfileFreshCommunities';
+export { HomeProfileTrendingInterests } from './HomeProfileTrendingInterests/HomeProfileTrendingInterests';
 export { HomeProfileNewMembers } from './HomeProfileNewMembers/HomeProfileNewMembers';
 export { HomeProfileUpcomingEvents } from './HomeProfileUpcomingEvents/HomeProfileUpcomingEvents';

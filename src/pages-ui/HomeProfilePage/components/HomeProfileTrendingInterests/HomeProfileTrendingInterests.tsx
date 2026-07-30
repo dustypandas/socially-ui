@@ -1,27 +1,27 @@
 import { SectionTitle } from '@src/components';
 import type { Interest } from '@src/data';
-import './home-profile-new-interests.css';
+import './home-profile-trending-interests.css';
 
 const MAX_VISIBLE_INTERESTS = 12;
 
-type HomeProfileNewInterestsProps = {
+type HomeProfileTrendingInterestsProps = {
   interests: Interest[];
 };
 
-export function HomeProfileNewInterests({ interests }: HomeProfileNewInterestsProps) {
+export function HomeProfileTrendingInterests({ interests }: HomeProfileTrendingInterestsProps) {
   const visibleInterests = interests.slice(0, MAX_VISIBLE_INTERESTS);
 
   return (
-    <section id="fresh-interests" className="home-profile-new-interests">
+    <section id="trending-interests" className="home-profile-trending-interests">
       <SectionTitle
-        title="Fresh Interests"
+        title="Trending Interests"
         moreHref="#/interests-ui"
         moreLabel="more interests →"
       />
-      <ul className="home-profile-new-interests__list">
+      <ul className="home-profile-trending-interests__list">
         {visibleInterests.map(interest => (
-          <li key={interest.label} className="home-profile-new-interests__item">
-            <a href="#/one-interest-ui" className="home-profile-new-interests__link">
+          <li key={interest.label} className="home-profile-trending-interests__item">
+            <a href="#/one-interest-ui" className="home-profile-trending-interests__link">
               #{interest.label} ({interest.followerIds?.length ?? 0})
             </a>
           </li>
@@ -29,7 +29,7 @@ export function HomeProfileNewInterests({ interests }: HomeProfileNewInterestsPr
       </ul>
       <div
         className="home-profile-section__end"
-        data-section-id="fresh-interests"
+        data-section-id="trending-interests"
       />
     </section>
   );

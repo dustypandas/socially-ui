@@ -13,8 +13,8 @@ import {
 import {
   HomeProfileNav,
   type HomeProfileNavItem,
-  HomeProfileNewCommunities,
-  HomeProfileNewInterests,
+  HomeProfileFreshCommunities,
+  HomeProfileTrendingInterests,
   HomeProfileNewMembers,
   HomeProfileUpcomingEvents,
 } from './components';
@@ -42,7 +42,7 @@ export function HomeProfilePage() {
     const ids = ['upcoming-events'];
 
     if (communities.length > 0) {
-      ids.push('new-communities');
+      ids.push('fresh-communities');
     }
 
     if (newMembers.length > 0) {
@@ -50,7 +50,7 @@ export function HomeProfilePage() {
     }
 
     if (interests.length > 0) {
-      ids.push('fresh-interests');
+      ids.push('trending-interests');
     }
 
     return ids;
@@ -65,9 +65,9 @@ export function HomeProfilePage() {
 
     if (communities.length > 0) {
       items.push({
-        id: 'new-communities',
-        label: 'New communities',
-        count: isViewed('new-communities') ? undefined : communities.length,
+        id: 'fresh-communities',
+        label: 'Fresh communities',
+        count: isViewed('fresh-communities') ? undefined : communities.length,
       });
     }
 
@@ -81,9 +81,9 @@ export function HomeProfilePage() {
 
     if (interests.length > 0) {
       items.push({
-        id: 'fresh-interests',
-        label: 'Fresh interests',
-        count: isViewed('fresh-interests') ? undefined : interests.length,
+        id: 'trending-interests',
+        label: 'Trending interests',
+        count: isViewed('trending-interests') ? undefined : interests.length,
       });
     }
 
@@ -112,7 +112,7 @@ export function HomeProfilePage() {
                 />
 
                 {communities.length > 0 && (
-                  <HomeProfileNewCommunities communities={communities} />
+                  <HomeProfileFreshCommunities communities={communities} />
                 )}
 
                 {newMembers.length > 0 && (
@@ -120,7 +120,7 @@ export function HomeProfilePage() {
                 )}
 
                 {interests.length > 0 && (
-                  <HomeProfileNewInterests interests={interests} />
+                  <HomeProfileTrendingInterests interests={interests} />
                 )}
               </div>
             </ColumnsLayout.Main>

@@ -1,11 +1,11 @@
 import { SectionTitle } from '@src/components';
-import type { Interest } from '@src/data';
+import type { HomeProfileTrendingInterest } from '../../data/homeProfileData';
 import './home-profile-trending-interests.css';
 
 const MAX_VISIBLE_INTERESTS = 12;
 
 type HomeProfileTrendingInterestsProps = {
-  interests: Interest[];
+  interests: HomeProfileTrendingInterest[];
 };
 
 export function HomeProfileTrendingInterests({ interests }: HomeProfileTrendingInterestsProps) {
@@ -24,6 +24,11 @@ export function HomeProfileTrendingInterests({ interests }: HomeProfileTrendingI
             <a href="#/one-interest-ui" className="home-profile-trending-interests__link">
               #{interest.label} ({interest.followerIds?.length ?? 0})
             </a>
+            {interest.newFollowersCount != null && interest.newFollowersCount > 0 && (
+              <div className="home-profile-trending-interests__new-followers">
+                +{interest.newFollowersCount}
+              </div>
+            )}
           </li>
         ))}
       </ul>

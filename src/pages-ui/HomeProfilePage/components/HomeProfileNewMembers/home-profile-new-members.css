@@ -4,19 +4,105 @@
 .home-profile-new-members {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
 }
 
 .home-profile-new-members__summary {
-  margin: 0 1rem;
+  margin: 0 0 1.5rem;
   color: var(--global-text-light);
   font-size: var(--font-size-sm);
   line-height: 1.5;
 }
 
-.home-profile-new-members__placeholder {
-  min-height: 8rem;
-  margin: 0 1rem;
-  border-radius: var(--border-radius-sm);
-  background: var(--light-shadow);
+.home-profile-new-members__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-profile-new-members__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+}
+
+.home-profile-new-members__avatar-link {
+  display: flex;
+  flex: 1;
+  gap: 0.75rem;
+  min-width: 0;
+  color: inherit;
+
+  @apply clickable-text;
+}
+
+.home-profile-new-members__avatar {
+  display: block;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.home-profile-new-members__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.home-profile-new-members__community {
+  margin: 0;
+  color: var(--global-text-light);
+  /* font-size: var(--font-size-sm); */
+  line-height: 1.4;
+}
+
+.home-profile-new-members__name {
+  color: var(--global-text);
+  font-weight: bold;
+}
+
+.home-profile-new-members__community-name {
+  color: var(--global-text);
+}
+
+.home-profile-new-members__detail {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.home-profile-new-members__question {
+  color: var(--global-text-light);
+}
+
+.home-profile-new-members__response {
+  color: var(--global-text);
+}
+
+.home-profile-new-members__welcome-input-wrapper {
+  margin-top: 0.25rem;
+  margin-left: calc(2.75rem + 0.75rem);
+}
+
+.home-profile-new-members__welcome-input {
+  width: 100%;
+  max-width: 20rem;
+  @apply text-input;
+  font-family: inherit;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+@media (max-width: theme(--breakpoint-md)) {
+  .home-profile-new-members__welcome-input {
+    max-width: none;
+  }
 }

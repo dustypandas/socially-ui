@@ -18,7 +18,13 @@ import {
   HomeProfileNewMembers,
   HomeProfileUpcomingEvents,
 } from './components';
-import { newCommunities, newMembers, profileData } from './data/homeProfileData';
+import {
+  freshCommunities,
+  newMembers,
+  profileData,
+  trendingInterestNewFollowers,
+  type HomeProfileTrendingInterest,
+} from './data/homeProfileData';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useSectionViewed } from './hooks/useSectionViewed';
 import './home-profile-page.css';
@@ -26,7 +32,7 @@ import './home-profile-page.css';
 export function HomeProfilePage() {
   const [homePageData, setHomePageData] = useState<HomePageData | null>(null);
   const [interests, setInterests] = useState<Interest[]>([]);
-  const [communities] = useState<CommunityBasic[]>(newCommunities);
+  const [communities] = useState<CommunityBasic[]>(freshCommunities);
 
   useEffect(() => {
     Promise.all([
@@ -92,6 +98,14 @@ export function HomeProfilePage() {
 
   const { activeSectionId, navigateToSection } = useActiveSection(sectionIds);
 
+  const trendingInterests: HomeProfileTrendingInterest[] = useMemo(
+    () => interests.map(interest => ({
+      ...interest,
+      newFollowersCount: trendingInterestNewFollowers[interest.label],
+    })),
+    [interests],
+  );
+
   return (
     <PageLayout headerVariant="loggedIn">
       <section className="home-profile-page">
@@ -116,11 +130,11 @@ export function HomeProfilePage() {
                 )}
 
                 {newMembers.length > 0 && (
-                  <HomeProfileNewMembers memberCount={newMembers.length} />
+                  <HomeProfileNewMembers members={newMembers} />
                 )}
 
                 {interests.length > 0 && (
-                  <HomeProfileTrendingInterests interests={interests} />
+                  <HomeProfileTrendingInterests interests={trendingInterests} />
                 )}
               </div>
             </ColumnsLayout.Main>

@@ -4,7 +4,6 @@
 .home-profile-fresh-communities {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
 
   .communities-grid {
     margin-left: 0;

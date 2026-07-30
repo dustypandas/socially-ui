@@ -1,34 +1,100 @@
-import type { CommunityBasic } from '@src/data';
+import type { CommunityBasic, Interest } from '@src/data';
+
+export type HomeProfileMemberDetail = {
+  question: string;
+  response: string;
+};
 
 export type HomeProfileMember = {
   id: string;
   label: string;
   image: string;
   href: string;
+  community: { name: string; href: string };
+  basicDetails: HomeProfileMemberDetail[];
+  otherDetails: HomeProfileMemberDetail[];
+};
+
+export type HomeProfileTrendingInterest = Interest & {
+  newFollowersCount?: number;
 };
 
 export const newMembers: HomeProfileMember[] = [
   {
     id: 'member-new-1',
-    label: 'Sofia Mendez',
-    image: './assets/dummy-data/member-olivia.jpg',
+    label: 'Maria M',
+    image: './assets/dummy-data/member-maria.jpg',
     href: '#/one-member-ui',
+    community: {
+      name: 'Polylogue Madrid: share • learn • inspire',
+      href: '#/one-community-ui',
+    },
+    basicDetails: [
+      { question: 'In Madrid since', response: '1 Year' },
+      { question: 'previously lived in', response: 'UK' },
+    ],
+    otherDetails: [
+      { question: "what's your 5 minute topic?", response: 'Rock climbing' },
+    ],
   },
   {
     id: 'member-new-2',
-    label: 'David Kim',
+    label: 'David K',
     image: './assets/dummy-data/member-dom.jpg',
     href: '#/one-member-ui',
+    community: {
+      name: 'Freshers of Madrid',
+      href: '#/one-community-ui',
+    },
+    basicDetails: [
+      { question: 'In Madrid since', response: '1 Year' },
+      { question: 'previously lived in', response: 'China' },
+    ],
+    otherDetails: [
+      { question: "what's your 5 minute topic?", response: 'Boardgames' },
+    ],
   },
   {
     id: 'member-new-3',
-    label: 'Clara Vidal',
+    label: 'Clara V',
     image: './assets/dummy-data/member-chloe.jpg',
     href: '#/one-member-ui',
+    community: {
+      name: 'Happy Feet',
+      href: '#/one-community-ui',
+    },
+    basicDetails: [
+      { question: 'In Madrid since', response: '6 Months' },
+      { question: 'previously lived in', response: 'Germany' },
+    ],
+    otherDetails: [
+      { question: "what's your 5 minute topic?", response: 'Salsa dancing' },
+    ],
   },
 ];
 
-export const newCommunities: CommunityBasic[] = [
+export const trendingInterestNewFollowers: Record<string, number> = {
+  cycling: 3,
+  hiking: 6,
+  tennis: 2,
+  unicycling: 1,
+  painting: 4,
+  tango: 2,
+  'self-development': 1,
+  yoga: 5,
+  dinosaurs: 3,
+  chess: 2,
+  boardgames: 6,
+  ai: 4,
+  cooking: 1,
+  psychedelics: 2,
+  spanish: 3,
+  german: 2,
+  mandarin: 1,
+  french: 2,
+};
+
+export const freshCommunities: CommunityBasic[] = [
   {
     id: 'community-new-1',
     name: 'Madrid Run Club',

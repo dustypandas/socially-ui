@@ -1,5 +1,4 @@
-import { ColumnsLayout, EventCardHorizontal, PageTitle, PageLayout } from '@src/components';
-import { getDateAndTimeLabels } from '@src/helpers/labelHelpers';
+import { ColumnsLayout, EventTimeline, PageTitle, PageLayout } from '@src/components';
 import { InterestCommunities, InterestExternalLinks, InterestFollowers } from './components';
 import { InterestPageClientProps, useInterestPageStates } from './useInterestPageStates';
 import './interest-page.css';
@@ -31,31 +30,7 @@ export function InterestPageClient({ variant }: InterestPageClientProps) {
               <div className="interest-page__events">
                 {events.length > 0 ? (
                   <>
-                    <div className="interest-page__events-list">
-                      {events.map(event => {
-                        const dateAndTimeLabels = getDateAndTimeLabels(event.startTime);
-
-                        return (
-                        <div key={event.id} className="interest-page__event-item">
-                          <div className="interest-page__event-item-line" />
-                          <div className="interest-page__event-item-timeline">
-                            <div className="interest-page__event-item-datetime">
-                              <span className="interest-page__event-item-date">
-                                {dateAndTimeLabels.dateLabel}
-                              </span>
-                              <span className="interest-page__event-item-time">
-                                {dateAndTimeLabels.timeLabel}
-                              </span>
-                            </div>
-                            <div className="interest-page__event-item-dot-wrapper">
-                              <div className="interest-page__event-item-dot" />
-                            </div>
-                          </div>
-                          <EventCardHorizontal event={event} />
-                        </div>
-                        );
-                      })}
-                    </div>
+                    <EventTimeline events={events} className="interest-page__events-list" />
                   </>
                 ) : (
                   <div className="interest-page__events-empty">No upcoming events</div>

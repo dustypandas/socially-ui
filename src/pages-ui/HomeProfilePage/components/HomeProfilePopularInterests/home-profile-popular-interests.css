@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.home-profile-trending-interests {
+.home-profile-popular-interests {
   display: flex;
   flex-direction: column;
 }
 
-.home-profile-trending-interests__list {
+.home-profile-popular-interests__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.25rem 1.5rem;
@@ -15,14 +15,14 @@
   list-style: none;
 }
 
-.home-profile-trending-interests__item {
+.home-profile-popular-interests__item {
   margin: 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.home-profile-trending-interests__link {
+.home-profile-popular-interests__link {
   min-width: 0;
   color: var(--global-link-blue);
   /* vertical-align: baseline; */
@@ -31,14 +31,14 @@
   @apply wiggle-link;
 }
 
-.home-profile-trending-interests__new-followers {
+.home-profile-popular-interests__new-followers {
   color: var(--global-text-light);
   @apply courier-inline;
   font-size: var(--font-size-sm);
 }
 
 @media (max-width: theme(--breakpoint-lg)) {
-  .home-profile-trending-interests__list {
+  .home-profile-popular-interests__list {
     grid-template-columns: 1fr;
   }
 }

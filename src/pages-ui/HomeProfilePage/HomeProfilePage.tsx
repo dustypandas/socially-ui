@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   ColumnsLayout,
   PageLayout,
@@ -8,13 +8,14 @@ import {
   getHomePageData,
   type CommunityBasic,
   type HomePageData,
+  type HomeProfileSectionId,
   type Interest,
 } from '@src/data';
 import {
   HomeProfileNav,
   type HomeProfileNavItem,
   HomeProfileFreshCommunities,
-  HomeProfileTrendingInterests,
+  HomeProfilePopularInterests,
   HomeProfileNewMembers,
   HomeProfileUpcomingEvents,
 } from './components';
@@ -22,12 +23,19 @@ import {
   freshCommunities,
   newMembers,
   profileData,
-  trendingInterestNewFollowers,
-  type HomeProfileTrendingInterest,
+  popularInterestNewFollowers,
+  type HomeProfilePopularInterest,
 } from './data/homeProfileData';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useSectionViewed } from './hooks/useSectionViewed';
 import './home-profile-page.css';
+
+type HomeProfileVisibleSection = {
+  id: HomeProfileSectionId;
+  label: string;
+  count?: number;
+  content: ReactNode;
+};
 
 export function HomeProfilePage() {
   const [homePageData, setHomePageData] = useState<HomePageData | null>(null);
@@ -44,67 +52,73 @@ export function HomeProfilePage() {
     });
   }, []);
 
-  const sectionIds = useMemo(() => {
-    const ids = ['upcoming-events'];
-
-    if (communities.length > 0) {
-      ids.push('fresh-communities');
-    }
-
-    if (newMembers.length > 0) {
-      ids.push('new-members');
-    }
-
-    if (interests.length > 0) {
-      ids.push('trending-interests');
-    }
-
-    return ids;
-  }, [communities.length, interests.length]);
-
-  const { isViewed } = useSectionViewed(sectionIds);
-
-  const navItemsWithCounts = useMemo(() => {
-    const items: HomeProfileNavItem[] = [
-      { id: 'upcoming-events', label: 'Upcoming events' },
-    ];
-
-    if (communities.length > 0) {
-      items.push({
-        id: 'fresh-communities',
-        label: 'Fresh communities',
-        count: isViewed('fresh-communities') ? undefined : communities.length,
-      });
-    }
-
-    if (newMembers.length > 0) {
-      items.push({
-        id: 'new-members',
-        label: 'New members',
-        count: isViewed('new-members') ? undefined : newMembers.length,
-      });
-    }
-
-    if (interests.length > 0) {
-      items.push({
-        id: 'trending-interests',
-        label: 'Trending interests',
-        count: isViewed('trending-interests') ? undefined : interests.length,
-      });
-    }
-
-    return items;
-  }, [communities.length, interests.length, isViewed]);
-
-  const { activeSectionId, navigateToSection } = useActiveSection(sectionIds);
-
-  const trendingInterests: HomeProfileTrendingInterest[] = useMemo(
+  const popularInterests: HomeProfilePopularInterest[] = useMemo(
     () => interests.map(interest => ({
       ...interest,
-      newFollowersCount: trendingInterestNewFollowers[interest.label],
+      newFollowersCount: popularInterestNewFollowers[interest.label],
     })),
     [interests],
   );
+
+  const visibleSections = useMemo((): HomeProfileVisibleSection[] => (
+    [
+      {
+        id: 'upcoming-events' as const,
+        label: 'Upcoming events',
+        visible: true,
+        content: (
+          <HomeProfileUpcomingEvents
+            events={homePageData?.upcomingEvents ?? []}
+          />
+        ),
+      },
+      {
+        id: 'fresh-communities' as const,
+        label: 'Fresh communities',
+        visible: communities.length > 0,
+        count: communities.length,
+        content: <HomeProfileFreshCommunities communities={communities} />,
+      },
+      {
+        id: 'new-members' as const,
+        label: 'New members',
+        visible: newMembers.length > 0,
+        count: newMembers.length,
+        content: <HomeProfileNewMembers members={newMembers} />,
+      },
+      {
+        id: 'popular-interests' as const,
+        label: 'Popular interests',
+        visible: interests.length > 0,
+        count: interests.length,
+        content: <HomeProfilePopularInterests interests={popularInterests} />,
+      },
+    ]
+      .filter(section => section.visible)
+      .map(({ visible, ...section }) => {
+        void visible;
+        return section;
+      })
+  ), [homePageData, communities, popularInterests, interests.length]);
+
+  const sectionIds = useMemo(
+    () => visibleSections.map(section => section.id),
+    [visibleSections],
+  );
+
+  const { isViewed } = useSectionViewed(sectionIds);
+
+  const navItemsWithCounts = useMemo((): HomeProfileNavItem[] => (
+    visibleSections.map(section => ({
+      id: section.id,
+      label: section.label,
+      count: section.count !== undefined && !isViewed(section.id)
+        ? section.count
+        : undefined,
+    }))
+  ), [visibleSections, isViewed]);
+
+  const { activeSectionId, navigateToSection } = useActiveSection(sectionIds);
 
   return (
     <PageLayout headerVariant="loggedIn">
@@ -121,21 +135,9 @@ export function HomeProfilePage() {
             </ColumnsLayout.Aside>
             <ColumnsLayout.Main>
               <div className="home-profile-page__main">
-                <HomeProfileUpcomingEvents
-                  events={homePageData?.upcomingEvents ?? []}
-                />
-
-                {communities.length > 0 && (
-                  <HomeProfileFreshCommunities communities={communities} />
-                )}
-
-                {newMembers.length > 0 && (
-                  <HomeProfileNewMembers members={newMembers} />
-                )}
-
-                {interests.length > 0 && (
-                  <HomeProfileTrendingInterests interests={trendingInterests} />
-                )}
+                {visibleSections.map(section => (
+                  <Fragment key={section.id}>{section.content}</Fragment>
+                ))}
               </div>
             </ColumnsLayout.Main>
           </ColumnsLayout>

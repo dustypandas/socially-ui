@@ -15,7 +15,7 @@ export type HomeProfileMember = {
   otherDetails: HomeProfileMemberDetail[];
 };
 
-export type HomeProfileTrendingInterest = Interest & {
+export type HomeProfilePopularInterest = Interest & {
   newFollowersCount?: number;
 };
 
@@ -73,7 +73,7 @@ export const newMembers: HomeProfileMember[] = [
   },
 ];
 
-export const trendingInterestNewFollowers: Record<string, number> = {
+export const popularInterestNewFollowers: Record<string, number> = {
   cycling: 3,
   hiking: 6,
   tennis: 2,

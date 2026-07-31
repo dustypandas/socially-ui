@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
-import { ButtonsGroup, EventCardHorizontal, SectionTitle } from '@src/components';
+import { ButtonsGroup, EventTimeline, SectionTitle } from '@src/components';
 import type { EventBasic } from '@src/data';
-import { getDateAndTimeLabels } from '@src/helpers/labelHelpers';
 import {
   countHomeProfileEventsByScope,
   filterHomeProfileEvents,
@@ -55,31 +54,7 @@ export function HomeProfileUpcomingEvents({ events }: HomeProfileUpcomingEventsP
       {isEmpty ? (
         <div className="home-profile-upcoming-events__empty">No upcoming events</div>
       ) : (
-        <div className="home-profile-upcoming-events__list">
-          {filteredEvents.map(event => {
-            const dateAndTimeLabels = getDateAndTimeLabels(event.startTime);
-
-            return (
-              <div key={event.id} className="home-profile-upcoming-events__item">
-                <div className="home-profile-upcoming-events__item-line" />
-                <div className="home-profile-upcoming-events__item-timeline">
-                  <div className="home-profile-upcoming-events__item-datetime">
-                    <span className="home-profile-upcoming-events__item-date">
-                      {dateAndTimeLabels.dateLabel}
-                    </span>
-                    <span className="home-profile-upcoming-events__item-time">
-                      {dateAndTimeLabels.timeLabel}
-                    </span>
-                  </div>
-                  <div className="home-profile-upcoming-events__item-dot-wrapper">
-                    <div className="home-profile-upcoming-events__item-dot" />
-                  </div>
-                </div>
-                <EventCardHorizontal event={{ ...event }} />
-              </div>
-            );
-          })}
-        </div>
+        <EventTimeline events={filteredEvents} />
       )}
       <div
         className="home-profile-section__end"

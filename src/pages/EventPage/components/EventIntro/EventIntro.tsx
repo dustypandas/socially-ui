@@ -37,10 +37,10 @@ export function EventIntro({ title, startTime, location }: EventIntroProps) {
           </div>
           <div className="event-intro__attribute-details">
             <div className="event-intro__attribute-primary">
-              Exact location visible for attendees
+              {location.label}
             </div>
             <div className="event-intro__attribute-secondary">
-              {location.label}, Madrid
+              Exact location visible for attendees
             </div>
           </div>
         </div>

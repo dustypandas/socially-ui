@@ -28,11 +28,8 @@
   }
 
   a {
+    display: inline-block;
     color: var(--global-link-blue);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    @apply clickable-text;
   }
 }

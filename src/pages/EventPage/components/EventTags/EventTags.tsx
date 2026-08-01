@@ -12,7 +12,13 @@ export function EventTags({ interests }: EventTagsProps) {
       <ul className="event-tags__list">
         {interests.map(interestLabel => (
           <li key={interestLabel} className="event-tags__item">
-            #{interestLabel}
+            <a
+              href="#/one-interest-ui"
+              className="event-tags__link"
+              target="_blank"
+            >
+              #{interestLabel}
+            </a>
           </li>
         ))}
       </ul>

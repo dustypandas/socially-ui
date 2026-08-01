@@ -82,6 +82,8 @@ export type EventBasic =
   startTime: Date;
   // startTimeCardLabel: string;
   openTo: 'public' | 'selective' | 'invite-only';
+  community: Pick<CommunityAvatar, 'name' | 'href'>;
+  description: string;
 };
 
 export type Event = EventBasic & {

@@ -188,6 +188,32 @@ function toCommunityAvatar(community: CommunityBasic): CommunityAvatar {
   };
 }
 
+function toEventCommunity(community: CommunityBasic) {
+  return {
+    name: community.name,
+    href: community.href,
+  };
+}
+
+const polylogueCommunity = toEventCommunity(communities[1]);
+const freshersCommunity = toEventCommunity(communities[0]);
+const consciousCommunity = toEventCommunity(communities[2]);
+const happyFeetCommunity = toEventCommunity(communities[3]);
+const sketchSquadCommunity = toEventCommunity(communities[5]);
+const languageExchangeCommunity = toEventCommunity({
+  id: 'madrid-language-exchange',
+  name: 'Madrid Language Exchange',
+  image: './assets/dummy-data/event-lightning.avif',
+  href: '#/one-community-ui',
+  membersCount: 412,
+  rating: 4.8,
+  ratingCount: 96,
+  description: 'A community for language exchange and practicing Spanish with locals in Madrid.',
+  interests: ['language-exchange', 'spanish', 'spanish-practice'],
+});
+
+const lightningTalksDescription = '5 speakers, 5 minute presentations, 5 diverse topics — followed by drinks and social.';
+
 // for one specific community (polylogue madrid) only
 export const memberAvatarsForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
   .map(toMemberAvatar);
@@ -203,6 +229,8 @@ export const futureEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(47),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -215,6 +243,8 @@ export const futureEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(39),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -227,6 +257,8 @@ export const futureEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(44),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
 ];
@@ -242,6 +274,8 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(52),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -254,6 +288,8 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(48),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -266,6 +302,8 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(55),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -278,6 +316,8 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(41),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -290,6 +330,8 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(46),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
   {
@@ -302,6 +344,8 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     attendees: getDynamicAttendees(43),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
   },
 ];
@@ -318,6 +362,8 @@ export const events: EventBasic[] = [
     attendees: getDynamicAttendees(47),
     rating: 4.7,
     ratingCount: 95,
+    community: polylogueCommunity,
+    description: lightningTalksDescription,
     openTo: 'public',
     // eventInterests: ['AI'],
   },
@@ -331,6 +377,8 @@ export const events: EventBasic[] = [
     attendees: getDynamicAttendees(17),
     rating: 4.8,
     ratingCount: 106,
+    community: polylogueCommunity,
+    description: 'Open mic night for true stories on the theme of travel — share yours or listen in.',
     openTo: 'selective',
   },
   {
@@ -343,6 +391,8 @@ export const events: EventBasic[] = [
     attendees: getDynamicAttendees(9),
     rating: 4.9,
     ratingCount: 34,
+    community: consciousCommunity,
+    description: 'A facilitated sharing circle for open conversation on psychedelic experiences and integration.',
     openTo: 'invite-only',
     // eventInterests: ['Psychedelics'],
   },
@@ -356,6 +406,8 @@ export const events: EventBasic[] = [
     attendees: getDynamicAttendees(14),
     rating: 4.8,
     ratingCount: 367,
+    community: sketchSquadCommunity,
+    description: 'Sketch Madrid architecture together at CentroCentro — all levels welcome, materials provided.',
     openTo: 'public',
     // eventInterests: ['Painting'],
   },
@@ -369,6 +421,8 @@ export const events: EventBasic[] = [
     attendees: getDynamicAttendees(39),
     rating: 4.9,
     ratingCount: 106,
+    community: happyFeetCommunity,
+    description: 'Beginner-friendly Lindy Hop class outdoors in Retiro — no partner needed.',
     openTo: 'selective',
     // eventInterests: ['Tango'],
   },
@@ -382,6 +436,8 @@ export const events: EventBasic[] = [
     attendees: getDynamicAttendees(15),
     rating: 4.7,
     ratingCount: 56,
+    community: freshersCommunity,
+    description: 'Guided tasting of Spanish wines with light bites — meet fellow newcomers over a glass.',
     openTo: 'invite-only',
     // eventInterests: ['Cooking'],
   }
@@ -720,6 +776,8 @@ export const eventsForOneInterest: EventBasic[] = [
     attendees: getDynamicAttendees(22),
     rating: 4.8,
     ratingCount: 41,
+    community: languageExchangeCommunity,
+    description: 'Casual Spanish conversation over coffee — practice with locals and fellow learners.',
     openTo: 'public',
   },
   {
@@ -732,6 +790,8 @@ export const eventsForOneInterest: EventBasic[] = [
     attendees: getDynamicAttendees(11),
     rating: 4.9,
     ratingCount: 28,
+    community: languageExchangeCommunity,
+    description: 'Guided visit to the Prado with Spanish discussion of selected masterpieces.',
     openTo: 'public',
   },
   {
@@ -744,6 +804,8 @@ export const eventsForOneInterest: EventBasic[] = [
     attendees: getDynamicAttendees(16),
     rating: 4.7,
     ratingCount: 63,
+    community: languageExchangeCommunity,
+    description: 'Tapas crawl through Malasaña with Spanish-only conversation at each stop.',
     openTo: 'public',
   },
 ];

@@ -1,3 +1,4 @@
+import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 import type { EventBasic, MemberAvatar } from '@src/data';
@@ -19,10 +20,36 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
           {event.title}
         </h3>
         <div className="event-card-horizontal__row">
-          <IconMapMarker className="event-card-horizontal__icon event-card-horizontal__icon--location" />
+          <IconGroup className="event-card-horizontal__icon" />
           <span className="event-card-horizontal__text">
-            {event.location.label}
+            {event.community.name}
           </span>
+        </div>
+        <div className="event-card-horizontal__meta">
+          <div className="event-card-horizontal__row">
+            <IconMapMarker className="event-card-horizontal__icon event-card-horizontal__icon--location" />
+            <span className="event-card-horizontal__text">
+              {event.location.label}
+            </span>
+          </div>
+          {event.attendees.avatars.length > 0 && (
+            <div className="event-card-horizontal__attendees">
+              <div className="event-card-horizontal__attendees-img-container">
+                {event.attendees.avatars.map((avatar: MemberAvatar, index: number) => (
+                  <img
+                    key={avatar.id}
+                    className="event-card-horizontal__attendee-img"
+                    src={avatar.image}
+                    alt=""
+                    style={{ zIndex: event.attendees.avatars.length - index }}
+                  />
+                ))}
+              </div>
+              <div className="event-card-horizontal__attendees-label">
+                {attendeesLabel}
+              </div>
+            </div>
+          )}
         </div>
         <div className="event-card-horizontal__row">
           <IconStar className="event-card-horizontal__icon event-card-horizontal__icon--rating" />
@@ -30,24 +57,9 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
             {ratingLabel}
           </span>
         </div>
-        {event.attendees.avatars.length > 0 && (
-          <div className="event-card-horizontal__attendees">
-            <div className="event-card-horizontal__attendees-img-container">
-              {event.attendees.avatars.map((avatar: MemberAvatar, index: number) => (
-                <img
-                  key={avatar.id}
-                  className="event-card-horizontal__attendee-img"
-                  src={avatar.image}
-                  alt=""
-                  style={{ zIndex: event.attendees.avatars.length - index }}
-                />
-              ))}
-            </div>
-            <div className="event-card-horizontal__attendees-label">
-              {attendeesLabel}
-            </div>
-          </div>
-        )}
+        <div className="event-card-horizontal__description">
+          {event.description}
+        </div>
       </div>
       <img className="event-card-horizontal__image" src={event.image} alt="" />
     </a>

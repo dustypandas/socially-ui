@@ -36,7 +36,7 @@ export const homeNewMembers: HomeProfileMember[] = [
     communityName: communities[1].name,
     basicDetails: [
       { question: 'In Madrid since', response: '1 Year' },
-      { question: 'previously lived in', response: 'UK' },
+      { question: 'Previously lived in', response: 'UK' },
     ],
     otherDetails: [
       { question: "what's your 5 minute topic?", response: 'Rock climbing' },
@@ -47,10 +47,10 @@ export const homeNewMembers: HomeProfileMember[] = [
     communityName: communities[0].name,
     basicDetails: [
       { question: 'In Madrid since', response: '1 Year' },
-      { question: 'previously lived in', response: 'China' },
+      { question: 'Previously lived in', response: 'China' },
     ],
     otherDetails: [
-      { question: "what's your 5 minute topic?", response: 'Boardgames' },
+      { question: "What would be a fun topic for future stories?", response: 'Cherished memories' },
     ],
   },
   {
@@ -58,10 +58,10 @@ export const homeNewMembers: HomeProfileMember[] = [
     communityName: communities[3].name,
     basicDetails: [
       { question: 'In Madrid since', response: '6 Months' },
-      { question: 'previously lived in', response: 'Germany' },
+      { question: 'Previously lived in', response: 'Germany' },
     ],
     otherDetails: [
-      { question: "what's your 5 minute topic?", response: 'Salsa dancing' },
+      { question: "For how long have you been dancing?", response: '4 years' },
     ],
   },
 ];

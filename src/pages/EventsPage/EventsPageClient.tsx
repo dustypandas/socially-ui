@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
+import { useSession } from '@src/providers/SessionProvider';
 import { EventsFilters, EventsGrid } from './components';
 import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter } from '@src/common-libs/helpers';
 import { useEventsStates } from './useEventsStates';
 import './events-page.css';
 
 export function EventsPageClient() {
+  const { isLoggedIn } = useSession();
   const [searchQuery, setSearchQuery] = useState('');
   const [timeFilter, setTimeFilter] = useState<TimeFilter>('thisWeek');
   const [openToFilter, setOpenToFilter] = useState<OpenToFilter>('any');
@@ -29,7 +31,7 @@ export function EventsPageClient() {
               <PageTitle
                 title={`Events - ${TIME_FILTER_LABELS[timeFilter]}`}
                 backLabel="←&thinsp;Home"
-                backHref="#/home-ui"
+                backHref={isLoggedIn ? '#/home-profile-ui' : '#/home-ui'}
               />
               <div className="events-page__filters events-page__filters--main">
                 <EventsFilters {...filterProps} />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
+import { useSession } from '@src/providers/SessionProvider';
 import {
   FollowedInterests,
   InterestsList,
@@ -10,6 +11,7 @@ import { hasExactInterestMatch } from './helpers';
 import './interests-page.css';
 
 export function InterestsPageClient() {
+  const { isLoggedIn } = useSession();
   const [searchQuery, setSearchQuery] = useState('');
   const {
     filteredInterests,
@@ -40,7 +42,7 @@ export function InterestsPageClient() {
               <PageTitle
                 title="Popular Interests"
                 backLabel="←&thinsp;Home"
-                backHref="#/home-ui"
+                backHref={isLoggedIn ? '#/home-profile-ui' : '#/home-ui'}
               />
               <InterestsSearchBar
                 value={searchQuery}

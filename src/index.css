@@ -296,7 +296,7 @@ html {
   --global-text: rgba(28, 24, 18, 0.88);
   --global-text-muted: rgba(28, 24, 18, 0.55);
   --global-text-light: rgba(28, 24, 18, 0.3);
-  --global-text-heading: rgba(28, 24, 18, 0.45);
+  --global-text-heading: rgba(28, 24, 18, 0.55);
   --global-text-bg: rgba(28, 24, 18, 0.04);
   --global-link-blue: #3b6fd4;
   --global-header-height: 3.75rem;

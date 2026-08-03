@@ -55,7 +55,7 @@ export function LayoutHeader({
           </div>
         ) : (
           <a
-            href="#/home-ui"
+            href={variant === 'loggedIn' ? '#/home-profile-ui' : '#/home-ui'}
             className="layout-header__logo-link"
             onClick={handleLogoClick}
           >

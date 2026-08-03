@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
+import { useSession } from '@src/providers/SessionProvider';
 import type { CommunityScope } from '@src/common-libs/helpers';
 import { CommunitiesGrid, CommunitiesFilters } from './components';
 import { useCommunitiesStates } from './useCommunitiesStates';
 import './communities-page.css';
 
 export function CommunitiesPageClient() {
+  const { isLoggedIn } = useSession();
   const [searchQuery, setSearchQuery] = useState('');
   const [communityScope, setCommunityScope] = useState<CommunityScope>('all');
   const { filteredCommunities } = useCommunitiesStates(searchQuery, communityScope);
@@ -28,7 +30,7 @@ export function CommunitiesPageClient() {
               <PageTitle
                 title={pageTitle}
                 backLabel="←&thinsp;Home"
-                backHref="#/home-ui"
+                backHref={isLoggedIn ? '#/home-profile-ui' : '#/home-ui'}
               />
               <div className="communities-page__filters communities-page__filters--main">
                 <CommunitiesFilters {...filterProps} />

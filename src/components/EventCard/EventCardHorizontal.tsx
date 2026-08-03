@@ -15,6 +15,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
 
   return (
     <a href="#/one-event-ui" className="event-card-horizontal" target="_blank">
+      <img className="event-card-horizontal__image" src={event.image} alt="" />
       <div className="event-card-horizontal__body">
         <h3 className="event-card-horizontal__title">
           {event.title}
@@ -26,11 +27,19 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
           </span>
         </div>
         <div className="event-card-horizontal__meta">
-          <div className="event-card-horizontal__row">
-            <IconMapMarker className="event-card-horizontal__icon event-card-horizontal__icon--location" />
-            <span className="event-card-horizontal__text">
-              {event.location.label}
-            </span>
+          <div className="event-card-horizontal__meta-left">
+            <div className="event-card-horizontal__row">
+              <IconMapMarker className="event-card-horizontal__icon event-card-horizontal__icon--location" />
+              <span className="event-card-horizontal__text">
+                {event.location.label}
+              </span>
+            </div>
+            <div className="event-card-horizontal__row">
+              <IconStar className="event-card-horizontal__icon event-card-horizontal__icon--rating" />
+              <span className="event-card-horizontal__text">
+                {ratingLabel}
+              </span>
+            </div>
           </div>
           {event.attendees.avatars.length > 0 && (
             <div className="event-card-horizontal__attendees">
@@ -51,17 +60,10 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
             </div>
           )}
         </div>
-        <div className="event-card-horizontal__row">
-          <IconStar className="event-card-horizontal__icon event-card-horizontal__icon--rating" />
-          <span className="event-card-horizontal__text">
-            {ratingLabel}
-          </span>
-        </div>
         <div className="event-card-horizontal__description">
           {event.description}
         </div>
       </div>
-      <img className="event-card-horizontal__image" src={event.image} alt="" />
     </a>
   );
 }

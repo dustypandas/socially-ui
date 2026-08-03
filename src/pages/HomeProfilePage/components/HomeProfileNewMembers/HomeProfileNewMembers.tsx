@@ -33,6 +33,8 @@ export function HomeProfileNewMembers({ members }: HomeProfileNewMembersProps) {
 }
 
 function HomeProfileNewMembersRow({ member }: { member: HomeProfileMember }) {
+  const allDetails = [...member.basicDetails, ...member.otherDetails];
+
   return (
     <li className="home-profile-new-members__item">
       <a href={member.href} className="home-profile-new-members__avatar-link">
@@ -49,22 +51,16 @@ function HomeProfileNewMembersRow({ member }: { member: HomeProfileMember }) {
               {member.communityName}
             </span>
           </div>
-          {member.basicDetails.length > 0 && (
-            <div className="home-profile-new-members__detail">
-              {member.basicDetails.map((detail, index) => (
+          {allDetails.length > 0 && (
+            <div className="home-profile-new-members__details">
+              {allDetails.map(detail => (
                 <HomeProfileNewMembersDetailResponse
                   key={detail.question}
                   detail={detail}
-                  showLeadingComma={index > 0}
                 />
               ))}
             </div>
           )}
-          {member.otherDetails.map(detail => (
-            <div key={detail.question} className="home-profile-new-members__detail">
-              <HomeProfileNewMembersDetailResponse detail={detail} />
-            </div>
-          ))}
         </div>
       </a>
       <div className="home-profile-new-members__welcome-input-wrapper">
@@ -80,20 +76,17 @@ function HomeProfileNewMembersRow({ member }: { member: HomeProfileMember }) {
 
 function HomeProfileNewMembersDetailResponse({
   detail,
-  showLeadingComma = false,
 }: {
   detail: HomeProfileMember['basicDetails'][number];
-  showLeadingComma?: boolean;
 }) {
   return (
-    <span>
+    <div className="home-profile-new-members__detail-block">
       <span className="home-profile-new-members__question">
-        {showLeadingComma && ', '}
         {detail.question}:&nbsp;
       </span>
       <span className="home-profile-new-members__response">
         {detail.response}
       </span>
-    </span>
+    </div>
   );
 }

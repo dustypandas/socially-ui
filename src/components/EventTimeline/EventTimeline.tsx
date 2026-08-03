@@ -18,8 +18,11 @@ export function EventTimeline({ events, className }: EventTimelineProps) {
             <div className="event-timeline__item-line" />
             <div className="event-timeline__item-header">
               <div className="event-timeline__item-datetime">
-                <span className="event-timeline__item-date">{dateLabel}</span>
-                <span className="event-timeline__item-time">{timeLabel}</span>
+                <span className="event-timeline__item-date">
+                  {dateLabel}
+                </span>&nbsp;<span className="event-timeline__item-time">
+                  {timeLabel}
+                </span>
               </div>
               <div className="event-timeline__item-dot-wrapper">
                 <div className="event-timeline__item-dot" />

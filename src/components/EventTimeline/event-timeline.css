@@ -33,18 +33,19 @@
   transform: translateY(-0.125rem);
 }
 
-.event-timeline__item-date {
-  color: var(--global-text);
+.event-timeline__item-datetime {
+  padding-top: 0.125rem;
   font-family: 'Courier Prime', monospace;
   font-size: var(--font-size-sm);
+}
+.event-timeline__item-date {
+  color: var(--global-text);
   font-weight: 500;
   padding-right: 0.5rem;
 }
 
 .event-timeline__item-time {
   color: var(--global-text-muted);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-sm);
 }
 
 .event-timeline__item-dot-wrapper {

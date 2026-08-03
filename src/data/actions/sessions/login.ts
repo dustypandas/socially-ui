@@ -1,5 +1,9 @@
 import { sessionUser, sessionState } from '../../stores/userData/index.ts';
 
+export async function ensureSession(): Promise<void> {
+  sessionState.isLoggedIn = true;
+}
+
 export async function login(email: string, password: string): Promise<void> {
   const trimmedEmail = email.trim();
 

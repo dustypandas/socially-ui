@@ -9,6 +9,7 @@ import {
   EventPageClient,
   EventsPageClient,
   HomePage,
+  HomeProfilePage,
   IndexPage,
   InterestsPageClient,
   InterestPageClient,
@@ -21,7 +22,6 @@ import {
 import {
   CreateCommunityPage,
   CreateEventPage,
-  HomeProfilePage,
   PrevCommunityPage,
   PrevEventPage,
 } from './pages-ui';
@@ -56,7 +56,6 @@ createRoot(document.getElementById('root')!).render(
         {/* part 0.3 - create content */}
         <Route path='/create-event-ui' element={<CreateEventPage />} />
         <Route path='/create-community-ui' element={<CreateCommunityPage />} />
-
         <Route path='/prev-community-ui' element={<PrevCommunityPage />} />
         <Route path='/prev-event-ui' element={<PrevEventPage />} />
         {/* default invalid? */}

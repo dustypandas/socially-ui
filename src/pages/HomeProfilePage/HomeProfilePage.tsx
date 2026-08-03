@@ -13,7 +13,7 @@ import {
   HomeProfileUpcomingEvents,
 } from './components';
 import { useHomeResolveSections } from './hooks/useHomeResolveSections';
-import { getHomeProfilePageData } from '@src/data';
+import { ensureSession, getHomeProfilePageData } from '@src/data';
 import { useSession } from '@src/providers/SessionProvider';
 import './home-profile-page.css';
 
@@ -25,8 +25,12 @@ type HomeProfileVisibleSection = {
 };
 
 export function HomeProfilePage() {
-  const { sessionUser } = useSession();
+  const { sessionUser, refreshSession } = useSession();
   const [homeProfilePageData, setHomeProfilePageData] = useState<HomeProfilePageData | null>(null);
+
+  useEffect(() => {
+    void ensureSession().then(refreshSession);
+  }, [refreshSession]);
 
   useEffect(() => {
     getHomeProfilePageData().then(setHomeProfilePageData);

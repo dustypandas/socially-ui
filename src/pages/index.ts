@@ -1,5 +1,6 @@
 export * from './AuthPages';
 export * from './HomePage/HomePage';
+export * from './HomeProfilePage/HomeProfilePage';
 export * from './CommunitiesPage/CommunitiesPageClient';
 export * from './CommunityPage/CommunityPageClient';
 export * from './EventsPage/EventsPageClient';

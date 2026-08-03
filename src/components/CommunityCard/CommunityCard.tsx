@@ -27,6 +27,9 @@ export function CommunityCard({ community }: CommunityCardProps) {
             {community.ratingCount ? community.rating : 'NEW'} ({community.ratingCount} ratings)
           </span>
         </div>
+        <div className="community-card__description">
+          {community.description}
+        </div>
       </div>
     </a>
   );

@@ -4,9 +4,9 @@
 .community-card {
   display: flex;
   flex-direction: column;
+  align-self: start;
   width: 100%;
   min-width: 200px;
-  height: 100%;
   @apply card-style;
 }
 
@@ -52,4 +52,13 @@
 
 .community-card__icon--rating {
   color: var(--color-yellow-500);
+}
+
+.community-card__description {
+  color: var(--global-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  @apply text-ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }

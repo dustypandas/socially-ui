@@ -1,4 +1,4 @@
-import type { CommunityBasic } from '@src/data';
+import type { CommunityBasic } from '@src/common-libs/types';
 import { CommunityCard } from '@src/components';
 import './communities-grid.css';
 

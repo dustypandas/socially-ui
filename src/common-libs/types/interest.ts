@@ -28,3 +28,7 @@ export type InterestCategoryGroup = {
   category: string;
   items: Interest[];
 };
+
+export type HomeProfilePopularInterest = Interest & {
+  newFollowersCount?: number;
+};

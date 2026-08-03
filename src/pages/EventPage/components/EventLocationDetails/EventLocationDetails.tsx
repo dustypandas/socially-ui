@@ -1,4 +1,4 @@
-import type { MapLocation } from '@src/data';
+import type { MapLocation } from '@src/common-libs/types';
 import { MapContainer } from '@src/components';
 import './event-location-details.css';
 

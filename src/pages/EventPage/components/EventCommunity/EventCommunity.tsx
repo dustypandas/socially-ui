@@ -1,4 +1,4 @@
-import { CommunityAvatar } from '@src/data';
+import type { CommunityAvatar } from '@src/common-libs/types';
 import './event-community.css';
 
 type EventCommunityProps = {

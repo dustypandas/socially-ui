@@ -1,5 +1,5 @@
 import { SectionTitle } from '@src/components';
-import type { CommunityBasic } from '@src/data';
+import type { CommunityBasic } from '@src/common-libs/types';
 import { CommunitiesGrid } from '@src/pages/CommunitiesPage/components/CommunitiesGrid/CommunitiesGrid';
 import './home-profile-fresh-communities.css';
 

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { getEventPageData, type EventPageData } from '@src/data';
+import { getEventPageData } from '@src/data';
+import type { EventPageData } from '@src/common-libs/types';
 
 export function useEventPageStates({ variant }: EventPageClientProps) {
   const [rawEventPageData, setRawEventPageData] = useState<EventPageData | null>(null);

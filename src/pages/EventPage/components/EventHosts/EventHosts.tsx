@@ -1,4 +1,4 @@
-import type { MemberAvatar } from '@src/data';
+import type { MemberAvatar } from '@src/common-libs/types';
 import './event-hosts.css';
 
 type EventHostsProps = {

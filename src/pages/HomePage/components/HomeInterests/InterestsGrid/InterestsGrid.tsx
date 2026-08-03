@@ -1,4 +1,4 @@
-import type { Interest } from '@src/data';
+import type { Interest } from '@src/common-libs/types';
 import './interests-grid.css';
 
 type InterestsGridProps = {

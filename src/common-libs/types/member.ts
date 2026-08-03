@@ -25,7 +25,7 @@ export type MemberProfile =
   city: string;
   inCurrCitySince: Date; // (month and year)
   prevCountries: string[];
-  nearestMetro: string;
+  livingNear: string;
   // createdAt: string;
   // updatedAt: string;
 };
@@ -49,4 +49,19 @@ export type CommunityEngagement =
   isHost?: boolean;
   isContributor?: boolean;
   status: 'member' | 'pending' | 'rejected' | 'banned';
+};
+
+export type HomeProfileMemberDetail = {
+  question: string;
+  response: string;
+};
+
+export type HomeProfileMember = {
+  id: string;
+  label: string;
+  image: string;
+  href: string;
+  communityName: string;
+  basicDetails: HomeProfileMemberDetail[];
+  otherDetails: HomeProfileMemberDetail[];
 };

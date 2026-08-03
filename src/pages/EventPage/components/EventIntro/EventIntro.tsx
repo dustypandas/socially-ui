@@ -1,5 +1,5 @@
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
-import type { MapLocation } from '@src/data';
+import type { MapLocation } from '@src/common-libs/types';
 import './event-intro.css';
 
 type EventIntroProps = {

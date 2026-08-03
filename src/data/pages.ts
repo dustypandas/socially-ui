@@ -1,10 +1,16 @@
 import { ORGANIZERS } from './stores/dummyData.ts'; // pages shouldn't import any data from dummyData directly, only through model apis
-import type { CommunitiesPageData, CommunityPageData, EventPageData, EventsPageData, HomePageData, InterestPageData, InterestsPageData, MemberPageData } from '@src/common-libs/types';
+import type { CommunitiesPageData, CommunityPageData, EventPageData, EventsPageData, HomePageData, HomeProfilePageData, InterestPageData, InterestsPageData, MemberPageData } from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
+import {
+  homeAttendingEventIdsMap,
+  homeDiscoverEventIdsMap,
+  homeMyInterestsEventIdsMap,
+} from './stores/userData/index.ts';
 import {
   getCommunitiesForOneInterest,
   getCommunityForOneEvent,
   getFilteredCommunities,
+  getHomeFreshCommunities,
   getOneCommunity,
 } from './queries/communities.ts';
 import {
@@ -20,49 +26,84 @@ import {
   getFilteredInterests,
   getFollowedInterests,
   getHomePopularInterests,
+  getHomeProfilePopularInterests,
   getInterestExternalLinks,
   getInterestsMemberFollowers,
   getMaxFollowedInterests,
   getOneInterest,
 } from './queries/interests.ts';
-import { getAttendeesForOneEvent, getMemberAvatarsForOneCommunity, getOneMemberAndEngagements } from './queries/members.ts';
+import { getAttendeesForOneEvent, getHomeNewMembers, getMemberAvatarsForOneCommunity, getOneMemberAndEngagements } from './queries/members.ts';
 import { getReviewsForOneEvent } from './queries/reviews.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
+  const [popularInterests, upcomingEvents] = await Promise.all([
+    getHomePopularInterests(),
+    getHomeUpcomingEvents(),
+  ]);
+
+  return { popularInterests, upcomingEvents };
+}
+
+export async function getHomeProfilePageData(): Promise<HomeProfilePageData> {
+  const [upcomingEvents, freshCommunities, newMembers, popularInterests] = await Promise.all([
+    getHomeUpcomingEvents(),
+    getHomeFreshCommunities(),
+    getHomeNewMembers(),
+    getHomeProfilePopularInterests(),
+  ]);
+
   return {
-    popularInterests: await getHomePopularInterests(),
-    upcomingEvents: await getHomeUpcomingEvents(),
+    upcomingEvents,
+    eventScopeIds: {
+      myInterests: homeMyInterestsEventIdsMap,
+      attending: homeAttendingEventIdsMap,
+      discover: homeDiscoverEventIdsMap,
+    },
+    freshCommunities,
+    newMembers,
+    popularInterests,
   };
 }
 
 export async function getInterestsPageData(): Promise<InterestsPageData> {
-  const followedInterests = await getFollowedInterests();
-  const maxFollowedInterests = await getMaxFollowedInterests();
+  const [followedInterests, maxFollowedInterests, filteredInterests, canFollowMore] = await Promise.all([
+    getFollowedInterests(),
+    getMaxFollowedInterests(),
+    getFilteredInterests(''),
+    getCanFollowMore(),
+  ]);
 
-  const interestsPageData: InterestsPageData = {
-    filteredInterests: await getFilteredInterests(''),
+  const memberFollowers = await getInterestsMemberFollowers(
+    followedInterests.map(interest => interest.label),
+  );
+
+  return {
+    filteredInterests,
     followedInterests,
     maxFollowedInterests,
-    memberFollowers: await getInterestsMemberFollowers(followedInterests.map(interest => interest.label)),
-    canFollowMore: await getCanFollowMore(),
+    memberFollowers,
+    canFollowMore,
   };
-
-  return interestsPageData;
 }
 
 export async function getInterestPageData(): Promise<InterestPageData> {
   const targetInterest = await getOneInterest();
 
-  const interestPageData: InterestPageData = {
-    interestLabel: targetInterest.label,
-    memberFollowers: await getInterestsMemberFollowers(['spanish']),
-    memberFollowersCount: (3 * (targetInterest.followerIds?.length ?? 0)),
-    relatedEvents: await getEventsForOneInterest(),
-    relatedCommunities: await getCommunitiesForOneInterest(),
-    externalLinks: await getInterestExternalLinks(),
-  };
+  const [memberFollowers, relatedEvents, relatedCommunities, externalLinks] = await Promise.all([
+    getInterestsMemberFollowers(['spanish']),
+    getEventsForOneInterest(),
+    getCommunitiesForOneInterest(),
+    getInterestExternalLinks(),
+  ]);
 
-  return interestPageData;
+  return {
+    interestLabel: targetInterest.label,
+    memberFollowers,
+    memberFollowersCount: 3 * (targetInterest.followerIds?.length ?? 0),
+    relatedEvents,
+    relatedCommunities,
+    externalLinks,
+  };
 }
 
 export async function getEventsPageData(): Promise<EventsPageData> {
@@ -78,31 +119,39 @@ export async function getEventsPageData(): Promise<EventsPageData> {
 export async function getEventPageData(): Promise<EventPageData> {
   const targetEvent = await getOneEvent();
 
-  const eventPageData: EventPageData = {
-    ...targetEvent,
-    community: await getCommunityForOneEvent(), // to denormalise
-    attendees: await getAttendeesForOneEvent(),
-    reviews: await getReviewsForOneEvent(),
-  };
+  const [community, attendees, reviews] = await Promise.all([
+    getCommunityForOneEvent(),
+    getAttendeesForOneEvent(),
+    getReviewsForOneEvent(),
+  ]);
 
-  return eventPageData;
+  return {
+    ...targetEvent,
+    community,
+    attendees,
+    reviews,
+  };
 }
 
 export async function getCommunitiesPageData(
   searchQuery: string,
   communityScope: CommunityScope,
 ): Promise<CommunitiesPageData> {
-  const communitiesPageData: CommunitiesPageData = {
+  return {
     filteredCommunities: await getFilteredCommunities(searchQuery, communityScope),
   };
-
-  return communitiesPageData;
 }
 
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
+  
+  const [memberAvatars, futureEvents, pastEvents] = await Promise.all([
+    getMemberAvatarsForOneCommunity(),
+    getFutureEventsForOneCommunity(),
+    getPastEventsForOneCommunity(),
+  ]);
 
-  const communityPageData: CommunityPageData = {
+  return {
     ...targetCommunity,
     futureEventsTotalCount: 5,
     pastEventsTotalCount: 25,
@@ -116,18 +165,14 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     `,
     interests: ['public-speaking', 'technology', 'fresh'],
     organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
-    memberAvatars: await getMemberAvatarsForOneCommunity(),
-    futureEvents: await getFutureEventsForOneCommunity(),
-    pastEvents: await getPastEventsForOneCommunity(),
+    memberAvatars,
+    futureEvents,
+    pastEvents,
   };
-
-  return communityPageData;
 }
 
 export async function getMemberPageData(): Promise<MemberPageData> {
-  const targetMemberAndEngagements = await getOneMemberAndEngagements();
-
   return {
-    ...targetMemberAndEngagements,
+    ...(await getOneMemberAndEngagements()),
   };
 }

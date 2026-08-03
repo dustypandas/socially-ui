@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { markRouteLoaded } from '@src/helpers/shouldPlayEntry';
+import { useSession } from '@src/providers/SessionProvider';
 import { LayoutHeader, type LayoutHeaderVariant } from './LayoutHeader/LayoutHeader';
 import { LayoutFooter } from './LayoutFooter/LayoutFooter';
 import './page-layout.css';
@@ -22,9 +23,11 @@ export function PageLayout({
   hasStaticHeader = false,
   shouldShowHomePageHeader,
   shouldShowHomePageFooter,
-  headerVariant = 'loggedOut',
+  headerVariant,
 }: PageLayoutProps) {
   const { pathname } = useLocation();
+  const { isLoggedIn } = useSession();
+  const resolvedHeaderVariant = headerVariant ?? (isLoggedIn ? 'loggedIn' : 'loggedOut');
 
   // scroll to top whenever new route is loaded
   useEffect(() => {
@@ -41,7 +44,7 @@ export function PageLayout({
       hasStaticHeader && 'layout--has-static-header',
       'antialiased',
     ].filter(Boolean).join(' ')}>
-      <LayoutHeader isHomePage={isHomePage} variant={headerVariant} />
+      <LayoutHeader isHomePage={isHomePage} variant={resolvedHeaderVariant} />
       {isHomePage ? (
         children
       ) : (

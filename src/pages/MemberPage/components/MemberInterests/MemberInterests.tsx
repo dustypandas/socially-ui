@@ -1,4 +1,4 @@
-import type { InterestEngagement } from '@src/data';
+import type { InterestEngagement } from '@src/common-libs/types';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import './member-interests.css';
 

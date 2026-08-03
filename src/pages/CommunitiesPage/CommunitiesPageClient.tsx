@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
-import { CommunityScope } from '@src/data';
+import type { CommunityScope } from '@src/common-libs/helpers';
 import { CommunitiesGrid, CommunitiesFilters } from './components';
 import { useCommunitiesStates } from './useCommunitiesStates';
 import './communities-page.css';

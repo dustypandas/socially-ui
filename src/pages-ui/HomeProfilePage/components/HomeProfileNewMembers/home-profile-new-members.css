@@ -58,9 +58,7 @@
 }
 
 .home-profile-new-members__community {
-  margin: 0;
-  color: var(--global-text-light);
-  /* font-size: var(--font-size-sm); */
+  color: var(--global-text-muted);
   line-height: 1.4;
 }
 

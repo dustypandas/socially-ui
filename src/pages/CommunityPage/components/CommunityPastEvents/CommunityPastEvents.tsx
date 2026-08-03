@@ -1,4 +1,4 @@
-import type { EventBasic } from '@src/data';
+import type { EventBasic } from '@src/common-libs/types';
 import { EventsGrid } from '@src/pages/EventsPage/components/EventsGrid/EventsGrid';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import { getPastEventsSectionTitle } from '@src/helpers/labelHelpers';

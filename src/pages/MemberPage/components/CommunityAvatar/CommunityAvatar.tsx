@@ -1,4 +1,4 @@
-import type { CommunityAvatar } from '@src/data';
+import type { CommunityAvatar } from '@src/common-libs/types';
 import './community-avatar.css';
 
 type CommunityAvatarProps = {

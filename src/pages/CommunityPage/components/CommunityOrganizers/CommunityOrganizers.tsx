@@ -1,5 +1,5 @@
 import IconContact from '@src/assets/icon-email-outline.svg?react';
-import type { MemberAvatar } from '@src/data';
+import type { MemberAvatar } from '@src/common-libs/types';
 import { nameAndOthersLabel } from '@src/pages/CommunityPage/helpers';
 import './community-organizers.css';
 

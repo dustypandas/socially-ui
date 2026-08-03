@@ -1,4 +1,4 @@
-import type { CommunityScope } from '@src/data';
+import type { CommunityScope } from '@src/common-libs/helpers';
 
 export const COMMUNITY_SCOPE_OPTIONS: { value: CommunityScope; label: string }[] = [
   { value: 'all', label: 'All' },

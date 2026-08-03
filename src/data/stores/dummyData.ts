@@ -63,7 +63,7 @@ function getFirstName(name: string): string {
   return name.split(' ')[0];
 }
 
-function toMemberAvatar(member: (typeof members)[number]): MemberAvatar {
+export function toMemberAvatar(member: (typeof members)[number]): MemberAvatar {
   return {
     id: member.id,
     label: getFirstName(member.name),
@@ -104,7 +104,7 @@ export const memberForOneProfile: MemberProfile = {
   city: 'Madrid, Spain',
   inCurrCitySince: new Date('2025-01'),
   prevCountries: ['United Kingdom', 'Spain', 'France'],
-  nearestMetro: 'Tribunal',
+  livingNear: 'Tribunal',
   lat: 40.42624,
   lng: -3.70109,
 };
@@ -175,6 +175,28 @@ export const communities: CommunityBasic[] = [
     ratingCount: 367,
     description: 'A bilingual drawing group based in Madrid. Discover the city and explore pencils, watercolor, architecture and landscapes — no experience required.',
     interests: ['art', 'drawing', 'sketching', 'creative'],
+  },
+  {
+    id: 'community-new-1',
+    name: 'Madrid Run Club',
+    image: './assets/dummy-data/community-dance.avif',
+    href: '#/one-community-ui',
+    membersCount: 42,
+    rating: 4.8,
+    ratingCount: 12,
+    description: 'Weekly runs around the city',
+    interests: ['running', 'fitness'],
+  },
+  {
+    id: 'community-new-2',
+    name: 'Board Game Nights',
+    image: './assets/dummy-data/community-sketch.avif',
+    href: '#/one-community-ui',
+    membersCount: 28,
+    rating: 4.6,
+    ratingCount: 8,
+    description: 'Casual board game meetups',
+    interests: ['games', 'social'],
   },
 ];
 
@@ -486,8 +508,6 @@ export const reviewsForOneEvent: EventReview[] = [
   },
 ];
 //
-
-export const MAX_FOLLOWED_INTERESTS = 10; // can change later
 
 export const interests: Interest[] = [
   {
@@ -926,22 +946,6 @@ export const memberAboutForOneMember: MemberAbout = {
   'Quotes to live life by?': 'To be a sailor of the world, bound for all ports'
 };
 
-
-export const currentUser = members[7];
-
-export const authUser = {
-  email: 'test@test.com',
-  password: 'test',
-  firstName: 'James',
-  lastName: 'Wright',
-  madridSince: '2020',
-  livingNear: 'Tribunal',
-  previousHomes: ['United Kingdom'],
-};
-
-export const myFollowedInterests: string[] = [];
-
-export const myCommunityIds: string[] = [];
 
 // use timestamp for easier sorting
 function getTimestampFromNow(daysFromNow: number, hours: number, minutes: number): Date {

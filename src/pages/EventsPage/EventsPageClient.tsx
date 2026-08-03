@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageTitle, PageLayout } from '@src/components';
 import { EventsFilters, EventsGrid } from './components';
-import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter, } from '@src/data';
+import { TIME_FILTER_LABELS, type OpenToFilter, type TimeFilter } from '@src/common-libs/helpers';
 import { useEventsStates } from './useEventsStates';
 import './events-page.css';
 

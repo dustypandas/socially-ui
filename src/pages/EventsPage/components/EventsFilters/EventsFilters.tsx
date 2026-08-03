@@ -4,7 +4,7 @@ import {
   TIME_FILTER_OPTIONS,
   type OpenToFilter,
   type TimeFilter,
-} from '@src/data';
+} from '@src/common-libs/helpers';
 import './events-filters.css';
 
 type EventsFiltersProps = {

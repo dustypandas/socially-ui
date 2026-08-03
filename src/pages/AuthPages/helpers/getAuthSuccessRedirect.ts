@@ -3,5 +3,5 @@ export function getAuthSuccessRedirect(searchParams: URLSearchParams): string {
   if (redirect && redirect.startsWith('/') && !redirect.startsWith('//')) {
     return redirect;
   }
-  return '/home-ui';
+  return '/home-profile-ui';
 }

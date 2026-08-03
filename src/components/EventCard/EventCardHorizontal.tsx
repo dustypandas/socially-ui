@@ -1,7 +1,7 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { EventBasic, MemberAvatar } from '@src/data';
+import type { EventBasic, MemberAvatar } from '@src/common-libs/types';
 import { getAttendeesLabel } from '@src/helpers/labelHelpers.js';
 import './event-card-horizontal.css';
 

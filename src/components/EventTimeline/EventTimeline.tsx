@@ -1,4 +1,4 @@
-import type { EventBasic } from '@src/data';
+import type { EventBasic } from '@src/common-libs/types';
 import { EventCardHorizontal } from '../EventCard/EventCardHorizontal';
 import './event-timeline.css';
 

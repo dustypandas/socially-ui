@@ -1,16 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { Interest, InterestsPageData, MemberFollower } from '@src/common-libs/types';
 import {
   addInterest as addInterestApi,
   followInterest,
   getFilteredInterests,
   getInterestsPageData,
   unfollowInterest,
-  type Interest,
-  type InterestsPageData,
-  type MemberFollower,
 } from '@src/data';
-
-const MAX_FOLLOWED_INTERESTS = 10;
 
 export function useInterestsStates(searchQuery: string) {
   const pageDataRef = useRef<InterestsPageData | null>(null);
@@ -18,6 +14,7 @@ export function useInterestsStates(searchQuery: string) {
   const [followedInterests, setFollowedInterests] = useState<Interest[]>([]);
   const [memberFollowers, setMemberFollowers] = useState<MemberFollower[]>([]);
   const [canFollowMore, setCanFollowMore] = useState(true);
+  const [maxFollowedInterests, setMaxFollowedInterests] = useState(0);
 
   const applyPageData = useCallback((data: InterestsPageData, filteredInterests?: Interest[]) => {
     pageDataRef.current = data;
@@ -25,6 +22,7 @@ export function useInterestsStates(searchQuery: string) {
     setFollowedInterests(data.followedInterests);
     setMemberFollowers(data.memberFollowers);
     setCanFollowMore(data.canFollowMore);
+    setMaxFollowedInterests(data.maxFollowedInterests);
   }, []);
 
   // load initial data
@@ -58,7 +56,7 @@ export function useInterestsStates(searchQuery: string) {
   const handleFollowInterest = useCallback(async (interest: Interest) => {
     const prev = { followedInterests, canFollowMore, memberFollowers };
     setFollowedInterests(current => [...current, interest]);
-    setCanFollowMore(current => current && followedInterests.length + 1 < MAX_FOLLOWED_INTERESTS);
+    setCanFollowMore(current => current && followedInterests.length + 1 < maxFollowedInterests);
 
     try {
       await followInterest(interest.label);
@@ -69,7 +67,7 @@ export function useInterestsStates(searchQuery: string) {
       setCanFollowMore(prev.canFollowMore);
       setMemberFollowers(prev.memberFollowers);
     }
-  }, [followedInterests, canFollowMore, handleRefreshInterests]);
+  }, [followedInterests, canFollowMore, maxFollowedInterests, handleRefreshInterests]);
 
   const handleUnfollowInterest = useCallback(async (label: string) => {
     const prev = { followedInterests, canFollowMore, memberFollowers };
@@ -105,7 +103,7 @@ export function useInterestsStates(searchQuery: string) {
     followedInterests,
     memberFollowers,
     canFollowMore,
-    maxFollowed: MAX_FOLLOWED_INTERESTS,
+    maxFollowed: maxFollowedInterests,
     handleFollowInterest,
     handleUnfollowInterest,
     handleRefreshInterests,

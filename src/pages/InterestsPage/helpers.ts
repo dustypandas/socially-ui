@@ -1,4 +1,4 @@
-import type { Interest, InterestCategoryGroup } from '@src/data';
+import type { Interest, InterestCategoryGroup } from '@src/common-libs/types';
 
 export function groupInterestsByCategory(interests: Interest[]): InterestCategoryGroup[] {
   const grouped = new Map<string, Interest[]>();

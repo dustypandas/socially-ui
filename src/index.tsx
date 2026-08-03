@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
+import { SessionProvider } from './providers/SessionProvider';
 import {
   CommunitiesPageClient,
   CommunityPageClient,
@@ -27,7 +28,8 @@ import {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter>
+    <SessionProvider>
+      <HashRouter>
       <Routes>
         {/* part 0.1 - concept arts */}
         <Route path='/' element={<IndexPage />} />
@@ -60,5 +62,6 @@ createRoot(document.getElementById('root')!).render(
         {/* default invalid? */}
       </Routes>
     </HashRouter>
+    </SessionProvider>
   </StrictMode>,
 )

@@ -1,4 +1,4 @@
-import type { EventBasic } from '@src/data';
+import type { EventBasic } from '@src/common-libs/types';
 import IconCalendar from '@src/assets/icon-calendar-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconGroup from '@src/assets/icon-group-outline.svg?react';

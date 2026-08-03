@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { Interest } from '@src/data';
+import type { Interest } from '@src/common-libs/types';
 import './interests-list.css';
 import { groupInterestsByCategory } from '../../helpers';
 

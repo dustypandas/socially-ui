@@ -1,11 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ButtonsGroup, EventTimeline, SectionTitle } from '@src/components';
-import type { EventBasic } from '@src/data';
-import {
-  countHomeProfileEventsByScope,
-  filterHomeProfileEvents,
-  type HomeProfileEventScope,
-} from '../../data/homeProfileEventScopes';
+import type { EventBasic, HomeEventIdsMap, HomeProfileEventScope } from '@src/common-libs/types';
 import './home-profile-upcoming-events.css';
 
 const HOME_PROFILE_EVENT_SCOPE_OPTIONS = [
@@ -16,19 +11,15 @@ const HOME_PROFILE_EVENT_SCOPE_OPTIONS = [
 
 type HomeProfileUpcomingEventsProps = {
   events: EventBasic[];
+  eventScopeIds: Record<HomeProfileEventScope, HomeEventIdsMap>;
 };
 
-export function HomeProfileUpcomingEvents({ events }: HomeProfileUpcomingEventsProps) {
+export function HomeProfileUpcomingEvents({ events, eventScopeIds }: HomeProfileUpcomingEventsProps) {
   const [eventScope, setEventScope] = useState<HomeProfileEventScope>('attending');
 
-  const scopeCounts = useMemo(
-    () => countHomeProfileEventsByScope(events),
-    [events],
-  );
-
   const filteredEvents = useMemo(
-    () => filterHomeProfileEvents(events, eventScope),
-    [events, eventScope],
+    () => filterHomeProfileEvents(events, eventScope, eventScopeIds),
+    [events, eventScope, eventScopeIds],
   );
 
   const isEmpty = filteredEvents.length === 0;
@@ -47,7 +38,7 @@ export function HomeProfileUpcomingEvents({ events }: HomeProfileUpcomingEventsP
             selected={eventScope === option.value}
             onClick={() => setEventScope(option.value)}
           >
-            {option.label} ({scopeCounts[option.value]})
+            {option.label} ({Object.keys(eventScopeIds[option.value]).length})
           </ButtonsGroup>
         ))}
       </div>
@@ -62,4 +53,13 @@ export function HomeProfileUpcomingEvents({ events }: HomeProfileUpcomingEventsP
       />
     </section>
   );
+}
+
+function filterHomeProfileEvents(
+  events: EventBasic[],
+  scope: HomeProfileEventScope,
+  eventScopeIds: Record<HomeProfileEventScope, HomeEventIdsMap>,
+): EventBasic[] {
+  const ids = eventScopeIds[scope];
+  return events.filter(event => event.id in ids);
 }

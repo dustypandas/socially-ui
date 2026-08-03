@@ -1,5 +1,5 @@
 import { SectionTitle } from '@src/components';
-import type { HomeProfileMember } from '../../data/homeProfileData';
+import type { HomeProfileMember } from '@src/common-libs/types';
 import './home-profile-new-members.css';
 
 type HomeProfileNewMembersProps = {
@@ -46,7 +46,7 @@ function HomeProfileNewMembersRow({ member }: { member: HomeProfileMember }) {
             <span className="home-profile-new-members__name">{member.label}</span>
             {' '}just joined{' '}
             <span className="home-profile-new-members__community-name">
-              {member.community.name}
+              {member.communityName}
             </span>
           </div>
           {member.basicDetails.length > 0 && (

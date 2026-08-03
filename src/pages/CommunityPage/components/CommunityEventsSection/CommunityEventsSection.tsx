@@ -1,4 +1,4 @@
-import type { EventBasic } from '@src/data';
+import type { EventBasic } from '@src/common-libs/types';
 import { EventTimeline, SectionTitle, SectionMoreLink } from '@src/components';
 import { getUpcomingEventsSectionTitle } from '@src/helpers/labelHelpers';
 import './community-events-section.css';

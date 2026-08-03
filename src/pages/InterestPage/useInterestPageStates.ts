@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import type { Link, InterestPageData } from '@src/common-libs/types';
 import {
   addExternalLink as addExternalLinkApi,
   getInterestPageData,
-  type InterestPageData,
-  type Link,
 } from '@src/data';
 
 export function useInterestPageStates({ variant }: InterestPageClientProps) {
@@ -46,20 +45,9 @@ export function useInterestPageStates({ variant }: InterestPageClientProps) {
   // empty variant
   const isEmptyVariant = variant === 'empty';
 
-  const events = useMemo(
-    () => (isEmptyVariant ? [] : interestPageData?.relatedEvents ?? []),
-    [isEmptyVariant, interestPageData],
-  );
-
-  const communities = useMemo(
-    () => (isEmptyVariant ? [] : interestPageData?.relatedCommunities ?? []),
-    [isEmptyVariant, interestPageData],
-  );
-
-  const externalLinks = useMemo(
-    () => (isEmptyVariant ? [] : interestPageData?.externalLinks ?? []),
-    [isEmptyVariant, interestPageData],
-  );
+  const events = isEmptyVariant ? [] : interestPageData?.relatedEvents ?? [];
+  const communities = isEmptyVariant ? [] : interestPageData?.relatedCommunities ?? [];
+  const externalLinks = isEmptyVariant ? [] : interestPageData?.externalLinks ?? [];
 
   return {
     interestPageData,

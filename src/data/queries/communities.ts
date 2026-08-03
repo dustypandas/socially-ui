@@ -2,8 +2,8 @@ import {
   communities,
   communitiesForOneInterest,
   communityForOneEvent,
-  myCommunityIds,
 } from '../stores/dummyData.ts';
+import { homeFreshCommunities, tempCommunityIds } from '../stores/userData/index.ts';
 import { getFollowedInterests } from './interests.ts';
 import type { CommunityAvatar, CommunityBasic } from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
@@ -34,7 +34,7 @@ export async function getFilteredCommunities(
     if (communityScope === 'all') return communities;
 
     if (communityScope === 'mine') {
-      const joined = new Set(myCommunityIds);
+      const joined = new Set(tempCommunityIds);
       return communities.filter(community => joined.has(community.id));
     }
 
@@ -43,6 +43,10 @@ export async function getFilteredCommunities(
       community.interests?.some(tag => followed.has(tag.toLowerCase())),
     );
   }
+}
+
+export async function getHomeFreshCommunities(): Promise<CommunityBasic[]> {
+  return [...homeFreshCommunities];
 }
 
 export async function getCommunitiesForOneInterest(): Promise<CommunityBasic[]> {

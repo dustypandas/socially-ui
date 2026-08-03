@@ -1,4 +1,4 @@
-import type { MemberProfile } from '@src/data';
+import type { MemberProfile } from '@src/common-libs/types';
 import './member-profile.css';
 
 type MemberProfileProps = {
@@ -21,7 +21,7 @@ export function MemberProfile({ member }: MemberProfileProps) {
         </div>
         <div className="member-profile__detail-group">
           <div className="member-profile__detail-label">Near:</div>
-          <div className="member-profile__detail-value">{member.nearestMetro}</div>
+          <div className="member-profile__detail-value">{member.livingNear}</div>
         </div>
         <div className="member-profile__detail-group">
           <div className="member-profile__detail-label">Previously lived in:</div>

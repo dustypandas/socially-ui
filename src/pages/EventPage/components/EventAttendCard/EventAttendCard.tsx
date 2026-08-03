@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import type { MemberAvatar } from '@src/data';
+import type { MemberAvatar } from '@src/common-libs/types';
 import { getAttendeesLabel } from '@src/helpers/labelHelpers';
 import './event-attend-card.css';
 

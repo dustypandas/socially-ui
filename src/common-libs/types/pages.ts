@@ -1,8 +1,9 @@
 import type { Community, CommunityAvatar, CommunityBasic } from './community.ts';
 import type { Event, EventAttendees, EventBasic } from './event.ts';
-import type { Interest } from './interest.ts';
+import type { HomeProfilePopularInterest, Interest } from './interest.ts';
 import type {
   CommunityEngagement,
+  HomeProfileMember,
   InterestEngagement,
   MemberAbout,
   MemberAvatar,
@@ -11,9 +12,27 @@ import type {
 } from './member.ts';
 import type { Link } from './primitives.ts';
 
+export type HomeSectionId =
+  | 'upcoming-events'
+  | 'fresh-communities'
+  | 'new-members'
+  | 'popular-interests';
+
 export type HomePageData = {
   popularInterests: Interest[];
   upcomingEvents: EventBasic[];
+};
+
+export type HomeProfileEventScope = 'myInterests' | 'attending' | 'discover';
+
+export type HomeEventIdsMap = Record<string, true>;
+
+export type HomeProfilePageData = {
+  upcomingEvents: EventBasic[];
+  eventScopeIds: Record<HomeProfileEventScope, HomeEventIdsMap>;
+  freshCommunities: CommunityBasic[];
+  newMembers: HomeProfileMember[];
+  popularInterests: HomeProfilePopularInterest[];
 };
 
 export type InterestsPageData = {

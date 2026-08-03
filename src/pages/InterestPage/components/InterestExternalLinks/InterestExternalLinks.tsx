@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Link } from '@src/data';
+import type { Link } from '@src/common-libs/types';
 import './interest-external-links.css';
 
 type InterestExternalLinksProps = {

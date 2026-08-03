@@ -1,4 +1,4 @@
-import type { EventAttendees } from '@src/data';
+import type { EventAttendees } from '@src/common-libs/types';
 
 export function getAttendeesLabel(attendees: EventAttendees): string {
   const { count, avatars } = attendees;

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { getCommunityPageData, type CommunityPageData } from '@src/data';
+import { getCommunityPageData } from '@src/data';
+import type { CommunityPageData } from '@src/common-libs/types';
 
 export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
   const [rawCommunityPageData, setRawCommunityPageData] = useState<CommunityPageData | null>(null);

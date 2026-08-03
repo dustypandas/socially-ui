@@ -1,4 +1,4 @@
-import type { EventBasic } from '@src/data';
+import type { EventBasic } from '@src/common-libs/types';
 import { EventCard } from '@src/components';
 import './events-grid.css';
 

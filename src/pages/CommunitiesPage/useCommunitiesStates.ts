@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { CommunityBasic, CommunitiesPageData } from '@src/common-libs/types';
+import type { CommunityScope } from '@src/common-libs/helpers';
 import {
   getCommunitiesPageData,
-  type CommunitiesPageData,
-  type CommunityBasic,
-  type CommunityScope,
 } from '@src/data';
 
 export function useCommunitiesStates(

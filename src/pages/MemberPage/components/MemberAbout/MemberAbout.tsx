@@ -1,5 +1,5 @@
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
-import type { MemberAbout as MemberAboutData } from '@src/data';
+import type { MemberAbout as MemberAboutData } from '@src/common-libs/types';
 import './member-about.css';
 
 type MemberAboutProps = {

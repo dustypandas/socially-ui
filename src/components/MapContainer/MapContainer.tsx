@@ -8,7 +8,7 @@ import {
   useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import type { MemberFollower } from '@src/data';
+import type { MemberFollower } from '@src/common-libs/types';
 import iconMapMarkerSvg from '@src/assets/icon-map-marker.svg?raw';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';

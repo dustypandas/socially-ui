@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { EventBasic, EventsPageData } from '@src/common-libs/types';
+import type { OpenToFilter, TimeFilter } from '@src/common-libs/helpers';
 import {
   getEventsPageData,
   getFilteredEvents,
-  type EventBasic,
-  type EventsPageData,
-  type OpenToFilter,
-  type TimeFilter,
 } from '@src/data';
 
 export function useEventsStates(

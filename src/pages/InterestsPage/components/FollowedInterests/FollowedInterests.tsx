@@ -1,4 +1,4 @@
-import type { Interest, MemberFollower } from '@src/data';
+import type { Interest, MemberFollower } from '@src/common-libs/types';
 import { MapContainer } from '@src/components';
 import './followed-interests.css';
 

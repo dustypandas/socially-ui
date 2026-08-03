@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { PageLayout } from '@src/components';
-import { getHomePageData, type HomePageData } from '@src/data';
+import { getHomePageData } from '@src/data';
+import type { HomePageData } from '@src/common-libs/types';
 import { useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { getShouldPlayEntry } from '@src/helpers/shouldPlayEntry';
 import {

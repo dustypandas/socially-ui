@@ -1,4 +1,4 @@
-import type { CommunityEngagement } from '@src/data';
+import type { CommunityEngagement } from '@src/common-libs/types';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import { CommunityAvatar } from '../CommunityAvatar/CommunityAvatar';
 import './member-communities.css';

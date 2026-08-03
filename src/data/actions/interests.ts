@@ -1,11 +1,11 @@
-import { currentUser } from '../stores/dummyData.ts';
 import type { Link } from '@src/common-libs/types';
 import { getCanFollowMore } from '../queries/interests.ts';
 import {
+  sessionUser,
   tempFollowedInterests,
   tempInterestExternalLinks,
   tempInterests,
-} from '../stores/interests.ts';
+} from '../stores/userData';
 
 export async function addExternalLink(link: Link): Promise<void> {
   tempInterestExternalLinks.splice(
@@ -43,7 +43,7 @@ export async function addInterest(newInterest: string): Promise<void> {
   tempInterests.push({
     label: normalisedLabel,
     category: 'General',
-    followerIds: [currentUser.id],
+    followerIds: [sessionUser.id],
   });
   tempFollowedInterests.push(normalisedLabel);
 }

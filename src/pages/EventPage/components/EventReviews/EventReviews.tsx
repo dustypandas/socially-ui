@@ -1,4 +1,4 @@
-import type { EventReview as EventReviewData } from '@src/data';
+import type { EventReview as EventReviewData } from '@src/common-libs/types';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import { EventReview } from './EventReview/EventReview';
 import './event-reviews.css';

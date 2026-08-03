@@ -1,4 +1,4 @@
-import type { Interest } from '@src/data';
+import type { Interest } from '@src/common-libs/types';
 import { SectionTitle, SectionMoreLink } from '@src/components/SectionTitle/SectionTitle';
 import { InterestsGrid } from './InterestsGrid/InterestsGrid';
 import './home-interests.css';

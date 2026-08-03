@@ -1,5 +1,5 @@
 import { SectionTitle } from '@src/components';
-import type { HomeProfilePopularInterest } from '../../data/homeProfileData';
+import type { HomeProfilePopularInterest } from '@src/common-libs/types';
 import './home-profile-popular-interests.css';
 
 const MAX_VISIBLE_INTERESTS = 12;

@@ -1,5 +1,6 @@
 import { attendeesForOneEvent, communityEngagementsForOneMember, interestEngagementsForOneMember, memberAboutForOneMember, memberAvatarsForOneCommunity, memberForOneProfile } from '../stores/dummyData.ts';
-import type { EventAttendees, MemberAvatar, MemberPageData, MemberProfile } from '@src/common-libs/types';
+import { homeNewMembers } from '../stores/userData/index.ts';
+import type { EventAttendees, HomeProfileMember, MemberAvatar, MemberPageData, MemberProfile } from '@src/common-libs/types';
 
 export async function getAttendeesForOneEvent(): Promise<EventAttendees> {
   return attendeesForOneEvent;
@@ -11,6 +12,10 @@ export async function getMemberAvatarsForOneCommunity(): Promise<MemberAvatar[]>
 
 export async function getOneMember(): Promise<MemberProfile> {
   return memberForOneProfile;
+}
+
+export async function getHomeNewMembers(): Promise<HomeProfileMember[]> {
+  return [...homeNewMembers];
 }
 
 export async function getOneMemberAndEngagements(): Promise<MemberPageData> {

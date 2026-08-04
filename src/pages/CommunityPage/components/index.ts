@@ -2,6 +2,7 @@ export { CommunityAbout } from './CommunityAbout/CommunityAbout';
 export { CommunityEventsSection } from './CommunityEventsSection/CommunityEventsSection';
 export { CommunityHero } from './CommunityHero/CommunityHero';
 export { CommunityIntroPanel } from './CommunityIntroPanel/CommunityIntroPanel';
+export { CommunityJoinOverlay } from './CommunityJoinOverlay/CommunityJoinOverlay';
 export { CommunityMembers } from './CommunityMembers/CommunityMembers';
 export { CommunityNav } from './CommunityNav/CommunityNav';
 export { CommunityOrganizers } from './CommunityOrganizers/CommunityOrganizers';

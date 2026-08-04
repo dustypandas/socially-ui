@@ -10,6 +10,7 @@ type CommunityIntroPanelProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
+  onJoinClick?: () => void;
   // organizers: MemberAvatar[];
 };
 
@@ -18,6 +19,7 @@ export function CommunityIntroPanel({
   memberCount,
   rating,
   ratingCount,
+  onJoinClick,
   // organizers,
 }: CommunityIntroPanelProps) {
   return (
@@ -46,6 +48,7 @@ export function CommunityIntroPanel({
       <button
         type="button"
         className="community-intro-panel__join-btn"
+        onClick={onJoinClick}
       >
         Join this community
       </button>

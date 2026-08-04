@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+@import '../../globals.css';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.overlay--entering .overlay__backdrop {
+  animation: overlayBackdropFadeIn 0.3s ease-out forwards;
+}
+
+.overlay--exiting .overlay__backdrop {
+  animation: overlayBackdropFadeOut 0.3s ease-out forwards;
+}
+
+.overlay__card {
+  position: relative;
+  z-index: 1;
+  width: min(90vw, 480px);
+  padding: 1.5rem;
+  @apply card-style--no-hover;
+  @apply texture-bg;
+}
+
+.overlay--entering .overlay__card {
+  animation: overlayCardSlideIn 0.3s ease-out forwards;
+}
+
+.overlay--exiting .overlay__card {
+  animation: overlayCardSlideOut 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes overlayBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes overlayCardSlideIn {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes overlayCardSlideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+}

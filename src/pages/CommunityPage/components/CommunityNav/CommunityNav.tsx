@@ -8,7 +8,7 @@ import './community-nav.css';
 
 const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
 
-export function CommunityNav() {
+export function CommunityNav({ onJoinClick }: { onJoinClick?: () => void }) {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
     ref: navRef,
@@ -36,6 +36,7 @@ export function CommunityNav() {
               <button
                 type="button"
                 className="community-nav__join-btn"
+                onClick={onJoinClick}
               >
                 Join this community
               </button>

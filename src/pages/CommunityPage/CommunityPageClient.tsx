@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
 import {
   CommunityAbout,
   CommunityEventsSection,
   CommunityHero,
   CommunityIntroPanel,
+  CommunityJoinOverlay,
   CommunityMembers,
   CommunityNav,
   CommunityOrganizers,
@@ -14,10 +16,14 @@ import './community-page.css';
 
 export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const { communityPageData } = useCommunityPageStates({ variant });
+  const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
 
   if (!communityPageData) {
     return null;
   }
+
+  const handleJoinClick = () => setIsJoinOverlayOpen(true);
+  const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
 
   return (
     <PageLayout hasStaticHeader>
@@ -33,12 +39,13 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 memberCount={communityPageData.membersCount}
                 rating={communityPageData.rating}
                 ratingCount={communityPageData.ratingCount}
+                onJoinClick={handleJoinClick}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>
 
-        <CommunityNav />
+        <CommunityNav onJoinClick={handleJoinClick} />
 
         <div className="width-container community-page__content">
           <ColumnsLayout>
@@ -69,6 +76,12 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           </ColumnsLayout>
         </div>
       </section>
+
+      <CommunityJoinOverlay
+        communityName={communityPageData.name}
+        isOpen={isJoinOverlayOpen}
+        onClose={handleJoinOverlayClose}
+      />
     </PageLayout>
   );
 }

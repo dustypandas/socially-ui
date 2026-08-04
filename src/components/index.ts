@@ -5,6 +5,7 @@ export { EventCard } from './EventCard/EventCard';
 export { EventCardHorizontal } from './EventCard/EventCardHorizontal';
 export { EventTimeline } from './EventTimeline/EventTimeline';
 export { MapContainer } from './MapContainer/MapContainer';
+export { Overlay } from './Overlay/Overlay';
 export { PageLayout } from './PageLayout/PageLayout';
 export { PageTitle } from './PageTitle/PageTitle';
 export * from './SectionTitle/SectionTitle';

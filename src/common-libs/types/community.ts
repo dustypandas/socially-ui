@@ -1,3 +1,5 @@
+import { MemberQuestion } from "./member";
+
 export type CommunityAvatar = {
   id: string;
   name: string;
@@ -20,3 +22,16 @@ export type Community =
 & {
   descriptionHtml: string;
 };
+
+export type CommunityQuestion =
+& MemberQuestion
+& {
+  isRequired?: boolean;
+};
+
+type CommunityEntryRule = string; // placeholder
+
+export type CommunityEntryConditions = {
+  questions: CommunityQuestion[];
+  rules?: CommunityEntryRule[];
+}

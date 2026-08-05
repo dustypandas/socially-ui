@@ -29,7 +29,9 @@ export type EventBasic =
   description: string;
 };
 
-export type Event = EventBasic & {
+export type Event =
+& EventBasic
+& {
   hosts: MemberAvatar[];
   location: MapLocation;
   descriptionHtml: string;

@@ -1,5 +1,5 @@
 import { members } from '../dummyData.ts';
-import type { MemberProfile } from '@src/common-libs/types';
+import type { MemberProfile, MemberQuestionResponse } from '@src/common-libs/types';
 
 type SessionUser = MemberProfile & {
   email: string;
@@ -27,5 +27,13 @@ export const sessionUser: SessionUser = {
   email: 'test@test.com',
   password: 'test',
 };
+
+export const sessionUserQuestionResponses: MemberQuestionResponse[] = [
+  {
+    id: 'in-madrid-since',
+    question: 'For how long have you been in Madrid?',
+    response: '2 Years',
+  },
+];
 
 export type { SessionUser };

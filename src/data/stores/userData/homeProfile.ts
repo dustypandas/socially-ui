@@ -35,33 +35,33 @@ export const homeNewMembers: HomeProfileMember[] = [
     ...toMemberAvatar(members[1]),
     communityName: communities[1].name,
     basicDetails: [
-      { question: 'In Madrid since', response: '1 Year' },
-      { question: 'Previously lived in', response: 'UK' },
+      { id: 'in-madrid-since', question: 'In Madrid since', response: '1 Year' },
+      { id: 'previously-lived-in', question: 'Previously lived in', response: 'UK' },
     ],
     otherDetails: [
-      { question: "what's your 5 minute topic?", response: 'Rock climbing' },
+      { id: '5-minute-topic', question: "what's your 5 minute topic?", response: 'Rock climbing' },
     ],
   },
   {
     ...toMemberAvatar(members[5]),
     communityName: communities[0].name,
     basicDetails: [
-      { question: 'In Madrid since', response: '1 Year' },
-      { question: 'Previously lived in', response: 'China' },
+      { id: 'in-madrid-since', question: 'In Madrid since', response: '1 Year' },
+      { id: 'previously-lived-in', question: 'Previously lived in', response: 'China' },
     ],
     otherDetails: [
-      { question: "What would be a fun topic for future stories?", response: 'Cherished memories' },
+      { id: 'fun-topic', question: "What would be a fun topic for future stories?", response: 'Cherished memories' },
     ],
   },
   {
     ...toMemberAvatar(members[14]),
     communityName: communities[3].name,
     basicDetails: [
-      { question: 'In Madrid since', response: '6 Months' },
-      { question: 'Previously lived in', response: 'Germany' },
+      { id: 'in-madrid-since', question: 'In Madrid since', response: '6 Months' },
+      { id: 'previously-lived-in', question: 'Previously lived in', response: 'Germany' },
     ],
     otherDetails: [
-      { question: "For how long have you been dancing?", response: '4 years' },
+      { id: 'how-long-dancing', question: "For how long have you been dancing?", response: '4 years' },
     ],
   },
 ];

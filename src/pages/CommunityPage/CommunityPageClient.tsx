@@ -78,7 +78,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
       </section>
 
       <CommunityJoinOverlay
-        communityName={communityPageData.name}
+        communityId={communityPageData.id}
+        entryConditions={communityPageData.entryConditions}
         isOpen={isJoinOverlayOpen}
         onClose={handleJoinOverlayClose}
       />

@@ -9,6 +9,7 @@ import {
 import {
   getCommunitiesForOneInterest,
   getCommunityForOneEvent,
+  getEntryConditionsForOneCommunity,
   getFilteredCommunities,
   getHomeFreshCommunities,
   getOneCommunity,
@@ -145,10 +146,11 @@ export async function getCommunitiesPageData(
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
   
-  const [memberAvatars, futureEvents, pastEvents] = await Promise.all([
+  const [memberAvatars, futureEvents, pastEvents, entryConditions] = await Promise.all([
     getMemberAvatarsForOneCommunity(),
     getFutureEventsForOneCommunity(),
     getPastEventsForOneCommunity(),
+    getEntryConditionsForOneCommunity(), // only if not logged in
   ]);
 
   return {
@@ -168,6 +170,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     memberAvatars,
     futureEvents,
     pastEvents,
+    entryConditions,
   };
 }
 

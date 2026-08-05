@@ -2,10 +2,11 @@ import {
   communities,
   communitiesForOneInterest,
   communityForOneEvent,
+  entryConditionsForOneCommunity,
 } from '../stores/dummyData.ts';
 import { homeFreshCommunities, tempCommunityIds } from '../stores/userData/index.ts';
 import { getFollowedInterests } from './interests.ts';
-import type { CommunityAvatar, CommunityBasic } from '@src/common-libs/types';
+import type { CommunityAvatar, CommunityBasic, CommunityEntryConditions } from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
 
 export async function getFilteredCommunities(
@@ -59,4 +60,10 @@ export async function getCommunityForOneEvent(): Promise<CommunityAvatar> {
 
 export async function getOneCommunity(): Promise<CommunityBasic> {
   return communities.find(community => community.id === 'polylogue-madrid')!;
+}
+
+export async function getEntryConditionsForOneCommunity(): Promise<CommunityEntryConditions> {
+  // await new Promise(resolve => setTimeout(resolve, 1000));
+
+  return entryConditionsForOneCommunity;
 }

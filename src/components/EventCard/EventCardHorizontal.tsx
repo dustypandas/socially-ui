@@ -34,6 +34,8 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
                 {event.location.label}
               </span>
             </div>
+          </div>
+          <div className="event-card-horizontal__meta-right">
             <div className="event-card-horizontal__row">
               <IconStar className="event-card-horizontal__icon event-card-horizontal__icon--rating" />
               <span className="event-card-horizontal__text">
@@ -41,25 +43,25 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
               </span>
             </div>
           </div>
-          {event.attendees.avatars.length > 0 && (
-            <div className="event-card-horizontal__attendees">
-              <div className="event-card-horizontal__attendees-img-container">
-                {event.attendees.avatars.map((avatar: MemberAvatar, index: number) => (
-                  <img
-                    key={avatar.id}
-                    className="event-card-horizontal__attendee-img"
-                    src={avatar.image}
-                    alt=""
-                    style={{ zIndex: event.attendees.avatars.length - index }}
-                  />
-                ))}
-              </div>
-              <div className="event-card-horizontal__attendees-label">
-                {attendeesLabel}
-              </div>
-            </div>
-          )}
         </div>
+        {event.attendees.avatars.length > 0 && (
+          <div className="event-card-horizontal__attendees">
+            <div className="event-card-horizontal__attendees-img-container">
+              {event.attendees.avatars.map((avatar: MemberAvatar, index: number) => (
+                <img
+                  key={avatar.id}
+                  className="event-card-horizontal__attendee-img"
+                  src={avatar.image}
+                  alt=""
+                  style={{ zIndex: event.attendees.avatars.length - index }}
+                />
+              ))}
+            </div>
+            <div className="event-card-horizontal__attendees-label">
+              {attendeesLabel}
+            </div>
+          </div>
+        )}
         <div className="event-card-horizontal__description">
           {event.description}
         </div>

@@ -51,17 +51,23 @@ export type CommunityEngagement =
   status: 'member' | 'pending' | 'rejected' | 'banned';
 };
 
-export type HomeProfileMemberDetail = {
-  question: string;
-  response: string;
-};
-
 export type HomeProfileMember = {
   id: string;
   label: string;
   image: string;
   href: string;
   communityName: string;
-  basicDetails: HomeProfileMemberDetail[];
-  otherDetails: HomeProfileMemberDetail[];
+  basicDetails: MemberQuestionResponse[];
+  otherDetails: MemberQuestionResponse[];
+};
+
+export type MemberQuestion = {
+  id: string;
+  question: string;
+};
+
+export type MemberQuestionResponse =
+& MemberQuestion
+& {
+  response: string;
 };

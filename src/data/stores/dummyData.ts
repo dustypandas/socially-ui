@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEngagement, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from '@src/common-libs/types';
+import type { CommunityAvatar, CommunityBasic, CommunityEngagement, CommunityEntryConditions, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from '@src/common-libs/types';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -371,6 +371,25 @@ export const pastEventsForOneCommunity: EventBasic[] = [
     openTo: 'public',
   },
 ];
+
+export const entryConditionsForOneCommunity: CommunityEntryConditions = {
+  questions: [
+    {
+      id: 'in-madrid-since',
+      question: 'For how long have you been in Madrid?',
+      isRequired: true,
+    },
+    {
+      id: '5-minute-topic',
+      question: 'What\'s your 5 minute topic?',
+      isRequired: true,
+    },
+    {
+      id: 'why-join',
+      question: 'Why do you want to join this community?',
+    },
+  ],
+};
 //
 
 export const events: EventBasic[] = [

@@ -143,7 +143,7 @@ export function CommunityJoinOverlay({
     <Overlay isOpen={isOverlayVisible} onClose={onClose}>
       <div className="community-join-overlay__header">
         <h2 className="community-join-overlay__title">
-          Request to Join
+          Community Questions
         </h2>
         <button
           type="button"
@@ -153,6 +153,9 @@ export function CommunityJoinOverlay({
           <span className="community-join-overlay__close-icon" />
         </button>
       </div>
+      {/* <div className="community-join-overlay__subtitle">
+        Tell us a little more about you, to join this community.
+      </div> */}
       <form
         className="community-join-overlay__form"
         onSubmit={handleSubmit}

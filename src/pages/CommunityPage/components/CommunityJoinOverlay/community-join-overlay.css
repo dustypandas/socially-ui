@@ -14,6 +14,13 @@
   margin: 0;
 }
 
+/* .community-join-overlay__subtitle {
+  margin: 0.5rem 0.75rem 1rem;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--global-text-light);
+} */
+
 .community-join-overlay__close {
   flex-shrink: 0;
   display: flex;

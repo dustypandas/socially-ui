@@ -43,7 +43,7 @@ export function SignupFinalPage() {
       return;
     }
 
-    if (!madridSince || !livingNear || previousHomes.length === 0) {
+    if (!madridSince || previousHomes.length === 0) {
       return;
     }
 
@@ -74,6 +74,7 @@ export function SignupFinalPage() {
             <div className="auth-page__field">
               <label className="auth-page__label" htmlFor="signup-first-name">
                 Hi, my name is
+                <span className="auth-page__label-required"> *</span>
               </label>
               <div className="signup-final-page__input-row">
                 <input
@@ -98,6 +99,7 @@ export function SignupFinalPage() {
             <div className="auth-page__field">
               <label className="auth-page__label" htmlFor="signup-password">
                 Password
+                <span className="auth-page__label-required"> *</span>
               </label>
               <div className="signup-final-page__input-row">
                 <input
@@ -119,29 +121,46 @@ export function SignupFinalPage() {
               </div>
             </div>
 
-            <SearchDropdown
-              label="I've been in Madrid since"
-              placeholder="select year..."
-              options={madridSinceOptions}
-              value={madridSince}
-              onChange={setMadridSince}
-            />
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="signup-madrid-since">
+                I've been in Madrid since
+                <span className="auth-page__label-required"> *</span>
+              </label>
+              <SearchDropdown
+                id="signup-madrid-since"
+                placeholder="select year..."
+                options={madridSinceOptions}
+                value={madridSince}
+                onChange={setMadridSince}
+              />
+            </div>
 
-            <SearchDropdown
-              label="Living near"
-              placeholder="my ghetto..."
-              options={livingNearOptions}
-              value={livingNear}
-              onChange={setLivingNear}
-            />
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="signup-living-near">
+                Living near
+              </label>
+              <SearchDropdown
+                id="signup-living-near"
+                placeholder="my ghetto..."
+                options={livingNearOptions}
+                value={livingNear}
+                onChange={setLivingNear}
+              />
+            </div>
 
-            <SearchDropdownMultiple
-              label="I previously lived in"
-              placeholder="previous homes..."
-              options={countries}
-              values={previousHomes}
-              onValuesChange={setPreviousHomes}
-            />
+            <div className="auth-page__field">
+              <label className="auth-page__label" htmlFor="signup-previous-homes">
+                I previously lived in
+                <span className="auth-page__label-required"> *</span>
+              </label>
+              <SearchDropdownMultiple
+                id="signup-previous-homes"
+                placeholder="previous homes..."
+                options={countries}
+                values={previousHomes}
+                onValuesChange={setPreviousHomes}
+              />
+            </div>
 
             {passwordError && (
               <p className="auth-page__error">{passwordError}</p>

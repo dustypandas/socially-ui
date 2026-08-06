@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import './search-dropdown.css';
 
 type SearchDropdownProps = {
-  label: string;
+  id?: string;
   placeholder: string;
   options: readonly string[];
   value: string;
@@ -12,17 +12,17 @@ type SearchDropdownProps = {
 const MAX_VISIBLE_OPTIONS = 50;
 
 export function SearchDropdown({
-  label,
+  id,
   placeholder,
   options,
   value,
   onChange,
 }: SearchDropdownProps) {
-  const inputId = useId();
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const blurTimeoutRef = useRef<number | null>(null);
-  const hasLabel = label.length > 0;
 
   useEffect(() => {
     return () => {
@@ -77,12 +77,7 @@ export function SearchDropdown({
   };
 
   return (
-    <div className={hasLabel ? 'search-dropdown auth-page__field' : 'search-dropdown'}>
-      {hasLabel && (
-        <label className="auth-page__label" htmlFor={inputId}>
-          {label}
-        </label>
-      )}
+    <div className="search-dropdown">
       <input
         id={inputId}
         type="text"

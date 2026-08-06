@@ -3,7 +3,7 @@ import { SearchDropdown } from './SearchDropdown';
 import './search-dropdown-multiple.css';
 
 type SearchDropdownMultipleProps = {
-  label: string;
+  id?: string;
   placeholder: string;
   options: readonly string[];
   values: string[];
@@ -11,7 +11,7 @@ type SearchDropdownMultipleProps = {
 };
 
 export function SearchDropdownMultiple({
-  label,
+  id,
   placeholder,
   options,
   values,
@@ -32,8 +32,7 @@ export function SearchDropdownMultiple({
   };
 
   return (
-    <div className="search-dropdown-multiple auth-page__field">
-      <span className="auth-page__label">{label}</span>
+    <div className="search-dropdown-multiple">
       {values.length > 0 && (
         <ul className="search-dropdown-multiple__selected-list">
           {values.map(value => (
@@ -52,7 +51,7 @@ export function SearchDropdownMultiple({
         </ul>
       )}
       <SearchDropdown
-        label=""
+        id={id}
         placeholder={placeholder}
         options={availableOptions}
         value=""

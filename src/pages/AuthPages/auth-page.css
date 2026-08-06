@@ -38,7 +38,11 @@
 .auth-page__label {
   @apply courier-inline;
   font-size: var(--font-size-sm);
-  color: var(--global-text-light);
+  color: var(--global-text-muted);
+}
+
+.auth-page__label-required {
+  color: var(--color-red-600, #dc2626);
 }
 
 .auth-page__error {

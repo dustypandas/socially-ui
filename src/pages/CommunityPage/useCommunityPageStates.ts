@@ -13,6 +13,19 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     getCommunityPageData().then(applyPageData);
   }, [applyPageData]);
 
+  const markJoinPending = useCallback(() => {
+    setRawCommunityPageData(current => {
+      if (!current) {
+        return current;
+      }
+
+      return {
+        ...current,
+        memberEngagementStatus: 'pending',
+      };
+    });
+  }, []);
+
   const communityPageData = useMemo(() => {
     if (!rawCommunityPageData) {
       return null;
@@ -37,6 +50,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
   return {
     communityPageData,
+    markJoinPending,
   };
 }
 

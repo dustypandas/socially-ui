@@ -12,6 +12,7 @@ type CommunityJoinOverlayProps = {
   entryConditions?: CommunityEntryConditions;
   isOpen: boolean;
   onClose: () => void;
+  onJoinSuccess?: () => void;
 };
 
 export function CommunityJoinOverlay({
@@ -19,6 +20,7 @@ export function CommunityJoinOverlay({
   entryConditions,
   isOpen,
   onClose,
+  onJoinSuccess,
 }: CommunityJoinOverlayProps) {
   const questions = entryConditions?.questions ?? [];
   const [fetchUserQuestionResponsesState, setFetchUserQuestionResponsesState] =
@@ -130,6 +132,7 @@ export function CommunityJoinOverlay({
           response: getResolvedResponse(question.id),
         })),
       );
+      onJoinSuccess?.();
       onClose();
     } catch {
       setJoinStatus('idle');

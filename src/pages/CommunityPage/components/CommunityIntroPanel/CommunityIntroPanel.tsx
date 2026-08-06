@@ -1,5 +1,6 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
+import type { CommunityEngagement } from '@src/common-libs/types';
 // import IconUser from '@src/assets/icon-user-outline.svg?react';
 // import type { MemberAvatar } from '@src/data';
 // import { nameAndOthersLabel } from '@src/pages/CommunityPage/helpers';
@@ -10,6 +11,7 @@ type CommunityIntroPanelProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
+  memberEngagementStatus: CommunityEngagement['status'] | null;
   onJoinClick?: () => void;
   // organizers: MemberAvatar[];
 };
@@ -19,9 +21,12 @@ export function CommunityIntroPanel({
   memberCount,
   rating,
   ratingCount,
+  memberEngagementStatus,
   onJoinClick,
   // organizers,
 }: CommunityIntroPanelProps) {
+  const isJoinPending = memberEngagementStatus === 'pending';
+
   return (
     <div className="community-intro-panel">
       <h1 className="community-intro-panel__title">{name}</h1>
@@ -49,8 +54,9 @@ export function CommunityIntroPanel({
         type="button"
         className="community-intro-panel__join-btn"
         onClick={onJoinClick}
+        disabled={isJoinPending}
       >
-        Join this community
+        {isJoinPending ? 'Requested to join' : 'Join this community'}
       </button>
     </div>
   );

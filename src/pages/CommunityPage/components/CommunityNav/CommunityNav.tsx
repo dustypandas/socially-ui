@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import type { CommunityEngagement } from '@src/common-libs/types';
 import { ColumnsLayout } from '@src/components';
 import {
   getElementDocumentOffsetTop,
@@ -8,12 +9,18 @@ import './community-nav.css';
 
 const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
 
-export function CommunityNav({ onJoinClick }: { onJoinClick?: () => void }) {
+type CommunityNavProps = {
+  memberEngagementStatus: CommunityEngagement['status'] | null;
+  onJoinClick?: () => void;
+};
+
+export function CommunityNav({ memberEngagementStatus, onJoinClick }: CommunityNavProps) {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
     ref: navRef,
     getDistance: (nav) => getElementDocumentOffsetTop(nav) + 50, // should substract header height, only on mobile
   });
+  const isJoinPending = memberEngagementStatus === 'pending';
 
   return (
     <>
@@ -37,8 +44,9 @@ export function CommunityNav({ onJoinClick }: { onJoinClick?: () => void }) {
                 type="button"
                 className="community-nav__join-btn"
                 onClick={onJoinClick}
+                disabled={isJoinPending}
               >
-                Join this community
+                {isJoinPending ? 'Requested to join' : 'Join this community'}
               </button>
             </ColumnsLayout.Aside>
           </ColumnsLayout>

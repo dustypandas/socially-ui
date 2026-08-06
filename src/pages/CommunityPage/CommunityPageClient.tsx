@@ -15,14 +15,21 @@ import { CommunityPageClientProps, useCommunityPageStates } from './useCommunity
 import './community-page.css';
 
 export function CommunityPageClient({ variant }: CommunityPageClientProps) {
-  const { communityPageData } = useCommunityPageStates({ variant });
+  const { communityPageData, markJoinPending } = useCommunityPageStates({ variant });
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
 
   if (!communityPageData) {
     return null;
   }
 
-  const handleJoinClick = () => setIsJoinOverlayOpen(true);
+  const isJoinPending = communityPageData.memberEngagementStatus === 'pending';
+  const handleJoinClick = () => {
+    if (isJoinPending) {
+      return;
+    }
+
+    setIsJoinOverlayOpen(true);
+  };
   const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
 
   return (
@@ -39,13 +46,17 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 memberCount={communityPageData.membersCount}
                 rating={communityPageData.rating}
                 ratingCount={communityPageData.ratingCount}
+                memberEngagementStatus={communityPageData.memberEngagementStatus}
                 onJoinClick={handleJoinClick}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>
 
-        <CommunityNav onJoinClick={handleJoinClick} />
+        <CommunityNav
+          memberEngagementStatus={communityPageData.memberEngagementStatus}
+          onJoinClick={handleJoinClick}
+        />
 
         <div className="width-container community-page__content">
           <ColumnsLayout>
@@ -82,6 +93,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         entryConditions={communityPageData.entryConditions}
         isOpen={isJoinOverlayOpen}
         onClose={handleJoinOverlayClose}
+        onJoinSuccess={markJoinPending}
       />
     </PageLayout>
   );

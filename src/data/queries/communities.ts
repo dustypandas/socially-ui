@@ -4,9 +4,19 @@ import {
   communityForOneEvent,
   entryConditionsForOneCommunity,
 } from '../stores/dummyData.ts';
-import { homeFreshCommunities, tempCommunityIds } from '../stores/userData/index.ts';
+import {
+  homeFreshCommunities,
+  sessionState,
+  tempCommunityEngagementsMap,
+  tempCommunityIds,
+} from '../stores/userData/index.ts';
 import { getFollowedInterests } from './interests.ts';
-import type { CommunityAvatar, CommunityBasic, CommunityEntryConditions } from '@src/common-libs/types';
+import type {
+  CommunityAvatar,
+  CommunityBasic,
+  CommunityEngagement,
+  CommunityEntryConditions,
+} from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
 
 export async function getFilteredCommunities(
@@ -66,4 +76,14 @@ export async function getEntryConditionsForOneCommunity(): Promise<CommunityEntr
   // await new Promise(resolve => setTimeout(resolve, 1000));
 
   return entryConditionsForOneCommunity;
+}
+
+export async function getSessionCommunityStatus(
+  communityId: string,
+): Promise<CommunityEngagement['status'] | null> {
+  if (!sessionState.isLoggedIn) {
+    return null;
+  }
+
+  return tempCommunityEngagementsMap[communityId]?.status ?? null;
 }

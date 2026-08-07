@@ -1,6 +1,8 @@
 import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity, reviewsForOneEvent } from '../../stores/dummyData.ts';
-import type { Event, EventBasic } from '@src/common-libs/types';
+import { sessionState, tempEventStatusesMap } from '../../stores/userData/index.ts';
+import type { Event, EventBasic, EventViewerStatus } from '@src/common-libs/types';
 import { type EventsFilterParams, shuffleArray } from '@src/common-libs/helpers';
+import { getSessionCommunityStatus } from '../communities.ts';
 import { filterEvents } from './filters.ts';
 
 const EVENT_INTERESTS_BY_ID: Record<string, string[]> = {
@@ -81,4 +83,37 @@ export async function getOneEvent(): Promise<Event> {
     interests: ['public-speaking', 'technology', 'fresh'],
     reviews: reviewsForOneEvent,
   };
+}
+
+export async function getSessionEventStatus(
+  eventId: string,
+  communityId: string,
+): Promise<EventViewerStatus | null> {
+  if (!sessionState.isLoggedIn) {
+    return null;
+  }
+
+  const eventStatus = tempEventStatusesMap[eventId];
+  if (eventStatus === 'attending' || eventStatus === 'waitlisted') {
+    return eventStatus;
+  }
+
+  const communityStatus = await getSessionCommunityStatus(communityId);
+  if (!communityStatus) {
+    return null;
+  }
+
+  if (communityStatus === 'rejected') {
+    return 'banned';
+  }
+
+  if (communityStatus === 'banned') {
+    return 'banned';
+  }
+
+  if (communityStatus === 'member' || communityStatus === 'pending') {
+    return communityStatus;
+  }
+
+  return null;
 }

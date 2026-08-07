@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import type { MemberAvatar } from '@src/common-libs/types';
+import type { EventViewerStatus, MemberAvatar } from '@src/common-libs/types';
 import { getAttendeesLabel } from '@src/helpers/labelHelpers';
 import './event-attend-card.css';
 
@@ -10,7 +10,26 @@ type EventAttendCardProps = {
   className?: string;
   isFixedBar?: boolean;
   isFixedBarVisible?: boolean;
+  memberEngagementStatus: EventViewerStatus | null;
+  onJoinClick?: () => void;
+  isJoinLoading?: boolean;
 };
+
+function getJoinButtonLabel(status: EventViewerStatus | null): string {
+  if (status === 'pending') {
+    return 'Requested to join';
+  }
+
+  if (status === 'attending') {
+    return 'Attending';
+  }
+
+  if (status === 'waitlisted') {
+    return 'Waitlisted';
+  }
+
+  return 'Join event';
+}
 
 export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
   function EventAttendCard(
@@ -21,9 +40,19 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       className = '',
       isFixedBar = false,
       isFixedBarVisible = false,
+      memberEngagementStatus,
+      onJoinClick,
+      isJoinLoading = false,
     },
     ref,
   ) {
+    const isJoinDisabled =
+      isJoinLoading
+      || memberEngagementStatus === 'pending'
+      || memberEngagementStatus === 'attending'
+      || memberEngagementStatus === 'banned'
+      || memberEngagementStatus === 'waitlisted';
+
     const body = (
       <div className="event-attend-card__body">
         <div className="event-attend-card__left">
@@ -45,8 +74,16 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           </div>
           <span className="event-attend-card__price">{priceLabel}</span>
         </div>
-        <button type="button" className="event-attend-card__btn">
-          Join event
+        <button
+          type="button"
+          className={[
+            'event-attend-card__btn',
+            isJoinLoading && 'event-attend-card__btn--loading',
+          ].filter(Boolean).join(' ')}
+          onClick={onJoinClick}
+          disabled={isJoinDisabled}
+        >
+          {getJoinButtonLabel(memberEngagementStatus)}
         </button>
       </div>
     );

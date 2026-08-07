@@ -1,6 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
+import { attendEvent } from '@src/data';
 import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
+import { CommunityJoinOverlay } from '@src/pages/CommunityPage/components';
 import {
   EventAttendCard,
   EventCommunity,
@@ -18,7 +20,11 @@ import './event-page.css';
 export function EventPageClient({ variant }: EventPageClientProps) {
   const {
     eventPageData,
+    markJoinPending,
+    markAttending,
   } = useEventPageStates({ variant });
+  const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
+  const [isJoinLoading, setIsJoinLoading] = useState(false);
 
   const attendCardRef = useRef<HTMLDivElement>(null);
   const asideTitleRef = useRef<HTMLHeadingElement>(null);
@@ -58,6 +64,35 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     return null;
   }
 
+  const memberEngagementStatus = eventPageData.memberEngagementStatus;
+
+  const handleJoinClick = async () => {
+    if (
+      memberEngagementStatus === 'pending'
+      || memberEngagementStatus === 'attending'
+      || memberEngagementStatus === 'banned'
+      || memberEngagementStatus === 'waitlisted'
+      || isJoinLoading
+    ) {
+      return;
+    }
+
+    if (memberEngagementStatus === 'member') {
+      setIsJoinLoading(true);
+      try {
+        await attendEvent(eventPageData.id);
+        markAttending();
+      } finally {
+        setIsJoinLoading(false);
+      }
+      return;
+    }
+
+    setIsJoinOverlayOpen(true);
+  };
+
+  const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
+
   return (
     <PageLayout hasStaticHeader>
       <section className="event-page">
@@ -79,6 +114,9 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 className="event-page__attend-card"
                 profiles={eventPageData.attendees.avatars}
                 attendeeCount={eventPageData.attendees.count}
+                memberEngagementStatus={memberEngagementStatus}
+                onJoinClick={handleJoinClick}
+                isJoinLoading={isJoinLoading}
               />
               <div className="interest-page__divider--hidden" />
               <EventDescription htmlContent={eventPageData.descriptionHtml} />
@@ -121,6 +159,16 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         isFixedBarVisible={isPastAttendCard}
         profiles={eventPageData.attendees.avatars}
         attendeeCount={eventPageData.attendees.count}
+        memberEngagementStatus={memberEngagementStatus}
+        onJoinClick={handleJoinClick}
+        isJoinLoading={isJoinLoading}
+      />
+      <CommunityJoinOverlay
+        communityId={eventPageData.community.id}
+        entryConditions={eventPageData.communityEntryConditions}
+        isOpen={isJoinOverlayOpen}
+        onClose={handleJoinOverlayClose}
+        onJoinSuccess={markJoinPending}
       />
     </PageLayout>
   );

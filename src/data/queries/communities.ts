@@ -8,7 +8,6 @@ import {
   homeFreshCommunities,
   sessionState,
   tempCommunityEngagementsMap,
-  tempCommunityIds,
 } from '../stores/userData/index.ts';
 import { getFollowedInterests } from './interests.ts';
 import type {
@@ -45,8 +44,7 @@ export async function getFilteredCommunities(
     if (communityScope === 'all') return communities;
 
     if (communityScope === 'mine') {
-      const joined = new Set(tempCommunityIds);
-      return communities.filter(community => joined.has(community.id));
+      return communities.filter(community => tempCommunityEngagementsMap[community.id]);
     }
 
     const followed = new Set((await getFollowedInterests()).map(interest => interest.label.toLowerCase()));

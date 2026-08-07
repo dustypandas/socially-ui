@@ -22,6 +22,7 @@ import {
   getHomeUpcomingEvents,
   getOneEvent,
   getPastEventsForOneCommunity,
+  getSessionEventStatus,
 } from './queries/events/index.ts';
 import {
   getCanFollowMore,
@@ -120,18 +121,24 @@ export async function getEventsPageData(): Promise<EventsPageData> {
 
 export async function getEventPageData(): Promise<EventPageData> {
   const targetEvent = await getOneEvent();
+  const communityPromise = getCommunityForOneEvent();
 
-  const [community, attendees, reviews] = await Promise.all([
-    getCommunityForOneEvent(),
-    getAttendeesForOneEvent(),
-    getReviewsForOneEvent(),
-  ]);
+  const [community, attendees, reviews, memberEngagementStatus, communityEntryConditions] =
+    await Promise.all([
+      communityPromise,
+      getAttendeesForOneEvent(),
+      getReviewsForOneEvent(),
+      communityPromise.then(c => getSessionEventStatus(targetEvent.id, c.id)),
+      getEntryConditionsForOneCommunity(),
+    ]);
 
   return {
     ...targetEvent,
     community,
     attendees,
     reviews,
+    memberEngagementStatus,
+    ...(memberEngagementStatus === null ? { communityEntryConditions } : {}),
   };
 }
 

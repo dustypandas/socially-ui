@@ -13,6 +13,32 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
     getEventPageData().then(applyPageData);
   }, [applyPageData]);
 
+  const markJoinPending = useCallback(() => {
+    setRawEventPageData(current => {
+      if (!current) {
+        return current;
+      }
+
+      return {
+        ...current,
+        memberEngagementStatus: 'pending',
+      };
+    });
+  }, []);
+
+  const markAttending = useCallback(() => {
+    setRawEventPageData(current => {
+      if (!current) {
+        return current;
+      }
+
+      return {
+        ...current,
+        memberEngagementStatus: 'attending',
+      };
+    });
+  }, []);
+
   const eventPageData = useMemo(() => {
     if (!rawEventPageData) {
       return null;
@@ -37,6 +63,8 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
 
   return {
     eventPageData,
+    markJoinPending,
+    markAttending,
   };
 }
 

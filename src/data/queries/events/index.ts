@@ -51,13 +51,22 @@ export async function getPastEventsForOneCommunity(): Promise<EventBasic[]> {
 }
 
 export async function getOneEvent(): Promise<Event> {
+  const event = events.find(event => event.id === 'lightning-talks')!;
+
   return {
-    ...events.find(event => event.id === 'lightning-talks')!,
+    ...event,
     hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
-    location: {
+    addressLocation: {
       label: 'Palacio',
       lat: 40.4254,
       lng: -3.7038,
+      address: [
+        'Espacio Polylogue',
+        'Calle de la Escalinata 8',
+      ],
+      postcode: '28013 Madrid',
+      nearestMetros: ['Ópera', 'Sol'],
+      extraComments: 'Ring the buzzer for Polylogue. Venue is on the 2nd floor.',
     },
     descriptionHtml: `<p>
         5 Speakers, 5 minute presentations, 5 diverse topics! 🙌⚡️

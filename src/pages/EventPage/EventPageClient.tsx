@@ -106,7 +106,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 <EventIntro
                   title={eventPageData.title}
                   startTime={eventPageData.startTime}
-                  location={eventPageData.location}
+                  addressLocation={eventPageData.addressLocation}
                 />
               </div>
               <EventAttendCard
@@ -121,6 +121,11 @@ export function EventPageClient({ variant }: EventPageClientProps) {
               <div className="interest-page__divider--hidden" />
               <EventDescription htmlContent={eventPageData.descriptionHtml} />
               <EventTags interests={eventPageData.interests} />
+              <div className="event-page__divider" />
+              <EventLocationDetails
+                addressLocation={eventPageData.addressLocation}
+                isAttending={memberEngagementStatus === 'attending'}
+              />
               <div className="event-page__divider" />
               <EventReviews reviews={eventPageData.reviews ?? []} />
             </ColumnsLayout.Main>
@@ -143,11 +148,6 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                   <EventCommunity community={eventPageData.community} />
                   <div className="event-page__divider--reverse-hidden" />
                   <EventHosts hosts={eventPageData.hosts} />
-                  <div className="event-page__divider" />
-                  <EventLocationDetails
-                    location={eventPageData.location}
-                    // label={eventPageData.title}
-                  />
                 </div>
               </div>
             </ColumnsLayout.Aside>

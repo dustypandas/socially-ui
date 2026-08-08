@@ -56,7 +56,7 @@ export function CommunityIntroPanel({
         onClick={onJoinClick}
         disabled={isJoinPending}
       >
-        {isJoinPending ? 'Requested to join' : 'Join this community'}
+        {isJoinPending ? 'Join request pending' : 'Join this community'}
       </button>
     </div>
   );

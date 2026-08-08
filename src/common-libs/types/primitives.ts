@@ -9,6 +9,15 @@ export type MapLocation = {
   lng: number;
 };
 
+export type AddressLocation =
+& MapLocation
+& {
+  address: string[];
+  postcode: string;
+  nearestMetros: string[];
+  extraComments?: string;
+};
+
 export type Link = {
   label: string;
   href: string;

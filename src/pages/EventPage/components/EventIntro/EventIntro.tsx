@@ -1,14 +1,14 @@
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
-import type { MapLocation } from '@src/common-libs/types';
+import type { AddressLocation } from '@src/common-libs/types';
 import './event-intro.css';
 
 type EventIntroProps = {
   title: string;
   startTime: Date;
-  location: MapLocation;
+  addressLocation: AddressLocation;
 };
 
-export function EventIntro({ title, startTime, location }: EventIntroProps) {
+export function EventIntro({ title, startTime, addressLocation }: EventIntroProps) {
 
   const {
     monthShort,
@@ -37,7 +37,7 @@ export function EventIntro({ title, startTime, location }: EventIntroProps) {
           </div>
           <div className="event-intro__attribute-details">
             <div className="event-intro__attribute-primary">
-              {location.label}
+              {addressLocation.label}
             </div>
             <div className="event-intro__attribute-secondary">
               Exact location visible for attendees

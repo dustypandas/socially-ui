@@ -1,6 +1,6 @@
 import type { CommunityAvatar } from './community.ts';
 import type { MemberAvatar } from './member.ts';
-import type { MapLocation } from './primitives.ts';
+import type { AddressLocation, MapLocation } from './primitives.ts';
 
 // export type EventPageCommunity = {
 //   name: string;
@@ -33,7 +33,7 @@ export type Event =
 & EventBasic
 & {
   hosts: MemberAvatar[];
-  location: MapLocation;
+  addressLocation: AddressLocation;
   descriptionHtml: string;
   interests?: string[];
   reviews?: EventReview[];

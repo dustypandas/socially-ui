@@ -17,7 +17,7 @@ type EventAttendCardProps = {
 
 function getJoinButtonLabel(status: EventViewerStatus | null): string {
   if (status === 'pending') {
-    return 'Requested to join';
+    return 'Join request pending';
   }
 
   if (status === 'attending') {

@@ -27,21 +27,19 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
   }, []);
 
   const markAttending = useCallback(() => {
-    setRawEventPageData(current => {
-      if (!current) {
-        return current;
-      }
-
-      return {
-        ...current,
-        memberEngagementStatus: 'attending',
-      };
-    });
-  }, []);
+    getEventPageData().then(applyPageData);
+  }, [applyPageData]);
 
   const eventPageData = useMemo(() => {
     if (!rawEventPageData) {
       return null;
+    }
+
+    if (variant === 'attending') {
+      return {
+        ...rawEventPageData,
+        memberEngagementStatus: 'attending' as const,
+      };
     }
 
     if (variant !== 'empty') {
@@ -70,6 +68,7 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
 
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
+  'attending',
 ] as const;
 
 export type EventPageClientProps = {

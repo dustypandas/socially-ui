@@ -40,6 +40,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/events-ui' element={<EventsPageClient />} />
         <Route path='/one-event-ui' element={<EventPageClient />} />
         <Route path='/one-event-ui-empty' element={<EventPageClient variant="empty" />} />
+        <Route path='/one-event-ui-attending' element={<EventPageClient variant="attending" />} />
         <Route path='/communities-ui' element={<CommunitiesPageClient />} />
         <Route path='/one-community-ui' element={<CommunityPageClient />} />
         <Route path='/one-community-ui-empty' element={<CommunityPageClient variant="empty" />} />

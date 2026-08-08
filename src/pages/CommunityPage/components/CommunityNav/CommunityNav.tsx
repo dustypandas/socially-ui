@@ -46,7 +46,7 @@ export function CommunityNav({ memberEngagementStatus, onJoinClick }: CommunityN
                 onClick={onJoinClick}
                 disabled={isJoinPending}
               >
-                {isJoinPending ? 'Requested to join' : 'Join this community'}
+                {isJoinPending ? 'Join request pending' : 'Join this community'}
               </button>
             </ColumnsLayout.Aside>
           </ColumnsLayout>

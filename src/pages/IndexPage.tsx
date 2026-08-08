@@ -19,6 +19,7 @@ export function IndexPage() {
       <span>
         &emsp;<a href='#/one-event-ui'>One Event ui</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-empty'>(empty)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-event-ui-attending'>(attending)</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

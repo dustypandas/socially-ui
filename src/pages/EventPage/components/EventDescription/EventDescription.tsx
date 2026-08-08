@@ -7,7 +7,7 @@ type EventDescriptionProps = {
 
 export function EventDescription({ htmlContent }: EventDescriptionProps) {
   return (
-    <section className="event-description">
+    <section id="event-description" className="event-description">
       <SectionTitle title="Event Description" hideMore />
 
       <div

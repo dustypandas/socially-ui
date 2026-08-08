@@ -1,10 +1,6 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.event-intro {
-  /* padding: 0 0 1rem; */
-}
-
 .event-intro__title {
   @apply heading-h1;
   font-size: 2.5rem;
@@ -14,13 +10,25 @@
   margin: 1.25rem 0.75rem 1rem;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.75rem;
 }
 
-.event-intro__attribute-row {
+.event-intro__attribute-row,
+.event-intro__calendar-row,
+.event-intro__location-row {
   display: flex;
   gap: 1rem;
   align-items: center;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  @apply clickable-text;
 }
 
 .event-intro__calendar {
@@ -37,8 +45,9 @@
 
 .event-intro__calendar-month {
   background: var(--light-shadow);
-  color: var(--global-text-muted);
+  /* color: var(--global-text-muted); */
   /* font-family: 'Courier Prime', monospace; */
+  color: var(--global-purple-dark);
   font-size: 0.5rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -46,8 +55,9 @@
 }
 
 .event-intro__calendar-date {
-  color: var(--global-text-muted);
+  /* color: var(--global-text-muted); */
   /* font-family: 'Courier Prime', monospace; */
+  color: var(--global-purple-dark);
   font-size: var(--font-size-md);
   font-weight: 500;
   transform: translateY(-1px);
@@ -68,6 +78,7 @@
 .event-intro__icon {
   width: 1.625rem;
   height: 1.625rem;
+  color: var(--global-purple-dark);
 }
 
 .event-intro__attribute-details {

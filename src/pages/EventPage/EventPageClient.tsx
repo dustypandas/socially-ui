@@ -107,6 +107,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                   title={eventPageData.title}
                   startTime={eventPageData.startTime}
                   addressLocation={eventPageData.addressLocation}
+                  isAttending={memberEngagementStatus === 'attending'}
                 />
               </div>
               <EventAttendCard

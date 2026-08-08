@@ -102,6 +102,23 @@
   @apply btn-purple-white;
 }
 
+.event-attend-card__actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.event-attend-card__attending-label {
+  color: var(--global-text);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.event-attend-card__btn--update {
+  @apply btn-white-purple;
+}
+
 .event-attend-card__btn--loading {
   position: relative;
   color: transparent;
@@ -137,6 +154,14 @@
     .event-attend-card__btn {
       width: 100%;
     }
+
+    .event-attend-card__actions {
+      width: 100%;
+    }
+
+    .event-attend-card__actions .event-attend-card__btn {
+      flex: 1;
+    }
   }
 }
 
@@ -163,6 +188,14 @@
 
     .event-attend-card__btn {
       width: 100%;
+    }
+
+    .event-attend-card__actions {
+      width: 100%;
+    }
+
+    .event-attend-card__actions .event-attend-card__btn {
+      flex: 1;
     }
   }
 }

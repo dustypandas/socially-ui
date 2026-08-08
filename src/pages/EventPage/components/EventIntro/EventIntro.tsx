@@ -1,14 +1,16 @@
 import IconLocation from '@src/assets/icon-map-marker-outline.svg?react';
 import type { AddressLocation } from '@src/common-libs/types';
+import { smoothScrollToSection } from '@src/helpers/smoothScroll';
 import './event-intro.css';
 
 type EventIntroProps = {
   title: string;
   startTime: Date;
   addressLocation: AddressLocation;
+  isAttending: boolean;
 };
 
-export function EventIntro({ title, startTime, addressLocation }: EventIntroProps) {
+export function EventIntro({ title, startTime, addressLocation, isAttending }: EventIntroProps) {
 
   const {
     monthShort,
@@ -21,7 +23,11 @@ export function EventIntro({ title, startTime, addressLocation }: EventIntroProp
     <header className="event-intro">
       <h1 className="event-intro__title">{title}</h1>
       <div className="event-intro__attributes">
-        <div className="event-intro__attribute-row">
+        <button
+          type="button"
+          className="event-intro__calendar-row"
+          onClick={() => smoothScrollToSection('event-description')}
+        >
           <div className="event-intro__calendar">
             <div className="event-intro__calendar-month">{monthShort}</div>
             <div className="event-intro__calendar-date">{dateShort}</div>
@@ -30,20 +36,28 @@ export function EventIntro({ title, startTime, addressLocation }: EventIntroProp
             <div className="event-intro__attribute-primary">{dateLong}</div>
             <div className="event-intro__attribute-secondary">{timeLong}</div>
           </div>
-        </div>
-        <div className="event-intro__attribute-row">
+        </button>
+        <button
+          type="button"
+          className="event-intro__location-row"
+          onClick={() => smoothScrollToSection('event-location-details')}
+        >
           <div className="event-intro__icon-box">
             <IconLocation className="event-intro__icon" />
           </div>
           <div className="event-intro__attribute-details">
             <div className="event-intro__attribute-primary">
-              {addressLocation.label}
+              {isAttending
+                ? addressLocation.address.join(', ')
+                : addressLocation.label}
             </div>
             <div className="event-intro__attribute-secondary">
-              Exact location visible for attendees
+              {isAttending
+                ? addressLocation.label
+                : 'Exact location visible for attendees'}
             </div>
           </div>
-        </div>
+        </button>
       </div>
     </header>
   );

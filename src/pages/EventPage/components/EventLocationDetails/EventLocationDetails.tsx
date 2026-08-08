@@ -12,7 +12,7 @@ export function EventLocationDetails({
   isAttending,
 }: EventLocationDetailsProps) {
   return (
-    <section className="event-location-details">
+    <section id="event-location-details" className="event-location-details">
       <SectionTitle title="How to Find Us" hideMore />
       <div className="event-location-details__body">
         <div className="event-location-details__info">

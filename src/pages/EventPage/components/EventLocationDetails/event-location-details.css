@@ -32,7 +32,7 @@
 .event-location-details__disclaimer {
   color: var(--global-text);
   font-size: var(--font-size-sm);
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 .event-location-details__disclaimer {
   color: var(--global-text-muted);

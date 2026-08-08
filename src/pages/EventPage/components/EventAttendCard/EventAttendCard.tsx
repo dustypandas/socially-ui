@@ -12,16 +12,13 @@ type EventAttendCardProps = {
   isFixedBarVisible?: boolean;
   memberEngagementStatus: EventViewerStatus | null;
   onJoinClick?: () => void;
+  onUpdateClick?: () => void;
   isJoinLoading?: boolean;
 };
 
 function getJoinButtonLabel(status: EventViewerStatus | null): string {
   if (status === 'pending') {
     return 'Join request pending';
-  }
-
-  if (status === 'attending') {
-    return 'Attending';
   }
 
   if (status === 'waitlisted') {
@@ -42,14 +39,15 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       isFixedBarVisible = false,
       memberEngagementStatus,
       onJoinClick,
+      onUpdateClick,
       isJoinLoading = false,
     },
     ref,
   ) {
+    const isAttending = memberEngagementStatus === 'attending';
     const isJoinDisabled =
       isJoinLoading
       || memberEngagementStatus === 'pending'
-      || memberEngagementStatus === 'attending'
       || memberEngagementStatus === 'banned'
       || memberEngagementStatus === 'waitlisted';
 
@@ -72,19 +70,36 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
               {getAttendeesLabel({ count: attendeeCount, avatars: profiles })}
             </span>
           </div>
-          <span className="event-attend-card__price">{priceLabel}</span>
         </div>
-        <button
-          type="button"
-          className={[
-            'event-attend-card__btn',
-            isJoinLoading && 'event-attend-card__btn--loading',
-          ].filter(Boolean).join(' ')}
-          onClick={onJoinClick}
-          disabled={isJoinDisabled}
-        >
-          {getJoinButtonLabel(memberEngagementStatus)}
-        </button>
+        <div className="event-attend-card__actions">
+          {isAttending ? (
+            <>
+              <span className="event-attend-card__attending-label">I'm Attending</span>
+              <button
+                type="button"
+                className="event-attend-card__btn event-attend-card__btn--update"
+                onClick={onUpdateClick}
+              >
+                change
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="event-attend-card__price">{priceLabel}</span>
+              <button
+                type="button"
+                className={[
+                  'event-attend-card__btn',
+                  isJoinLoading && 'event-attend-card__btn--loading',
+                ].filter(Boolean).join(' ')}
+                onClick={onJoinClick}
+                disabled={isJoinDisabled}
+              >
+                {getJoinButtonLabel(memberEngagementStatus)}
+              </button>
+            </>
+          )}
+        </div>
       </div>
     );
 

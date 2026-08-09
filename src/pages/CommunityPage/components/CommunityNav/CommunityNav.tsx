@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import IconCaretDown from '@src/assets/icon-caret-down-outline.svg?react';
 import type { CommunityEngagement } from '@src/common-libs/types';
 import { ColumnsLayout } from '@src/components';
 import {
   getElementDocumentOffsetTop,
   useScrolledPastDistance,
 } from '@src/hooks/useScrolledPastDistance';
+import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
 import './community-nav.css';
 
 const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
@@ -13,16 +13,19 @@ const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
 type CommunityNavProps = {
   memberEngagementStatus: CommunityEngagement['status'] | null;
   onJoinClick?: () => void;
+  onMembershipClick?: () => void;
 };
 
-export function CommunityNav({ memberEngagementStatus, onJoinClick }: CommunityNavProps) {
+export function CommunityNav({
+  memberEngagementStatus,
+  onJoinClick,
+  onMembershipClick,
+}: CommunityNavProps) {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
     ref: navRef,
     getDistance: (nav) => getElementDocumentOffsetTop(nav) + 50, // should substract header height, only on mobile
   });
-  const isJoinPending = memberEngagementStatus === 'pending';
-  const isMember = memberEngagementStatus === 'member';
 
   return (
     <>
@@ -41,24 +44,12 @@ export function CommunityNav({ memberEngagementStatus, onJoinClick }: CommunityN
                 ))}
               </div>
             </ColumnsLayout.Main>
-            <ColumnsLayout.Aside asideWidth="min(380px, 38%)" className="community-nav__join-btn-container">
-              <button
-                type="button"
-                className={isMember ? 'community-page__my-membership-btn' : 'community-page__join-btn'}
-                onClick={onJoinClick}
-                disabled={isJoinPending}
-              >
-                {isMember
-                  ? (
-                    <>
-                      My membership
-                      <IconCaretDown className="community-page__my-membership-btn-caret" />
-                    </>
-                  )
-                  : isJoinPending
-                    ? 'Join request pending'
-                    : 'Join this community'}
-              </button>
+            <ColumnsLayout.Aside asideWidth="min(380px, 38%)" className="community-nav__actions-container">
+              <CommunityActionButtons
+                membershipStatus={memberEngagementStatus}
+                onJoinClick={onJoinClick}
+                onMembershipClick={onMembershipClick}
+              />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
         </div>

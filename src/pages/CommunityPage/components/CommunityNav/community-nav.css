@@ -38,11 +38,8 @@
   }
 }
 
-.community-nav__join-btn-container {
-  .community-page__join-btn,
-  .community-page__my-membership-btn {
-    flex-shrink: 0;
-  }
+.community-nav__actions-container {
+  flex-shrink: 0;
 }
 
 .community-nav__divider {
@@ -60,7 +57,7 @@
   .community-nav {
     top: var(--global-header-height);
   }
-  .community-nav__join-btn-container {
+  .community-nav__actions-container {
     display: none;
   }
 }

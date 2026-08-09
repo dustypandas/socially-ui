@@ -1,1 +1,1 @@
-export { joinCommunity } from './join.ts';
+export { joinCommunity, leaveCommunity } from './membership.ts';

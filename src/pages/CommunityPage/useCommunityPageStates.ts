@@ -4,9 +4,11 @@ import type { CommunityPageData } from '@src/common-libs/types';
 
 export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
   const [rawCommunityPageData, setRawCommunityPageData] = useState<CommunityPageData | null>(null);
+  const [hasLeftMembership, setHasLeftMembership] = useState(false);
 
   const applyPageData = useCallback((data: CommunityPageData) => {
     setRawCommunityPageData(data);
+    setHasLeftMembership(false);
   }, []);
 
   useEffect(() => {
@@ -14,6 +16,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
   }, [applyPageData]);
 
   const markJoinPending = useCallback(() => {
+    setHasLeftMembership(false);
     setRawCommunityPageData(current => {
       if (!current) {
         return current;
@@ -26,12 +29,26 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     });
   }, []);
 
+  const markMembershipCleared = useCallback(() => {
+    setHasLeftMembership(true);
+    setRawCommunityPageData(current => {
+      if (!current) {
+        return current;
+      }
+
+      return {
+        ...current,
+        memberEngagementStatus: null,
+      };
+    });
+  }, []);
+
   const communityPageData = useMemo(() => {
     if (!rawCommunityPageData) {
       return null;
     }
 
-    if (variant === 'member') {
+    if (variant === 'member' && !hasLeftMembership) {
       return {
         ...rawCommunityPageData,
         memberEngagementStatus: 'member' as const,
@@ -53,11 +70,12 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
       organizers: rawCommunityPageData.organizers.slice(0, 1),
       descriptionHtml: getFirstTwoParagraphs(rawCommunityPageData.descriptionHtml),
     };
-  }, [variant, rawCommunityPageData]);
+  }, [variant, rawCommunityPageData, hasLeftMembership]);
 
   return {
     communityPageData,
     markJoinPending,
+    markMembershipCleared,
   };
 }
 

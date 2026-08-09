@@ -34,3 +34,8 @@ export async function joinCommunity(
 
   tempCommunityEngagementsMap[communityId] = engagement;
 }
+
+export async function leaveCommunity(communityId: string): Promise<void> {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  delete tempCommunityEngagementsMap[communityId];
+}

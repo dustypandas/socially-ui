@@ -7,6 +7,7 @@ import {
   CommunityIntroPanel,
   CommunityJoinOverlay,
   CommunityMembers,
+  CommunityMembershipOverlay,
   CommunityNav,
   CommunityOrganizers,
   CommunityPastEvents,
@@ -15,8 +16,13 @@ import { CommunityPageClientProps, useCommunityPageStates } from './useCommunity
 import './community-page.css';
 
 export function CommunityPageClient({ variant }: CommunityPageClientProps) {
-  const { communityPageData, markJoinPending } = useCommunityPageStates({ variant });
+  const {
+    communityPageData,
+    markJoinPending,
+    markMembershipCleared,
+  } = useCommunityPageStates({ variant });
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
+  const [isMembershipOverlayOpen, setIsMembershipOverlayOpen] = useState(false);
 
   if (!communityPageData) {
     return null;
@@ -35,6 +41,15 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   };
   const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
 
+  const handleMembershipClick = () => {
+    if (memberEngagementStatus !== 'member') {
+      return;
+    }
+
+    setIsMembershipOverlayOpen(true);
+  };
+  const handleMembershipOverlayClose = () => setIsMembershipOverlayOpen(false);
+
   return (
     <PageLayout hasStaticHeader>
       <section className="community-page">
@@ -51,6 +66,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 ratingCount={communityPageData.ratingCount}
                 memberEngagementStatus={communityPageData.memberEngagementStatus}
                 onJoinClick={handleJoinClick}
+                onMembershipClick={handleMembershipClick}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>
@@ -59,6 +75,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         <CommunityNav
           memberEngagementStatus={communityPageData.memberEngagementStatus}
           onJoinClick={handleJoinClick}
+          onMembershipClick={handleMembershipClick}
         />
 
         <div className="width-container community-page__content">
@@ -97,6 +114,13 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         isOpen={isJoinOverlayOpen}
         onClose={handleJoinOverlayClose}
         onJoinSuccess={markJoinPending}
+      />
+
+      <CommunityMembershipOverlay
+        communityId={communityPageData.id}
+        isOpen={isMembershipOverlayOpen}
+        onClose={handleMembershipOverlayClose}
+        onLeaveSuccess={markMembershipCleared}
       />
     </PageLayout>
   );

@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.community-action-buttons__join-btn {
+  display: inline-flex;
+  align-items: center;
+  @apply btn-purple-white;
+}
+
+.community-action-buttons__membership-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  @apply btn-clear-grey;
+}
+
+.community-action-buttons__membership-btn-caret {
+  position: relative;
+  top: -0.0625rem;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.community-action-buttons__membership-btn-caret path {
+  fill: currentColor;
+}

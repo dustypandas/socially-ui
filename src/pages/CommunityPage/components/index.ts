@@ -1,9 +1,11 @@
 export { CommunityAbout } from './CommunityAbout/CommunityAbout';
+export { CommunityActionButtons } from './CommunityActionButtons/CommunityActionButtons';
 export { CommunityEventsSection } from './CommunityEventsSection/CommunityEventsSection';
 export { CommunityHero } from './CommunityHero/CommunityHero';
 export { CommunityIntroPanel } from './CommunityIntroPanel/CommunityIntroPanel';
 export { CommunityJoinOverlay } from './CommunityJoinOverlay/CommunityJoinOverlay';
 export { CommunityMembers } from './CommunityMembers/CommunityMembers';
+export { CommunityMembershipOverlay } from './CommunityMembershipOverlay/CommunityMembershipOverlay';
 export { CommunityNav } from './CommunityNav/CommunityNav';
 export { CommunityOrganizers } from './CommunityOrganizers/CommunityOrganizers';
 export { CommunityPastEvents } from './CommunityPastEvents/CommunityPastEvents';

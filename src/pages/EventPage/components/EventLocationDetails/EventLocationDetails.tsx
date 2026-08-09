@@ -22,9 +22,11 @@ export function EventLocationDetails({
                 Address:
               </div>
               <div className="event-location-details__address">
+                <div className="event-location-details__name">{addressLocation.name}</div>
                 {addressLocation.address.map(line => (
                   <div key={line}>{line}</div>
                 ))}
+                <div>{addressLocation.label}</div>
               </div>
               {addressLocation.nearestMetros.length > 0 && (
                 <div className="event-location-details__metros">

@@ -50,11 +50,13 @@
   color: var(--color-yellow-500);
 }
 
-.community-intro-panel__join-btn {
-  display: none;
-  align-self: flex-start;
-  margin-top: 0.25rem;
-  @apply btn-purple-white;
+.community-intro-panel {
+  .community-page__join-btn,
+  .community-page__my-membership-btn {
+    display: none;
+    align-self: flex-start;
+    margin: 0.25rem 0;
+  }
 }
 
 /* @media (max-width: theme(--breakpoint-lg)) {
@@ -68,8 +70,11 @@
     font-size: 1.75rem;
   }
 
-  .community-intro-panel__join-btn {
-    display: flex;
+  .community-intro-panel {
+    .community-page__join-btn,
+    .community-page__my-membership-btn {
+      display: flex;
+    }
   }
 }
 
@@ -83,8 +88,12 @@
   .community-intro-panel__attributes {
     align-items: center;
   }
-  .community-intro-panel__join-btn {
-    display: block;
-    align-self: normal;
+  .community-intro-panel {
+    .community-page__join-btn,
+    .community-page__my-membership-btn {
+      display: flex;
+      justify-content: center;
+      align-self: normal;
+    }
   }
 }

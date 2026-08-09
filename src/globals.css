@@ -76,7 +76,7 @@
 @utility heading-h3 {
   @apply heading-text;
   font-size: 1.25rem;
-  color: var(--global-text-light);
+  color: var(--global-text-heading);
 }
 
 @utility text-input--content {
@@ -141,6 +141,13 @@
   @apply btn;
   background: var(--global-btn-purple);
   color: white;
+}
+
+@utility btn-clear-grey {
+  @apply btn;
+  background: transparent;
+  color: var(--global-text-muted);
+  border: 1px solid var(--light-shadow);
 }
 
 @utility clickable-text {

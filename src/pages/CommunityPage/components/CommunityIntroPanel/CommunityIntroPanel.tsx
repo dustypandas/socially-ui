@@ -1,3 +1,4 @@
+import IconCaretDown from '@src/assets/icon-caret-down-outline.svg?react';
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 import type { CommunityEngagement } from '@src/common-libs/types';
@@ -26,6 +27,7 @@ export function CommunityIntroPanel({
   // organizers,
 }: CommunityIntroPanelProps) {
   const isJoinPending = memberEngagementStatus === 'pending';
+  const isMember = memberEngagementStatus === 'member';
 
   return (
     <div className="community-intro-panel">
@@ -52,11 +54,20 @@ export function CommunityIntroPanel({
       </div>
       <button
         type="button"
-        className="community-intro-panel__join-btn"
+        className={isMember ? 'community-page__my-membership-btn' : 'community-page__join-btn'}
         onClick={onJoinClick}
         disabled={isJoinPending}
       >
-        {isJoinPending ? 'Join request pending' : 'Join this community'}
+        {isMember
+          ? (
+            <>
+              My membership
+              <IconCaretDown className="community-page__my-membership-btn-caret" />
+            </>
+          )
+          : isJoinPending
+            ? 'Join request pending'
+            : 'Join this community'}
       </button>
     </div>
   );

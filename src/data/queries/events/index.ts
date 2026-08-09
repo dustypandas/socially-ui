@@ -57,11 +57,11 @@ export async function getOneEvent(): Promise<Event> {
     ...event,
     hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
     addressLocation: {
+      name: 'Espacio Polylogue',
       label: 'Palacio',
       lat: 40.4254,
       lng: -3.7038,
       address: [
-        'Espacio Polylogue',
         'Calle de la Escalinata 8',
       ],
       postcode: '28013 Madrid',

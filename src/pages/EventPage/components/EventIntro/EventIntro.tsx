@@ -48,12 +48,12 @@ export function EventIntro({ title, startTime, addressLocation, isAttending }: E
           <div className="event-intro__attribute-details">
             <div className="event-intro__attribute-primary">
               {isAttending
-                ? addressLocation.address.join(', ')
+                ? addressLocation.name
                 : addressLocation.label}
             </div>
             <div className="event-intro__attribute-secondary">
               {isAttending
-                ? addressLocation.label
+                ? `${addressLocation.address.join(', ')}, ${addressLocation.label}`
                 : 'Exact location visible for attendees'}
             </div>
           </div>

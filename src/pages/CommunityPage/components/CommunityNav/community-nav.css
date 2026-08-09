@@ -38,9 +38,11 @@
   }
 }
 
-.community-nav__join-btn {
-  flex-shrink: 0;
-  @apply btn-purple-white;
+.community-nav__join-btn-container {
+  .community-page__join-btn,
+  .community-page__my-membership-btn {
+    flex-shrink: 0;
+  }
 }
 
 .community-nav__divider {

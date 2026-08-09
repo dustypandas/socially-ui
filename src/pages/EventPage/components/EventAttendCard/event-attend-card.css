@@ -116,7 +116,7 @@
 }
 
 .event-attend-card__btn--update {
-  @apply btn-white-purple;
+  @apply btn-clear-grey;
 }
 
 .event-attend-card__btn--loading {

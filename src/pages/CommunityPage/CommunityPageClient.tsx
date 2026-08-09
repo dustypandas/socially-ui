@@ -22,9 +22,12 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     return null;
   }
 
-  const isJoinPending = communityPageData.memberEngagementStatus === 'pending';
+  const memberEngagementStatus = communityPageData.memberEngagementStatus;
   const handleJoinClick = () => {
-    if (isJoinPending) {
+    if (
+      memberEngagementStatus === 'pending'
+      || memberEngagementStatus === 'member'
+    ) {
       return;
     }
 

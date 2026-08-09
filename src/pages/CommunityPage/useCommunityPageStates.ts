@@ -31,6 +31,13 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
       return null;
     }
 
+    if (variant === 'member') {
+      return {
+        ...rawCommunityPageData,
+        memberEngagementStatus: 'member' as const,
+      };
+    }
+
     if (variant !== 'empty') {
       return rawCommunityPageData;
     }
@@ -56,6 +63,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
+  'member',
 ] as const;
 
 export type CommunityPageClientProps = {

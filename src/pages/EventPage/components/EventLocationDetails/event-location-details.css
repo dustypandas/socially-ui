@@ -28,6 +28,10 @@
   line-height: 1.5;
 }
 
+.event-location-details__name {
+  font-weight: 500;
+}
+
 .event-location-details__extra-notes,
 .event-location-details__disclaimer {
   color: var(--global-text);
@@ -39,11 +43,8 @@
 }
 
 .event-location-details__map {
-  width: min(100%, 28rem);
-  /* flex-shrink: 0; */
+  width: min(100%, 26rem);
   display: flex;
-  /* justify-content: flex-end; */
-  /* margin-left: auto; */
 }
 
 .event-location-details__map .map-container {

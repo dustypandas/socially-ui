@@ -12,6 +12,7 @@ export type MapLocation = {
 export type AddressLocation =
 & MapLocation
 & {
+  name: string;
   address: string[];
   postcode: string;
   nearestMetros: string[];

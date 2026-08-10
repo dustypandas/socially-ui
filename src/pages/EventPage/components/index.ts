@@ -3,6 +3,7 @@ export { EventCommunity } from './EventCommunity/EventCommunity';
 export { EventHosts } from './EventHosts/EventHosts';
 export { EventIntro } from './EventIntro/EventIntro';
 export { EventAttendCard } from './EventAttendCard/EventAttendCard';
+export { EventAttendanceOverlay } from './EventAttendanceOverlay/EventAttendanceOverlay';
 export { EventDescription } from './EventDescription/EventDescription';
 export { EventLocationDetails } from './EventLocationDetails/EventLocationDetails';
 export { EventTags } from './EventTags/EventTags';

@@ -1,1 +1,1 @@
-export { attendEvent } from './attend.ts';
+export { attendEvent, lateEvent, notAttendEvent } from './attendance.ts';

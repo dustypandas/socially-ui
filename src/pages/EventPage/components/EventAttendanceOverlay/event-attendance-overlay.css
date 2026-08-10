@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.event-attendance-overlay__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.event-attendance-overlay__title {
+  @apply heading-h2;
+  margin: 0;
+}
+
+.event-attendance-overlay__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--global-text-muted);
+}
+
+.event-attendance-overlay__close:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.event-attendance-overlay__close-icon {
+  display: block;
+  position: relative;
+  width: 1.25rem;
+  height: 2px;
+  background: transparent;
+  @apply rounded-corners;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    @apply rounded-corners;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.event-attendance-overlay__options {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0.25rem 0;
+}
+
+.event-attendance-overlay__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  text-align: center;
+  color: var(--global-text-muted);
+  @apply courier-inline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    color: var(--global-text);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.event-attendance-overlay__option--selected {
+  color: var(--global-text);
+}
+
+.event-attendance-overlay__option-tick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.event-attendance-overlay__option-tick-icon {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  top: -0.0625rem;
+}
+
+.event-attendance-overlay__option-tick-icon path {
+  fill: currentColor;
+}
+
+.event-attendance-overlay__option--loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.event-attendance-overlay__option--loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-top-color: var(--global-text-muted);
+  border-radius: 50%;
+  animation: event-attendance-overlay-option-spin 0.8s linear infinite;
+}
+
+@keyframes event-attendance-overlay-option-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

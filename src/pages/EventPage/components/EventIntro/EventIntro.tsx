@@ -7,10 +7,10 @@ type EventIntroProps = {
   title: string;
   startTime: Date;
   addressLocation: AddressLocation;
-  isAttending: boolean;
+  canViewExactAddress: boolean;
 };
 
-export function EventIntro({ title, startTime, addressLocation, isAttending }: EventIntroProps) {
+export function EventIntro({ title, startTime, addressLocation, canViewExactAddress }: EventIntroProps) {
 
   const {
     monthShort,
@@ -47,12 +47,12 @@ export function EventIntro({ title, startTime, addressLocation, isAttending }: E
           </div>
           <div className="event-intro__attribute-details">
             <div className="event-intro__attribute-primary">
-              {isAttending
+              {canViewExactAddress
                 ? addressLocation.name
                 : addressLocation.label}
             </div>
             <div className="event-intro__attribute-secondary">
-              {isAttending
+              {canViewExactAddress
                 ? `${addressLocation.address.join(', ')}, ${addressLocation.label}`
                 : 'Exact location visible for attendees'}
             </div>

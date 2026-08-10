@@ -21,11 +21,23 @@ function getJoinButtonLabel(status: EventViewerStatus | null): string {
     return 'Join request pending';
   }
 
+  return 'Join event';
+}
+
+function getEngagementLabel(status: EventViewerStatus | null): string {
+  if (status === 'late') {
+    return "Will Be Late";
+  }
+
   if (status === 'waitlisted') {
     return 'Waitlisted';
   }
 
-  return 'Join event';
+  if (status === 'notAttending') {
+    return 'Not Attending';
+  }
+
+  return "I'm Attending";
 }
 
 export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
@@ -44,12 +56,15 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
     },
     ref,
   ) {
-    const isAttending = memberEngagementStatus === 'attending';
+    const hasRsvp =
+      memberEngagementStatus === 'attending'
+      || memberEngagementStatus === 'late'
+      || memberEngagementStatus === 'waitlisted'
+      || memberEngagementStatus === 'notAttending';
     const isJoinDisabled =
       isJoinLoading
       || memberEngagementStatus === 'pending'
-      || memberEngagementStatus === 'banned'
-      || memberEngagementStatus === 'waitlisted';
+      || memberEngagementStatus === 'banned';
 
     const body = (
       <div className="event-attend-card__body">
@@ -72,9 +87,11 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           </div>
         </div>
         <div className="event-attend-card__actions">
-          {isAttending ? (
+          {hasRsvp ? (
             <>
-              <span className="event-attend-card__attending-label">I'm Attending</span>
+              <span className="event-attend-card__attending-label">
+                {getEngagementLabel(memberEngagementStatus)}
+              </span>
               <button
                 type="button"
                 className="event-attend-card__btn event-attend-card__btn--update"

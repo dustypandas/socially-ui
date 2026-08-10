@@ -137,7 +137,7 @@ export async function getEventPageData(): Promise<EventPageData> {
     community,
     attendees,
     reviews,
-    memberEngagementStatus,
+    eventViewerStatus: memberEngagementStatus,
     ...(memberEngagementStatus === null ? { communityEntryConditions } : {}),
   };
 }

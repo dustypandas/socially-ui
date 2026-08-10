@@ -1,19 +1,23 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getEventPageData } from '@src/data';
-import type { EventPageData } from '@src/common-libs/types';
+import type { EventPageData, EventViewerStatus } from '@src/common-libs/types';
 
 export function useEventPageStates({ variant }: EventPageClientProps) {
   const [rawEventPageData, setRawEventPageData] = useState<EventPageData | null>(null);
 
   const applyPageData = useCallback((data: EventPageData) => {
-    setRawEventPageData(data);
-  }, []);
+    setRawEventPageData(
+      variant === 'attending'
+        ? { ...data, eventViewerStatus: 'attending' }
+        : data,
+    );
+  }, [variant]);
 
   useEffect(() => {
     getEventPageData().then(applyPageData);
   }, [applyPageData]);
 
-  const markJoinPending = useCallback(() => {
+  const setEventViewerStatus = useCallback((status: EventViewerStatus | null) => {
     setRawEventPageData(current => {
       if (!current) {
         return current;
@@ -21,25 +25,14 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
 
       return {
         ...current,
-        memberEngagementStatus: 'pending',
+        eventViewerStatus: status,
       };
     });
   }, []);
 
-  const markAttending = useCallback(() => {
-    getEventPageData().then(applyPageData);
-  }, [applyPageData]);
-
   const eventPageData = useMemo(() => {
     if (!rawEventPageData) {
       return null;
-    }
-
-    if (variant === 'attending') {
-      return {
-        ...rawEventPageData,
-        memberEngagementStatus: 'attending' as const,
-      };
     }
 
     if (variant !== 'empty') {
@@ -61,8 +54,7 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
 
   return {
     eventPageData,
-    markJoinPending,
-    markAttending,
+    setEventViewerStatus,
   };
 }
 

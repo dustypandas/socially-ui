@@ -57,14 +57,14 @@ export type EventsPageData = {
   filteredEvents: EventBasic[];
 };
 
-export type EventViewerStatus = 'member' | 'pending' | 'attending' | 'banned' | 'waitlisted';
+export type EventViewerStatus = 'member' | 'pending' | 'attending' | 'late' | 'waitlisted' | 'notAttending' | 'banned';
 
 export type EventPageData =
 & Event
 & {
   community: CommunityAvatar;
   attendees: EventAttendees;
-  memberEngagementStatus: EventViewerStatus | null;
+  eventViewerStatus: EventViewerStatus | null;
   communityEntryConditions?: CommunityEntryConditions;
 };
 

@@ -103,7 +103,11 @@ export async function getSessionEventStatus(
   }
 
   const eventStatus = tempEventStatusesMap[eventId];
-  if (eventStatus === 'attending' || eventStatus === 'waitlisted') {
+  if (
+    eventStatus === 'attending'
+    || eventStatus === 'late'
+    || eventStatus === 'waitlisted'
+  ) {
     return eventStatus;
   }
 

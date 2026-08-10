@@ -4,19 +4,19 @@ import './event-location-details.css';
 
 type EventLocationDetailsProps = {
   addressLocation: AddressLocation;
-  isAttending: boolean;
+  canViewExactAddress: boolean;
 };
 
 export function EventLocationDetails({
   addressLocation,
-  isAttending,
+  canViewExactAddress,
 }: EventLocationDetailsProps) {
   return (
     <section id="event-location-details" className="event-location-details">
       <SectionTitle title="How to Find Us" hideMore />
       <div className="event-location-details__body">
         <div className="event-location-details__info">
-          {isAttending ? (
+          {canViewExactAddress ? (
             <>
               <div className="event-location-details__label">
                 Address:

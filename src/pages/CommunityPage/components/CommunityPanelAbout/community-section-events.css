@@ -1,25 +1,25 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.community-events-section {
+.community-section-events {
   padding: 0 0 1rem;
 }
 
-.community-events-section__empty {
+.community-section-events__empty {
   margin: 2rem 0.75rem 1rem;
   color: var(--global-text-light);
   font-size: var(--font-size-md);
   text-align: center;
 }
 
-.community-events-section__footer {
+.community-section-events__footer {
   display: none;
   justify-content: center;
   padding: 1.5rem 0 0;
 }
 
 @media (max-width: theme(--breakpoint-sm)) {
-  .community-events-section__footer {
+  .community-section-events__footer {
     display: flex;
   }
 }

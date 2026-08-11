@@ -1,16 +1,16 @@
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
-import './community-about.css';
+import './community-section-about.css';
 
-type CommunityAboutProps = {
+type CommunitySectionAboutProps = {
   detailsHtml: string;
 };
 
-export function CommunityAbout({ detailsHtml }: CommunityAboutProps) {
+export function CommunitySectionAbout({ detailsHtml }: CommunitySectionAboutProps) {
   return (
-    <section className="community-about">
+    <section className="community-section-about">
       <SectionTitle title="Who We Are" hideMore />
       <div
-        className="community-about__content"
+        className="community-section-about__content"
         dangerouslySetInnerHTML={{ __html: detailsHtml }}
       />
     </section>

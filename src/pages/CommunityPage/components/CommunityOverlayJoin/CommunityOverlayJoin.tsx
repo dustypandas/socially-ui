@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import type { CommunityEntryConditions } from '@src/common-libs/types';
 import { Overlay } from '@src/components';
 import { getSessionUserQuestionResponses, joinCommunity } from '@src/data';
-import './community-join-overlay.css';
+import './community-overlay-join.css';
 
 type FetchUserQuestionResponsesState = 'idle' | 'loading' | 'complete';
 type JoinStatus = 'idle' | 'loading';
 
-type CommunityJoinOverlayProps = {
+type CommunityOverlayJoinProps = {
   communityId: string;
   entryConditions?: CommunityEntryConditions;
   isOpen: boolean;
@@ -15,13 +15,13 @@ type CommunityJoinOverlayProps = {
   onJoinSuccess?: () => void;
 };
 
-export function CommunityJoinOverlay({
+export function CommunityOverlayJoin({
   communityId,
   entryConditions,
   isOpen,
   onClose,
   onJoinSuccess,
-}: CommunityJoinOverlayProps) {
+}: CommunityOverlayJoinProps) {
   const questions = entryConditions?.questions ?? [];
   const [fetchUserQuestionResponsesState, setFetchUserQuestionResponsesState] =
     useState<FetchUserQuestionResponsesState>('idle');
@@ -141,34 +141,34 @@ export function CommunityJoinOverlay({
 
   return (
     <Overlay isOpen={isOverlayVisible} onClose={onClose}>
-      <div className="community-join-overlay__header">
-        <h2 className="community-join-overlay__title">
+      <div className="community-overlay-join__header">
+        <h2 className="community-overlay-join__title">
           Community Questions
         </h2>
         <button
           type="button"
-          className="community-join-overlay__close"
+          className="community-overlay-join__close"
           onClick={onClose}
         >
-          <span className="community-join-overlay__close-icon" />
+          <span className="community-overlay-join__close-icon" />
         </button>
       </div>
-      {/* <div className="community-join-overlay__subtitle">
+      {/* <div className="community-overlay-join__subtitle">
         Tell us a little more about you, to join this community.
       </div> */}
       <form
-        className="community-join-overlay__form"
+        className="community-overlay-join__form"
         onSubmit={handleSubmit}
       >
         {questions.map(question => (
-          <div key={question.id} className="community-join-overlay__field">
+          <div key={question.id} className="community-overlay-join__field">
             <label
               htmlFor={`community-join-${question.id}`}
-              className="community-join-overlay__label"
+              className="community-overlay-join__label"
             >
               {question.question}
               {question.isRequired && (
-                <span className="community-join-overlay__label-required"> *</span>
+                <span className="community-overlay-join__label-required"> *</span>
               )}
             </label>
             {isShowingInput(question.id) ? (
@@ -176,7 +176,7 @@ export function CommunityJoinOverlay({
                 id={`community-join-${question.id}`}
                 name={question.id}
                 type="text"
-                className="community-join-overlay__input"
+                className="community-overlay-join__input"
                 value={answers[question.id] ?? ''}
                 onChange={event => setAnswers(current => ({
                   ...current,
@@ -186,13 +186,13 @@ export function CommunityJoinOverlay({
                 required={question.isRequired}
               />
             ) : (
-              <div className="community-join-overlay__response">
-                <span className="community-join-overlay__response-text">
+              <div className="community-overlay-join__response">
+                <span className="community-overlay-join__response-text">
                   {profileResponses[question.id]}
                 </span>
                 <button
                   type="button"
-                  className="community-join-overlay__edit"
+                  className="community-overlay-join__edit"
                   onClick={() => handleEdit(question.id)}
                   disabled={isSubmitting}
                 >
@@ -205,8 +205,8 @@ export function CommunityJoinOverlay({
         <button
           type="submit"
           className={[
-            'community-join-overlay__submit',
-            isSubmitting && 'community-join-overlay__submit--loading',
+            'community-overlay-join__submit',
+            isSubmitting && 'community-overlay-join__submit--loading',
           ].filter(Boolean).join(' ')}
           disabled={isSubmitDisabled}
         >

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
 import { attendEvent } from '@src/data';
 import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
-import { CommunityJoinOverlay } from '@src/pages/CommunityPage/components';
+import { CommunityOverlayJoin } from '@src/pages/CommunityPage/components';
 import {
   EventAttendCard,
   EventAttendanceOverlay,
@@ -165,7 +165,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         onUpdateClick={handleUpdateClick}
         isJoinLoading={isJoinLoading}
       />
-      <CommunityJoinOverlay
+      <CommunityOverlayJoin
         communityId={eventPageData.community.id}
         entryConditions={eventPageData.communityEntryConditions}
         isOpen={isJoinOverlayOpen}

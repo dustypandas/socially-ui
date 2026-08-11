@@ -5,9 +5,9 @@ import type { CommunityEngagement } from '@src/common-libs/types';
 // import type { MemberAvatar } from '@src/data';
 // import { nameAndOthersLabel } from '@src/pages/CommunityPage/helpers';
 import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
-import './community-intro-panel.css';
+import './community-intro.css';
 
-type CommunityIntroPanelProps = {
+type CommunityIntroProps = {
   name: string;
   memberCount: number;
   rating: number;
@@ -19,7 +19,7 @@ type CommunityIntroPanelProps = {
   // organizers: MemberAvatar[];
 };
 
-export function CommunityIntroPanel({
+export function CommunityIntro({
   name,
   memberCount,
   rating,
@@ -29,25 +29,25 @@ export function CommunityIntroPanel({
   onJoinClick,
   onMembershipClick,
   // organizers,
-}: CommunityIntroPanelProps) {
+}: CommunityIntroProps) {
   return (
-    <div className="community-intro-panel">
-      <h1 className="community-intro-panel__title">{name}</h1>
-      <div className="community-intro-panel__attributes">
-        <div className="community-intro-panel__attribute">
-          <IconGroup className="community-intro-panel__icon" />
-          <span className="community-intro-panel__attribute-label">
+    <div className="community-intro">
+      <h1 className="community-intro__title">{name}</h1>
+      <div className="community-intro__attributes">
+        <div className="community-intro__attribute">
+          <IconGroup className="community-intro__icon" />
+          <span className="community-intro__attribute-label">
             {memberCount} members
           </span>
         </div>
-        <div className="community-intro-panel__attribute">
-          <IconStar className="community-intro-panel__icon community-intro-panel__icon--rating" />
-          <span className="community-intro-panel__attribute-label">
+        <div className="community-intro__attribute">
+          <IconStar className="community-intro__icon community-intro__icon--rating" />
+          <span className="community-intro__attribute-label">
             <strong>{rating}</strong> from {ratingCount} ratings
           </span>
         </div>
       </div>
-      <div className="community-intro-panel__actions-container">
+      <div className="community-intro__actions-container">
         <CommunityActionButtons
           membershipStatus={communityViewerStatus}
           isOrganizer={isOrganizer}

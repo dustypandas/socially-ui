@@ -38,6 +38,10 @@
   }
 }
 
+.community-nav__link--active {
+  color: var(--global-text);
+}
+
 .community-nav__actions-container {
   flex-shrink: 0;
 }

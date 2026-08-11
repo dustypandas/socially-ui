@@ -1,10 +1,10 @@
 @import 'tailwindcss';
 
-.community-about {
+.community-section-about {
   padding: 0 0 1rem;
 }
 
-.community-about__content {
+.community-section-about__content {
   margin: 0 1rem;
   color: var(--global-text-muted);
   font-size: var(--font-size-md);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Overlay } from '@src/components';
 import { leaveCommunity } from '@src/data';
-import './community-actions-overlay.css';
+import './community-overlay-actions.css';
 
 type LeaveStatus = 'idle' | 'loading';
 
@@ -11,7 +11,7 @@ const ORGANIZER_OPTIONS = [
   'Transfer ownership',
 ] as const;
 
-type CommunityActionsOverlayProps = {
+type CommunityOverlayActionsProps = {
   communityId: string;
   isOpen: boolean;
   isOrganizer?: boolean;
@@ -19,13 +19,13 @@ type CommunityActionsOverlayProps = {
   onLeaveSuccess?: () => void;
 };
 
-export function CommunityActionsOverlay({
+export function CommunityOverlayActions({
   communityId,
   isOpen,
   isOrganizer,
   onClose,
   onLeaveSuccess,
-}: CommunityActionsOverlayProps) {
+}: CommunityOverlayActionsProps) {
   const [leaveStatus, setLeaveStatus] = useState<LeaveStatus>('idle');
   const isLeaving = leaveStatus === 'loading';
 
@@ -59,51 +59,51 @@ export function CommunityActionsOverlay({
 
   return (
     <Overlay isOpen={isOpen} onClose={onClose}>
-      <div className="community-actions-overlay__header">
-        <h2 className="community-actions-overlay__title">
+      <div className="community-overlay-actions__header">
+        <h2 className="community-overlay-actions__title">
           {isOrganizer === true ? 'Manage Community' : 'My Membership'}
         </h2>
         <button
           type="button"
-          className="community-actions-overlay__close"
+          className="community-overlay-actions__close"
           onClick={onClose}
           disabled={isLeaving}
         >
-          <span className="community-actions-overlay__close-icon" />
+          <span className="community-overlay-actions__close-icon" />
         </button>
       </div>
-      <div className="community-actions-overlay__options">
+      <div className="community-overlay-actions__options">
         {isOrganizer === true && (
           <>
             {ORGANIZER_OPTIONS.map(label => (
               <button
                 key={label}
                 type="button"
-                className="community-actions-overlay__option"
+                className="community-overlay-actions__option"
                 onClick={onClose}
                 disabled={isLeaving}
               >
                 {label}
               </button>
             ))}
-            <div className="community-actions-overlay__divider" />
+            <div className="community-overlay-actions__divider" />
           </>
         )}
         <button
           type="button"
           className={[
-            'community-actions-overlay__option',
-            isLeaving && 'community-actions-overlay__option--loading',
+            'community-overlay-actions__option',
+            isLeaving && 'community-overlay-actions__option--loading',
           ].filter(Boolean).join(' ')}
           onClick={handleLeave}
           disabled={isLeaving}
         >
           Leave this community
         </button>
-        <div className="community-actions-overlay__divider" />
+        <div className="community-overlay-actions__divider" />
         <button
           type="button"
-          className="community-actions-overlay__option"
+          className="community-overlay-actions__option"
           onClick={onClose}
           disabled={isLeaving}
         >

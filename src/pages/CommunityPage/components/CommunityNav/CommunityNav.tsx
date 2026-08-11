@@ -8,20 +8,30 @@ import {
 import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
 import './community-nav.css';
 
-const NAV_LINKS = ['About', 'Events', 'Members'] as const;
+export type CommunityPanelId = 'about' | 'events' | 'members';
+
+const NAV_LINKS = [
+  { id: 'about', label: 'About' },
+  { id: 'events', label: 'Events' },
+  { id: 'members', label: 'Members' },
+] as const satisfies readonly { id: CommunityPanelId; label: string }[];
 
 type CommunityNavProps = {
+  activePanel: CommunityPanelId;
   communityViewerStatus: CommunityEngagement['status'] | null;
   isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
+  onNavigate: (panelId: CommunityPanelId) => void;
 };
 
 export function CommunityNav({
+  activePanel,
   communityViewerStatus,
   isOrganizer,
   onJoinClick,
   onMembershipClick,
+  onNavigate,
 }: CommunityNavProps) {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
@@ -39,9 +49,20 @@ export function CommunityNav({
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <div className="community-nav__links">
-                {NAV_LINKS.map(label => (
-                  <a key={label} href="#" className="community-nav__link">
-                    {label}
+                {NAV_LINKS.map(link => (
+                  <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    className={[
+                      'community-nav__link',
+                      activePanel === link.id && 'community-nav__link--active',
+                    ].filter(Boolean).join(' ')}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      onNavigate(link.id);
+                    }}
+                  >
+                    {link.label}
                   </a>
                 ))}
                 {isOrganizer === true && (

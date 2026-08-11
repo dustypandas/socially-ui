@@ -1,6 +1,6 @@
 import type { MemberCommunity, MemberQuestionResponse } from '@src/common-libs/types';
 import { communities } from '../../stores/dummyData.ts';
-import { tempCommunityEngagementsMap } from '../../stores/userData/index.ts';
+import { tempMemberCommunitiesMap } from '../../stores/userData/index.ts';
 
 export async function joinCommunity(
   communityId: string,
@@ -14,9 +14,9 @@ export async function joinCommunity(
     return;
   }
 
-  const existing = tempCommunityEngagementsMap[communityId];
-  if (existing) {
-    existing.status = 'pending';
+  const existingCommunity = tempMemberCommunitiesMap[communityId];
+  if (existingCommunity) {
+    existingCommunity.status = 'pending';
     return;
   }
 
@@ -33,10 +33,10 @@ export async function joinCommunity(
     status: 'pending',
   };
 
-  tempCommunityEngagementsMap[communityId] = engagement;
+  tempMemberCommunitiesMap[communityId] = engagement;
 }
 
 export async function leaveCommunity(communityId: string): Promise<void> {
   await new Promise(resolve => setTimeout(resolve, 1000));
-  delete tempCommunityEngagementsMap[communityId];
+  delete tempMemberCommunitiesMap[communityId];
 }

@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEntryConditions, EventBasic, EventLink, EventReview, Interest, InterestBasic, Link, MapLocation, MemberAbout, MemberAvatar, CommunityMember, MemberCommunity, MemberInterest, MemberProfile } from '@src/common-libs/types';
+import type { CommunityAvatar, CommunityBasic, CommunityEntryConditions, CommunityMemberRequest, EventBasic, EventLink, EventReview, Interest, InterestBasic, Link, MapLocation, MemberAbout, MemberAvatar, CommunityMember, MemberCommunity, MemberInterest, MemberProfile } from '@src/common-libs/types';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -237,10 +237,7 @@ const languageExchangeCommunity = toEventCommunity({
 const lightningTalksDescription = '5 speakers, 5 minute presentations, 5 diverse topics — followed by drinks and social.';
 
 // for one specific community (polylogue madrid) only
-export const memberAvatarsForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
-  .map(toMemberAvatar);
-
-export const memberEngagementsForOneCommunity: CommunityMember[] =
+export const communityMembersForOneCommunity: CommunityMember[] =
   members.slice(0, MEMBER_AVATAR_URLS.length).map((member, index) => ({
     ...toMemberAvatar(member),
     attendedCount: [21, 14, 11, 8, 5, 3, 2, 1, 0][index] ?? 0,
@@ -250,6 +247,41 @@ export const memberEngagementsForOneCommunity: CommunityMember[] =
     isOrganizer: index < 3,
     status: 'member',
   }));
+
+export const communityMemberRequestsForOneCommunity: CommunityMemberRequest[] = [
+  {
+    ...toMemberAvatar(members[9]),
+    basicDetails: [
+      { id: 'in-madrid-since', question: 'In Madrid since', response: '1 Year' },
+      { id: 'previously-lived-in', question: 'Previously lived in', response: 'Italy' },
+    ],
+    otherDetails: [
+      { id: '5-minute-topic', question: "What's your 5 minute topic?", response: 'Urban sketching' },
+      { id: 'why-join', question: 'Why do you want to join this community?', response: 'I love lightning talks and want to meet more curious people.' },
+    ],
+  },
+  {
+    ...toMemberAvatar(members[10]),
+    basicDetails: [
+      { id: 'in-madrid-since', question: 'In Madrid since', response: '6 Months' },
+      { id: 'previously-lived-in', question: 'Previously lived in', response: 'France' },
+    ],
+    otherDetails: [
+      { id: '5-minute-topic', question: "What's your 5 minute topic?", response: 'Fermentation' },
+      { id: 'why-join', question: 'Why do you want to join this community?', response: 'Looking for a regular place to share odd little obsessions.' },
+    ],
+  },
+  {
+    ...toMemberAvatar(members[11]),
+    basicDetails: [
+      { id: 'in-madrid-since', question: 'In Madrid since', response: '2 Years' },
+      { id: 'previously-lived-in', question: 'Previously lived in', response: 'Brazil' },
+    ],
+    otherDetails: [
+      { id: '5-minute-topic', question: "What's your 5 minute topic?", response: 'Night trains' },
+    ],
+  },
+];
 
 export const futureEventsForOneCommunity: EventBasic[] = [
   {
@@ -916,7 +948,7 @@ export const externalLinksForOneInterest: Link[] = [
 ];
 //
 
-export const communityEngagementsForOneMember: MemberCommunity[] = [
+export const memberCommunitiesForOneMember: MemberCommunity[] = [
   {
     ...toCommunityAvatar(communities[3]),
     attendedCount: 21,
@@ -970,7 +1002,7 @@ export const communityEngagementsForOneMember: MemberCommunity[] = [
   },
 ];
 
-export const interestEngagementsForOneMember: MemberInterest[] = [
+export const memberInterestsForOneMember: MemberInterest[] = [
   interests[1],
   interests[3],
   interests[5],

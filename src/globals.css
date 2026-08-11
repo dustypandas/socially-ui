@@ -162,7 +162,7 @@
   transition: transform 0.2s ease;
 
   &:hover {
-    transform: scale(1.09);
+    transform: scale(1.2);
     color: var(--global-text);
   }
 }

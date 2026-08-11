@@ -102,6 +102,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           {activePanel === 'members' && (
             <CommunityPanelMembers
               members={communityPageData.communityMembers}
+              memberRequests={communityPageData.communityMemberRequests}
             />
           )}
         </div>

@@ -34,7 +34,8 @@ export function useMemberPageStates({ variant }: MemberPageClientProps) {
       case 'empty':
         return {
           ...rawMemberPageData,
-          engagements: { interests: [], communities: [] },
+          memberInterests: [],
+          memberCommunities: [],
           about: {},
         };
       case 'related':
@@ -53,10 +54,10 @@ export function useMemberPageStates({ variant }: MemberPageClientProps) {
     }
   }, [variant, rawMemberPageData]);
 
-  const interests = memberPageData?.engagements.interests ?? [];
+  const interests = memberPageData?.memberInterests ?? [];
 
   const communities = useMemo(() => {
-    const raw = memberPageData?.engagements.communities ?? [];
+    const raw = memberPageData?.memberCommunities ?? [];
 
     const visible = variant === 'admin'
       ? raw

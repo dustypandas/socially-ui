@@ -36,7 +36,7 @@ import {
   getMaxFollowedInterests,
   getOneInterest,
 } from './queries/interests.ts';
-import { getAttendeesForOneEvent, getHomeNewMembers, getMemberAvatarsForOneCommunity, getMemberEngagementsForOneCommunity, getOneMemberAndEngagements } from './queries/members.ts';
+import { getAttendeesForOneEvent, getHomeNewMembers, getCommunityMembersForOneCommunity, getCommunityMemberRequestsForOneCommunity, getPageDataForOneMember } from './queries/members.ts';
 import { getReviewsForOneEvent } from './queries/reviews.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
@@ -155,9 +155,9 @@ export async function getCommunitiesPageData(
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
   
-  const [memberAvatars, communityMembers, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
-    getMemberAvatarsForOneCommunity(),
-    getMemberEngagementsForOneCommunity(),
+  const [communityMembers, communityMemberRequests, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
+    getCommunityMembersForOneCommunity(),
+    getCommunityMemberRequestsForOneCommunity(),
     getFutureEventsForOneCommunity(),
     getPastEventsForOneCommunity(),
     getRecentLocationsForOneCommunity(),
@@ -179,8 +179,8 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     `,
     interests: ['public-speaking', 'technology', 'fresh'],
     organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
-    memberAvatars,
     communityMembers,
+    communityMemberRequests,
     futureEvents,
     pastEvents,
     recentLocations,
@@ -191,6 +191,6 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
 
 export async function getMemberPageData(): Promise<MemberPageData> {
   return {
-    ...(await getOneMemberAndEngagements()),
+    ...(await getPageDataForOneMember()),
   };
 }

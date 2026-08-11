@@ -1,4 +1,4 @@
-import { MemberQuestion } from "./member";
+import { MemberAvatar, MemberQuestion, MemberQuestionResponse } from "./member";
 
 export type CommunityAvatar = {
   id: string;
@@ -35,3 +35,10 @@ export type CommunityEntryConditions = {
   questions: CommunityQuestion[];
   rules?: CommunityEntryRule[];
 }
+
+export type CommunityMemberRequest =
+& MemberAvatar
+& {
+  basicDetails: MemberQuestionResponse[];
+  otherDetails: MemberQuestionResponse[];
+};

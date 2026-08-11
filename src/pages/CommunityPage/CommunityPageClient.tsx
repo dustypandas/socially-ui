@@ -7,7 +7,7 @@ import {
   CommunityIntroPanel,
   CommunityJoinOverlay,
   CommunityMembers,
-  CommunityMembershipOverlay,
+  CommunityActionsOverlay,
   CommunityNav,
   CommunityOrganizers,
   CommunityPastEvents,
@@ -22,17 +22,17 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     markMembershipCleared,
   } = useCommunityPageStates({ variant });
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
-  const [isMembershipOverlayOpen, setIsMembershipOverlayOpen] = useState(false);
+  const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
 
   if (!communityPageData) {
     return null;
   }
 
-  const memberEngagementStatus = communityPageData.memberEngagementStatus;
+  const communityViewerStatus = communityPageData.communityViewerStatus;
   const handleJoinClick = () => {
     if (
-      memberEngagementStatus === 'pending'
-      || memberEngagementStatus === 'member'
+      communityViewerStatus === 'pending'
+      || communityViewerStatus === 'member'
     ) {
       return;
     }
@@ -42,13 +42,13 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
 
   const handleMembershipClick = () => {
-    if (memberEngagementStatus !== 'member') {
+    if (communityViewerStatus !== 'member') {
       return;
     }
 
-    setIsMembershipOverlayOpen(true);
+    setIsActionsOverlayOpen(true);
   };
-  const handleMembershipOverlayClose = () => setIsMembershipOverlayOpen(false);
+  const handleActionsOverlayClose = () => setIsActionsOverlayOpen(false);
 
   return (
     <PageLayout hasStaticHeader>
@@ -64,7 +64,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 memberCount={communityPageData.membersCount}
                 rating={communityPageData.rating}
                 ratingCount={communityPageData.ratingCount}
-                memberEngagementStatus={communityPageData.memberEngagementStatus}
+                communityViewerStatus={communityPageData.communityViewerStatus}
+                isOrganizer={communityPageData.isOrganizer === true}
                 onJoinClick={handleJoinClick}
                 onMembershipClick={handleMembershipClick}
               />
@@ -73,7 +74,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         </div>
 
         <CommunityNav
-          memberEngagementStatus={communityPageData.memberEngagementStatus}
+          communityViewerStatus={communityPageData.communityViewerStatus}
+          isOrganizer={communityPageData.isOrganizer === true}
           onJoinClick={handleJoinClick}
           onMembershipClick={handleMembershipClick}
         />
@@ -116,10 +118,11 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         onJoinSuccess={markJoinPending}
       />
 
-      <CommunityMembershipOverlay
+      <CommunityActionsOverlay
         communityId={communityPageData.id}
-        isOpen={isMembershipOverlayOpen}
-        onClose={handleMembershipOverlayClose}
+        isOpen={isActionsOverlayOpen}
+        isOrganizer={communityPageData.isOrganizer === true}
+        onClose={handleActionsOverlayClose}
         onLeaveSuccess={markMembershipCleared}
       />
     </PageLayout>

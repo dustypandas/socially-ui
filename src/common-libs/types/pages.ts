@@ -82,7 +82,8 @@ export type CommunityPageData =
   pastEventsTotalCount: number;
   pastEvents: EventBasic[];
   entryConditions?: CommunityEntryConditions;
-  memberEngagementStatus: CommunityEngagement['status'] | null;
+  communityViewerStatus: CommunityEngagement['status'] | null;
+  isOrganizer?: boolean;
 };
 
 export type MemberPageData =

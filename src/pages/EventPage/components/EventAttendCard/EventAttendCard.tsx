@@ -10,7 +10,7 @@ type EventAttendCardProps = {
   className?: string;
   isFixedBar?: boolean;
   isFixedBarVisible?: boolean;
-  memberEngagementStatus: EventViewerStatus | null;
+  eventViewerStatus: EventViewerStatus | null;
   onJoinClick?: () => void;
   onUpdateClick?: () => void;
   isJoinLoading?: boolean;
@@ -49,7 +49,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       className = '',
       isFixedBar = false,
       isFixedBarVisible = false,
-      memberEngagementStatus,
+      eventViewerStatus,
       onJoinClick,
       onUpdateClick,
       isJoinLoading = false,
@@ -57,14 +57,14 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
     ref,
   ) {
     const hasRsvp =
-      memberEngagementStatus === 'attending'
-      || memberEngagementStatus === 'late'
-      || memberEngagementStatus === 'waitlisted'
-      || memberEngagementStatus === 'notAttending';
+      eventViewerStatus === 'attending'
+      || eventViewerStatus === 'late'
+      || eventViewerStatus === 'waitlisted'
+      || eventViewerStatus === 'notAttending';
     const isJoinDisabled =
       isJoinLoading
-      || memberEngagementStatus === 'pending'
-      || memberEngagementStatus === 'banned';
+      || eventViewerStatus === 'pending'
+      || eventViewerStatus === 'banned';
 
     const body = (
       <div className="event-attend-card__body">
@@ -90,7 +90,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           {hasRsvp ? (
             <>
               <span className="event-attend-card__attending-label">
-                {getEngagementLabel(memberEngagementStatus)}
+                {getEngagementLabel(eventViewerStatus)}
               </span>
               <button
                 type="button"
@@ -112,7 +112,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
                 onClick={onJoinClick}
                 disabled={isJoinDisabled}
               >
-                {getJoinButtonLabel(memberEngagementStatus)}
+                {getJoinButtonLabel(eventViewerStatus)}
               </button>
             </>
           )}

@@ -12,7 +12,8 @@ type CommunityIntroPanelProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
-  memberEngagementStatus: CommunityEngagement['status'] | null;
+  communityViewerStatus: CommunityEngagement['status'] | null;
+  isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
   // organizers: MemberAvatar[];
@@ -23,7 +24,8 @@ export function CommunityIntroPanel({
   memberCount,
   rating,
   ratingCount,
-  memberEngagementStatus,
+  communityViewerStatus,
+  isOrganizer,
   onJoinClick,
   onMembershipClick,
   // organizers,
@@ -47,7 +49,8 @@ export function CommunityIntroPanel({
       </div>
       <div className="community-intro-panel__actions-container">
         <CommunityActionButtons
-          membershipStatus={memberEngagementStatus}
+          membershipStatus={communityViewerStatus}
+          isOrganizer={isOrganizer}
           onJoinClick={onJoinClick}
           onMembershipClick={onMembershipClick}
         />

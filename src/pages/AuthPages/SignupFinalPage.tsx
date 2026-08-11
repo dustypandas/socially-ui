@@ -27,7 +27,7 @@ export function SignupFinalPage() {
 
   const isLoading = status === 'loading';
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setPasswordError('');
     setError('');

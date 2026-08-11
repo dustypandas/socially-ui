@@ -4,12 +4,14 @@ import './community-action-buttons.css';
 
 type CommunityActionButtonsProps = {
   membershipStatus: CommunityEngagement['status'] | null;
+  isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
 };
 
 export function CommunityActionButtons({
   membershipStatus,
+  isOrganizer,
   onJoinClick,
   onMembershipClick,
 }: CommunityActionButtonsProps) {
@@ -22,7 +24,7 @@ export function CommunityActionButtons({
       className="community-action-buttons__membership-btn"
       onClick={onMembershipClick}
     >
-      My membership
+      {isOrganizer === true ? 'Manage Community' : 'My membership'}
       <IconCaretDown className="community-action-buttons__membership-btn-caret" />
     </button>
   ) : (

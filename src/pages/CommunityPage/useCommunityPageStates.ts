@@ -24,7 +24,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
       return {
         ...current,
-        memberEngagementStatus: 'pending',
+        communityViewerStatus: 'pending',
       };
     });
   }, []);
@@ -38,7 +38,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
       return {
         ...current,
-        memberEngagementStatus: null,
+        communityViewerStatus: null,
       };
     });
   }, []);
@@ -48,10 +48,11 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
       return null;
     }
 
-    if (variant === 'member' && !hasLeftMembership) {
+    if ((variant === 'member' || variant === 'organizer') && !hasLeftMembership) {
       return {
         ...rawCommunityPageData,
-        memberEngagementStatus: 'member' as const,
+        communityViewerStatus: 'member' as const,
+        isOrganizer: variant === 'organizer',
       };
     }
 
@@ -82,6 +83,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
   'member',
+  'organizer',
 ] as const;
 
 export type CommunityPageClientProps = {

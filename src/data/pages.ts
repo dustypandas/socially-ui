@@ -123,7 +123,7 @@ export async function getEventPageData(): Promise<EventPageData> {
   const targetEvent = await getOneEvent();
   const communityPromise = getCommunityForOneEvent();
 
-  const [community, attendees, reviews, memberEngagementStatus, communityEntryConditions] =
+  const [community, attendees, reviews, eventViewerStatus, communityEntryConditions] =
     await Promise.all([
       communityPromise,
       getAttendeesForOneEvent(),
@@ -137,8 +137,8 @@ export async function getEventPageData(): Promise<EventPageData> {
     community,
     attendees,
     reviews,
-    eventViewerStatus: memberEngagementStatus,
-    ...(memberEngagementStatus === null ? { communityEntryConditions } : {}),
+    eventViewerStatus,
+    ...(eventViewerStatus === null ? { communityEntryConditions } : {}),
   };
 }
 
@@ -154,7 +154,7 @@ export async function getCommunitiesPageData(
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
   
-  const [memberAvatars, futureEvents, pastEvents, entryConditions, memberEngagementStatus] = await Promise.all([
+  const [memberAvatars, futureEvents, pastEvents, entryConditions, communityViewerStatus] = await Promise.all([
     getMemberAvatarsForOneCommunity(),
     getFutureEventsForOneCommunity(),
     getPastEventsForOneCommunity(),
@@ -180,7 +180,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     futureEvents,
     pastEvents,
     entryConditions,
-    memberEngagementStatus,
+    communityViewerStatus,
   };
 }
 

@@ -13,7 +13,7 @@ export function SignupPage() {
   const isLoading = status === 'loading';
   const isComplete = status === 'complete';
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus('loading');
     setError('');

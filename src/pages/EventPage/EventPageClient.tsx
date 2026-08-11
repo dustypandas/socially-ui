@@ -114,7 +114,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 className="event-page__attend-card"
                 profiles={eventPageData.attendees.avatars}
                 attendeeCount={eventPageData.attendees.count}
-                memberEngagementStatus={eventViewerStatus}
+                eventViewerStatus={eventViewerStatus}
                 onJoinClick={handleJoinClick}
                 onUpdateClick={handleUpdateClick}
                 isJoinLoading={isJoinLoading}
@@ -160,7 +160,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         isFixedBarVisible={isPastAttendCard}
         profiles={eventPageData.attendees.avatars}
         attendeeCount={eventPageData.attendees.count}
-        memberEngagementStatus={eventViewerStatus}
+        eventViewerStatus={eventViewerStatus}
         onJoinClick={handleJoinClick}
         onUpdateClick={handleUpdateClick}
         isJoinLoading={isJoinLoading}

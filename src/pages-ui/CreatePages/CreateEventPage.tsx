@@ -2,7 +2,7 @@ import { PageLayout } from '@src/components';
 import './create-page.css';
 
 export function CreateEventPage() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 

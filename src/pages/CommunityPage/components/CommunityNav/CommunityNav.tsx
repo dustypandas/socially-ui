@@ -8,16 +8,18 @@ import {
 import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
 import './community-nav.css';
 
-const NAV_LINKS = ['About', 'Events', 'Members', 'Links'] as const;
+const NAV_LINKS = ['About', 'Events', 'Members'] as const;
 
 type CommunityNavProps = {
-  memberEngagementStatus: CommunityEngagement['status'] | null;
+  communityViewerStatus: CommunityEngagement['status'] | null;
+  isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
 };
 
 export function CommunityNav({
-  memberEngagementStatus,
+  communityViewerStatus,
+  isOrganizer,
   onJoinClick,
   onMembershipClick,
 }: CommunityNavProps) {
@@ -42,11 +44,17 @@ export function CommunityNav({
                     {label}
                   </a>
                 ))}
+                {isOrganizer === true && (
+                  <a href="#" className="community-nav__link">
+                    Requests
+                  </a>
+                )}
               </div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(380px, 38%)" className="community-nav__actions-container">
               <CommunityActionButtons
-                membershipStatus={memberEngagementStatus}
+                membershipStatus={communityViewerStatus}
+                isOrganizer={isOrganizer}
                 onJoinClick={onJoinClick}
                 onMembershipClick={onMembershipClick}
               />

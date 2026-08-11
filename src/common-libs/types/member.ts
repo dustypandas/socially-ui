@@ -46,6 +46,7 @@ export type CommunityEngagement =
 & CommunityAvatar
 & Engagement
 & {
+  isOrganizer?: boolean;
   isHost?: boolean;
   isContributor?: boolean;
   status: 'member' | 'pending' | 'rejected' | 'banned';

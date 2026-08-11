@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.community-membership-overlay__header {
+.community-actions-overlay__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -9,12 +9,12 @@
   margin-bottom: 1rem;
 }
 
-.community-membership-overlay__title {
+.community-actions-overlay__title {
   @apply heading-h2;
   margin: 0;
 }
 
-.community-membership-overlay__close {
+.community-actions-overlay__close {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -26,12 +26,12 @@
   color: var(--global-text-muted);
 }
 
-.community-membership-overlay__close:disabled {
+.community-actions-overlay__close:disabled {
   cursor: default;
   opacity: 0.5;
 }
 
-.community-membership-overlay__close-icon {
+.community-actions-overlay__close-icon {
   display: block;
   position: relative;
   width: 1.25rem;
@@ -60,7 +60,7 @@
   }
 }
 
-.community-membership-overlay__options {
+.community-actions-overlay__options {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -68,7 +68,7 @@
   padding: 0.25rem 0;
 }
 
-.community-membership-overlay__option {
+.community-actions-overlay__option {
   display: block;
   width: 100%;
   margin: 0;
@@ -90,13 +90,13 @@
   }
 }
 
-.community-membership-overlay__option--loading {
+.community-actions-overlay__option--loading {
   position: relative;
   color: transparent;
   pointer-events: none;
 }
 
-.community-membership-overlay__option--loading::after {
+.community-actions-overlay__option--loading::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -106,10 +106,16 @@
   border: 2px solid rgba(0, 0, 0, 0.15);
   border-top-color: var(--global-text-muted);
   border-radius: 50%;
-  animation: community-membership-overlay-option-spin 0.8s linear infinite;
+  animation: community-actions-overlay-option-spin 0.8s linear infinite;
 }
 
-@keyframes community-membership-overlay-option-spin {
+.community-actions-overlay__divider {
+  @apply page-divider;
+  margin: 0.75rem auto;
+  width: 5rem;
+}
+
+@keyframes community-actions-overlay-option-spin {
   to {
     transform: rotate(360deg);
   }

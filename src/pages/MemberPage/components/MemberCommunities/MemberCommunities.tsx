@@ -1,10 +1,10 @@
-import type { CommunityEngagement } from '@src/common-libs/types';
+import type { MemberCommunity } from '@src/common-libs/types';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import { CommunityAvatar } from '../CommunityAvatar/CommunityAvatar';
 import './member-communities.css';
 
 type MemberCommunitiesProps = {
-  communities: CommunityEngagement[];
+  communities: MemberCommunity[];
 };
 
 export function MemberCommunities({ communities }: MemberCommunitiesProps) {

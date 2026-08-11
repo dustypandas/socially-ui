@@ -1,9 +1,9 @@
-import type { InterestEngagement } from '@src/common-libs/types';
+import type { MemberInterest } from '@src/common-libs/types';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import './member-interests.css';
 
 type MemberInterestsProps = {
-  interests: InterestEngagement[];
+  interests: MemberInterest[];
 };
 
 export function MemberInterests({ interests }: MemberInterestsProps) {

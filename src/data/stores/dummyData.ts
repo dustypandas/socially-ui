@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEngagement, CommunityEntryConditions, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MapLocation, MemberAbout, MemberAvatar, MemberProfile } from '@src/common-libs/types';
+import type { CommunityAvatar, CommunityBasic, CommunityEntryConditions, EventBasic, EventLink, EventReview, Interest, InterestBasic, Link, MapLocation, MemberAbout, MemberAvatar, CommunityMember, MemberCommunity, MemberInterest, MemberProfile } from '@src/common-libs/types';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -239,6 +239,17 @@ const lightningTalksDescription = '5 speakers, 5 minute presentations, 5 diverse
 // for one specific community (polylogue madrid) only
 export const memberAvatarsForOneCommunity: MemberAvatar[] = members.slice(0, MEMBER_AVATAR_URLS.length)
   .map(toMemberAvatar);
+
+export const memberEngagementsForOneCommunity: CommunityMember[] =
+  members.slice(0, MEMBER_AVATAR_URLS.length).map((member, index) => ({
+    ...toMemberAvatar(member),
+    attendedCount: [21, 14, 11, 8, 5, 3, 2, 1, 0][index] ?? 0,
+    hostedCount: index < 3 ? [7, 3, 2][index] ?? 0 : 0,
+    joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
+    isOrganizer: index < 3,
+    status: 'member',
+  }));
 
 export const futureEventsForOneCommunity: EventBasic[] = [
   {
@@ -905,12 +916,13 @@ export const externalLinksForOneInterest: Link[] = [
 ];
 //
 
-export const communityEngagementsForOneMember: CommunityEngagement[] = [
+export const communityEngagementsForOneMember: MemberCommunity[] = [
   {
     ...toCommunityAvatar(communities[3]),
     attendedCount: 21,
     hostedCount: 7,
     joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
     isHost: true,
     status: 'member',
   },
@@ -919,6 +931,7 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     attendedCount: 11,
     hostedCount: 3,
     joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
     isHost: true,
     isContributor: true,
     status: 'member',
@@ -928,6 +941,7 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     attendedCount: 4,
     hostedCount: 0,
     joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
     status: 'member',
   },
   {
@@ -935,6 +949,7 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     attendedCount: 0,
     hostedCount: 0,
     joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
     status: 'pending',
   },
   {
@@ -942,6 +957,7 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     attendedCount: 0,
     hostedCount: 0,
     joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
     status: 'rejected',
   },
   {
@@ -949,11 +965,12 @@ export const communityEngagementsForOneMember: CommunityEngagement[] = [
     attendedCount: 0,
     hostedCount: 0,
     joinedSince: getTimestampFromNow(2, 19, 0),
+    lastActivity: getTimestampFromNow(1, 19, 0),
     status: 'banned',
   },
 ];
 
-export const interestEngagementsForOneMember: InterestEngagement[] = [
+export const interestEngagementsForOneMember: MemberInterest[] = [
   interests[1],
   interests[3],
   interests[5],
@@ -965,6 +982,7 @@ export const interestEngagementsForOneMember: InterestEngagement[] = [
   attendedCount: Math.floor(Math.random() * 20) + 1,
   hostedCount: 5,
   joinedSince: getTimestampFromNow(2, 19, 0),
+  lastActivity: getTimestampFromNow(1, 19, 0),
 }));
 
 export const memberAboutForOneMember: MemberAbout = {

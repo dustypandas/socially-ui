@@ -1,3 +1,3 @@
-import type { CommunityEngagement } from '@src/common-libs/types';
+import type { MemberCommunity } from '@src/common-libs/types';
 
-export const tempCommunityEngagementsMap: Record<string, CommunityEngagement> = {};
+export const tempCommunityEngagementsMap: Record<string, MemberCommunity> = {};

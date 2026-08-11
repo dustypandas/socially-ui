@@ -14,9 +14,9 @@ import { getFollowedInterests } from './interests.ts';
 import type {
   CommunityAvatar,
   CommunityBasic,
-  CommunityEngagement,
   CommunityEntryConditions,
   MapLocation,
+  MemberCommunity,
 } from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
 
@@ -84,7 +84,7 @@ export async function getRecentLocationsForOneCommunity(): Promise<Array<MapLoca
 
 export async function getSessionCommunityStatus(
   communityId: string,
-): Promise<CommunityEngagement['status'] | null> {
+): Promise<MemberCommunity['status'] | null> {
   if (!sessionState.isLoggedIn) {
     return null;
   }

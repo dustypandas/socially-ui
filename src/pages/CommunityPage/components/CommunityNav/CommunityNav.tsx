@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import type { CommunityEngagement } from '@src/common-libs/types';
+import type { MemberCommunity } from '@src/common-libs/types';
 import { ColumnsLayout } from '@src/components';
 import {
   getElementDocumentOffsetTop,
@@ -8,17 +8,18 @@ import {
 import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
 import './community-nav.css';
 
-export type CommunityPanelId = 'about' | 'events' | 'members';
+export type CommunityPanelId = 'about' | 'events' | 'members' | 'reviews';
 
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
   { id: 'events', label: 'Events' },
   { id: 'members', label: 'Members' },
+  { id: 'reviews', label: 'Reviews' },
 ] as const satisfies readonly { id: CommunityPanelId; label: string }[];
 
 type CommunityNavProps = {
   activePanel: CommunityPanelId;
-  communityViewerStatus: CommunityEngagement['status'] | null;
+  communityViewerStatus: MemberCommunity['status'] | null;
   isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
@@ -60,16 +61,18 @@ export function CommunityNav({
                     onClick={(event) => {
                       event.preventDefault();
                       onNavigate(link.id);
+                      const hero = document.getElementById('community-hero');
+                      const nav = navRef.current;
+                      if (hero && nav) {
+                        const stickyTop = parseFloat(getComputedStyle(nav).top) || 0;
+                        const top = getElementDocumentOffsetTop(hero) + hero.offsetHeight - stickyTop - 16; // show a little hero
+                        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+                      }
                     }}
                   >
                     {link.label}
                   </a>
                 ))}
-                {isOrganizer === true && (
-                  <a href="#" className="community-nav__link">
-                    Requests
-                  </a>
-                )}
               </div>
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside asideWidth="min(380px, 38%)" className="community-nav__actions-container">

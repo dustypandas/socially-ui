@@ -2,12 +2,13 @@ import type { Community, CommunityAvatar, CommunityBasic, CommunityEntryConditio
 import type { Event, EventAttendees, EventBasic } from './event.ts';
 import type { HomeProfilePopularInterest, Interest } from './interest.ts';
 import type {
-  CommunityEngagement,
+  CommunityMember,
   HomeProfileMember,
-  InterestEngagement,
   MemberAbout,
   MemberAvatar,
+  MemberCommunity,
   MemberFollower,
+  MemberInterest,
   MemberProfile,
 } from './member.ts';
 import type { Link, MapLocation } from './primitives.ts';
@@ -77,13 +78,14 @@ export type CommunityPageData =
 & {
   organizers: MemberAvatar[];
   memberAvatars: MemberAvatar[];
+  communityMembers: CommunityMember[];
   futureEventsTotalCount: number;
   futureEvents: EventBasic[];
   pastEventsTotalCount: number;
   pastEvents: EventBasic[];
   recentLocations: Array<MapLocation & { id: string }>;
   entryConditions?: CommunityEntryConditions;
-  communityViewerStatus: CommunityEngagement['status'] | null;
+  communityViewerStatus: MemberCommunity['status'] | null;
   isOrganizer?: boolean;
 };
 
@@ -91,8 +93,8 @@ export type MemberPageData =
 & MemberProfile
 & {
   engagements: {
-    interests: InterestEngagement[];
-    communities: CommunityEngagement[];
+    interests: MemberInterest[];
+    communities: MemberCommunity[];
   };
   about: MemberAbout;
 };

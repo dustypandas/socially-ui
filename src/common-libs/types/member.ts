@@ -36,14 +36,25 @@ export type Engagement = {
   attendedCount: number;
   hostedCount: number;
   joinedSince: Date;
+  lastActivity: Date;
 };
 
-export type InterestEngagement =
+export type MemberInterest =
 & InterestBasic
 & Engagement;
 
-export type CommunityEngagement =
+export type MemberCommunity =
 & CommunityAvatar
+& Engagement
+& {
+  isOrganizer?: boolean;
+  isHost?: boolean;
+  isContributor?: boolean;
+  status: 'member' | 'pending' | 'rejected' | 'banned';
+};
+
+export type CommunityMember =
+& MemberAvatar
 & Engagement
 & {
   isOrganizer?: boolean;

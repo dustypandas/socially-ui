@@ -1,4 +1,4 @@
-import type { CommunityEngagement, MemberQuestionResponse } from '@src/common-libs/types';
+import type { MemberCommunity, MemberQuestionResponse } from '@src/common-libs/types';
 import { communities } from '../../stores/dummyData.ts';
 import { tempCommunityEngagementsMap } from '../../stores/userData/index.ts';
 
@@ -20,7 +20,7 @@ export async function joinCommunity(
     return;
   }
 
-  const engagement: CommunityEngagement = {
+  const engagement: MemberCommunity = {
     id: community.id,
     name: community.name,
     image: community.image,
@@ -29,6 +29,7 @@ export async function joinCommunity(
     attendedCount: 0,
     hostedCount: 0,
     joinedSince: new Date(),
+    lastActivity: new Date(),
     status: 'pending',
   };
 

@@ -105,7 +105,7 @@
   @apply courier-inline-extra-padding;
 }
 
-@utility btn {
+@utility btn-text {
   cursor: pointer;
   text-align: center;
   border: none;
@@ -128,7 +128,7 @@
 }
 
 @utility btn-white-purple {
-  @apply btn;
+  @apply btn-text;
   background: white;
   color: var(--global-purple);
 
@@ -138,16 +138,33 @@
 }
 
 @utility btn-purple-white {
-  @apply btn;
+  @apply btn-text;
   background: var(--global-btn-purple);
   color: white;
 }
 
 @utility btn-clear-grey {
-  @apply btn;
+  @apply btn-text;
   background: transparent;
   color: var(--global-text-muted);
   border: 1px solid var(--light-shadow);
+}
+
+@utility btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  color: var(--global-text-muted);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.09);
+    color: var(--global-text);
+  }
 }
 
 @utility clickable-text {

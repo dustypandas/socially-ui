@@ -3,9 +3,7 @@ import { ColumnsLayout, PageLayout } from '@src/components';
 import {
   CommunityHero,
   CommunityIntro,
-  CommunityLocations,
   CommunityNav,
-  CommunityOrganizers,
   CommunityOverlayActions,
   CommunityOverlayJoin,
   CommunityPanelAbout,
@@ -55,7 +53,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   return (
     <PageLayout hasStaticHeader>
       <section className="community-page">
-        <div className="width-container community-page__hero">
+        <div id="community-hero" className="width-container community-page__hero">
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <CommunityHero image={communityPageData.image} name={communityPageData.name} />
@@ -85,27 +83,27 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         />
 
         <div className="width-container community-page__content">
-          <ColumnsLayout>
-            <ColumnsLayout.Main>
-              {activePanel === 'about' && (
-                <CommunityPanelAbout
-                  descriptionHtml={communityPageData.descriptionHtml}
-                  futureEvents={communityPageData.futureEvents}
-                  pastEvents={communityPageData.pastEvents}
-                  pastEventsTotalCount={communityPageData.pastEventsTotalCount}
-                />
-              )}
-              {activePanel === 'events' && <CommunityPanelEvents />}
-              {activePanel === 'members' && <CommunityPanelMembers />}
-            </ColumnsLayout.Main>
-            <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
-              <div className="community-page__aside">
-                <div className="community-page__divider--hidden" />
-                <CommunityOrganizers organizers={communityPageData.organizers} />
-                <CommunityLocations locations={communityPageData.recentLocations} />
-              </div>
-            </ColumnsLayout.Aside>
-          </ColumnsLayout>
+          {activePanel === 'about' && (
+            <CommunityPanelAbout
+              descriptionHtml={communityPageData.descriptionHtml}
+              futureEvents={communityPageData.futureEvents}
+              pastEvents={communityPageData.pastEvents}
+              pastEventsTotalCount={communityPageData.pastEventsTotalCount}
+              organizers={communityPageData.organizers}
+              recentLocations={communityPageData.recentLocations}
+            />
+          )}
+          {activePanel === 'events' && (
+            <CommunityPanelEvents
+              organizers={communityPageData.organizers}
+              recentLocations={communityPageData.recentLocations}
+            />
+          )}
+          {activePanel === 'members' && (
+            <CommunityPanelMembers
+              members={communityPageData.communityMembers}
+            />
+          )}
         </div>
       </section>
 

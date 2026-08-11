@@ -36,7 +36,7 @@ import {
   getMaxFollowedInterests,
   getOneInterest,
 } from './queries/interests.ts';
-import { getAttendeesForOneEvent, getHomeNewMembers, getMemberAvatarsForOneCommunity, getOneMemberAndEngagements } from './queries/members.ts';
+import { getAttendeesForOneEvent, getHomeNewMembers, getMemberAvatarsForOneCommunity, getMemberEngagementsForOneCommunity, getOneMemberAndEngagements } from './queries/members.ts';
 import { getReviewsForOneEvent } from './queries/reviews.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
@@ -155,8 +155,9 @@ export async function getCommunitiesPageData(
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
   
-  const [memberAvatars, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
+  const [memberAvatars, communityMembers, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
     getMemberAvatarsForOneCommunity(),
+    getMemberEngagementsForOneCommunity(),
     getFutureEventsForOneCommunity(),
     getPastEventsForOneCommunity(),
     getRecentLocationsForOneCommunity(),
@@ -179,6 +180,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     interests: ['public-speaking', 'technology', 'fresh'],
     organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
     memberAvatars,
+    communityMembers,
     futureEvents,
     pastEvents,
     recentLocations,

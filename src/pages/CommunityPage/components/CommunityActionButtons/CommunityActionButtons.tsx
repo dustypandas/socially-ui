@@ -1,9 +1,9 @@
-import IconCaretDown from '@src/assets/icon-caret-down-outline.svg?react';
-import type { CommunityEngagement } from '@src/common-libs/types';
+import IconMore from '@src/assets/icon-more-outline.svg?react';
+import type { MemberCommunity } from '@src/common-libs/types';
 import './community-action-buttons.css';
 
 type CommunityActionButtonsProps = {
-  membershipStatus: CommunityEngagement['status'] | null;
+  membershipStatus: MemberCommunity['status'] | null;
   isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
@@ -26,8 +26,8 @@ export function CommunityActionButtons({
           className="community-action-buttons__membership-btn"
           onClick={onMembershipClick}
         >
-          {isOrganizer === true ? 'Manage Community' : 'My membership'}
-          <IconCaretDown className="community-action-buttons__membership-btn-caret" />
+          {isOrganizer === true ? 'My Community' : 'My membership'}
+          <IconMore className="community-action-buttons__membership-btn-icon" />
         </button>
       ) : (
         <button

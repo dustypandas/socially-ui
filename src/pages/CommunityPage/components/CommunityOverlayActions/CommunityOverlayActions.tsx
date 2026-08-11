@@ -6,9 +6,9 @@ import './community-overlay-actions.css';
 type LeaveStatus = 'idle' | 'loading';
 
 const ORGANIZER_OPTIONS = [
-  'Update community details',
+  'Edit community page',
   'Contact members',
-  'Transfer ownership',
+  'Set member roles',
 ] as const;
 
 type CommunityOverlayActionsProps = {
@@ -61,7 +61,7 @@ export function CommunityOverlayActions({
     <Overlay isOpen={isOpen} onClose={onClose}>
       <div className="community-overlay-actions__header">
         <h2 className="community-overlay-actions__title">
-          {isOrganizer === true ? 'Manage Community' : 'My Membership'}
+          {isOrganizer === true ? 'My Community' : 'My Membership'}
         </h2>
         <button
           type="button"

@@ -5,7 +5,7 @@ export { CommunityLocations } from './CommunityLocations/CommunityLocations';
 export { CommunityMembers } from './CommunityMembers/CommunityMembers';
 export { CommunityNav } from './CommunityNav/CommunityNav';
 export type { CommunityPanelId } from './CommunityNav/CommunityNav';
-export { CommunityOrganizers } from './CommunityOrganizers/CommunityOrganizers';
+export { CommunityOrganizers } from './CommunityPanelAbout/CommunityOrganizers';
 export { CommunityOverlayActions } from './CommunityOverlayActions/CommunityOverlayActions';
 export { CommunityOverlayJoin } from './CommunityOverlayJoin/CommunityOverlayJoin';
 export { CommunityPanelAbout } from './CommunityPanelAbout/CommunityPanelAbout';

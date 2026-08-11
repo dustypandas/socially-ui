@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getMemberPageData } from '@src/data';
-import type { CommunityEngagement, MemberPageData } from '@src/common-libs/types';
+import type { MemberCommunity, MemberPageData } from '@src/common-libs/types';
 
-function getCommunityStatusRank(status: CommunityEngagement['status']): number {
+function getCommunityStatusRank(status: MemberCommunity['status']): number {
   if (status === 'rejected' || status === 'banned') {
     return 0;
   }

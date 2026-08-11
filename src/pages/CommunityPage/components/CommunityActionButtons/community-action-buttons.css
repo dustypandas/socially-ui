@@ -21,15 +21,16 @@
   @apply btn-clear-grey;
 }
 
-.community-action-buttons__membership-btn-caret {
+.community-action-buttons__membership-btn-icon {
   position: relative;
   top: -0.0625rem;
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
+  transform: rotate(90deg);
 }
 
-.community-action-buttons__membership-btn-caret path {
+.community-action-buttons__membership-btn-icon path {
   fill: currentColor;
 }
 

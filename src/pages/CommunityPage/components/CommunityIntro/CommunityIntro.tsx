@@ -1,6 +1,6 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { CommunityEngagement } from '@src/common-libs/types';
+import type { MemberCommunity } from '@src/common-libs/types';
 // import IconUser from '@src/assets/icon-user-outline.svg?react';
 // import type { MemberAvatar } from '@src/data';
 // import { nameAndOthersLabel } from '@src/pages/CommunityPage/helpers';
@@ -12,7 +12,7 @@ type CommunityIntroProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
-  communityViewerStatus: CommunityEngagement['status'] | null;
+  communityViewerStatus: MemberCommunity['status'] | null;
   isOrganizer?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;

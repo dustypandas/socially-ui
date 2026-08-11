@@ -6,7 +6,7 @@
 
 .community-section-about__content {
   margin: 0 1rem;
-  color: var(--global-text-muted);
+  color: var(--global-text);
   font-size: var(--font-size-md);
   line-height: 1.75;
   word-wrap: break-word;

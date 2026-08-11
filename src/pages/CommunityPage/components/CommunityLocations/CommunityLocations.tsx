@@ -14,7 +14,7 @@ export function CommunityLocations({ locations }: CommunityLocationsProps) {
   return (
     <section className="community-locations">
       <h3 className="community-organizers__title">
-        Event Locations
+        Recent Locations
       </h3>
       <MapContainer locations={locations} isWide />
     </section>

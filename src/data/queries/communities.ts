@@ -3,6 +3,7 @@ import {
   communitiesForOneInterest,
   communityForOneEvent,
   entryConditionsForOneCommunity,
+  recentLocationsForOneCommunity,
 } from '../stores/dummyData.ts';
 import {
   homeFreshCommunities,
@@ -15,6 +16,7 @@ import type {
   CommunityBasic,
   CommunityEngagement,
   CommunityEntryConditions,
+  MapLocation,
 } from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
 
@@ -74,6 +76,10 @@ export async function getEntryConditionsForOneCommunity(): Promise<CommunityEntr
   // await new Promise(resolve => setTimeout(resolve, 1000));
 
   return entryConditionsForOneCommunity;
+}
+
+export async function getRecentLocationsForOneCommunity(): Promise<Array<MapLocation & { id: string }>> {
+  return recentLocationsForOneCommunity;
 }
 
 export async function getSessionCommunityStatus(

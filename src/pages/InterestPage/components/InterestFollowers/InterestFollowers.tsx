@@ -13,7 +13,7 @@ export function InterestFollowers({ followers, followersCount }: InterestFollowe
       <h3 className="interest-followers__title">
         {followersCount}+ followers
       </h3>
-      <MapContainer followers={followers} />
+      <MapContainer locations={followers} />
     </div>
   );
 }

@@ -18,23 +18,32 @@ export function CommunityActionButtons({
   const isJoinPending = membershipStatus === 'pending';
   const isMember = membershipStatus === 'member';
 
-  return (isMember ? (
-    <button
-      type="button"
-      className="community-action-buttons__membership-btn"
-      onClick={onMembershipClick}
-    >
-      {isOrganizer === true ? 'Manage Community' : 'My membership'}
-      <IconCaretDown className="community-action-buttons__membership-btn-caret" />
-    </button>
-  ) : (
-    <button
-      type="button"
-      className="community-action-buttons__join-btn"
-      onClick={onJoinClick}
-      disabled={isJoinPending}
-    >
-      Join this community
-    </button>
-  ));
+  return (
+    <div className="community-action-buttons">
+      {isMember ? (
+        <button
+          type="button"
+          className="community-action-buttons__membership-btn"
+          onClick={onMembershipClick}
+        >
+          {isOrganizer === true ? 'Manage Community' : 'My membership'}
+          <IconCaretDown className="community-action-buttons__membership-btn-caret" />
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="community-action-buttons__join-btn"
+          onClick={onJoinClick}
+          disabled={isJoinPending}
+        >
+          Join this community
+        </button>
+      )}
+      {isOrganizer === true && (
+        <button type="button" className="community-action-buttons__create-event-btn">
+          Create event
+        </button>
+      )}
+    </div>
+  );
 }

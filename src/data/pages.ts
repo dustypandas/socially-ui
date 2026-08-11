@@ -13,6 +13,7 @@ import {
   getFilteredCommunities,
   getHomeFreshCommunities,
   getOneCommunity,
+  getRecentLocationsForOneCommunity,
   getSessionCommunityStatus,
 } from './queries/communities.ts';
 import {
@@ -154,10 +155,11 @@ export async function getCommunitiesPageData(
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
   
-  const [memberAvatars, futureEvents, pastEvents, entryConditions, communityViewerStatus] = await Promise.all([
+  const [memberAvatars, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
     getMemberAvatarsForOneCommunity(),
     getFutureEventsForOneCommunity(),
     getPastEventsForOneCommunity(),
+    getRecentLocationsForOneCommunity(),
     getEntryConditionsForOneCommunity(), // only if not logged in
     getSessionCommunityStatus(targetCommunity.id),
   ]);
@@ -179,6 +181,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     memberAvatars,
     futureEvents,
     pastEvents,
+    recentLocations,
     entryConditions,
     communityViewerStatus,
   };

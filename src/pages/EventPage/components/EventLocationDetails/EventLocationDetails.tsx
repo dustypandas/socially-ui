@@ -62,12 +62,14 @@ export function EventLocationDetails({
         </div>
         <div className="event-location-details__map">
           <MapContainer
-            location={{
+            locations={[{
+              id: 'event-location',
               lat: addressLocation.lat,
               lng: addressLocation.lng,
               label: addressLocation.label ?? '',
-            }}
+            }]}
             zoom={13}
+            isWide
           />
         </div>
       </div>

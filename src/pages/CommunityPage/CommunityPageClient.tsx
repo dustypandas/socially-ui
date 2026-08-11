@@ -3,7 +3,7 @@ import { ColumnsLayout, PageLayout } from '@src/components';
 import {
   CommunityHero,
   CommunityIntro,
-  CommunityMembers,
+  CommunityLocations,
   CommunityNav,
   CommunityOrganizers,
   CommunityOverlayActions,
@@ -102,10 +102,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               <div className="community-page__aside">
                 <div className="community-page__divider--hidden" />
                 <CommunityOrganizers organizers={communityPageData.organizers} />
-                <CommunityMembers
-                  membersCount={communityPageData.membersCount}
-                  memberAvatars={communityPageData.memberAvatars}
-                />
+                <CommunityLocations locations={communityPageData.recentLocations} />
               </div>
             </ColumnsLayout.Aside>
           </ColumnsLayout>

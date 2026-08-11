@@ -10,7 +10,7 @@ import type {
   MemberFollower,
   MemberProfile,
 } from './member.ts';
-import type { Link } from './primitives.ts';
+import type { Link, MapLocation } from './primitives.ts';
 
 export type HomeSectionId =
   | 'upcoming-events'
@@ -81,6 +81,7 @@ export type CommunityPageData =
   futureEvents: EventBasic[];
   pastEventsTotalCount: number;
   pastEvents: EventBasic[];
+  recentLocations: Array<MapLocation & { id: string }>;
   entryConditions?: CommunityEntryConditions;
   communityViewerStatus: CommunityEngagement['status'] | null;
   isOrganizer?: boolean;

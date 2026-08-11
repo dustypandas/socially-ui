@@ -66,6 +66,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
       futureEventsTotalCount: 0,
       pastEvents: [],
       pastEventsTotalCount: 0,
+      recentLocations: [],
       membersCount: 1,
       memberAvatars: rawCommunityPageData.memberAvatars.slice(0, 1),
       organizers: rawCommunityPageData.organizers.slice(0, 1),

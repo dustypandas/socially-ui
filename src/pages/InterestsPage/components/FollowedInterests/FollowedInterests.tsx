@@ -39,7 +39,7 @@ export function FollowedInterests({
           </div>
         )}
       </div>
-      <MapContainer followers={mapFollowers} />
+      <MapContainer locations={mapFollowers} />
     </div>
   );
 }

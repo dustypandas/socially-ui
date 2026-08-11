@@ -1,4 +1,4 @@
-import type { CommunityAvatar, CommunityBasic, CommunityEngagement, CommunityEntryConditions, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MemberAbout, MemberAvatar, MemberProfile } from '@src/common-libs/types';
+import type { CommunityAvatar, CommunityBasic, CommunityEngagement, CommunityEntryConditions, EventBasic, EventLink, EventReview, Interest, InterestBasic, InterestEngagement, Link, MapLocation, MemberAbout, MemberAvatar, MemberProfile } from '@src/common-libs/types';
 // DiscussionPost
 
 export const MEMBER_AVATAR_URLS = [
@@ -390,6 +390,14 @@ export const entryConditionsForOneCommunity: CommunityEntryConditions = {
     },
   ],
 };
+
+export const recentLocationsForOneCommunity: Array<MapLocation & { id: string }> = [
+  { id: 'palacio', label: 'Palacio', lat: 40.4155, lng: -3.7141 },
+  { id: 'malasana', label: 'Malasaña', lat: 40.4267, lng: -3.7037 },
+  { id: 'chueca', label: 'Chueca', lat: 40.4227, lng: -3.6978 },
+  { id: 'retiro', label: 'Retiro', lat: 40.4153, lng: -3.6844 },
+];
+
 //
 
 export const events: EventBasic[] = [

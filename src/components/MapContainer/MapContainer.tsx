@@ -8,7 +8,6 @@ import {
   useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import type { MemberFollower } from '@src/common-libs/types';
 import iconMapMarkerSvg from '@src/assets/icon-map-marker.svg?raw';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-cluster/dist/assets/MarkerCluster.css';
@@ -24,7 +23,7 @@ const markerSvgHtml = iconMapMarkerSvg
   .replace('width="24"', `width="${MARKER_SIZE}"`)
   .replace('height="24"', `height="${MARKER_SIZE}"`);
 
-const followerMarkerIcon = Leaflet.divIcon({
+const markerIcon = Leaflet.divIcon({
   className: 'map-container__marker-icon',
   html: markerSvgHtml,
   iconSize: [MARKER_SIZE, MARKER_SIZE],
@@ -33,14 +32,17 @@ const followerMarkerIcon = Leaflet.divIcon({
 });
 
 type MapLocation = {
+  id: string;
   lat: number;
   lng: number;
-  label: string;
+  label?: string;
 };
 
-type MapContainerProps =
-  | { followers: MemberFollower[]; location?: never; zoom?: number }
-  | { followers?: never; location: MapLocation; zoom?: number };
+type MapContainerProps = {
+  locations: MapLocation[];
+  zoom?: number;
+  isWide?: boolean;
+};
 
 function MapResizeHandler() {
   const map = useMap();
@@ -56,40 +58,16 @@ function MapResizeHandler() {
   return null;
 }
 
-export function MapContainer(props: MapContainerProps) {
-  const zoom = props.zoom ?? 13;
-
-  if (props.location) {
-    const { location } = props;
-
-    return (
-      <div className="map-container">
-        <LeafletMapContainer
-          center={[location.lat, location.lng]}
-          zoom={zoom}
-          scrollWheelZoom={false}
-          className="map-container__canvas"
-          attributionControl={false}
-        >
-          <MapResizeHandler />
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[location.lat, location.lng]} icon={followerMarkerIcon}>
-            <Popup>{location.label}</Popup>
-          </Marker>
-        </LeafletMapContainer>
-      </div>
-    );
-  }
-
-  const { followers } = props;
+export function MapContainer({ locations, zoom = 13, isWide = false }: MapContainerProps) {
+  const firstLocation = locations[0];
+  const center = locations.length === 1 && firstLocation
+    ? [firstLocation.lat, firstLocation.lng] satisfies Leaflet.LatLngExpression
+    : MADRID_CENTER;
 
   return (
-    <div className="map-container">
+    <div className={['map-container', isWide && 'map-container--wide'].filter(Boolean).join(' ')}>
       <LeafletMapContainer
-        center={MADRID_CENTER}
+        center={center}
         zoom={zoom}
         scrollWheelZoom={false}
         className="map-container__canvas"
@@ -101,9 +79,9 @@ export function MapContainer(props: MapContainerProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MarkerClusterGroup chunkedLoading maxClusterRadius={50}>
-          {followers.map(follower => (
-            <Marker key={follower.id} position={[follower.lat, follower.lng]} icon={followerMarkerIcon}>
-              <Popup>{follower.label}</Popup>
+          {locations.map(location => (
+            <Marker key={location.id} position={[location.lat, location.lng]} icon={markerIcon}>
+              {location.label && <Popup>{location.label}</Popup>}
             </Marker>
           ))}
         </MarkerClusterGroup>

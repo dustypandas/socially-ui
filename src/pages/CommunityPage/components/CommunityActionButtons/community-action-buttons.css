@@ -1,6 +1,13 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
+.community-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .community-action-buttons__join-btn {
   display: inline-flex;
   align-items: center;
@@ -24,4 +31,10 @@
 
 .community-action-buttons__membership-btn-caret path {
   fill: currentColor;
+}
+
+.community-action-buttons__create-event-btn {
+  display: inline-flex;
+  align-items: center;
+  @apply btn-purple-white;
 }

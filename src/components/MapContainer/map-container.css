@@ -45,3 +45,7 @@
     margin: 0 1rem;
   }
 }
+
+.map-container--wide {
+  aspect-ratio: 16 / 10;
+}

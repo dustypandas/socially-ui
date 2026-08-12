@@ -238,15 +238,19 @@ const lightningTalksDescription = '5 speakers, 5 minute presentations, 5 diverse
 
 // for one specific community (polylogue madrid) only
 export const communityMembersForOneCommunity: CommunityMember[] =
-  members.slice(0, MEMBER_AVATAR_URLS.length).map((member, index) => ({
-    ...toMemberAvatar(member),
-    attendedCount: [21, 14, 11, 8, 5, 3, 2, 1, 0][index] ?? 0,
-    hostedCount: index < 3 ? [7, 3, 2][index] ?? 0 : 0,
-    joinedSince: getTimestampFromNow(2, 19, 0),
-    lastActivity: getTimestampFromNow(1, 19, 0),
-    isOrganizer: index < 3,
-    status: 'member',
-  }));
+  Array.from({ length: 100 }, (_, index) => {
+    const source = members[index % members.length];
+    return {
+      ...toMemberAvatar(source),
+      id: `${source.id}-${index}`,
+      attendedCount: [21, 14, 11, 8, 5, 3, 2, 1, 0][index] ?? 0,
+      hostedCount: index < 3 ? [7, 3, 2][index] ?? 0 : 0,
+      joinedSince: getTimestampFromNow(2, 19, 0),
+      lastActivity: getTimestampFromNow(1, 19, 0),
+      isOrganizer: index < 3,
+      status: 'member' as const,
+    };
+  });
 
 export const communityMemberRequestsForOneCommunity: CommunityMemberRequest[] = [
   {

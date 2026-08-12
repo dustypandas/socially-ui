@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ColumnsLayout, PageLayout } from '@src/components';
+import { getElementDocumentOffsetTop } from '@src/hooks/useScrolledPastDistance';
 import {
   CommunityHero,
   CommunityIntro,
@@ -55,6 +56,16 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   };
   const handleActionsOverlayClose = () => setIsActionsOverlayOpen(false);
 
+  const scrollToTop = () => {
+    const hero = document.getElementById('community-hero');
+    const nav = document.querySelector('.community-nav');
+    if (hero && nav instanceof HTMLElement) {
+      const stickyTop = parseFloat(getComputedStyle(nav).top) || 0;
+      const top = getElementDocumentOffsetTop(hero) + hero.offsetHeight - stickyTop - 16;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+  };
+
   return (
     <PageLayout hasStaticHeader>
       <section className="community-page">
@@ -86,6 +97,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           onJoinClick={handleJoinClick}
           onMembershipClick={handleMembershipClick}
           onNavigate={setActivePanel}
+          onScrollToTop={scrollToTop}
         />
 
         <div className="width-container community-page__content">
@@ -112,6 +124,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               isOrganizer={communityPageData.isOrganizer === true}
               requestBadgeCount={requestBadgeCount}
               onRequestsViewed={resolveMemberRequests}
+              onScrollToTop={scrollToTop}
             />
           )}
         </div>

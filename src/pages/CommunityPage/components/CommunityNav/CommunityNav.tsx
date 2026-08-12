@@ -25,6 +25,7 @@ type CommunityNavProps = {
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
   onNavigate: (panelId: CommunityPanelId) => void;
+  onScrollToTop: () => void;
 };
 
 export function CommunityNav({
@@ -35,6 +36,7 @@ export function CommunityNav({
   onJoinClick,
   onMembershipClick,
   onNavigate,
+  onScrollToTop,
 }: CommunityNavProps) {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
@@ -63,13 +65,7 @@ export function CommunityNav({
                     onClick={(event) => {
                       event.preventDefault();
                       onNavigate(link.id);
-                      const hero = document.getElementById('community-hero');
-                      const nav = navRef.current;
-                      if (hero && nav) {
-                        const stickyTop = parseFloat(getComputedStyle(nav).top) || 0;
-                        const top = getElementDocumentOffsetTop(hero) + hero.offsetHeight - stickyTop - 16; // show a little hero
-                        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-                      }
+                      onScrollToTop();
                     }}
                   >
                     <span className="community-nav__link-label">{link.label}</span>

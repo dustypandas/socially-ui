@@ -8,12 +8,15 @@ import {
 } from './CommunityMemberFilters';
 import './community-panel-members.css';
 
+const PAGE_SIZE = 20;
+
 type CommunityPanelMembersProps = {
   members: CommunityMember[];
   memberRequests?: CommunityMemberRequest[];
   isOrganizer?: boolean;
   requestBadgeCount?: number;
   onRequestsViewed?: () => void;
+  onScrollToTop?: () => void;
 };
 
 export function CommunityPanelMembers({
@@ -22,11 +25,13 @@ export function CommunityPanelMembers({
   isOrganizer = false,
   requestBadgeCount = 0,
   onRequestsViewed,
+  onScrollToTop,
 }: CommunityPanelMembersProps) {
   const [memberFilter, setMemberFilter] = useState<CommunityMemberFilterId>(
     requestBadgeCount > 0 ? 'requests' : 'all',
   );
   const [searchQuery, setSearchQuery] = useState('');
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   useEffect(() => {
     if (requestBadgeCount > 0) {
@@ -36,15 +41,23 @@ export function CommunityPanelMembers({
 
   const handleFilterChange = (filter: CommunityMemberFilterId) => {
     setMemberFilter(filter);
+    setVisibleCount(PAGE_SIZE);
+    onScrollToTop?.();
     if (filter === 'requests') {
       onRequestsViewed?.();
     }
+  };
+  const handleQueryChange = (value: string) => {
+    setSearchQuery(value);
+    setVisibleCount(PAGE_SIZE);
+    onScrollToTop?.();
   };
   const activeFilter = memberFilter === 'requests' && !isOrganizer ? 'all' : memberFilter;
   const isRequests = activeFilter === 'requests';
   const visibleMembers = getFilteredMembers(members, activeFilter, searchQuery);
   const visibleRequests = getFilteredRequests(memberRequests, searchQuery);
   const visibleItems = isRequests ? visibleRequests : visibleMembers;
+  const hasMoreItems = visibleItems.length > visibleCount;
 
   return (
     <ColumnsLayout>
@@ -56,15 +69,26 @@ export function CommunityPanelMembers({
               {isRequests ? 'No requests' : 'No members'}
             </div>
           ) : (
-            <ul className="community-panel-members__list">
-              {isRequests
-                ? visibleRequests.map(request => (
-                  <MemberItemRequest key={request.id} member={request} />
-                ))
-                : visibleMembers.map(member => (
-                  <MemberItemBasic key={member.id} member={member} />
-                ))}
-            </ul>
+            <>
+              <ul className="community-panel-members__list">
+                {isRequests
+                  ? visibleRequests.slice(0, visibleCount).map(request => (
+                    <MemberItemRequest key={request.id} member={request} />
+                  ))
+                  : visibleMembers.slice(0, visibleCount).map(member => (
+                    <MemberItemBasic key={member.id} member={member} />
+                  ))}
+              </ul>
+              {hasMoreItems && (
+                <button
+                  type="button"
+                  className="community-panel-members__show-more btn-clear-grey"
+                  onClick={() => setVisibleCount(current => current + PAGE_SIZE)}
+                >
+                  Show more
+                </button>
+              )}
+            </>
           )}
         </section>
       </ColumnsLayout.Main>
@@ -75,7 +99,7 @@ export function CommunityPanelMembers({
 
           <CommunityMemberFilters
             query={searchQuery}
-            onQueryChange={setSearchQuery}
+            onQueryChange={handleQueryChange}
             value={activeFilter}
             onChange={handleFilterChange}
             isOrganizer={isOrganizer}

@@ -21,6 +21,7 @@ type CommunityNavProps = {
   activePanel: CommunityPanelId;
   communityViewerStatus: MemberCommunity['status'] | null;
   isOrganizer?: boolean;
+  membersBadgeCount?: number;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
   onNavigate: (panelId: CommunityPanelId) => void;
@@ -30,6 +31,7 @@ export function CommunityNav({
   activePanel,
   communityViewerStatus,
   isOrganizer,
+  membersBadgeCount = 0,
   onJoinClick,
   onMembershipClick,
   onNavigate,
@@ -70,7 +72,10 @@ export function CommunityNav({
                       }
                     }}
                   >
-                    {link.label}
+                    <span className="community-nav__link-label">{link.label}</span>
+                    {link.id === 'members' && membersBadgeCount > 0 && (
+                      <span className="badge-num">{membersBadgeCount}</span>
+                    )}
                   </a>
                 ))}
               </div>

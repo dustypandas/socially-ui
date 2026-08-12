@@ -40,7 +40,7 @@ export function HomeProfileNav({
             >
               <span className="home-profile-nav__link-label">{item.label}</span>
               {item.count !== undefined && item.count > 0 && (
-                <span className="home-profile-nav__badge">{item.count}</span>
+                <span className="badge-num">{item.count}</span>
               )}
             </a>
           </li>

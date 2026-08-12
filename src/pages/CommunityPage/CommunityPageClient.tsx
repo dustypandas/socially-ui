@@ -17,6 +17,8 @@ import './community-page.css';
 export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const {
     communityPageData,
+    hasResolvedMemberRequests,
+    resolveMemberRequests,
     markJoinPending,
     markMembershipCleared,
   } = useCommunityPageStates({ variant });
@@ -29,6 +31,9 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   }
 
   const communityViewerStatus = communityPageData.communityViewerStatus;
+  const requestBadgeCount = hasResolvedMemberRequests
+    ? 0
+    : communityPageData.communityMemberRequests?.length ?? 0;
   const handleJoinClick = () => {
     if (
       communityViewerStatus === 'pending'
@@ -77,6 +82,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           activePanel={activePanel}
           communityViewerStatus={communityPageData.communityViewerStatus}
           isOrganizer={communityPageData.isOrganizer === true}
+          membersBadgeCount={requestBadgeCount}
           onJoinClick={handleJoinClick}
           onMembershipClick={handleMembershipClick}
           onNavigate={setActivePanel}
@@ -103,6 +109,9 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
             <CommunityPanelMembers
               members={communityPageData.communityMembers}
               memberRequests={communityPageData.communityMemberRequests}
+              isOrganizer={communityPageData.isOrganizer === true}
+              requestBadgeCount={requestBadgeCount}
+              onRequestsViewed={resolveMemberRequests}
             />
           )}
         </div>

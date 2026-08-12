@@ -1,10 +1,15 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { getCommunityPageData } from '@src/data';
+import {
+  getCommunityPageData,
+  getResolvedCommunityMemberRequests,
+  resolveCommunityMemberRequests,
+} from '@src/data';
 import type { CommunityPageData } from '@src/common-libs/types';
 
 export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
   const [rawCommunityPageData, setRawCommunityPageData] = useState<CommunityPageData | null>(null);
   const [hasLeftMembership, setHasLeftMembership] = useState(false);
+  const [resolvedMemberRequestIds, setResolvedMemberRequestIds] = useState<string[]>([]);
 
   const applyPageData = useCallback((data: CommunityPageData) => {
     setRawCommunityPageData(data);
@@ -14,6 +19,10 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
   useEffect(() => {
     getCommunityPageData().then(applyPageData);
   }, [applyPageData]);
+
+  useEffect(() => {
+    getResolvedCommunityMemberRequests().then(setResolvedMemberRequestIds);
+  }, []);
 
   const markJoinPending = useCallback(() => {
     setHasLeftMembership(false);
@@ -43,39 +52,65 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     });
   }, []);
 
+  const resolveMemberRequests = useCallback(async () => {
+    const communityId = rawCommunityPageData?.id;
+    if (!communityId || resolvedMemberRequestIds.includes(communityId)) {
+      return;
+    }
+
+    await resolveCommunityMemberRequests(communityId);
+    setResolvedMemberRequestIds(current => (
+      current.includes(communityId) ? current : [...current, communityId]
+    ));
+  }, [rawCommunityPageData?.id, resolvedMemberRequestIds]);
+
+  const hasResolvedMemberRequests = rawCommunityPageData !== null
+    && resolvedMemberRequestIds.includes(rawCommunityPageData.id);
+
   const communityPageData = useMemo(() => {
     if (!rawCommunityPageData) {
       return null;
     }
 
+    let pageData: CommunityPageData;
+
     if ((variant === 'member' || variant === 'organizer') && !hasLeftMembership) {
-      return {
+      pageData = {
         ...rawCommunityPageData,
         communityViewerStatus: 'member' as const,
         isOrganizer: variant === 'organizer',
       };
+    } else if (variant !== 'empty') {
+      pageData = rawCommunityPageData;
+    } else {
+      pageData = {
+        ...rawCommunityPageData,
+        futureEvents: [],
+        futureEventsTotalCount: 0,
+        pastEvents: [],
+        pastEventsTotalCount: 0,
+        recentLocations: [],
+        membersCount: 1,
+        communityMembers: rawCommunityPageData.communityMembers.slice(0, 1),
+        organizers: rawCommunityPageData.organizers.slice(0, 1),
+        descriptionHtml: getFirstTwoParagraphs(rawCommunityPageData.descriptionHtml),
+      };
     }
 
-    if (variant !== 'empty') {
-      return rawCommunityPageData;
+    if (pageData.isOrganizer === true) {
+      return pageData;
     }
 
     return {
-      ...rawCommunityPageData,
-      futureEvents: [],
-      futureEventsTotalCount: 0,
-      pastEvents: [],
-      pastEventsTotalCount: 0,
-      recentLocations: [],
-      membersCount: 1,
-      communityMembers: rawCommunityPageData.communityMembers.slice(0, 1),
-      organizers: rawCommunityPageData.organizers.slice(0, 1),
-      descriptionHtml: getFirstTwoParagraphs(rawCommunityPageData.descriptionHtml),
+      ...pageData,
+      communityMemberRequests: undefined,
     };
   }, [variant, rawCommunityPageData, hasLeftMembership]);
 
   return {
     communityPageData,
+    hasResolvedMemberRequests,
+    resolveMemberRequests,
     markJoinPending,
     markMembershipCleared,
   };

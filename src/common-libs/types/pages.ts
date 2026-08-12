@@ -78,7 +78,7 @@ export type CommunityPageData =
 & {
   organizers: MemberAvatar[];
   communityMembers: CommunityMember[];
-  communityMemberRequests: CommunityMemberRequest[];
+  communityMemberRequests?: CommunityMemberRequest[];
   futureEventsTotalCount: number;
   futureEvents: EventBasic[];
   pastEventsTotalCount: number;

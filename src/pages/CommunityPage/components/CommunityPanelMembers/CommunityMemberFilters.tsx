@@ -4,9 +4,9 @@ import './community-member-filters.css';
 export type CommunityMemberFilterId = 'all' | 'organizers' | 'requests';
 
 const FILTERS = [
+  { id: 'requests', label: 'Requests' },
   { id: 'all', label: 'All Members' },
   { id: 'organizers', label: 'Organizers' },
-  { id: 'requests', label: 'Requests' },
 ] as const satisfies readonly { id: CommunityMemberFilterId; label: string }[];
 
 type CommunityMemberFiltersProps = {
@@ -14,6 +14,8 @@ type CommunityMemberFiltersProps = {
   onQueryChange: (value: string) => void;
   value: CommunityMemberFilterId;
   onChange: (value: CommunityMemberFilterId) => void;
+  isOrganizer?: boolean;
+  requestBadgeCount?: number;
 };
 
 export function CommunityMemberFilters({
@@ -21,7 +23,12 @@ export function CommunityMemberFilters({
   onQueryChange,
   value,
   onChange,
+  isOrganizer = false,
+  requestBadgeCount = 0,
 }: CommunityMemberFiltersProps) {
+  const filters = isOrganizer
+    ? FILTERS
+    : FILTERS.filter(filter => filter.id !== 'requests');
   return (
     <div className="community-member-filters">
       <input
@@ -34,13 +41,17 @@ export function CommunityMemberFilters({
       <div className="community-member-filters__field">
         {/* <h3 className="community-member-filters__label">Show:</h3> */}
         <div className="community-member-filters__group">
-          {FILTERS.map(filter => (
+          {filters.map(filter => (
             <ButtonsGroup
               key={filter.id}
               selected={value === filter.id}
               onClick={() => onChange(filter.id)}
+              className={filter.id === 'requests' ? 'community-member-filters__requests-btn' : undefined}
             >
               {filter.label}
+              {filter.id === 'requests' && requestBadgeCount > 0 && (
+                <span className="badge-num">{requestBadgeCount}</span>
+              )}
             </ButtonsGroup>
           ))}
         </div>

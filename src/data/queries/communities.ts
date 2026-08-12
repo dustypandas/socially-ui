@@ -9,6 +9,7 @@ import {
   homeFreshCommunities,
   sessionState,
   tempMemberCommunitiesMap,
+  tempResolvedCommunityMemberRequests,
 } from '../stores/userData/index.ts';
 import { getFollowedInterests } from './interests.ts';
 import type {
@@ -80,6 +81,18 @@ export async function getEntryConditionsForOneCommunity(): Promise<CommunityEntr
 
 export async function getRecentLocationsForOneCommunity(): Promise<Array<MapLocation & { id: string }>> {
   return recentLocationsForOneCommunity;
+}
+
+export async function getResolvedCommunityMemberRequests(): Promise<string[]> {
+  return [...tempResolvedCommunityMemberRequests];
+}
+
+export async function resolveCommunityMemberRequests(
+  communityId: string,
+): Promise<void> {
+  if (tempResolvedCommunityMemberRequests.includes(communityId)) return;
+
+  tempResolvedCommunityMemberRequests.push(communityId);
 }
 
 export async function getSessionCommunityStatus(

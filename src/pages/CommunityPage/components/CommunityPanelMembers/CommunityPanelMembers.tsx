@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { CommunityMember, CommunityMemberRequest } from '@src/common-libs/types';
 import { ColumnsLayout, MemberItemBasic, MemberItemRequest } from '@src/components';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
@@ -10,17 +10,39 @@ import './community-panel-members.css';
 
 type CommunityPanelMembersProps = {
   members: CommunityMember[];
-  memberRequests: CommunityMemberRequest[];
+  memberRequests?: CommunityMemberRequest[];
+  isOrganizer?: boolean;
+  requestBadgeCount?: number;
+  onRequestsViewed?: () => void;
 };
 
 export function CommunityPanelMembers({
   members,
-  memberRequests,
+  memberRequests = [],
+  isOrganizer = false,
+  requestBadgeCount = 0,
+  onRequestsViewed,
 }: CommunityPanelMembersProps) {
-  const [memberFilter, setMemberFilter] = useState<CommunityMemberFilterId>('all');
+  const [memberFilter, setMemberFilter] = useState<CommunityMemberFilterId>(
+    requestBadgeCount > 0 ? 'requests' : 'all',
+  );
   const [searchQuery, setSearchQuery] = useState('');
-  const isRequests = memberFilter === 'requests';
-  const visibleMembers = getFilteredMembers(members, memberFilter, searchQuery);
+
+  useEffect(() => {
+    if (requestBadgeCount > 0) {
+      onRequestsViewed?.();
+    }
+  }, [onRequestsViewed, requestBadgeCount]);
+
+  const handleFilterChange = (filter: CommunityMemberFilterId) => {
+    setMemberFilter(filter);
+    if (filter === 'requests') {
+      onRequestsViewed?.();
+    }
+  };
+  const activeFilter = memberFilter === 'requests' && !isOrganizer ? 'all' : memberFilter;
+  const isRequests = activeFilter === 'requests';
+  const visibleMembers = getFilteredMembers(members, activeFilter, searchQuery);
   const visibleRequests = getFilteredRequests(memberRequests, searchQuery);
   const visibleItems = isRequests ? visibleRequests : visibleMembers;
 
@@ -28,7 +50,7 @@ export function CommunityPanelMembers({
     <ColumnsLayout>
       <ColumnsLayout.Main>
         <section className="community-panel-members">
-          <SectionTitle title={getMembersSectionTitle(members, memberRequests, memberFilter)} hideMore />
+          <SectionTitle title={getMembersSectionTitle(members, memberRequests, activeFilter)} hideMore />
           {visibleItems.length === 0 ? (
             <div className="community-panel-members__empty">
               {isRequests ? 'No requests' : 'No members'}
@@ -54,8 +76,10 @@ export function CommunityPanelMembers({
           <CommunityMemberFilters
             query={searchQuery}
             onQueryChange={setSearchQuery}
-            value={memberFilter}
-            onChange={setMemberFilter}
+            value={activeFilter}
+            onChange={handleFilterChange}
+            isOrganizer={isOrganizer}
+            requestBadgeCount={requestBadgeCount}
           />
         </div>
       </ColumnsLayout.Aside>

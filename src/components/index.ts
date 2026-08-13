@@ -11,4 +11,5 @@ export { MemberItemRequest } from './MemberItem/MemberItemRequest';
 export { Overlay } from './Overlay/Overlay';
 export { PageLayout } from './PageLayout/PageLayout';
 export { PageTitle } from './PageTitle/PageTitle';
+export { ReviewItem } from './ReviewItem/ReviewItem';
 export * from './SectionTitle/SectionTitle';

@@ -92,6 +92,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
         recentLocations: [],
         membersCount: 1,
         communityMembers: rawCommunityPageData.communityMembers.slice(0, 1),
+        reviewsForOneCommunity: [],
         organizers: rawCommunityPageData.organizers.slice(0, 1),
         descriptionHtml: getFirstTwoParagraphs(rawCommunityPageData.descriptionHtml),
       };

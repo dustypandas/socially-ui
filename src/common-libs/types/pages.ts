@@ -1,5 +1,5 @@
 import type { Community, CommunityAvatar, CommunityBasic, CommunityEntryConditions, CommunityMemberRequest } from './community.ts';
-import type { Event, EventAttendees, EventBasic } from './event.ts';
+import type { Event, EventAttendees, EventBasic, EventReview } from './event.ts';
 import type { HomeProfilePopularInterest, Interest } from './interest.ts';
 import type {
   CommunityMember,
@@ -79,6 +79,7 @@ export type CommunityPageData =
   organizers: MemberAvatar[];
   communityMembers: CommunityMember[];
   communityMemberRequests?: CommunityMemberRequest[];
+  reviewsForOneCommunity: EventReview[];
   futureEventsTotalCount: number;
   futureEvents: EventBasic[];
   pastEventsTotalCount: number;

@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.community-past-events {
+.community-section-past-events {
   padding: 0 0 1rem;
 
   .events-grid {
@@ -9,14 +9,14 @@
   }
 }
 
-.community-past-events .events-grid {
+.community-section-past-events .events-grid {
   > :nth-child(n + 4) {
     display: none;
   }
 }
 
 @media (max-width: theme(--breakpoint-columns-card-grid-2)) {
-  .community-past-events .events-grid {
+  .community-section-past-events .events-grid {
     > :nth-child(n + 3) {
       display: none;
     }

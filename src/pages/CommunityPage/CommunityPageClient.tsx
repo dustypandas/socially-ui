@@ -10,6 +10,7 @@ import {
   CommunityPanelAbout,
   CommunityPanelEvents,
   CommunityPanelMembers,
+  CommunityPanelReviews,
 } from './components';
 import type { CommunityPanelId } from './components';
 import { CommunityPageClientProps, useCommunityPageStates } from './useCommunityPageStates';
@@ -112,10 +113,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
             />
           )}
           {activePanel === 'events' && (
-            <CommunityPanelEvents
-              organizers={communityPageData.organizers}
-              recentLocations={communityPageData.recentLocations}
-            />
+            <CommunityPanelEvents />
           )}
           {activePanel === 'members' && (
             <CommunityPanelMembers
@@ -124,6 +122,12 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               isOrganizer={communityPageData.isOrganizer === true}
               requestBadgeCount={requestBadgeCount}
               onRequestsViewed={resolveMemberRequests}
+              onScrollToTop={scrollToTop}
+            />
+          )}
+          {activePanel === 'reviews' && (
+            <CommunityPanelReviews
+              reviews={communityPageData.reviewsForOneCommunity}
               onScrollToTop={scrollToTop}
             />
           )}

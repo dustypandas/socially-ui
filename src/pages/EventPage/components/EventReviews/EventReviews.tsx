@@ -1,10 +1,10 @@
-import type { EventReview as EventReviewData } from '@src/common-libs/types';
+import type { EventReview } from '@src/common-libs/types';
+import { ReviewItem } from '@src/components';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
-import { EventReview } from './EventReview/EventReview';
 import './event-reviews.css';
 
 type EventReviewsProps = {
-  reviews: EventReviewData[];
+  reviews: EventReview[];
 };
 
 export function EventReviews({ reviews }: EventReviewsProps) {
@@ -20,7 +20,7 @@ export function EventReviews({ reviews }: EventReviewsProps) {
               key={`${review.member.id}-${review.event.id}-${index}`}
               className="event-reviews__item"
             >
-              <EventReview review={review} />
+              <ReviewItem review={review} />
             </li>
           ))}
         </ul>

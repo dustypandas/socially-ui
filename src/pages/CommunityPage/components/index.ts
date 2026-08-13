@@ -1,7 +1,7 @@
 export { CommunityActionButtons } from './CommunityActionButtons/CommunityActionButtons';
 export { CommunityHero } from './CommunityHero/CommunityHero';
 export { CommunityIntro } from './CommunityIntro/CommunityIntro';
-export { CommunityLocations } from './CommunityLocations/CommunityLocations';
+export { CommunityLocations } from './CommunityPanelAbout/CommunityLocations';
 export { CommunityNav } from './CommunityNav/CommunityNav';
 export type { CommunityPanelId } from './CommunityNav/CommunityNav';
 export { CommunityOrganizers } from './CommunityPanelAbout/CommunityOrganizers';
@@ -10,4 +10,5 @@ export { CommunityOverlayJoin } from './CommunityOverlayJoin/CommunityOverlayJoi
 export { CommunityPanelAbout } from './CommunityPanelAbout/CommunityPanelAbout';
 export { CommunityPanelEvents } from './CommunityPanelEvents/CommunityPanelEvents';
 export { CommunityPanelMembers } from './CommunityPanelMembers/CommunityPanelMembers';
-export { CommunityPastEvents } from './CommunityPastEvents/CommunityPastEvents';
+export { CommunityPanelReviews } from './CommunityPanelReviews/CommunityPanelReviews';
+export { CommunitySectionPastEvents } from './CommunityPanelAbout/CommunitySectionPastEvents';

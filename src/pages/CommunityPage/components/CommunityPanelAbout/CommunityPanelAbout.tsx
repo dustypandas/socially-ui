@@ -1,10 +1,10 @@
 import type { EventBasic, MapLocation, MemberAvatar } from '@src/common-libs/types';
 import { ColumnsLayout } from '@src/components';
-import { CommunityLocations } from '../CommunityLocations/CommunityLocations';
+import { CommunityLocations } from './CommunityLocations';
 import { CommunityOrganizers } from './CommunityOrganizers';
-import { CommunityPastEvents } from '../CommunityPastEvents/CommunityPastEvents';
 import { CommunitySectionAbout } from './CommunitySectionAbout';
 import { CommunitySectionEvents } from './CommunitySectionEvents';
+import { CommunitySectionPastEvents } from './CommunitySectionPastEvents';
 import './community-panel-about.css';
 
 type CommunityPanelAboutProps = {
@@ -33,7 +33,7 @@ export function CommunityPanelAbout({
           {pastEventsTotalCount > 0 && (
             <>
               <div className="community-page__divider--hidden" />
-              <CommunityPastEvents
+              <CommunitySectionPastEvents
                 count={pastEventsTotalCount}
                 events={pastEvents}
               />

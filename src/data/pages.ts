@@ -37,7 +37,7 @@ import {
   getOneInterest,
 } from './queries/interests.ts';
 import { getAttendeesForOneEvent, getHomeNewMembers, getCommunityMembersForOneCommunity, getCommunityMemberRequestsForOneCommunity, getPageDataForOneMember } from './queries/members.ts';
-import { getReviewsForOneEvent } from './queries/reviews.ts';
+import { getReviewsForOneCommunity, getReviewsForOneEvent } from './queries/reviews.ts';
 
 export async function getHomePageData(): Promise<HomePageData> {
   const [popularInterests, upcomingEvents] = await Promise.all([
@@ -155,9 +155,10 @@ export async function getCommunitiesPageData(
 export async function getCommunityPageData(): Promise<CommunityPageData> {
   const targetCommunity = await getOneCommunity();
   
-  const [communityMembers, communityMemberRequests, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
+  const [communityMembers, communityMemberRequests, reviewsForOneCommunity, futureEvents, pastEvents, recentLocations, entryConditions, communityViewerStatus] = await Promise.all([
     getCommunityMembersForOneCommunity(),
     getCommunityMemberRequestsForOneCommunity(),
+    getReviewsForOneCommunity(),
     getFutureEventsForOneCommunity(),
     getPastEventsForOneCommunity(),
     getRecentLocationsForOneCommunity(),
@@ -181,6 +182,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
     communityMembers,
     communityMemberRequests,
+    reviewsForOneCommunity,
     futureEvents,
     pastEvents,
     recentLocations,

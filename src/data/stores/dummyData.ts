@@ -581,6 +581,33 @@ export const reviewsForOneEvent: EventReview[] = [
     date: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000),
   },
 ];
+
+const COMMUNITY_REVIEW_CONTENTS = [
+  'Great event!',
+  'Good event!',
+  'Ok event!',
+  'A bit disappointing.',
+  'Not for me.',
+] as const;
+
+export const reviewsForOneCommunity: EventReview[] =
+  Array.from({ length: 40 }, (_, index) => {
+    const sourceMember = members[index % members.length];
+    const sourceEvent = pastEventsForOneCommunity[index % pastEventsForOneCommunity.length];
+    const rating = [5, 4, 3, 2, 1][index % 5] ?? 5;
+
+    return {
+      event: toEventLink(sourceEvent),
+      member: {
+        ...toMemberAvatar(sourceMember),
+        id: `${sourceMember.id}-${index}`,
+      },
+      communityId: 'polylogue-madrid',
+      rating,
+      content: COMMUNITY_REVIEW_CONTENTS[index % COMMUNITY_REVIEW_CONTENTS.length] ?? 'Great event!',
+      date: getTimestampFromNow(-index, 19, 0),
+    };
+  });
 //
 
 export const interests: Interest[] = [

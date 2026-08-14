@@ -47,7 +47,7 @@ export type MemberCommunity =
 & CommunityAvatar
 & Engagement
 & {
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   isHost?: boolean;
   isContributor?: boolean;
   status: 'member' | 'pending' | 'rejected' | 'banned';
@@ -57,7 +57,7 @@ export type CommunityMember =
 & MemberAvatar
 & Engagement
 & {
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   isHost?: boolean;
   isContributor?: boolean;
   status: 'member' | 'pending' | 'rejected' | 'banned';

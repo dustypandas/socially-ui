@@ -4,14 +4,14 @@ import './community-action-buttons.css';
 
 type CommunityActionButtonsProps = {
   membershipStatus: MemberCommunity['status'] | null;
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
 };
 
 export function CommunityActionButtons({
   membershipStatus,
-  isOrganizer,
+  isOrganiser,
   onJoinClick,
   onMembershipClick,
 }: CommunityActionButtonsProps) {
@@ -26,7 +26,7 @@ export function CommunityActionButtons({
           className="community-action-buttons__membership-btn"
           onClick={onMembershipClick}
         >
-          {isOrganizer === true ? 'My Community' : 'My membership'}
+          {isOrganiser === true ? 'My Community' : 'My membership'}
           <IconMore className="community-action-buttons__membership-btn-icon" />
         </button>
       ) : (
@@ -39,7 +39,7 @@ export function CommunityActionButtons({
           Join this community
         </button>
       )}
-      {isOrganizer === true && (
+      {isOrganiser === true && (
         <button type="button" className="community-action-buttons__create-event-btn">
           Create event
         </button>

@@ -344,21 +344,21 @@
     position: sticky;
     top: calc(104px + 2rem); /* 104 = 2 menu heights */
   }
-  .organizers-container {
+  .organisers-container {
     display: flex;
     gap: 1rem;
     align-items: center;
     padding-bottom: 1rem;
   }
-  .organizers-details {
+  .organisers-details {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
-  .organizers-details__label {
+  .organisers-details__label {
 
   }
-  .organizers-details__contact {
+  .organisers-details__contact {
     display: flex;
     gap: 0.25rem;
     color: var(--nav-link-color);

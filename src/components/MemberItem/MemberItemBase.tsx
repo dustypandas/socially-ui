@@ -5,7 +5,7 @@ import './member-item.css';
 
 type MemberItemEngagementDetails = Pick<
   CommunityMember,
-  'isOrganizer' | 'joinedSince' | 'lastActivity'
+  'isOrganiser' | 'joinedSince' | 'lastActivity'
 >;
 
 type MemberItemBaseProps = {
@@ -84,7 +84,7 @@ function MemberItemEngagement({
 }: {
   details: MemberItemEngagementDetails;
 }) {
-  const roleLabel = details.isOrganizer === true ? 'Organizer' : 'Member';
+  const roleLabel = details.isOrganiser === true ? 'Organiser' : 'Member';
   const joinedLabel = details.joinedSince.toLocaleDateString('en-US', {
     month: 'short',
     year: 'numeric',

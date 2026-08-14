@@ -56,7 +56,7 @@ export const communities = {
       count: 106,
       eventsCount: 10,
     },
-    organizers: [
+    organisers: [
       members.peter,
     ],
     members: {
@@ -81,7 +81,7 @@ export const communities = {
       count: 188,
       eventsCount: 25,
     },
-    organizers: [
+    organisers: [
       members.achi,
       members.peter,
       members.maria,
@@ -108,7 +108,7 @@ export const communities = {
       count: 34,
       eventsCount: 37,
     },
-    organizers: [
+    organisers: [
       members.lucy,
       members.dom,
     ],
@@ -131,7 +131,7 @@ export const communities = {
       count: 0, // count: 34,
       eventsCount: 2,
     },
-    organizers: [
+    organisers: [
       members.olivia,
       members.dom,
     ],
@@ -154,7 +154,7 @@ export const communities = {
       count: 17,
       eventsCount: 8,
     },
-    organizers: [
+    organisers: [
       members.caro,
       members.achi,
     ],
@@ -180,7 +180,7 @@ export const communities = {
       count: 367,
       eventsCount: 89,
     },
-    organizers: [
+    organisers: [
       members.maria,
     ],
     members: {

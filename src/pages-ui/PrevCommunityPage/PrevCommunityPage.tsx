@@ -69,7 +69,7 @@ export function PrevCommunityPage() {
               {/* <i className='gm-icon icon-member'/> */}
               <IconMember className='gm-icon gm-icon-member' />
               <div className='community-intro__attribute-label'>
-                Organized by {nameAndOthersLabel(communityData.organizers)}
+                Organised by {nameAndOthersLabel(communityData.organisers)}
               </div>
             </div>
             <div className='community-intro__attribute'>
@@ -228,19 +228,19 @@ export function PrevCommunityPage() {
         </div>
         <div className='community-details__sidebar prev-column-right'>
           <div className='community-details__sidebar-sticky'>
-            <h2>Organizers</h2>
-            <div className='organizers-container'>
+            <h2>Organisers</h2>
+            <div className='organisers-container'>
               <img
                 className='member-item__member-img'
-                src={communityData.organizers.slice(0, 1).pop()?.img}
+                src={communityData.organisers.slice(0, 1).pop()?.img}
               />
-              <div className='organizers-details'>
-                <div className='organizers-details__label'>
-                  {nameAndOthersLabel(communityData.organizers)}
+              <div className='organisers-details'>
+                <div className='organisers-details__label'>
+                  {nameAndOthersLabel(communityData.organisers)}
                 </div>
-                <a href='#' className='organizers-details__contact gm-animated'>
+                <a href='#' className='organisers-details__contact gm-animated'>
                   <IconContact className='gm-icon gm-icon-contact' />
-                  <div className='organizers-details__contact-label'>
+                  <div className='organisers-details__contact-label'>
                     contact
                   </div>
                 </a>

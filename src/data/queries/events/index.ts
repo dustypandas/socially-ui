@@ -1,4 +1,4 @@
-import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANIZERS, pastEventsForOneCommunity, reviewsForOneEvent } from '../../stores/dummyData.ts';
+import { events, eventsForOneInterest, futureEventsForOneCommunity, ORGANISERS, pastEventsForOneCommunity, reviewsForOneEvent } from '../../stores/dummyData.ts';
 import { sessionState, tempEventStatusesMap } from '../../stores/userData/index.ts';
 import type { Event, EventBasic, EventViewerStatus } from '@src/common-libs/types';
 import { type EventsFilterParams, shuffleArray } from '@src/common-libs/helpers';
@@ -55,7 +55,7 @@ export async function getOneEvent(): Promise<Event> {
 
   return {
     ...event,
-    hosts: [ORGANIZERS.achi, ORGANIZERS.peter],
+    hosts: [ORGANISERS.achi, ORGANISERS.peter],
     addressLocation: {
       name: 'Espacio Polylogue',
       label: 'Palacio',

@@ -7,6 +7,19 @@
   padding-bottom: 2rem;
 }
 
+.community-page--unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--global-header-height) - 6rem);
+}
+
+.community-page--unavailable p {
+  @apply heading-h2;
+  color: var(--global-text-light);
+  text-align: center;
+}
+
 /* .community-page__hero {
   padding: 0;
 } */

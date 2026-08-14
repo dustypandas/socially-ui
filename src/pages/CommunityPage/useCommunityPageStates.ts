@@ -74,11 +74,11 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
     let pageData: CommunityPageData;
 
-    if ((variant === 'member' || variant === 'organizer') && !hasLeftMembership) {
+    if ((variant === 'member' || variant === 'organiser') && !hasLeftMembership) {
       pageData = {
         ...rawCommunityPageData,
         communityViewerStatus: 'member' as const,
-        isOrganizer: variant === 'organizer',
+        isOrganiser: variant === 'organiser',
       };
     } else if (variant !== 'empty') {
       pageData = rawCommunityPageData;
@@ -93,12 +93,12 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
         membersCount: 1,
         communityMembers: rawCommunityPageData.communityMembers.slice(0, 1),
         reviewsForOneCommunity: [],
-        organizers: rawCommunityPageData.organizers.slice(0, 1),
+        organisers: rawCommunityPageData.organisers.slice(0, 1),
         descriptionHtml: getFirstTwoParagraphs(rawCommunityPageData.descriptionHtml),
       };
     }
 
-    if (pageData.isOrganizer === true) {
+    if (pageData.isOrganiser === true) {
       return pageData;
     }
 
@@ -120,7 +120,8 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
   'member',
-  'organizer',
+  'organiser',
+  'rejected',
 ] as const;
 
 export type CommunityPageClientProps = {

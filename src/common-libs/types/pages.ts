@@ -76,7 +76,7 @@ export type CommunitiesPageData = {
 export type CommunityPageData =
 & Community
 & {
-  organizers: MemberAvatar[];
+  organisers: MemberAvatar[];
   communityMembers: CommunityMember[];
   communityMemberRequests?: CommunityMemberRequest[];
   reviewsForOneCommunity: EventReview[];
@@ -87,7 +87,7 @@ export type CommunityPageData =
   recentLocations: Array<MapLocation & { id: string }>;
   entryConditions?: CommunityEntryConditions;
   communityViewerStatus: MemberCommunity['status'] | null;
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
 };
 
 export type MemberPageData =

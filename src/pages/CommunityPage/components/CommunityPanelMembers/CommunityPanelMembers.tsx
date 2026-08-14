@@ -13,7 +13,7 @@ const PAGE_SIZE = 20;
 type CommunityPanelMembersProps = {
   members: CommunityMember[];
   memberRequests?: CommunityMemberRequest[];
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   requestBadgeCount?: number;
   onRequestsViewed?: () => void;
   onScrollToTop?: () => void;
@@ -22,7 +22,7 @@ type CommunityPanelMembersProps = {
 export function CommunityPanelMembers({
   members,
   memberRequests = [],
-  isOrganizer = false,
+  isOrganiser = false,
   requestBadgeCount = 0,
   onRequestsViewed,
   onScrollToTop,
@@ -52,7 +52,7 @@ export function CommunityPanelMembers({
     setVisibleCount(PAGE_SIZE);
     onScrollToTop?.();
   };
-  const activeFilter = memberFilter === 'requests' && !isOrganizer ? 'all' : memberFilter;
+  const activeFilter = memberFilter === 'requests' && !isOrganiser ? 'all' : memberFilter;
   const isRequests = activeFilter === 'requests';
   const visibleMembers = getFilteredMembers(members, activeFilter, searchQuery);
   const visibleRequests = getFilteredRequests(memberRequests, searchQuery);
@@ -102,7 +102,7 @@ export function CommunityPanelMembers({
             onQueryChange={handleQueryChange}
             value={activeFilter}
             onChange={handleFilterChange}
-            isOrganizer={isOrganizer}
+            isOrganiser={isOrganiser}
             requestBadgeCount={requestBadgeCount}
           />
         </div>
@@ -116,8 +116,8 @@ function getFilteredMembers(
   filter: CommunityMemberFilterId,
   query: string,
 ): CommunityMember[] {
-  const visibleMembers = filter === 'organizers'
-    ? members.filter(member => member.isOrganizer)
+  const visibleMembers = filter === 'organisers'
+    ? members.filter(member => member.isOrganiser)
     : members;
 
   return filterByLabel(visibleMembers, query);
@@ -145,9 +145,9 @@ function getMembersSectionTitle(
   filter: CommunityMemberFilterId,
 ): string {
   switch (filter) {
-    case 'organizers': {
-      const count = members.filter(member => member.isOrganizer).length;
-      return `${count} ${count === 1 ? 'organizer' : 'organizers'}`;
+    case 'organisers': {
+      const count = members.filter(member => member.isOrganiser).length;
+      return `${count} ${count === 1 ? 'organiser' : 'organisers'}`;
     }
     case 'requests': {
       const count = memberRequests.length;

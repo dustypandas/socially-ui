@@ -1,4 +1,4 @@
-import { ORGANIZERS } from './stores/dummyData.ts'; // pages shouldn't import any data from dummyData directly, only through model apis
+import { ORGANISERS } from './stores/dummyData.ts'; // pages shouldn't import any data from dummyData directly, only through model apis
 import type { CommunitiesPageData, CommunityPageData, EventPageData, EventsPageData, HomePageData, HomeProfilePageData, InterestPageData, InterestsPageData, MemberPageData } from '@src/common-libs/types';
 import type { CommunityScope } from '@src/common-libs/helpers';
 import {
@@ -179,7 +179,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
       </p>
     `,
     interests: ['public-speaking', 'technology', 'fresh'],
-    organizers: [ORGANIZERS.achi, ORGANIZERS.peter, ORGANIZERS.maria],
+    organisers: [ORGANISERS.achi, ORGANISERS.peter, ORGANISERS.maria],
     communityMembers,
     communityMemberRequests,
     reviewsForOneCommunity,

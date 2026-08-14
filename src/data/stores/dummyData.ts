@@ -81,7 +81,7 @@ function toMemberHostAvatar(member: (typeof members)[number]): MemberAvatar {
   };
 }
 
-export const ORGANIZERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
+export const ORGANISERS: Record<'achi' | 'peter' | 'maria', MemberAvatar> = {
   'achi': toMemberHostAvatar(members[2]),
   'peter': toMemberHostAvatar(members[0]),
   'maria': toMemberHostAvatar(members[1]),
@@ -98,7 +98,7 @@ function getDynamicAttendees(attendeesCount: number) {
 }
 
 export const memberForOneProfile: MemberProfile = {
-  ...ORGANIZERS.maria,
+  ...ORGANISERS.maria,
   firstName: 'Maria',
   lastName: 'Miku',
   city: 'Madrid, Spain',
@@ -247,7 +247,7 @@ export const communityMembersForOneCommunity: CommunityMember[] =
       hostedCount: index < 3 ? [7, 3, 2][index] ?? 0 : 0,
       joinedSince: getTimestampFromNow(2, 19, 0),
       lastActivity: getTimestampFromNow(1, 19, 0),
-      isOrganizer: index < 3,
+      isOrganiser: index < 3,
       status: 'member' as const,
     };
   });

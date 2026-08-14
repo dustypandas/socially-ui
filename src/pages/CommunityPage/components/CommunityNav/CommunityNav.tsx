@@ -20,7 +20,7 @@ const NAV_LINKS = [
 type CommunityNavProps = {
   activePanel: CommunityPanelId;
   communityViewerStatus: MemberCommunity['status'] | null;
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   membersBadgeCount?: number;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
@@ -31,7 +31,7 @@ type CommunityNavProps = {
 export function CommunityNav({
   activePanel,
   communityViewerStatus,
-  isOrganizer,
+  isOrganiser,
   membersBadgeCount = 0,
   onJoinClick,
   onMembershipClick,
@@ -79,7 +79,7 @@ export function CommunityNav({
             <ColumnsLayout.Aside asideWidth="min(380px, 38%)" className="community-nav__actions-container">
               <CommunityActionButtons
                 membershipStatus={communityViewerStatus}
-                isOrganizer={isOrganizer}
+                isOrganiser={isOrganiser}
                 onJoinClick={onJoinClick}
                 onMembershipClick={onMembershipClick}
               />

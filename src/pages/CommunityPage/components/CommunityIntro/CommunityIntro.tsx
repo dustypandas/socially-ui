@@ -13,10 +13,10 @@ type CommunityIntroProps = {
   rating: number;
   ratingCount: number;
   communityViewerStatus: MemberCommunity['status'] | null;
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
-  // organizers: MemberAvatar[];
+  // organisers: MemberAvatar[];
 };
 
 export function CommunityIntro({
@@ -25,10 +25,10 @@ export function CommunityIntro({
   rating,
   ratingCount,
   communityViewerStatus,
-  isOrganizer,
+  isOrganiser,
   onJoinClick,
   onMembershipClick,
-  // organizers,
+  // organisers,
 }: CommunityIntroProps) {
   return (
     <div className="community-intro">
@@ -50,7 +50,7 @@ export function CommunityIntro({
       <div className="community-intro__actions-container">
         <CommunityActionButtons
           membershipStatus={communityViewerStatus}
-          isOrganizer={isOrganizer}
+          isOrganiser={isOrganiser}
           onJoinClick={onJoinClick}
           onMembershipClick={onMembershipClick}
         />

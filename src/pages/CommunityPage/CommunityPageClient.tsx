@@ -28,6 +28,16 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
   const [activePanel, setActivePanel] = useState<CommunityPanelId>('about');
 
+  if (variant === 'rejected') {
+    return (
+      <PageLayout hasStaticHeader>
+        <div className="community-page community-page--unavailable">
+          <p>This page is not available</p>
+        </div>
+      </PageLayout>
+    );
+  }
+
   if (!communityPageData) {
     return null;
   }
@@ -82,7 +92,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 rating={communityPageData.rating}
                 ratingCount={communityPageData.ratingCount}
                 communityViewerStatus={communityPageData.communityViewerStatus}
-                isOrganizer={communityPageData.isOrganizer === true}
+                isOrganiser={communityPageData.isOrganiser === true}
                 onJoinClick={handleJoinClick}
                 onMembershipClick={handleMembershipClick}
               />
@@ -93,7 +103,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         <CommunityNav
           activePanel={activePanel}
           communityViewerStatus={communityPageData.communityViewerStatus}
-          isOrganizer={communityPageData.isOrganizer === true}
+          isOrganiser={communityPageData.isOrganiser === true}
           membersBadgeCount={requestBadgeCount}
           onJoinClick={handleJoinClick}
           onMembershipClick={handleMembershipClick}
@@ -108,7 +118,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               futureEvents={communityPageData.futureEvents}
               pastEvents={communityPageData.pastEvents}
               pastEventsTotalCount={communityPageData.pastEventsTotalCount}
-              organizers={communityPageData.organizers}
+              organisers={communityPageData.organisers}
               recentLocations={communityPageData.recentLocations}
             />
           )}
@@ -119,7 +129,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
             <CommunityPanelMembers
               members={communityPageData.communityMembers}
               memberRequests={communityPageData.communityMemberRequests}
-              isOrganizer={communityPageData.isOrganizer === true}
+              isOrganiser={communityPageData.isOrganiser === true}
               requestBadgeCount={requestBadgeCount}
               onRequestsViewed={resolveMemberRequests}
               onScrollToTop={scrollToTop}
@@ -145,7 +155,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
       <CommunityOverlayActions
         communityId={communityPageData.id}
         isOpen={isActionsOverlayOpen}
-        isOrganizer={communityPageData.isOrganizer === true}
+        isOrganiser={communityPageData.isOrganiser === true}
         onClose={handleActionsOverlayClose}
         onLeaveSuccess={markMembershipCleared}
       />

@@ -1,7 +1,7 @@
 import type { EventBasic, MapLocation, MemberAvatar } from '@src/common-libs/types';
 import { ColumnsLayout } from '@src/components';
 import { CommunityLocations } from './CommunityLocations';
-import { CommunityOrganizers } from './CommunityOrganizers';
+import { CommunityOrganisers } from './CommunityOrganisers';
 import { CommunitySectionAbout } from './CommunitySectionAbout';
 import { CommunitySectionEvents } from './CommunitySectionEvents';
 import { CommunitySectionPastEvents } from './CommunitySectionPastEvents';
@@ -12,7 +12,7 @@ type CommunityPanelAboutProps = {
   futureEvents: EventBasic[];
   pastEvents: EventBasic[];
   pastEventsTotalCount: number;
-  organizers: MemberAvatar[];
+  organisers: MemberAvatar[];
   recentLocations: Array<MapLocation & { id: string }>;
 };
 
@@ -21,7 +21,7 @@ export function CommunityPanelAbout({
   futureEvents,
   pastEvents,
   pastEventsTotalCount,
-  organizers,
+  organisers,
   recentLocations,
 }: CommunityPanelAboutProps) {
   return (
@@ -44,7 +44,7 @@ export function CommunityPanelAbout({
       <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
         <div className="community-page__aside">
           <div className="community-page__divider--hidden" />
-          <CommunityOrganizers organizers={organizers} />
+          <CommunityOrganisers organisers={organisers} />
           <CommunityLocations locations={recentLocations} />
         </div>
       </ColumnsLayout.Aside>

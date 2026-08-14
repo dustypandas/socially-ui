@@ -1,12 +1,12 @@
 import { ButtonsGroup } from '@src/components';
 import './community-member-filters.css';
 
-export type CommunityMemberFilterId = 'all' | 'organizers' | 'requests';
+export type CommunityMemberFilterId = 'all' | 'organisers' | 'requests';
 
 const FILTERS = [
   { id: 'requests', label: 'Requests' },
   { id: 'all', label: 'All Members' },
-  { id: 'organizers', label: 'Organizers' },
+  { id: 'organisers', label: 'Organisers' },
 ] as const satisfies readonly { id: CommunityMemberFilterId; label: string }[];
 
 type CommunityMemberFiltersProps = {
@@ -14,7 +14,7 @@ type CommunityMemberFiltersProps = {
   onQueryChange: (value: string) => void;
   value: CommunityMemberFilterId;
   onChange: (value: CommunityMemberFilterId) => void;
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   requestBadgeCount?: number;
 };
 
@@ -23,10 +23,10 @@ export function CommunityMemberFilters({
   onQueryChange,
   value,
   onChange,
-  isOrganizer = false,
+  isOrganiser = false,
   requestBadgeCount = 0,
 }: CommunityMemberFiltersProps) {
-  const filters = isOrganizer
+  const filters = isOrganiser
     ? FILTERS
     : FILTERS.filter(filter => filter.id !== 'requests');
   return (

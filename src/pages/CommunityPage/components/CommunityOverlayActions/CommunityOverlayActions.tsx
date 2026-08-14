@@ -5,7 +5,7 @@ import './community-overlay-actions.css';
 
 type LeaveStatus = 'idle' | 'loading';
 
-const ORGANIZER_OPTIONS = [
+const ORGANISER_OPTIONS = [
   'Edit community page',
   'Contact members',
   'Set member roles',
@@ -14,7 +14,7 @@ const ORGANIZER_OPTIONS = [
 type CommunityOverlayActionsProps = {
   communityId: string;
   isOpen: boolean;
-  isOrganizer?: boolean;
+  isOrganiser?: boolean;
   onClose: () => void;
   onLeaveSuccess?: () => void;
 };
@@ -22,7 +22,7 @@ type CommunityOverlayActionsProps = {
 export function CommunityOverlayActions({
   communityId,
   isOpen,
-  isOrganizer,
+  isOrganiser,
   onClose,
   onLeaveSuccess,
 }: CommunityOverlayActionsProps) {
@@ -61,7 +61,7 @@ export function CommunityOverlayActions({
     <Overlay isOpen={isOpen} onClose={onClose}>
       <div className="community-overlay-actions__header">
         <h2 className="community-overlay-actions__title">
-          {isOrganizer === true ? 'My Community' : 'My Membership'}
+          {isOrganiser === true ? 'My Community' : 'My Membership'}
         </h2>
         <button
           type="button"
@@ -73,9 +73,9 @@ export function CommunityOverlayActions({
         </button>
       </div>
       <div className="community-overlay-actions__options">
-        {isOrganizer === true && (
+        {isOrganiser === true && (
           <>
-            {ORGANIZER_OPTIONS.map(label => (
+            {ORGANISER_OPTIONS.map(label => (
               <button
                 key={label}
                 type="button"

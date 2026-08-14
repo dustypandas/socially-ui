@@ -20,7 +20,7 @@ const COLUMNS = [
   {
     title: 'Free, Forever <span class="text--full-color">🎉</span>',
     text: [
-      'Great communities take effort and energy, and the organizers are heroes, who help make this city feel just a little warmer, a little more enjoyable and fun, for all of us!',
+      'Great communities take effort and energy, and the organisers are heroes, who help make this city feel just a little warmer, a little more enjoyable and fun, for all of us!',
       'So Socially will always be FREE for the creators of our events and communities.',
       'Instead of being "customers" - we\'re all in this together. Come be a comrade, come be a friend! <span class="text--full-color">🍔</span>',
     ],

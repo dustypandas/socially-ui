@@ -33,7 +33,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
       return {
         ...current,
-        communityViewerStatus: 'pending',
+        viewerStatus: 'pending',
       };
     });
   }, []);
@@ -47,7 +47,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
       return {
         ...current,
-        communityViewerStatus: null,
+        viewerStatus: null,
       };
     });
   }, []);
@@ -77,7 +77,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     if ((variant === 'member' || variant === 'organiser') && !hasLeftMembership) {
       pageData = {
         ...rawCommunityPageData,
-        communityViewerStatus: 'member' as const,
+        viewerStatus: 'member' as const,
         isOrganiser: variant === 'organiser',
       };
     } else if (variant !== 'empty') {

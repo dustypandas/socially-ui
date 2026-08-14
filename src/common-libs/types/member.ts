@@ -1,4 +1,4 @@
-import type { CommunityAvatar } from './community.ts';
+import type { CommunityAvatar, CommunityViewerStatus } from './community.ts';
 import type { InterestBasic } from './interest.ts';
 import type { MapLocation } from './primitives.ts';
 
@@ -50,7 +50,7 @@ export type MemberCommunity =
   isOrganiser?: boolean;
   isHost?: boolean;
   isContributor?: boolean;
-  status: 'member' | 'pending' | 'rejected' | 'banned';
+  status: CommunityViewerStatus;
 };
 
 export type CommunityMember =
@@ -60,7 +60,7 @@ export type CommunityMember =
   isOrganiser?: boolean;
   isHost?: boolean;
   isContributor?: boolean;
-  status: 'member' | 'pending' | 'rejected' | 'banned';
+  status: CommunityViewerStatus;
 };
 
 export type HomeProfileMember = {

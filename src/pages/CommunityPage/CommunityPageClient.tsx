@@ -42,7 +42,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     return null;
   }
 
-  const communityViewerStatus = communityPageData.communityViewerStatus;
+  const communityViewerStatus = communityPageData.viewerStatus;
   const requestBadgeCount = hasResolvedMemberRequests
     ? 0
     : communityPageData.communityMemberRequests?.length ?? 0;
@@ -91,7 +91,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 memberCount={communityPageData.membersCount}
                 rating={communityPageData.rating}
                 ratingCount={communityPageData.ratingCount}
-                communityViewerStatus={communityPageData.communityViewerStatus}
+                viewerStatus={communityPageData.viewerStatus}
                 isOrganiser={communityPageData.isOrganiser === true}
                 onJoinClick={handleJoinClick}
                 onMembershipClick={handleMembershipClick}
@@ -102,7 +102,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
 
         <CommunityNav
           activePanel={activePanel}
-          communityViewerStatus={communityPageData.communityViewerStatus}
+          viewerStatus={communityPageData.viewerStatus}
           isOrganiser={communityPageData.isOrganiser === true}
           membersBadgeCount={requestBadgeCount}
           onJoinClick={handleJoinClick}

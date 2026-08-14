@@ -1,9 +1,6 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { MemberCommunity } from '@src/common-libs/types';
-// import IconUser from '@src/assets/icon-user-outline.svg?react';
-// import type { MemberAvatar } from '@src/data';
-// import { nameAndOthersLabel } from '@src/pages/CommunityPage/helpers';
+import type { CommunityViewerStatus } from '@src/common-libs/types';
 import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
 import './community-intro.css';
 
@@ -12,7 +9,7 @@ type CommunityIntroProps = {
   memberCount: number;
   rating: number;
   ratingCount: number;
-  communityViewerStatus: MemberCommunity['status'] | null;
+  viewerStatus?: CommunityViewerStatus;
   isOrganiser?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
@@ -24,7 +21,7 @@ export function CommunityIntro({
   memberCount,
   rating,
   ratingCount,
-  communityViewerStatus,
+  viewerStatus,
   isOrganiser,
   onJoinClick,
   onMembershipClick,
@@ -49,7 +46,7 @@ export function CommunityIntro({
       </div>
       <div className="community-intro__actions-container">
         <CommunityActionButtons
-          membershipStatus={communityViewerStatus}
+          viewerStatus={viewerStatus}
           isOrganiser={isOrganiser}
           onJoinClick={onJoinClick}
           onMembershipClick={onMembershipClick}

@@ -1,5 +1,5 @@
-import type { Community, CommunityAvatar, CommunityBasic, CommunityEntryConditions, CommunityMemberRequest } from './community.ts';
-import type { Event, EventAttendees, EventBasic, EventReview } from './event.ts';
+import type { Community, CommunityAvatar, CommunityBasic, CommunityEntryConditions, CommunityMemberRequest, CommunityViewerStatus } from './community.ts';
+import type { Event, EventAttendees, EventBasic, EventReview, EventViewerStatus } from './event.ts';
 import type { HomeProfilePopularInterest, Interest } from './interest.ts';
 import type {
   CommunityMember,
@@ -58,8 +58,6 @@ export type EventsPageData = {
   filteredEvents: EventBasic[];
 };
 
-export type EventViewerStatus = 'member' | 'pending' | 'attending' | 'late' | 'waitlisted' | 'notAttending' | 'banned';
-
 export type EventPageData =
 & Event
 & {
@@ -86,7 +84,7 @@ export type CommunityPageData =
   pastEvents: EventBasic[];
   recentLocations: Array<MapLocation & { id: string }>;
   entryConditions?: CommunityEntryConditions;
-  communityViewerStatus: MemberCommunity['status'] | null;
+  viewerStatus?: CommunityViewerStatus | null;
   isOrganiser?: boolean;
 };
 

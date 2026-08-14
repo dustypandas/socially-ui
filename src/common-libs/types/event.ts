@@ -1,4 +1,4 @@
-import type { CommunityAvatar } from './community.ts';
+import type { CommunityAvatar, CommunityViewerStatus } from './community.ts';
 import type { MemberAvatar } from './member.ts';
 import type { AddressLocation, MapLocation } from './primitives.ts';
 
@@ -52,3 +52,10 @@ export type EventReview = {
   content: string;
   date: Date;
 };
+
+export type EventViewerStatus =
+| CommunityViewerStatus
+| 'attending' // rsvp'd attending
+| 'late' // rsvp'd will be late 
+| 'notAttending' // rsvp'd not attending
+| 'waitlisted'; // rsvp'd attending, but event is full (notify later)

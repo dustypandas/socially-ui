@@ -1,22 +1,22 @@
 import IconMore from '@src/assets/icon-more-outline.svg?react';
-import type { MemberCommunity } from '@src/common-libs/types';
+import type { CommunityViewerStatus } from '@src/common-libs/types';
 import './community-action-buttons.css';
 
 type CommunityActionButtonsProps = {
-  membershipStatus: MemberCommunity['status'] | null;
+  viewerStatus?: CommunityViewerStatus;
   isOrganiser?: boolean;
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
 };
 
 export function CommunityActionButtons({
-  membershipStatus,
+  viewerStatus,
   isOrganiser,
   onJoinClick,
   onMembershipClick,
 }: CommunityActionButtonsProps) {
-  const isJoinPending = membershipStatus === 'pending';
-  const isMember = membershipStatus === 'member';
+  const isJoinPending = viewerStatus === 'pending';
+  const isMember = viewerStatus === 'member';
 
   return (
     <div className="community-action-buttons">

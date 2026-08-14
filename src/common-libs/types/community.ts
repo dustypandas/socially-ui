@@ -42,3 +42,11 @@ export type CommunityMemberRequest =
   basicDetails: MemberQuestionResponse[];
   otherDetails: MemberQuestionResponse[];
 };
+
+export type CommunityViewerStatus =
+| 'visitor' // logged in, but not a member of the community
+| 'pending' // requested to join community, not yet approved
+| 'member' // is a member of the community
+| 'rejected' // rejected to join community
+| 'banned' // rejected or banned from community
+| null; // not logged in

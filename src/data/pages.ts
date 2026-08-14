@@ -187,7 +187,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
     pastEvents,
     recentLocations,
     entryConditions,
-    communityViewerStatus,
+    viewerStatus: communityViewerStatus,
   };
 }
 

@@ -27,6 +27,7 @@ export function IndexPage() {
       <span>
         &emsp;<a href='#/one-community-ui'>One Community ui</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-empty'>(empty)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-community-ui-public'>(public)</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-member'>(member)</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-organiser'>(organiser)</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-rejected'>(rejected)</a>

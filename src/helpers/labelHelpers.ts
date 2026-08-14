@@ -65,6 +65,9 @@ export function getReviewTimeLabel(date: Date, now = new Date()): string {
 }
 
 export function getUpcomingEventsSectionTitle(count: number): string {
+  if (count === 0) {
+    return 'No upcoming events';
+  }
   const noun = count === 1 ? 'Event' : 'Events';
   return `${count} Upcoming ${noun}`;
 }

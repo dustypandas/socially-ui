@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ColumnsLayout, PageLayout } from '@src/components';
+import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
 import { getElementDocumentOffsetTop } from '@src/hooks/useScrolledPastDistance';
 import {
   CommunityHero,
@@ -16,19 +16,25 @@ import type { CommunityPanelId } from './components';
 import { CommunityPageClientProps, useCommunityPageStates } from './useCommunityPageStates';
 import './community-page.css';
 
+const LOGIN_GATED_PANELS: ReadonlySet<CommunityPanelId> = new Set(['events', 'members']);
+
 export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const {
     communityPageData,
+    viewerStatus,
     hasResolvedMemberRequests,
     resolveMemberRequests,
     markJoinPending,
     markMembershipCleared,
   } = useCommunityPageStates({ variant });
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
+  const [isLoginOverlayOpen, setIsLoginOverlayOpen] = useState(false);
   const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
+  const [loginOnSuccess, setLoginOnSuccess] = useState<(() => void) | undefined>();
   const [activePanel, setActivePanel] = useState<CommunityPanelId>('about');
+  const isLoggedOut = viewerStatus === null;
 
-  if (variant === 'rejected') {
+  if (viewerStatus === 'banned') {
     return (
       <PageLayout hasStaticHeader>
         <div className="community-page community-page--unavailable">
@@ -42,28 +48,51 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     return null;
   }
 
-  const communityViewerStatus = communityPageData.viewerStatus;
   const requestBadgeCount = hasResolvedMemberRequests
     ? 0
     : communityPageData.communityMemberRequests?.length ?? 0;
-  const handleJoinClick = () => {
-    if (
-      communityViewerStatus === 'pending'
-      || communityViewerStatus === 'member'
-    ) {
-      return;
-    }
 
-    setIsJoinOverlayOpen(true);
+  const openLoginOverlay = (onSuccess: () => void) => {
+    setLoginOnSuccess(() => onSuccess);
+    setIsLoginOverlayOpen(true);
   };
-  const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
+  const openJoinOverlay = () => setIsJoinOverlayOpen(true);
+  const navigateToPanel = (panelId: CommunityPanelId) => {
+    setActivePanel(panelId);
+    scrollToTop();
+  };
 
-  const handleMembershipClick = () => {
-    if (communityViewerStatus !== 'member') {
+  const handleJoinClick = () => {
+    if (isLoggedOut) {
+      openLoginOverlay(openJoinOverlay);
       return;
     }
 
+    if (
+      viewerStatus === 'pending'
+      || viewerStatus === 'member'
+    ) {
+      return; // ignore if already a member or pending
+    }
+
+    openJoinOverlay();
+  };
+  const handleNavigateClick = (panelId: CommunityPanelId) => {
+    if (isLoggedOut && LOGIN_GATED_PANELS.has(panelId)) {
+      openLoginOverlay(() => navigateToPanel(panelId));
+      return;
+    }
+
+    navigateToPanel(panelId);
+  };
+  const handleMembershipClick = () => {
     setIsActionsOverlayOpen(true);
+  };
+
+  const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
+  const handleLoginOverlayClose = () => {
+    setIsLoginOverlayOpen(false);
+    setLoginOnSuccess(undefined);
   };
   const handleActionsOverlayClose = () => setIsActionsOverlayOpen(false);
 
@@ -78,7 +107,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   };
 
   return (
-    <PageLayout hasStaticHeader>
+    <PageLayout hasStaticHeader headerVariant={isLoggedOut ? 'loggedOut' : undefined}>
       <section className="community-page">
         <div id="community-hero" className="width-container community-page__hero">
           <ColumnsLayout>
@@ -107,8 +136,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           membersBadgeCount={requestBadgeCount}
           onJoinClick={handleJoinClick}
           onMembershipClick={handleMembershipClick}
-          onNavigate={setActivePanel}
-          onScrollToTop={scrollToTop}
+          onNavigate={handleNavigateClick}
         />
 
         <div className="width-container community-page__content">
@@ -143,6 +171,12 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           )}
         </div>
       </section>
+
+      <AuthLoginOverlay
+        isOpen={isLoginOverlayOpen}
+        onClose={handleLoginOverlayClose}
+        onSuccess={loginOnSuccess}
+      />
 
       <CommunityOverlayJoin
         communityId={communityPageData.id}

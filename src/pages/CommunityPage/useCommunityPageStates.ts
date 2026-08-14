@@ -4,7 +4,7 @@ import {
   getResolvedCommunityMemberRequests,
   resolveCommunityMemberRequests,
 } from '@src/data';
-import type { CommunityPageData } from '@src/common-libs/types';
+import type { CommunityPageData, CommunityViewerStatus } from '@src/common-libs/types';
 
 export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
   const [rawCommunityPageData, setRawCommunityPageData] = useState<CommunityPageData | null>(null);
@@ -47,7 +47,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
       return {
         ...current,
-        viewerStatus: null,
+        viewerStatus: 'visitor',
       };
     });
   }, []);
@@ -74,17 +74,28 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
     let pageData: CommunityPageData;
 
-    if ((variant === 'member' || variant === 'organiser') && !hasLeftMembership) {
+    if (variant === 'rejected') {
+      pageData = {
+        ...rawCommunityPageData,
+        viewerStatus: 'banned',
+        isOrganiser: false,
+      };
+    } else if ((variant === 'member' || variant === 'organiser') && !hasLeftMembership) {
       pageData = {
         ...rawCommunityPageData,
         viewerStatus: 'member' as const,
         isOrganiser: variant === 'organiser',
       };
-    } else if (variant !== 'empty') {
-      pageData = rawCommunityPageData;
-    } else {
+    } else if (variant === 'public') {
       pageData = {
         ...rawCommunityPageData,
+        viewerStatus: null,
+        isOrganiser: false,
+      };
+    } else if (variant === 'empty') {
+      pageData = {
+        ...rawCommunityPageData,
+        viewerStatus: 'visitor',
         futureEvents: [],
         futureEventsTotalCount: 0,
         pastEvents: [],
@@ -95,6 +106,11 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
         reviewsForOneCommunity: [],
         organisers: rawCommunityPageData.organisers.slice(0, 1),
         descriptionHtml: getFirstTwoParagraphs(rawCommunityPageData.descriptionHtml),
+      };
+    } else {
+      pageData = {
+        ...rawCommunityPageData,
+        viewerStatus: 'visitor',
       };
     }
 
@@ -108,8 +124,13 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     };
   }, [variant, rawCommunityPageData, hasLeftMembership]);
 
+  const viewerStatus: CommunityViewerStatus | undefined = variant === 'rejected'
+    ? 'banned'
+    : communityPageData?.viewerStatus;
+
   return {
     communityPageData,
+    viewerStatus,
     hasResolvedMemberRequests,
     resolveMemberRequests,
     markJoinPending,
@@ -119,6 +140,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
 
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
+  'public',
   'member',
   'organiser',
   'rejected',

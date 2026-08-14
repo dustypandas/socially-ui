@@ -14,7 +14,7 @@ export function CommunitySectionEvents({ events }: CommunitySectionEventsProps) 
     <section className="community-section-events">
       <SectionTitle
         title={getUpcomingEventsSectionTitle(events.length)}
-        hideMore={events.length <= 3}
+        hideMore={isEmpty || events.length <= 3}
         moreHref="#"
         moreLabel="more events →"
       />

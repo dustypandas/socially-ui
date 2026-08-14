@@ -25,7 +25,6 @@ type CommunityNavProps = {
   onJoinClick?: () => void;
   onMembershipClick?: () => void;
   onNavigate: (panelId: CommunityPanelId) => void;
-  onScrollToTop: () => void;
 };
 
 export function CommunityNav({
@@ -36,7 +35,6 @@ export function CommunityNav({
   onJoinClick,
   onMembershipClick,
   onNavigate,
-  onScrollToTop,
 }: CommunityNavProps) {
   const navRef = useRef<HTMLElement>(null);
   const isDocked = useScrolledPastDistance({
@@ -65,7 +63,6 @@ export function CommunityNav({
                     onClick={(event) => {
                       event.preventDefault();
                       onNavigate(link.id);
-                      onScrollToTop();
                     }}
                   >
                     <span className="community-nav__link-label">{link.label}</span>

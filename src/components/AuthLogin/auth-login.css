@@ -1,47 +1,47 @@
-@import './auth-page.css';
+@import '../../pages/AuthPages/auth-page.css';
 
-.login-page__submit-group {
+.auth-login__submit-group {
   display: flex;
   flex-direction: column;
   margin-top: 0.5rem;
 }
 
-.login-page__submit-group .auth-page__submit {
+.auth-login__submit-group .auth-page__submit {
   margin-top: 0;
 }
 
-.login-page__messages {
+.auth-login__messages {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.3s ease;
 }
 
-.login-page__messages--visible {
+.auth-login__messages--visible {
   grid-template-rows: 1fr;
   margin-bottom: 1.25rem;
 }
 
-.login-page__messages-inner {
+.auth-login__messages-inner {
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.login-page__messages .auth-page__error {
+.auth-login__messages .auth-page__error {
   margin: 0;
   color: transparent;
 }
 
-.login-page__messages .auth-page__error--visible {
+.auth-login__messages .auth-page__error--visible {
   color: var(--color-red-600, #dc2626);
 }
 
-.login-page__messages .auth-page__reset-prompt {
+.auth-login__messages .auth-page__reset-prompt {
   margin: 0;
   color: var(--global-text-light);
 }
 
-.login-page__messages .auth-page__reset-prompt--hidden {
+.auth-login__messages .auth-page__reset-prompt--hidden {
   visibility: hidden;
 }

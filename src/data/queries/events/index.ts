@@ -16,7 +16,6 @@ const EVENT_INTERESTS_BY_ID: Record<string, string[]> = {
 const tempEvents: EventBasic[] = events.map(event => ({
   ...event,
   hosts: [],
-  location: { ...event.location, lat: 0, lng: 0 },
   eventInterests: EVENT_INTERESTS_BY_ID[event.id],
 }));
 

@@ -18,7 +18,7 @@ export type EventBasic =
 & EventLink
 & {
   image: string;
-  location: Pick<MapLocation, 'label'>;
+  location: MapLocation;
   attendees: EventAttendees;
   rating: number;
   ratingCount: number;

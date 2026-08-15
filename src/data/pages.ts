@@ -168,7 +168,7 @@ export async function getCommunityPageData(): Promise<CommunityPageData> {
 
   return {
     ...targetCommunity,
-    futureEventsTotalCount: 5,
+    futureEventsTotalCount: 15,
     pastEventsTotalCount: 25,
     descriptionHtml: `
       <p>

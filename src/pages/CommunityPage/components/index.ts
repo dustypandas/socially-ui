@@ -1,7 +1,6 @@
 export { CommunityActionButtons } from './CommunityActionButtons/CommunityActionButtons';
 export { CommunityHero } from './CommunityHero/CommunityHero';
 export { CommunityIntro } from './CommunityIntro/CommunityIntro';
-export { CommunityLocations } from './CommunityPanelAbout/CommunityLocations';
 export { CommunityNav } from './CommunityNav/CommunityNav';
 export type { CommunityPanelId } from './CommunityNav/CommunityNav';
 export { CommunityOrganisers } from './CommunityPanelAbout/CommunityOrganisers';

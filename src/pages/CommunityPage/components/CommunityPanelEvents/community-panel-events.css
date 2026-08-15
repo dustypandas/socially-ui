@@ -1,5 +1,23 @@
 @import 'tailwindcss';
+@import '../../../../globals.css';
 
 .community-panel-events {
   padding: 0 0 1rem;
+}
+
+.community-panel-events .events-grid {
+  margin: 0;
+}
+
+.community-panel-events__show-more {
+  display: block;
+  margin: 1.5rem auto 0;
+}
+
+.community-panel-events__empty {
+  margin: 3rem 0 1rem;
+  color: var(--global-text-light);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  text-align: center;
 }

@@ -1,6 +1,5 @@
 import type { EventBasic, MapLocation, MemberAvatar } from '@src/common-libs/types';
-import { ColumnsLayout } from '@src/components';
-import { CommunityLocations } from './CommunityLocations';
+import { ColumnsLayout, CommunityLocations } from '@src/components';
 import { CommunityOrganisers } from './CommunityOrganisers';
 import { CommunitySectionAbout } from './CommunitySectionAbout';
 import { CommunitySectionEvents } from './CommunitySectionEvents';
@@ -29,7 +28,7 @@ export function CommunityPanelAbout({
       <ColumnsLayout.Main>
         <div className="community-panel-about">
           <CommunitySectionAbout detailsHtml={descriptionHtml} />
-          <CommunitySectionEvents events={futureEvents} />
+          <CommunitySectionEvents events={futureEvents.slice(0, 3)} />
           {pastEventsTotalCount > 0 && (
             <>
               <div className="community-page__divider--hidden" />

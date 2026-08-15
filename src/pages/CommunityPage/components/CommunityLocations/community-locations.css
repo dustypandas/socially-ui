@@ -1,10 +1,15 @@
 @import 'tailwindcss';
+@import '../../globals.css';
 
 .community-locations {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem 0;
+}
+
+.community-locations .community-organisers__title {
+  @apply heading-h3;
 }
 
 .community-locations .map-container {

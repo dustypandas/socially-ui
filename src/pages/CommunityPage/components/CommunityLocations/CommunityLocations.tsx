@@ -1,12 +1,16 @@
 import type { MapLocation } from '@src/common-libs/types';
-import { MapContainer } from '@src/components';
+import { MapContainer } from '../../../../components/MapContainer/MapContainer';
 import './community-locations.css';
 
 type CommunityLocationsProps = {
   locations: Array<MapLocation & { id: string }>;
+  title?: string;
 };
 
-export function CommunityLocations({ locations }: CommunityLocationsProps) {
+export function CommunityLocations({
+  locations,
+  title = 'Recent Locations',
+}: CommunityLocationsProps) {
   if (locations.length === 0) {
     return null;
   }
@@ -14,7 +18,7 @@ export function CommunityLocations({ locations }: CommunityLocationsProps) {
   return (
     <section className="community-locations">
       <h3 className="community-organisers__title">
-        Recent Locations
+        {title}
       </h3>
       <MapContainer locations={locations} isWide />
     </section>

@@ -151,7 +151,11 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
             />
           )}
           {activePanel === 'events' && (
-            <CommunityPanelEvents />
+            <CommunityPanelEvents
+              futureEvents={communityPageData.futureEvents}
+              pastEvents={communityPageData.pastEvents}
+              onScrollToTop={scrollToTop}
+            />
           )}
           {activePanel === 'members' && (
             <CommunityPanelMembers

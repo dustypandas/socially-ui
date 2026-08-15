@@ -3,6 +3,7 @@ export { AuthLoginOverlay } from './AuthLogin/AuthLoginOverlay';
 export { ButtonsGroup } from './ButtonsGroup/ButtonsGroup';
 export { ColumnsLayout, useColumnsLayout } from './ColumnsLayout/ColumnsLayout';
 export { CommunityCard } from './CommunityCard/CommunityCard'
+export { CommunityLocations } from '../pages/CommunityPage/components/CommunityLocations/CommunityLocations';
 export { EventCard } from './EventCard/EventCard';
 export { EventCardHorizontal } from './EventCard/EventCardHorizontal';
 export { EventTimeline } from './EventTimeline/EventTimeline';

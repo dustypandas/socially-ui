@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.community-event-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.community-event-filters__group {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}

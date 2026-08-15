@@ -8,18 +8,6 @@
   padding: 0.75rem 0rem 0;
 }
 
-.community-intro__back {
-  color: var(--global-text-muted);
-  font-family: 'Courier Prime', monospace;
-  font-size: var(--font-size-md);
-  text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--global-text);
-  }
-}
-
 .community-intro__title {
   @apply heading-h1;
   line-height: 1.3;
@@ -35,9 +23,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--global-text-muted);
   font-size: var(--font-size-md);
   line-height: 1.5;
+  @apply clickable-text--muted;
 }
 
 .community-intro__icon {

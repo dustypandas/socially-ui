@@ -114,7 +114,6 @@
   font-size: var(--font-size-sm);
   cursor: pointer;
   @apply wiggle-link;
-  display: inline-block;
 }
 
 .community-overlay-join__submit {

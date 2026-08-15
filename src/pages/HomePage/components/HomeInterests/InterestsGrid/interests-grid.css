@@ -19,10 +19,8 @@
 }
 
 .interests-grid__link {
-  display: inline-block;
   color: var(--global-link-blue);
   font-size: var(--font-size-lg);
-  /* @apply text-ellipsis; */ /* full widht, changes wiggle center */
   @apply wiggle-link;
 }
 

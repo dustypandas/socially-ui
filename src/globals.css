@@ -195,6 +195,23 @@
   }
 }
 
+@utility clickable-text--muted {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--global-text-muted);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--global-text);
+  }
+}
+
+@utility clickable-text--expand-muted {
+  @apply clickable-text;
+  @apply clickable-text--muted;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
 @utility page-divider {
   height: 0;
   border-top: 1.5px solid var(--light-shadow);
@@ -267,7 +284,7 @@
 }
 
 @utility wiggle-link {
-  display: block;
+  display: inline-block;
   text-decoration: none;
 
   &:hover {

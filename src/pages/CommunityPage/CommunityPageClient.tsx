@@ -124,6 +124,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 isOrganiser={communityPageData.isOrganiser === true}
                 onJoinClick={handleJoinClick}
                 onMembershipClick={handleMembershipClick}
+                onNavigate={handleNavigateClick}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>

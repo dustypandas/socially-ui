@@ -29,7 +29,7 @@
   @apply clickable-text;
 
   &:hover {
-    transform: scale(1.03); /* more noticeable hover*/
+    transform: scale(1.03); /* more noticeable hover */
   }
 
 }

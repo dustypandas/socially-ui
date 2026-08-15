@@ -355,9 +355,7 @@
     flex-direction: column;
     gap: 0.25rem;
   }
-  .organisers-details__label {
 
-  }
   .organisers-details__contact {
     display: flex;
     gap: 0.25rem;

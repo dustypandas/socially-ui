@@ -109,7 +109,6 @@
   margin: 1.5rem auto; */
   color: var(--global-link-blue);
   @apply wiggle-link;
-  display: inline-block;
 }
 
 .auth-page__cross-link--disabled {

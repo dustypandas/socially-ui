@@ -35,7 +35,7 @@ export function IndexPage() {
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <span>
-        <a href='#/one-member-ui'>One Member ui public</a>
+        <a href='#/one-member-ui'>One Member ui visitor</a>
         &emsp;&emsp;&emsp;<a href='#/one-interest-ui-empty'>(empty)</a>
         &emsp;&emsp;&emsp;<a href='#/one-interest-ui-related'>(related)</a>
         &emsp;&emsp;&emsp;<a href='#/one-interest-ui-admin'>(admin)</a>

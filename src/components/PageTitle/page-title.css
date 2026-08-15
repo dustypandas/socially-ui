@@ -10,14 +10,11 @@
 
 .page-title__back {
   justify-self: start;
-  color: var(--global-text-muted);
   @apply courier-inline;
-  @apply clickable-text;
-  transition: transform 0.2s ease, color 0.2s ease;
+  @apply clickable-text--expand-muted;
 
   &:hover {
     transform: scale(1.03);
-    color: var(--global-text);
   }
 }
 

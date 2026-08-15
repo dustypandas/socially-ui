@@ -69,14 +69,8 @@
 
 .layout-header__nav-link,
 .layout-header__join-link {
-  color: var(--global-text-muted);
   @apply courier-inline;
-  text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--global-text);
-  }
+  @apply clickable-text--muted;
 }
 
 .layout-header__join-link {

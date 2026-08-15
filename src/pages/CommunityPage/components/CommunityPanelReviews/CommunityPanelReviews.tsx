@@ -5,10 +5,11 @@ import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
 import {
   CommunityReviewFilters,
   type CommunityReviewFilterId,
+  type CommunityReviewRatingCountsMap,
 } from './CommunityReviewFilters';
 import './community-panel-reviews.css';
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 10;
 
 type CommunityPanelReviewsProps = {
   reviews: EventReview[];
@@ -37,6 +38,7 @@ export function CommunityPanelReviews({
   const visibleReviews = getFilteredReviews(reviews, reviewFilter, searchQuery);
   const hasMoreItems = visibleReviews.length > visibleCount;
   const titleCount = visibleReviews.length;
+  const ratingCountsMap = buildRatingCountsMap(reviews);
 
   return (
     <ColumnsLayout>
@@ -82,6 +84,7 @@ export function CommunityPanelReviews({
             onQueryChange={handleQueryChange}
             value={reviewFilter}
             onChange={handleFilterChange}
+            ratingCountsMap={ratingCountsMap}
           />
         </div>
       </ColumnsLayout.Aside>
@@ -108,4 +111,22 @@ function getFilteredReviews(
     || review.content.toLowerCase().includes(normalizedQuery)
     || review.event.title.toLowerCase().includes(normalizedQuery)
   ));
+}
+
+type RatingCountKey = keyof CommunityReviewRatingCountsMap;
+
+const EMPTY_RATING_COUNTS_MAP: CommunityReviewRatingCountsMap = {
+  '1': 0,
+  '2': 0,
+  '3': 0,
+  '4': 0,
+  '5': 0,
+};
+
+function buildRatingCountsMap(reviews: EventReview[]): CommunityReviewRatingCountsMap {
+  return reviews.reduce((counts, review) => {
+    const key = String(review.rating) as RatingCountKey;
+    counts[key] += 1;
+    return counts;
+  }, { ...EMPTY_RATING_COUNTS_MAP });
 }

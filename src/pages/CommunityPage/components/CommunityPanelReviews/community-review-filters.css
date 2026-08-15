@@ -28,3 +28,24 @@
   flex-flow: row wrap;
   gap: 0.5rem;
 }
+
+.community-review-filters__rating-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.community-review-filters__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.0625rem;
+}
+
+.community-review-filters__star {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  color: var(--color-yellow-500);
+  position: relative;
+  top: -0.0625rem;
+}

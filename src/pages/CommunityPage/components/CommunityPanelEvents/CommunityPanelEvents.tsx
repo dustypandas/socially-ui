@@ -20,18 +20,21 @@ const PAST_PAGE_SIZE = 9;
 type CommunityPanelEventsProps = {
   futureEvents: EventBasic[];
   pastEvents: EventBasic[];
+  eventFilter: CommunityEventFilterId;
+  onEventFilterChange: (filter: CommunityEventFilterId) => void;
   onScrollToTop?: () => void;
 };
 
 export function CommunityPanelEvents({
   futureEvents,
   pastEvents,
+  eventFilter,
+  onEventFilterChange,
   onScrollToTop,
 }: CommunityPanelEventsProps) {
-  const [eventFilter, setEventFilter] = useState<CommunityEventFilterId>('upcoming');
-  const [visibleCount, setVisibleCount] = useState(UPCOMING_PAGE_SIZE);
-
   const pageSize = eventFilter === 'upcoming' ? UPCOMING_PAGE_SIZE : PAST_PAGE_SIZE;
+  const [visibleCount, setVisibleCount] = useState(pageSize);
+
   const events = eventFilter === 'upcoming' ? futureEvents : pastEvents;
   const hasMoreItems = events.length > visibleCount;
   const sectionTitle = eventFilter === 'upcoming'
@@ -39,8 +42,7 @@ export function CommunityPanelEvents({
     : getPastEventsSectionTitle(events.length);
 
   const handleFilterChange = (filter: CommunityEventFilterId) => {
-    setEventFilter(filter);
-    setVisibleCount(filter === 'upcoming' ? UPCOMING_PAGE_SIZE : PAST_PAGE_SIZE);
+    onEventFilterChange(filter);
     onScrollToTop?.();
   };
 

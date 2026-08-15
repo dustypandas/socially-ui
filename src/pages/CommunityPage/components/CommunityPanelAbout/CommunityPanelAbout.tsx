@@ -13,6 +13,8 @@ type CommunityPanelAboutProps = {
   pastEventsTotalCount: number;
   organisers: MemberAvatar[];
   recentLocations: Array<MapLocation & { id: string }>;
+  onPastEventsClick?: () => void;
+  onMoreEventsClick?: () => void;
 };
 
 export function CommunityPanelAbout({
@@ -22,19 +24,25 @@ export function CommunityPanelAbout({
   pastEventsTotalCount,
   organisers,
   recentLocations,
+  onPastEventsClick,
+  onMoreEventsClick,
 }: CommunityPanelAboutProps) {
   return (
     <ColumnsLayout>
       <ColumnsLayout.Main>
         <div className="community-panel-about">
           <CommunitySectionAbout detailsHtml={descriptionHtml} />
-          <CommunitySectionEvents events={futureEvents.slice(0, 3)} />
+          <CommunitySectionEvents
+            events={futureEvents.slice(0, 3)}
+            onMoreEventsClick={onMoreEventsClick}
+          />
           {pastEventsTotalCount > 0 && (
             <>
               <div className="community-page__divider--hidden" />
               <CommunitySectionPastEvents
                 count={pastEventsTotalCount}
                 events={pastEvents}
+                onPastEventsClick={onPastEventsClick}
               />
             </>
           )}

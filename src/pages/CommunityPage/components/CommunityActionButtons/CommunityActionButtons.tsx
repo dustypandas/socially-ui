@@ -5,15 +5,15 @@ import './community-action-buttons.css';
 type CommunityActionButtonsProps = {
   viewerStatus?: CommunityViewerStatus;
   isOrganiser?: boolean;
-  onJoinClick?: () => void;
-  onMembershipClick?: () => void;
+  onJoinBtnClick?: () => void;
+  onMemberBtnClick?: () => void;
 };
 
 export function CommunityActionButtons({
   viewerStatus,
   isOrganiser,
-  onJoinClick,
-  onMembershipClick,
+  onJoinBtnClick,
+  onMemberBtnClick,
 }: CommunityActionButtonsProps) {
   const isJoinPending = viewerStatus === 'pending';
   const isMember = viewerStatus === 'member';
@@ -24,7 +24,7 @@ export function CommunityActionButtons({
         <button
           type="button"
           className="community-action-buttons__membership-btn"
-          onClick={onMembershipClick}
+          onClick={onMemberBtnClick}
         >
           {isOrganiser === true ? 'My Community' : 'My membership'}
           <IconMore className="community-action-buttons__membership-btn-icon" />
@@ -33,7 +33,7 @@ export function CommunityActionButtons({
         <button
           type="button"
           className="community-action-buttons__join-btn"
-          onClick={onJoinClick}
+          onClick={onJoinBtnClick}
           disabled={isJoinPending}
         >
           Join this community

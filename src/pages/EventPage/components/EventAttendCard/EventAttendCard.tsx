@@ -11,7 +11,7 @@ type EventAttendCardProps = {
   isFixedBar?: boolean;
   isFixedBarVisible?: boolean;
   eventViewerStatus: EventViewerStatus | null;
-  onJoinClick?: () => void;
+  onJoinBtnClick?: () => void;
   onUpdateClick?: () => void;
   isJoinLoading?: boolean;
 };
@@ -50,7 +50,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       isFixedBar = false,
       isFixedBarVisible = false,
       eventViewerStatus,
-      onJoinClick,
+      onJoinBtnClick,
       onUpdateClick,
       isJoinLoading = false,
     },
@@ -109,7 +109,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
                   'event-attend-card__btn',
                   isJoinLoading && 'event-attend-card__btn--loading',
                 ].filter(Boolean).join(' ')}
-                onClick={onJoinClick}
+                onClick={onJoinBtnClick}
                 disabled={isJoinDisabled}
               >
                 {getJoinButtonLabel(eventViewerStatus)}

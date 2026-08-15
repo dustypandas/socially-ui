@@ -115,7 +115,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 profiles={eventPageData.attendees.avatars}
                 attendeeCount={eventPageData.attendees.count}
                 eventViewerStatus={eventViewerStatus}
-                onJoinClick={handleJoinClick}
+                onJoinBtnClick={handleJoinClick}
                 onUpdateClick={handleUpdateClick}
                 isJoinLoading={isJoinLoading}
               />
@@ -161,7 +161,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         profiles={eventPageData.attendees.avatars}
         attendeeCount={eventPageData.attendees.count}
         eventViewerStatus={eventViewerStatus}
-        onJoinClick={handleJoinClick}
+        onJoinBtnClick={handleJoinClick}
         onUpdateClick={handleUpdateClick}
         isJoinLoading={isJoinLoading}
       />

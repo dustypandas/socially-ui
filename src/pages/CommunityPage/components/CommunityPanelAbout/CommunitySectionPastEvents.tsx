@@ -7,9 +7,14 @@ import './community-section-past-events.css';
 type CommunitySectionPastEventsProps = {
   count: number;
   events: EventBasic[];
+  onPastEventsClick?: () => void;
 };
 
-export function CommunitySectionPastEvents({ count, events }: CommunitySectionPastEventsProps) {
+export function CommunitySectionPastEvents({
+  count,
+  events,
+  onPastEventsClick,
+}: CommunitySectionPastEventsProps) {
   return (
     <section className="community-section-past-events">
       <SectionTitle
@@ -17,6 +22,10 @@ export function CommunitySectionPastEvents({ count, events }: CommunitySectionPa
         hideMore={count <= 3}
         moreHref="#"
         moreLabel="past events →"
+        onMoreClick={(event) => {
+          event.preventDefault();
+          onPastEventsClick?.();
+        }}
       />
       <EventsGrid events={events} />
     </section>

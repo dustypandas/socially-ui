@@ -13,6 +13,7 @@ import {
   CommunityPanelReviews,
 } from './components';
 import type { CommunityPanelId } from './components';
+import type { CommunityEventFilterId } from './components/CommunityPanelEvents/CommunityEventFilters';
 import { CommunityPageClientProps, useCommunityPageStates } from './useCommunityPageStates';
 import './community-page.css';
 
@@ -32,6 +33,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
   const [loginOnSuccess, setLoginOnSuccess] = useState<(() => void) | undefined>();
   const [activePanel, setActivePanel] = useState<CommunityPanelId>('about');
+  const [eventFilter, setEventFilter] = useState<CommunityEventFilterId>('upcoming');
   const isLoggedOut = viewerStatus === null;
 
   if (viewerStatus === 'banned') {
@@ -57,12 +59,18 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     setIsLoginOverlayOpen(true);
   };
   const openJoinOverlay = () => setIsJoinOverlayOpen(true);
-  const navigateToPanel = (panelId: CommunityPanelId) => {
+  const navigateToPanel = (
+    panelId: CommunityPanelId,
+    options?: { eventFilter?: CommunityEventFilterId },
+  ) => {
     setActivePanel(panelId);
+    if (panelId === 'events') {
+      setEventFilter(options?.eventFilter ?? 'upcoming');
+    }
     scrollToTop();
   };
 
-  const handleJoinClick = () => {
+  const handleJoinBtnClick = () => {
     if (isLoggedOut) {
       openLoginOverlay(openJoinOverlay);
       return;
@@ -77,16 +85,19 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
 
     openJoinOverlay();
   };
-  const handleNavigateClick = (panelId: CommunityPanelId) => {
+  const handleMembershipBtnClick = () => {
+    setIsActionsOverlayOpen(true);
+  };
+  const handleNavigateClick = (
+    panelId: CommunityPanelId,
+    options?: { eventFilter?: CommunityEventFilterId },
+  ) => {
     if (isLoggedOut && LOGIN_GATED_PANELS.has(panelId)) {
-      openLoginOverlay(() => navigateToPanel(panelId));
+      openLoginOverlay(() => navigateToPanel(panelId, options));
       return;
     }
 
-    navigateToPanel(panelId);
-  };
-  const handleMembershipClick = () => {
-    setIsActionsOverlayOpen(true);
+    navigateToPanel(panelId, options);
   };
 
   const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
@@ -122,8 +133,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
                 ratingCount={communityPageData.ratingCount}
                 viewerStatus={communityPageData.viewerStatus}
                 isOrganiser={communityPageData.isOrganiser === true}
-                onJoinClick={handleJoinClick}
-                onMembershipClick={handleMembershipClick}
+                onJoinBtnClick={handleJoinBtnClick}
+                onMemberBtnClick={handleMembershipBtnClick}
                 onNavigate={handleNavigateClick}
               />
             </ColumnsLayout.Aside>
@@ -135,8 +146,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
           viewerStatus={communityPageData.viewerStatus}
           isOrganiser={communityPageData.isOrganiser === true}
           membersBadgeCount={requestBadgeCount}
-          onJoinClick={handleJoinClick}
-          onMembershipClick={handleMembershipClick}
+          onJoinBtnClick={handleJoinBtnClick}
+          onMemberBtnClick={handleMembershipBtnClick}
           onNavigate={handleNavigateClick}
         />
 
@@ -149,12 +160,17 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               pastEventsTotalCount={communityPageData.pastEventsTotalCount}
               organisers={communityPageData.organisers}
               recentLocations={communityPageData.recentLocations}
+              onPastEventsClick={() => handleNavigateClick('events', { eventFilter: 'past' })}
+              onMoreEventsClick={() => handleNavigateClick('events')}
             />
           )}
           {activePanel === 'events' && (
             <CommunityPanelEvents
+              key={eventFilter}
               futureEvents={communityPageData.futureEvents}
               pastEvents={communityPageData.pastEvents}
+              eventFilter={eventFilter}
+              onEventFilterChange={setEventFilter}
               onScrollToTop={scrollToTop}
             />
           )}

@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react';
 import './section-title.css';
 
 type SectionMoreLinkProps = {
@@ -5,6 +6,7 @@ type SectionMoreLinkProps = {
   label?: string;
   variant?: 'inline' | 'footer';
   className?: string;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export function SectionMoreLink({
@@ -12,6 +14,7 @@ export function SectionMoreLink({
   label = 'more&thinsp;→',
   variant = 'inline',
   className,
+  onClick,
 }: SectionMoreLinkProps) {
   return (
     <a
@@ -21,6 +24,7 @@ export function SectionMoreLink({
         `section-title__more--${variant}`,
         className,
       ].filter(Boolean).join(' ')}
+      onClick={onClick}
       dangerouslySetInnerHTML={{ __html: label }}
     />
   );
@@ -31,6 +35,7 @@ type SectionTitleProps = {
   moreHref?: string;
   moreLabel?: string;
   hideMore?: boolean;
+  onMoreClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export function SectionTitle({
@@ -38,12 +43,18 @@ export function SectionTitle({
   moreHref = '#',
   moreLabel,
   hideMore = false,
+  onMoreClick,
 }: SectionTitleProps) {
   return (
     <div className="section-title">
       <h2 className="section-title__title">{title}</h2>
       {!hideMore && (
-        <SectionMoreLink href={moreHref} label={moreLabel} variant="inline" />
+        <SectionMoreLink
+          href={moreHref}
+          label={moreLabel}
+          variant="inline"
+          onClick={onMoreClick}
+        />
       )}
     </div>
   );

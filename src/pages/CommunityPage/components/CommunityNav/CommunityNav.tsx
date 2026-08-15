@@ -22,8 +22,8 @@ type CommunityNavProps = {
   viewerStatus?: CommunityViewerStatus;
   isOrganiser?: boolean;
   membersBadgeCount?: number;
-  onJoinClick?: () => void;
-  onMembershipClick?: () => void;
+  onJoinBtnClick?: () => void;
+  onMemberBtnClick?: () => void;
   onNavigate: (panelId: CommunityPanelId) => void;
 };
 
@@ -32,8 +32,8 @@ export function CommunityNav({
   viewerStatus: communityViewerStatus,
   isOrganiser,
   membersBadgeCount = 0,
-  onJoinClick,
-  onMembershipClick,
+  onJoinBtnClick,
+  onMemberBtnClick,
   onNavigate,
 }: CommunityNavProps) {
   const navRef = useRef<HTMLElement>(null);
@@ -77,8 +77,8 @@ export function CommunityNav({
               <CommunityActionButtons
                 viewerStatus={communityViewerStatus}
                 isOrganiser={isOrganiser}
-                onJoinClick={onJoinClick}
-                onMembershipClick={onMembershipClick}
+                onJoinBtnClick={onJoinBtnClick}
+                onMemberBtnClick={onMemberBtnClick}
               />
             </ColumnsLayout.Aside>
           </ColumnsLayout>

@@ -5,9 +5,10 @@ import './community-section-events.css';
 
 type CommunitySectionEventsProps = {
   events: EventBasic[];
+  onMoreEventsClick?: () => void;
 };
 
-export function CommunitySectionEvents({ events }: CommunitySectionEventsProps) {
+export function CommunitySectionEvents({ events, onMoreEventsClick }: CommunitySectionEventsProps) {
   const isEmpty = events.length === 0;
 
   return (
@@ -15,8 +16,12 @@ export function CommunitySectionEvents({ events }: CommunitySectionEventsProps) 
       <SectionTitle
         title={getUpcomingEventsSectionTitle(events.length)}
         hideMore={isEmpty || events.length <= 3}
-        moreHref="#"
+        moreHref="#events"
         moreLabel="more events →"
+        onMoreClick={(event) => {
+          event.preventDefault();
+          onMoreEventsClick?.();
+        }}
       />
       {isEmpty ? (
         <div className="community-section-events__empty">No upcoming events</div>
@@ -25,7 +30,15 @@ export function CommunitySectionEvents({ events }: CommunitySectionEventsProps) 
       )}
       {!isEmpty && (
         <div className="community-section-events__footer">
-          <SectionMoreLink href="#" label="See all events" variant="footer" />
+          <SectionMoreLink
+            href="#events"
+            label="See all events"
+            variant="footer"
+            onClick={(event) => {
+              event.preventDefault();
+              onMoreEventsClick?.();
+            }}
+          />
         </div>
       )}
     </section>

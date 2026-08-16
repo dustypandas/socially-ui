@@ -47,6 +47,7 @@
 @media (max-width: theme(--breakpoint-md)) {
   .columns-layout {
     flex-direction: column;
+    gap: 0;
   }
   .column-left,
   .column-right {

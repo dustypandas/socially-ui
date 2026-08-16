@@ -57,7 +57,7 @@ export function CommunityIntro({
         >
           <IconStar className="community-intro__icon community-intro__icon--rating" />
           <span className="community-intro__attribute-label">
-            <strong>{rating}</strong> from {ratingCount} ratings
+            <strong>{rating}</strong> from {ratingCount} reviews
           </span>
         </a>
       </div>

@@ -39,6 +39,6 @@
 
 @media (max-width: theme(--breakpoint-md)) {
   .community-page__aside-spacer {
-    display: none;
+    height: 1rem;
   }
 }

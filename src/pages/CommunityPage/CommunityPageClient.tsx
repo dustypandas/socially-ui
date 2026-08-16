@@ -54,6 +54,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     ? 0
     : communityPageData.communityMemberRequests?.length ?? 0;
 
+  const shouldUseExactValue = communityPageData.isOrganiser === true;
+
   const openLoginOverlay = (onSuccess: () => void) => {
     setLoginOnSuccess(() => onSuccess);
     setIsLoginOverlayOpen(true);
@@ -158,10 +160,13 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               futureEvents={communityPageData.futureEvents}
               pastEvents={communityPageData.pastEvents}
               pastEventsTotalCount={communityPageData.pastEventsTotalCount}
+              reviews={communityPageData.reviewsForOneCommunity}
               organisers={communityPageData.organisers}
               recentLocations={communityPageData.recentLocations}
               onPastEventsClick={() => handleNavigateClick('events', { eventFilter: 'past' })}
               onMoreEventsClick={() => handleNavigateClick('events')}
+              onMoreReviewsClick={() => handleNavigateClick('reviews')}
+              shouldUseExactValue={shouldUseExactValue}
             />
           )}
           {activePanel === 'events' && (
@@ -172,6 +177,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               eventFilter={eventFilter}
               onEventFilterChange={setEventFilter}
               onScrollToTop={scrollToTop}
+              shouldUseExactValue={shouldUseExactValue}
             />
           )}
           {activePanel === 'members' && (
@@ -188,6 +194,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
             <CommunityPanelReviews
               reviews={communityPageData.reviewsForOneCommunity}
               onScrollToTop={scrollToTop}
+              shouldUseExactValue={shouldUseExactValue}
             />
           )}
         </div>

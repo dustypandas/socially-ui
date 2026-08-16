@@ -57,7 +57,7 @@ export function CommunityReviewFilters({
         onChange={event => onQueryChange(event.target.value)}
       />
       <div className="community-review-filters__field">
-        <h3 className="community-review-filters__label">Rating</h3>
+        <h3 className="community-review-filters__label">By Rating</h3>
         <div className="community-review-filters__group">
           {RATING_FILTERS.map(filter => (
             <ButtonsGroup

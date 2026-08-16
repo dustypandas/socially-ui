@@ -72,7 +72,36 @@ export function getUpcomingEventsSectionTitle(count: number): string {
   return `${count} Upcoming ${noun}`;
 }
 
-export function getPastEventsSectionTitle(count: number): string {
+export function getPastEventsSectionTitle(count: number, shouldUseExactValue?: boolean): string {
+  if (count === 0) {
+    return 'No past events';
+  }
   const noun = count === 1 ? 'Event' : 'Events';
-  return `${count} Past ${noun}`;
+  const countLabel = shouldUseExactValue === true ? String(count) : getApproxCount(count);
+  return `${countLabel} Past ${noun}`;
+}
+
+export function getReviewsSectionTitle(count: number, shouldUseExactValue?: boolean): string {
+  if (count === 0) {
+    return 'No reviews';
+  }
+  const noun = count === 1 ? 'Review' : 'Reviews';
+  const countLabel = shouldUseExactValue === true ? String(count) : getApproxCount(count);
+  return `${countLabel} ${noun}`;
+}
+
+export function getApproxCount(count: number): string {
+  if (count < 10) {
+    return String(count);
+  }
+
+  if (count < 100) {
+    return `${Math.floor(count / 10) * 10}+`;
+  }
+
+  if (count < 1000) {
+    return `${Math.floor(count / 100) * 100}+`;
+  }
+
+  return `${(count / 1000).toFixed(1)}k+`;
 }

@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.community-section-reviews {
+  padding: 0 0 1rem;
+}
+
+.community-section-reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0 0.75rem;
+}
+
+@media (max-width: theme(--breakpoint-sm)) {
+  .community-section-reviews__list {
+    padding: 0;
+  }
+}

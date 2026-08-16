@@ -26,3 +26,9 @@
   line-height: 1.5;
   text-align: center;
 }
+
+@media (max-width: theme(--breakpoint-sm)) {
+  .community-panel-reviews__list {
+    padding: 0;
+  }
+}

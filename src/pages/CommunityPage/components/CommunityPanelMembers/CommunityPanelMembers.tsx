@@ -60,7 +60,23 @@ export function CommunityPanelMembers({
   const hasMoreItems = visibleItems.length > visibleCount;
 
   return (
-    <ColumnsLayout>
+    <ColumnsLayout mainPosition="right">
+      <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
+        <div className="community-page__aside">
+          <div className="community-page__aside-spacer" />
+
+          <CommunityMemberFilters
+            query={searchQuery}
+            onQueryChange={handleQueryChange}
+            value={activeFilter}
+            onChange={handleFilterChange}
+            isOrganiser={isOrganiser}
+            requestBadgeCount={requestBadgeCount}
+          />
+
+          {/* <div className="community-page__divider--hidden" /> */}
+        </div>
+      </ColumnsLayout.Aside>
       <ColumnsLayout.Main>
         <section className="community-panel-members">
           <SectionTitle title={getMembersSectionTitle(members, memberRequests, activeFilter)} hideMore />
@@ -92,21 +108,6 @@ export function CommunityPanelMembers({
           )}
         </section>
       </ColumnsLayout.Main>
-      <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
-        <div className="community-page__aside">
-          <div className="community-page__aside-spacer" />
-          <div className="community-page__divider--hidden" />
-
-          <CommunityMemberFilters
-            query={searchQuery}
-            onQueryChange={handleQueryChange}
-            value={activeFilter}
-            onChange={handleFilterChange}
-            isOrganiser={isOrganiser}
-            requestBadgeCount={requestBadgeCount}
-          />
-        </div>
-      </ColumnsLayout.Aside>
     </ColumnsLayout>
   );
 }

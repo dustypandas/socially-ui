@@ -21,6 +21,7 @@ type CommunityPanelEventsProps = {
   futureEvents: EventBasic[];
   pastEvents: EventBasic[];
   eventFilter: CommunityEventFilterId;
+  shouldUseExactValue?: boolean;
   onEventFilterChange: (filter: CommunityEventFilterId) => void;
   onScrollToTop?: () => void;
 };
@@ -29,6 +30,7 @@ export function CommunityPanelEvents({
   futureEvents,
   pastEvents,
   eventFilter,
+  shouldUseExactValue,
   onEventFilterChange,
   onScrollToTop,
 }: CommunityPanelEventsProps) {
@@ -39,7 +41,7 @@ export function CommunityPanelEvents({
   const hasMoreItems = events.length > visibleCount;
   const sectionTitle = eventFilter === 'upcoming'
     ? getUpcomingEventsSectionTitle(events.length)
-    : getPastEventsSectionTitle(events.length);
+    : getPastEventsSectionTitle(events.length, shouldUseExactValue);
 
   const handleFilterChange = (filter: CommunityEventFilterId) => {
     onEventFilterChange(filter);
@@ -47,7 +49,23 @@ export function CommunityPanelEvents({
   };
 
   return (
-    <ColumnsLayout>
+    <ColumnsLayout mainPosition="right" className="community-panel-events__layout">
+      <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
+        <div className="community-page__aside">
+          <div className="community-page__aside-spacer" />
+
+          <CommunityEventFilters
+            value={eventFilter}
+            onChange={handleFilterChange}
+          />
+          <CommunityLocations
+            title={eventFilter === 'upcoming' ? 'Upcoming locations' : 'Past locations'}
+            locations={getMapLocationsFromEvents(events)}
+          />
+
+          {/* <div className="community-page__divider--hidden" /> */}
+        </div>
+      </ColumnsLayout.Aside>
       <ColumnsLayout.Main>
         <section className="community-panel-events">
           <SectionTitle title={sectionTitle} hideMore />
@@ -75,22 +93,6 @@ export function CommunityPanelEvents({
           )}
         </section>
       </ColumnsLayout.Main>
-      <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
-        <div className="community-page__aside">
-          <div className="community-page__aside-spacer" />
-          <div className="community-page__divider--hidden" />
-
-          <CommunityEventFilters
-            value={eventFilter}
-            onChange={handleFilterChange}
-          />
-          <div className="community-page__divider--hidden" />
-          <CommunityLocations
-            title={eventFilter === 'upcoming' ? 'Upcoming locations' : 'Past locations'}
-            locations={getMapLocationsFromEvents(events)}
-          />
-        </div>
-      </ColumnsLayout.Aside>
     </ColumnsLayout>
   );
 }

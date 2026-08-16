@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { EventReview } from '@src/common-libs/types';
 import { ColumnsLayout, ReviewItem } from '@src/components';
 import { SectionTitle } from '@src/components/SectionTitle/SectionTitle';
+import { getReviewsSectionTitle } from '@src/helpers/labelHelpers';
 import {
   CommunityReviewFilters,
   type CommunityReviewFilterId,
@@ -13,11 +14,13 @@ const PAGE_SIZE = 10;
 
 type CommunityPanelReviewsProps = {
   reviews: EventReview[];
+  shouldUseExactValue?: boolean;
   onScrollToTop?: () => void;
 };
 
 export function CommunityPanelReviews({
   reviews,
+  shouldUseExactValue,
   onScrollToTop,
 }: CommunityPanelReviewsProps) {
   const [reviewFilter, setReviewFilter] = useState<CommunityReviewFilterId>('all');
@@ -37,15 +40,29 @@ export function CommunityPanelReviews({
 
   const visibleReviews = getFilteredReviews(reviews, reviewFilter, searchQuery);
   const hasMoreItems = visibleReviews.length > visibleCount;
-  const titleCount = visibleReviews.length;
   const ratingCountsMap = buildRatingCountsMap(reviews);
 
   return (
-    <ColumnsLayout>
+    <ColumnsLayout mainPosition="right">
+      <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
+        <div className="community-page__aside">
+          <div className="community-page__aside-spacer" />
+
+          <CommunityReviewFilters
+            query={searchQuery}
+            onQueryChange={handleQueryChange}
+            value={reviewFilter}
+            onChange={handleFilterChange}
+            ratingCountsMap={ratingCountsMap}
+          />
+          
+          {/* <div className="community-page__divider--hidden" /> */}
+        </div>
+      </ColumnsLayout.Aside>
       <ColumnsLayout.Main>
         <section className="community-panel-reviews">
           <SectionTitle
-            title={`${titleCount} ${titleCount === 1 ? 'review' : 'reviews'}`}
+            title={getReviewsSectionTitle(visibleReviews.length, shouldUseExactValue)}
             hideMore
           />
           {visibleReviews.length === 0 ? (
@@ -74,20 +91,6 @@ export function CommunityPanelReviews({
           )}
         </section>
       </ColumnsLayout.Main>
-      <ColumnsLayout.Aside sticky={58} asideWidth="min(380px, 38%)">
-        <div className="community-page__aside">
-          <div className="community-page__aside-spacer" />
-          <div className="community-page__divider--hidden" />
-
-          <CommunityReviewFilters
-            query={searchQuery}
-            onQueryChange={handleQueryChange}
-            value={reviewFilter}
-            onChange={handleFilterChange}
-            ratingCountsMap={ratingCountsMap}
-          />
-        </div>
-      </ColumnsLayout.Aside>
     </ColumnsLayout>
   );
 }

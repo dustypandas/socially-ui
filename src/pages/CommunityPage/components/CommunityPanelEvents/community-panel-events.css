@@ -21,3 +21,13 @@
   line-height: 1.5;
   text-align: center;
 }
+
+@media (max-width: theme(--breakpoint-md)) {
+  .community-panel-events__layout .community-locations {
+    display: none;
+  }
+
+  .community-event-filters {
+    padding-bottom: 1rem;
+  }
+}

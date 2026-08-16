@@ -65,6 +65,7 @@ export type EventPageData =
   attendees: EventAttendees;
   viewerStatus: EventViewerStatus | null;
   communityEntryConditions?: CommunityEntryConditions;
+  isHost?: boolean;
 };
 
 export type CommunitiesPageData = {

@@ -81,7 +81,7 @@ export function EventAttendanceOverlay({
     <Overlay isOpen={isOpen} onClose={onClose}>
       <div className="event-attendance-overlay__header">
         <h2 className="event-attendance-overlay__title">
-          Update RSVP
+          Change RSVP
         </h2>
         <button
           type="button"

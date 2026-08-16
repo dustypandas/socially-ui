@@ -20,7 +20,9 @@ export function IndexPage() {
         &emsp;<a href='#/one-event-ui'>One Event ui (visitor)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-empty'>(empty)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-public'>(public)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-event-ui-member'>(member)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-attending'>(attending)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-event-ui-host'>(host)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-rejected'>(rejected)</a>
       </span>
     </div>

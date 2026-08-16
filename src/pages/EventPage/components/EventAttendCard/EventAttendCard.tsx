@@ -26,7 +26,7 @@ function getJoinButtonLabel(status: EventViewerStatus | null): string {
 
 function getEngagementLabel(status: EventViewerStatus | null): string {
   if (status === 'late') {
-    return "Will Be Late";
+    return "I'll Be Late";
   }
 
   if (status === 'waitlisted') {

@@ -95,7 +95,8 @@ export function EventPageClient({ variant }: EventPageClientProps) {
 
   const canViewExactAddress =
     eventViewerStatus === 'attending'
-    || eventViewerStatus === 'late';
+    || eventViewerStatus === 'late'
+    || eventPageData.isHost === true;
 
   const handleUpdateClick = () => {
     setIsAttendanceOverlayOpen(true);

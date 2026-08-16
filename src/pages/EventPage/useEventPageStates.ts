@@ -54,6 +54,22 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
       };
     }
 
+    if (variant === 'member') {
+      const { viewerStatus } = rawEventPageData;
+      if (
+        viewerStatus === 'attending'
+        || viewerStatus === 'late'
+        || viewerStatus === 'waitlisted'
+        || viewerStatus === 'notAttending'
+      ) {
+        return rawEventPageData;
+      }
+      return {
+        ...rawEventPageData,
+        viewerStatus: 'member' as const,
+      };
+    }
+
     if (variant === 'empty') {
       return {
         ...rawEventPageData,
@@ -70,7 +86,18 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
     }
 
     if (variant === 'attending') {
-      return rawEventPageData;
+      return {
+        ...rawEventPageData,
+        viewerStatus: 'attending' as const,
+      };
+    }
+
+    if (variant === 'host') {
+      return {
+        ...rawEventPageData,
+        viewerStatus: 'attending' as const,
+        isHost: true,
+      };
     }
 
     return {
@@ -89,7 +116,9 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
   'public',
+  'member',
   'attending',
+  'host',
   'rejected',
 ] as const;
 

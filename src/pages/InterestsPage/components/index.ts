@@ -1,3 +1,4 @@
 export { FollowedInterests } from './FollowedInterests/FollowedInterests';
 export { InterestsList } from './InterestsList/InterestsList';
 export { InterestsSearchBar } from './InterestsSearchBar/InterestsSearchBar';
+export { InterestModeSelect, type InterestsPageMode } from './InterestModeSelect/InterestModeSelect';

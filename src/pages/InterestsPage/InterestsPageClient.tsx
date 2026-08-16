@@ -5,6 +5,8 @@ import {
   FollowedInterests,
   InterestsList,
   InterestsSearchBar,
+  InterestModeSelect,
+  type InterestsPageMode,
 } from './components';
 import { useInterestsStates } from './useInterestsStates';
 import { hasExactInterestMatch } from './helpers';
@@ -13,6 +15,7 @@ import './interests-page.css';
 export function InterestsPageClient() {
   const { isLoggedIn } = useSession();
   const [searchQuery, setSearchQuery] = useState('');
+  const [interestMode, setInterestMode] = useState<InterestsPageMode>('explore');
   const {
     filteredInterests,
     followedInterests,
@@ -47,7 +50,7 @@ export function InterestsPageClient() {
               <InterestsSearchBar
                 value={searchQuery}
                 onChange={setSearchQuery}
-                showAddButton={showAddButton}
+                showAddButton={showAddButton && interestMode === 'follow'}
                 isAddButtonDisabled={!canFollowMore}
                 onAdd={onAddInterest}
               />
@@ -55,12 +58,14 @@ export function InterestsPageClient() {
                 interests={filteredInterests}
                 followedInterests={followedInterests}
                 canFollowMore={canFollowMore}
+                mode={interestMode}
                 onFollow={handleFollowInterest}
                 onUnfollow={handleUnfollowInterest}
               />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside sticky={50}>
               <div className="interests-page__divider--hidden" />
+              <InterestModeSelect value={interestMode} onChange={setInterestMode} />
               <FollowedInterests
                 followedInterests={followedInterests}
                 maxFollowed={maxFollowed}

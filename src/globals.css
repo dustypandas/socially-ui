@@ -127,7 +127,13 @@
   }
 }
 
-@utility btn-white-purple {
+@utility btn-purple-white { /* purple bg, primary */
+  @apply btn-text;
+  background: var(--global-btn-purple);
+  color: white;
+}
+
+@utility btn-white-purple { /* white bg, 'selected' */
   @apply btn-text;
   background: white;
   color: var(--global-purple);
@@ -137,13 +143,17 @@
   }
 }
 
-@utility btn-purple-white {
-  @apply btn-text;
-  background: var(--global-btn-purple);
-  color: white;
+@utility btn-half-white-grey { /* semi-transparent white bg, secondary */
+  @apply btn-white-purple;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--global-text-muted);
+
+  &:disabled {
+    background: var(--light-shadow);
+  }
 }
 
-@utility btn-clear-grey {
+@utility btn-clear-grey { /* tertiary */
   @apply btn-text;
   background: transparent;
   color: var(--global-text-muted);

@@ -49,19 +49,14 @@
 .followed-interests__list-item {
   display: block;
   margin: 0;
-
-  &:hover {
-    .followed-interests__list-link {
-      animation: hover-wiggle 1.2s infinite;
-    }
-  }
 }
 
 .followed-interests__list-link {
-  display: block;
-  color: var(--global-link-blue);
   font-family: 'Courier Prime', monospace;
   font-size: var(--font-size-lg);
-  text-decoration: none;
+  /* color: var(--global-purple); */
+  color: var(--global-link-blue);
+  /* color: var(--global-purple-dark); */
   line-height: 2;
+  @apply wiggle-link;
 }

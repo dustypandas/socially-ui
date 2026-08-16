@@ -81,7 +81,7 @@ export function CommunityPanelReviews({
               {hasMoreItems && (
                 <button
                   type="button"
-                  className="community-panel-reviews__show-more btn-clear-grey"
+                  className="community-page__show-more-btn"
                   onClick={() => setVisibleCount(current => current + PAGE_SIZE)}
                 >
                   Show more

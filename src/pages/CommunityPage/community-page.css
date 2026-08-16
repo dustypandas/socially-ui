@@ -37,6 +37,12 @@
   height: 3rem;
 }
 
+.community-page__show-more-btn {
+  display: block;
+  margin: 1.5rem auto 0;
+  @apply btn-half-white-grey;
+}
+
 @media (max-width: theme(--breakpoint-md)) {
   .community-page__aside-spacer {
     height: 1rem;

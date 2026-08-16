@@ -14,11 +14,6 @@
   padding: 0 0.75rem;
 }
 
-.community-panel-reviews__show-more {
-  display: block;
-  margin: 1.5rem auto 0;
-}
-
 .community-panel-reviews__empty {
   margin: 3rem 0 1rem;
   color: var(--global-text-light);

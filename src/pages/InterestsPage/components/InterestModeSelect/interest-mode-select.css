@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import '../../../../globals.css';
+
+.interest-mode-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.interest-mode-select__group {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}

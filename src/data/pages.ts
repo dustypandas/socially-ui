@@ -124,7 +124,7 @@ export async function getEventPageData(): Promise<EventPageData> {
   const targetEvent = await getOneEvent();
   const communityPromise = getCommunityForOneEvent();
 
-  const [community, attendees, reviews, eventViewerStatus, communityEntryConditions] =
+  const [community, attendees, reviews, viewerStatus, communityEntryConditions] =
     await Promise.all([
       communityPromise,
       getAttendeesForOneEvent(),
@@ -138,8 +138,8 @@ export async function getEventPageData(): Promise<EventPageData> {
     community,
     attendees,
     reviews,
-    eventViewerStatus,
-    ...(eventViewerStatus === null ? { communityEntryConditions } : {}),
+    viewerStatus,
+    communityEntryConditions,
   };
 }
 

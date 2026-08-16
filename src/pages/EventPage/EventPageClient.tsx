@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { ColumnsLayout, PageLayout } from '@src/components';
-import { attendEvent } from '@src/data';
+import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
 import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { CommunityOverlayJoin } from '@src/pages/CommunityPage/components';
+import { isLoggedOut, useEventAccess } from './accessControl';
 import {
   EventAttendCard,
   EventAttendanceOverlay,
@@ -22,10 +22,9 @@ export function EventPageClient({ variant }: EventPageClientProps) {
   const {
     eventPageData,
     setEventViewerStatus,
+    refreshEventPageData,
   } = useEventPageStates({ variant });
-  const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
   const [isAttendanceOverlayOpen, setIsAttendanceOverlayOpen] = useState(false);
-  const [isJoinLoading, setIsJoinLoading] = useState(false);
 
   const attendCardRef = useRef<HTMLDivElement>(null);
   const asideTitleRef = useRef<HTMLHeadingElement>(null);
@@ -37,6 +36,23 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     },
     { mediaQuery: '(min-width: 780px)' },
   );
+
+  const {
+    handleJoinBtnClick,
+    handleJoinOverlaySuccess,
+    isJoinOverlayOpen,
+    isLoginOverlayOpen,
+    loginOnSuccess,
+    isJoinLoading,
+    handleJoinOverlayClose,
+    handleLoginOverlayClose,
+  } = useEventAccess({
+    eventId: eventPageData?.id ?? '',
+    communityId: eventPageData?.community.id ?? '',
+    viewerStatus: eventPageData?.viewerStatus,
+    refreshEventPageData,
+    setEventViewerStatus,
+  });
 
   useEffect(() => {
     const $title = asideTitleRef.current;
@@ -65,27 +81,21 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     return null;
   }
 
-  const eventViewerStatus = eventPageData.eventViewerStatus;
+  const eventViewerStatus = eventPageData.viewerStatus;
+
+  if (eventViewerStatus === 'banned') {
+    return (
+      <PageLayout hasStaticHeader>
+        <div className="event-page event-page--unavailable">
+          <p>This page is not available</p>
+        </div>
+      </PageLayout>
+    );
+  }
+
   const canViewExactAddress =
     eventViewerStatus === 'attending'
     || eventViewerStatus === 'late';
-
-  const handleJoinClick = async () => {
-    if (eventViewerStatus === 'member') {
-      setIsJoinLoading(true);
-      try {
-        await attendEvent(eventPageData.id);
-        setEventViewerStatus('attending');
-      } finally {
-        setIsJoinLoading(false);
-      }
-      return;
-    }
-
-    setIsJoinOverlayOpen(true);
-  };
-
-  const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
 
   const handleUpdateClick = () => {
     setIsAttendanceOverlayOpen(true);
@@ -93,7 +103,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
   const handleAttendanceOverlayClose = () => setIsAttendanceOverlayOpen(false);
 
   return (
-    <PageLayout hasStaticHeader>
+    <PageLayout hasStaticHeader headerVariant={isLoggedOut(eventViewerStatus) ? 'loggedOut' : undefined}>
       <section className="event-page">
         <div className="width-container">
           <ColumnsLayout mainPosition="right">
@@ -115,7 +125,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 profiles={eventPageData.attendees.avatars}
                 attendeeCount={eventPageData.attendees.count}
                 eventViewerStatus={eventViewerStatus}
-                onJoinBtnClick={handleJoinClick}
+                onJoinBtnClick={handleJoinBtnClick}
                 onUpdateClick={handleUpdateClick}
                 isJoinLoading={isJoinLoading}
               />
@@ -161,9 +171,14 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         profiles={eventPageData.attendees.avatars}
         attendeeCount={eventPageData.attendees.count}
         eventViewerStatus={eventViewerStatus}
-        onJoinBtnClick={handleJoinClick}
+        onJoinBtnClick={handleJoinBtnClick}
         onUpdateClick={handleUpdateClick}
         isJoinLoading={isJoinLoading}
+      />
+      <AuthLoginOverlay
+        isOpen={isLoginOverlayOpen}
+        onClose={handleLoginOverlayClose}
+        onSuccess={loginOnSuccess}
       />
       <CommunityOverlayJoin
         communityId={eventPageData.community.id}
@@ -171,7 +186,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         isOpen={isJoinOverlayOpen}
         title="Community questions"
         onClose={handleJoinOverlayClose}
-        onJoinSuccess={() => setEventViewerStatus('pending')}
+        onJoinSuccess={handleJoinOverlaySuccess}
       />
       <EventAttendanceOverlay
         eventId={eventPageData.id}

@@ -9,6 +9,19 @@
   --event-page-aside-sticky-top: 1.25rem;
 }
 
+.event-page--unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--global-header-height) - 6rem);
+}
+
+.event-page--unavailable p {
+  @apply heading-h2;
+  color: var(--global-text-light);
+  text-align: center;
+}
+
 .event-page__aside {
   min-height: 100%;
 }

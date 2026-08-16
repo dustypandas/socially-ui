@@ -8,7 +8,7 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
   const applyPageData = useCallback((data: EventPageData) => {
     setRawEventPageData(
       variant === 'attending'
-        ? { ...data, eventViewerStatus: 'attending' }
+        ? { ...data, viewerStatus: 'attending' }
         : data,
     );
   }, [variant]);
@@ -25,42 +25,72 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
 
       return {
         ...current,
-        eventViewerStatus: status,
+        viewerStatus: status,
       };
     });
   }, []);
+
+  const refreshEventPageData = useCallback(async () => {
+    const data = await getEventPageData();
+    applyPageData(data);
+  }, [applyPageData]);
 
   const eventPageData = useMemo(() => {
     if (!rawEventPageData) {
       return null;
     }
 
-    if (variant !== 'empty') {
+    if (variant === 'rejected') {
+      return {
+        ...rawEventPageData,
+        viewerStatus: 'banned' as const,
+      };
+    }
+
+    if (variant === 'public') {
+      return {
+        ...rawEventPageData,
+        viewerStatus: null,
+      };
+    }
+
+    if (variant === 'empty') {
+      return {
+        ...rawEventPageData,
+        viewerStatus: 'visitor' as const,
+        hosts: rawEventPageData.hosts.slice(0, 1),
+        attendees: {
+          count: 1,
+          avatars: rawEventPageData.attendees.avatars.slice(0, 1),
+        },
+        descriptionHtml: getFirstTwoParagraphs(rawEventPageData.descriptionHtml),
+        interests: rawEventPageData.interests?.slice(0, 1),
+        reviews: [],
+      };
+    }
+
+    if (variant === 'attending') {
       return rawEventPageData;
     }
 
     return {
       ...rawEventPageData,
-      hosts: rawEventPageData.hosts.slice(0, 1),
-      attendees: {
-        count: 1,
-        avatars: rawEventPageData.attendees.avatars.slice(0, 1),
-      },
-      descriptionHtml: getFirstTwoParagraphs(rawEventPageData.descriptionHtml),
-      interests: rawEventPageData.interests?.slice(0, 1),
-      reviews: [],
+      viewerStatus: 'visitor' as const,
     };
   }, [variant, rawEventPageData]);
 
   return {
     eventPageData,
     setEventViewerStatus,
+    refreshEventPageData,
   };
 }
 
 export const PAGE_VARIANT_OPTIONS = [
   'empty',
+  'public',
   'attending',
+  'rejected',
 ] as const;
 
 export type EventPageClientProps = {

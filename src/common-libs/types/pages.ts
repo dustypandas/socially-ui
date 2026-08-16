@@ -63,7 +63,7 @@ export type EventPageData =
 & {
   community: CommunityAvatar;
   attendees: EventAttendees;
-  eventViewerStatus: EventViewerStatus | null;
+  viewerStatus: EventViewerStatus | null;
   communityEntryConditions?: CommunityEntryConditions;
 };
 

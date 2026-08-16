@@ -110,22 +110,5 @@ export async function getSessionEventStatus(
     return eventStatus;
   }
 
-  const communityStatus = await getSessionCommunityStatus(communityId);
-  if (!communityStatus) {
-    return null;
-  }
-
-  if (communityStatus === 'rejected') {
-    return 'banned';
-  }
-
-  if (communityStatus === 'banned') {
-    return 'banned';
-  }
-
-  if (communityStatus === 'member' || communityStatus === 'pending') {
-    return communityStatus;
-  }
-
-  return null;
+  return getSessionCommunityStatus(communityId);
 }

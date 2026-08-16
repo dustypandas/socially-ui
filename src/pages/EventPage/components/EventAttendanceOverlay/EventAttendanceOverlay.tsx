@@ -10,7 +10,7 @@ type AttendanceChoice = 'attending' | 'late' | 'notAttending';
 
 const ATTENDANCE_OPTIONS: { value: AttendanceChoice; label: string }[] = [
   { value: 'attending', label: "I'm going" },
-  { value: 'late', label: 'Will be late' },
+  { value: 'late', label: "I'll be late" },
   { value: 'notAttending', label: "I'm not going" },
 ];
 

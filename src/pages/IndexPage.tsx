@@ -19,7 +19,9 @@ export function IndexPage() {
       <span>
         &emsp;<a href='#/one-event-ui'>One Event ui (visitor)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-empty'>(empty)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-event-ui-public'>(public)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-attending'>(attending)</a>
+        &emsp;&emsp;&emsp;<a href='#/one-event-ui-rejected'>(rejected)</a>
       </span>
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

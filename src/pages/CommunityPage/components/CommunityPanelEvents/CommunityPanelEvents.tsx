@@ -24,6 +24,8 @@ type CommunityPanelEventsProps = {
   shouldUseExactValue?: boolean;
   onEventFilterChange: (filter: CommunityEventFilterId) => void;
   onScrollToTop?: () => void;
+  requireMemberAccess?: (targetAction: () => void) => void;
+  canShowMore?: boolean;
 };
 
 export function CommunityPanelEvents({
@@ -33,6 +35,8 @@ export function CommunityPanelEvents({
   shouldUseExactValue,
   onEventFilterChange,
   onScrollToTop,
+  requireMemberAccess,
+  canShowMore = true,
 }: CommunityPanelEventsProps) {
   const pageSize = eventFilter === 'upcoming' ? UPCOMING_PAGE_SIZE : PAST_PAGE_SIZE;
   const [visibleCount, setVisibleCount] = useState(pageSize);
@@ -84,7 +88,18 @@ export function CommunityPanelEvents({
                 <button
                   type="button"
                   className="community-page__show-more-btn"
-                  onClick={() => setVisibleCount(current => current + pageSize)}
+                  disabled={!canShowMore}
+                  onClick={() => {
+                    if (!canShowMore) {
+                      return;
+                    }
+                    const showMore = () => setVisibleCount(current => current + pageSize);
+                    if (requireMemberAccess) {
+                      requireMemberAccess(showMore);
+                      return;
+                    }
+                    showMore();
+                  }}
                 >
                   Show more
                 </button>

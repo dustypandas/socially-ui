@@ -8,6 +8,7 @@ export { CommunityOverlayActions } from './CommunityOverlayActions/CommunityOver
 export { CommunityOverlayJoin } from './CommunityOverlayJoin/CommunityOverlayJoin';
 export { CommunityPanelAbout } from './CommunityPanelAbout/CommunityPanelAbout';
 export { CommunityPanelEvents } from './CommunityPanelEvents/CommunityPanelEvents';
+export type { CommunityEventFilterId } from './CommunityPanelEvents/CommunityEventFilters';
 export { CommunityPanelMembers } from './CommunityPanelMembers/CommunityPanelMembers';
 export { CommunityPanelReviews } from './CommunityPanelReviews/CommunityPanelReviews';
 export { CommunitySectionPastEvents } from './CommunityPanelAbout/CommunitySectionPastEvents';

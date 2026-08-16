@@ -169,6 +169,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         communityId={eventPageData.community.id}
         entryConditions={eventPageData.communityEntryConditions}
         isOpen={isJoinOverlayOpen}
+        title="Community questions"
         onClose={handleJoinOverlayClose}
         onJoinSuccess={() => setEventViewerStatus('pending')}
       />

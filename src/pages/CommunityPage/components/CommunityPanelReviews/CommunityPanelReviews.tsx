@@ -16,12 +16,16 @@ type CommunityPanelReviewsProps = {
   reviews: EventReview[];
   shouldUseExactValue?: boolean;
   onScrollToTop?: () => void;
+  requireMemberAccess?: (targetAction: () => void) => void;
+  canShowMore?: boolean;
 };
 
 export function CommunityPanelReviews({
   reviews,
   shouldUseExactValue,
   onScrollToTop,
+  requireMemberAccess,
+  canShowMore = true,
 }: CommunityPanelReviewsProps) {
   const [reviewFilter, setReviewFilter] = useState<CommunityReviewFilterId>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -82,7 +86,18 @@ export function CommunityPanelReviews({
                 <button
                   type="button"
                   className="community-page__show-more-btn"
-                  onClick={() => setVisibleCount(current => current + PAGE_SIZE)}
+                  disabled={!canShowMore}
+                  onClick={() => {
+                    if (!canShowMore) {
+                      return;
+                    }
+                    const showMore = () => setVisibleCount(current => current + PAGE_SIZE);
+                    if (requireMemberAccess) {
+                      requireMemberAccess(showMore);
+                      return;
+                    }
+                    showMore();
+                  }}
                 >
                   Show more
                 </button>

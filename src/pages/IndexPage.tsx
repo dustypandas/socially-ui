@@ -17,7 +17,7 @@ export function IndexPage() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/events-ui'>Events ui</a>
       <span>
-        &emsp;<a href='#/one-event-ui'>One Event ui</a>
+        &emsp;<a href='#/one-event-ui'>One Event ui (visitor)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-empty'>(empty)</a>
         &emsp;&emsp;&emsp;<a href='#/one-event-ui-attending'>(attending)</a>
       </span>
@@ -25,7 +25,7 @@ export function IndexPage() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <a href='#/communities-ui'>Communities ui</a>
       <span>
-        &emsp;<a href='#/one-community-ui'>One Community ui</a>
+        &emsp;<a href='#/one-community-ui'>One Community ui (visitor)</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-empty'>(empty)</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-public'>(public)</a>
         &emsp;&emsp;&emsp;<a href='#/one-community-ui-member'>(member)</a>

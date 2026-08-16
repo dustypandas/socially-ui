@@ -11,6 +11,7 @@ type CommunityOverlayJoinProps = {
   communityId: string;
   entryConditions?: CommunityEntryConditions;
   isOpen: boolean;
+  title: string;
   onClose: () => void;
   onJoinSuccess?: () => void;
 };
@@ -19,6 +20,7 @@ export function CommunityOverlayJoin({
   communityId,
   entryConditions,
   isOpen,
+  title,
   onClose,
   onJoinSuccess,
 }: CommunityOverlayJoinProps) {
@@ -143,7 +145,7 @@ export function CommunityOverlayJoin({
     <Overlay isOpen={isOverlayVisible} onClose={onClose}>
       <div className="community-overlay-join__header">
         <h2 className="community-overlay-join__title">
-          Community Questions
+          {title}
         </h2>
         <button
           type="button"

@@ -64,6 +64,11 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     ));
   }, [rawCommunityPageData?.id, resolvedMemberRequestIds]);
 
+  const refreshCommunityPageData = useCallback(async () => {
+    const data = await getCommunityPageData();
+    applyPageData(data);
+  }, [applyPageData]);
+
   const hasResolvedMemberRequests = rawCommunityPageData !== null
     && resolvedMemberRequestIds.includes(rawCommunityPageData.id);
 
@@ -135,6 +140,7 @@ export function useCommunityPageStates({ variant }: CommunityPageClientProps) {
     resolveMemberRequests,
     markJoinPending,
     markMembershipCleared,
+    refreshCommunityPageData,
   };
 }
 

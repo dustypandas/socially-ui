@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
 import { getElementDocumentOffsetTop } from '@src/hooks/useScrolledPastDistance';
 import {
@@ -12,12 +12,10 @@ import {
   CommunityPanelMembers,
   CommunityPanelReviews,
 } from './components';
-import type { CommunityPanelId } from './components';
-import type { CommunityEventFilterId } from './components/CommunityPanelEvents/CommunityEventFilters';
+import type { CommunityEventFilterId, CommunityPanelId } from './components';
+import { canRenderLoginGatedPanel, canRenderMemberGatedPanel, isMember, useCommunityAccess } from './accessControl';
 import { CommunityPageClientProps, useCommunityPageStates } from './useCommunityPageStates';
 import './community-page.css';
-
-const LOGIN_GATED_PANELS: ReadonlySet<CommunityPanelId> = new Set(['events', 'members']);
 
 export function CommunityPageClient({ variant }: CommunityPageClientProps) {
   const {
@@ -27,14 +25,54 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     resolveMemberRequests,
     markJoinPending,
     markMembershipCleared,
+    refreshCommunityPageData,
   } = useCommunityPageStates({ variant });
-  const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
-  const [isLoginOverlayOpen, setIsLoginOverlayOpen] = useState(false);
   const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
-  const [loginOnSuccess, setLoginOnSuccess] = useState<(() => void) | undefined>();
   const [activePanel, setActivePanel] = useState<CommunityPanelId>('about');
   const [eventFilter, setEventFilter] = useState<CommunityEventFilterId>('upcoming');
-  const isLoggedOut = viewerStatus === null;
+
+  const scrollToTop = useCallback(() => {
+    const hero = document.getElementById('community-hero');
+    const nav = document.querySelector('.community-nav');
+    if (hero && nav instanceof HTMLElement) {
+      const stickyTop = parseFloat(getComputedStyle(nav).top) || 0;
+      const top = getElementDocumentOffsetTop(hero) + hero.offsetHeight - stickyTop - 16;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
+  }, []);
+
+  const navigateToPanel = useCallback((
+    panelId: CommunityPanelId,
+    options?: { eventFilter?: CommunityEventFilterId },
+  ) => {
+    setActivePanel(panelId);
+    if (panelId === 'events') {
+      setEventFilter(options?.eventFilter ?? 'upcoming');
+    }
+    scrollToTop();
+  }, [scrollToTop]);
+
+  const {
+    isLoggedOut,
+    requireMemberAccess,
+    handleJoinBtnClick,
+    handleNavigateClick,
+    isJoinOverlayOpen,
+    joinOverlayTitle,
+    isLoginOverlayOpen,
+    loginOnSuccess,
+    handleJoinOverlayClose,
+    handleLoginOverlayClose,
+  } = useCommunityAccess({
+    communityId: communityPageData?.id ?? '',
+    viewerStatus,
+    refreshCommunityPageData,
+    navigateToPanel,
+  });
+
+  if (!communityPageData) {
+    return null;
+  }
 
   if (viewerStatus === 'banned') {
     return (
@@ -46,78 +84,17 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     );
   }
 
-  if (!communityPageData) {
-    return null;
-  }
-
   const requestBadgeCount = hasResolvedMemberRequests
     ? 0
     : communityPageData.communityMemberRequests?.length ?? 0;
 
   const shouldUseExactValue = communityPageData.isOrganiser === true;
 
-  const openLoginOverlay = (onSuccess: () => void) => {
-    setLoginOnSuccess(() => onSuccess);
-    setIsLoginOverlayOpen(true);
-  };
-  const openJoinOverlay = () => setIsJoinOverlayOpen(true);
-  const navigateToPanel = (
-    panelId: CommunityPanelId,
-    options?: { eventFilter?: CommunityEventFilterId },
-  ) => {
-    setActivePanel(panelId);
-    if (panelId === 'events') {
-      setEventFilter(options?.eventFilter ?? 'upcoming');
-    }
-    scrollToTop();
-  };
-
-  const handleJoinBtnClick = () => {
-    if (isLoggedOut) {
-      openLoginOverlay(openJoinOverlay);
-      return;
-    }
-
-    if (
-      viewerStatus === 'pending'
-      || viewerStatus === 'member'
-    ) {
-      return; // ignore if already a member or pending
-    }
-
-    openJoinOverlay();
-  };
   const handleMembershipBtnClick = () => {
     setIsActionsOverlayOpen(true);
   };
-  const handleNavigateClick = (
-    panelId: CommunityPanelId,
-    options?: { eventFilter?: CommunityEventFilterId },
-  ) => {
-    if (isLoggedOut && LOGIN_GATED_PANELS.has(panelId)) {
-      openLoginOverlay(() => navigateToPanel(panelId, options));
-      return;
-    }
 
-    navigateToPanel(panelId, options);
-  };
-
-  const handleJoinOverlayClose = () => setIsJoinOverlayOpen(false);
-  const handleLoginOverlayClose = () => {
-    setIsLoginOverlayOpen(false);
-    setLoginOnSuccess(undefined);
-  };
   const handleActionsOverlayClose = () => setIsActionsOverlayOpen(false);
-
-  const scrollToTop = () => {
-    const hero = document.getElementById('community-hero');
-    const nav = document.querySelector('.community-nav');
-    if (hero && nav instanceof HTMLElement) {
-      const stickyTop = parseFloat(getComputedStyle(nav).top) || 0;
-      const top = getElementDocumentOffsetTop(hero) + hero.offsetHeight - stickyTop - 16;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-    }
-  };
 
   return (
     <PageLayout hasStaticHeader headerVariant={isLoggedOut ? 'loggedOut' : undefined}>
@@ -163,13 +140,13 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               reviews={communityPageData.reviewsForOneCommunity}
               organisers={communityPageData.organisers}
               recentLocations={communityPageData.recentLocations}
-              onPastEventsClick={() => handleNavigateClick('events', { eventFilter: 'past' })}
               onMoreEventsClick={() => handleNavigateClick('events')}
-              onMoreReviewsClick={() => handleNavigateClick('reviews')}
+              onPastEventsClick={() => handleNavigateClick('events', { eventFilter: 'past' })}
+              onMoreReviewsClick={() => requireMemberAccess(() => navigateToPanel('reviews'))}
               shouldUseExactValue={shouldUseExactValue}
             />
           )}
-          {activePanel === 'events' && (
+          {activePanel === 'events' && canRenderLoginGatedPanel(viewerStatus) && (
             <CommunityPanelEvents
               key={eventFilter}
               futureEvents={communityPageData.futureEvents}
@@ -178,9 +155,11 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               onEventFilterChange={setEventFilter}
               onScrollToTop={scrollToTop}
               shouldUseExactValue={shouldUseExactValue}
+              requireMemberAccess={requireMemberAccess}
+              canShowMore={isMember(viewerStatus)}
             />
           )}
-          {activePanel === 'members' && (
+          {activePanel === 'members' && canRenderMemberGatedPanel(viewerStatus) && (
             <CommunityPanelMembers
               members={communityPageData.communityMembers}
               memberRequests={communityPageData.communityMemberRequests}
@@ -188,6 +167,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               requestBadgeCount={requestBadgeCount}
               onRequestsViewed={resolveMemberRequests}
               onScrollToTop={scrollToTop}
+              requireMemberAccess={requireMemberAccess}
+              canShowMore={isMember(viewerStatus)}
             />
           )}
           {activePanel === 'reviews' && (
@@ -195,6 +176,8 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
               reviews={communityPageData.reviewsForOneCommunity}
               onScrollToTop={scrollToTop}
               shouldUseExactValue={shouldUseExactValue}
+              requireMemberAccess={requireMemberAccess}
+              canShowMore={isMember(viewerStatus)}
             />
           )}
         </div>
@@ -210,6 +193,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         communityId={communityPageData.id}
         entryConditions={communityPageData.entryConditions}
         isOpen={isJoinOverlayOpen}
+        title={joinOverlayTitle}
         onClose={handleJoinOverlayClose}
         onJoinSuccess={markJoinPending}
       />

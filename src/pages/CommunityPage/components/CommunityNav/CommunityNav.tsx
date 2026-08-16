@@ -5,10 +5,14 @@ import {
   getElementDocumentOffsetTop,
   useScrolledPastDistance,
 } from '@src/hooks/useScrolledPastDistance';
+import {
+  shouldShowGatedNavLink,
+  type CommunityPanelId,
+} from '../../accessControl';
 import { CommunityActionButtons } from '../CommunityActionButtons/CommunityActionButtons';
 import './community-nav.css';
 
-export type CommunityPanelId = 'about' | 'events' | 'members' | 'reviews';
+export type { CommunityPanelId };
 
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
@@ -42,6 +46,10 @@ export function CommunityNav({
     getDistance: (nav) => getElementDocumentOffsetTop(nav) + 50, // should substract header height, only on mobile
   });
 
+  const navLinks = NAV_LINKS.filter(link =>
+    shouldShowGatedNavLink(communityViewerStatus, link.id),
+  );
+
   return (
     <>
       <nav
@@ -52,7 +60,7 @@ export function CommunityNav({
           <ColumnsLayout>
             <ColumnsLayout.Main>
               <div className="community-nav__links">
-                {NAV_LINKS.map(link => (
+                {navLinks.map(link => (
                   <a
                     key={link.id}
                     href={`#${link.id}`}

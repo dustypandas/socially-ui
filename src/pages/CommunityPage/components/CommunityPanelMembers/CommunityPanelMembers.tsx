@@ -17,6 +17,8 @@ type CommunityPanelMembersProps = {
   requestBadgeCount?: number;
   onRequestsViewed?: () => void;
   onScrollToTop?: () => void;
+  requireMemberAccess?: (targetAction: () => void) => void;
+  canShowMore?: boolean;
 };
 
 export function CommunityPanelMembers({
@@ -26,6 +28,8 @@ export function CommunityPanelMembers({
   requestBadgeCount = 0,
   onRequestsViewed,
   onScrollToTop,
+  requireMemberAccess,
+  canShowMore = true,
 }: CommunityPanelMembersProps) {
   const [memberFilter, setMemberFilter] = useState<CommunityMemberFilterId>(
     requestBadgeCount > 0 ? 'requests' : 'all',
@@ -99,7 +103,18 @@ export function CommunityPanelMembers({
                 <button
                   type="button"
                   className="community-page__show-more-btn"
-                  onClick={() => setVisibleCount(current => current + PAGE_SIZE)}
+                  disabled={!canShowMore}
+                  onClick={() => {
+                    if (!canShowMore) {
+                      return;
+                    }
+                    const showMore = () => setVisibleCount(current => current + PAGE_SIZE);
+                    if (requireMemberAccess) {
+                      requireMemberAccess(showMore);
+                      return;
+                    }
+                    showMore();
+                  }}
                 >
                   Show more
                 </button>

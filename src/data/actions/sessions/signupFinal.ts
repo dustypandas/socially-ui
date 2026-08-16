@@ -3,7 +3,7 @@ export type SignupFinalPayload = {
   lastName: string;
   password: string;
   madridSince: string;
-  livingNear: string;
+  livingNear?: string;
   previousHomes: string[];
 };
 

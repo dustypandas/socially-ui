@@ -1,4 +1,4 @@
-@import './auth-page.css';
+@import '../../components/AuthForms/auth-forms.css';
 
 .signup-final-page {
   display: flex;

@@ -40,11 +40,11 @@ export function ResetPasswordPage() {
 
   const formContent = (
     <>
-      <form className="auth-page__form" onSubmit={handleSubmit}>
+      <form className="auth-form__form" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
-          className="auth-page__input"
+          className="auth-form__input"
           placeholder="email..."
           value={email}
           onChange={event => setEmail(event.target.value)}
@@ -54,24 +54,24 @@ export function ResetPasswordPage() {
         <button
           type="submit"
           className={[
-            'auth-page__submit',
-            isLoading && 'auth-page__submit--loading',
+            'auth-form__submit',
+            isLoading && 'auth-form__submit--loading',
           ].filter(Boolean).join(' ')}
           disabled={isLoading}
         >
           Send reset link
         </button>
-        {error && <p className="auth-page__error">{error}</p>}
+        {error && <p className="auth-form__error">{error}</p>}
       </form>
 
-      <div className="auth-page__cross-link-label">
-        <div className="auth-page__divider" />
+      <div className="auth-form__cross-link-label">
+        <div className="auth-form__divider" />
         Remember your password?{' '}
         <a
           href="#/login-ui"
           className={[
-            'auth-page__cross-link',
-            isLoading && 'auth-page__cross-link--disabled',
+            'auth-form__cross-link',
+            isLoading && 'auth-form__cross-link--disabled',
           ].filter(Boolean).join(' ')}
           onClick={handleLoginClick}
         >
@@ -99,8 +99,8 @@ export function ResetPasswordPage() {
                   Check your email to continue.
                 </div>
 
-                <div className="auth-page__cross-link-label">
-                  <div className="auth-page__divider" />
+                <div className="auth-form__cross-link-label">
+                  <div className="auth-form__divider" />
                   Didn't receive the email?{' '}
                   <button
                     type="button"

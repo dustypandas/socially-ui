@@ -7,7 +7,8 @@ import { SearchDropdown } from './components/SearchDropdown';
 import { SearchDropdownMultiple } from './components/SearchDropdownMultiple';
 import { countries } from './data/countries';
 import { getMadridSinceOptions } from './data/madridSinceOptions';
-import { livingNearOptions } from './data/livingNearOptions';
+// import { livingNearOptions } from './data/livingNearOptions';
+import './auth-page.css';
 import './signup-final-page.css';
 
 const madridSinceOptions = getMadridSinceOptions();
@@ -22,7 +23,7 @@ export function SignupFinalPage() {
   const [error, setError] = useState('');
   const [status, setStatus] = useState<SignupFinalStatus>('idle');
   const [madridSince, setMadridSince] = useState('');
-  const [livingNear, setLivingNear] = useState('');
+  // const [livingNear, setLivingNear] = useState('');
   const [previousHomes, setPreviousHomes] = useState<string[]>([]);
 
   const isLoading = status === 'loading';
@@ -55,7 +56,7 @@ export function SignupFinalPage() {
         lastName,
         password,
         madridSince,
-        livingNear,
+        // livingNear,
         previousHomes,
       });
       navigate(getAuthSuccessRedirect(searchParams));
@@ -69,12 +70,14 @@ export function SignupFinalPage() {
     <PageLayout hasStaticHeader headerVariant="auth2">
       <section className="signup-final-page">
         <div className="width-container signup-final-page__content">
-          <h1 className="auth-page__title">Bienvenido <span className="text--full-color">🙂</span> Last Step!</h1>
+          <h1 className="auth-page__title">
+            Bienvenido <span className="text--full-color">🙂</span> Last Step!
+          </h1>
           <form className="signup-final-page__form" onSubmit={handleSubmit}>
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="signup-first-name">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="signup-first-name">
                 Hi, my name is
-                <span className="auth-page__label-required"> *</span>
+                <span className="auth-form__label-required"> *</span>
               </label>
               <div className="signup-final-page__input-row">
                 <input
@@ -96,10 +99,10 @@ export function SignupFinalPage() {
               </div>
             </div>
 
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="signup-password">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="signup-password">
                 Password
-                <span className="auth-page__label-required"> *</span>
+                <span className="auth-form__label-required"> *</span>
               </label>
               <div className="signup-final-page__input-row">
                 <input
@@ -121,10 +124,10 @@ export function SignupFinalPage() {
               </div>
             </div>
 
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="signup-madrid-since">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="signup-madrid-since">
                 I've been in Madrid since
-                <span className="auth-page__label-required"> *</span>
+                <span className="auth-form__label-required"> *</span>
               </label>
               <SearchDropdown
                 id="signup-madrid-since"
@@ -135,8 +138,8 @@ export function SignupFinalPage() {
               />
             </div>
 
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="signup-living-near">
+            {/* <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="signup-living-near">
                 Living near
               </label>
               <SearchDropdown
@@ -146,12 +149,12 @@ export function SignupFinalPage() {
                 value={livingNear}
                 onChange={setLivingNear}
               />
-            </div>
+            </div> */}
 
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="signup-previous-homes">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="signup-previous-homes">
                 I previously lived in
-                <span className="auth-page__label-required"> *</span>
+                <span className="auth-form__label-required"> *</span>
               </label>
               <SearchDropdownMultiple
                 id="signup-previous-homes"
@@ -163,18 +166,18 @@ export function SignupFinalPage() {
             </div>
 
             {passwordError && (
-              <p className="auth-page__error">{passwordError}</p>
+              <p className="auth-form__error">{passwordError}</p>
             )}
 
             {error && (
-              <p className="auth-page__error">{error}</p>
+              <p className="auth-form__error">{error}</p>
             )}
 
             <button
               type="submit"
               className={[
-                'auth-page__submit',
-                isLoading && 'auth-page__submit--loading',
+                'auth-form__submit',
+                isLoading && 'auth-form__submit--loading',
               ].filter(Boolean).join(' ')}
               disabled={isLoading}
             >

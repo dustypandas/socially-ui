@@ -1,5 +1,7 @@
-export { AuthLogin } from './AuthLogin/AuthLogin';
-export { AuthLoginOverlay } from './AuthLogin/AuthLoginOverlay';
+export { AuthLogin } from './AuthForms/AuthLogin';
+export { AuthLoginOverlay } from './AuthForms/AuthLoginOverlay';
+export { AuthSignup } from './AuthForms/AuthSignup';
+export { AuthSignupOverlay } from './AuthForms/AuthSignupOverlay';
 export { ButtonsGroup } from './ButtonsGroup/ButtonsGroup';
 export { ColumnsLayout, useColumnsLayout } from './ColumnsLayout/ColumnsLayout';
 export { CommunityCard } from './CommunityCard/CommunityCard'

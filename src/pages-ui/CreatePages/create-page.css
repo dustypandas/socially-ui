@@ -1,4 +1,5 @@
 @import '../../pages/AuthPages/auth-page.css';
+@import '../../components/AuthForms/auth-forms.css';
 
 .create-page {
   display: flex;

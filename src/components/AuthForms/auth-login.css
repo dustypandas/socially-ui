@@ -1,4 +1,4 @@
-@import '../../pages/AuthPages/auth-page.css';
+@import './auth-forms.css';
 
 .auth-login__submit-group {
   display: flex;
@@ -6,7 +6,7 @@
   margin-top: 0.5rem;
 }
 
-.auth-login__submit-group .auth-page__submit {
+.auth-login__submit-group .auth-form__submit {
   margin-top: 0;
 }
 
@@ -28,20 +28,20 @@
   gap: 0.25rem;
 }
 
-.auth-login__messages .auth-page__error {
+.auth-login__messages .auth-form__error {
   margin: 0;
   color: transparent;
 }
 
-.auth-login__messages .auth-page__error--visible {
+.auth-login__messages .auth-form__error--visible {
   color: var(--color-red-600, #dc2626);
 }
 
-.auth-login__messages .auth-page__reset-prompt {
+.auth-login__messages .auth-form__reset-prompt {
   margin: 0;
   color: var(--global-text-light);
 }
 
-.auth-login__messages .auth-page__reset-prompt--hidden {
+.auth-login__messages .auth-form__reset-prompt--hidden {
   visibility: hidden;
 }

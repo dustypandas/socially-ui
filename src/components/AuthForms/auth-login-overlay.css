@@ -1,5 +1,4 @@
-@import 'tailwindcss';
-@import '../../globals.css';
+@import './auth-login.css';
 
 .auth-login-overlay {
   display: flex;

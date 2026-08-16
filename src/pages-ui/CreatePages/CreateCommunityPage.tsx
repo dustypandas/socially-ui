@@ -12,8 +12,8 @@ export function CreateCommunityPage() {
         <div className="width-container create-page__content">
           <h1 className="auth-page__title">Create community</h1>
           <form className="create-page__form" onSubmit={handleSubmit}>
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="create-community-name">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="create-community-name">
                 Name
               </label>
               <input
@@ -25,8 +25,8 @@ export function CreateCommunityPage() {
               />
             </div>
 
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="create-community-description">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="create-community-description">
                 Description
               </label>
               <textarea
@@ -38,8 +38,8 @@ export function CreateCommunityPage() {
               />
             </div>
 
-            <div className="auth-page__field">
-              <label className="auth-page__label" htmlFor="create-community-interests">
+            <div className="auth-form__field">
+              <label className="auth-form__label" htmlFor="create-community-interests">
                 Interests
               </label>
               <input
@@ -51,7 +51,7 @@ export function CreateCommunityPage() {
               />
             </div>
 
-            <button type="submit" className="auth-page__submit">
+            <button type="submit" className="auth-form__submit">
               Create community
             </button>
           </form>

@@ -45,11 +45,11 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
 
   return (
     <>
-      <form className="auth-page__form" onSubmit={handleSubmit}>
+      <form className="auth-form__form" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
-          className="auth-page__input"
+          className="auth-form__input"
           placeholder="email..."
           value={email}
           onChange={event => setEmail(event.target.value)}
@@ -59,7 +59,7 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
         <input
           type="password"
           name="password"
-          className="auth-page__input"
+          className="auth-form__input"
           placeholder="password..."
           value={password}
           onChange={event => setPassword(event.target.value)}
@@ -76,22 +76,22 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
             <div className="auth-login__messages-inner">
               <div
                 className={[
-                  'auth-page__error',
-                  error && 'auth-page__error--visible',
+                  'auth-form__error',
+                  error && 'auth-form__error--visible',
                 ].filter(Boolean).join(' ')}
               >
                 {error || '\u00A0'}
               </div>
               <div
                 className={[
-                  'auth-page__reset-prompt',
-                  error !== 'Incorrect email or password.' && 'auth-page__reset-prompt--hidden',
+                  'auth-form__reset-prompt',
+                  error !== 'Incorrect email or password.' && 'auth-form__reset-prompt--hidden',
                 ].filter(Boolean).join(' ')}
               >
                 {error === 'Incorrect email or password.' ? (
                   <>
                     Can't log in?{' '}
-                    <a href="#/reset-password-ui" className="auth-page__cross-link">
+                    <a href="#/reset-password-ui" className="auth-form__cross-link">
                       Reset my password
                     </a>
                   </>
@@ -104,8 +104,8 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
           <button
             type="submit"
             className={[
-              'auth-page__submit',
-              isLoading && 'auth-page__submit--loading',
+              'auth-form__submit',
+              isLoading && 'auth-form__submit--loading',
             ].filter(Boolean).join(' ')}
             disabled={isLoading}
           >
@@ -113,14 +113,14 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
           </button>
         </div>
       </form>
-      <div className="auth-page__cross-link-label">
-        <div className="auth-page__divider" />
+      <div className="auth-form__cross-link-label">
+        <div className="auth-form__divider" />
         Don't have an account yet?{' '}
         <a
           href="#/signup-ui"
           className={[
-            'auth-page__cross-link',
-            isLoading && 'auth-page__cross-link--disabled',
+            'auth-form__cross-link',
+            isLoading && 'auth-form__cross-link--disabled',
           ].filter(Boolean).join(' ')}
           onClick={handleSignupClick}
         >

@@ -1,10 +1,10 @@
 import { forwardRef } from 'react';
-import type { EventViewerStatus, MemberAvatar } from '@src/common-libs/types';
+import type { EventAttendee, EventViewerStatus } from '@src/common-libs/types';
 import { getAttendeesLabel } from '@src/helpers/labelHelpers';
 import './event-attend-card.css';
 
 type EventAttendCardProps = {
-  profiles: MemberAvatar[];
+  profiles: EventAttendee[];
   attendeeCount: number;
   priceLabel?: string;
   className?: string;
@@ -13,6 +13,7 @@ type EventAttendCardProps = {
   eventViewerStatus: EventViewerStatus | null;
   onJoinBtnClick?: () => void;
   onUpdateClick?: () => void;
+  onAttendeesClick: () => void;
   isJoinLoading?: boolean;
 };
 
@@ -52,6 +53,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       eventViewerStatus,
       onJoinBtnClick,
       onUpdateClick,
+      onAttendeesClick,
       isJoinLoading = false,
     },
     ref,
@@ -69,7 +71,11 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
     const body = (
       <div className="event-attend-card__body">
         <div className="event-attend-card__left">
-          <div className="event-attend-card__attendees">
+          <button
+            type="button"
+            className="event-attend-card__attendees"
+            onClick={onAttendeesClick}
+          >
             <div className="event-attend-card__avatars">
               {profiles.map((profile, index) => (
                 <img
@@ -84,7 +90,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
             <span className="event-attend-card__attendees-label">
               {getAttendeesLabel({ count: attendeeCount, avatars: profiles })}
             </span>
-          </div>
+          </button>
         </div>
         <div className="event-attend-card__actions">
           {hasRsvp ? (
@@ -134,7 +140,9 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           ? (<div className="width-container">{body}</div>)
           : (<>
             <div className="event-attend-card__header">
-              <span className="event-attend-card__header-label">Attend</span>
+              <span className="event-attend-card__header-label">
+                { hasRsvp ? 'Attending' : 'Attend' }
+              </span>
             </div>
             {body}
           </>)

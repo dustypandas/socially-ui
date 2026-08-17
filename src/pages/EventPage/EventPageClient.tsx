@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import type { EventAttendee } from '@src/common-libs/types';
 import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
 import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { CommunityOverlayJoin } from '@src/pages/CommunityPage/components';
 import { isLoggedOut, useEventAccess } from './accessControl';
 import {
   EventAttendCard,
-  EventAttendanceOverlay,
+  EventOverlayChangeRsvp,
+  EventOverlayAttendees,
   EventCommunity,
   EventDescription,
   EventLocationDetails,
@@ -25,6 +27,8 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     refreshEventPageData,
   } = useEventPageStates({ variant });
   const [isAttendanceOverlayOpen, setIsAttendanceOverlayOpen] = useState(false);
+  const [isAttendeesOverlayOpen, setIsAttendeesOverlayOpen] = useState(false);
+  const [eventAttendeesList, setEventAttendeesList] = useState<EventAttendee[] | null>(null);
 
   const attendCardRef = useRef<HTMLDivElement>(null);
   const asideTitleRef = useRef<HTMLHeadingElement>(null);
@@ -40,7 +44,9 @@ export function EventPageClient({ variant }: EventPageClientProps) {
   const {
     handleJoinBtnClick,
     handleJoinOverlaySuccess,
+    requireMemberAccess,
     isJoinOverlayOpen,
+    joinOverlayTitle,
     isLoginOverlayOpen,
     loginOnSuccess,
     isJoinLoading,
@@ -102,6 +108,10 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     setIsAttendanceOverlayOpen(true);
   };
   const handleAttendanceOverlayClose = () => setIsAttendanceOverlayOpen(false);
+  const handleAttendeesClick = () => {
+    requireMemberAccess(() => setIsAttendeesOverlayOpen(true));
+  };
+  const handleAttendeesOverlayClose = () => setIsAttendeesOverlayOpen(false);
 
   return (
     <PageLayout hasStaticHeader headerVariant={isLoggedOut(eventViewerStatus) ? 'loggedOut' : undefined}>
@@ -128,6 +138,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 eventViewerStatus={eventViewerStatus}
                 onJoinBtnClick={handleJoinBtnClick}
                 onUpdateClick={handleUpdateClick}
+                onAttendeesClick={handleAttendeesClick}
                 isJoinLoading={isJoinLoading}
               />
               <div className="interest-page__divider--hidden" />
@@ -147,7 +158,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                   <EventImage src={eventPageData.image} alt={eventPageData.title} />
                 </div>
                 <div ref={asideStickyRef} className="event-page__aside-sticky">
-                  <h3
+                  <h2
                     ref={asideTitleRef}
                     className={[
                       'event-page__aside-title',
@@ -155,7 +166,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                     ].filter(Boolean).join(' ')}
                   >
                     {eventPageData.title}
-                  </h3>
+                  </h2>
                   <div className="interest-page__divider--hidden" />
                   <EventCommunity community={eventPageData.community} />
                   <div className="event-page__divider--reverse-hidden" />
@@ -174,6 +185,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         eventViewerStatus={eventViewerStatus}
         onJoinBtnClick={handleJoinBtnClick}
         onUpdateClick={handleUpdateClick}
+        onAttendeesClick={handleAttendeesClick}
         isJoinLoading={isJoinLoading}
       />
       <AuthLoginOverlay
@@ -185,16 +197,23 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         communityId={eventPageData.community.id}
         entryConditions={eventPageData.communityEntryConditions}
         isOpen={isJoinOverlayOpen}
-        title="Community questions"
+        title={joinOverlayTitle}
         onClose={handleJoinOverlayClose}
         onJoinSuccess={handleJoinOverlaySuccess}
       />
-      <EventAttendanceOverlay
+      <EventOverlayChangeRsvp
         eventId={eventPageData.id}
         currentStatus={eventViewerStatus}
         isOpen={isAttendanceOverlayOpen}
         onClose={handleAttendanceOverlayClose}
         onAttendanceUpdate={setEventViewerStatus}
+      />
+      <EventOverlayAttendees
+        isOpen={isAttendeesOverlayOpen}
+        onClose={handleAttendeesOverlayClose}
+        attendeeCount={eventPageData.attendees.count}
+        attendees={eventAttendeesList}
+        onAttendeesLoaded={setEventAttendeesList}
       />
     </PageLayout>
   );

@@ -1,9 +1,13 @@
-import type { EventAttendees, HomeProfileMember, CommunityMember, CommunityMemberRequest, MemberPageData, MemberProfile } from '@src/common-libs/types';
-import { attendeesForOneEvent, memberCommunitiesForOneMember, memberInterestsForOneMember, memberAboutForOneMember, communityMembersForOneCommunity, communityMemberRequestsForOneCommunity, memberForOneProfile } from '../stores/dummyData.ts';
+import type { EventAttendees, EventAttendee, HomeProfileMember, CommunityMember, CommunityMemberRequest, MemberPageData, MemberProfile } from '@src/common-libs/types';
+import { attendeesForOneEvent, attendeesListForOneEvent, memberCommunitiesForOneMember, memberInterestsForOneMember, memberAboutForOneMember, communityMembersForOneCommunity, communityMemberRequestsForOneCommunity, memberForOneProfile } from '../stores/dummyData.ts';
 import { homeNewMembers } from '../stores/userData/index.ts';
 
 export async function getAttendeesForOneEvent(): Promise<EventAttendees> {
   return attendeesForOneEvent;
+}
+
+export async function getEventAttendeesListForOneEvent(): Promise<EventAttendee[]> {
+  return attendeesListForOneEvent;
 }
 
 export async function getCommunityMembersForOneCommunity(): Promise<CommunityMember[]> {

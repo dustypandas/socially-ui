@@ -1,7 +1,7 @@
 import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
-import type { EventBasic, MemberAvatar } from '@src/common-libs/types';
+import type { EventAttendee, EventBasic } from '@src/common-libs/types';
 import { getAttendeesLabel } from '@src/helpers/labelHelpers.js';
 import './event-card-horizontal.css';
 
@@ -47,7 +47,7 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
         {event.attendees.avatars.length > 0 && (
           <div className="event-card-horizontal__attendees">
             <div className="event-card-horizontal__attendees-img-container">
-              {event.attendees.avatars.map((avatar: MemberAvatar, index: number) => (
+              {event.attendees.avatars.map((avatar: EventAttendee, index: number) => (
                 <img
                   key={avatar.id}
                   className="event-card-horizontal__attendee-img"

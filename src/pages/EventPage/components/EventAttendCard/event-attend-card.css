@@ -61,6 +61,14 @@
   align-items: center;
   gap: 0.5rem;
   min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 .event-attend-card__avatars {
@@ -88,6 +96,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: scale(1);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.event-attend-card__attendees:hover .event-attend-card__attendees-label {
+  transform: scale(1.02);
+  color: var(--global-text);
 }
 
 .event-attend-card__price {

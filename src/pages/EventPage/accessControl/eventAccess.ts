@@ -9,6 +9,19 @@ export function isMember(viewerStatus: EventViewerStatus | null | undefined): bo
   return viewerStatus === 'member';
 }
 
+export function hasRsvp(viewerStatus: EventViewerStatus | null | undefined): boolean {
+  return viewerStatus === 'attending'
+    || viewerStatus === 'late'
+    || viewerStatus === 'waitlisted'
+    || viewerStatus === 'notAttending';
+}
+
+export function canViewEventAttendees(
+  viewerStatus: EventViewerStatus | null | undefined,
+): boolean {
+  return isMember(viewerStatus) || hasRsvp(viewerStatus);
+}
+
 export async function resolveMembershipAfterLogin(
   communityId: string,
   refreshEventPageData: () => Promise<void>,

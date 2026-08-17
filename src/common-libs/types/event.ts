@@ -1,4 +1,5 @@
 import type { CommunityAvatar, CommunityViewerStatus } from './community.ts';
+import type { InterestBasic } from './interest.ts';
 import type { MemberAvatar } from './member.ts';
 import type { AddressLocation, MapLocation } from './primitives.ts';
 
@@ -39,9 +40,15 @@ export type Event =
   reviews?: EventReview[];
 };
 
+export type EventAttendee =
+& MemberAvatar
+& {
+  topInterests: InterestBasic[];
+};
+
 export type EventAttendees = {
   count: number;
-  avatars: MemberAvatar[];
+  avatars: EventAttendee[];
 };
 
 export type EventReview = {

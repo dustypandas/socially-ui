@@ -3,18 +3,18 @@ import IconCheckOutline from '@src/assets/icon-check-outline.svg?react';
 import type { EventViewerStatus } from '@src/common-libs/types';
 import { Overlay } from '@src/components';
 import { attendEvent, lateEvent, notAttendEvent } from '@src/data';
-import './event-attendance-overlay.css';
+import './event-overlay-change-rsvp.css';
 
 type ActionStatus = 'idle' | 'attending' | 'late' | 'notAttending';
 type AttendanceChoice = 'attending' | 'late' | 'notAttending';
 
-const ATTENDANCE_OPTIONS: { value: AttendanceChoice; label: string }[] = [
+const RSVP_OPTIONS: { value: AttendanceChoice; label: string }[] = [
   { value: 'attending', label: "I'm going" },
   { value: 'late', label: "I'll be late" },
   { value: 'notAttending', label: "I'm not going" },
 ];
 
-type EventAttendanceOverlayProps = {
+type EventOverlayChangeRsvpProps = {
   eventId: string;
   currentStatus: EventViewerStatus | null;
   isOpen: boolean;
@@ -33,13 +33,13 @@ function isCurrentOption(
   return currentStatus === option;
 }
 
-export function EventAttendanceOverlay({
+export function EventOverlayChangeRsvp({
   eventId,
   currentStatus,
   isOpen,
   onClose,
   onAttendanceUpdate,
-}: EventAttendanceOverlayProps) {
+}: EventOverlayChangeRsvpProps) {
   const [actionStatus, setActionStatus] = useState<ActionStatus>('idle');
   const isBusy = actionStatus !== 'idle';
 
@@ -79,21 +79,21 @@ export function EventAttendanceOverlay({
 
   return (
     <Overlay isOpen={isOpen} onClose={onClose}>
-      <div className="event-attendance-overlay__header">
-        <h2 className="event-attendance-overlay__title">
+      <div className="event-overlay-change-rsvp__header">
+        <h2 className="event-overlay-change-rsvp__title">
           Change RSVP
         </h2>
         <button
           type="button"
-          className="event-attendance-overlay__close"
+          className="event-overlay-change-rsvp__close"
           onClick={onClose}
           disabled={isBusy}
         >
-          <span className="event-attendance-overlay__close-icon" />
+          <span className="event-overlay-change-rsvp__close-icon" />
         </button>
       </div>
-      <div className="event-attendance-overlay__options">
-        {ATTENDANCE_OPTIONS.map((option) => {
+      <div className="event-overlay-change-rsvp__options">
+        {RSVP_OPTIONS.map((option) => {
           const isSelected = isCurrentOption(option.value, currentStatus);
 
           return (
@@ -101,16 +101,16 @@ export function EventAttendanceOverlay({
               key={option.value}
               type="button"
               className={[
-                'event-attendance-overlay__option',
-                isSelected && 'event-attendance-overlay__option--selected',
-                actionStatus === option.value && 'event-attendance-overlay__option--loading',
+                'event-overlay-change-rsvp__option',
+                isSelected && 'event-overlay-change-rsvp__option--selected',
+                actionStatus === option.value && 'event-overlay-change-rsvp__option--loading',
               ].filter(Boolean).join(' ')}
               onClick={() => handleStatusChange(option.value)}
               disabled={isBusy}
             >
-              <span className="event-attendance-overlay__option-tick">
+              <span className="event-overlay-change-rsvp__option-tick">
                 {isSelected && (
-                  <IconCheckOutline className="event-attendance-overlay__option-tick-icon" />
+                  <IconCheckOutline className="event-overlay-change-rsvp__option-tick-icon" />
                 )}
               </span>
               {option.label}

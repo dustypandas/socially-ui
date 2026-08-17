@@ -76,7 +76,7 @@
 @utility heading-h3 {
   @apply heading-text;
   font-size: 1.25rem;
-  color: var(--global-text-heading);
+  /* color: var(--global-text-heading); */
 }
 
 @utility text-input--content {

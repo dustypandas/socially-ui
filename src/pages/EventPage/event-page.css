@@ -37,14 +37,17 @@
 
 .event-page__aside-title {
   /* margin: 0 0 2rem; */
+  display: block;
   opacity: 0;
   transform: translateY(0.5rem);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* @apply heading-h2; */
   @apply heading-h2;
   @apply text-ellipsis;
+  line-height: 1.5;
   line-clamp: 2;
   -webkit-line-clamp: 2;
-  font-size: 1.875rem;
+  /* font-size: 1.875rem; */
 
   &.event-page__aside-title--visible {
     opacity: 1;

@@ -1,4 +1,6 @@
 export {
+  canViewEventAttendees,
+  hasRsvp,
   isLoggedOut,
   isMember,
   resolveMembershipAfterLogin,

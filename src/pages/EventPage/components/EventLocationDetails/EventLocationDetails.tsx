@@ -31,7 +31,7 @@ export function EventLocationDetails({
               {addressLocation.nearestMetros.length > 0 && (
                 <div className="event-location-details__metros">
                   <div className="event-location-details__label">
-                    Nearest metro stations:
+                    Nearest metros:
                   </div>
                   <ul className="event-location-details__metros-list">
                     {addressLocation.nearestMetros.map(metro => (

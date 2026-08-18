@@ -8,6 +8,7 @@ import {
   EventAttendCard,
   EventOverlayChangeRsvp,
   EventOverlayAttendees,
+  EventOverlayReviews,
   EventCommunity,
   EventDescription,
   EventLocationDetails,
@@ -28,6 +29,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
   } = useEventPageStates({ variant });
   const [isAttendanceOverlayOpen, setIsAttendanceOverlayOpen] = useState(false);
   const [isAttendeesOverlayOpen, setIsAttendeesOverlayOpen] = useState(false);
+  const [isReviewsOverlayOpen, setIsReviewsOverlayOpen] = useState(false);
   const [eventAttendeesList, setEventAttendeesList] = useState<EventAttendee[] | null>(null);
 
   const attendCardRef = useRef<HTMLDivElement>(null);
@@ -45,6 +47,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     handleJoinBtnClick,
     handleJoinOverlaySuccess,
     requireMemberAccess,
+    requireLoginAccess,
     isJoinOverlayOpen,
     joinOverlayTitle,
     isLoginOverlayOpen,
@@ -112,6 +115,10 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     requireMemberAccess(() => setIsAttendeesOverlayOpen(true));
   };
   const handleAttendeesOverlayClose = () => setIsAttendeesOverlayOpen(false);
+  const handleReviewsMoreClick = () => {
+    requireLoginAccess(() => setIsReviewsOverlayOpen(true));
+  };
+  const handleReviewsOverlayClose = () => setIsReviewsOverlayOpen(false);
 
   return (
     <PageLayout hasStaticHeader headerVariant={isLoggedOut(eventViewerStatus) ? 'loggedOut' : undefined}>
@@ -150,7 +157,10 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 canViewExactAddress={canViewExactAddress}
               />
               <div className="event-page__divider" />
-              <EventReviews reviews={eventPageData.reviews ?? []} />
+              <EventReviews
+                reviews={eventPageData.reviews ?? []}
+                onMoreClick={handleReviewsMoreClick}
+              />
             </ColumnsLayout.Main>
             <ColumnsLayout.Aside>
               <div className="event-page__aside">
@@ -214,6 +224,11 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         attendeeCount={eventPageData.attendees.count}
         attendees={eventAttendeesList}
         onAttendeesLoaded={setEventAttendeesList}
+      />
+      <EventOverlayReviews
+        isOpen={isReviewsOverlayOpen}
+        onClose={handleReviewsOverlayClose}
+        reviews={eventPageData.reviews ?? []}
       />
     </PageLayout>
   );

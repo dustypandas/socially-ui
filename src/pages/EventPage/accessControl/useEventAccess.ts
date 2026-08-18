@@ -97,6 +97,18 @@ export function useEventAccess({
     openJoinOverlay('memberRequirement', targetAction);
   }, [viewerStatus, openLoginOverlay, resolveMemberAccessAfterLogin, openJoinOverlay]);
 
+  const requireLoginAccess = useCallback((targetAction: () => void) => {
+    if (isLoggedOut(viewerStatus)) {
+      openLoginOverlay(async () => {
+        await refreshEventPageData();
+        targetAction();
+      });
+      return;
+    }
+
+    targetAction();
+  }, [viewerStatus, openLoginOverlay, refreshEventPageData]);
+
   const resolveAttendAccessAfterLogin = useCallback(() => async () => {
     const allowed = await resolveMembershipAfterLogin(communityId, refreshEventPageData);
     if (allowed) {
@@ -162,6 +174,7 @@ export function useEventAccess({
     handleJoinBtnClick,
     handleJoinOverlaySuccess,
     requireMemberAccess,
+    requireLoginAccess,
     isJoinOverlayOpen,
     joinOverlayTitle,
     isLoginOverlayOpen,

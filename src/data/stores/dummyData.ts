@@ -750,6 +750,22 @@ export const reviewsForOneEvent: EventReview[] = [
     content: 'Ok event!',
     date: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000),
   },
+  {
+    event: toEventLink(events[0]),
+    member: toMemberAvatar(members[3]),
+    communityId: 'polylogue-madrid',
+    rating: 5,
+    content: 'Loved the discussion!',
+    date: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000),
+  },
+  {
+    event: toEventLink(events[0]),
+    member: toMemberAvatar(members[4]),
+    communityId: 'polylogue-madrid',
+    rating: 4,
+    content: 'Would attend again.',
+    date: new Date(Date.now() - 120 * 24 * 60 * 60 * 1000),
+  },
 ];
 
 const COMMUNITY_REVIEW_CONTENTS = [

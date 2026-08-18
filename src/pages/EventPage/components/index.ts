@@ -5,6 +5,7 @@ export { EventIntro } from './EventIntro/EventIntro';
 export { EventAttendCard } from './EventAttendCard/EventAttendCard';
 export { EventOverlayChangeRsvp } from './EventOverlayChangeRsvp/EventOverlayChangeRsvp';
 export { EventOverlayAttendees } from './EventOverlayAttendees/EventOverlayAttendees';
+export { EventOverlayReviews } from './EventOverlayReviews/EventOverlayReviews';
 export { EventDescription } from './EventDescription/EventDescription';
 export { EventLocationDetails } from './EventLocationDetails/EventLocationDetails';
 export { EventTags } from './EventTags/EventTags';

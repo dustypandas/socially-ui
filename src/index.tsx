@@ -44,6 +44,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/one-event-ui-member' element={<EventPageClient variant="member" />} />
         <Route path='/one-event-ui-attending' element={<EventPageClient variant="attending" />} />
         <Route path='/one-event-ui-host' element={<EventPageClient variant="host" />} />
+        <Route path='/one-event-ui-past' element={<EventPageClient variant="past" />} />
         <Route path='/one-event-ui-rejected' element={<EventPageClient variant="rejected" />} />
         <Route path='/communities-ui' element={<CommunitiesPageClient />} />
         <Route path='/one-community-ui' element={<CommunityPageClient />} />

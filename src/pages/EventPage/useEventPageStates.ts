@@ -100,6 +100,17 @@ export function useEventPageStates({ variant }: EventPageClientProps) {
       };
     }
 
+    if (variant === 'past') {
+      const startTime = new Date(rawEventPageData.startTime);
+      startTime.setDate(startTime.getDate() - 3);
+
+      return {
+        ...rawEventPageData,
+        viewerStatus: 'attending' as const,
+        startTime,
+      };
+    }
+
     return {
       ...rawEventPageData,
       viewerStatus: 'visitor' as const,
@@ -119,6 +130,7 @@ export const PAGE_VARIANT_OPTIONS = [
   'member',
   'attending',
   'host',
+  'past',
   'rejected',
 ] as const;
 

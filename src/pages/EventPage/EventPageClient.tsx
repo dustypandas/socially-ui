@@ -119,6 +119,8 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     requireLoginAccess(() => setIsReviewsOverlayOpen(true));
   };
   const handleReviewsOverlayClose = () => setIsReviewsOverlayOpen(false);
+  const handleAddReviewClick = () => {};
+  const isPastEvent = variant === 'past';
 
   return (
     <PageLayout hasStaticHeader headerVariant={isLoggedOut(eventViewerStatus) ? 'loggedOut' : undefined}>
@@ -148,6 +150,8 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 onAttendeesClick={handleAttendeesClick}
                 isJoinLoading={isJoinLoading}
                 isHost={eventPageData.isHost === true}
+                isPastEvent={isPastEvent}
+                onAddReviewClick={handleAddReviewClick}
               />
               <div className="interest-page__divider--hidden" />
               <EventDescription htmlContent={eventPageData.descriptionHtml} />
@@ -199,6 +203,8 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         onAttendeesClick={handleAttendeesClick}
         isJoinLoading={isJoinLoading}
         isHost={eventPageData.isHost === true}
+        isPastEvent={isPastEvent}
+        onAddReviewClick={handleAddReviewClick}
       />
       <AuthLoginOverlay
         isOpen={isLoginOverlayOpen}

@@ -14,9 +14,11 @@ type EventAttendCardProps = {
   eventViewerStatus: EventViewerStatus | null;
   onJoinBtnClick?: () => void;
   onUpdateClick?: () => void;
+  onAddReviewClick?: () => void;
   onAttendeesClick: () => void;
   isJoinLoading?: boolean;
   isHost?: boolean;
+  isPastEvent?: boolean;
 };
 
 function getJoinButtonLabel(status: EventViewerStatus | null): string {
@@ -43,6 +45,81 @@ function getEngagementLabel(status: EventViewerStatus | null): string {
   return "I'm Attending";
 }
 
+function getPastEngagementLabel(isHost: boolean): string {
+  return isHost ? 'Hosted' : 'Attended';
+}
+
+function getHeaderLabel(
+  isPastEvent: boolean,
+  isHost: boolean,
+  hasRsvp: boolean,
+): string {
+  if (isPastEvent) {
+    return 'Past';
+  }
+
+  if (isHost) {
+    return 'Hosting';
+  }
+
+  if (hasRsvp) {
+    return 'Attending';
+  }
+
+  return 'Attend';
+}
+
+type AttendeesSectionProps = {
+  profiles: EventAttendee[];
+  attendeeCount: number;
+  isClickable: boolean;
+  onAttendeesClick: () => void;
+};
+
+function AttendeesSection({
+  profiles,
+  attendeeCount,
+  isClickable,
+  onAttendeesClick,
+}: AttendeesSectionProps) {
+  const content = (
+    <>
+      <div className="event-attend-card__avatars">
+        {profiles.map((profile, index) => (
+          <img
+            key={profile.id}
+            className="event-attend-card__avatar"
+            src={profile.image}
+            alt=""
+            style={{ zIndex: 20 - index }}
+          />
+        ))}
+      </div>
+      <span className="event-attend-card__attendees-label">
+        {getAttendeesLabel({ count: attendeeCount, avatars: profiles })}
+      </span>
+    </>
+  );
+
+  if (isClickable) {
+    return (
+      <button
+        type="button"
+        className="event-attend-card__attendees"
+        onClick={onAttendeesClick}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <div className="event-attend-card__attendees event-attend-card__attendees--static">
+      {content}
+    </div>
+  );
+}
+
 export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
   function EventAttendCard(
     {
@@ -55,9 +132,11 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       eventViewerStatus,
       onJoinBtnClick,
       onUpdateClick,
+      onAddReviewClick,
       onAttendeesClick,
       isJoinLoading = false,
       isHost = false,
+      isPastEvent = false,
     },
     ref,
   ) {
@@ -70,68 +149,97 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       isJoinLoading
       || eventViewerStatus === 'pending'
       || eventViewerStatus === 'banned';
+    const canClickAttendees = !isPastEvent || isHost || hasRsvp;
+
+    const actions = isPastEvent ? (
+      isHost ? (
+        <>
+          <span className="event-attend-card__attending-label event-attend-card__attending-label--light">
+            {getPastEngagementLabel(true)}
+          </span>
+          <button
+            type="button"
+            className="event-attend-card__btn event-attend-card__btn--update"
+            onClick={onUpdateClick}
+          >
+            event
+            <IconMore className="event-attend-card__btn-icon" />
+          </button>
+        </>
+      ) : hasRsvp ? (
+        <>
+          <span className="event-attend-card__attending-label event-attend-card__attending-label--light">
+            {getPastEngagementLabel(false)}
+          </span>
+          <button
+            type="button"
+            className="event-attend-card__btn"
+            onClick={onAddReviewClick}
+          >
+            add review
+          </button>
+        </>
+      ) : (
+        <>
+          <span className="event-attend-card__price">{priceLabel}</span>
+          <button
+            type="button"
+            className="event-attend-card__btn"
+            disabled
+          >
+            Past
+          </button>
+        </>
+      )
+    ) : hasRsvp ? (
+      <>
+        <span className="event-attend-card__attending-label">
+          {isHost === true ? "I'm Hosting" : getEngagementLabel(eventViewerStatus)}
+        </span>
+        <button
+          type="button"
+          className="event-attend-card__btn event-attend-card__btn--update"
+          onClick={onUpdateClick}
+        >
+          {isHost === true ? (
+            <>
+              event
+              <IconMore className="event-attend-card__btn-icon" />
+            </>
+          ) : (
+            'change'
+          )}
+        </button>
+      </>
+    ) : (
+      <>
+        <span className="event-attend-card__price">{priceLabel}</span>
+        <button
+          type="button"
+          className={[
+            'event-attend-card__btn',
+            isJoinLoading && 'event-attend-card__btn--loading',
+          ].filter(Boolean).join(' ')}
+          onClick={onJoinBtnClick}
+          disabled={isJoinDisabled}
+        >
+          {getJoinButtonLabel(eventViewerStatus)}
+        </button>
+      </>
+    );
 
     const body = (
       <div className="event-attend-card__body">
         <div className="event-attend-card__left">
-          <button
-            type="button"
-            className="event-attend-card__attendees"
-            onClick={onAttendeesClick}
-          >
-            <div className="event-attend-card__avatars">
-              {profiles.map((profile, index) => (
-                <img
-                  key={profile.id}
-                  className="event-attend-card__avatar"
-                  src={profile.image}
-                  alt=""
-                  style={{ zIndex: 20 - index }}
-                />
-              ))}
-            </div>
-            <span className="event-attend-card__attendees-label">
-              {getAttendeesLabel({ count: attendeeCount, avatars: profiles })}
-            </span>
-          </button>
+          <AttendeesSection
+            profiles={profiles}
+            attendeeCount={attendeeCount}
+            isClickable={canClickAttendees}
+            onAttendeesClick={onAttendeesClick}
+          />
         </div>
         <div className="event-attend-card__actions">
-          {hasRsvp ? (
-            <>
-              <span className="event-attend-card__attending-label">
-                {isHost === true ? "I'm Hosting" : getEngagementLabel(eventViewerStatus)}
-              </span>
-              <button
-                type="button"
-                className="event-attend-card__btn event-attend-card__btn--update"
-                onClick={onUpdateClick}
-              >
-                {isHost === true ? (
-                  <>
-                    event
-                    <IconMore className="event-attend-card__btn-icon" />
-                  </>
-                ) : (
-                  'change'
-                )}
-              </button>
-            </>
-          ) : (
-            <>
-              <span className="event-attend-card__price">{priceLabel}</span>
-              <button
-                type="button"
-                className={[
-                  'event-attend-card__btn',
-                  isJoinLoading && 'event-attend-card__btn--loading',
-                ].filter(Boolean).join(' ')}
-                onClick={onJoinBtnClick}
-                disabled={isJoinDisabled}
-              >
-                {getJoinButtonLabel(eventViewerStatus)}
-              </button>
-            </>
-          )}
+          {actions}
         </div>
       </div>
     );
@@ -142,6 +250,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
         className={[
           'event-attend-card',
           isHost && 'event-attend-card--host',
+          isPastEvent && 'event-attend-card--past',
           isFixedBar && 'event-attend-card--fixed-bar',
           isFixedBar && isFixedBarVisible && 'event-attend-card--fixed-bar--visible',
           className,
@@ -152,7 +261,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           : (<>
             <div className="event-attend-card__header">
               <span className="event-attend-card__header-label">
-                {isHost === true ? 'Hosting' : (hasRsvp ? 'Attending' : 'Attend')}
+                {getHeaderLabel(isPastEvent, isHost === true, hasRsvp)}
               </span>
             </div>
             {body}

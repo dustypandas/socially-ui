@@ -106,6 +106,14 @@
   color: var(--global-text);
 }
 
+.event-attend-card__attendees--static {
+  cursor: default;
+}
+
+.event-attend-card__attendees--static .event-attend-card__attendees-label {
+  transform: none;
+}
+
 .event-attend-card__price {
   flex-shrink: 0;
   color: var(--global-text-muted);
@@ -129,6 +137,14 @@
   color: var(--global-text);
   font-weight: 500;
   white-space: nowrap;
+}
+
+.event-attend-card__attending-label--light {
+  color: var(--global-text-light);
+}
+
+.event-attend-card--host .event-attend-card__attending-label--light {
+  color: var(--global-orange-muted);
 }
 
 .event-attend-card__btn--update {

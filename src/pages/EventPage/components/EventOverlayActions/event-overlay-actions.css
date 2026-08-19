@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '../../../../globals.css';
 
-.event-overlay-change-rsvp__header {
+.event-overlay-actions__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -9,12 +9,12 @@
   margin-bottom: 1rem;
 }
 
-.event-overlay-change-rsvp__title {
+.event-overlay-actions__title {
   @apply heading-h2;
   margin: 0;
 }
 
-.event-overlay-change-rsvp__close {
+.event-overlay-actions__close {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -26,12 +26,12 @@
   color: var(--global-text-muted);
 }
 
-.event-overlay-change-rsvp__close:disabled {
+.event-overlay-actions__close:disabled {
   cursor: default;
   opacity: 0.5;
 }
 
-.event-overlay-change-rsvp__close-icon {
+.event-overlay-actions__close-icon {
   display: block;
   position: relative;
   width: 1.25rem;
@@ -60,7 +60,7 @@
   }
 }
 
-.event-overlay-change-rsvp__options {
+.event-overlay-actions__options {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -68,11 +68,8 @@
   padding: 0.25rem 0;
 }
 
-.event-overlay-change-rsvp__option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+.event-overlay-actions__option {
+  display: block;
   width: 100%;
   margin: 0;
   padding: 0.5rem 1rem;
@@ -93,11 +90,18 @@
   }
 }
 
-.event-overlay-change-rsvp__option--selected {
+.event-overlay-actions__option--rsvp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.event-overlay-actions__option--selected {
   color: var(--global-text);
 }
 
-.event-overlay-change-rsvp__option-tick {
+.event-overlay-actions__option-tick {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,24 +110,20 @@
   flex-shrink: 0;
 }
 
-.event-overlay-change-rsvp__option-tick-icon {
+.event-overlay-actions__option-tick-icon {
   width: 1rem;
   height: 1rem;
   position: relative;
   top: -0.0625rem;
 }
 
-.event-overlay-change-rsvp__option-tick-icon path {
-  fill: currentColor;
-}
-
-.event-overlay-change-rsvp__option--loading {
+.event-overlay-actions__option--loading {
   position: relative;
   color: transparent;
   pointer-events: none;
 }
 
-.event-overlay-change-rsvp__option--loading::after {
+.event-overlay-actions__option--loading::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -133,10 +133,16 @@
   border: 2px solid rgba(0, 0, 0, 0.15);
   border-top-color: var(--global-text-muted);
   border-radius: 50%;
-  animation: event-overlay-change-rsvp-option-spin 0.8s linear infinite;
+  animation: event-overlay-actions-option-spin 0.8s linear infinite;
 }
 
-@keyframes event-overlay-change-rsvp-option-spin {
+.event-overlay-actions__divider {
+  @apply page-divider;
+  margin: 0.75rem auto;
+  width: 5rem;
+}
+
+@keyframes event-overlay-actions-option-spin {
   to {
     transform: rotate(360deg);
   }

@@ -7,8 +7,8 @@ type LeaveStatus = 'idle' | 'loading';
 
 const ORGANISER_OPTIONS = [
   'Edit community page',
-  'Contact members',
-  'Set member roles',
+  'Manage members',
+  'Contact all members',
 ] as const;
 
 type CommunityOverlayActionsProps = {

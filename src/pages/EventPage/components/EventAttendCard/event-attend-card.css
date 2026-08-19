@@ -135,6 +135,37 @@
   @apply btn-clear-grey;
 }
 
+.event-attend-card--host {
+  box-shadow: 0 1px 2px var(--global-orange-medium-shadow);
+  &:hover {
+    box-shadow: 0 1px 2px var(--global-orange-medium-shadow);
+  }
+
+  .event-attend-card__header {
+    background: var(--global-orange-light-shadow);
+    color: var(--global-orange-muted);
+  }
+
+  /* .event-attend-card__attending-label {
+    color: var(--global-orange-muted);
+  } */
+
+  .event-attend-card__btn--update {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .event-attend-card__btn-icon {
+    position: relative;
+    top: -0.0625rem;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transform: rotate(90deg);
+  }
+}
+
 .event-attend-card__btn--loading {
   position: relative;
   color: transparent;

@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import IconMore from '@src/assets/icon-more-outline.svg?react';
 import type { EventAttendee, EventViewerStatus } from '@src/common-libs/types';
 import { getAttendeesLabel } from '@src/helpers/labelHelpers';
 import './event-attend-card.css';
@@ -15,6 +16,7 @@ type EventAttendCardProps = {
   onUpdateClick?: () => void;
   onAttendeesClick: () => void;
   isJoinLoading?: boolean;
+  isHost?: boolean;
 };
 
 function getJoinButtonLabel(status: EventViewerStatus | null): string {
@@ -55,6 +57,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
       onUpdateClick,
       onAttendeesClick,
       isJoinLoading = false,
+      isHost = false,
     },
     ref,
   ) {
@@ -96,14 +99,21 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           {hasRsvp ? (
             <>
               <span className="event-attend-card__attending-label">
-                {getEngagementLabel(eventViewerStatus)}
+                {isHost === true ? "I'm Hosting" : getEngagementLabel(eventViewerStatus)}
               </span>
               <button
                 type="button"
                 className="event-attend-card__btn event-attend-card__btn--update"
                 onClick={onUpdateClick}
               >
-                change
+                {isHost === true ? (
+                  <>
+                    event
+                    <IconMore className="event-attend-card__btn-icon" />
+                  </>
+                ) : (
+                  'change'
+                )}
               </button>
             </>
           ) : (
@@ -131,6 +141,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
         ref={ref}
         className={[
           'event-attend-card',
+          isHost && 'event-attend-card--host',
           isFixedBar && 'event-attend-card--fixed-bar',
           isFixedBar && isFixedBarVisible && 'event-attend-card--fixed-bar--visible',
           className,
@@ -141,7 +152,7 @@ export const EventAttendCard = forwardRef<HTMLDivElement, EventAttendCardProps>(
           : (<>
             <div className="event-attend-card__header">
               <span className="event-attend-card__header-label">
-                { hasRsvp ? 'Attending' : 'Attend' }
+                {isHost === true ? 'Hosting' : (hasRsvp ? 'Attending' : 'Attend')}
               </span>
             </div>
             {body}

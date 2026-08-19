@@ -6,7 +6,7 @@ import { CommunityOverlayJoin } from '@src/pages/CommunityPage/components';
 import { isLoggedOut, useEventAccess } from './accessControl';
 import {
   EventAttendCard,
-  EventOverlayChangeRsvp,
+  EventOverlayActions,
   EventOverlayAttendees,
   EventOverlayReviews,
   EventCommunity,
@@ -27,7 +27,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     setEventViewerStatus,
     refreshEventPageData,
   } = useEventPageStates({ variant });
-  const [isAttendanceOverlayOpen, setIsAttendanceOverlayOpen] = useState(false);
+  const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
   const [isAttendeesOverlayOpen, setIsAttendeesOverlayOpen] = useState(false);
   const [isReviewsOverlayOpen, setIsReviewsOverlayOpen] = useState(false);
   const [eventAttendeesList, setEventAttendeesList] = useState<EventAttendee[] | null>(null);
@@ -108,9 +108,9 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     || eventPageData.isHost === true;
 
   const handleUpdateClick = () => {
-    setIsAttendanceOverlayOpen(true);
+    setIsActionsOverlayOpen(true);
   };
-  const handleAttendanceOverlayClose = () => setIsAttendanceOverlayOpen(false);
+  const handleActionsOverlayClose = () => setIsActionsOverlayOpen(false);
   const handleAttendeesClick = () => {
     requireMemberAccess(() => setIsAttendeesOverlayOpen(true));
   };
@@ -147,6 +147,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 onUpdateClick={handleUpdateClick}
                 onAttendeesClick={handleAttendeesClick}
                 isJoinLoading={isJoinLoading}
+                isHost={eventPageData.isHost === true}
               />
               <div className="interest-page__divider--hidden" />
               <EventDescription htmlContent={eventPageData.descriptionHtml} />
@@ -197,6 +198,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         onUpdateClick={handleUpdateClick}
         onAttendeesClick={handleAttendeesClick}
         isJoinLoading={isJoinLoading}
+        isHost={eventPageData.isHost === true}
       />
       <AuthLoginOverlay
         isOpen={isLoginOverlayOpen}
@@ -211,11 +213,12 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         onClose={handleJoinOverlayClose}
         onJoinSuccess={handleJoinOverlaySuccess}
       />
-      <EventOverlayChangeRsvp
+      <EventOverlayActions
         eventId={eventPageData.id}
         currentStatus={eventViewerStatus}
-        isOpen={isAttendanceOverlayOpen}
-        onClose={handleAttendanceOverlayClose}
+        isOpen={isActionsOverlayOpen}
+        isHost={eventPageData.isHost === true}
+        onClose={handleActionsOverlayClose}
         onAttendanceUpdate={setEventViewerStatus}
       />
       <EventOverlayAttendees

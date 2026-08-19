@@ -3,7 +3,7 @@ export { EventCommunity } from './EventCommunity/EventCommunity';
 export { EventHosts } from './EventHosts/EventHosts';
 export { EventIntro } from './EventIntro/EventIntro';
 export { EventAttendCard } from './EventAttendCard/EventAttendCard';
-export { EventOverlayChangeRsvp } from './EventOverlayChangeRsvp/EventOverlayChangeRsvp';
+export { EventOverlayActions } from './EventOverlayActions/EventOverlayActions';
 export { EventOverlayAttendees } from './EventOverlayAttendees/EventOverlayAttendees';
 export { EventOverlayReviews } from './EventOverlayReviews/EventOverlayReviews';
 export { EventDescription } from './EventDescription/EventDescription';

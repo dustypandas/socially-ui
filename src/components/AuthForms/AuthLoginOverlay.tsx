@@ -20,20 +20,8 @@ export function AuthLoginOverlay({
   }, [onSuccess, onClose]);
 
   return (
-    <Overlay isOpen={isOpen} onClose={onClose}>
-      <div className="auth-login-overlay">
-        <div className="auth-login-overlay__header">
-          <h2 className="auth-login-overlay__title">Sign in</h2>
-          <button
-            type="button"
-            className="auth-login-overlay__close"
-            onClick={onClose}
-          >
-            <span className="auth-login-overlay__close-icon" />
-          </button>
-        </div>
-        <AuthLogin onSuccess={handleSuccess} />
-      </div>
+    <Overlay isOpen={isOpen} onClose={onClose} title="Sign in">
+      <AuthLogin onSuccess={handleSuccess} />
     </Overlay>
   );
 }

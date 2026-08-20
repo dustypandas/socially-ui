@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import type { EventAttendee } from '@src/common-libs/types';
 import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
+import { addReview } from '@src/data';
 import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { CommunityOverlayJoin } from '@src/pages/CommunityPage/components';
 import { isLoggedOut, useEventAccess } from './accessControl';
 import {
   EventAttendCard,
   EventOverlayActions,
+  EventOverlayAddReview,
   EventOverlayAttendees,
   EventOverlayReviews,
   EventCommunity,
@@ -30,6 +32,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
   const [isActionsOverlayOpen, setIsActionsOverlayOpen] = useState(false);
   const [isAttendeesOverlayOpen, setIsAttendeesOverlayOpen] = useState(false);
   const [isReviewsOverlayOpen, setIsReviewsOverlayOpen] = useState(false);
+  const [isAddReviewOverlayOpen, setIsAddReviewOverlayOpen] = useState(false);
   const [eventAttendeesList, setEventAttendeesList] = useState<EventAttendee[] | null>(null);
 
   const attendCardRef = useRef<HTMLDivElement>(null);
@@ -119,7 +122,12 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     requireLoginAccess(() => setIsReviewsOverlayOpen(true));
   };
   const handleReviewsOverlayClose = () => setIsReviewsOverlayOpen(false);
-  const handleAddReviewClick = () => {};
+  const handleAddReviewClick = () => setIsAddReviewOverlayOpen(true);
+  const handleAddReviewOverlayClose = () => setIsAddReviewOverlayOpen(false);
+  const handleAddReviewSubmit = async (review: { rating: number; content: string }) => {
+    await addReview(eventPageData.id, eventPageData.community.id, review);
+    await refreshEventPageData();
+  };
   const isPastEvent = variant === 'past';
 
   return (
@@ -151,6 +159,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
                 isJoinLoading={isJoinLoading}
                 isHost={eventPageData.isHost === true}
                 isPastEvent={isPastEvent}
+                hasReviewed={eventPageData.hasReviewed === true}
                 onAddReviewClick={handleAddReviewClick}
               />
               <div className="interest-page__divider--hidden" />
@@ -204,6 +213,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         isJoinLoading={isJoinLoading}
         isHost={eventPageData.isHost === true}
         isPastEvent={isPastEvent}
+        hasReviewed={eventPageData.hasReviewed === true}
         onAddReviewClick={handleAddReviewClick}
       />
       <AuthLoginOverlay
@@ -238,6 +248,11 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         isOpen={isReviewsOverlayOpen}
         onClose={handleReviewsOverlayClose}
         reviews={eventPageData.reviews ?? []}
+      />
+      <EventOverlayAddReview
+        isOpen={isAddReviewOverlayOpen}
+        onClose={handleAddReviewOverlayClose}
+        onSubmit={handleAddReviewSubmit}
       />
     </PageLayout>
   );

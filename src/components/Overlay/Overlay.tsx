@@ -7,10 +7,18 @@ const ANIMATION_MS = 300;
 type OverlayProps = {
   isOpen: boolean;
   onClose: () => void;
+  title: React.ReactNode;
+  closeDisabled?: boolean;
   children: React.ReactNode;
 };
 
-export function Overlay({ isOpen, onClose, children }: OverlayProps) {
+export function Overlay({
+  isOpen,
+  onClose,
+  title,
+  closeDisabled,
+  children,
+}: OverlayProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const prevIsOpenRef = useRef(false);
@@ -72,9 +80,31 @@ export function Overlay({ isOpen, onClose, children }: OverlayProps) {
         onClick={onClose}
       />
       <div className="overlay__card">
+        <div className="overlay__header">
+          <h2 className="overlay__title">{title}</h2>
+          <OverlayCloseButton onClick={onClose} disabled={closeDisabled} />
+        </div>
         {children}
       </div>
     </div>,
     document.body,
+  );
+}
+
+type OverlayCloseButtonProps = {
+  onClick: () => void;
+  disabled?: boolean;
+};
+
+function OverlayCloseButton({ onClick, disabled }: OverlayCloseButtonProps) {
+  return (
+    <button
+      type="button"
+      className="overlay-close"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      <span className="close-icon" />
+    </button>
   );
 }

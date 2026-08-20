@@ -91,20 +91,12 @@ export function EventOverlayActions({
   };
 
   return (
-    <Overlay isOpen={isOpen} onClose={onClose}>
-      <div className="event-overlay-actions__header">
-        <h2 className="event-overlay-actions__title">
-          {isHost === true ? 'Event options' : 'Change RSVP'}
-        </h2>
-        <button
-          type="button"
-          className="event-overlay-actions__close"
-          onClick={onClose}
-          disabled={isBusy}
-        >
-          <span className="event-overlay-actions__close-icon" />
-        </button>
-      </div>
+    <Overlay
+      isOpen={isOpen}
+      onClose={onClose}
+      title={isHost === true ? 'Event options' : 'Change RSVP'}
+      closeDisabled={isBusy}
+    >
       <div className="event-overlay-actions__options">
         {isHost === true ? (
           <>

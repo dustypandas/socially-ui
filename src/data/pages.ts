@@ -5,6 +5,7 @@ import {
   homeAttendingEventIdsMap,
   homeDiscoverEventIdsMap,
   homeMyInterestsEventIdsMap,
+  tempEventReviewedMap,
 } from './stores/userData/index.ts';
 import {
   getCommunitiesForOneInterest,
@@ -140,6 +141,7 @@ export async function getEventPageData(): Promise<EventPageData> {
     reviews,
     viewerStatus,
     communityEntryConditions,
+    hasReviewed: tempEventReviewedMap[targetEvent.id] === true,
   };
 }
 

@@ -35,19 +35,11 @@ export function EventOverlayReviews({
   }, [isOpen]);
 
   return (
-    <Overlay isOpen={isOpen} onClose={onClose}>
-      <div className="event-overlay-reviews__header">
-        <h2 className="event-overlay-reviews__title">
-          {getReviewsSectionTitle(reviews.length, true)}
-        </h2>
-        <button
-          type="button"
-          className="event-overlay-reviews__close"
-          onClick={onClose}
-        >
-          <span className="event-overlay-reviews__close-icon" />
-        </button>
-      </div>
+    <Overlay
+      isOpen={isOpen}
+      onClose={onClose}
+      title={getReviewsSectionTitle(reviews.length, true)}
+    >
       <div className="event-overlay-reviews__list">
         {visibleReviews.map((review, index) => (
           <div

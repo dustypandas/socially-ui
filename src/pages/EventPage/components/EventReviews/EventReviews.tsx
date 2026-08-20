@@ -19,7 +19,7 @@ export function EventReviews({ reviews, onMoreClick }: EventReviewsProps) {
       <SectionTitle
         title={getReviewsSectionTitle(reviews.length)}
         hideMore={reviews.length <= MAX_DISPLAYED_REVIEWS}
-        moreLabel="more →"
+        moreLabel="more reviews →"
         onMoreClick={(event) => {
           event.preventDefault();
           onMoreClick?.();

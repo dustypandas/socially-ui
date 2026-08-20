@@ -142,19 +142,7 @@ export function CommunityOverlayJoin({
   };
 
   return (
-    <Overlay isOpen={isOverlayVisible} onClose={onClose}>
-      <div className="community-overlay-join__header">
-        <h2 className="community-overlay-join__title">
-          {title}
-        </h2>
-        <button
-          type="button"
-          className="community-overlay-join__close"
-          onClick={onClose}
-        >
-          <span className="community-overlay-join__close-icon" />
-        </button>
-      </div>
+    <Overlay isOpen={isOverlayVisible} onClose={onClose} title={title}>
       {/* <div className="community-overlay-join__subtitle">
         Tell us a little more about you, to join this community.
       </div> */}

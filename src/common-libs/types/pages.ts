@@ -66,6 +66,7 @@ export type EventPageData =
   viewerStatus: EventViewerStatus | null;
   communityEntryConditions?: CommunityEntryConditions;
   isHost?: boolean;
+  hasReviewed?: boolean;
 };
 
 export type CommunitiesPageData = {

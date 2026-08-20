@@ -6,6 +6,7 @@ export { EventAttendCard } from './EventAttendCard/EventAttendCard';
 export { EventOverlayActions } from './EventOverlayActions/EventOverlayActions';
 export { EventOverlayAttendees } from './EventOverlayAttendees/EventOverlayAttendees';
 export { EventOverlayReviews } from './EventOverlayReviews/EventOverlayReviews';
+export { EventOverlayAddReview } from './EventOverlayAddReview/EventOverlayAddReview';
 export { EventDescription } from './EventDescription/EventDescription';
 export { EventLocationDetails } from './EventLocationDetails/EventLocationDetails';
 export { EventTags } from './EventTags/EventTags';

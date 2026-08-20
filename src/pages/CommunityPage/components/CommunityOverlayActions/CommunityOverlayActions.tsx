@@ -58,20 +58,12 @@ export function CommunityOverlayActions({
   };
 
   return (
-    <Overlay isOpen={isOpen} onClose={onClose}>
-      <div className="community-overlay-actions__header">
-        <h2 className="community-overlay-actions__title">
-          {isOrganiser === true ? 'My Community' : 'My Membership'}
-        </h2>
-        <button
-          type="button"
-          className="community-overlay-actions__close"
-          onClick={onClose}
-          disabled={isLeaving}
-        >
-          <span className="community-overlay-actions__close-icon" />
-        </button>
-      </div>
+    <Overlay
+      isOpen={isOpen}
+      onClose={onClose}
+      title={isOrganiser === true ? 'My Community' : 'My Membership'}
+      closeDisabled={isLeaving}
+    >
       <div className="community-overlay-actions__options">
         {isOrganiser === true && (
           <>

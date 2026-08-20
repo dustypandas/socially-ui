@@ -83,19 +83,11 @@ export function EventOverlayAttendees({
   }, [isOpen, attendees, onAttendeesLoaded]);
 
   return (
-    <Overlay isOpen={isOverlayVisible} onClose={onClose}>
-      <div className="event-overlay-attendees__header">
-        <h2 className="event-overlay-attendees__title">
-          {attendeeCount} attendees
-        </h2>
-        <button
-          type="button"
-          className="event-overlay-attendees__close"
-          onClick={onClose}
-        >
-          <span className="event-overlay-attendees__close-icon" />
-        </button>
-      </div>
+    <Overlay
+      isOpen={isOverlayVisible}
+      onClose={onClose}
+      title={`${attendeeCount} attendees`}
+    >
       <div className="event-overlay-attendees__list">
         {visibleAttendees.map(attendee => (
           <AttendeeItem key={attendee.id} attendee={attendee} />

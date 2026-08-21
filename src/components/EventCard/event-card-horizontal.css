@@ -18,6 +18,14 @@
   padding: 0.875rem 1rem 1.125rem;
 }
 
+.event-card-horizontal__time {
+  margin: 0;
+  color: var(--global-text-muted);
+  font-family: 'Courier Prime', monospace;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
 .event-card-horizontal__title {
   margin: 0 0 0.25rem;
   color: var(--global-text);

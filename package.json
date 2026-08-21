@@ -8,7 +8,8 @@
     "dev": "vite --port 5000",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "count-lines": "find src \\( -name '*.ts*' -o -name '*.css' \\) | xargs wc -l"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",

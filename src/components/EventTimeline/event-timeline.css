@@ -38,13 +38,12 @@
   font-family: 'Courier Prime', monospace;
   font-size: var(--font-size-sm);
 }
-.event-timeline__item-date {
+.event-timeline__item-label-primary {
   color: var(--global-text);
   font-weight: 500;
-  padding-right: 0.5rem;
 }
 
-.event-timeline__item-time {
+.event-timeline__item-year {
   color: var(--global-text-muted);
 }
 

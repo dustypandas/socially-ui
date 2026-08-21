@@ -2,7 +2,7 @@ import IconGroup from '@src/assets/icon-group-outline.svg?react';
 import IconMapMarker from '@src/assets/icon-map-marker-outline.svg?react';
 import IconStar from '@src/assets/icon-star.svg?react';
 import type { EventAttendee, EventBasic } from '@src/common-libs/types';
-import { getAttendeesLabel } from '@src/helpers/labelHelpers.js';
+import { getAttendeesLabel, getEventTimeLabel } from '@src/helpers/labelHelpers.js';
 import './event-card-horizontal.css';
 
 type EventCardHorizontalProps = {
@@ -10,6 +10,7 @@ type EventCardHorizontalProps = {
 };
 
 export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
+  const timeLabel = getEventTimeLabel(event.startTime);
   const ratingLabel = `${event.rating} (${event.ratingCount} ratings)`;
   const attendeesLabel = getAttendeesLabel(event.attendees);
 
@@ -17,6 +18,9 @@ export function EventCardHorizontal({ event }: EventCardHorizontalProps) {
     <a href="#/one-event-ui" className="event-card-horizontal" target="_blank">
       <img className="event-card-horizontal__image" src={event.image} alt="" />
       <div className="event-card-horizontal__body">
+        <div className="event-card-horizontal__time">
+          {timeLabel}
+        </div>
         <h3 className="event-card-horizontal__title">
           {event.title}
         </h3>

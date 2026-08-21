@@ -25,6 +25,37 @@ export function getAttendeesLabel(attendees: EventAttendees): string {
   return `+${hiddenCount} others going`;
 }
   
+export function getEventTimelineLabel(startTime: Date) {
+  const weekdayLabel = startTime.toLocaleDateString('en-US', {
+    weekday: 'long',
+  });
+
+  const day = startTime.getDate();
+  const monthLabel = startTime.toLocaleDateString('en-US', {
+    month: 'short',
+  });
+
+  const yearLabel = startTime.toLocaleDateString('en-US', {
+    year: 'numeric',
+  });
+
+  return {
+    primaryLabel: `${weekdayLabel} ${day} ${monthLabel}`,
+    yearLabel,
+  };
+}
+
+export function getEventTimeLabel(startTime: Date) {
+  return startTime
+    .toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    })
+    .toLowerCase()
+    .replace(/\s/g, '');
+}
+
 export function getDateAndTimeLabels(startTime: Date) {
   const dateLabel = startTime.toLocaleDateString('en-US', {
     weekday: 'short',

@@ -7,9 +7,10 @@ type LoginStatus = 'idle' | 'loading';
 
 type AuthLoginProps = {
   onSuccess: () => void | Promise<void>;
+  onSwitchToSignup?: () => void;
 };
 
-export function AuthLogin({ onSuccess }: AuthLoginProps) {
+export function AuthLogin({ onSuccess, onSwitchToSignup }: AuthLoginProps) {
   const { refreshSession } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,11 +41,17 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
   const handleSignupClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (isLoading) {
       event.preventDefault();
+      return;
+    }
+
+    if (onSwitchToSignup) {
+      event.preventDefault();
+      onSwitchToSignup();
     }
   };
 
   return (
-    <>
+    <div className="auth-form__panel">
       <form className="auth-form__form" onSubmit={handleSubmit}>
         <input
           type="email"
@@ -127,6 +134,6 @@ export function AuthLogin({ onSuccess }: AuthLoginProps) {
           Join Us!
         </a>
       </div>
-    </>
+    </div>
   );
 }

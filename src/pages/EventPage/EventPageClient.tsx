@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { EventAttendee } from '@src/common-libs/types';
-import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
+import { AuthOverlay, ColumnsLayout, PageLayout } from '@src/components';
 import { addReview } from '@src/data';
 import { getElementDocumentOffsetTop, useScrolledPastDistance } from '@src/hooks/useScrolledPastDistance';
 import { CommunityOverlayJoin } from '@src/pages/CommunityPage/components';
@@ -53,17 +53,19 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     requireLoginAccess,
     isJoinOverlayOpen,
     joinOverlayTitle,
-    isLoginOverlayOpen,
+    isAuthOverlayOpen,
+    authOverlayMode,
     loginOnSuccess,
     isJoinLoading,
     handleJoinOverlayClose,
-    handleLoginOverlayClose,
+    handleAuthOverlayClose,
   } = useEventAccess({
     eventId: eventPageData?.id ?? '',
     communityId: eventPageData?.community.id ?? '',
     viewerStatus: eventPageData?.viewerStatus,
     refreshEventPageData,
     setEventViewerStatus,
+    authOverlayDefault: variant === 'public' ? 'signup' : 'login',
   });
 
   useEffect(() => {
@@ -216,9 +218,10 @@ export function EventPageClient({ variant }: EventPageClientProps) {
         hasReviewed={eventPageData.hasReviewed === true}
         onAddReviewClick={handleAddReviewClick}
       />
-      <AuthLoginOverlay
-        isOpen={isLoginOverlayOpen}
-        onClose={handleLoginOverlayClose}
+      <AuthOverlay
+        isOpen={isAuthOverlayOpen}
+        initialMode={authOverlayMode}
+        onClose={handleAuthOverlayClose}
         onSuccess={loginOnSuccess}
       />
       <CommunityOverlayJoin

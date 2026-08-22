@@ -39,7 +39,7 @@ export function ResetPasswordPage() {
   };
 
   const formContent = (
-    <>
+    <div className="auth-form__panel">
       <form className="auth-form__form" onSubmit={handleSubmit}>
         <input
           type="email"
@@ -78,13 +78,13 @@ export function ResetPasswordPage() {
           Login
         </a>
       </div>
-    </>
+    </div>
   );
 
   return (
     <PageLayout hasStaticHeader headerVariant="auth">
       <section className="auth-page">
-        <div className="width-container auth-page__content">
+        <div className="width-container">
           <h1 className="auth-page__title">Reset my password</h1>
           {isComplete ? (
             <div className="reset-password-page__transition">

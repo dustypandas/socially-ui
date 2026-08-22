@@ -12,7 +12,7 @@
 
 .create-page__content {
   width: 100%;
-  max-width: 28rem;
+  max-width: 26rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

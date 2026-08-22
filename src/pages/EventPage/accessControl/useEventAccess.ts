@@ -10,6 +10,7 @@ import {
 } from './eventAccess';
 
 type JoinOverlayIntent = 'joinEvent' | 'memberRequirement';
+type AuthOverlayType = 'login' | 'signup';
 
 type UseEventAccessOptions = {
   eventId: string;
@@ -17,6 +18,7 @@ type UseEventAccessOptions = {
   viewerStatus: EventViewerStatus | null | undefined;
   refreshEventPageData: () => Promise<void>;
   setEventViewerStatus: (status: EventViewerStatus | null) => void;
+  authOverlayDefault?: AuthOverlayType;
 };
 
 export function useEventAccess({
@@ -25,22 +27,27 @@ export function useEventAccess({
   viewerStatus,
   refreshEventPageData,
   setEventViewerStatus,
+  authOverlayDefault = 'login',
 }: UseEventAccessOptions) {
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
   const [joinOverlayIntent, setJoinOverlayIntent] = useState<JoinOverlayIntent | null>(null);
   const [pendingMemberAction, setPendingMemberAction] = useState<(() => void) | undefined>();
-  const [isLoginOverlayOpen, setIsLoginOverlayOpen] = useState(false);
-  const [loginOnSuccess, setLoginOnSuccess] = useState<(() => void | Promise<void>) | undefined>();
+  const [authOverlay, setAuthOverlay] = useState<{
+    type: AuthOverlayType;
+    onSuccess?: () => void | Promise<void>;
+  } | null>(null);
   const [isJoinLoading, setIsJoinLoading] = useState(false);
 
   const joinOverlayTitle = joinOverlayIntent === 'joinEvent'
     ? 'Community questions'
     : 'Join this community';
 
-  const openLoginOverlay = useCallback((onSuccess: () => void | Promise<void>) => {
-    setLoginOnSuccess(() => onSuccess);
-    setIsLoginOverlayOpen(true);
-  }, []);
+  const openAuthOverlay = useCallback((onSuccess: () => void | Promise<void>) => {
+    setAuthOverlay({
+      type: authOverlayDefault,
+      onSuccess: authOverlayDefault === 'login' ? onSuccess : undefined,
+    });
+  }, [authOverlayDefault]);
 
   const openJoinOverlay = useCallback((
     intent: JoinOverlayIntent,
@@ -57,9 +64,8 @@ export function useEventAccess({
     setPendingMemberAction(undefined);
   }, []);
 
-  const handleLoginOverlayClose = useCallback(() => {
-    setIsLoginOverlayOpen(false);
-    setLoginOnSuccess(undefined);
+  const handleAuthOverlayClose = useCallback(() => {
+    setAuthOverlay(null);
   }, []);
 
   const proceedToAttend = useCallback(async () => {
@@ -90,16 +96,16 @@ export function useEventAccess({
     }
 
     if (isLoggedOut(viewerStatus)) {
-      openLoginOverlay(resolveMemberAccessAfterLogin(targetAction));
+      openAuthOverlay(resolveMemberAccessAfterLogin(targetAction));
       return;
     }
 
     openJoinOverlay('memberRequirement', targetAction);
-  }, [viewerStatus, openLoginOverlay, resolveMemberAccessAfterLogin, openJoinOverlay]);
+  }, [viewerStatus, openAuthOverlay, resolveMemberAccessAfterLogin, openJoinOverlay]);
 
   const requireLoginAccess = useCallback((targetAction: () => void) => {
     if (isLoggedOut(viewerStatus)) {
-      openLoginOverlay(async () => {
+      openAuthOverlay(async () => {
         await refreshEventPageData();
         targetAction();
       });
@@ -107,7 +113,7 @@ export function useEventAccess({
     }
 
     targetAction();
-  }, [viewerStatus, openLoginOverlay, refreshEventPageData]);
+  }, [viewerStatus, openAuthOverlay, refreshEventPageData]);
 
   const resolveAttendAccessAfterLogin = useCallback(() => async () => {
     const allowed = await resolveMembershipAfterLogin(communityId, refreshEventPageData);
@@ -124,7 +130,7 @@ export function useEventAccess({
     }
 
     if (isLoggedOut(viewerStatus)) {
-      openLoginOverlay(resolveAttendAccessAfterLogin());
+      openAuthOverlay(resolveAttendAccessAfterLogin());
       return;
     }
 
@@ -136,7 +142,7 @@ export function useEventAccess({
     openJoinOverlay('joinEvent');
   }, [
     viewerStatus,
-    openLoginOverlay,
+    openAuthOverlay,
     resolveAttendAccessAfterLogin,
     proceedToAttend,
     openJoinOverlay,
@@ -177,10 +183,11 @@ export function useEventAccess({
     requireLoginAccess,
     isJoinOverlayOpen,
     joinOverlayTitle,
-    isLoginOverlayOpen,
-    loginOnSuccess,
+    isAuthOverlayOpen: authOverlay !== null,
+    authOverlayMode: authOverlay?.type ?? 'login',
+    loginOnSuccess: authOverlay?.onSuccess,
     isJoinLoading,
     handleJoinOverlayClose,
-    handleLoginOverlayClose,
+    handleAuthOverlayClose,
   };
 }

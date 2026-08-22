@@ -1,7 +1,9 @@
 export { AuthLogin } from './AuthForms/AuthLogin';
-export { AuthLoginOverlay } from './AuthForms/AuthLoginOverlay';
-export { AuthSignup } from './AuthForms/AuthSignup';
-export { AuthSignupOverlay } from './AuthForms/AuthSignupOverlay';
+export { AuthOverlay } from './AuthForms/AuthOverlay';
+export { AuthSignupInitial } from './AuthForms/AuthSignupInitial';
+export { AuthSignupFinal } from './AuthForms/AuthSignupFinal';
+export { AuthSignupAllSteps } from './AuthForms/AuthSignupAllSteps';
+export { AuthSignupVerify } from './AuthForms/AuthSignupVerify';
 export { ButtonsGroup } from './ButtonsGroup/ButtonsGroup';
 export { ColumnsLayout, useColumnsLayout } from './ColumnsLayout/ColumnsLayout';
 export { CommunityCard } from './CommunityCard/CommunityCard'

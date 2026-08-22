@@ -1,6 +1,15 @@
 @import 'tailwindcss';
 @import '../../globals.css';
 
+.auth-form__panel {
+  width: 100%;
+  /* max-width: 26rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
 .auth-form__form {
   display: flex;
   flex-direction: column;

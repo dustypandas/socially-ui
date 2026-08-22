@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { AuthLoginOverlay, ColumnsLayout, PageLayout } from '@src/components';
+import { AuthOverlay, ColumnsLayout, PageLayout } from '@src/components';
 import { getElementDocumentOffsetTop } from '@src/hooks/useScrolledPastDistance';
 import {
   CommunityHero,
@@ -59,15 +59,17 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     handleNavigateClick,
     isJoinOverlayOpen,
     joinOverlayTitle,
-    isLoginOverlayOpen,
+    isAuthOverlayOpen,
+    authOverlayMode,
     loginOnSuccess,
     handleJoinOverlayClose,
-    handleLoginOverlayClose,
+    handleAuthOverlayClose,
   } = useCommunityAccess({
     communityId: communityPageData?.id ?? '',
     viewerStatus,
     refreshCommunityPageData,
     navigateToPanel,
+    authOverlayDefault: variant === 'public' ? 'signup' : 'login',
   });
 
   if (!communityPageData) {
@@ -183,9 +185,10 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
         </div>
       </section>
 
-      <AuthLoginOverlay
-        isOpen={isLoginOverlayOpen}
-        onClose={handleLoginOverlayClose}
+      <AuthOverlay
+        isOpen={isAuthOverlayOpen}
+        initialMode={authOverlayMode}
+        onClose={handleAuthOverlayClose}
         onSuccess={loginOnSuccess}
       />
 

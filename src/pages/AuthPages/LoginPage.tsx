@@ -10,7 +10,7 @@ export function LoginPage() {
   return (
     <PageLayout hasStaticHeader headerVariant="auth">
       <section className="auth-page">
-        <div className="width-container auth-page__content">
+        <div className="width-container">
           <h1 className="auth-page__title">Welcome back</h1>
           <AuthLogin
             onSuccess={() => navigate(getAuthSuccessRedirect(searchParams))}

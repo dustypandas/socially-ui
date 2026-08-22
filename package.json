@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "count-lines": "find src \\( -name '*.ts*' -o -name '*.css' \\) | xargs wc -l"
+    "count-lines-ts": "find src \\( -name '*.ts*' \\) | xargs wc -l",
+    "count-lines": "find src \\( -name '*.ts*' -o -name '*.css' \\) | xargs cat | sed '/^\\s*$/d' | wc -l"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",

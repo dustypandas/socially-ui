@@ -12,6 +12,7 @@ import {
 } from './communityAccess';
 
 type JoinOverlayIntent = 'joinCommunity' | 'memberRequirement';
+type AuthOverlayType = 'login' | 'signup';
 
 type NavigateToPanelOptions = {
   eventFilter?: CommunityEventFilterId;
@@ -22,6 +23,7 @@ type UseCommunityAccessOptions = {
   viewerStatus: CommunityViewerStatus | null | undefined;
   refreshCommunityPageData: () => Promise<void>;
   navigateToPanel: (panelId: CommunityPanelId, options?: NavigateToPanelOptions) => void;
+  authOverlayDefault?: AuthOverlayType;
 };
 
 export function useCommunityAccess({
@@ -29,20 +31,25 @@ export function useCommunityAccess({
   viewerStatus,
   refreshCommunityPageData,
   navigateToPanel,
+  authOverlayDefault = 'login',
 }: UseCommunityAccessOptions) {
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
   const [joinOverlayIntent, setJoinOverlayIntent] = useState<JoinOverlayIntent | null>(null);
-  const [isLoginOverlayOpen, setIsLoginOverlayOpen] = useState(false);
-  const [loginOnSuccess, setLoginOnSuccess] = useState<(() => void | Promise<void>) | undefined>();
+  const [authOverlay, setAuthOverlay] = useState<{
+    type: AuthOverlayType;
+    onSuccess?: () => void | Promise<void>;
+  } | null>(null);
 
   const joinOverlayTitle = joinOverlayIntent === 'joinCommunity'
     ? 'Community questions'
     : 'Join this community';
 
-  const openLoginOverlay = useCallback((onSuccess: () => void | Promise<void>) => {
-    setLoginOnSuccess(() => onSuccess);
-    setIsLoginOverlayOpen(true);
-  }, []);
+  const openAuthOverlay = useCallback((onSuccess: () => void | Promise<void>) => {
+    setAuthOverlay({
+      type: authOverlayDefault,
+      onSuccess: authOverlayDefault === 'login' ? onSuccess : undefined,
+    });
+  }, [authOverlayDefault]);
 
   const openJoinOverlay = useCallback((intent: JoinOverlayIntent) => {
     setJoinOverlayIntent(intent);
@@ -54,9 +61,8 @@ export function useCommunityAccess({
     setJoinOverlayIntent(null);
   }, []);
 
-  const handleLoginOverlayClose = useCallback(() => {
-    setIsLoginOverlayOpen(false);
-    setLoginOnSuccess(undefined);
+  const handleAuthOverlayClose = useCallback(() => {
+    setAuthOverlay(null);
   }, []);
 
   const resolveMemberAccessAfterLogin = useCallback((
@@ -83,13 +89,13 @@ export function useCommunityAccess({
     }
 
     if (isLoggedOut(viewerStatus)) {
-      openLoginOverlay(resolveMemberAccessAfterLogin(targetAction, 'memberRequirement'));
+      openAuthOverlay(resolveMemberAccessAfterLogin(targetAction, 'memberRequirement'));
     }
-  }, [viewerStatus, openJoinOverlay, openLoginOverlay, resolveMemberAccessAfterLogin]);
+  }, [viewerStatus, openJoinOverlay, openAuthOverlay, resolveMemberAccessAfterLogin]);
 
   const handleJoinBtnClick = useCallback(() => {
     if (isLoggedOut(viewerStatus)) {
-      openLoginOverlay(resolveMemberAccessAfterLogin(() => {}, 'joinCommunity'));
+      openAuthOverlay(resolveMemberAccessAfterLogin(() => {}, 'joinCommunity'));
       return;
     }
 
@@ -98,7 +104,7 @@ export function useCommunityAccess({
     }
 
     openJoinOverlay('joinCommunity');
-  }, [viewerStatus, openLoginOverlay, openJoinOverlay, resolveMemberAccessAfterLogin]);
+  }, [viewerStatus, openAuthOverlay, openJoinOverlay, resolveMemberAccessAfterLogin]);
 
   const handleNavigateClick = useCallback((
     panelId: CommunityPanelId,
@@ -107,7 +113,7 @@ export function useCommunityAccess({
     const targetAction = () => navigateToPanel(panelId, options);
 
     if (isLoggedOut(viewerStatus) && isLoginGatedPanel(panelId)) {
-      openLoginOverlay(async () => {
+      openAuthOverlay(async () => {
         await refreshCommunityPageData();
         if (isMemberGatedPanel(panelId)) {
           const allowed = await resolveMembershipAfterLogin(communityId, refreshCommunityPageData);
@@ -131,7 +137,7 @@ export function useCommunityAccess({
     navigateToPanel(panelId, options);
   }, [
     viewerStatus,
-    openLoginOverlay,
+    openAuthOverlay,
     refreshCommunityPageData,
     communityId,
     openJoinOverlay,
@@ -147,9 +153,10 @@ export function useCommunityAccess({
     handleNavigateClick,
     isJoinOverlayOpen,
     joinOverlayTitle,
-    isLoginOverlayOpen,
-    loginOnSuccess,
+    isAuthOverlayOpen: authOverlay !== null,
+    authOverlayMode: authOverlay?.type ?? 'login',
+    loginOnSuccess: authOverlay?.onSuccess,
     handleJoinOverlayClose,
-    handleLoginOverlayClose,
+    handleAuthOverlayClose,
   };
 }

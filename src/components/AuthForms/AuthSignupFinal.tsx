@@ -12,9 +12,15 @@ type SignupFinalStatus = 'idle' | 'loading';
 
 type AuthSignupFinalProps = {
   onSuccess: () => void | Promise<void>;
+  submitLabel?: string;
+  subtitle?: string;
 };
 
-export function AuthSignupFinal({ onSuccess }: AuthSignupFinalProps) {
+export function AuthSignupFinal({
+  onSuccess,
+  submitLabel = 'Create My Account',
+  subtitle,
+}: AuthSignupFinalProps) {
   const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState<SignupFinalStatus>('idle');
@@ -61,7 +67,14 @@ export function AuthSignupFinal({ onSuccess }: AuthSignupFinalProps) {
   };
 
   return (
-    <form className="auth-signup-final__form" onSubmit={handleSubmit}>
+    <div className="auth-form__panel">
+      {subtitle && (
+        <div
+          className="auth-form__subtitle"
+          dangerouslySetInnerHTML={{ __html: subtitle }}
+        />
+      )}
+      <form className="auth-signup-final__form" onSubmit={handleSubmit}>
       <div className="auth-form__field">
         <label className="auth-form__label" htmlFor="signup-first-name">
           Hi, my name is
@@ -156,8 +169,9 @@ export function AuthSignupFinal({ onSuccess }: AuthSignupFinalProps) {
         ].filter(Boolean).join(' ')}
         disabled={isLoading}
       >
-        Create My Account
+        {submitLabel}
       </button>
     </form>
+    </div>
   );
 }

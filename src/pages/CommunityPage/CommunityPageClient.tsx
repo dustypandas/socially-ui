@@ -61,11 +61,13 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
     joinOverlayTitle,
     isAuthOverlayOpen,
     authOverlayMode,
+    authOverlayIntent,
     loginOnSuccess,
     handleJoinOverlayClose,
     handleAuthOverlayClose,
   } = useCommunityAccess({
     communityId: communityPageData?.id ?? '',
+    communityName: communityPageData?.name ?? '',
     viewerStatus,
     refreshCommunityPageData,
     navigateToPanel,
@@ -188,6 +190,7 @@ export function CommunityPageClient({ variant }: CommunityPageClientProps) {
       <AuthOverlay
         isOpen={isAuthOverlayOpen}
         initialMode={authOverlayMode}
+        authIntent={authOverlayIntent}
         onClose={handleAuthOverlayClose}
         onSuccess={loginOnSuccess}
       />

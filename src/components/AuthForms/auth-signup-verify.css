@@ -1,18 +1,5 @@
 @import './auth-forms.css';
 
-.auth-signup-verify__instruction {
-  margin: 0 0 0.75rem;
-  text-align: center;
-  color: var(--global-text-light);
-  font-size: var(--font-size-sm);
-  line-height: 1.5;
-
-  strong {
-    color: var(--global-text);
-    font-weight: 500;
-  }
-}
-
 .auth-signup-verify__digits {
   display: flex;
   gap: 0.75rem;

@@ -23,3 +23,9 @@ export type Link = {
   label: string;
   href: string;
 };
+
+export type AuthIntent = {
+  intentLabel?: string;
+  actionLabel?: string;
+  targetAction: () => void;
+};

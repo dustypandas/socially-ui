@@ -119,9 +119,9 @@ export function AuthSignupVerify({
 
   return (
     <div className="auth-form__panel">
-      <p className="auth-signup-verify__instruction">
+      <div className="auth-form__subtitle">
         Please enter the 6 digit code we sent to <strong>{email}</strong>.
-      </p>
+      </div>
 
       <form
         className={[

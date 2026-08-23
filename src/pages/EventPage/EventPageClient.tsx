@@ -55,12 +55,14 @@ export function EventPageClient({ variant }: EventPageClientProps) {
     joinOverlayTitle,
     isAuthOverlayOpen,
     authOverlayMode,
+    authOverlayIntent,
     loginOnSuccess,
     isJoinLoading,
     handleJoinOverlayClose,
     handleAuthOverlayClose,
   } = useEventAccess({
     eventId: eventPageData?.id ?? '',
+    eventTitle: eventPageData?.title ?? '',
     communityId: eventPageData?.community.id ?? '',
     viewerStatus: eventPageData?.viewerStatus,
     refreshEventPageData,
@@ -221,6 +223,7 @@ export function EventPageClient({ variant }: EventPageClientProps) {
       <AuthOverlay
         isOpen={isAuthOverlayOpen}
         initialMode={authOverlayMode}
+        authIntent={authOverlayIntent}
         onClose={handleAuthOverlayClose}
         onSuccess={loginOnSuccess}
       />

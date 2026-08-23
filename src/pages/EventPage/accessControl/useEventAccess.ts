@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import type { EventViewerStatus } from '@src/common-libs/types';
+import type { AuthIntent, EventViewerStatus } from '@src/common-libs/types';
 import { attendEvent, getSessionCommunityStatus } from '@src/data';
 import {
   canViewEventAttendees,
@@ -14,6 +14,7 @@ type AuthOverlayType = 'login' | 'signup';
 
 type UseEventAccessOptions = {
   eventId: string;
+  eventTitle: string;
   communityId: string;
   viewerStatus: EventViewerStatus | null | undefined;
   refreshEventPageData: () => Promise<void>;
@@ -23,6 +24,7 @@ type UseEventAccessOptions = {
 
 export function useEventAccess({
   eventId,
+  eventTitle,
   communityId,
   viewerStatus,
   refreshEventPageData,
@@ -32,6 +34,7 @@ export function useEventAccess({
   const [isJoinOverlayOpen, setIsJoinOverlayOpen] = useState(false);
   const [joinOverlayIntent, setJoinOverlayIntent] = useState<JoinOverlayIntent | null>(null);
   const [pendingMemberAction, setPendingMemberAction] = useState<(() => void) | undefined>();
+  const [authIntent, setAuthIntent] = useState<AuthIntent | undefined>();
   const [authOverlay, setAuthOverlay] = useState<{
     type: AuthOverlayType;
     onSuccess?: () => void | Promise<void>;
@@ -42,7 +45,11 @@ export function useEventAccess({
     ? 'Community questions'
     : 'Join this community';
 
-  const openAuthOverlay = useCallback((onSuccess: () => void | Promise<void>) => {
+  const openAuthOverlay = useCallback((
+    onSuccess: () => void | Promise<void>,
+    intent?: AuthIntent,
+  ) => {
+    setAuthIntent(intent);
     setAuthOverlay({
       type: authOverlayDefault,
       onSuccess: authOverlayDefault === 'login' ? onSuccess : undefined,
@@ -96,24 +103,39 @@ export function useEventAccess({
     }
 
     if (isLoggedOut(viewerStatus)) {
-      openAuthOverlay(resolveMemberAccessAfterLogin(targetAction));
+      openAuthOverlay(
+        resolveMemberAccessAfterLogin(targetAction),
+        {
+          intentLabel: `see attendees of ${eventTitle}`,
+          targetAction,
+        },
+      );
       return;
     }
 
     openJoinOverlay('memberRequirement', targetAction);
-  }, [viewerStatus, openAuthOverlay, resolveMemberAccessAfterLogin, openJoinOverlay]);
+  }, [
+    viewerStatus,
+    openAuthOverlay,
+    resolveMemberAccessAfterLogin,
+    openJoinOverlay,
+    eventTitle,
+  ]);
 
   const requireLoginAccess = useCallback((targetAction: () => void) => {
     if (isLoggedOut(viewerStatus)) {
       openAuthOverlay(async () => {
         await refreshEventPageData();
         targetAction();
+      }, {
+        intentLabel: `see reviews for ${eventTitle}`,
+        targetAction,
       });
       return;
     }
 
     targetAction();
-  }, [viewerStatus, openAuthOverlay, refreshEventPageData]);
+  }, [viewerStatus, openAuthOverlay, refreshEventPageData, eventTitle]);
 
   const resolveAttendAccessAfterLogin = useCallback(() => async () => {
     const allowed = await resolveMembershipAfterLogin(communityId, refreshEventPageData);
@@ -130,7 +152,13 @@ export function useEventAccess({
     }
 
     if (isLoggedOut(viewerStatus)) {
-      openAuthOverlay(resolveAttendAccessAfterLogin());
+      openAuthOverlay(resolveAttendAccessAfterLogin(), {
+        intentLabel: `attend ${eventTitle}`,
+        actionLabel: 'Request to Join Event',
+        targetAction: () => {
+          void proceedToAttend();
+        },
+      });
       return;
     }
 
@@ -146,6 +174,7 @@ export function useEventAccess({
     resolveAttendAccessAfterLogin,
     proceedToAttend,
     openJoinOverlay,
+    eventTitle,
   ]);
 
   const handleJoinOverlaySuccess = useCallback(async () => {
@@ -185,6 +214,7 @@ export function useEventAccess({
     joinOverlayTitle,
     isAuthOverlayOpen: authOverlay !== null,
     authOverlayMode: authOverlay?.type ?? 'login',
+    authOverlayIntent: authIntent,
     loginOnSuccess: authOverlay?.onSuccess,
     isJoinLoading,
     handleJoinOverlayClose,

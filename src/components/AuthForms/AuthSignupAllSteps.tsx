@@ -12,12 +12,16 @@ type AuthSignupAllStepsProps = {
   onSwitchToLogin?: () => void;
   onComplete: () => void | Promise<void>;
   onStepChange?: (step: SignupStep) => void;
+  submitLabel?: string;
+  subtitle?: string;
 };
 
 export function AuthSignupAllSteps({
   onSwitchToLogin,
   onComplete,
   onStepChange,
+  submitLabel,
+  subtitle,
 }: AuthSignupAllStepsProps) {
   const [step, setStep] = useState<SignupStep>('initial');
   const [email, setEmail] = useState('');
@@ -48,6 +52,7 @@ export function AuthSignupAllSteps({
             setEmail(submittedEmail);
             goToStep('verify');
           }}
+          subtitle={subtitle}
         />
       );
       break;
@@ -61,7 +66,13 @@ export function AuthSignupAllSteps({
       );
       break;
     case 'final':
-      stepPanel = <AuthSignupFinal onSuccess={onComplete} />;
+      stepPanel = (
+        <AuthSignupFinal
+          onSuccess={onComplete}
+          submitLabel={submitLabel}
+          subtitle={subtitle}
+        />
+      );
       break;
   }
 

@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import type { AuthIntent } from '@src/common-libs/types';
 import { Overlay } from '../Overlay/Overlay';
 import { AuthSignupAllSteps, type SignupStep } from './AuthSignupAllSteps';
 import { AuthLogin } from './AuthLogin';
@@ -11,6 +12,7 @@ type AuthOverlayMode = 'signup' | 'login';
 type AuthOverlayProps = {
   isOpen: boolean;
   initialMode: AuthOverlayMode;
+  authIntent?: AuthIntent;
   onClose: () => void;
   onSuccess?: () => void | Promise<void>;
 };
@@ -18,6 +20,7 @@ type AuthOverlayProps = {
 export function AuthOverlay({
   isOpen,
   initialMode,
+  authIntent,
   onClose,
   onSuccess,
 }: AuthOverlayProps) {
@@ -68,14 +71,31 @@ export function AuthOverlay({
     onClose();
   }, [onSuccess, onClose]);
 
-  const title =
-    mode === 'login'
-      ? 'Sign in'
-      : signupStep === 'verify'
-        ? 'Verify Code'
-        : signupStep === 'final'
-          ? 'Complete sign up'
-          : 'Sign up';
+  let title: ReactNode;
+  let subtitle: string | undefined;
+
+  if (mode === 'login') {
+    title = authIntent ? 'Welcome back' : 'Sign in';
+    if (authIntent?.intentLabel) {
+      subtitle = `Sign in to ${authIntent.intentLabel}`;
+    }
+  } else if (signupStep === 'initial') {
+    title = authIntent ? 'Join Socially' : 'Sign up';
+    if (authIntent?.intentLabel) {
+      subtitle = `Sign up to ${authIntent.intentLabel}`;
+    }
+  } else if (signupStep === 'verify') {
+    title = 'Verify Code';
+  } else if (signupStep === 'final') {
+    title = authIntent
+      ? (
+        <>
+          Welcome to Socially!{' '}
+          <span className="text--full-color">🕺</span>
+        </>
+      )
+      : 'Complete sign up';
+  }
 
   const panel = mode === 'signup'
     ? (
@@ -84,9 +104,17 @@ export function AuthOverlay({
         onSwitchToLogin={handleSwitchToLogin}
         onComplete={handleAuthSuccess}
         onStepChange={setSignupStep}
+        submitLabel={authIntent?.actionLabel}
+        subtitle={subtitle}
       />
     )
-    : <AuthLogin onSuccess={handleAuthSuccess} onSwitchToSignup={handleSwitchToSignup} />;
+    : (
+      <AuthLogin
+        onSuccess={handleAuthSuccess}
+        onSwitchToSignup={handleSwitchToSignup}
+        subtitle={subtitle}
+      />
+    );
 
   const content = isSwitching
     ? <div className="auth-overlay__panel--entering">{panel}</div>

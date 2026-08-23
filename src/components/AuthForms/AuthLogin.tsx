@@ -8,9 +8,10 @@ type LoginStatus = 'idle' | 'loading';
 type AuthLoginProps = {
   onSuccess: () => void | Promise<void>;
   onSwitchToSignup?: () => void;
+  subtitle?: string;
 };
 
-export function AuthLogin({ onSuccess, onSwitchToSignup }: AuthLoginProps) {
+export function AuthLogin({ onSuccess, onSwitchToSignup, subtitle }: AuthLoginProps) {
   const { refreshSession } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -52,6 +53,12 @@ export function AuthLogin({ onSuccess, onSwitchToSignup }: AuthLoginProps) {
 
   return (
     <div className="auth-form__panel">
+      {subtitle && (
+        <div
+          className="auth-form__subtitle"
+          dangerouslySetInnerHTML={{ __html: subtitle }}
+        />
+      )}
       <form className="auth-form__form" onSubmit={handleSubmit}>
         <input
           type="email"

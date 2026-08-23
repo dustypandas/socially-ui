@@ -7,9 +7,10 @@ type SignupStatus = 'idle' | 'loading';
 type AuthSignupInitialProps = {
   onSwitchToLogin?: () => void;
   onSuccess?: (email: string) => void | Promise<void>;
+  subtitle?: string;
 };
 
-export function AuthSignupInitial({ onSwitchToLogin, onSuccess }: AuthSignupInitialProps = {}) {
+export function AuthSignupInitial({ onSwitchToLogin, onSuccess, subtitle }: AuthSignupInitialProps = {}) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<SignupStatus>('idle');
   const [error, setError] = useState('');
@@ -44,6 +45,12 @@ export function AuthSignupInitial({ onSwitchToLogin, onSuccess }: AuthSignupInit
 
   return (
     <div className="auth-form__panel">
+      {subtitle && (
+        <div
+          className="auth-form__subtitle"
+          dangerouslySetInnerHTML={{ __html: subtitle }}
+        />
+      )}
       <form className="auth-form__form" onSubmit={handleSubmit}>
         <input
           type="email"

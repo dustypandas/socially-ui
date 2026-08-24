@@ -106,6 +106,7 @@ export function useEventAccess({
       openAuthOverlay(
         resolveMemberAccessAfterLogin(targetAction),
         {
+          intent: 'seeEventAttendees',
           intentLabel: `see attendees of ${eventTitle}`,
           targetAction,
         },
@@ -128,6 +129,7 @@ export function useEventAccess({
         await refreshEventPageData();
         targetAction();
       }, {
+        intent: 'seeEventReviews',
         intentLabel: `see reviews for ${eventTitle}`,
         targetAction,
       });
@@ -153,6 +155,7 @@ export function useEventAccess({
 
     if (isLoggedOut(viewerStatus)) {
       openAuthOverlay(resolveAttendAccessAfterLogin(), {
+        intent: 'attendEvent',
         intentLabel: `attend ${eventTitle}`,
         actionLabel: 'Request to Join Event',
         targetAction: () => {

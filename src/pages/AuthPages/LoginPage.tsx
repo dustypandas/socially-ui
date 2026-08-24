@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AuthLogin, PageLayout } from '@src/components';
-import { getAuthSuccessRedirect } from '@src/pages/AuthPages/helpers/getAuthSuccessRedirect';
+import { getAuthSuccessRedirect } from './helpers/getAuthSuccessRedirect';
 import './auth-page.css';
 
 export function LoginPage() {

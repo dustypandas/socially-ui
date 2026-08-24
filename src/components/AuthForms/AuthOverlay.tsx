@@ -3,7 +3,7 @@ import type { AuthIntent } from '@src/common-libs/types';
 import { Overlay } from '../Overlay/Overlay';
 import { AuthSignupAllSteps, type SignupStep } from './AuthSignupAllSteps';
 import { AuthLogin } from './AuthLogin';
-import './auth-overlay.css';
+import './auth-forms.css';
 
 const SWITCH_ANIMATION_MS = 600;
 
@@ -80,7 +80,11 @@ export function AuthOverlay({
       subtitle = `Sign in to ${authIntent.intentLabel}`;
     }
   } else if (signupStep === 'initial') {
-    title = authIntent ? 'Join Socially' : 'Sign up';
+    if (authIntent?.intent === 'fresh') {
+      title = "Bienvenido, let's get started!";
+    } else {
+      title = authIntent ? 'Join Socially' : 'Sign up';
+    }
     if (authIntent?.intentLabel) {
       subtitle = `Sign up to ${authIntent.intentLabel}`;
     }
@@ -117,7 +121,7 @@ export function AuthOverlay({
     );
 
   const content = isSwitching
-    ? <div className="auth-overlay__panel--entering">{panel}</div>
+    ? <div className="auth-forms__panel--entering">{panel}</div>
     : panel;
 
   return (

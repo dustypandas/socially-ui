@@ -25,6 +25,7 @@ import {
   PrevCommunityPage,
   PrevEventPage,
 } from './pages-ui';
+import { EmailPreviewPage } from './pages-ui/_emails/EmailPreviewPage';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -66,6 +67,9 @@ createRoot(document.getElementById('root')!).render(
         {/* part 0.3 - create content */}
         <Route path='/create-event-ui' element={<CreateEventPage />} />
         <Route path='/create-community-ui' element={<CreateCommunityPage />} />
+        {/* emails */}
+        <Route path='/emails-preview-ui' element={<EmailPreviewPage />} />
+        {/* prev */}
         <Route path='/prev-community-ui' element={<PrevCommunityPage />} />
         <Route path='/prev-event-ui' element={<PrevEventPage />} />
         {/* default invalid? */}

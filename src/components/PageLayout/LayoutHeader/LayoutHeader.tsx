@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import IconUser from '@src/assets/icon-user-outline.svg?react';
+// import { AuthOverlay } from '@src/components/AuthForms/AuthOverlay';
 import { smoothScrollToSection } from '@src/helpers/smoothScroll';
 import './layout-header.css';
 
@@ -25,6 +26,7 @@ export function LayoutHeader({
   variant = 'loggedOut',
 }: LayoutHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isAuthOverlayOpen, setIsAuthOverlayOpen] = useState(false);
   const isAuth2 = variant === 'auth2';
   const showLoggedOutAuth = variant === 'loggedOut';
   const showProfileLink = variant === 'loggedIn';
@@ -92,6 +94,11 @@ export function LayoutHeader({
                   href="#/signup-ui"
                   className="layout-header__join-link"
                   onClick={closeMenu}
+                  // onClick={event => {
+                  //   event.preventDefault();
+                  //   closeMenu();
+                  //   setIsAuthOverlayOpen(true);
+                  // }}
                 >
                   Join Us
                 </a>
@@ -106,6 +113,14 @@ export function LayoutHeader({
         </div>
         )}
       </div>
+      {/* showLoggedOutAuth && (
+        <AuthOverlay
+          isOpen={isAuthOverlayOpen}
+          initialMode="signup"
+          authIntent={{ intent: 'fresh' }}
+          onClose={() => setIsAuthOverlayOpen(false)}
+        />
+      ) */}
     </header>
   );
 }

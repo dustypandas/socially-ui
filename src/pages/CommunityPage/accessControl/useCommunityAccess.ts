@@ -99,6 +99,7 @@ export function useCommunityAccess({
       openAuthOverlay(
         resolveMemberAccessAfterLogin(targetAction, 'memberRequirement'),
         {
+          intent: 'exploreCommunity',
           intentLabel: `explore ${communityName}`,
           actionLabel: 'Request to Join community',
           targetAction,
@@ -118,6 +119,7 @@ export function useCommunityAccess({
       openAuthOverlay(
         resolveMemberAccessAfterLogin(() => {}, 'joinCommunity'),
         {
+          intent: 'joinCommunity',
           intentLabel: `join ${communityName}`,
           actionLabel: 'Request to Join community',
           targetAction: () => {},
@@ -159,6 +161,7 @@ export function useCommunityAccess({
           targetAction();
         }
       }, {
+        intent: 'exploreCommunity',
         intentLabel: `explore ${communityName}`,
         actionLabel: 'Request to Join community',
         targetAction,

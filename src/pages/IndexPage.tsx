@@ -70,6 +70,10 @@ export function IndexPage() {
     <br/>
     <br/>
     <br/>
+    <a href='#/emails-preview-ui'>Email templates</a>
+    <br/>
+    <br/>
+    <br/>
     <a href='#/prev-community-ui'>Prev Community page ui</a>
     <a href='#/prev-event-ui'>Prev Event page ui</a>
   </div>);

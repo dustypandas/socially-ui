@@ -24,8 +24,17 @@ export type Link = {
   href: string;
 };
 
+export type AuthIntentId =
+  | 'fresh'
+  | 'exploreCommunity'
+  | 'joinCommunity'
+  | 'seeEventAttendees'
+  | 'seeEventReviews'
+  | 'attendEvent';
+
 export type AuthIntent = {
+  intent: AuthIntentId;
   intentLabel?: string;
   actionLabel?: string;
-  targetAction: () => void;
+  targetAction?: () => void;
 };

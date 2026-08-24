@@ -1,29 +1,24 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { AuthSignupInitial } from './AuthSignupInitial';
-import { AuthSignupFinal } from './AuthSignupFinal';
-import { AuthSignupVerify } from './AuthSignupVerify';
-import './auth-forms.css';
+import '../../../components/AuthForms/auth-forms.css';
+import { AuthResetPasswordFinal } from './AuthResetPasswordFinal';
+import { AuthResetPasswordInitial } from './AuthResetPasswordInitial';
 
 const SWITCH_ANIMATION_MS = 600;
 
-export type SignupStep = 'initial' | 'verify' | 'final';
+export type ResetPasswordStep = 'initial' | 'final';
 
-type AuthSignupAllStepsProps = {
+type AuthResetPasswordAllStepsProps = {
   onSwitchToLogin?: () => void;
   onComplete: () => void | Promise<void>;
-  onStepChange?: (step: SignupStep) => void;
-  submitLabel?: string;
-  subtitle?: string;
+  onStepChange?: (step: ResetPasswordStep) => void;
 };
 
-export function AuthSignupAllSteps({
+export function AuthResetPasswordAllSteps({
   onSwitchToLogin,
   onComplete,
   onStepChange,
-  submitLabel,
-  subtitle,
-}: AuthSignupAllStepsProps) {
-  const [step, setStep] = useState<SignupStep>('initial');
+}: AuthResetPasswordAllStepsProps) {
+  const [step, setStep] = useState<ResetPasswordStep>('initial');
   const [email, setEmail] = useState('');
   const [isSwitching, setIsSwitching] = useState(false);
 
@@ -31,7 +26,7 @@ export function AuthSignupAllSteps({
     onStepChange?.(step);
   }, [step, onStepChange]);
 
-  const goToStep = (next: SignupStep) => {
+  const goToStep = (next: ResetPasswordStep) => {
     if (isSwitching || next === step) {
       return;
     }
@@ -46,31 +41,21 @@ export function AuthSignupAllSteps({
   switch (step) {
     case 'initial':
       stepPanel = (
-        <AuthSignupInitial
+        <AuthResetPasswordInitial
           onSwitchToLogin={onSwitchToLogin}
           onSuccess={async (submittedEmail) => {
             setEmail(submittedEmail);
-            goToStep('verify');
+            goToStep('final');
           }}
-          subtitle={subtitle}
-        />
-      );
-      break;
-    case 'verify':
-      stepPanel = (
-        <AuthSignupVerify
-          email={email}
-          onBack={() => goToStep('initial')}
-          onSuccess={() => goToStep('final')}
         />
       );
       break;
     case 'final':
       stepPanel = (
-        <AuthSignupFinal
+        <AuthResetPasswordFinal
+          email={email}
+          onBack={() => goToStep('initial')}
           onSuccess={onComplete}
-          submitLabel={submitLabel}
-          subtitle={subtitle}
         />
       );
       break;

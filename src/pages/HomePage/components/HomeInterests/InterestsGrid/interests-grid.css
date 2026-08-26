@@ -39,6 +39,11 @@
 
 @media (max-width: theme(--breakpoint-sm)) {
   .interests-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 0.5rem 1rem;
+  }
+
+  .interests-grid__link {
+    font-size: var(--font-size-md);
   }
 }

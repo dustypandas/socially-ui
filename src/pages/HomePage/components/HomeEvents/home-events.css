@@ -41,10 +41,23 @@
 
 @media (max-width: theme(--breakpoint-sm)) {
   .home-events__grid {
-    grid-template-columns: 1fr;
+    /* grid-template-columns: repeat(2, 1fr); */
+    margin: 0 0 1rem;
 
-    > :nth-child(n + 6) {
-      display: none;
+    .event-card {
+      min-width: 0;
+    }
+
+    /* .event-card__title {
+      font-size: var(--font-size-md);
+    } */
+
+    /* .event-card__row {
+      font-size: 0.75rem;
+    } */
+
+    .event-card__body {
+      padding: 0.625rem 0.75rem 0.875rem;
     }
   }
 }

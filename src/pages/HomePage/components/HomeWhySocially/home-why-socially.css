@@ -40,3 +40,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: theme(--breakpoint-sm)) {
+  .home-why-socially__grid {
+    margin: 0 0.5rem 1rem;
+  }
+}
